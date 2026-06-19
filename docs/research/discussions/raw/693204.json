@@ -1,0 +1,103 @@
+{
+ "forumTopic": {
+  "authorId": 31805682,
+  "authorThumbnailName": "default-thumb.png",
+  "authorUserDisplayName": "Kameron Kilchrist",
+  "authorUserName": "kameronkilchrist",
+  "comments": [
+   {
+    "id": 3445619,
+    "postDate": "2026-04-20T07:48:10.380Z",
+    "rawMarkdown": "Thanks! It is helpful, but I didn't identify the mistakes in my instance -- so there's perhaps more. I don't know enough about it to have more than a suspicion it's related to using WHERE with UINT8",
+    "content": "<p>Thanks! It is helpful, but I didn't identify the mistakes in my instance -- so there's perhaps more. I don't know enough about it to have more than a suspicion it's related to using WHERE with UINT8</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Russell Kirk",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/27681700-kg.jpg?t=2026-03-31-11-28-38",
+     "url": "/russcore",
+     "tier": "CONTRIBUTOR",
+     "id": 27681700,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 52,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Damien Mourot",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/453299-kg.png?t=2024-10-31-19-25-25",
+      "url": "/nahman",
+      "userName": "nahman",
+      "tier": "MASTER",
+      "id": 453299,
+      "profileUrl": "/nahman",
+      "performanceTier": "MASTER",
+      "userId": 453299,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3445604,
+   "postDate": "2026-04-20T07:17:36.030Z",
+   "rawMarkdown": "The official NeuroGolf constraints are clear: static shapes, no `Loop/Scan/NonZero/Unique/Script/Function`, ≤1.44MB per file, any opset. But a model can satisfy all of that, pass `onnxruntime` and `onnx.checker.check_model`, and still get rejected at submission time with:\n\n> `Error processing one or more onnx networks.`\n\nThe scorer isn't onnxruntime — it's `onnx_tool`. Its `shape_infer` + `profile` passes are strictly stricter than the ONNX spec, and several spec-legal ops crash it silently.\n\n## What `neurogolf_utils` actually runs\n\n```python\n# data/neurogolf_utils/neurogolf_utils.py (abridged)\nimport onnx_tool\n\ndef score_network(onnx_bytes):\n    model = onnx_tool.loadmodel(onnx_bytes, {'verbose': False})\n    model.graph.graph_reorder_nodes()\n    model.graph.shape_infer(None)   # <-- this is where most submissions die\n    model.graph.profile()\n    if not model.graph.valid_profile:\n        return None, None, None\n    ...\n```\n\nIf `shape_infer` raises or `valid_profile` is False, the task returns `None, None, None`, and Kaggle surfaces it as the batch-wide error above. No per-task diagnostics.\n\n## Ops we've confirmed are poisoned\n\nEvery one of these passes `onnxruntime` and `onnx.checker`. Every one of them kills the scorer.\n\n| Op | Symptom | Workaround |\n|---|---|---|\n| `Min` | `ValueError: truth value of array is ambiguous` — `MinNode.value_infer` has a literal `result = not numpy.minimum(...)` typo | `Greater + Cast` for `min(x,1)`; `Neg + Max + Neg` for general min |\n| `ArgMin` | `NotImplementedError: Node ArgMin has no value_infer` | `ArgMax(Neg(x))` |\n| `Clip` (opset-10 attribute form) | `shape_infer` assert; the `ClipNode` expects opset-11 input form | Upgrade file to opset 11, pass min/max as inputs |\n| `ArgMax(keepdims=0)` + `Reshape→[1]` | `AssertionError: raw == volume(newshape)` at node.py:2342 (volume-of-scalar bug) | Use `keepdims=1`, or `Unsqueeze(axes=[0])` instead of `Reshape` |\n| Scalar-index `Gather` on rank-4 | Phantom size-1 dim leaks through, downstream Reshape or Conv crashes | Rank-1 `[1]` index + explicit `Reshape` to strip the dim |\n\nThere's also one non-op trap worth knowing: any task whose benchmark grids exceed 30×30 (e.g. `arc-gen` examples for tasks 021, 055, 080, 184, 202, 366) will `IndexError` inside `convert_to_numpy` *before the model runs*. Local `verify_task` silently skips these; scorer does not. They're permanently unsubmittable.\n\n## Local validation that actually catches this\n\nThree layers, each catching a different class of failure. The first two are not enough on their own.\n\n```python\n# Layer 1: shape correctness (necessary, not sufficient)\nimport onnx\nonnx.checker.check_model(path)\n\n# Layer 2: runtime execution (necessary, not sufficient)\nimport onnxruntime as ort\nsess = ort.InferenceSession(path)\nout = sess.run(None, {\"input\": sample_input})\n\n# Layer 3: the one that matters — run the actual scorer\nimport onnx_tool\nmodel = onnx_tool.loadmodel(path, {'verbose': False})\nmodel.graph.graph_reorder_nodes()\nmodel.graph.shape_infer(None)     # poisoned ops raise here\nmodel.graph.profile()\nassert model.graph.valid_profile, \"would fail Kaggle scorer\"\n```\n\nWrap layer 3 in a subprocess — a bad `shape_infer` can leave `onnx_tool` in a state that corrupts later loads in the same process:\n\n```python\nimport subprocess, sys\nfrom pathlib import Path\n\ndef scorer_safe(onnx_path: Path) -> tuple[bool, str]:\n    code = f\"\"\"\nimport onnx_tool\nm = onnx_tool.loadmodel({str(onnx_path)!r}, {{'verbose': False}})\nm.graph.graph_reorder_nodes()\nm.graph.shape_infer(None)\nm.graph.profile()\nassert m.graph.valid_profile\nprint(\"OK\")\n\"\"\"\n    r = subprocess.run(\n        [sys.executable, \"-c\", code],\n        capture_output=True, text=True, timeout=60,\n    )\n    return r.returncode == 0, (r.stderr or r.stdout).strip()\n\nok, msg = scorer_safe(Path(\"submission/latest/task042.onnx\"))\nif not ok:\n    print(f\"would fail on Kaggle: {msg}\")\n```\n\n## Grep patterns that flag trouble before building\n\n```bash\n# ArgMin — always broken\ngrep -rn '\"ArgMin\"' src/\n\n# keepdims=0 followed by Reshape — volume-of-scalar trap\ngrep -rnB1 -A3 'keepdims=0' src/ | grep -B2 Reshape\n\n# Min node — the typo'd value_infer\ngrep -rn 'make_node(\"Min\"' src/\n\n# Attribute-form Clip on opset 10\ngrep -rn 'helper.make_node(\"Clip\"' src/\n```\n\n## Why we run layer 3 even when layers 1–2 pass\n\nBecause `onnx_tool`'s `shape_infer` is its own shape-inference implementation — not ONNX's, not ORT's. It has per-node `value_infer` methods that hand-implement each op, and several of them have bugs that the ONNX spec doesn't care about. The official constraint doc tells you what the *format* accepts. The scorer tells you what the *implementation* accepts. Those sets don't match.\n\nIf a submission returns \"Error processing one or more onnx networks\" and every local check passes, run layer 3 on each file in the bundle. It will point at the real culprit in one line.\n",
+   "content": "<p>The official NeuroGolf constraints are clear: static shapes, no <code>Loop/Scan/NonZero/Unique/Script/Function</code>, ≤1.44MB per file, any opset. But a model can satisfy all of that, pass <code>onnxruntime</code> and <code>onnx.checker.check_model</code>, and still get rejected at submission time with:</p>\n<blockquote>\n  <p><code>Error processing one or more onnx networks.</code></p>\n</blockquote>\n<p>The scorer isn't onnxruntime — it's <code>onnx_tool</code>. Its <code>shape_infer</code> + <code>profile</code> passes are strictly stricter than the ONNX spec, and several spec-legal ops crash it silently.</p>\n<h2>What <code>neurogolf_utils</code> actually runs</h2>\n<pre><code># data/neurogolf_utils/neurogolf_utils.py (abridged)\nimport onnx_tool\n\ndef score_network(onnx_bytes):\n    model = onnx_tool.loadmodel(onnx_bytes, {'verbose': False})\n    model.graph.graph_reorder_nodes()\n    model.graph.shape_infer(None)   # &lt;-- this is where most submissions die\n    model.graph.profile()\n    if not model.graph.valid_profile:\n        return None, None, None\n    ...\n</code></pre>\n<p>If <code>shape_infer</code> raises or <code>valid_profile</code> is False, the task returns <code>None, None, None</code>, and Kaggle surfaces it as the batch-wide error above. No per-task diagnostics.</p>\n<h2>Ops we've confirmed are poisoned</h2>\n<p>Every one of these passes <code>onnxruntime</code> and <code>onnx.checker</code>. Every one of them kills the scorer.</p>\n<table>\n<thead>\n<tr>\n<th>Op</th>\n<th>Symptom</th>\n<th>Workaround</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>Min</code></td>\n<td><code>ValueError: truth value of array is ambiguous</code> — <code>MinNode.value_infer</code> has a literal <code>result = not numpy.minimum(...)</code> typo</td>\n<td><code>Greater + Cast</code> for <code>min(x,1)</code>; <code>Neg + Max + Neg</code> for general min</td>\n</tr>\n<tr>\n<td><code>ArgMin</code></td>\n<td><code>NotImplementedError: Node ArgMin has no value_infer</code></td>\n<td><code>ArgMax(Neg(x))</code></td>\n</tr>\n<tr>\n<td><code>Clip</code> (opset-10 attribute form)</td>\n<td><code>shape_infer</code> assert; the <code>ClipNode</code> expects opset-11 input form</td>\n<td>Upgrade file to opset 11, pass min/max as inputs</td>\n</tr>\n<tr>\n<td><code>ArgMax(keepdims=0)</code> + <code>Reshape→[1]</code></td>\n<td><code>AssertionError: raw == volume(newshape)</code> at node.py:2342 (volume-of-scalar bug)</td>\n<td>Use <code>keepdims=1</code>, or <code>Unsqueeze(axes=[0])</code> instead of <code>Reshape</code></td>\n</tr>\n<tr>\n<td>Scalar-index <code>Gather</code> on rank-4</td>\n<td>Phantom size-1 dim leaks through, downstream Reshape or Conv crashes</td>\n<td>Rank-1 <code>[1]</code> index + explicit <code>Reshape</code> to strip the dim</td>\n</tr>\n</tbody>\n</table>\n<p>There's also one non-op trap worth knowing: any task whose benchmark grids exceed 30×30 (e.g. <code>arc-gen</code> examples for tasks 021, 055, 080, 184, 202, 366) will <code>IndexError</code> inside <code>convert_to_numpy</code> <em>before the model runs</em>. Local <code>verify_task</code> silently skips these; scorer does not. They're permanently unsubmittable.</p>\n<h2>Local validation that actually catches this</h2>\n<p>Three layers, each catching a different class of failure. The first two are not enough on their own.</p>\n<pre><code># Layer 1: shape correctness (necessary, not sufficient)\nimport onnx\nonnx.checker.check_model(path)\n\n# Layer 2: runtime execution (necessary, not sufficient)\nimport onnxruntime as ort\nsess = ort.InferenceSession(path)\nout = sess.run(None, {\"input\": sample_input})\n\n# Layer 3: the one that matters — run the actual scorer\nimport onnx_tool\nmodel = onnx_tool.loadmodel(path, {'verbose': False})\nmodel.graph.graph_reorder_nodes()\nmodel.graph.shape_infer(None)     # poisoned ops raise here\nmodel.graph.profile()\nassert model.graph.valid_profile, \"would fail Kaggle scorer\"\n</code></pre>\n<p>Wrap layer 3 in a subprocess — a bad <code>shape_infer</code> can leave <code>onnx_tool</code> in a state that corrupts later loads in the same process:</p>\n<pre><code>import subprocess, sys\nfrom pathlib import Path\n\ndef scorer_safe(onnx_path: Path) -&gt; tuple[bool, str]:\n    code = f\"\"\"\nimport onnx_tool\nm = onnx_tool.loadmodel({str(onnx_path)!r}, {{'verbose': False}})\nm.graph.graph_reorder_nodes()\nm.graph.shape_infer(None)\nm.graph.profile()\nassert m.graph.valid_profile\nprint(\"OK\")\n\"\"\"\n    r = subprocess.run(\n        [sys.executable, \"-c\", code],\n        capture_output=True, text=True, timeout=60,\n    )\n    return r.returncode == 0, (r.stderr or r.stdout).strip()\n\nok, msg = scorer_safe(Path(\"submission/latest/task042.onnx\"))\nif not ok:\n    print(f\"would fail on Kaggle: {msg}\")\n</code></pre>\n<h2>Grep patterns that flag trouble before building</h2>\n<pre><code># ArgMin — always broken\ngrep -rn '\"ArgMin\"' src/\n\n# keepdims=0 followed by Reshape — volume-of-scalar trap\ngrep -rnB1 -A3 'keepdims=0' src/ | grep -B2 Reshape\n\n# Min node — the typo'd value_infer\ngrep -rn 'make_node(\"Min\"' src/\n\n# Attribute-form Clip on opset 10\ngrep -rn 'helper.make_node(\"Clip\"' src/\n</code></pre>\n<h2>Why we run layer 3 even when layers 1–2 pass</h2>\n<p>Because <code>onnx_tool</code>'s <code>shape_infer</code> is its own shape-inference implementation — not ONNX's, not ORT's. It has per-node <code>value_infer</code> methods that hand-implement each op, and several of them have bugs that the ONNX spec doesn't care about. The official constraint doc tells you what the <em>format</em> accepts. The scorer tells you what the <em>implementation</em> accepts. Those sets don't match.</p>\n<p>If a submission returns \"Error processing one or more onnx networks\" and every local check passes, run layer 3 on each file in the bundle. It will point at the real culprit in one line.</p>",
+   "parent": {},
+   "author": {
+    "displayName": "Kameron Kilchrist",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+    "url": "/kameronkilchrist",
+    "tier": "CONTRIBUTOR",
+    "id": 31805682,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 7,
+    "canUpvote": true,
+    "totalUpvotes": 7
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 835,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "enabled": true,
+    "teamLeader": {
+     "displayName": "Kameron Kilchrist",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/kameronkilchrist",
+     "userName": "kameronkilchrist",
+     "tier": "CONTRIBUTOR",
+     "id": 31805682,
+     "profileUrl": "/kameronkilchrist",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 31805682,
+     "progressionOptOut": false
+    },
+    "intro": "Solo-plus-Claude team burning tokens and grinding NeuroGolf. "
+   }
+  },
+  "firstMessageId": 3445604,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 693204,
+  "name": "Spec-legal ≠ scorer-compatible: a local validation recipe",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-20T07:17:36.030311300Z",
+  "totalVotes": 7,
+  "url": "/competitions/neurogolf-2026/discussion/693204",
+  "totalMessages": 1,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}

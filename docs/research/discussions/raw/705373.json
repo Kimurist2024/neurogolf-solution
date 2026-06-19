@@ -1,0 +1,230 @@
+{
+ "forumTopic": {
+  "authorId": 22025929,
+  "authorThumbnailName": "22025929-kg.png?t=2026-03-23-22-28-01",
+  "authorUserDisplayName": "SebastianGil00",
+  "authorUserName": "sebastiangil00",
+  "comments": [
+   {
+    "id": 3468796,
+    "postDate": "2026-06-09T20:00:57.730Z",
+    "rawMarkdown": "Macs is excluded from current metric after update, it's just `max(1, 25 − ln(memory + params))`\n\nInput and output are excluded from calculations.\n\nThere are a couple of official update posts in Discussion tab.",
+    "content": "<p>Macs is excluded from current metric after update, it's just <code>max(1, 25 − ln(memory + params))</code></p>\n<p>Input and output are excluded from calculations.</p>\n<p>There are a couple of official update posts in Discussion tab.</p>",
+    "replies": [
+     {
+      "id": 3468815,
+      "postDate": "2026-06-09T21:07:51.847Z",
+      "rawMarkdown": "Thanks a lot, jacekw. That completely resolves it, and it's a big correction on my end. I was scoring locally with the bundled score_network, which still sums macs + memory + params and also counts the output tensor, so it was massively overestimating cost and inventing a ceiling that doesn't exist. With max(1, 25 - ln(memory + params)) and input/output excluded, the picture is totally different. I'll go read the official update posts.\n\nOne thing I'm still trying to understand on the validation side: when a low-cost solver passes every public ARC-GEN sample but still scores 0, what is the hidden set actually probing? I've hit cases where a model that's correct on all public examples fails the hidden check, and I genuinely can't tell whether it's testing out-of-distribution variants of the task (shifted, resized, or recolored grids) or just more samples from the same generator distribution.\n\nI ask because it changes the whole optimization philosophy: if the final private set includes OOD variants, a model has to stay genuinely invariant (a real solver), whereas if it's the same distribution, a tighter fit is fine. Any insight there would save a lot of blind submissions on my end. 🙏",
+      "content": "<p>Thanks a lot, jacekw. That completely resolves it, and it's a big correction on my end. I was scoring locally with the bundled score_network, which still sums macs + memory + params and also counts the output tensor, so it was massively overestimating cost and inventing a ceiling that doesn't exist. With max(1, 25 - ln(memory + params)) and input/output excluded, the picture is totally different. I'll go read the official update posts.</p>\n<p>One thing I'm still trying to understand on the validation side: when a low-cost solver passes every public ARC-GEN sample but still scores 0, what is the hidden set actually probing? I've hit cases where a model that's correct on all public examples fails the hidden check, and I genuinely can't tell whether it's testing out-of-distribution variants of the task (shifted, resized, or recolored grids) or just more samples from the same generator distribution.</p>\n<p>I ask because it changes the whole optimization philosophy: if the final private set includes OOD variants, a model has to stay genuinely invariant (a real solver), whereas if it's the same distribution, a tighter fit is fine. Any insight there would save a lot of blind submissions on my end. 🙏</p>",
+      "replies": [
+       {
+        "id": 3468929,
+        "postDate": "2026-06-10T08:27:04.473Z",
+        "rawMarkdown": "It may be worth nothing that the organiser has said, \"for all but two or three tasks, we accepted a hidden test only if its output matched that of each program from the top ten teams in last year’s Code Golf Championship\", so almost without exception you can go back to those solutions to find a satisfactory variant or discover why yours may not be.",
+        "content": "<p>It may be worth nothing that the organiser has said, \"for all but two or three tasks, we accepted a hidden test only if its output matched that of each program from the top ten teams in last year’s Code Golf Championship\", so almost without exception you can go back to those solutions to find a satisfactory variant or discover why yours may not be.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "robga",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1582365-kg.JPG",
+         "url": "/robga",
+         "tier": "MASTER",
+         "id": 1582365,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 2,
+         "canUpvote": true,
+         "totalUpvotes": 2
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 15,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "robga",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1582365-kg.JPG",
+          "url": "/robga",
+          "userName": "robga",
+          "tier": "MASTER",
+          "id": 1582365,
+          "profileUrl": "/robga",
+          "performanceTier": "MASTER",
+          "userId": 1582365,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3469130,
+        "postDate": "2026-06-10T17:25:13.557Z",
+        "rawMarkdown": "Thanks @robga , very helpful. One question if you are willing: for the floor-bound tasks, is the general approach to crop the input to a bounded top-left region and compute there? And if so, how do you size that crop so it safely covers the hidden size range per task?",
+        "content": "<p>Thanks <a href=\"https://www.kaggle.com/robga\" target=\"_blank\">@robga</a> , very helpful. One question if you are willing: for the floor-bound tasks, is the general approach to crop the input to a bounded top-left region and compute there? And if so, how do you size that crop so it safely covers the hidden size range per task?</p>",
+        "parent": {},
+        "author": {
+         "displayName": "SebastianGil00",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22025929-kg.png?t=2026-03-23-22-28-01",
+         "url": "/sebastiangil00",
+         "tier": "CONTRIBUTOR",
+         "id": 22025929,
+         "progressionOptOut": false
+        },
+        "authorType": "TOPIC",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 154,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "SebastianGil00",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22025929-kg.png?t=2026-03-23-22-28-01",
+          "url": "/sebastiangil00",
+          "userName": "sebastiangil00",
+          "tier": "CONTRIBUTOR",
+          "id": 22025929,
+          "profileUrl": "/sebastiangil00",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 22025929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "SebastianGil00",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22025929-kg.png?t=2026-03-23-22-28-01",
+       "url": "/sebastiangil00",
+       "tier": "CONTRIBUTOR",
+       "id": 22025929,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 154,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "SebastianGil00",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22025929-kg.png?t=2026-03-23-22-28-01",
+        "url": "/sebastiangil00",
+        "userName": "sebastiangil00",
+        "tier": "CONTRIBUTOR",
+        "id": 22025929,
+        "profileUrl": "/sebastiangil00",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 22025929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "jacekwl",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/977970-kg.png?t=2026-06-03-10-04-48",
+     "url": "/jacekwl",
+     "tier": "CONTRIBUTOR",
+     "id": 977970,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 3,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "LOVE",
+      "featuredUserNames": [
+       "sebastiangil00"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "jacekwl",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/977970-kg.png?t=2026-06-03-10-04-48",
+      "url": "/jacekwl",
+      "userName": "jacekwl",
+      "tier": "CONTRIBUTOR",
+      "id": 977970,
+      "profileUrl": "/jacekwl",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 977970,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3468782,
+   "postDate": "2026-06-09T19:46:39.933Z",
+   "rawMarkdown": "I've been studying the scorer and I keep hitting what looks like a hard ceiling, so I wanted to share the reasoning and ask whether I'm missing something.\n\nThe score is points = max(1, 25 − ln(macs + memory + params)) per task. Using the official score_network, I measured the cost of a trivial single-node network whose only job is to emit the required [1, 10, 30, 30] output:\n\nbool output → memory = 9000 → 25 − ln(9000) ≈ 15.89 points\nfp16 output → 18000 → ≈ 15.20 points\nfp32 output → 36000 → ≈ 14.51 points\nSince score_network counts every node's output tensor (a 2-node chain measures 72000), the output tensor alone sets a floor: any network that genuinely produces a static [1,10,30,30] result seems bounded near 15.9 points/task, i.e. ~6360 total if every task used a bool output — and lower in practice since many tasks need fp16/fp32 outputs.\n\nYet the top of the leaderboard sits well above 7000. The only way I can see to beat the output-memory floor is to make the counted output volume smaller than 9000 (e.g. a shape-inference dimension collapsing toward 0).\n\nSo my genuine question: is ~6360 the real ceiling for \"honest\" static-output networks, and is everything above it relying on the output-memory trick — or is there a legitimate technique to get a full [1,10,30,30] result scored below the 9000-byte floor that I've simply missed? Would love to learn if I'm wrong.",
+   "content": "<p>I've been studying the scorer and I keep hitting what looks like a hard ceiling, so I wanted to share the reasoning and ask whether I'm missing something.</p>\n<p>The score is points = max(1, 25 − ln(macs + memory + params)) per task. Using the official score_network, I measured the cost of a trivial single-node network whose only job is to emit the required [1, 10, 30, 30] output:</p>\n<p>bool output → memory = 9000 → 25 − ln(9000) ≈ 15.89 points\nfp16 output → 18000 → ≈ 15.20 points\nfp32 output → 36000 → ≈ 14.51 points\nSince score_network counts every node's output tensor (a 2-node chain measures 72000), the output tensor alone sets a floor: any network that genuinely produces a static [1,10,30,30] result seems bounded near 15.9 points/task, i.e. ~6360 total if every task used a bool output — and lower in practice since many tasks need fp16/fp32 outputs.</p>\n<p>Yet the top of the leaderboard sits well above 7000. The only way I can see to beat the output-memory floor is to make the counted output volume smaller than 9000 (e.g. a shape-inference dimension collapsing toward 0).</p>\n<p>So my genuine question: is ~6360 the real ceiling for \"honest\" static-output networks, and is everything above it relying on the output-memory trick — or is there a legitimate technique to get a full [1,10,30,30] result scored below the 9000-byte floor that I've simply missed? Would love to learn if I'm wrong.</p>",
+   "parent": {},
+   "author": {
+    "displayName": "SebastianGil00",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22025929-kg.png?t=2026-03-23-22-28-01",
+    "url": "/sebastiangil00",
+    "tier": "CONTRIBUTOR",
+    "id": 22025929,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "canUpvote": true
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 154,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "SebastianGil00",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22025929-kg.png?t=2026-03-23-22-28-01",
+     "url": "/sebastiangil00",
+     "userName": "sebastiangil00",
+     "tier": "CONTRIBUTOR",
+     "id": 22025929,
+     "profileUrl": "/sebastiangil00",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 22025929,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3468782,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 705373,
+  "name": "Is ~6360 the real maximum achievable score for static-shape networks?",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-06-09T19:46:39.931783Z",
+  "url": "/competitions/neurogolf-2026/discussion/705373",
+  "totalMessages": 4,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}

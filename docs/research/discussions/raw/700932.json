@@ -1,0 +1,130 @@
+{
+ "forumTopic": {
+  "authorId": 5116651,
+  "authorThumbnailName": "5116651-kg.jpg",
+  "authorUserDisplayName": "Chet",
+  "authorUserName": "jsrdcht",
+  "comments": [
+   {
+    "id": 3460071,
+    "postDate": "2026-05-18T15:46:28.670Z",
+    "rawMarkdown": "老哥，感谢你公开 6029.09 这个包，我刚刚提交了一下，线上确实到 6029 了，比之前公开的 5800 左右 baseline 强很多。\n\n我现在有个地方没太搞懂，想请教一下。\n\n我拿你这个 6029 包和另一个公开的 5800 baseline 做了逐 task 本地 probe 对比，结果本地估分反而有点奇怪：\n\n* 5800 包本地估分大概 5748\n* 6029 包本地估分大概 5574\n* 但线上是 6029 包明显更高\n\n我又按 valid 状态分了一下：\n\n* 两边都 valid：363 个\n* 5800 invalid，6029 valid：4 个\n* 5800 valid，6029 invalid：9 个\n* 两边都 invalid：24 个\n\n所以我现在有点疑惑：是不是本地 `task_probe.py` 和 Kaggle 线上 hidden / 官方计分逻辑差别挺大？比如有些 task 本地看 6029 版本不如 5800，甚至 invalid，但整包线上分数却更高。\n\n我本来想试试用 6029 当底包，然后把某些本地看起来 5800 更好的 task 单独回退，比如 task10、42、277、94、288 这种，一个一个线上测。但我又怕这是本地 probe 的假象。\n\n你觉得后面优化这个 6029 包，应该怎么做比较靠谱？\n\n是：\n\n1. 继续逐 task 尝试从公开旧包回滚；\n2. 还是别管旧包，直接在 6029 基础上看哪些 ONNX cost 高，然后做图压缩、删冗余节点、减少中间张量；\n3. 或者你这个包里有些 task 是为了线上泛化故意写得更重，本地 probe 看着不占优但线上更稳？\n\n我之前也试过几个 6645_open 的单任务替换，本地 cost 很低、delta 很高，但线上直接掉分，所以现在不太敢相信 public 包里的低 cost 解了。想问问你这个 6029 包后续最推荐的改进方向是啥。\n",
+    "content": "<p>老哥，感谢你公开 6029.09 这个包，我刚刚提交了一下，线上确实到 6029 了，比之前公开的 5800 左右 baseline 强很多。</p>\n<p>我现在有个地方没太搞懂，想请教一下。</p>\n<p>我拿你这个 6029 包和另一个公开的 5800 baseline 做了逐 task 本地 probe 对比，结果本地估分反而有点奇怪：</p>\n<ul>\n<li>5800 包本地估分大概 5748</li>\n<li>6029 包本地估分大概 5574</li>\n<li>但线上是 6029 包明显更高</li>\n</ul>\n<p>我又按 valid 状态分了一下：</p>\n<ul>\n<li>两边都 valid：363 个</li>\n<li>5800 invalid，6029 valid：4 个</li>\n<li>5800 valid，6029 invalid：9 个</li>\n<li>两边都 invalid：24 个</li>\n</ul>\n<p>所以我现在有点疑惑：是不是本地 <code>task_probe.py</code> 和 Kaggle 线上 hidden / 官方计分逻辑差别挺大？比如有些 task 本地看 6029 版本不如 5800，甚至 invalid，但整包线上分数却更高。</p>\n<p>我本来想试试用 6029 当底包，然后把某些本地看起来 5800 更好的 task 单独回退，比如 task10、42、277、94、288 这种，一个一个线上测。但我又怕这是本地 probe 的假象。</p>\n<p>你觉得后面优化这个 6029 包，应该怎么做比较靠谱？</p>\n<p>是：</p>\n<ol>\n<li>继续逐 task 尝试从公开旧包回滚；</li>\n<li>还是别管旧包，直接在 6029 基础上看哪些 ONNX cost 高，然后做图压缩、删冗余节点、减少中间张量；</li>\n<li>或者你这个包里有些 task 是为了线上泛化故意写得更重，本地 probe 看着不占优但线上更稳？</li>\n</ol>\n<p>我之前也试过几个 6645_open 的单任务替换，本地 cost 很低、delta 很高，但线上直接掉分，所以现在不太敢相信 public 包里的低 cost 解了。想问问你这个 6029 包后续最推荐的改进方向是啥。</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Gengsr",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/gengsr",
+     "tier": "CONTRIBUTOR",
+     "id": 31197032,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": -2,
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 742,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Gengsr",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+      "url": "/gengsr",
+      "userName": "gengsr",
+      "tier": "CONTRIBUTOR",
+      "id": 31197032,
+      "profileUrl": "/gengsr",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 31197032,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3460069,
+    "postDate": "2026-05-18T15:45:33.270Z",
+    "rawMarkdown": "",
+    "parent": {},
+    "author": {
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/"
+    },
+    "authorType": "COMMENT",
+    "votes": {},
+    "canDelete": true,
+    "isUserAuthor": true,
+    "isDeleted": true,
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3459862,
+   "postDate": "2026-05-18T11:28:27.583Z",
+   "rawMarkdown": "Hi everyone,\n\nI have released a new public notebook with my current full-submission ONNX bundle:\n\nhttps://www.kaggle.com/code/jsrdcht/6029-09-lb-neurogolf-all-task-onnx-solution\n\nThe notebook reconstructs a complete `submission.zip` for all 400 tasks. The attached dataset contains `task001.onnx` through `task400.onnx`, and the notebook verifies the file count and a manifest hash before repacking the submission.\n\nThe public LB score of this bundle is **6029.09**. For reference, the strongest clearly labeled public notebook I found before this was around **5800.55 LB**, so this release should provide a stronger all-task baseline for the community.\n\nMy rough view is that the competition has now reached a different phase. Instead of spending most of the effort finding any working solver for every task, it may be more productive to focus on reducing cost:\n\n- simplify large ONNX graphs;\n- remove redundant constants and intermediate tensors;\n- replace heavy generic logic with smaller task-specific logic;\n- keep static shapes and avoid fragile tricks;\n- verify changes task by task before blending them back.\n\nI hope this saves people time and gives everyone a common baseline to improve from.\n\nIf you find the notebook useful, an upvote would be appreciated. If you build on it in your own public work, please consider linking back to the notebook so others can trace the source bundle.\n\nAny suggestions, corrections, or ideas for reducing cost are very welcome.\n",
+   "content": "<p>Hi everyone,</p>\n<p>I have released a new public notebook with my current full-submission ONNX bundle:</p>\n<p><a href=\"https://www.kaggle.com/code/jsrdcht/6029-09-lb-neurogolf-all-task-onnx-solution\" target=\"_blank\">https://www.kaggle.com/code/jsrdcht/6029-09-lb-neurogolf-all-task-onnx-solution</a></p>\n<p>The notebook reconstructs a complete <code>submission.zip</code> for all 400 tasks. The attached dataset contains <code>task001.onnx</code> through <code>task400.onnx</code>, and the notebook verifies the file count and a manifest hash before repacking the submission.</p>\n<p>The public LB score of this bundle is <strong>6029.09</strong>. For reference, the strongest clearly labeled public notebook I found before this was around <strong>5800.55 LB</strong>, so this release should provide a stronger all-task baseline for the community.</p>\n<p>My rough view is that the competition has now reached a different phase. Instead of spending most of the effort finding any working solver for every task, it may be more productive to focus on reducing cost:</p>\n<ul>\n<li>simplify large ONNX graphs;</li>\n<li>remove redundant constants and intermediate tensors;</li>\n<li>replace heavy generic logic with smaller task-specific logic;</li>\n<li>keep static shapes and avoid fragile tricks;</li>\n<li>verify changes task by task before blending them back.</li>\n</ul>\n<p>I hope this saves people time and gives everyone a common baseline to improve from.</p>\n<p>If you find the notebook useful, an upvote would be appreciated. If you build on it in your own public work, please consider linking back to the notebook so others can trace the source bundle.</p>\n<p>Any suggestions, corrections, or ideas for reducing cost are very welcome.</p>",
+   "parent": {},
+   "author": {
+    "displayName": "Chet",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5116651-kg.jpg",
+    "url": "/jsrdcht",
+    "tier": "CONTRIBUTOR",
+    "id": 5116651,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 9,
+    "canUpvote": true,
+    "totalUpvotes": 9
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 89,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "KAGGLE",
+     "featuredUserNames": [
+      "gengsr"
+     ],
+     "userCount": 1
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Chet",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5116651-kg.jpg",
+     "url": "/jsrdcht",
+     "userName": "jsrdcht",
+     "tier": "CONTRIBUTOR",
+     "id": 5116651,
+     "profileUrl": "/jsrdcht",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 5116651,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3459862,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 700932,
+  "name": "Released a 6029.09 LB all-task ONNX bundle",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-05-18T11:28:27.584312700Z",
+  "totalVotes": 9,
+  "url": "/competitions/neurogolf-2026/discussion/700932",
+  "totalMessages": 2,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}

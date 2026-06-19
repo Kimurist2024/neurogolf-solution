@@ -1,0 +1,446 @@
+{
+ "forumTopic": {
+  "authorId": 113660,
+  "authorThumbnailName": "113660-fb.jpg",
+  "authorUserDisplayName": "hengck23",
+  "authorUserName": "hengck23",
+  "comments": [
+   {
+    "id": 3448238,
+    "postDate": "2026-04-25T00:22:19.010Z",
+    "rawMarkdown": "This is an excellent question. When it comes to `Pad` operations — *even those producing the final 30x30 `output` layer* — we're inclined to support the profiler's current behavior.\n\nIn compiler design, such operations are usually fused with their neighboring ops (so don't actually consume memory), and we also want to encourage the study of \"micro networks\" where the other two objective criteria can be aggressively minimized.",
+    "content": "<p>This is an excellent question. When it comes to <code>Pad</code> operations — <em>even those producing the final 30x30 <code>output</code> layer</em> — we're inclined to support the profiler's current behavior.</p>\n<p>In compiler design, such operations are usually fused with their neighboring ops (so don't actually consume memory), and we also want to encourage the study of \"micro networks\" where the other two objective criteria can be aggressively minimized.</p>",
+    "replies": [
+     {
+      "id": 3448318,
+      "postDate": "2026-04-25T06:24:04.490Z",
+      "rawMarkdown": "I'm a little confused about what is happening in this example. My interpretation of what happens here is that this is a bug in Where resulting in the Profiler seeing a dimension of `[1,1,30,30]` instead of `[1,10,30,30]`. I'm not sure how it relates to Pad or what lazy operation could be happening here?",
+      "content": "<p>I'm a little confused about what is happening in this example. My interpretation of what happens here is that this is a bug in Where resulting in the Profiler seeing a dimension of <code>[1,1,30,30]</code> instead of <code>[1,10,30,30]</code>. I'm not sure how it relates to Pad or what lazy operation could be happening here?</p>",
+      "parent": {},
+      "author": {
+       "displayName": "bizy-coder",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/benzydney",
+       "tier": "CONTRIBUTOR",
+       "id": 14214326,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 1612,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "bizy-coder",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+        "url": "/benzydney",
+        "userName": "benzydney",
+        "tier": "CONTRIBUTOR",
+        "id": 14214326,
+        "profileUrl": "/benzydney",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 14214326,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3448342,
+      "postDate": "2026-04-25T08:06:33.477Z",
+      "rawMarkdown": "",
+      "parent": {},
+      "author": {
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/"
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "totalUpvotes": 1
+      },
+      "canDelete": true,
+      "isUserAuthor": true,
+      "isDeleted": true,
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false
+     },
+     {
+      "id": 3448400,
+      "postDate": "2026-04-25T11:23:30.610Z",
+      "rawMarkdown": "Agree with @robga.\n\nI believe the profiler can undercount `Where`.\n\nMore specifically, `Where` implements `shape_infer` as taking maximum volume shape from inputs, not broadcasted shape ([code link](https://github.com/ThanatosShinji/onnx-tool/blob/main/onnx_tool/node.py#L784))\n\nE.g. in this case `Where` takes inputs with shapes `[1, 1, 9, 9]`, `[1, 10, 1, 1]`, `[1, 10, 1, 1]` and produces `[1, 1, 9, 9]` output shape instead of `[1, 10, 9, 9]` which is materialised during actual inference.",
+      "content": "<p>Agree with <a href=\"https://www.kaggle.com/robga\" target=\"_blank\">@robga</a>.</p>\n<p>I believe the profiler can undercount <code>Where</code>.</p>\n<p>More specifically, <code>Where</code> implements <code>shape_infer</code> as taking maximum volume shape from inputs, not broadcasted shape (<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/main/onnx_tool/node.py#L784\" target=\"_blank\">code link</a>)</p>\n<p>E.g. in this case <code>Where</code> takes inputs with shapes <code>[1, 1, 9, 9]</code>, <code>[1, 10, 1, 1]</code>, <code>[1, 10, 1, 1]</code> and produces <code>[1, 1, 9, 9]</code> output shape instead of <code>[1, 10, 9, 9]</code> which is materialised during actual inference.</p>",
+      "replies": [
+       {
+        "id": 3448707,
+        "postDate": "2026-04-26T12:11:25.500Z",
+        "rawMarkdown": "Thanks all, this is most helpful.  There's a [recent fix](https://github.com/ThanatosShinji/onnx-tool/commit/501a58c4bf5b6caa9e4a411f5af311ea00504457) and [unit test](https://github.com/ThanatosShinji/onnx-tool/commit/cd8f62598a037bf127dfbc71b8537f7694361c28) in `onnx-tool` which (I believe) should address the underprofiling of `Where` -- if you can confirm with an emoji, that would be great!",
+        "content": "<p>Thanks all, this is most helpful.  There's a <a href=\"https://github.com/ThanatosShinji/onnx-tool/commit/501a58c4bf5b6caa9e4a411f5af311ea00504457\" target=\"_blank\">recent fix</a> and <a href=\"https://github.com/ThanatosShinji/onnx-tool/commit/cd8f62598a037bf127dfbc71b8537f7694361c28\" target=\"_blank\">unit test</a> in <code>onnx-tool</code> which (I believe) should address the underprofiling of <code>Where</code> -- if you can confirm with an emoji, that would be great!</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "totalVotes": 2,
+         "canUpvote": true,
+         "totalUpvotes": 2
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "reactions": [
+         {
+          "emoji": "LOVE",
+          "featuredUserNames": [
+           "hengck23"
+          ],
+          "userCount": 1
+         },
+         {
+          "emoji": "KAGGLE",
+          "featuredUserNames": [
+           "pavelsavchenkov",
+           "robga"
+          ],
+          "userCount": 2
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3448714,
+        "postDate": "2026-04-26T12:47:00Z",
+        "rawMarkdown": "",
+        "parent": {},
+        "author": {
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/"
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 3,
+         "totalUpvotes": 3
+        },
+        "canDelete": true,
+        "isUserAuthor": true,
+        "isDeleted": true,
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false
+       },
+       {
+        "id": 3448817,
+        "postDate": "2026-04-26T17:02:57.433Z",
+        "rawMarkdown": "Thanks, this should fix this particular `Where` issue discussed.\n\nI will profile updated code more carefully in the next few days and report any new bugs found.",
+        "content": "<p>Thanks, this should fix this particular <code>Where</code> issue discussed.</p>\n<p>I will profile updated code more carefully in the next few days and report any new bugs found.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Pavel",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/pavelsavchenkov",
+         "tier": "MASTER",
+         "id": 172360,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 10,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Pavel",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+          "url": "/pavelsavchenkov",
+          "userName": "pavelsavchenkov",
+          "tier": "MASTER",
+          "id": 172360,
+          "profileUrl": "/pavelsavchenkov",
+          "performanceTier": "MASTER",
+          "userId": 172360,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Pavel",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/pavelsavchenkov",
+       "tier": "MASTER",
+       "id": 172360,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 10,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Pavel",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+        "url": "/pavelsavchenkov",
+        "userName": "pavelsavchenkov",
+        "tier": "MASTER",
+        "id": 172360,
+        "profileUrl": "/pavelsavchenkov",
+        "performanceTier": "MASTER",
+        "userId": 172360,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "hengck23"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3448763,
+    "postDate": "2026-04-26T14:58:37.117Z",
+    "rawMarkdown": "i think i should ask chtgpt to scan theis file: /onnx_tool/node.py to understand contribution of score of each node type (opset type).\nBut there is one everyone should encourage to use: ExpandNode. this is same as pytorch: repeat with no memory allocation. And that is legal",
+    "content": "<p>i think i should ask chtgpt to scan theis file: /onnx_tool/node.py to understand contribution of score of each node type (opset type).\nBut there is one everyone should encourage to use: ExpandNode. this is same as pytorch: repeat with no memory allocation. And that is legal</p>",
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "TOPIC",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1468,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3447427,
+    "postDate": "2026-04-23T05:32:23.020Z",
+    "rawMarkdown": "code\n```\nimport numpy as np\nimport onnx\nimport onnx.helper as oh\nimport onnx.numpy_helper as onh\n\n_EXCLUDED_OP_TYPES = [\"LOOP\", \"SCAN\", \"NONZERO\", \"UNIQUE\", \"SCRIPT\", \"FUNCTION\"]\n_FILESIZE_LIMIT_IN_BYTES = 1.44 * 1024 * 1024\n\n_DATA_TYPE = onnx.TensorProto.FLOAT\n_BATCH_SIZE, _CHANNELS, _HEIGHT, _WIDTH = 1, 10, 30, 30\n_GRID_SHAPE = [_BATCH_SIZE, _CHANNELS, _HEIGHT, _WIDTH]\n_IR_VERSION, _OPSET_IMPORTS = 10, [onnx.helper.make_opsetid(\"\", 9)]\n\ntaskname = \"task001\"\n\n\ndef make_onnx():\n    X = oh.make_tensor_value_info(\"input\", _DATA_TYPE, _GRID_SHAPE)\n    Y = oh.make_tensor_value_info(\"output\", _DATA_TYPE, _GRID_SHAPE)\n\n    def const(name, value):\n        return onh.from_array(np.asarray(value), name=name)\n\n    init = []\n\n    nodes = [\n        oh.make_node(\"Constant\", [], [\"tile_repeats_mask\"], value=const(\"tile_repeats_mask_v\", np.array([1, 1, 3, 3], dtype=np.int64)), name=\"const_tile_repeats\"),\n        oh.make_node(\"Constant\", [], [\"blk_idx\"], value=const(\"blk_idx_v\", np.array([0, 0, 0, 1, 1, 1, 2, 2, 2], dtype=np.int64)), name=\"const_blk_idx\"),\n        oh.make_node(\"Constant\", [], [\"bg_onehot\"], value=const(\"bg_onehot_v\", np.array([[[[1.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]]]], dtype=np.float32)), name=\"const_bg_onehot\"),\n        oh.make_node(\"Constant\", [], [\"fg_bg_zero\"], value=const(\"fg_bg_zero_v\", np.array([[[[0.0]]]], dtype=np.float32)), name=\"const_fg_bg_zero\"),\n        oh.make_node(\"Slice\", [\"input\"], [\"p3\"], axes=[2, 3], starts=[0, 0], ends=[3, 3], name=\"slice_input_3x3\"),\n        oh.make_node(\"Slice\", [\"p3\"], [\"p3_bg\"], axes=[1], starts=[0], ends=[1], name=\"slice_bg\"),\n        oh.make_node(\"Slice\", [\"p3\"], [\"p3_fg\"], axes=[1], starts=[1], ends=[10], name=\"slice_fg\"),\n        oh.make_node(\"ReduceMax\", [\"p3_fg\"], [\"color_fg\"], axes=[2, 3], keepdims=1, name=\"extract_color\"),\n        oh.make_node(\"Concat\", [\"fg_bg_zero\", \"color_fg\"], [\"color_onehot\"], axis=1, name=\"make_color_onehot\"),\n        oh.make_node(\"Cast\", [\"p3_bg\"], [\"bg3b\"], to=onnx.TensorProto.BOOL, name=\"background_bool\"),\n        oh.make_node(\"Tile\", [\"bg3b\", \"tile_repeats_mask\"], [\"pat_bg9\"], name=\"repeat_pattern_bg\"),\n        oh.make_node(\"Gather\", [\"bg3b\", \"blk_idx\"], [\"sel_bg_rows\"], axis=2, name=\"repeat_selector_bg_rows\"),\n        oh.make_node(\"Gather\", [\"sel_bg_rows\", \"blk_idx\"], [\"sel_bg9\"], axis=3, name=\"repeat_selector_bg_cols\"),\n        oh.make_node(\"Or\", [\"pat_bg9\", \"sel_bg9\"], [\"out_bg_mask\"], name=\"background_mask\"),\n        oh.make_node(\"Where\", [\"out_bg_mask\", \"bg_onehot\", \"color_onehot\"], [\"out9\"], name=\"paint_output\"),\n        oh.make_node(\"Pad\", [\"out9\"], [\"output\"], pads=[0, 0, 0, 0, 0, 0, 21, 21], mode=\"constant\", value=0.0, name=\"pad_to_grid\"),\n    ]\n\n    graph = oh.make_graph(nodes, taskname, [X], [Y], initializer=init)\n    model = oh.make_model(graph, opset_imports=_OPSET_IMPORTS, producer_name=\"chatgpt\")\n    model.ir_version = _IR_VERSION\n    onnx.checker.check_model(model)\n    return model\n\n\nif __name__ == \"__main__\":\n    model = make_onnx()\n    with open(f\"{taskname}.onnx\", \"wb\") as f:\n        f.write(model.SerializeToString())\n\n```",
+    "content": "<p>code</p>\n<pre><code>import numpy as np\nimport onnx\nimport onnx.helper as oh\nimport onnx.numpy_helper as onh\n\n_EXCLUDED_OP_TYPES = [\"LOOP\", \"SCAN\", \"NONZERO\", \"UNIQUE\", \"SCRIPT\", \"FUNCTION\"]\n_FILESIZE_LIMIT_IN_BYTES = 1.44 * 1024 * 1024\n\n_DATA_TYPE = onnx.TensorProto.FLOAT\n_BATCH_SIZE, _CHANNELS, _HEIGHT, _WIDTH = 1, 10, 30, 30\n_GRID_SHAPE = [_BATCH_SIZE, _CHANNELS, _HEIGHT, _WIDTH]\n_IR_VERSION, _OPSET_IMPORTS = 10, [onnx.helper.make_opsetid(\"\", 9)]\n\ntaskname = \"task001\"\n\n\ndef make_onnx():\n    X = oh.make_tensor_value_info(\"input\", _DATA_TYPE, _GRID_SHAPE)\n    Y = oh.make_tensor_value_info(\"output\", _DATA_TYPE, _GRID_SHAPE)\n\n    def const(name, value):\n        return onh.from_array(np.asarray(value), name=name)\n\n    init = []\n\n    nodes = [\n        oh.make_node(\"Constant\", [], [\"tile_repeats_mask\"], value=const(\"tile_repeats_mask_v\", np.array([1, 1, 3, 3], dtype=np.int64)), name=\"const_tile_repeats\"),\n        oh.make_node(\"Constant\", [], [\"blk_idx\"], value=const(\"blk_idx_v\", np.array([0, 0, 0, 1, 1, 1, 2, 2, 2], dtype=np.int64)), name=\"const_blk_idx\"),\n        oh.make_node(\"Constant\", [], [\"bg_onehot\"], value=const(\"bg_onehot_v\", np.array([[[[1.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]]]], dtype=np.float32)), name=\"const_bg_onehot\"),\n        oh.make_node(\"Constant\", [], [\"fg_bg_zero\"], value=const(\"fg_bg_zero_v\", np.array([[[[0.0]]]], dtype=np.float32)), name=\"const_fg_bg_zero\"),\n        oh.make_node(\"Slice\", [\"input\"], [\"p3\"], axes=[2, 3], starts=[0, 0], ends=[3, 3], name=\"slice_input_3x3\"),\n        oh.make_node(\"Slice\", [\"p3\"], [\"p3_bg\"], axes=[1], starts=[0], ends=[1], name=\"slice_bg\"),\n        oh.make_node(\"Slice\", [\"p3\"], [\"p3_fg\"], axes=[1], starts=[1], ends=[10], name=\"slice_fg\"),\n        oh.make_node(\"ReduceMax\", [\"p3_fg\"], [\"color_fg\"], axes=[2, 3], keepdims=1, name=\"extract_color\"),\n        oh.make_node(\"Concat\", [\"fg_bg_zero\", \"color_fg\"], [\"color_onehot\"], axis=1, name=\"make_color_onehot\"),\n        oh.make_node(\"Cast\", [\"p3_bg\"], [\"bg3b\"], to=onnx.TensorProto.BOOL, name=\"background_bool\"),\n        oh.make_node(\"Tile\", [\"bg3b\", \"tile_repeats_mask\"], [\"pat_bg9\"], name=\"repeat_pattern_bg\"),\n        oh.make_node(\"Gather\", [\"bg3b\", \"blk_idx\"], [\"sel_bg_rows\"], axis=2, name=\"repeat_selector_bg_rows\"),\n        oh.make_node(\"Gather\", [\"sel_bg_rows\", \"blk_idx\"], [\"sel_bg9\"], axis=3, name=\"repeat_selector_bg_cols\"),\n        oh.make_node(\"Or\", [\"pat_bg9\", \"sel_bg9\"], [\"out_bg_mask\"], name=\"background_mask\"),\n        oh.make_node(\"Where\", [\"out_bg_mask\", \"bg_onehot\", \"color_onehot\"], [\"out9\"], name=\"paint_output\"),\n        oh.make_node(\"Pad\", [\"out9\"], [\"output\"], pads=[0, 0, 0, 0, 0, 0, 21, 21], mode=\"constant\", value=0.0, name=\"pad_to_grid\"),\n    ]\n\n    graph = oh.make_graph(nodes, taskname, [X], [Y], initializer=init)\n    model = oh.make_model(graph, opset_imports=_OPSET_IMPORTS, producer_name=\"chatgpt\")\n    model.ir_version = _IR_VERSION\n    onnx.checker.check_model(model)\n    return model\n\n\nif __name__ == \"__main__\":\n    model = make_onnx()\n    with open(f\"{taskname}.onnx\", \"wb\") as f:\n        f.write(model.SerializeToString())\n</code></pre>",
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "TOPIC",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1468,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3447426,
+    "postDate": "2026-04-23T05:31:55.640Z",
+    "rawMarkdown": "i ask chatgpt, here is what he says. i am not sure if it is correct\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F73a3ed701118480ca2acfd356bd25330%2FSelection_3044.png?generation=1776922267336971&alt=media)\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Fe4f00af2676a97536f59b2981b687310%2FSelection_3045.png?generation=1776922277186796&alt=media)\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Ff4b533867fcc9226af12c5ab91b2cfae%2FSelection_3047.png?generation=1776922761131485&alt=media)",
+    "content": "<p>i ask chatgpt, here is what he says. i am not sure if it is correct\n<img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F73a3ed701118480ca2acfd356bd25330%2FSelection_3044.png?generation=1776922267336971&amp;alt=media\" alt=\"\">\n<img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Fe4f00af2676a97536f59b2981b687310%2FSelection_3045.png?generation=1776922277186796&amp;alt=media\" alt=\"\">\n<img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Ff4b533867fcc9226af12c5ab91b2cfae%2FSelection_3047.png?generation=1776922761131485&amp;alt=media\" alt=\"\"></p>",
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "TOPIC",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1468,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3447424,
+   "postDate": "2026-04-23T05:29:18.023Z",
+   "rawMarkdown": "First, an empty input = output = 1x10x30x30 = 36_000 memory, no macs no params. this gives lb score of 14.5 which should be the upper bound.\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F153af3d87a06a4294766318fff699a74%2FSelection_3040.png?generation=1776922117649286&alt=media)\n\nFor task001, my codex agent find this solution. it uses memory 4999. The profiler has undercount the memory. So is this a hack? (cause: future size of lazy execution not counted)\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F4b30a202365c54a910cf536b96528969%2FSelection_3042.png?generation=1776922006873967&alt=media)\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F7729336b3a032e0c6b2b0197431dde64%2FSelection_3043.png?generation=1776922091398154&alt=media)\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F505ef0bc99662004b3aa279f81927e04%2FSelection_3048.png?generation=1776923258326121&alt=media)\nsubmit on 23-apr",
+   "content": "<p>First, an empty input = output = 1x10x30x30 = 36_000 memory, no macs no params. this gives lb score of 14.5 which should be the upper bound.</p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F153af3d87a06a4294766318fff699a74%2FSelection_3040.png?generation=1776922117649286&amp;alt=media\" alt=\"\"></p>\n<p>For task001, my codex agent find this solution. it uses memory 4999. The profiler has undercount the memory. So is this a hack? (cause: future size of lazy execution not counted)</p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F4b30a202365c54a910cf536b96528969%2FSelection_3042.png?generation=1776922006873967&amp;alt=media\" alt=\"\"></p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F7729336b3a032e0c6b2b0197431dde64%2FSelection_3043.png?generation=1776922091398154&amp;alt=media\" alt=\"\"></p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F505ef0bc99662004b3aa279f81927e04%2FSelection_3048.png?generation=1776923258326121&amp;alt=media\" alt=\"\">\nsubmit on 23-apr</p>",
+   "parent": {},
+   "author": {
+    "displayName": "hengck23",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+    "url": "/hengck23",
+    "tier": "GRANDMASTER",
+    "id": 113660,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 11,
+    "canUpvote": true,
+    "totalUpvotes": 11
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 1468,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "userName": "hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "profileUrl": "/hengck23",
+     "performanceTier": "GRANDMASTER",
+     "userId": 113660,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3447424,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 694051,
+  "name": "WHERE Node profiler exploit? an example of agent hacking.",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-23T05:29:18.021956200Z",
+  "totalVotes": 11,
+  "url": "/competitions/neurogolf-2026/discussion/694051",
+  "totalMessages": 10,
+  "authorPerformanceTier": "GRANDMASTER",
+  "authorProgressionOptOut": false
+ }
+}

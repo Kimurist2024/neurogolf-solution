@@ -1,0 +1,193 @@
+{
+ "forumTopic": {
+  "authorId": 100236,
+  "authorThumbnailName": "100236-kg.png?t=2024-07-09-01-29-05",
+  "authorUserDisplayName": "Jiwei Liu",
+  "authorUserName": "jiweiliu",
+  "comments": [
+   {
+    "id": 3452560,
+    "postDate": "2026-05-03T18:14:31.433Z",
+    "rawMarkdown": "The issue is in memory accounting: `calculate_memory()` sums tensor sizes from `graph.value_info`, but unused `value_info` entries can contain negative `dim_value`s. These entries are ignored by ONNX Runtime during inference, but they reduce the scorer’s computed memory.\n\nExample from `task005.onnx`:\n\n```text\nUnused value_info:\n  _r7_unused_negative_memory_task005\n  UINT8 shape [-139737]\n```\n\nThis tensor is not connected to any node, but the scorer includes it in memory:\n\n```text\nmacs   = 82700\nmemory = -82906\nparams = 207\ncost   = 1\nscore  = 25 - ln(1) = 25\n```\n\nSo the model receives a perfect cost score even though the actual graph is not a 1-cost model. I also confirmed this can be applied broadly by adding unused positive/negative `value_info` entries to force `macs + memory + params == 1`.\n\nSuggested fixes:\n\n1. Reject any tensor shape with `dim_value <= 0` in `input`, `output`, or `value_info`.\n2. Ignore unused `value_info` entries when calculating memory.\n3. After calculating memory, reject `memory < 0` and `macs + memory + params <= 0`.\n4. Prefer deriving memory only from tensors actually produced/consumed by graph nodes after shape inference.\n\n`onnx.checker.check_model()` alone is not sufficient here, since the negative unused `value_info` passed validation in this case.",
+    "content": "<p>The issue is in memory accounting: <code>calculate_memory()</code> sums tensor sizes from <code>graph.value_info</code>, but unused <code>value_info</code> entries can contain negative <code>dim_value</code>s. These entries are ignored by ONNX Runtime during inference, but they reduce the scorer’s computed memory.</p>\n<p>Example from <code>task005.onnx</code>:</p>\n<pre><code>Unused value_info:\n  _r7_unused_negative_memory_task005\n  UINT8 shape [-139737]\n</code></pre>\n<p>This tensor is not connected to any node, but the scorer includes it in memory:</p>\n<pre><code>macs   = 82700\nmemory = -82906\nparams = 207\ncost   = 1\nscore  = 25 - ln(1) = 25\n</code></pre>\n<p>So the model receives a perfect cost score even though the actual graph is not a 1-cost model. I also confirmed this can be applied broadly by adding unused positive/negative <code>value_info</code> entries to force <code>macs + memory + params == 1</code>.</p>\n<p>Suggested fixes:</p>\n<ol>\n<li>Reject any tensor shape with <code>dim_value &lt;= 0</code> in <code>input</code>, <code>output</code>, or <code>value_info</code>.</li>\n<li>Ignore unused <code>value_info</code> entries when calculating memory.</li>\n<li>After calculating memory, reject <code>memory &lt; 0</code> and <code>macs + memory + params &lt;= 0</code>.</li>\n<li>Prefer deriving memory only from tensors actually produced/consumed by graph nodes after shape inference.</li>\n</ol>\n<p><code>onnx.checker.check_model()</code> alone is not sufficient here, since the negative unused <code>value_info</code> passed validation in this case.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Jiwei Liu",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/100236-kg.png?t=2024-07-09-01-29-05",
+     "url": "/jiweiliu",
+     "tier": "GRANDMASTER",
+     "id": 100236,
+     "progressionOptOut": false
+    },
+    "authorType": "TOPIC",
+    "votes": {
+     "totalVotes": 6,
+     "canUpvote": true,
+     "totalUpvotes": 6
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 22,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "hrushikeshpawar",
+       "dziyanavalenta",
+       "mmoffitt"
+      ],
+      "userCount": 3
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Jiwei Liu",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/100236-kg.png?t=2024-07-09-01-29-05",
+      "url": "/jiweiliu",
+      "userName": "jiweiliu",
+      "tier": "GRANDMASTER",
+      "id": 100236,
+      "profileUrl": "/jiweiliu",
+      "performanceTier": "GRANDMASTER",
+      "userId": 100236,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3452538,
+    "postDate": "2026-05-03T17:37:27.510Z",
+    "rawMarkdown": "Thank you @jiweiliu!  The exploit your team shared with the organizers will indeed be fixed in the next update, so feel free to share it here so that other teams can better understand the specific vulnerability we'll be patching.",
+    "content": "<p>Thank you <a href=\"https://www.kaggle.com/jiweiliu\" target=\"_blank\">@jiweiliu</a>!  The exploit your team shared with the organizers will indeed be fixed in the next update, so feel free to share it here so that other teams can better understand the specific vulnerability we'll be patching.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "KAGGLE",
+      "featuredUserNames": [
+       "jiweiliu",
+       "arc144"
+      ],
+      "userCount": 2
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3451820,
+   "postDate": "2026-05-02T00:36:18.797Z",
+   "rawMarkdown": "Hi all,\n\nOur agent found a scoring loophole that can substantially inflate leaderboard scores without representing a real modeling improvement.\n\nWe have emailed the competition hosts neurogolf.2026@gmail.com with all the details.\nWe are intentionally not publishing the implementation details or code here because it might trigger a lot of submissions to exploit it, and make rescoring much slower. But if host wants to get feedback about how to fix it, we can share it all here too. Just let us know. @mmoffitt\n\nBest",
+   "content": "<p>Hi all,</p>\n<p>Our agent found a scoring loophole that can substantially inflate leaderboard scores without representing a real modeling improvement.</p>\n<p>We have emailed the competition hosts <a href=\"mailto:neurogolf.2026@gmail.com\">neurogolf.2026@gmail.com</a> with all the details.\nWe are intentionally not publishing the implementation details or code here because it might trigger a lot of submissions to exploit it, and make rescoring much slower. But if host wants to get feedback about how to fix it, we can share it all here too. Just let us know. <a href=\"https://www.kaggle.com/mmoffitt\" target=\"_blank\">@mmoffitt</a></p>\n<p>Best</p>",
+   "parent": {},
+   "author": {
+    "displayName": "Jiwei Liu",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/100236-kg.png?t=2024-07-09-01-29-05",
+    "url": "/jiweiliu",
+    "tier": "GRANDMASTER",
+    "id": 100236,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 23,
+    "canUpvote": true,
+    "totalUpvotes": 23
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 22,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "LOVE",
+     "featuredUserNames": [
+      "jacekwl",
+      "dziyanavalenta",
+      "mmoffitt"
+     ],
+     "userCount": 3
+    },
+    {
+     "emoji": "THANK_YOU",
+     "featuredUserNames": [
+      "keymoon",
+      "dziyanavalenta",
+      "mmoffitt",
+      "russcore"
+     ],
+     "userCount": 4
+    },
+    {
+     "emoji": "KAGGLE",
+     "featuredUserNames": [
+      "mmoffitt",
+      "beicicc"
+     ],
+     "userCount": 2
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Jiwei Liu",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/100236-kg.png?t=2024-07-09-01-29-05",
+     "url": "/jiweiliu",
+     "userName": "jiweiliu",
+     "tier": "GRANDMASTER",
+     "id": 100236,
+     "profileUrl": "/jiweiliu",
+     "performanceTier": "GRANDMASTER",
+     "userId": 100236,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3451820,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 696365,
+  "name": "LB 9550 Potential scoring loophole privately reported to hosts [Kaggle Agent]",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-05-02T00:36:18.796345300Z",
+  "totalVotes": 23,
+  "url": "/competitions/neurogolf-2026/discussion/696365",
+  "totalMessages": 2,
+  "authorPerformanceTier": "GRANDMASTER",
+  "authorProgressionOptOut": false
+ }
+}

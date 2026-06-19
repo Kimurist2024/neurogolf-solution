@@ -1,0 +1,473 @@
+{
+ "forumTopic": {
+  "authorId": 4717152,
+  "authorThumbnailName": "4717152-kg.png?t=2025-01-04-05-03-12",
+  "authorUserDisplayName": "ymg_aq",
+  "authorUserName": "ymgpalaqs",
+  "comments": [
+   {
+    "id": 3453496,
+    "postDate": "2026-05-05T15:46:47.573Z",
+    "rawMarkdown": "It is a tempting proposal!  We received a similar suggestion over email from @tonylica, and it definitely has its merits.\n\nHowever, there's a risk (and I think it's significant) that teams would begin to find & exploit loopholes in the underlying protobuf file format.  I have studied that format in depth myself, and believe me when I say that it's not something most contestants would enjoy hacking around.",
+    "content": "<p>It is a tempting proposal!  We received a similar suggestion over email from <a href=\"https://www.kaggle.com/tonylica\" target=\"_blank\">@tonylica</a>, and it definitely has its merits.</p>\n<p>However, there's a risk (and I think it's significant) that teams would begin to find &amp; exploit loopholes in the underlying protobuf file format.  I have studied that format in depth myself, and believe me when I say that it's not something most contestants would enjoy hacking around.</p>",
+    "replies": [
+     {
+      "id": 3453886,
+      "postDate": "2026-05-06T05:37:06.370Z",
+      "rawMarkdown": "I imagine metrics like this were already considered carefully from the organizer side as well, and your point about introducing a different class of risks makes perfect sense. \n\nReally appreciate all the effort and consideration that’s clearly going into designing and maintaining the competition.",
+      "content": "<p>I imagine metrics like this were already considered carefully from the organizer side as well, and your point about introducing a different class of risks makes perfect sense. </p>\n<p>Really appreciate all the effort and consideration that’s clearly going into designing and maintaining the competition.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "ymg_aq",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4717152-kg.png?t=2025-01-04-05-03-12",
+       "url": "/ymgpalaqs",
+       "tier": "MASTER",
+       "id": 4717152,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 7,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "THANK_YOU",
+        "featuredUserNames": [
+         "mmoffitt"
+        ],
+        "userCount": 1
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "4eta",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/3458724-kg.jpg",
+        "url": "/bio4eta",
+        "userName": "bio4eta",
+        "tier": "MASTER",
+        "id": 3458724,
+        "profileUrl": "/bio4eta",
+        "performanceTier": "MASTER",
+        "userId": 3458724,
+        "progressionOptOut": false
+       },
+       "intro": "We’re aiming for a Gold Medal in this competition. Our team won Gold in the previous code golf competition, and now we’re looking for passionate teammates to fight for gold together once again.\n\nWe want teammates who are ready to push hard, experiment fearlessly, and burn with us until the very end."
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 4,
+     "canUpvote": true,
+     "totalUpvotes": 4
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "LOVE",
+      "featuredUserNames": [
+       "jiweiliu",
+       "ymgpalaqs",
+       "pntan17"
+      ],
+      "userCount": 3
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3453259,
+    "postDate": "2026-05-05T07:28:17.697Z",
+    "rawMarkdown": "Interesting suggestion!\n\nA few points which immediately come to mind though:\n* correlation between `file size` and `memory + params` when models are optimized for `memory + params` does not imply their correlation if we start optimizing for `file size` (e.g. materializing huge tensors dynamically will become free)\n* `file size` can also potentially be optimized (maybe hacked) in non-algorithmic ways: short tensor names, field ordering, omitting defaults, opset/IR choices, initializer encoding, metadata stripping, storing tensor data outside of .onnx, etc. The initial metric also looked good before everybody started optimizing against it. ",
+    "content": "<p>Interesting suggestion!</p>\n<p>A few points which immediately come to mind though:</p>\n<ul>\n<li>correlation between <code>file size</code> and <code>memory + params</code> when models are optimized for <code>memory + params</code> does not imply their correlation if we start optimizing for <code>file size</code> (e.g. materializing huge tensors dynamically will become free)</li>\n<li><code>file size</code> can also potentially be optimized (maybe hacked) in non-algorithmic ways: short tensor names, field ordering, omitting defaults, opset/IR choices, initializer encoding, metadata stripping, storing tensor data outside of .onnx, etc. The initial metric also looked good before everybody started optimizing against it. </li>\n</ul>",
+    "replies": [
+     {
+      "id": 3453263,
+      "postDate": "2026-05-05T07:40:22.590Z",
+      "rawMarkdown": "Thanks for the thoughtful points. Yes, I agree that file size is not a perfect metric and can be subject to certain optimizations.\n\nThe intent of this proposal is less about finding an ideal proxy, and more about improving robustness against exploits and overall scoring stability. The current metric also seems to have its own vulnerabilities in that regard.\n\nIn any case, all metrics involve trade-offs, so I think it’s best that these perspectives are discussed, and ultimately the decision is made by the organizers.",
+      "content": "<p>Thanks for the thoughtful points. Yes, I agree that file size is not a perfect metric and can be subject to certain optimizations.</p>\n<p>The intent of this proposal is less about finding an ideal proxy, and more about improving robustness against exploits and overall scoring stability. The current metric also seems to have its own vulnerabilities in that regard.</p>\n<p>In any case, all metrics involve trade-offs, so I think it’s best that these perspectives are discussed, and ultimately the decision is made by the organizers.</p>",
+      "replies": [
+       {
+        "id": 3453300,
+        "postDate": "2026-05-05T09:42:14.007Z",
+        "rawMarkdown": "Yeah, I guess my main point is that, at the very least, someone should run a strong agent against any new candidate metric and see what it finds before officially switching to it.",
+        "content": "<p>Yeah, I guess my main point is that, at the very least, someone should run a strong agent against any new candidate metric and see what it finds before officially switching to it.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Pavel",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/pavelsavchenkov",
+         "tier": "MASTER",
+         "id": 172360,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 10,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Pavel",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+          "url": "/pavelsavchenkov",
+          "userName": "pavelsavchenkov",
+          "tier": "MASTER",
+          "id": 172360,
+          "profileUrl": "/pavelsavchenkov",
+          "performanceTier": "MASTER",
+          "userId": 172360,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "ymg_aq",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4717152-kg.png?t=2025-01-04-05-03-12",
+       "url": "/ymgpalaqs",
+       "tier": "MASTER",
+       "id": 4717152,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 7,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "4eta",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/3458724-kg.jpg",
+        "url": "/bio4eta",
+        "userName": "bio4eta",
+        "tier": "MASTER",
+        "id": 3458724,
+        "profileUrl": "/bio4eta",
+        "performanceTier": "MASTER",
+        "userId": 3458724,
+        "progressionOptOut": false
+       },
+       "intro": "We’re aiming for a Gold Medal in this competition. Our team won Gold in the previous code golf competition, and now we’re looking for passionate teammates to fight for gold together once again.\n\nWe want teammates who are ready to push hard, experiment fearlessly, and burn with us until the very end."
+      }
+     },
+     {
+      "id": 3453268,
+      "postDate": "2026-05-05T07:55:37.197Z",
+      "rawMarkdown": "",
+      "parent": {},
+      "author": {
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/"
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "totalUpvotes": 1
+      },
+      "canDelete": true,
+      "isUserAuthor": true,
+      "isDeleted": true,
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Pavel",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/pavelsavchenkov",
+     "tier": "MASTER",
+     "id": 172360,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 10,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "LOVE",
+      "featuredUserNames": [
+       "ymgpalaqs"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Pavel",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+      "url": "/pavelsavchenkov",
+      "userName": "pavelsavchenkov",
+      "tier": "MASTER",
+      "id": 172360,
+      "profileUrl": "/pavelsavchenkov",
+      "performanceTier": "MASTER",
+      "userId": 172360,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3453236,
+    "postDate": "2026-05-05T06:48:15.240Z",
+    "rawMarkdown": "",
+    "replies": [
+     {
+      "id": 3453246,
+      "postDate": "2026-05-05T06:57:52.820Z",
+      "rawMarkdown": "I agree there is no clearly correct metric, and the final decision should be left to the hosts. File size is not perfect, but my main point is that it may reduce the exploit surface and help keep the competition focused on ARC-solving rather than scorer-specific tricks.",
+      "content": "<p>I agree there is no clearly correct metric, and the final decision should be left to the hosts. File size is not perfect, but my main point is that it may reduce the exploit surface and help keep the competition focused on ARC-solving rather than scorer-specific tricks.</p>",
+      "replies": [
+       {
+        "id": 3453260,
+        "postDate": "2026-05-05T07:34:35.720Z",
+        "rawMarkdown": "",
+        "parent": {},
+        "author": {
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/"
+        },
+        "authorType": "COMMENT",
+        "votes": {},
+        "canDelete": true,
+        "isUserAuthor": true,
+        "isDeleted": true,
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "reactions": [
+         {
+          "emoji": "SURPRISE",
+          "featuredUserNames": [
+           "ymgpalaqs"
+          ],
+          "userCount": 1
+         }
+        ]
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "ymg_aq",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4717152-kg.png?t=2025-01-04-05-03-12",
+       "url": "/ymgpalaqs",
+       "tier": "MASTER",
+       "id": 4717152,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "totalVotes": 2,
+       "canUpvote": true,
+       "totalUpvotes": 2
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 7,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "LOVE",
+        "featuredUserNames": [
+         "keymoon"
+        ],
+        "userCount": 1
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "4eta",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/3458724-kg.jpg",
+        "url": "/bio4eta",
+        "userName": "bio4eta",
+        "tier": "MASTER",
+        "id": 3458724,
+        "profileUrl": "/bio4eta",
+        "performanceTier": "MASTER",
+        "userId": 3458724,
+        "progressionOptOut": false
+       },
+       "intro": "We’re aiming for a Gold Medal in this competition. Our team won Gold in the previous code golf competition, and now we’re looking for passionate teammates to fight for gold together once again.\n\nWe want teammates who are ready to push hard, experiment fearlessly, and burn with us until the very end."
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/"
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "totalUpvotes": 1
+    },
+    "canDelete": true,
+    "isUserAuthor": true,
+    "isDeleted": true,
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "LOVE",
+      "featuredUserNames": [
+       "ymgpalaqs"
+      ],
+      "userCount": 1
+     }
+    ]
+   },
+   {
+    "id": 3453289,
+    "postDate": "2026-05-05T09:07:20.827Z",
+    "rawMarkdown": "Thanks for the ONNX file @ymgpalaqs ",
+    "content": "<p>Thanks for the ONNX file <a href=\"https://www.kaggle.com/ymgpalaqs\" target=\"_blank\">@ymgpalaqs</a> </p>",
+    "parent": {},
+    "author": {
+     "displayName": "Navneet",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/15692441-kg.jpg?t=2025-05-18-07-58-06",
+     "url": "/navneetbende",
+     "tier": "CONTRIBUTOR",
+     "id": 15692441,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": -1,
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": true
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3453228,
+   "postDate": "2026-05-05T06:28:32.220Z",
+   "rawMarkdown": "First of all, I would like to thank the competition organizers and the operations team for creating and running this interesting competition. Solving ARC-style tasks under the ONNX submission constraint is a very engaging setting, and it has been fun to think about how to express and compress solvers in this format.\n\nThat said, I have some concerns about the current scoring method.\n\nThe current scorer estimates memory and params from the ONNX graph, and then computes the score from those values. However, this makes it possible to optimize not only for simple and efficient task solvers, but also for gaps in the scorer's static analysis logic.\n\nIn fact, I have already confirmed that it is possible to obtain `25` points on an arbitrary task **under the current scorer**. I am intentionally not describing the exploit details here, but the important point is that this is not just a theoretical concern.\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2F40f5501088b51cbeebf1e22bf5ad5361%2Fscore25.png?generation=1777961500855035&alt=media)\n\nThis means that a theoretical `25 * 400 = 10000` score can be reachable through scorer-specific behavior. This is different from the original goal of solving ARC tasks well and efficiently in ONNX.\n\nAnother concern is that, with the current static scoring approach, a participant who finds an exploit could keep it private and use it only for the final submission. It would also be possible to update the score gradually in order to maintain the leaderboard lead. This affects not only fairness between participants, but also the reliability of the leaderboard.\n\nAs I understand it, recalculation for the first-place duration prize starts from May 6. If scorer exploits can move the leaderboard significantly, the operations team may need to spend more and more effort on remeasurement, investigation, and scorer fixes. From the participant side as well, attention may shift from improving ARC task solutions to searching for the next scorer exploit, making it harder to focus on the original purpose of the competition.\n\nOf course, individual scorer issues can be fixed. However, ONNX has many complex aspects: shape inference, constant folding, runtime behavior, operator semantics, and tooling differences. It seems very difficult to estimate memory and compute perfectly, statically, and fairly. Even if one exploit is fixed, another one may be found quickly. If the leaderboard changes significantly each time, the competition becomes unstable.\n\nFor this reason, I would like to propose a simpler and more deterministic scoring method: use the submitted ONNX file size.\n\nFor example, each task could be scored as follows:\n\n```python\nscore = max(1.0, 25.0 - log(max(1.0, onnx_file_size_bytes)))\n```\n\nHere, `log` is the natural logarithm.\n\nThis has several clear advantages:\n\n- It is fully deterministic.\n- It is very simple to implement.\n- It depends much less on scorer internals.\n- It is less affected by ONNX tooling, runtime, or profiler differences.\n- It evaluates the submitted artifact itself, so the exploit surface is smaller.\n- It matches the NeuroGolf goal of building short, simple, and efficient ONNX solvers.\n\nAs in last year's CodeGolf competition, optimizing byte size is not just superficial compression. It often leads participants to discover simpler and more efficient task-solving ideas and representations. I think the same applies here: minimizing ONNX file size would guide participants toward concise and essential ONNX solutions.\n\nOf course, file size is not a perfect proxy for runtime memory or compute. A small graph can still create large intermediate tensors. However, the more complex the scorer's memory and compute estimation logic becomes, the more that estimation logic itself becomes the optimization target. For a competition metric, a simple and stable proxy may be preferable to a more sophisticated but exploitable estimator.\n\nAs a reference, I analyzed the 400 ONNX files from my current solution set, which corresponds to my leaderboard score of `6454.15`. The ONNX file-size distribution was:\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2Fe5831001f9ac3c5d27e09302e717a6fe%2Fln_file_size_histogram.png?generation=1777961522972065&alt=media)\n\n```text\nmin      209 bytes\np25      1,811 bytes\nmedian   3,650 bytes\np75      7,450 bytes\np95      90,838 bytes\nmax      1,144,997 bytes\n```\n\nApplying the file-size-based formula above to this solution set gives a total score of about `6657.0`. This keeps the score in a similar overall scale to the current memory/params-based scoring.\n\nI also checked the correlation between ONNX file size and the current scorer's metrics.\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2F6ca5c360df5e0fbd8a8b893c32d41239%2Ffile_size_vs_score_macs.png?generation=1777961557190173&alt=media)\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2F52624bd689df5c4831b14df2a6bdd951%2Ffile_size_vs_score_params.png?generation=1777961605810506&alt=media)\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2F642baf0bef79abf87f6a67ca081599ad%2Ffile_size_vs_score_memory.png?generation=1777961646160703&alt=media)\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2F3826b2eacf1fca9c809d752d13106bfa%2Ffile_size_vs_score_memory_params.png?generation=1777961585706473&alt=media)\n\n```text\nfile size vs MACs:\n  Pearson(ln)  0.639\n  Spearman     0.602\n\nfile size vs params:\n  Pearson(ln)  0.583\n  Spearman     0.560\n\nfile size vs memory:\n  Pearson(ln)  0.748\n  Spearman     0.724\n\nfile size vs memory + params:\n  Pearson(ln)  0.763\n  Spearman     0.731\n```\n\nSo file size is reasonably correlated with the current scoring intent, especially with memory and memory + params.\n",
+   "content": "<p>First of all, I would like to thank the competition organizers and the operations team for creating and running this interesting competition. Solving ARC-style tasks under the ONNX submission constraint is a very engaging setting, and it has been fun to think about how to express and compress solvers in this format.</p>\n<p>That said, I have some concerns about the current scoring method.</p>\n<p>The current scorer estimates memory and params from the ONNX graph, and then computes the score from those values. However, this makes it possible to optimize not only for simple and efficient task solvers, but also for gaps in the scorer's static analysis logic.</p>\n<p>In fact, I have already confirmed that it is possible to obtain <code>25</code> points on an arbitrary task <strong>under the current scorer</strong>. I am intentionally not describing the exploit details here, but the important point is that this is not just a theoretical concern.</p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2F40f5501088b51cbeebf1e22bf5ad5361%2Fscore25.png?generation=1777961500855035&amp;alt=media\" alt=\"\"></p>\n<p>This means that a theoretical <code>25 * 400 = 10000</code> score can be reachable through scorer-specific behavior. This is different from the original goal of solving ARC tasks well and efficiently in ONNX.</p>\n<p>Another concern is that, with the current static scoring approach, a participant who finds an exploit could keep it private and use it only for the final submission. It would also be possible to update the score gradually in order to maintain the leaderboard lead. This affects not only fairness between participants, but also the reliability of the leaderboard.</p>\n<p>As I understand it, recalculation for the first-place duration prize starts from May 6. If scorer exploits can move the leaderboard significantly, the operations team may need to spend more and more effort on remeasurement, investigation, and scorer fixes. From the participant side as well, attention may shift from improving ARC task solutions to searching for the next scorer exploit, making it harder to focus on the original purpose of the competition.</p>\n<p>Of course, individual scorer issues can be fixed. However, ONNX has many complex aspects: shape inference, constant folding, runtime behavior, operator semantics, and tooling differences. It seems very difficult to estimate memory and compute perfectly, statically, and fairly. Even if one exploit is fixed, another one may be found quickly. If the leaderboard changes significantly each time, the competition becomes unstable.</p>\n<p>For this reason, I would like to propose a simpler and more deterministic scoring method: use the submitted ONNX file size.</p>\n<p>For example, each task could be scored as follows:</p>\n<pre><code>score = max(1.0, 25.0 - log(max(1.0, onnx_file_size_bytes)))\n</code></pre>\n<p>Here, <code>log</code> is the natural logarithm.</p>\n<p>This has several clear advantages:</p>\n<ul>\n<li>It is fully deterministic.</li>\n<li>It is very simple to implement.</li>\n<li>It depends much less on scorer internals.</li>\n<li>It is less affected by ONNX tooling, runtime, or profiler differences.</li>\n<li>It evaluates the submitted artifact itself, so the exploit surface is smaller.</li>\n<li>It matches the NeuroGolf goal of building short, simple, and efficient ONNX solvers.</li>\n</ul>\n<p>As in last year's CodeGolf competition, optimizing byte size is not just superficial compression. It often leads participants to discover simpler and more efficient task-solving ideas and representations. I think the same applies here: minimizing ONNX file size would guide participants toward concise and essential ONNX solutions.</p>\n<p>Of course, file size is not a perfect proxy for runtime memory or compute. A small graph can still create large intermediate tensors. However, the more complex the scorer's memory and compute estimation logic becomes, the more that estimation logic itself becomes the optimization target. For a competition metric, a simple and stable proxy may be preferable to a more sophisticated but exploitable estimator.</p>\n<p>As a reference, I analyzed the 400 ONNX files from my current solution set, which corresponds to my leaderboard score of <code>6454.15</code>. The ONNX file-size distribution was:</p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2Fe5831001f9ac3c5d27e09302e717a6fe%2Fln_file_size_histogram.png?generation=1777961522972065&amp;alt=media\" alt=\"\"></p>\n<pre><code>min      209 bytes\np25      1,811 bytes\nmedian   3,650 bytes\np75      7,450 bytes\np95      90,838 bytes\nmax      1,144,997 bytes\n</code></pre>\n<p>Applying the file-size-based formula above to this solution set gives a total score of about <code>6657.0</code>. This keeps the score in a similar overall scale to the current memory/params-based scoring.</p>\n<p>I also checked the correlation between ONNX file size and the current scorer's metrics.</p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2F6ca5c360df5e0fbd8a8b893c32d41239%2Ffile_size_vs_score_macs.png?generation=1777961557190173&amp;alt=media\" alt=\"\"></p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2F52624bd689df5c4831b14df2a6bdd951%2Ffile_size_vs_score_params.png?generation=1777961605810506&amp;alt=media\" alt=\"\"></p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2F642baf0bef79abf87f6a67ca081599ad%2Ffile_size_vs_score_memory.png?generation=1777961646160703&amp;alt=media\" alt=\"\"></p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F4717152%2F3826b2eacf1fca9c809d752d13106bfa%2Ffile_size_vs_score_memory_params.png?generation=1777961585706473&amp;alt=media\" alt=\"\"></p>\n<pre><code>file size vs MACs:\n  Pearson(ln)  0.639\n  Spearman     0.602\n\nfile size vs params:\n  Pearson(ln)  0.583\n  Spearman     0.560\n\nfile size vs memory:\n  Pearson(ln)  0.748\n  Spearman     0.724\n\nfile size vs memory + params:\n  Pearson(ln)  0.763\n  Spearman     0.731\n</code></pre>\n<p>So file size is reasonably correlated with the current scoring intent, especially with memory and memory + params.</p>",
+   "parent": {},
+   "author": {
+    "displayName": "ymg_aq",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4717152-kg.png?t=2025-01-04-05-03-12",
+    "url": "/ymgpalaqs",
+    "tier": "MASTER",
+    "id": 4717152,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 20,
+    "canUpvote": true,
+    "totalUpvotes": 21
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 7,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "SURPRISE",
+     "featuredUserNames": [
+      "tokkiwa"
+     ],
+     "userCount": 1
+    },
+    {
+     "emoji": "THANK_YOU",
+     "featuredUserNames": [
+      "mmoffitt"
+     ],
+     "userCount": 1
+    },
+    {
+     "emoji": "KAGGLE",
+     "featuredUserNames": [
+      "beicicc"
+     ],
+     "userCount": 1
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "4eta",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/3458724-kg.jpg",
+     "url": "/bio4eta",
+     "userName": "bio4eta",
+     "tier": "MASTER",
+     "id": 3458724,
+     "profileUrl": "/bio4eta",
+     "performanceTier": "MASTER",
+     "userId": 3458724,
+     "progressionOptOut": false
+    },
+    "intro": "We’re aiming for a Gold Medal in this competition. Our team won Gold in the previous code golf competition, and now we’re looking for passionate teammates to fight for gold together once again.\n\nWe want teammates who are ready to push hard, experiment fearlessly, and burn with us until the very end."
+   }
+  },
+  "firstMessageId": 3453228,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 697079,
+  "name": "Proposal: Use ONNX file size as a simple deterministic score to reduce scorer exploit risk",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-05-05T06:28:32.219998200Z",
+  "totalVotes": 20,
+  "url": "/competitions/neurogolf-2026/discussion/697079",
+  "totalMessages": 10,
+  "authorPerformanceTier": "MASTER",
+  "authorProgressionOptOut": false
+ }
+}

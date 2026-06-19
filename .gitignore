@@ -1,0 +1,63 @@
+# ============================================================
+#  NeuroGolf 2026 — .gitignore
+#  方針: 自作のコード・スコア・最終 submission.zip のみ追跡。
+#        機密 / 生成物 / 大容量データ / 仮想環境は全て除外。
+# ============================================================
+
+# --- 機密・認証情報(防御的に広めに除外) ---
+.env
+.env.*
+*.local.yaml
+*.local.yml
+*.local.json
+.claude/settings.local.json
+*.key
+*.pem
+*.pfx
+credentials*
+secret*
+*secret*
+*apikey*
+*api_key*
+*.token
+
+# --- Python 仮想環境 / キャッシュ ---
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# --- OS / エディタの一時ファイル ---
+.DS_Store
+*.swp
+*.swo
+*.tmp
+*~
+.band_specs.tmp
+.kimi_specs.tmp
+
+# --- コンペ公式データ(Kaggle からDL可・大容量) ---
+inputs/
+
+# --- 生成物 / 成果物 / 中間出力(大容量) ---
+artifacts/
+submission/
+others/
+scripts/golf/scratch/
+scripts/golf/scratch_kimi/
+scripts/golf/scratch_codex/
+scripts/golf/scratch_claude/
+
+# --- 生成された ONNX モデル ---
+*.onnx
+
+# --- アーカイブは原則除外し、最終提出だけ残す ---
+*.zip
+!submission.zip
+
+# --- 迷子の出力ファイル ---
+/--task

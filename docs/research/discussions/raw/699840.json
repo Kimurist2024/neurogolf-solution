@@ -1,0 +1,628 @@
+{
+ "forumTopic": {
+  "authorId": 1582365,
+  "authorThumbnailName": "1582365-kg.JPG",
+  "authorUserDisplayName": "robga",
+  "authorUserName": "robga",
+  "comments": [
+   {
+    "id": 3463019,
+    "postDate": "2026-05-25T16:21:56.210Z",
+    "rawMarkdown": "***[Cross-posting this from the [other thread](https://www.kaggle.com/competitions/neurogolf-2026/discussion/702256#3462580), and will edit with updates once they become available.]***\n\nI've reported a possible memory contamination bug to the ONNX Runtime developers here: https://github.com/microsoft/onnxruntime/issues/28654\n\nIf others have additional info that might be relevant, please let me know -- many thanks!\n\n---\n\n***[2026-05-27 Update]***: Our scorer appears to be working properly, provided that all Conv operations in submitted networks exhibit the proper length & bias values.  However, for contestants who are running their experiments locally on ARM64, two other things may be needed:\n - An upgrade to ONNX Runtime v1.26.0\n - An additional session option: `options.add_session_config_entry(\"mlas.disable_kleidiai\", \"1\")`",
+    "content": "<p><strong><em>[Cross-posting this from the <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/702256#3462580\" target=\"_blank\">other thread</a>, and will edit with updates once they become available.]</em></strong></p>\n<p>I've reported a possible memory contamination bug to the ONNX Runtime developers here: <a href=\"https://github.com/microsoft/onnxruntime/issues/28654\" target=\"_blank\">https://github.com/microsoft/onnxruntime/issues/28654</a></p>\n<p>If others have additional info that might be relevant, please let me know -- many thanks!</p>\n<hr>\n<p><strong><em>[2026-05-27 Update]</em></strong>: Our scorer appears to be working properly, provided that all Conv operations in submitted networks exhibit the proper length &amp; bias values.  However, for contestants who are running their experiments locally on ARM64, two other things may be needed:</p>\n<ul>\n<li>An upgrade to ONNX Runtime v1.26.0</li>\n<li>An additional session option: <code>options.add_session_config_entry(\"mlas.disable_kleidiai\", \"1\")</code></li>\n</ul>",
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3458446,
+    "postDate": "2026-05-15T21:41:22.577Z",
+    "rawMarkdown": "I experienced the same issue: submitting the exact same zip file multiple times resulted in different scores across submissions.\n\nThe likely cause is **undefined behavior being triggered in ORT.**\n\nThere appears to be an ORT bug involving out-of-bounds memory access, where it may read from uninitialized regions of the heap.\n\nMy guess is that this became more noticeable after the judging environment changed to reuse the same Python process instead of restarting it for every run. If ORT runs early in the process lifetime, the relevant memory region may still be filled with zeros, so the model appears to behave as expected. However, if it runs later, that memory is more likely to contain data written by previous executions, causing ORT to read stale values and return incorrect results.\n\nAs a temporary workaround, it may help to run the local judge multiple times without restarting the process, and reject the submission if any run produces a wrong answer. In my case, the main issue was that the Conv bias length was smaller than the number of output channels.\n\nWhether this kind of undefined behavior should be accepted as a valid solution probably needs separate discussion.",
+    "content": "<p>I experienced the same issue: submitting the exact same zip file multiple times resulted in different scores across submissions.</p>\n<p>The likely cause is <strong>undefined behavior being triggered in ORT.</strong></p>\n<p>There appears to be an ORT bug involving out-of-bounds memory access, where it may read from uninitialized regions of the heap.</p>\n<p>My guess is that this became more noticeable after the judging environment changed to reuse the same Python process instead of restarting it for every run. If ORT runs early in the process lifetime, the relevant memory region may still be filled with zeros, so the model appears to behave as expected. However, if it runs later, that memory is more likely to contain data written by previous executions, causing ORT to read stale values and return incorrect results.</p>\n<p>As a temporary workaround, it may help to run the local judge multiple times without restarting the process, and reject the submission if any run produces a wrong answer. In my case, the main issue was that the Conv bias length was smaller than the number of output channels.</p>\n<p>Whether this kind of undefined behavior should be accepted as a valid solution probably needs separate discussion.</p>",
+    "replies": [
+     {
+      "id": 3458463,
+      "postDate": "2026-05-15T22:26:37.210Z",
+      "rawMarkdown": "> There appears to be an ORT bug involving out-of-bounds memory access\n\nI had (reluctantly) arrived at the same conclusion, so I'm glad to hear that someone else is seeing the same thing.  We probably won't be able to deploy any fixes before the weekend, but I'll give it some thought and hopefully we'll have some kind of workaround ready soon!",
+      "content": "<blockquote>\n  <p>There appears to be an ORT bug involving out-of-bounds memory access</p>\n</blockquote>\n<p>I had (reluctantly) arrived at the same conclusion, so I'm glad to hear that someone else is seeing the same thing.  We probably won't be able to deploy any fixes before the weekend, but I'll give it some thought and hopefully we'll have some kind of workaround ready soon!</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "totalVotes": 5,
+       "canUpvote": true,
+       "totalUpvotes": 5
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3458486,
+      "postDate": "2026-05-15T23:54:47.663Z",
+      "rawMarkdown": "```\nthe main issue was that the Conv bias length was smaller than the number of output channels.\n```\nConfirmed that I met exactly the same issue when using this method, after fixing the bias length things, my submissions are stable",
+      "content": "<pre><code>the main issue was that the Conv bias length was smaller than the number of output channels.\n</code></pre>\n<p>Confirmed that I met exactly the same issue when using this method, after fixing the bias length things, my submissions are stable</p>",
+      "replies": [
+       {
+        "id": 3458749,
+        "postDate": "2026-05-16T15:14:02.997Z",
+        "rawMarkdown": "Same for me as well",
+        "content": "<p>Same for me as well</p>",
+        "parent": {},
+        "author": {
+         "displayName": "David Austin",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/888191-kg.jpg",
+         "url": "/tivfrvqhs5",
+         "tier": "GRANDMASTER",
+         "id": 888191,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 2,
+         "canUpvote": true,
+         "totalUpvotes": 2
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 5,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "David Austin",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/888191-kg.jpg",
+          "url": "/tivfrvqhs5",
+          "userName": "tivfrvqhs5",
+          "tier": "GRANDMASTER",
+          "id": 888191,
+          "profileUrl": "/tivfrvqhs5",
+          "performanceTier": "GRANDMASTER",
+          "userId": 888191,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Yiheng Wang",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/682501-kg.png",
+       "url": "/yiheng",
+       "tier": "MASTER",
+       "id": 682501,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 5,
+       "canUpvote": true,
+       "totalUpvotes": 5
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 2,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "LOVE",
+        "featuredUserNames": [
+         "jacekwl",
+         "robga",
+         "keymoon",
+         "mmoffitt"
+        ],
+        "userCount": 4
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Yiheng Wang",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/682501-kg.png",
+        "url": "/yiheng",
+        "userName": "yiheng",
+        "tier": "MASTER",
+        "id": 682501,
+        "profileUrl": "/yiheng",
+        "performanceTier": "MASTER",
+        "userId": 682501,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3459743,
+      "postDate": "2026-05-18T08:05:30.583Z",
+      "rawMarkdown": "Can you tell me your submission.zip file size? Is it same in every run?",
+      "content": "<p>Can you tell me your submission.zip file size? Is it same in every run?</p>",
+      "parent": {},
+      "author": {
+       "displayName": "PRASHANT SHUKLA91",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/prashantshukla91",
+       "tier": "EXPERT",
+       "id": 8381570,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 681,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "PRASHANT SHUKLA91",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+        "url": "/prashantshukla91",
+        "userName": "prashantshukla91",
+        "tier": "EXPERT",
+        "id": 8381570,
+        "profileUrl": "/prashantshukla91",
+        "performanceTier": "EXPERT",
+        "userId": 8381570,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "keymoon",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1953252-kg.jpeg?t=2025-08-01-04-03-34",
+     "url": "/keymoon",
+     "tier": "EXPERT",
+     "id": 1953252,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 10,
+     "canUpvote": true,
+     "totalUpvotes": 10
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 18,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "mmoffitt"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "keymoon",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1953252-kg.jpeg?t=2025-08-01-04-03-34",
+      "url": "/keymoon",
+      "userName": "keymoon",
+      "tier": "EXPERT",
+      "id": 1953252,
+      "profileUrl": "/keymoon",
+      "performanceTier": "EXPERT",
+      "userId": 1953252,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3462055,
+    "postDate": "2026-05-22T03:04:42.213Z",
+    "rawMarkdown": "This also happened to me. It was frustrating to debug. Fixing the Conv's fixed the issue.",
+    "content": "<p>This also happened to me. It was frustrating to debug. Fixing the Conv's fixed the issue.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Chris Deotte",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+     "url": "/cdeotte",
+     "tier": "GRANDMASTER",
+     "id": 1723677,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 16,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Chris Deotte",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+      "url": "/cdeotte",
+      "userName": "cdeotte",
+      "tier": "GRANDMASTER",
+      "id": 1723677,
+      "profileUrl": "/cdeotte",
+      "performanceTier": "GRANDMASTER",
+      "userId": 1723677,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3458404,
+    "postDate": "2026-05-15T19:18:58.007Z",
+    "rawMarkdown": "I am not sure if related, but I just discovered that my best sub, which is 6096.94 , now scores 6071.01 \nMy auto agent spent the whole day rejecting tasks because no single task beat the 6096.94 because the score was calculated at 6071, reference :-( \n\nIt seems the last metric update (yesterday, I guess) didn't run the whole LB! causing this mess. \n@mmoffitt ",
+    "content": "<p>I am not sure if related, but I just discovered that my best sub, which is 6096.94 , now scores 6071.01 \nMy auto agent spent the whole day rejecting tasks because no single task beat the 6096.94 because the score was calculated at 6071, reference :-( </p>\n<p>It seems the last metric update (yesterday, I guess) didn't run the whole LB! causing this mess. \n<a href=\"https://www.kaggle.com/mmoffitt\" target=\"_blank\">@mmoffitt</a> </p>",
+    "replies": [
+     {
+      "id": 3458411,
+      "postDate": "2026-05-15T19:36:41.353Z",
+      "rawMarkdown": "",
+      "parent": {},
+      "author": {
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/"
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "totalUpvotes": 1
+      },
+      "canDelete": true,
+      "isUserAuthor": true,
+      "isDeleted": true,
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false
+     },
+     {
+      "id": 3458467,
+      "postDate": "2026-05-15T22:38:32.253Z",
+      "rawMarkdown": "@asalhi I'm afraid yours seems to be a different issue (check your networks for tasks #118 and #243 ... they fail at `line 242` of the new defensive check in `neurogolf_utils.py`).",
+      "content": "<p><a href=\"https://www.kaggle.com/asalhi\" target=\"_blank\">@asalhi</a> I'm afraid yours seems to be a different issue (check your networks for tasks #118 and #243 … they fail at <code>line 242</code> of the new defensive check in <code>neurogolf_utils.py</code>).</p>",
+      "replies": [
+       {
+        "id": 3458470,
+        "postDate": "2026-05-15T22:50:34.543Z",
+        "rawMarkdown": "Thanks. \nI will have a look. The main problem was that I didn't know it was failing the new update because the old best was still \"best\" on LB, and as I said, the agent wasn't able to find an update that passed the LB score back then.\n\nIt kept asking me every while: Are you sure you are scoring 6096.94 ? Of course, I say hhhh \n\nAnyway its now submitting every tiny small improvment (becoming sensitive or punishing me), which I should stop before eating my subs. \n\nI am so enjoying this competition :-) ",
+        "content": "<p>Thanks. \nI will have a look. The main problem was that I didn't know it was failing the new update because the old best was still \"best\" on LB, and as I said, the agent wasn't able to find an update that passed the LB score back then.</p>\n<p>It kept asking me every while: Are you sure you are scoring 6096.94 ? Of course, I say hhhh </p>\n<p>Anyway its now submitting every tiny small improvment (becoming sensitive or punishing me), which I should stop before eating my subs. </p>\n<p>I am so enjoying this competition :-) </p>",
+        "parent": {},
+        "author": {
+         "displayName": "Ali",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+         "url": "/asalhi",
+         "tier": "MASTER",
+         "id": 6915758,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 102,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "reactions": [
+         {
+          "emoji": "LOVE",
+          "featuredUserNames": [
+           "mmoffitt"
+          ],
+          "userCount": 1
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Ali",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+          "url": "/asalhi",
+          "userName": "asalhi",
+          "tier": "MASTER",
+          "id": 6915758,
+          "profileUrl": "/asalhi",
+          "performanceTier": "MASTER",
+          "userId": 6915758,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Ali",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+     "url": "/asalhi",
+     "tier": "MASTER",
+     "id": 6915758,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 102,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Ali",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+      "url": "/asalhi",
+      "userName": "asalhi",
+      "tier": "MASTER",
+      "id": 6915758,
+      "profileUrl": "/asalhi",
+      "performanceTier": "MASTER",
+      "userId": 6915758,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3458555,
+    "postDate": "2026-05-16T06:53:31.417Z",
+    "rawMarkdown": "Thanks for the informative order sensitivity bug @robga ",
+    "content": "<p>Thanks for the informative order sensitivity bug <a href=\"https://www.kaggle.com/robga\" target=\"_blank\">@robga</a> </p>",
+    "parent": {},
+    "author": {
+     "displayName": "Navneet",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/15692441-kg.jpg?t=2025-05-18-07-58-06",
+     "url": "/navneetbende",
+     "tier": "CONTRIBUTOR",
+     "id": 15692441,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": -4,
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   },
+   {
+    "id": 3459036,
+    "postDate": "2026-05-17T08:34:49.933Z",
+    "rawMarkdown": "I think I'm hitting the same issue. These 2 submissions are identical, but the score is different:\n![](https://i.imgur.com/ZAInPt0.png)\n\nEach task has identical SHA hashsum, confirmed by my clanker:\n![](blob:https://imgur.com/950bd66d-5bc7-4f54-bd23-3fad85ade8c9)",
+    "content": "<p>I think I'm hitting the same issue. These 2 submissions are identical, but the score is different:\n<img src=\"https://i.imgur.com/ZAInPt0.png\" alt=\"\"></p>\n<p>Each task has identical SHA hashsum, confirmed by my clanker:\n<img alt=\"\"></p>",
+    "replies": [
+     {
+      "id": 3459549,
+      "postDate": "2026-05-18T00:29:07.610Z",
+      "rawMarkdown": "Might be worth checking to see if @yiheng's note above (*\"the main issue was that the Conv bias length was smaller than the number of output channels.\"*) applies to your solution for Task #294.  Let me know what you find out!",
+      "content": "<p>Might be worth checking to see if <a href=\"https://www.kaggle.com/yiheng\" target=\"_blank\">@yiheng</a>'s note above (<em>\"the main issue was that the Conv bias length was smaller than the number of output channels.\"</em>) applies to your solution for Task #294.  Let me know what you find out!</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Chan Kha Vu",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/2270821-kg.jpg",
+     "url": "/chankhavu",
+     "tier": "MASTER",
+     "id": 2270821,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 12,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Geremie Yeo",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+      "url": "/yeoyunsianggeremie",
+      "userName": "yeoyunsianggeremie",
+      "tier": "GRANDMASTER",
+      "id": 5256933,
+      "profileUrl": "/yeoyunsianggeremie",
+      "performanceTier": "GRANDMASTER",
+      "userId": 5256933,
+      "progressionOptOut": false
+     },
+     "intro": "Must have a Codex/Claude Code team/enterprise plan with higher usage limits"
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3458229,
+   "postDate": "2026-05-15T12:27:00.880Z",
+   "rawMarkdown": "I’ve encountered what appears to be order-sensitive scoring for submission zip members @mmoffitt \n\nThe same set of ONNX files can receive different leaderboard scores depending only on the order of files inside the zip. In my case, taskAAA scores correctly alone and in smaller bundles, but contributes 0 when placed later in a different bundle/zip. It's happened with 2 tasks. Moving the exact same files to the front of the zip makes the full submission score match the locally predicted total. No ONNX bytes changed, only zip member order changed. Has anyone else noticed this? Normally I think of 0 as not meeting the hidden examples, but now I'm wondering if its something else and maybe they were OK but hit a bug. Just to be clear: if I submit 25 tasks in numeric order, one task unexpectedly scores 0. I bisect the 25 and both halves score OK. I can then repair the failing zip by moving that task to the front. So with my 2 \"0\" tasks, if I submit tasks001-400 in order I score less than if I put the specific 2 tasks at the front of the zip in which case they score as they do locally. \n\nEdit: cause was identified by helpful conrtibutors below, \"the main issue was that the Conv bias length was smaller than the number of output channels ... After fixing the bias length, my submissions are stable.\" and this fixed it for me too.",
+   "content": "<p>I’ve encountered what appears to be order-sensitive scoring for submission zip members <a href=\"https://www.kaggle.com/mmoffitt\" target=\"_blank\">@mmoffitt</a> </p>\n<p>The same set of ONNX files can receive different leaderboard scores depending only on the order of files inside the zip. In my case, taskAAA scores correctly alone and in smaller bundles, but contributes 0 when placed later in a different bundle/zip. It's happened with 2 tasks. Moving the exact same files to the front of the zip makes the full submission score match the locally predicted total. No ONNX bytes changed, only zip member order changed. Has anyone else noticed this? Normally I think of 0 as not meeting the hidden examples, but now I'm wondering if its something else and maybe they were OK but hit a bug. Just to be clear: if I submit 25 tasks in numeric order, one task unexpectedly scores 0. I bisect the 25 and both halves score OK. I can then repair the failing zip by moving that task to the front. So with my 2 \"0\" tasks, if I submit tasks001-400 in order I score less than if I put the specific 2 tasks at the front of the zip in which case they score as they do locally. </p>\n<p>Edit: cause was identified by helpful conrtibutors below, \"the main issue was that the Conv bias length was smaller than the number of output channels … After fixing the bias length, my submissions are stable.\" and this fixed it for me too.</p>",
+   "parent": {},
+   "author": {
+    "displayName": "robga",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1582365-kg.JPG",
+    "url": "/robga",
+    "tier": "MASTER",
+    "id": 1582365,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 16,
+    "canUpvote": true,
+    "totalUpvotes": 16
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 15,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "THANK_YOU",
+     "featuredUserNames": [
+      "yuw000",
+      "mmoffitt"
+     ],
+     "userCount": 2
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "robga",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1582365-kg.JPG",
+     "url": "/robga",
+     "userName": "robga",
+     "tier": "MASTER",
+     "id": 1582365,
+     "profileUrl": "/robga",
+     "performanceTier": "MASTER",
+     "userId": 1582365,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3458229,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 699840,
+  "name": "order sensitivity bug?",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-05-15T12:27:00.878383700Z",
+  "totalVotes": 16,
+  "url": "/competitions/neurogolf-2026/discussion/699840",
+  "totalMessages": 14,
+  "authorPerformanceTier": "MASTER",
+  "authorProgressionOptOut": false
+ }
+}
