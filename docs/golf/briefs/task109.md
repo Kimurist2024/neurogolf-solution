@@ -1,0 +1,246 @@
+# Task 109 Golf Brief
+
+## Current Net
+- path: `artifacts/optimized/task109.onnx`
+- file size: 3656 bytes
+- cost: 28110
+- score: 14.756119
+- memory: 27888
+- params: 222
+- nodes: 44
+- value_info tensors after shape inference: 43
+- local gold-correct: True
+
+## Research Queue
+- priority rank: 31
+- recorded cost: 83822
+- recorded memory: 82868
+- recorded params: 954
+- recorded nodes: 41
+
+## Op Histogram
+
+- Cast: 6
+- Reshape: 5
+- Sub: 5
+- Gather: 5
+- ReduceSum: 3
+- ReduceMax: 3
+- Mul: 3
+- Slice: 2
+- Less: 2
+- Where: 2
+- Greater: 2
+- Div: 1
+- Max: 1
+- Not: 1
+- And: 1
+- Concat: 1
+- Pad: 1
+
+## Targets
+
+- cost 900: score 18.197605, delta +3.441486
+- cost 314: score 19.250607, delta +4.494488
+
+## Examples
+- train: 3 shown
+- test: 1 shown
+- arc-gen: 3 shown, 259 remaining
+
+### train[1]
+input 11x11 -> output 10x10
+
+input:
+```text
+00000200000
+01000200000
+11000200000
+01100200000
+00000200000
+22222222222
+00000200000
+00000200000
+00000200000
+00000200000
+00000200000
+```
+
+output:
+```text
+0000000000
+0200000020
+2200000022
+0220000220
+0000000000
+0000000000
+0220000220
+2200000022
+0200000020
+0000000000
+```
+
+### train[2]
+input 9x9 -> output 8x8
+
+input:
+```text
+303080000
+330080000
+300080000
+000080000
+888888888
+000080000
+000080000
+000080000
+000080000
+```
+
+output:
+```text
+80800808
+88000088
+80000008
+00000000
+00000000
+80000008
+88000088
+80800808
+```
+
+### train[3]
+input 7x7 -> output 6x6
+
+input:
+```text
+2004000
+0224000
+0204000
+4444444
+0004000
+0004000
+0004000
+```
+
+output:
+```text
+400004
+044440
+040040
+040040
+044440
+400004
+```
+
+### test[1]
+input 13x13 -> output 12x12
+
+input:
+```text
+0080003000000
+0800003000000
+8080003000000
+0080003000000
+0088003000000
+0000003000000
+3333333333333
+0000003000000
+0000003000000
+0000003000000
+0000003000000
+0000003000000
+0000003000000
+```
+
+output:
+```text
+003000000300
+030000000030
+303000000303
+003000000300
+003300003300
+000000000000
+000000000000
+003300003300
+003000000300
+303000000303
+030000000030
+003000000300
+```
+
+### arc-gen[1]
+input 7x7 -> output 6x6
+
+input:
+```text
+0071000
+7001000
+0701000
+1111111
+0001000
+0001000
+0001000
+```
+
+output:
+```text
+001100
+100001
+010010
+010010
+100001
+001100
+```
+
+### arc-gen[2]
+input 7x7 -> output 6x6
+
+input:
+```text
+8806000
+8006000
+0086000
+6666666
+0006000
+0006000
+0006000
+```
+
+output:
+```text
+660066
+600006
+006600
+006600
+600006
+660066
+```
+
+### arc-gen[3]
+input 7x7 -> output 6x6
+
+input:
+```text
+7004000
+0774000
+0704000
+4444444
+0004000
+0004000
+0004000
+```
+
+output:
+```text
+400004
+044440
+040040
+040040
+044440
+400004
+```
+
+## Verification
+```bash
+.venv/bin/python scripts/golf/try_candidate.py --task 109 --onnx path/to/candidate.onnx
+```

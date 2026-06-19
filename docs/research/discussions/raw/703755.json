@@ -1,0 +1,149 @@
+{
+ "forumTopic": {
+  "authorId": 28656359,
+  "authorThumbnailName": "default-thumb.png",
+  "authorUserDisplayName": "HADY",
+  "authorUserName": "johnhady101",
+  "comments": [
+   {
+    "id": 3465382,
+    "postDate": "2026-06-01T21:59:16.760Z",
+    "rawMarkdown": "All our ONNX graphs need to accept input [1, 10, 30, 30] and make output [1, 10, 30, 30]. This is batch size 1, and one hot encoding of color 10 and shape 30x30. The actual puzzles contained inside these shapes can actually be any size. For example for task31, it appears the true puzzle shape is AxB where A in [10,11,12] and B = 12. And the output is the crop shape of the non black shape. But our ONNX must pad and output [1, 10, 30, 30] and accept an input of [1, 10, 30, 30].\n\n![](https://raw.githubusercontent.com/cdeotte/Kaggle_Images/refs/heads/main/Jun-2026/task31.png)",
+    "content": "<p>All our ONNX graphs need to accept input [1, 10, 30, 30] and make output [1, 10, 30, 30]. This is batch size 1, and one hot encoding of color 10 and shape 30x30. The actual puzzles contained inside these shapes can actually be any size. For example for task31, it appears the true puzzle shape is AxB where A in [10,11,12] and B = 12. And the output is the crop shape of the non black shape. But our ONNX must pad and output [1, 10, 30, 30] and accept an input of [1, 10, 30, 30].</p>\n<p><img src=\"https://raw.githubusercontent.com/cdeotte/Kaggle_Images/refs/heads/main/Jun-2026/task31.png\" alt=\"\"></p>",
+    "parent": {},
+    "author": {
+     "displayName": "Chris Deotte",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+     "url": "/cdeotte",
+     "tier": "GRANDMASTER",
+     "id": 1723677,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 16,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Chris Deotte",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+      "url": "/cdeotte",
+      "userName": "cdeotte",
+      "tier": "GRANDMASTER",
+      "id": 1723677,
+      "profileUrl": "/cdeotte",
+      "performanceTier": "GRANDMASTER",
+      "userId": 1723677,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3465389,
+    "postDate": "2026-06-01T22:07:46.767Z",
+    "rawMarkdown": "Yes, the output size does not have to match the input size.\n\n  In ARC-style tasks, each example gives an input grid and an output grid. The goal is to infer the transformation. Sometimes the output is the same size, but often it can be cropped, expanded, tiled, reduced, or otherwise reshaped.\n\n  So a 10x12 input and a 4x4 output is normal. It usually means the task transformation extracts or constructs a smaller relevant pattern from the input.",
+    "content": "<p>Yes, the output size does not have to match the input size.</p>\n<p>In ARC-style tasks, each example gives an input grid and an output grid. The goal is to infer the transformation. Sometimes the output is the same size, but often it can be cropped, expanded, tiled, reduced, or otherwise reshaped.</p>\n<p>So a 10x12 input and a 4x4 output is normal. It usually means the task transformation extracts or constructs a smaller relevant pattern from the input.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Andrey Yunoshev",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/71556-kg.jpg?t=2026-05-08-11-10-52",
+     "url": "/andreyyunoshev",
+     "tier": "CONTRIBUTOR",
+     "id": 71556,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 48,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "enabled": true,
+     "teamLeader": {
+      "displayName": "Andrey Yunoshev",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/71556-kg.jpg?t=2026-05-08-11-10-52",
+      "url": "/andreyyunoshev",
+      "userName": "andreyyunoshev",
+      "tier": "CONTRIBUTOR",
+      "id": 71556,
+      "profileUrl": "/andreyyunoshev",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 71556,
+      "progressionOptOut": false
+     },
+     "intro": "Online platform: plug your AI agent (Claude Code, Codex CLI, etc.) — it auto-picks ARC-AGI tasks, golfs ONNXs, submits to Kaggle. Agents share one knowledge base, compound  know-how. Need: Claude/Codex/Etc. Get: team artifacts "
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3465370,
+   "postDate": "2026-06-01T21:29:59.870Z",
+   "rawMarkdown": "The input array here in the task is an 10x12 array, the output array is 4x4; does that mean that the size of the output is not necessarily the same as the size of the input? or Iam messing something?",
+   "content": "<p>The input array here in the task is an 10x12 array, the output array is 4x4; does that mean that the size of the output is not necessarily the same as the size of the input? or Iam messing something?</p>",
+   "attachments": [
+    {
+     "fileType": ".png",
+     "id": 44244,
+     "name": "ab2cb948-e87e-4e7e-841f-aa088ce1f53e.png",
+     "totalBytes": 51489,
+     "url": "https://storage.googleapis.com/kaggle-forum-message-attachments/3465370/44244/ab2cb948-e87e-4e7e-841f-aa088ce1f53e.png"
+    }
+   ],
+   "parent": {},
+   "author": {
+    "displayName": "HADY",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+    "url": "/johnhady101",
+    "tier": "CONTRIBUTOR",
+    "id": 28656359,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "canUpvote": true
+   },
+   "kernelVersion": 0,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "HADY",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/johnhady101",
+     "userName": "johnhady101",
+     "tier": "CONTRIBUTOR",
+     "id": 28656359,
+     "profileUrl": "/johnhady101",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 28656359,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3465370,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 703755,
+  "name": "Help me understand the dataset",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-06-01T21:29:59.870274700Z",
+  "url": "/competitions/neurogolf-2026/discussion/703755",
+  "totalMessages": 2,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}

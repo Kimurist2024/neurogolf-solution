@@ -1,0 +1,330 @@
+{
+ "forumTopic": {
+  "authorId": 113660,
+  "authorThumbnailName": "113660-fb.jpg",
+  "authorUserDisplayName": "hengck23",
+  "authorUserName": "hengck23",
+  "comments": [
+   {
+    "id": 3454353,
+    "postDate": "2026-05-07T00:23:27.590Z",
+    "rawMarkdown": "Now that we've [eliminated the dependency on onnx-tool](https://www.kaggle.com/competitions/neurogolf-2026/discussion/696953#3454132), BitShift should be back on the menu!",
+    "content": "<p>Now that we've <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/696953#3454132\" target=\"_blank\">eliminated the dependency on onnx-tool</a>, BitShift should be back on the menu!</p>",
+    "replies": [
+     {
+      "id": 3454398,
+      "postDate": "2026-05-07T03:54:41.873Z",
+      "rawMarkdown": "That is great! Bitwise network open out a new class of solution!",
+      "content": "<p>That is great! Bitwise network open out a new class of solution!</p>",
+      "parent": {},
+      "author": {
+       "displayName": "hengck23",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+       "url": "/hengck23",
+       "tier": "GRANDMASTER",
+       "id": 113660,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 1468,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "LOVE",
+        "featuredUserNames": [
+         "mmoffitt"
+        ],
+        "userCount": 1
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "hengck23",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+        "url": "/hengck23",
+        "userName": "hengck23",
+        "tier": "GRANDMASTER",
+        "id": 113660,
+        "profileUrl": "/hengck23",
+        "performanceTier": "GRANDMASTER",
+        "userId": 113660,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "hengck23"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3449410,
+    "postDate": "2026-04-28T06:17:31.047Z",
+    "rawMarkdown": "I suggest reading this: https://www.kaggle.com/code/emanuellcs/neurogolf-2026-zero-mac-heuristics-dc-pp",
+    "content": "<p>I suggest reading this: <a href=\"https://www.kaggle.com/code/emanuellcs/neurogolf-2026-zero-mac-heuristics-dc-pp\" target=\"_blank\">https://www.kaggle.com/code/emanuellcs/neurogolf-2026-zero-mac-heuristics-dc-pp</a></p>",
+    "replies": [
+     {
+      "id": 3449474,
+      "postDate": "2026-04-28T09:52:04.587Z",
+      "rawMarkdown": "These are actually not optimised. It didn’t exploit data structures. Most of them are translation from generator solution to onnx ops. Their scores are in 12 to 13 range. Hand optimisation scale are in 14 to 15 range and the worst i get is 13 range",
+      "content": "<p>These are actually not optimised. It didn’t exploit data structures. Most of them are translation from generator solution to onnx ops. Their scores are in 12 to 13 range. Hand optimisation scale are in 14 to 15 range and the worst i get is 13 range</p>",
+      "replies": [
+       {
+        "id": 3449477,
+        "postDate": "2026-04-28T09:57:26.593Z",
+        "rawMarkdown": "as as example, 14.09 bitwise solution for task009. open public solution are about 11-12\n\n```\ndef make_task009():\n    from spox.opset.ai.onnx import v18 as op\n\n    SHAPE = (1, 10, 30, 30)\n    input = argument(Tensor(np.float32, SHAPE))\n\n    def op_slice(x, starts, ends, axes, steps):\n        return op.slice(\n            x,\n            starts = op.constant(value=np.asarray(starts, dtype=np.int64)),\n            ends   = op.constant(value=np.asarray(  ends, dtype=np.int64)),\n            axes   = op.constant(value=np.asarray(  axes, dtype=np.int64)),\n            steps  = op.constant(value=np.asarray( steps, dtype=np.int64)),\n        )\n    def op_constant(value, dtype=np.int64):\n        return op.constant(value=np.asarray(value, dtype=dtype))\n\n    #todo: collect all common axes into one const parameter\n\n    #---------------\n    x = op.cast(input, to=np.uint8)\n\n    occupancy = op_slice(\n        x,\n        starts=[ 1, 0, 2],\n        ends  =[10,30, 3],\n        axes  =[ 1, 2, 3],\n        steps =[ 1, 1, 1],\n    )\n    occupancy = op.reduce_max(occupancy, axes=op_constant([1]))\n    #.e.g 11111111110000 (1:occupied, 0: padding)\n\n    gridcolor = op_slice(\n        x,\n        starts =[ 0,  0,  0],\n        ends   =[10, 30, 30],\n        axes   =[ 1,  2,  3],\n        steps  =[ 1,  3,  3],\n    )\n    #linecolor = input[0,:,0,2]\n\n    linecolor = op_slice(\n        x,\n        starts=[ 1, 0, 2],\n        ends  =[10, 1, 3],\n        axes  =[ 1, 2, 3],\n        steps =[ 1, 1, 1],\n    )\n    linecolor = op.arg_max(linecolor, axis=1)\n    linecolor = op.reshape(linecolor, shape=op_constant([1]))\n    linecolor = op.add(linecolor, op_constant([1]))\n\n\n    #----\n    # color encode table\n    color_table = [\n        [0, 1, 2, 4, 8, 16, 32, 64, 128, 255] #for debug\n    ]\n    for lc in range(1,10):\n        vals = []\n        bit = 1\n        for c in range(10):\n            if c == 0 :\n                vals.append(0)   #bg marker\n            elif c == lc:\n                vals.append(255) #linecolor marker\n            else:\n                vals.append(bit)\n                bit *= 2\n        color_table.append(vals)\n\n    color_table = op.constant(\n        value=np.array(color_table, dtype=np.uint8).reshape(10, 10, 1, 1)\n    )\n    depth = op.gather(color_table, linecolor, axis=0)\n\n    # tempopray depth for debug\n    # depth0 = op.constant(value=np.array(\n    #    [0, 1, 2, 4, 8, 16, 32, 64, 128, 0], dtype=np.uint8).reshape(1, 10, 1, 1))\n\n    fg = op.reduce_max(op.mul(gridcolor, depth), axes=op_constant([1]), keepdims=True)\n\n    # ---- connect point by propagation ----\n\n    def shift_w(x, k):\n        z = op.constant(value=np.asarray(0, dtype=np.uint8))\n        if k>0:\n            y = op_slice(x, [0], [10-k], [3], [1])\n            pads = op_constant([0,0,0,k,0,0,0,0])\n        else:\n            y = op_slice(x, [-k], [10], [3], [1])\n            pads = op_constant([0,0,0,0,0,0,0,-k])\n        return op.pad(y, pads, constant_value=z, mode=\"constant\")\n\n    def shift_h(x, k):\n        z = op.constant(value=np.asarray(0, dtype=np.uint8))\n        if k>0:\n            y = op_slice(x, [0], [10-k], [2], [1])\n            pads = op_constant([0,0,k,0,0,0,0,0])\n        else:\n            y = op_slice(x, [-k], [10], [2], [1])\n            pads = op_constant([0,0,0,0,0,0,-k,0])\n        return op.pad(y, pads, constant_value=z, mode=\"constant\")\n\n    def propagate_h(x, d):\n        y = x\n        y = op.bitwise_or(y, shift_h(y, d * 1))\n        y = op.bitwise_or(y, shift_h(y, d * 2))\n        y = op.bitwise_or(y, shift_h(y, d * 4))\n        y = op.bitwise_or(y, shift_h(y, d * 8))\n        return y\n\n    def propagate_w(x, d):\n        y = x\n        y = op.bitwise_or(y, shift_w(y, d * 1))\n        y = op.bitwise_or(y, shift_w(y, d * 2))\n        y = op.bitwise_or(y, shift_w(y, d * 4))\n        y = op.bitwise_or(y, shift_w(y, d * 8))\n        return y\n\n\n    left = propagate_w(fg, 1)\n    right = propagate_w(fg, -1)\n    hfill = op.bitwise_and(left, right)\n\n    bottom = propagate_h(fg, 1)\n    top = propagate_h(fg, -1)\n    vfill = op.bitwise_and(top, bottom)\n\n    filled = op.bitwise_or(vfill,hfill) #1x1x10x10\n    filled = op.reshape  (filled, op_constant([1, 1, 10, 1, 10, 1]))\n    filled = op.expand   (filled, op_constant([1, 1, 10, 3, 10, 3]))\n    expanded = op.reshape(filled, op_constant([1, 1, 30, 30]))\n\n    #-- handle line ---\n    line = op.constant(value=np.asarray([0,0,255, 0,0,255, 255,255,255], dtype=np.uint8).reshape(1,1,1,3,1,3))\n    line = op.expand(  line, op_constant([1, 1, 10, 3, 10, 3]))\n    line = op.reshape( line, op_constant([1, 1, 30, 30]))\n    expanded = op.bitwise_or(expanded, line)\n    #expanded = op.max([expanded, line])\n\n    #handle occpancy ---\n    occ_row = occupancy  # [1,1,30,1]\n    occ_col = op.transpose(occupancy, perm=[0, 1, 3, 2])  # [1,1,1,30]\n    inside = op.and_(op.cast(occ_row, to=bool), op.cast(occ_col, to=bool)) #1,1,30,30\n\n    expanded = op.where(\n        inside,\n        expanded,\n        op_constant([254], np.uint8),#invalid\n    )\n    expanded_bg = op.equal(expanded, op_constant([0], np.uint8))\n\n\n    #final expansion to 30x30 -----\n    expanded_colors = op.equal(\n        expanded,\n        op_slice(depth,[1],[10],[1],[1])\n    )\n    output = op.concat([\n        op.cast(expanded_bg, to=np.bool),\n        expanded_colors\n    ], axis=1)\n\n    model = spox.build(\n        inputs={\"input\": input},\n        outputs={\n            \"output\": output,\n        },\n    )\n    onnx.checker.check_model(model)\n    return model\n\n\n```",
+        "content": "<p>as as example, 14.09 bitwise solution for task009. open public solution are about 11-12</p>\n<pre><code>def make_task009():\n    from spox.opset.ai.onnx import v18 as op\n\n    SHAPE = (1, 10, 30, 30)\n    input = argument(Tensor(np.float32, SHAPE))\n\n    def op_slice(x, starts, ends, axes, steps):\n        return op.slice(\n            x,\n            starts = op.constant(value=np.asarray(starts, dtype=np.int64)),\n            ends   = op.constant(value=np.asarray(  ends, dtype=np.int64)),\n            axes   = op.constant(value=np.asarray(  axes, dtype=np.int64)),\n            steps  = op.constant(value=np.asarray( steps, dtype=np.int64)),\n        )\n    def op_constant(value, dtype=np.int64):\n        return op.constant(value=np.asarray(value, dtype=dtype))\n\n    #todo: collect all common axes into one const parameter\n\n    #---------------\n    x = op.cast(input, to=np.uint8)\n\n    occupancy = op_slice(\n        x,\n        starts=[ 1, 0, 2],\n        ends  =[10,30, 3],\n        axes  =[ 1, 2, 3],\n        steps =[ 1, 1, 1],\n    )\n    occupancy = op.reduce_max(occupancy, axes=op_constant([1]))\n    #.e.g 11111111110000 (1:occupied, 0: padding)\n\n    gridcolor = op_slice(\n        x,\n        starts =[ 0,  0,  0],\n        ends   =[10, 30, 30],\n        axes   =[ 1,  2,  3],\n        steps  =[ 1,  3,  3],\n    )\n    #linecolor = input[0,:,0,2]\n\n    linecolor = op_slice(\n        x,\n        starts=[ 1, 0, 2],\n        ends  =[10, 1, 3],\n        axes  =[ 1, 2, 3],\n        steps =[ 1, 1, 1],\n    )\n    linecolor = op.arg_max(linecolor, axis=1)\n    linecolor = op.reshape(linecolor, shape=op_constant([1]))\n    linecolor = op.add(linecolor, op_constant([1]))\n\n\n    #----\n    # color encode table\n    color_table = [\n        [0, 1, 2, 4, 8, 16, 32, 64, 128, 255] #for debug\n    ]\n    for lc in range(1,10):\n        vals = []\n        bit = 1\n        for c in range(10):\n            if c == 0 :\n                vals.append(0)   #bg marker\n            elif c == lc:\n                vals.append(255) #linecolor marker\n            else:\n                vals.append(bit)\n                bit *= 2\n        color_table.append(vals)\n\n    color_table = op.constant(\n        value=np.array(color_table, dtype=np.uint8).reshape(10, 10, 1, 1)\n    )\n    depth = op.gather(color_table, linecolor, axis=0)\n\n    # tempopray depth for debug\n    # depth0 = op.constant(value=np.array(\n    #    [0, 1, 2, 4, 8, 16, 32, 64, 128, 0], dtype=np.uint8).reshape(1, 10, 1, 1))\n\n    fg = op.reduce_max(op.mul(gridcolor, depth), axes=op_constant([1]), keepdims=True)\n\n    # ---- connect point by propagation ----\n\n    def shift_w(x, k):\n        z = op.constant(value=np.asarray(0, dtype=np.uint8))\n        if k&gt;0:\n            y = op_slice(x, [0], [10-k], [3], [1])\n            pads = op_constant([0,0,0,k,0,0,0,0])\n        else:\n            y = op_slice(x, [-k], [10], [3], [1])\n            pads = op_constant([0,0,0,0,0,0,0,-k])\n        return op.pad(y, pads, constant_value=z, mode=\"constant\")\n\n    def shift_h(x, k):\n        z = op.constant(value=np.asarray(0, dtype=np.uint8))\n        if k&gt;0:\n            y = op_slice(x, [0], [10-k], [2], [1])\n            pads = op_constant([0,0,k,0,0,0,0,0])\n        else:\n            y = op_slice(x, [-k], [10], [2], [1])\n            pads = op_constant([0,0,0,0,0,0,-k,0])\n        return op.pad(y, pads, constant_value=z, mode=\"constant\")\n\n    def propagate_h(x, d):\n        y = x\n        y = op.bitwise_or(y, shift_h(y, d * 1))\n        y = op.bitwise_or(y, shift_h(y, d * 2))\n        y = op.bitwise_or(y, shift_h(y, d * 4))\n        y = op.bitwise_or(y, shift_h(y, d * 8))\n        return y\n\n    def propagate_w(x, d):\n        y = x\n        y = op.bitwise_or(y, shift_w(y, d * 1))\n        y = op.bitwise_or(y, shift_w(y, d * 2))\n        y = op.bitwise_or(y, shift_w(y, d * 4))\n        y = op.bitwise_or(y, shift_w(y, d * 8))\n        return y\n\n\n    left = propagate_w(fg, 1)\n    right = propagate_w(fg, -1)\n    hfill = op.bitwise_and(left, right)\n\n    bottom = propagate_h(fg, 1)\n    top = propagate_h(fg, -1)\n    vfill = op.bitwise_and(top, bottom)\n\n    filled = op.bitwise_or(vfill,hfill) #1x1x10x10\n    filled = op.reshape  (filled, op_constant([1, 1, 10, 1, 10, 1]))\n    filled = op.expand   (filled, op_constant([1, 1, 10, 3, 10, 3]))\n    expanded = op.reshape(filled, op_constant([1, 1, 30, 30]))\n\n    #-- handle line ---\n    line = op.constant(value=np.asarray([0,0,255, 0,0,255, 255,255,255], dtype=np.uint8).reshape(1,1,1,3,1,3))\n    line = op.expand(  line, op_constant([1, 1, 10, 3, 10, 3]))\n    line = op.reshape( line, op_constant([1, 1, 30, 30]))\n    expanded = op.bitwise_or(expanded, line)\n    #expanded = op.max([expanded, line])\n\n    #handle occpancy ---\n    occ_row = occupancy  # [1,1,30,1]\n    occ_col = op.transpose(occupancy, perm=[0, 1, 3, 2])  # [1,1,1,30]\n    inside = op.and_(op.cast(occ_row, to=bool), op.cast(occ_col, to=bool)) #1,1,30,30\n\n    expanded = op.where(\n        inside,\n        expanded,\n        op_constant([254], np.uint8),#invalid\n    )\n    expanded_bg = op.equal(expanded, op_constant([0], np.uint8))\n\n\n    #final expansion to 30x30 -----\n    expanded_colors = op.equal(\n        expanded,\n        op_slice(depth,[1],[10],[1],[1])\n    )\n    output = op.concat([\n        op.cast(expanded_bg, to=np.bool),\n        expanded_colors\n    ], axis=1)\n\n    model = spox.build(\n        inputs={\"input\": input},\n        outputs={\n            \"output\": output,\n        },\n    )\n    onnx.checker.check_model(model)\n    return model\n</code></pre>",
+        "parent": {},
+        "author": {
+         "displayName": "hengck23",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+         "url": "/hengck23",
+         "tier": "GRANDMASTER",
+         "id": 113660,
+         "progressionOptOut": false
+        },
+        "authorType": "TOPIC",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 1468,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "hengck23",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+          "url": "/hengck23",
+          "userName": "hengck23",
+          "tier": "GRANDMASTER",
+          "id": 113660,
+          "profileUrl": "/hengck23",
+          "performanceTier": "GRANDMASTER",
+          "userId": 113660,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "hengck23",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+       "url": "/hengck23",
+       "tier": "GRANDMASTER",
+       "id": 113660,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 1468,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "hengck23",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+        "url": "/hengck23",
+        "userName": "hengck23",
+        "tier": "GRANDMASTER",
+        "id": 113660,
+        "profileUrl": "/hengck23",
+        "performanceTier": "GRANDMASTER",
+        "userId": 113660,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "MassimilianoGhiotto",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/18135156-kg.jpg?t=2025-10-02-07-54-25",
+     "url": "/massimilianoghiotto",
+     "tier": "EXPERT",
+     "id": 18135156,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 84,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "MassimilianoGhiotto",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/18135156-kg.jpg?t=2025-10-02-07-54-25",
+      "url": "/massimilianoghiotto",
+      "userName": "massimilianoghiotto",
+      "tier": "EXPERT",
+      "id": 18135156,
+      "profileUrl": "/massimilianoghiotto",
+      "performanceTier": "EXPERT",
+      "userId": 18135156,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3449349,
+    "postDate": "2026-04-28T00:42:48.443Z",
+    "rawMarkdown": "as an example, consider task009. lt has multiple varying colors, best handled as onehot data. but instead of 1/0 per byte channel, i want to use 1/0 per bit. i can cut the memory to 1/8 times. the opsetset supports it, but the profiler does not. I wonder can the host support this?\n\ni can still use arithmetic, but using bitwise op is more natural",
+    "content": "<p>as an example, consider task009. lt has multiple varying colors, best handled as onehot data. but instead of 1/0 per byte channel, i want to use 1/0 per bit. i can cut the memory to 1/8 times. the opsetset supports it, but the profiler does not. I wonder can the host support this?</p>\n<p>i can still use arithmetic, but using bitwise op is more natural</p>",
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "TOPIC",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1468,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3449036,
+   "postDate": "2026-04-27T10:58:57.257Z",
+   "rawMarkdown": "BitShift are clever hacks and would be good if they can be used\n\n/home/hp/app/anaconda3.11-cv/lib/python3.11/site-packages/onnx_tool/node.py:2829: UserWarning: node BitShift is not registed for profiling, return 0 Macs and 0 params as default. Use NODEPROFILER_REGISTRY to register your profiler for this node.\n  warnings.warn(f'node {n.op_type} is not registed for profiling, return 0 Macs and 0 params as default. '\n \n  File \"/home/hp/app/anaconda3.11-cv/lib/python3.11/site-packages/onnx_tool/node.py\", line 210, in value_infer\n    raise NotImplementedError(f'this Node {self.op_type}-{self.name} has no value_infer')\nNotImplementedError: this Node BitShift-BitShift_0 has no value_infer",
+   "content": "<p>BitShift are clever hacks and would be good if they can be used</p>\n<p>/home/hp/app/anaconda3.11-cv/lib/python3.11/site-packages/onnx_tool/node.py:2829: UserWarning: node BitShift is not registed for profiling, return 0 Macs and 0 params as default. Use NODEPROFILER_REGISTRY to register your profiler for this node.\n  warnings.warn(f'node {n.op_type} is not registed for profiling, return 0 Macs and 0 params as default. '</p>\n<p>File \"/home/hp/app/anaconda3.11-cv/lib/python3.11/site-packages/onnx_tool/node.py\", line 210, in value_infer\n    raise NotImplementedError(f'this Node {self.op_type}-{self.name} has no value_infer')\nNotImplementedError: this Node BitShift-BitShift_0 has no value_infer</p>",
+   "parent": {},
+   "author": {
+    "displayName": "hengck23",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+    "url": "/hengck23",
+    "tier": "GRANDMASTER",
+    "id": 113660,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 6,
+    "canUpvote": true,
+    "totalUpvotes": 7
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 1468,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "THANK_YOU",
+     "featuredUserNames": [
+      "mmoffitt"
+     ],
+     "userCount": 1
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "userName": "hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "profileUrl": "/hengck23",
+     "performanceTier": "GRANDMASTER",
+     "userId": 113660,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3449036,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 694826,
+  "name": "BitShift is not registed for profiling",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-27T10:58:57.255253600Z",
+  "totalVotes": 6,
+  "url": "/competitions/neurogolf-2026/discussion/694826",
+  "totalMessages": 6,
+  "authorPerformanceTier": "GRANDMASTER",
+  "authorProgressionOptOut": false
+ }
+}

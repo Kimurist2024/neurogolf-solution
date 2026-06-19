@@ -1,0 +1,142 @@
+{
+ "forumTopic": {
+  "authorId": 26458260,
+  "authorThumbnailName": "default-thumb.png",
+  "authorUserDisplayName": "Jiyang Qiu",
+  "authorUserName": "jiyangqiu",
+  "comments": [
+   {
+    "id": 3450553,
+    "postDate": "2026-04-30T01:55:15.760Z",
+    "rawMarkdown": "Thank you for sharing! I like these agent reports!",
+    "content": "<p>Thank you for sharing! I like these agent reports!</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Jiwei Liu",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/100236-kg.png?t=2024-07-09-01-29-05",
+     "url": "/jiweiliu",
+     "tier": "GRANDMASTER",
+     "id": 100236,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 22,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Jiwei Liu",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/100236-kg.png?t=2024-07-09-01-29-05",
+      "url": "/jiweiliu",
+      "userName": "jiweiliu",
+      "tier": "GRANDMASTER",
+      "id": 100236,
+      "profileUrl": "/jiweiliu",
+      "performanceTier": "GRANDMASTER",
+      "userId": 100236,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3450581,
+    "postDate": "2026-04-30T03:37:52.383Z",
+    "rawMarkdown": "one may want to check dynamic slicing (when the starts, ends are dynamically determined)\nwhen the reshape-node is applied to a dynamic sliced tensor, the onnx-tool complains raw=0.\ni haven't check in details ... maybe it is a bug?\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F88b4b016992b57c1adc8f55b679bc6f2%2FSelection_3196.png?generation=1777529117828537&alt=media)\n\nthis is using apr-28 updated kaggle memory profiler. Note that the ouput shape is 0 at the back.\n\n```\nonnx code:\n\n    S, L = dynamic tensor\n\n    starts = op.concat([op_constant([0]), op_constant([0]), S_less_one, op_constant([0])], axis=0)\n    ends   = op.concat([op_constant([1]), op_constant([1]), S, L], axis=0)\n    axes   = op.concat([op_constant([0]), op_constant([1]), dim2, dim3], axis=0)\n\n    #---\n    last = op_slice(input, starts, ends, axes)\n\n\n```",
+    "content": "<p>one may want to check dynamic slicing (when the starts, ends are dynamically determined)\nwhen the reshape-node is applied to a dynamic sliced tensor, the onnx-tool complains raw=0.\ni haven't check in details … maybe it is a bug?</p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F88b4b016992b57c1adc8f55b679bc6f2%2FSelection_3196.png?generation=1777529117828537&amp;alt=media\" alt=\"\"></p>\n<p>this is using apr-28 updated kaggle memory profiler. Note that the ouput shape is 0 at the back.</p>\n<pre><code>onnx code:\n\n    S, L = dynamic tensor\n\n    starts = op.concat([op_constant([0]), op_constant([0]), S_less_one, op_constant([0])], axis=0)\n    ends   = op.concat([op_constant([1]), op_constant([1]), S, L], axis=0)\n    axes   = op.concat([op_constant([0]), op_constant([1]), dim2, dim3], axis=0)\n\n    #---\n    last = op_slice(input, starts, ends, axes)\n</code></pre>",
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1468,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3450545,
+   "postDate": "2026-04-30T01:42:58.863Z",
+   "rawMarkdown": "# Agent-Written Report: NeuroGolf 2026 Scorer Issue With Custom ONNX Functions\n\nThis report was written with the help of an AI agent. I am posting it to describe a reproducible scorer behavior that the organizers may want to review.\n\n## Summary\n\nI found a way for a valid ONNX model to receive a 25.00 score for a task while the current scorer does not appear to charge the computation executed inside an ONNX `FunctionProto`.\n\nThe probe model uses:\n\n- Static `input` and `output` tensors.\n- Shape `[1, 10, 30, 30]`.\n- Float tensor input and output.\n- A valid ONNX custom-domain function.\n- ONNX Runtime execution.\n- `onnx.checker.check_model(..., full_check=True)` compatibility.\n\nA single-task probe was submitted and received:\n\n```text\nStatus: COMPLETE\nPublic score: 25.00\n```\n\n## Reproduction Pattern\n\nThe visible main graph contains one wrapper node:\n\n```text\ncustom_domain::Where(cond, input, zero) -> output\n```\n\nThe same model defines a custom ONNX function:\n\n```text\ndomain = custom_domain\nname = Where\n```\n\nONNX Runtime executes the custom function body for `custom_domain::Where`. The function body contains the actual task computation.\n\nThe scorer appears to profile only the visible main-graph node. Since the visible node has `op_type = Where`, it is charged as a cheap `Where`-like operation, while the internal function body is not charged.\n\n## Observed Scorer Output\n\nFor the probe model, local validation showed that the wrapped model produced the same outputs as the original working model on the available local examples.\n\nThe scorer reported:\n\n```text\nmacs = 0\nmemory = 0\nparams = 1\ncost = 1\npoints = 25.000000\n```\n\nThe same model was then submitted as a single-task probe and received:\n\n```text\nPublic score: 25.00\n```\n\n## Technical Details\n\nThe behavior appears to come from two interactions.\n\nFirst, the profiler seems to identify the wrapper node by `op_type` without accounting for the custom ONNX domain or expanding the function body. A custom-domain node whose `op_type` is `Where` is therefore treated like a regular built-in `Where` for scoring purposes.\n\nSecond, the memory calculation appears to inspect the main graph’s `input`, `value_info`, and `output` tensors, while skipping tensors named `input` and `output`. Tensors inside the custom function body do not appear to be included in the charged memory.\n\nTogether, this allows the actual computation to be placed inside an ONNX function body while the scorer charges only the small main-graph wrapper.\n\n## Additional Local Checks\n\nI also tested small local probes where the custom function body contained operations such as:\n\n```text\nConstant -> Conv\nArgMax -> Constant -> OneHot\nConstant -> Constant -> Pad\nTranspose\n```\n\nThese probes were accepted locally by ONNX checker and ONNX Runtime, and the scorer charged only the visible wrapper node.\n\nI also tested wrapping existing working ONNX models by moving the original graph into a custom-domain `Where` function. In local checks, the wrapped model output matched the original model output exactly, while the scorer reported:\n\n```text\nscore_tuple = (0, 0, 1)\n```\n\n## Possible Fixes\n\nPossible mitigations include:\n\n1. Reject ONNX models with non-empty `model.functions`.\n2. Reject custom-domain nodes unless explicitly allowed.\n3. Expand or inline ONNX `FunctionProto` bodies before profiling.\n4. Profile nodes using both `domain` and `op_type`, rather than `op_type` alone.\n5. Include tensors and initializers inside function bodies in memory and parameter accounting.\n6. Treat unknown custom-domain functions as invalid for scoring.\n\nThe simplest immediate mitigation may be:\n\n```text\nReject submissions containing ONNX FunctionProto definitions.\nReject nodes with custom domains unless those domains are explicitly whitelisted.\n```\n\n## Closing\n\nThis is a reproducible scorer behavior confirmed with an official single-task probe that received 25.00. I am sharing it so the organizers can decide whether this ONNX pattern should be allowed or patched in the scorer.",
+   "content": "<h1>Agent-Written Report: NeuroGolf 2026 Scorer Issue With Custom ONNX Functions</h1>\n<p>This report was written with the help of an AI agent. I am posting it to describe a reproducible scorer behavior that the organizers may want to review.</p>\n<h2>Summary</h2>\n<p>I found a way for a valid ONNX model to receive a 25.00 score for a task while the current scorer does not appear to charge the computation executed inside an ONNX <code>FunctionProto</code>.</p>\n<p>The probe model uses:</p>\n<ul>\n<li>Static <code>input</code> and <code>output</code> tensors.</li>\n<li>Shape <code>[1, 10, 30, 30]</code>.</li>\n<li>Float tensor input and output.</li>\n<li>A valid ONNX custom-domain function.</li>\n<li>ONNX Runtime execution.</li>\n<li><code>onnx.checker.check_model(..., full_check=True)</code> compatibility.</li>\n</ul>\n<p>A single-task probe was submitted and received:</p>\n<pre><code>Status: COMPLETE\nPublic score: 25.00\n</code></pre>\n<h2>Reproduction Pattern</h2>\n<p>The visible main graph contains one wrapper node:</p>\n<pre><code>custom_domain::Where(cond, input, zero) -&gt; output\n</code></pre>\n<p>The same model defines a custom ONNX function:</p>\n<pre><code>domain = custom_domain\nname = Where\n</code></pre>\n<p>ONNX Runtime executes the custom function body for <code>custom_domain::Where</code>. The function body contains the actual task computation.</p>\n<p>The scorer appears to profile only the visible main-graph node. Since the visible node has <code>op_type = Where</code>, it is charged as a cheap <code>Where</code>-like operation, while the internal function body is not charged.</p>\n<h2>Observed Scorer Output</h2>\n<p>For the probe model, local validation showed that the wrapped model produced the same outputs as the original working model on the available local examples.</p>\n<p>The scorer reported:</p>\n<pre><code>macs = 0\nmemory = 0\nparams = 1\ncost = 1\npoints = 25.000000\n</code></pre>\n<p>The same model was then submitted as a single-task probe and received:</p>\n<pre><code>Public score: 25.00\n</code></pre>\n<h2>Technical Details</h2>\n<p>The behavior appears to come from two interactions.</p>\n<p>First, the profiler seems to identify the wrapper node by <code>op_type</code> without accounting for the custom ONNX domain or expanding the function body. A custom-domain node whose <code>op_type</code> is <code>Where</code> is therefore treated like a regular built-in <code>Where</code> for scoring purposes.</p>\n<p>Second, the memory calculation appears to inspect the main graph’s <code>input</code>, <code>value_info</code>, and <code>output</code> tensors, while skipping tensors named <code>input</code> and <code>output</code>. Tensors inside the custom function body do not appear to be included in the charged memory.</p>\n<p>Together, this allows the actual computation to be placed inside an ONNX function body while the scorer charges only the small main-graph wrapper.</p>\n<h2>Additional Local Checks</h2>\n<p>I also tested small local probes where the custom function body contained operations such as:</p>\n<pre><code>Constant -&gt; Conv\nArgMax -&gt; Constant -&gt; OneHot\nConstant -&gt; Constant -&gt; Pad\nTranspose\n</code></pre>\n<p>These probes were accepted locally by ONNX checker and ONNX Runtime, and the scorer charged only the visible wrapper node.</p>\n<p>I also tested wrapping existing working ONNX models by moving the original graph into a custom-domain <code>Where</code> function. In local checks, the wrapped model output matched the original model output exactly, while the scorer reported:</p>\n<pre><code>score_tuple = (0, 0, 1)\n</code></pre>\n<h2>Possible Fixes</h2>\n<p>Possible mitigations include:</p>\n<ol>\n<li>Reject ONNX models with non-empty <code>model.functions</code>.</li>\n<li>Reject custom-domain nodes unless explicitly allowed.</li>\n<li>Expand or inline ONNX <code>FunctionProto</code> bodies before profiling.</li>\n<li>Profile nodes using both <code>domain</code> and <code>op_type</code>, rather than <code>op_type</code> alone.</li>\n<li>Include tensors and initializers inside function bodies in memory and parameter accounting.</li>\n<li>Treat unknown custom-domain functions as invalid for scoring.</li>\n</ol>\n<p>The simplest immediate mitigation may be:</p>\n<pre><code>Reject submissions containing ONNX FunctionProto definitions.\nReject nodes with custom domains unless those domains are explicitly whitelisted.\n</code></pre>\n<h2>Closing</h2>\n<p>This is a reproducible scorer behavior confirmed with an official single-task probe that received 25.00. I am sharing it so the organizers can decide whether this ONNX pattern should be allowed or patched in the scorer.</p>",
+   "parent": {},
+   "author": {
+    "displayName": "Jiyang Qiu",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+    "url": "/jiyangqiu",
+    "tier": "CONTRIBUTOR",
+    "id": 26458260,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 7,
+    "canUpvote": true,
+    "totalUpvotes": 7
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 881,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Jiyang Qiu",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/jiyangqiu",
+     "userName": "jiyangqiu",
+     "tier": "CONTRIBUTOR",
+     "id": 26458260,
+     "profileUrl": "/jiyangqiu",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 26458260,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3450545,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 695638,
+  "name": "Agent-Written Report: NeuroGolf 2026 Scoring Loophole Disclosure",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-30T01:42:58.861969Z",
+  "totalVotes": 7,
+  "url": "/competitions/neurogolf-2026/discussion/695638",
+  "totalMessages": 2,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}
