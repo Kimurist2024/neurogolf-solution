@@ -7,26 +7,39 @@
 # Harvest (LB-judge merge) is done by the MAIN session. Launch from MAIN session
 # only (codex daemon under a codex sandbox dies -- see factory-codex-sandbox-incident).
 #
-# Env: GR_SLOTS (codex slots, default 6) GR_TIMEOUT (sec/worker, default 3000)
-#      GR_HOURS (budget, default 8) GR_MODEL (default gpt-5.5) GR_GOAL (default 1000)
+# Env: GR_ENGINE (codex|claude|kimi, default codex) GR_SLOTS (worker slots, default 6)
+#      GR_TIMEOUT (sec/worker, default 3000) GR_HOURS (budget, default 8)
+#      GR_MODEL (default: codex=gpt-5.5, claude=claude-opus-4-8, kimi=config default)
+#      GR_GOAL (default 1000)
+# Engines: codex -> GPT-5.5 (codex exec), claude -> Opus (claude -p), kimi -> Kimi (kimi -p).
+#      All three read the generator, rebuild ground-up, promote via try_candidate, and
+#      write scratch to scripts/golf/scratch_<engine>/. Same risk-free harvest path.
 set -u
 REPO="/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf"; cd "$REPO" || exit 1
 V=".venv/bin/python"
-LOGDIR="artifacts/gpt_rebuild_logs"; mkdir -p "$LOGDIR"
+LOGDIR="${GR_LOGDIR:-artifacts/gpt_rebuild_logs}"; mkdir -p "$LOGDIR"
 N="${GR_SLOTS:-6}"; TIMEOUT="${GR_TIMEOUT:-3000}"; HOURS="${GR_HOURS:-8}"
-MODEL="${GR_MODEL:-gpt-5.5}"; GOAL="${GR_GOAL:-1000}"
+GOAL="${GR_GOAL:-1000}"
+ENGINE="${GR_ENGINE:-codex}"   # codex | claude | kimi
+case "$ENGINE" in
+  codex)  MODEL="${GR_MODEL:-gpt-5.5}";;
+  claude) MODEL="${GR_MODEL:-claude-opus-4-8}";;
+  kimi)   MODEL="${GR_MODEL:-}";;   # empty -> kimi config.toml default_model
+  *) echo "FATAL bad GR_ENGINE=$ENGINE (codex|claude|kimi)"; exit 2;;
+esac
+SCRATCH="scripts/golf/scratch_${ENGINE}"
 LOG="$LOGDIR/gpt_rebuild.log"
 log(){ echo "[$(date -u '+%m-%d %H:%M:%SZ')] $*" >> "$LOG"; }
 killtree(){ local p="$1" c; for c in $(pgrep -P "$p" 2>/dev/null); do killtree "$c"; done; kill -KILL "$p" 2>/dev/null; }
-command -v codex >/dev/null || { echo "FATAL codex missing"; exit 2; }
+command -v "$ENGINE" >/dev/null || { echo "FATAL $ENGINE missing"; exit 2; }
 [ -f docs/golf/gpt_assigned.json ] || echo '[]' > docs/golf/gpt_assigned.json
 
 build_prompt(){ # $1=task $2=hash $3=cost -> stdout
   local TASK="$1" HASH="$2" COST="$3"; local T3; T3=$(printf "%03d" "$TASK")
-  mkdir -p "scripts/golf/scratch_codex/task${T3}"
+  mkdir -p "${SCRATCH}/task${T3}"
   $V scripts/golf/seed_best.py "$TASK" >/dev/null 2>&1
   $V scripts/factory/worker_prompt.py "$TASK" "$HASH" "$COST" \
-    | sed "s#scripts/golf/scratch/task#scripts/golf/scratch_codex/task#g"
+    | sed "s#scripts/golf/scratch/task#${SCRATCH}/task#g; s/detached Codex CLI/detached ${ENGINE} worker/g; s/Codex CLI/${ENGINE}/g"
   cat <<EOF
 
 ===== HARD STRETCH GOAL: drive task${T3} cost from ${COST} toward <= ${GOAL}. =====
@@ -57,11 +70,17 @@ launch(){ # $1=task $2=hash $3=cost
   local TASK="$1" HASH="$2" COST="$3"; local T3; T3=$(printf "%03d" "$TASK")
   local pf; pf=$(mktemp "/tmp/gr_${TASK}_XXXXXX")
   build_prompt "$TASK" "$HASH" "$COST" > "$pf"
-  local lg="$LOGDIR/codex_task${T3}.log"
-  ( codex exec -m "$MODEL" -s workspace-write --skip-git-repo-check -C "$REPO" - < "$pf" > "$lg" 2>&1 & \
-    w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) &
+  local lg="$LOGDIR/${ENGINE}_task${T3}.log"
+  case "$ENGINE" in
+    codex)  ( codex exec -m "$MODEL" -s workspace-write --skip-git-repo-check -C "$REPO" - < "$pf" > "$lg" 2>&1 & \
+              w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
+    claude) ( claude -p --model "$MODEL" --dangerously-skip-permissions < "$pf" > "$lg" 2>&1 & \
+              w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
+    kimi)   ( cd "$REPO" && kimi ${MODEL:+-m "$MODEL"} -p "$(cat "$pf")" > "$lg" 2>&1 & \
+              w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
+  esac
   LAST_PID=$!
-  log "launch codex task${T3} cost=${COST} pid=${LAST_PID}"
+  log "launch ${ENGINE} task${T3} cost=${COST} pid=${LAST_PID}"
 }
 
 next_target(){
@@ -89,8 +108,10 @@ refill(){
     [ -n "$p" ] && kill -0 "$p" 2>/dev/null && { echo "$p" >> "$tmp"; alive=$((alive+1)); }
   done < "$pf"
   while [ "$alive" -lt "$N" ]; do
-    # quota guard: stop refilling when codex weekly budget < 20%
-    $V scripts/codex_quota.py >/dev/null 2>&1 || { log "quota STOP -- not refilling"; break; }
+    # quota guard (codex only): stop refilling when codex weekly budget < 20%
+    if [ "$ENGINE" = codex ]; then
+      $V scripts/codex_quota.py >/dev/null 2>&1 || { log "quota STOP -- not refilling"; break; }
+    fi
     local spec; spec=$(next_target) || break
     local T H C; IFS=: read -r T H C <<< "$spec"
     launch "$T" "$H" "$C"; echo "$LAST_PID" >> "$tmp"; alive=$((alive+1))
@@ -100,7 +121,7 @@ refill(){
 
 END=$(( $(date +%s) + HOURS*3600 ))
 rm -f "$LOGDIR/.pids"
-log "==== GPT REBUILD START slots=${N} model=${MODEL} timeout=${TIMEOUT}s budget=${HOURS}h goal<=${GOAL} pool=cost>5000 ===="
+log "==== REBUILD START engine=${ENGINE} slots=${N} model=${MODEL} timeout=${TIMEOUT}s budget=${HOURS}h goal<=${GOAL} pool=cost>5000 ===="
 while [ "$(date +%s)" -lt "$END" ]; do
   refill
   sleep 20

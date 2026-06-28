@@ -2,13 +2,13 @@
 
 ## Current Net
 - path: `artifacts/optimized/task398.onnx`
-- file size: 8682 bytes
-- cost: 84295
-- score: 13.657922
-- memory: 83533
-- params: 762
-- nodes: 44
-- value_info tensors after shape inference: 43
+- file size: 4388 bytes
+- cost: 5007
+- score: 16.481408
+- memory: 4235
+- params: 772
+- nodes: 24
+- value_info tensors after shape inference: 23
 - local gold-correct: True
 
 ## Research Queue
@@ -20,26 +20,26 @@
 
 ## Op Histogram
 
-- And: 7
-- Slice: 6
-- Where: 6
-- Equal: 5
-- Add: 4
-- Or: 4
-- Cast: 3
+- Cast: 5
+- Reshape: 3
+- Sub: 2
+- Equal: 2
 - Less: 2
+- Slice: 1
 - Conv: 1
+- Greater: 1
 - ReduceSum: 1
 - Mul: 1
-- Sub: 1
-- Not: 1
-- Max: 1
+- MatMul: 1
+- Gather: 1
+- And: 1
+- Where: 1
 - Pad: 1
 
 ## Targets
 
-- cost 900: score 18.197605, delta +4.539683
-- cost 314: score 19.250607, delta +5.592685
+- cost 900: score 18.197605, delta +1.716197
+- cost 314: score 19.250607, delta +2.769199
 
 ## Examples
 - train: 5 shown

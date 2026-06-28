@@ -61,3 +61,9 @@ One row per task the sequential campaign closed. cost_before is the
 | 161 | PROMOTED | 28822 | 16615 | 14.731 | 15.282 | +0.551 | 1 | 500 | Provenance |
 | 009 | PROMOTED | 29242 | 8608 | 14.717 | 15.940 | +1.223 | 1 | 500 | Provenance |
 | 182 | PROMOTED | 29723 | 17782 | 14.700 | 15.214 | +0.514 | 1 | 500 | Provenance |
+| 281 | PROMOTED | 2006 | 1778 | 17.396 | 17.517 | +0.121 | 1 | 30 | Provenance declaration |
+| 157 | PROMOTED | 2235 | 1984 | 17.288 | 17.407 | +0.119 | 6 | 30 | Provenance Declaration |
+| 250 | PROMOTED | 2389 | 1989 | 17.221 | 17.405 | +0.183 | 1 | 30 | Provenance |
+| 096 | PROMOTED | 2450 | 1854 | 17.196 | 17.475 | +0.279 | 1 | 30 | Provenance Declaration |
+| 029 | FLOOR | 2540 | 2390 | 17.160 | 17.221 | +0.061 | 8 | 30 | Provenance |
+| 005 | FLOOR | 2545 | 2534 | 17.158 | 17.162 | +0.004 | 7 | 30 | Provenance declaration |

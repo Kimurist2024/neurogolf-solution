@@ -50,8 +50,12 @@ wait_for_net(){   # block until codex's backend is reachable again
 # 1 = VOID round (network error, no work done) -> caller retries WITHOUT gating
 # so a transient outage can never burn no_progress into a false floor.
 run_codex_round(){   # $1=task $2=hash $3=cost
-  local task="$1" hash="$2" cost="$3" t3 pf rlog wpid kpid before new
+  local task="$1" hash="$2" cost="$3" t3 pf rlog wpid kpid before new target
   t3=$(printf "%03d" "$task")
+  # target cost = the cost at which the task reaches SOLO_THR (cost = e^(25-THR)).
+  # Derived from SOLO_THR so the goal text is correct for any cost band, not the
+  # hardcoded 19700 that only matched the THR=15.1 high-cost campaign.
+  target=$(awk "BEGIN{printf \"%.0f\", exp(25-$SOLO_THR)}")
   wait_for_net
   pf="$(mktemp "${TMPDIR:-/tmp}/solo_prompt_${task}_XXXXXX")"
   $VENV scripts/factory/worker_prompt.py "$task" "$hash" "$cost" > "$pf"
@@ -59,8 +63,8 @@ run_codex_round(){   # $1=task $2=hash $3=cost
     echo
     echo "Solo deep-dive goal (campaign override)"
     echo "- This task's champion cost is $cost (score $(awk "BEGIN{printf \"%.2f\",25-log($cost)}"))."
-    echo "- Drive cost STRICTLY BELOW 19700 so the task scores >= ${SOLO_THR}. That needs"
-    echo "  roughly $(awk "BEGIN{printf \"%.1f\",$cost/19700}")x reduction. If incremental shrinking"
+    echo "- Drive cost STRICTLY BELOW $target so the task scores >= ${SOLO_THR}. That needs"
+    echo "  roughly $(awk "BEGIN{printf \"%.1f\",$cost/$target}")x reduction. If incremental shrinking"
     echo "  stalls, do a ground-up minimal rebuild straight from the generator spec."
     echo "- Promote every strictly-cheaper correct net via try_candidate. The campaign"
     echo "  fresh-gates (k=${SOLO_K}) before adopting, so visible-example overfit is"
@@ -123,7 +127,13 @@ ab_verify(){
 }
 
 log "============== SOLO deep-dive START (k=$SOLO_K maxrounds=$SOLO_MAXROUNDS stuck=$SOLO_STUCK thr=$SOLO_THR timeout=${CODEX_TIMEOUT}s) =============="
-$VENV scripts/golf/solo.py init 2>&1 | tee -a "$LOG"
+# Idempotent init: if a state file already exists (e.g. pre-seeded + target-pruned
+# by the operator), DO NOT re-init or the pruned target queue is clobbered.
+if [ -f docs/golf/solo_state.json ]; then
+  log "solo_state.json exists -> skip init (using existing pre-pruned target queue)"
+else
+  $VENV scripts/golf/solo.py init 2>&1 | tee -a "$LOG"
+fi
 
 while true; do
   read -r TASK HASH COST < <($VENV scripts/golf/solo.py next)

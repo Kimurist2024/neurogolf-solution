@@ -11,7 +11,7 @@ Usage: dump_scores.py [--best <zip>] [--out all_scores.csv]
        default best = pointer in docs/golf/campaign_best.txt
 """
 from __future__ import annotations
-import argparse, json, math, re, sys, tempfile, zipfile
+import argparse, csv, json, math, multiprocessing as mp, re, sys, tempfile, zipfile
 from pathlib import Path
 import onnx
 
@@ -27,6 +27,64 @@ UBI = {"grids", "grid", "randint", "randints", "random_color", "random_colors",
        "orange", "cyan", "maroon", "set_colors", "remove_duplicates", "isclose",
        "sqrt", "int_sqrt"}
 CALL = re.compile(r"common\.([a-z_]+)\s*\(")
+
+# Nets with a giant single Einsum (many operands) hang ONNX Runtime LOCALLY even
+# though the grader scores them fine. Detect them and score in a child process
+# with a hard timeout; on timeout carry over the prior CSV score. The net itself
+# is NEVER modified, so submission cost is unchanged.
+MAX_EINSUM_OPERANDS = 15   # >= this many inputs on one Einsum node => hang-prone
+HANG_TIMEOUT = 30          # seconds before we give up and carry over
+
+
+def is_hang_prone(model: onnx.ModelProto) -> bool:
+    for nd in model.graph.node:
+        if nd.op_type == "Einsum" and len(nd.input) >= MAX_EINSUM_OPERANDS:
+            return True
+    return False
+
+
+def _score_worker(data: bytes, t: int, q) -> None:
+    try:
+        with tempfile.TemporaryDirectory() as wd:
+            s = scoring.score_and_verify(onnx.load_model_from_string(data), t, wd,
+                                         label="x", require_correct=False)
+        if s and s.get("score") is not None:
+            cost = s.get("cost", 0)
+            sc = s["score"] if cost == 0 else max(1.0, 25 - math.log(cost))
+            q.put((cost, sc))
+        else:
+            q.put((0, 0.0))
+    except Exception:
+        q.put(None)
+
+
+def score_in_subprocess(data: bytes, t: int, timeout: int):
+    """Return (cost, score), or None on timeout/hang (caller carries over)."""
+    q = mp.Queue()
+    p = mp.Process(target=_score_worker, args=(data, t, q))
+    p.start(); p.join(timeout)
+    if p.is_alive():
+        p.terminate(); p.join(5)
+        if p.is_alive():
+            p.kill()
+        return None
+    try:
+        return q.get_nowait()
+    except Exception:
+        return None
+
+
+def load_carryover(out: Path) -> dict[int, tuple[int, float]]:
+    """Prior {task_int: (cost, score)} from an existing all_scores.csv, if any."""
+    if not out.is_file():
+        return {}
+    carry = {}
+    for r in csv.DictReader(open(out)):
+        try:
+            carry[int(r["task"].replace("task", ""))] = (int(r["cost"]), float(r["score"]))
+        except (KeyError, ValueError):
+            continue
+    return carry
 
 
 def archetype(h: str) -> str:
@@ -45,18 +103,35 @@ def main() -> int:
     a = ap.parse_args()
 
     z = zipfile.ZipFile(a.best)
+    carry = load_carryover(a.out)
     rows = []
+    hang_tasks, carried = [], []
     with tempfile.TemporaryDirectory() as wd:
         for t in range(1, 401):
             n = f"task{t:03d}.onnx"
             h = HMAP.get(f"{t:03d}", "")
             cost, sc = 0, 0.0
             if n in z.namelist():
-                s = scoring.score_and_verify(onnx.load_model_from_string(z.read(n)),
-                                             t, wd, label="x", require_correct=False)
-                if s and s.get("cost"):
-                    cost = s["cost"]
-                    sc = max(1.0, 25 - math.log(cost))
+                data = z.read(n)
+                model = onnx.load_model_from_string(data)
+                if is_hang_prone(model):
+                    # giant-Einsum net: score in a child process so a hang can be
+                    # killed; carry over the prior CSV score if it times out.
+                    hang_tasks.append(t)
+                    res = score_in_subprocess(data, t, HANG_TIMEOUT)
+                    if res is None:
+                        cost, sc = carry.get(t, (0, 0.0))
+                        carried.append(t)
+                    else:
+                        cost, sc = res
+                else:
+                    s = scoring.score_and_verify(model, t, wd, label="x",
+                                                 require_correct=False)
+                    if s and s.get("score") is not None:
+                        # cost may legitimately be 0 (params=0, memory=0 net); the
+                        # scorer caps score at 25.0 in that case. Trust its score.
+                        cost = s.get("cost", 0)
+                        sc = s["score"] if cost == 0 else max(1.0, 25 - math.log(cost))
             rows.append((t, h, cost, sc, archetype(h)))
 
     rows.sort(key=lambda r: r[3])  # score ascending (lowest first)
@@ -66,6 +141,10 @@ def main() -> int:
     a.out.write_text("\n".join(lines) + "\n")
     total = sum(r[3] for r in rows)
     print(f"wrote {a.out} ({len(rows)} tasks, sum_score {total:.2f}, base {a.best.name})")
+    print(f"hang-prone (giant Einsum, scored in subprocess): {len(hang_tasks)}")
+    if carried:
+        print(f"  timed out -> carried over prior CSV score: "
+              f"{[f'{t:03d}' for t in carried]}")
     print("lowest 8:")
     for t, h, cost, sc, arch in rows[:8]:
         print(f"  task{t:03d} cost={cost} score={sc:.4f} [{arch}]")
@@ -73,4 +152,5 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    mp.set_start_method("spawn", force=True)
     raise SystemExit(main())
