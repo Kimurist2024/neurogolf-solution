@@ -3,6 +3,14 @@
 Kaggle コンペ [The 2026 NeuroGolf Championship](https://www.kaggle.com/competitions/neurogolf-2026) への参加リポジトリ。
 ルール全文(公式ページから取得)は [docs/competition/kaggle-rules-full.md](docs/competition/kaggle-rules-full.md) にある。
 
+## ⚠️ 言語ルール(最優先・全応答に適用)
+
+**ユーザーへの応答・進捗報告・要約・表・結論は必ず日本語で書く。** 英語で書かない。
+
+- サブエージェント(Agent ツール)の報告が英語で返ってきても、ユーザーに見せるときは**必ず日本語に要約・翻訳**する。英語のまま貼り付けない。
+- 例外として原文ママでよいのは、ファイルパス・タスクID・コマンド・コード・ONNXオペ名など**翻訳すると壊れる固有名詞のみ**。
+- 表の見出し・項目・判定(勝ち/床/退行など)も日本語にする。
+
 ## 作業体制(オーケストレーション)
 
 **Fable が提案 → Opus が実装 → Fable がレビュー** の 2 役構造で回す。詳細は [docs/orchestration.md](docs/orchestration.md)。

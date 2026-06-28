@@ -47,7 +47,7 @@ from lib import scoring  # noqa: E402
 import verify_fix  # noqa: E402
 
 # --- paths -----------------------------------------------------------------
-BASE_DIR = REPO / "artifacts" / "aggr_build_v2"           # proven 6713.69 champion
+BASE_DIR = Path(os.environ.get("SOLO_BASE") or (REPO / "artifacts" / "aggr_build_v2"))  # champion base (env-overridable)
 STAGE = REPO / "artifacts" / "golf_solo" / "stage"        # private working copy
 SUB_ZIP = REPO / "artifacts" / "golf_solo" / "submission.zip"
 AB_DIR = REPO / "artifacts" / "golf_solo" / "ab"          # <=5%-fresh-fail A/B candidates
@@ -55,7 +55,7 @@ AB_ZIP_ONE = REPO / "artifacts" / "golf_solo" / "submission_ab_one.zip"
 HC = REPO / "artifacts" / "handcrafted"                   # where Codex/try_candidate writes
 STATE = REPO / "docs" / "golf" / "solo_state.json"
 LOG_MD = REPO / "docs" / "golf" / "solo_improvements.md"
-REAL_INCUMBENT = REPO / "docs" / "golf" / "real_incumbent.json"
+REAL_INCUMBENT = Path(os.environ.get("SOLO_REAL_INCUMBENT") or (REPO / "docs" / "golf" / "real_incumbent.json"))
 HASH_MAP = REPO / "docs" / "golf" / "task_hash_map.json"
 KIMI_EXCLUDE = REPO / "docs" / "golf" / "kimi_exclude.json"   # tasks kimi must NOT touch
 KIMI_ATTEMPTED = REPO / "docs" / "golf" / "kimi_attempted.json"  # tasks kimi already did
