@@ -25,13 +25,23 @@ def build_prompt(task: int, task_hash: str, cost: int) -> str:
           count constant, or color constant may be derived only from examples.
           A constant is acceptable only when it is entailed by the generator.
 
-        Primary objective (NEW)
-        - Per-task score is max(1, 25 - ln(cost)). The marginal score gain of a
-          cost cut is multiplicative: cutting cost by a factor of e (~2.718x)
-          earns +1 full point. The single most valuable outcome here is a
-          large cost reduction, so aim to cut this task's cost by AT LEAST
-          ~2.7x (one full point), and ideally drive it toward the few-hundred
-          floor a strong leaderboard implies. Do not stop at a tiny promotion.
+        Primary objective (STANDING RULE 2026-06-29 — see
+        docs/golf/AGENT_LOOP_TASK_RULES.md, the authoritative version)
+        - Per-task score is max(1, 25 - ln(cost)). Cutting cost by a factor of e
+          (~2.718x) earns +1 point. TARGET: improve THIS task's score by AT
+          LEAST +2 (≈7.4x cost cut); ideally drive cost to <= 5. Do not stop at
+          a tiny promotion.
+        - HIGHEST PRIORITY: you MUST output an improved ONNX. Even if you cannot
+          reach the ideal cost, the moment you have ANY candidate cheaper than
+          the incumbent that passes the adoption gate, SAVE it (promote via
+          try_candidate). NEVER finish without emitting an improved net when a
+          better one was found. "Could not improve" is acceptable ONLY after a
+          genuine from-scratch rebuild also failed (see mandatory trigger below).
+        - A model too heavy to verify is NOT adoptable. Local lib-score +
+          official decode + fresh audit must run within ~60s in practice; the
+          adoption gate verification itself must finish within 30s. A low-cost
+          net whose measurement is extremely slow is rejected — switch to
+          ROI/coordinate/rule-based direct generation instead.
         - FULL REBUILD IS ALLOWED AND ENCOURAGED. If the current promoted/
           incumbent net resists incremental shrinking, do NOT anchor to its
           structure. Build a brand-new minimal static-shape ONNX graph straight
@@ -79,8 +89,44 @@ def build_prompt(task: int, task_hash: str, cost: int) -> str:
         - Equal requires opset >= 11.
         - File size limit is 1.44 MB.
         - Target runtime is ONNX Runtime 1.24 CPU with ORT_DISABLE_ALL.
+        - TopK is NOT banned by name. Adopt it ONLY if the local ORT 1.24
+          DISABLE_ALL grader scores the net to completion. Judge by the actual
+          local grader result, never by op name alone.
         - The only promotion path is:
           .venv/bin/python scripts/golf/try_candidate.py --task {task} --onnx PATH
+
+        STANDING ADOPTION GATE (2026-06-29 — full text in
+        docs/golf/AGENT_LOOP_TASK_RULES.md). Adopt a candidate ONLY if ALL hold:
+        1. scripts/lib/scoring with require_correct=True: train+test+arc-gen all
+           exact-match and cost is computable.
+        2. official neurogolf_utils decoder: train+test+arc-gen wrong=0.
+        3. raw float output has NO cell in (0, 0.25) (no env threshold flip).
+        4. fresh generator audit: k>0 AND zero failures. One fresh fail => reject.
+        5. the whole verification finishes within 30s (and local+official+fresh
+           together stay practical, ~60s). A low-cost net that is extremely slow
+           to verify is NOT adoptable.
+        Structural integrity before adoption:
+        - onnx.checker(full_check) and shape inference must pass; initializer /
+          attribute / tensor-shape consistency confirmed.
+        - If Conv/ConvTranspose is used, weight, bias length and output-channel
+          count must match exactly (bias length < out_ch is a private-0 flip).
+        - Reject any candidate whose grading changes by ZIP ordering alone.
+        - NOTE (§A1, BANNED_STRUCTURES.md): a net can pass EVERY local gate yet
+          still make the official grader exit non-zero ("Scoring session had
+          non-zero exit code" / "Error processing onnx networks"). This is not
+          locally detectable; if a submission ERRORs, the LB stays at the prior
+          best, and the fix is to bisect-revert the offending task to base.
+        Mechanically, scripts/verify_fix.py --task {task} --onnx PATH --k 30
+        runs gates 1-4 + margin; confirm the structural checks and 30s/60s timing
+        separately.
+
+        Deliverables (always produce):
+        - the improved ONNX, a summary of the change, the 5-gate results above,
+          the structure-check results, and the full submission ZIP (named exactly
+          submission.zip) with the improved net swapped into the existing best.
+        - If you could not improve, say so plainly. Do NOT report unverified
+          checks as done, and do NOT state speculation as fact; separate
+          confirmed from unconfirmed explicitly.
 
         Generalization rules from the pilot amendment
         - Acceptable building blocks include connected components, bounded BFS,
@@ -111,6 +157,9 @@ def build_prompt(task: int, task_hash: str, cost: int) -> str:
           expansion rules when the generator justifies them.
 
         Required inputs to read
+        - STANDING RULE (READ FIRST): docs/golf/AGENT_LOOP_TASK_RULES.md — the
+          authoritative single-task improvement rule (objective, adoption gate,
+          deliverables, honesty). This worker prompt is its operational summary.
         - PLAYBOOK (READ FIRST, saves wasted attempts): docs/golf/ONNX_GOLF_PLAYBOOK.md
           — the ORT 1.24 + DISABLE_ALL dtype/op support matrix and the proven
           cost-reduction patterns. Choose dtypes and the output-as-Equal /
