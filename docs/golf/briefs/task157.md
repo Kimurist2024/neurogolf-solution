@@ -2,13 +2,13 @@
 
 ## Current Net
 - path: `artifacts/optimized/task157.onnx`
-- file size: 275944 bytes
-- cost: 73220
-- score: 13.798776
-- memory: 72607
-- params: 613
-- nodes: 2412
-- value_info tensors after shape inference: 2411
+- file size: 12659 bytes
+- cost: 1378
+- score: 17.771612
+- memory: 1267
+- params: 111
+- nodes: 144
+- value_info tensors after shape inference: 159
 - local gold-correct: True
 
 ## Research Queue
@@ -20,36 +20,30 @@
 
 ## Op Histogram
 
-- And: 389
-- Equal: 233
-- Where: 220
-- Cast: 201
-- Add: 180
-- ReduceSum: 155
-- Squeeze: 140
-- Gather: 126
-- Sub: 109
-- Mul: 93
-- Max: 85
-- Min: 82
-- Clip: 72
-- Reshape: 72
-- Greater: 69
-- Less: 42
-- Not: 40
-- Or: 33
-- ReduceMin: 30
-- ReduceMax: 22
-- MaxPool: 8
-- Slice: 7
-- Pad: 2
-- Sum: 1
-- Concat: 1
+- Mul: 20
+- BitwiseOr: 18
+- BitwiseAnd: 18
+- Cast: 16
+- BitwiseXor: 14
+- Sub: 13
+- Div: 9
+- Equal: 7
+- Split: 6
+- Add: 6
+- Unsqueeze: 4
+- Concat: 4
+- Einsum: 2
+- Slice: 2
+- Where: 1
+- ArgMax: 1
+- ReduceMax: 1
+- Greater: 1
+- Gather: 1
 
 ## Targets
 
-- cost 900: score 18.197605, delta +4.398829
-- cost 314: score 19.250607, delta +5.451831
+- cost 900: score 18.197605, delta +0.425994
+- cost 314: score 19.250607, delta +1.478995
 
 ## Examples
 - train: 2 shown

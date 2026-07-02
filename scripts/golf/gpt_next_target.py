@@ -16,16 +16,18 @@ fully-optimized nets use a giant fused Einsum that hangs ONNX Runtime locally
 scoring timeout we SKIP the task entirely rather than block the whole campaign.
 """
 from __future__ import annotations
-import json, multiprocessing as mp, sys, tempfile
+import json, multiprocessing as mp, os, sys, tempfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 FS = REPO / "docs" / "golf"
 HAND = REPO / "artifacts" / "handcrafted"
-GOAL = 1000
+# GOAL / TARGETS は env で上書き可(後方互換: 未設定なら従来値)。
+GOAL = int(os.environ.get("GR_TARGET_GOAL", "1000"))
 HAND_TIMEOUT = 25            # sec; hang-prone giant-Einsum nets are skipped
 HANG = "__HANG__"           # sentinel: scoring timed out -> skip task
-TARGETS = FS / "gpt5000_targets.json"
+_tf = os.environ.get("GR_TARGETS_FILE", "")
+TARGETS = Path(_tf) if _tf else FS / "gpt5000_targets.json"
 
 
 def load(p, d):

@@ -110,28 +110,20 @@ def main() -> int:
         for t in range(1, 401):
             n = f"task{t:03d}.onnx"
             h = HMAP.get(f"{t:03d}", "")
+            print(f"scoring task{t:03d} ...", file=sys.stderr, flush=True)
             cost, sc = 0, 0.0
             if n in z.namelist():
                 data = z.read(n)
                 model = onnx.load_model_from_string(data)
-                if is_hang_prone(model):
-                    # giant-Einsum net: score in a child process so a hang can be
-                    # killed; carry over the prior CSV score if it times out.
-                    hang_tasks.append(t)
-                    res = score_in_subprocess(data, t, HANG_TIMEOUT)
-                    if res is None:
-                        cost, sc = carry.get(t, (0, 0.0))
-                        carried.append(t)
-                    else:
-                        cost, sc = res
-                else:
-                    s = scoring.score_and_verify(model, t, wd, label="x",
-                                                 require_correct=False)
-                    if s and s.get("score") is not None:
-                        # cost may legitimately be 0 (params=0, memory=0 net); the
-                        # scorer caps score at 25.0 in that case. Trust its score.
-                        cost = s.get("cost", 0)
-                        sc = s["score"] if cost == 0 else max(1.0, 25 - math.log(cost))
+                # タイムアウト無し: giant Einsum も含め全タスクを実 ORT 実行で採点
+                # する(carry-over や静的計算はスコアがブレるため使わない)。
+                s = scoring.score_and_verify(model, t, wd, label="x",
+                                             require_correct=False)
+                if s and s.get("score") is not None:
+                    # cost may legitimately be 0 (params=0, memory=0 net); the
+                    # scorer caps score at 25.0 in that case. Trust its score.
+                    cost = s.get("cost", 0)
+                    sc = s["score"] if cost == 0 else max(1.0, 25 - math.log(cost))
             rows.append((t, h, cost, sc, archetype(h)))
 
     rows.sort(key=lambda r: r[3])  # score ascending (lowest first)
