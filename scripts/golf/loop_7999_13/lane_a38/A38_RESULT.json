@@ -1,0 +1,123 @@
+{
+  "lane": "a38",
+  "authority": "submission_base_8000.46.zip",
+  "authority_sha256": "74cb9c4a96dcf9d1d1ca4ad1e0afdb67f5218c0a06ad8e896ad1654b6548f534",
+  "authority_zip_modified": false,
+  "scope": {
+    "tasks_scanned": 400,
+    "priority": "task150-400 first in candidate ordering",
+    "exact_transforms": [
+      "byte-identical initializer alias CSE",
+      "normalized identical Constant payload CSE",
+      "reachable deterministic single-output subgraph CSE"
+    ]
+  },
+  "safe_models_scanned": 112,
+  "excluded_models": 288,
+  "exclusion_counts": {
+    "CenterCropPad_lineage": 134,
+    "giant_Einsum_lineage": 116,
+    "lookup_lineage:ScatterElements": 27,
+    "nonfinite_initializer": 16,
+    "lookup_lineage:ArgMax,ScatterElements": 11,
+    "lookup_lineage:TopK": 11,
+    "lookup_lineage:TfIdfVectorizer": 9,
+    "lookup_lineage:ScatterND": 7,
+    "strict_shape:InferenceError": 7,
+    "lookup_lineage:ArgMax": 4,
+    "lookup_lineage:GatherND": 4,
+    "lookup_lineage:ArgMax,TopK": 4,
+    "lookup_lineage:ScatterElements,TopK": 3,
+    "lookup_lineage:GatherND,ScatterElements": 3,
+    "lookup_lineage:Hardmax": 2,
+    "lookup_lineage:ArgMax,ArgMin,ScatterND,TopK": 2,
+    "lookup_lineage:ArgMax,ScatterND": 2,
+    "lookup_lineage:TfIdfVectorizer,TopK": 2,
+    "lookup_lineage:ArgMin,ScatterElements": 2,
+    "lookup_lineage:ArgMax,Hardmax,ScatterND": 1,
+    "lookup_lineage:ArgMax,GatherND,ScatterElements,ScatterND": 1,
+    "lookup_lineage:ArgMax,ScatterND,TopK": 1,
+    "lookup_lineage:ArgMax,ArgMin,GatherND,ScatterElements,TopK": 1,
+    "lookup_lineage:ArgMax,ArgMin,ScatterElements,TopK": 1,
+    "lookup_lineage:ArgMax,ArgMin": 1,
+    "lookup_lineage:ScatterElements,ScatterND,TopK": 1,
+    "lookup_lineage:ArgMin": 1,
+    "lookup_lineage:ScatterElements,TfIdfVectorizer": 1,
+    "lookup_lineage:ArgMax,Hardmax": 1,
+    "lookup_lineage:ArgMax,GatherND,ScatterElements": 1,
+    "lookup_lineage:ScatterND,TopK": 1,
+    "lookup_lineage:ArgMax,GatherND,ScatterElements,ScatterND,TopK": 1,
+    "lookup_lineage:GatherND,ScatterND": 1,
+    "lookup_lineage:ArgMax,GatherND,ScatterElements,TopK": 1,
+    "lookup_lineage:ArgMax,ArgMin,ScatterElements": 1,
+    "lookup_lineage:ArgMax,ScatterElements,TopK": 1,
+    "lookup_lineage:ArgMax,ScatterElements,ScatterND,TopK": 1,
+    "lookup_lineage:ArgMax,ArgMin,Hardmax,ScatterElements,TopK": 1,
+    "lookup_lineage:ScatterND,TfIdfVectorizer,TopK": 1
+  },
+  "raw_opportunities": {
+    "task_count": 4,
+    "safe_tasks": [],
+    "excluded_tasks": [
+      162,
+      165,
+      169,
+      233
+    ],
+    "initializer_aliases": 2,
+    "constant_payload_cse": 0,
+    "deterministic_node_cse": 62
+  },
+  "excluded_opportunity_details": [
+    {
+      "task": 162,
+      "reasons": [
+        "CenterCropPad_lineage"
+      ],
+      "initializer_aliases": 0,
+      "constant_payload_cse": 0,
+      "deterministic_node_cse": 60
+    },
+    {
+      "task": 165,
+      "reasons": [
+        "CenterCropPad_lineage",
+        "lookup_lineage:ArgMax,ArgMin"
+      ],
+      "initializer_aliases": 0,
+      "constant_payload_cse": 0,
+      "deterministic_node_cse": 1
+    },
+    {
+      "task": 169,
+      "reasons": [
+        "CenterCropPad_lineage"
+      ],
+      "initializer_aliases": 0,
+      "constant_payload_cse": 0,
+      "deterministic_node_cse": 1
+    },
+    {
+      "task": 233,
+      "reasons": [
+        "CenterCropPad_lineage",
+        "lookup_lineage:ArgMax,GatherND,ScatterElements,ScatterND,TopK"
+      ],
+      "initializer_aliases": 2,
+      "constant_payload_cse": 0,
+      "deterministic_node_cse": 0
+    }
+  ],
+  "decision": "NO_ADOPTABLE_CANDIDATE",
+  "candidate_count": 0,
+  "known_dual": "not_run_no_lower_cost_safe_candidate",
+  "fresh_dual": "not_run_no_lower_cost_safe_candidate",
+  "external500": "not_run_no_lower_cost_safe_candidate",
+  "score_gain": 0.0,
+  "evidence": [
+    "scan_build_manifest.json",
+    "raw_opportunity_audit.json",
+    "scan_build_exact_cse.py",
+    "audit_raw_opportunities.py"
+  ]
+}

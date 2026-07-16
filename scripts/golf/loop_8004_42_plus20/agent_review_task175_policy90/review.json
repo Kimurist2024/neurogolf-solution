@@ -1,0 +1,204 @@
+{
+  "task": 175,
+  "decision": "ADMIT_POLICY90",
+  "classification": "NORMAL_POLICY90_NOT_KNOWN_EXACT",
+  "stage_action": "NONE_NO_STAGE_NO_MERGE",
+  "authority": {
+    "archive": "submission_base_8009.46.zip",
+    "archive_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "member": "task175.onnx",
+    "member_sha256": "0979ba8969cdfd796f0c4e0c40c1ebf062d28093ab8866801bad9f504d537945",
+    "memory": 0,
+    "params": 166,
+    "cost": 166,
+    "known": "266/266"
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/prune_latent/task175_r001.onnx",
+    "sha256": "40a9405880836a60f100e0072b476e4383c12c7ee053eb12ada1f049ee2e8d7c",
+    "serialized_bytes": 942,
+    "memory": 0,
+    "params": 145,
+    "cost": 145,
+    "known_per_config": "262/266",
+    "known_accuracy": 0.9849624060150376
+  },
+  "gain": {
+    "formula": "ln(166/145)",
+    "exact_double_result": 0.1352540459359689,
+    "authority_task_score": 19.888012211643456,
+    "candidate_task_score": 20.023266257579426
+  },
+  "structure": {
+    "full_checker": true,
+    "strict_shape_inference": true,
+    "strict_shape_inference_data_prop": true,
+    "canonical_float_io_shape": [1, 10, 30, 30],
+    "standard_domain_opset": 12,
+    "nodes": 1,
+    "ops": {"Einsum": 1},
+    "einsum_input_arity": 18,
+    "high_arity_einsum_disclosed": true,
+    "intermediate_node_outputs": 0,
+    "unresolved_or_dynamic_node_outputs": 0,
+    "functions": 0,
+    "nested_graphs": 0,
+    "sparse_initializers": 0,
+    "external_data_initializers": 0,
+    "banned_ops": [],
+    "lookup_or_shape_cloak_ops": [],
+    "conv_family_bias_ub": [],
+    "initializer_values_finite": true,
+    "max_initializer_elements": 40,
+    "runtime_output_shape": [1, 10, 30, 30],
+    "runtime_shape_mismatches": 0,
+    "delta": {
+      "all_non_initializer_model_fields_proto_equal": true,
+      "unchanged_initializers": ["Q", "S", "G2", "K"],
+      "C0": {"authority_shape": [2, 3, 3], "candidate_shape": [1, 3, 3]},
+      "G1": {"authority_shape": [2, 4, 3], "candidate_shape": [1, 4, 3]},
+      "retained_authority_slice": "zero-based L=1",
+      "dropped_authority_slice": "zero-based L=0 (the first / one-based L=1 component)",
+      "candidate_slices_bit_equal_to_retained_authority_slices": true,
+      "dropped_nonzero_entries": {"C0": 4, "G1": 12},
+      "dropped_component_algebraically_zero": false,
+      "parameter_reduction": 21
+    }
+  },
+  "ort_configs": [
+    "ORT_DISABLE_ALL_threads1",
+    "ORT_DISABLE_ALL_threads4",
+    "ORT_ENABLE_ALL_threads1",
+    "ORT_ENABLE_ALL_threads4"
+  ],
+  "known": {
+    "cases": 266,
+    "raw_rule_mismatches": 0,
+    "candidate_right_per_config": 262,
+    "candidate_wrong_per_config": 4,
+    "authority_right_per_config": 266,
+    "candidate_mask_equal_authority_per_config": 262,
+    "candidate_raw_equal_authority_per_config": 0,
+    "candidate_raw_bit_identical_across_configs": true,
+    "candidate_determinism_mismatches": 0,
+    "runtime_errors": 0,
+    "nonfinite_values": 0,
+    "values_in_open_interval_0_0_25": 0,
+    "shape_mismatches": 0,
+    "minimum_positive_raw": 93.67971801757812,
+    "support_invariant_violating_fixtures": 4,
+    "support_reference_mismatches": 4,
+    "failures": [
+      {
+        "split": "train",
+        "index_zero_based": 0,
+        "wrong_spatial_cells": 10,
+        "threshold_channel_differences": 20,
+        "expected_color": 6,
+        "candidate_color": 1,
+        "coordinates": [[8, 9], [9, 8], [11, 12], [12, 11], [12, 13], [12, 14], [13, 12], [13, 14], [14, 12], [14, 13]],
+        "symmetric_pairs": 5,
+        "all_cells_double_erased_with_transpose": true
+      },
+      {
+        "split": "train",
+        "index_zero_based": 1,
+        "wrong_spatial_cells": 6,
+        "threshold_channel_differences": 12,
+        "expected_color": 5,
+        "candidate_color": 6,
+        "coordinates": [[3, 4], [3, 5], [4, 3], [4, 5], [5, 3], [5, 4]],
+        "symmetric_pairs": 3,
+        "all_cells_double_erased_with_transpose": true
+      },
+      {
+        "split": "train",
+        "index_zero_based": 2,
+        "wrong_spatial_cells": 4,
+        "threshold_channel_differences": 8,
+        "expected_color": 4,
+        "candidate_color": 5,
+        "coordinates": [[11, 12], [12, 11], [13, 14], [14, 13]],
+        "symmetric_pairs": 2,
+        "all_cells_double_erased_with_transpose": true
+      },
+      {
+        "split": "test",
+        "index_zero_based": 0,
+        "wrong_spatial_cells": 10,
+        "threshold_channel_differences": 20,
+        "expected_color": 3,
+        "candidate_color": 4,
+        "coordinates": [[15, 16], [15, 18], [15, 19], [16, 15], [16, 18], [16, 19], [18, 15], [18, 16], [19, 15], [19, 16]],
+        "symmetric_pairs": 5,
+        "all_cells_double_erased_with_transpose": true
+      }
+    ]
+  },
+  "fresh": {
+    "seed_disjointness": "917500031 and 917500087 were absent from repository seed records and differ from the earlier task175 streams 175224240376 and 376240224175",
+    "streams": [
+      {
+        "seed": 917500031,
+        "cases": 2000,
+        "unique_inputs": 2000,
+        "right_per_config": 2000,
+        "wrong_per_config": 0,
+        "raw_stream_sha256_all_configs": "520643c32837fdae6305d893a5108acfba1a2d6634c321c5be1fdd0c8c30d0a2",
+        "erased_cells": 102785,
+        "erased_diagonal_cells": 1289
+      },
+      {
+        "seed": 917500087,
+        "cases": 2000,
+        "unique_inputs": 2000,
+        "right_per_config": 2000,
+        "wrong_per_config": 0,
+        "raw_stream_sha256_all_configs": "441dfe77ced37d77b43655a4d56cc4a0265b8db83c2396c40a59725909fa2b9f",
+        "erased_cells": 101872,
+        "erased_diagonal_cells": 1312
+      }
+    ],
+    "logical_cases": 4000,
+    "config_case_executions": 16000,
+    "independent_repeat_session_executions": 16000,
+    "right_per_config_each_seed": "2000/2000",
+    "runtime_errors": 0,
+    "nonfinite_values": 0,
+    "values_in_open_interval_0_0_25": 0,
+    "shape_mismatches": 0,
+    "determinism_mismatches": 0,
+    "cross_config_raw_mismatches": 0,
+    "raw_rule_mismatches": 0,
+    "support_reference_mismatches": 0,
+    "support_invariant_violations": 0,
+    "top_left_erased": 0,
+    "minimum_positive_raw": 96.21124267578125
+  },
+  "generator_classification": {
+    "task175_in_private_zero_catalog": false,
+    "input_output_relation_identifiable_on_generate_support": true,
+    "proof": [
+      "The quotient-color output is symmetric in row and column.",
+      "Random generate() retries until no off-diagonal symmetric pair is erased on both sides.",
+      "Therefore every erased off-diagonal cell has its true color visible at the transpose.",
+      "All diagonal output colors equal input[0][0]; a legal random rectangle cannot erase input[0][0] because its minimum 2x2 footprint would also erase (0,1) and (1,0), triggering retry.",
+      "Thus an input-only reference is: preserve nonzero cells, fill off-diagonal zeros from the transpose, and fill diagonal zeros from input[0][0]."
+    ],
+    "sample_certificate": "The input-only support reference and raw task175.py rule both matched 4000/4000 independent generated cases, including 2601 erased diagonal cells.",
+    "known_fixture_explanation": "The four fixed validate fixtures bypass the random retry result and contain double-erased symmetric pairs. They are precisely the candidate's four failures.",
+    "candidate_label": "normal POLICY90; not SOUND/known-exact and not raw-equivalent to authority"
+  },
+  "admission_rationale": "The candidate is strictly cheaper, structurally truthful and stable, exceeds 90% on complete known data, and reaches 100% on each disjoint independent fresh stream in every ORT/thread configuration with zero execution hazards. Task175 is outside the private-zero catalog and its legal generator support is input-identifiable. The high-arity Einsum is disclosed but is inherited unchanged from the LB-white authority and contains no lookup/index/scatter/custom-domain/shape-cloak mechanism.",
+  "evidence": {
+    "script": "scripts/golf/loop_8004_42_plus20/agent_review_task175_policy90/audit_independent.py",
+    "full_machine_output": "scripts/golf/loop_8004_42_plus20/agent_review_task175_policy90/audit_evidence.json"
+  },
+  "immutability": {
+    "submission_base_8009_46_unchanged_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores_csv_observed_sha256": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78",
+    "writes_outside_review_directory": false,
+    "staged": false,
+    "merged": false
+  }
+}

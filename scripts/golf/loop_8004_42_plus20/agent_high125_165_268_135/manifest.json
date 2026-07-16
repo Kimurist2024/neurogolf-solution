@@ -1,0 +1,76 @@
+{
+  "authority": {
+    "lb": 8009.46,
+    "path": "submission.zip",
+    "sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "byte_identical_base": "submission_base_8009.46.zip"
+  },
+  "scope": [125, 165, 268],
+  "policy": {
+    "baseline": "current-only",
+    "require_all_valid_input_equivalence_or_sound_true_rule": true,
+    "require_full_and_strict": true,
+    "require_official_competition_cost": true,
+    "known_configs": [
+      "disable_all_threads1",
+      "disable_all_threads4",
+      "default_threads1",
+      "default_threads4"
+    ],
+    "require_truthful_runtime_shapes": true,
+    "fresh": "two seeds in both ORT modes only after all earlier gates",
+    "reject_private_zero_shape_cloak_runtime_failure": true
+  },
+  "current": {
+    "125": {
+      "sha256": "c30ac7a079a4d5a91053c7748015a8c3a86ad594e542050e8826d46f1f84c529",
+      "memory": 916,
+      "params": 129,
+      "cost": 1045
+    },
+    "165": {
+      "sha256": "d6d40c11204c80f595910e7620858eb04db5c43b316033b0bf5b2cb1c9262adf",
+      "memory": 517,
+      "params": 70,
+      "cost": 587
+    },
+    "268": {
+      "sha256": "4c8ec91a517e5c3ba63c816f489aee1782a6de7ba75f49f3b638c7923e189a12",
+      "memory": 373,
+      "params": 47,
+      "cost": 420
+    }
+  },
+  "rejected": [
+    {
+      "task": 125,
+      "label": "fixed_integer_constant_fold",
+      "candidate_saved": false,
+      "reason": "full/strict checker exposes malformed CenterCropPad shape/axes and declared-shape conflicts"
+    },
+    {
+      "task": 165,
+      "label": "duplicate_castlike_cse",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high125_165_268_135/rejected_probes/task165_duplicate_castlike_cse_455c05527d91.onnx",
+      "sha256": "455c05527d915d588eb63962a5247ac3049290f4804dfd24fabff404b4e6c8ae",
+      "cost": 547,
+      "reason": "88 shape mismatches; 265/265 DISABLE_ALL runtime errors; default ORT session failure"
+    },
+    {
+      "task": 268,
+      "label": "final_bool_cast_attribute",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high125_165_268_135/rejected_probes/task268_final_bool_cast_attribute_283ef02b7ace.onnx",
+      "sha256": "283ef02b7ace742cc5f807fa3448a867cc04d4bbc15e5803d386e8e802a5063b",
+      "cost": 1318,
+      "reason": "not strict-lower; 39 shape mismatches; default ORT session failure"
+    }
+  ],
+  "fresh": {
+    "status": "not_run",
+    "reason": "no candidate passed all mandatory pre-fresh gates"
+  },
+  "winners": [],
+  "projected_gain": 0.0,
+  "verdict": "NO_SAFE_CANDIDATE",
+  "root_modified": false
+}

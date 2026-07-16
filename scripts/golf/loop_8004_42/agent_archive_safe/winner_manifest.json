@@ -1,0 +1,57 @@
+{
+  "baseline": {
+    "zip": "scripts/golf/loop_8004_42/submission_8004.42_fixed_rebase_meta.zip",
+    "sha256": "dc64ef5ac672fd7cc67418318e70f94cafd5396af8e25ad2939cdcd4eb1e0149",
+    "projected_score": 8004.532615455686
+  },
+  "accepted_fixed": [],
+  "relaxed95_candidates": [
+    {
+      "task": 205,
+      "candidate": "scripts/golf/loop_7999_13/lane_a23/candidates/task205_r02.onnx",
+      "source": "others/2/7805/task205_rebuilt_top2_cost937.onnx",
+      "sha256": "bbfa8f5b79d2e8345a39a41f327ac1c2c851f3c7f388dd595c72ef951e1b3050",
+      "baseline_sha256": "8a6acdc20a366ccbd32cf761285cbb2f1cbcf7d3d2ef8ea71d0fb5a3ed6f1468",
+      "baseline_cost": 1042,
+      "candidate_cost": 937,
+      "projected_gain": 0.10621394007489116,
+      "known_disable_all": {"right": 266, "wrong": 0, "errors": 0},
+      "known_default": {"right": 266, "wrong": 0, "errors": 0},
+      "fresh_seed": 93023205,
+      "fresh_disable_all": {"right": 4904, "wrong": 96, "errors": 0, "rate": 0.9808},
+      "fresh_default": {"right": 4904, "wrong": 96, "errors": 0, "rate": 0.9808},
+      "decoded_equal_baseline": 4873,
+      "static": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "nonstatic_inferred_tensors": 0,
+        "known_runtime_shape_mismatches": 0,
+        "conv_bias_findings": 0,
+        "actual_static_cost_agree": true
+      },
+      "largest_einsum": {
+        "inputs": 13,
+        "dtype": "float32",
+        "equation": "bcrw,ri,ri,ri,ri,ri,ri,aiw,diw,eiw,fiw,giw,hiw->cadi"
+      },
+      "external_arbitrary500": {
+        "executable": 500,
+        "skipped_one_failed": 0,
+        "skipped_both_failed": 0,
+        "threshold_equal": 22,
+        "mismatches": 478,
+        "output_shape_warnings": 3
+      },
+      "disposition": "RELAXED95_CANDIDATE_ONLY",
+      "risk": "Generator accuracy is above 95% but below the baseline; high-arity float32 contraction order and arbitrary-input output-shape warnings require isolated A/B and LB confirmation."
+    }
+  ],
+  "excluded": [
+    {
+      "task": 202,
+      "reason": "21-input float32 Einsum exceeds giant-contraction platform-risk gate"
+    }
+  ],
+  "zip_built_or_merged": false,
+  "fixed_tasks_modified": false
+}

@@ -1,0 +1,89 @@
+{
+  "task": 196,
+  "status": "no_eligible_candidate",
+  "promoted": false,
+  "score_delta": 0.0,
+  "root_artifacts_modified_by_lane": false,
+  "authority": {
+    "zip": "submission_base_8002.63.zip",
+    "zip_sha256": "a2da30657f3798e861f369ac896f36722ff658ed3e468c4d55db9a04eefbccfc",
+    "member_sha256": "94e513b77cfce6a47ad2064a10c9c0c4ea545c46d1f3052b68d7e11f61fb3e7a",
+    "memory": 1049,
+    "params": 161,
+    "cost": 1210,
+    "score": 17.901624361409212,
+    "private_zero_catalogued": true,
+    "fresh_dual5000": {
+      "correct_per_mode": 4789,
+      "wrong_per_mode": 211,
+      "errors_per_mode": 0
+    },
+    "declared_actual_shape_mismatches": 56,
+    "truthful_memory": 115072,
+    "truthful_cost": 115233
+  },
+  "exact_structural_scan": {
+    "identity": 0,
+    "same_type_cast": 0,
+    "same_type_castlike": 0,
+    "exact_cse": 0,
+    "duplicate_initializers": 0,
+    "unused_initializers": 0,
+    "dead_nodes": 0
+  },
+  "exact_local_probes": [
+    {
+      "label": "g_bool_cast",
+      "known_dual_correct": 266,
+      "known_dual_raw_equal_authority": 266,
+      "known_dual_errors": 0,
+      "cost": 1433,
+      "reason": "behavior-exact but 223 cost worse"
+    },
+    {
+      "label": "g_bool_greater",
+      "default_known_correct": 266,
+      "disabled_runtime_errors": 266,
+      "cost": 1433,
+      "reason": "asymmetric ORT runtime failure and cost worse"
+    }
+  ],
+  "historical_968": {
+    "sha256": "730a67bfe79b23e69bd2d1edd15d4b834798ae57846c24164469f0efdfb2442b",
+    "memory": 832,
+    "params": 136,
+    "cost": 968,
+    "known_dual_correct": 266,
+    "known_dual_errors": 0,
+    "fresh_dual5000": {
+      "correct_per_mode": 4490,
+      "wrong_per_mode": 510,
+      "errors_per_mode": 0,
+      "raw_equal_authority_per_mode": 4437
+    },
+    "external_random500": {
+      "executable": 500,
+      "raw_equal": 484,
+      "threshold_equal": 484,
+      "mismatches": 16,
+      "one_sided_errors": 0
+    },
+    "declared_actual_shape_mismatches": 59,
+    "truthful_memory": 151747,
+    "truthful_cost": 151883,
+    "reason": "not current-behavior-exact, private-unsound, and shape-cloaked"
+  },
+  "sound_fallback": {
+    "path": "scripts/golf/scratch_codex/task196/agent_bitset/candidate_bitset_u16.onnx",
+    "memory": 5368,
+    "params": 205,
+    "cost": 5573,
+    "full_checker": true,
+    "strict_static_shapes": true,
+    "known_correct": true,
+    "recorded_fresh_correct": 3000,
+    "recorded_fresh_wrong": 0,
+    "reason": "sound but 4363 cost above authority"
+  },
+  "conclusion": "No sub-1210 task196 model satisfies behavior, private-safety, dual-runtime, and truthful-shape gates."
+}

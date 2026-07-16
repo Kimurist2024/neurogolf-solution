@@ -1,0 +1,51 @@
+{
+  "task": 297,
+  "pivot_reason": "The seven incremental lane-94 SHAs yielded no structurally and runtime-safe LB probe.",
+  "source_candidate": "scripts/golf/loop_8004_42_plus20/agent_mid20_84/candidates/task297_5b1b2dbc6f86_cost361.onnx",
+  "source_sha256": "5b1b2dbc6f86a3f1658b092b7d2c296f46852489258d7a7bf3d50f08d796365e",
+  "authority_official_cost": 371,
+  "candidate_official_cost": 361,
+  "candidate_correctness_evidence": "known 265/265 in disabled/default plus two independent 5000/5000 fresh runs in each mode",
+  "illegal_node": {
+    "op_type": "Conv",
+    "output": "color_f",
+    "kernel_shape": [1, 1],
+    "strides": [30, 1],
+    "pads": [0, 0, 0, -24],
+    "purpose": "Decode the six top-row symbols directly to a [1,1,1,6] carrier."
+  },
+  "target": {
+    "schema_compliant": true,
+    "maximum_cost": 370
+  },
+  "legal_rewrite_analysis": [
+    {
+      "rewrite": "non-negative Conv to width 30 followed by Slice/negative-Pad crop to width 6",
+      "result": "schema-compliant but the charged full-width float carrier raises cost above the target",
+      "measured_existing_variant": "scripts/golf/loop_7999_13/lane_a10/task297_standard_slice.onnx",
+      "measured_cost": 484
+    },
+    {
+      "rewrite": "legal Split-based exposure of the first six outputs",
+      "result": "schema-compliant but every Split output is charged",
+      "measured_existing_variant": "scripts/golf/loop_7999_13/lane_a10/task297_standard_split.onnx",
+      "measured_cost": 511
+    },
+    {
+      "rewrite": "stride-1 legal Conv producing width 6",
+      "result": "requires effective kernel width 25; a dense [1,10,1,25] kernel adds 240 parameters over the 1x1 decoder and cannot meet cost 370"
+    },
+    {
+      "rewrite": "stride greater than 1 with a 1x1 kernel",
+      "result": "can produce six samples but selects spaced columns rather than the required contiguous columns 0..5; not semantically equivalent"
+    },
+    {
+      "rewrite": "Slice/Gather the input before decoding",
+      "result": "materializes a charged [1,10,1,6] carrier (at least 240 bytes for float32) before decode; cannot meet cost 370"
+    }
+  ],
+  "decision": "NO_LEGAL_REPAIR_AT_OR_BELOW_370_FOUND",
+  "fixed_adoption": false,
+  "lb_probe": false,
+  "reason": "The only <=370 representation found relies on negative Conv padding; all legal equivalents measured or bounded exceed the authority cost."
+}

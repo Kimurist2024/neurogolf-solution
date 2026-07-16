@@ -1,0 +1,145 @@
+{
+  "task": 379,
+  "baseline": {
+    "path": "scripts/golf/loop_7999_13/lane_c42/baseline/task379.onnx",
+    "sha256": "70a1ddaf15510384e8b4d88d1420e9639de9e36b1775468386216a2f723d0750",
+    "score": {
+      "memory": 1570,
+      "params": 381,
+      "cost": 1951,
+      "score": 17.42390265937689,
+      "correct": true
+    }
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_7999_13/lane_c42/candidates/task379_qv_middle_rank2.onnx",
+    "sha256": "4ddae903db9b2d4aceef3c501691b5cd2b862bc209f58f2e88969332c06dd455",
+    "serialized_size": 4603,
+    "score": {
+      "memory": 1570,
+      "params": 379,
+      "cost": 1949,
+      "score": 17.42492830049244,
+      "correct": true
+    }
+  },
+  "cost_reduction": 2,
+  "projected_gain": 0.001025641115550439,
+  "known_dual_raw_equivalence": {
+    "disable_all": {
+      "total": 266,
+      "right": 266,
+      "wrong": 0,
+      "runtime_errors": 0,
+      "raw_equal": 266,
+      "threshold_equal": 266,
+      "max_abs_raw_difference": 0.0,
+      "perfect": true
+    },
+    "default": {
+      "total": 266,
+      "right": 266,
+      "wrong": 0,
+      "runtime_errors": 0,
+      "raw_equal": 266,
+      "threshold_equal": 266,
+      "max_abs_raw_difference": 0.0,
+      "perfect": true
+    }
+  },
+  "structure": {
+    "full_checker": true,
+    "strict_shape_data_prop": true,
+    "all_static_positive": true,
+    "runtime_shapes": [
+      {
+        "mode": "disable_all",
+        "traced_outputs": 69,
+        "mismatches": [],
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "truthful": true
+      },
+      {
+        "mode": "default",
+        "traced_outputs": 69,
+        "mismatches": [],
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "truthful": true
+      }
+    ],
+    "canonical_io": true,
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "standard_domains": true,
+    "functions": 0,
+    "sparse_initializers": 0,
+    "nested_graphs": [],
+    "banned_ops": [],
+    "conv_bias_issues": [],
+    "node_count": 68,
+    "initializer_count": 30,
+    "op_histogram": {
+      "Add": 4,
+      "Cast": 10,
+      "Concat": 4,
+      "Conv": 2,
+      "Div": 3,
+      "Einsum": 5,
+      "Equal": 2,
+      "Greater": 2,
+      "Less": 2,
+      "Mean": 1,
+      "Mul": 3,
+      "Not": 1,
+      "Or": 2,
+      "ReduceSum": 1,
+      "ScatterElements": 7,
+      "Sign": 1,
+      "Sqrt": 1,
+      "Sub": 2,
+      "TopK": 1,
+      "Where": 14
+    }
+  },
+  "factorization": {
+    "qv_reconstructed": true,
+    "qv_nv_effect_reconstructed": true,
+    "qv_rflip_effect_reconstructed": true,
+    "old_parameter_count": 24,
+    "new_parameter_count": 22
+  },
+  "initializer_changes": {
+    "removed": [
+      "NV__mode1__from__QV",
+      "QV",
+      "Rflip__slice1_1__of__QV"
+    ],
+    "added": [
+      "QCore2",
+      "QExpand3x2",
+      "QMode3x2",
+      "QRow1_2"
+    ]
+  },
+  "pass": true
+}

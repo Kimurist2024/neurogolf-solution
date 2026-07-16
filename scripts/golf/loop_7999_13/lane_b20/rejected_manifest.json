@@ -1,0 +1,66 @@
+{
+  "lane": "b20",
+  "rejected": [
+    {
+      "task": 162,
+      "candidate": "scripts/golf/loop_7999_13/lane_b20/task162_reuse_bool.onnx",
+      "sha256": "81e8a9a1475d462fa06792f95c7d5ce3bf7c6ca6253628f70886c2824115ada0",
+      "baseline_cost": 451,
+      "candidate_cost": 450,
+      "nominal_gain": 0.0022197567383130945,
+      "formal_equivalence": "CastLike type witness changed from scalar bool initializer btmpl to already-computed bool dilge_107; computation is unchanged.",
+      "known_disabled_ort": "266/266, errors=0",
+      "fresh_differential_disabled_ort": "100/100 raw bitwise equal, errors=0",
+      "reasons": [
+        "ORT_DEFAULT session creation fails for both baseline and candidate",
+        "runtime-shape audit finds 261/267 declared intermediate shapes unequal to runtime shapes",
+        "fails no-shape-cloak and dual-ORT gates"
+      ]
+    },
+    {
+      "task": 162,
+      "candidate": "scripts/golf/loop_7999_13/lane_b20/task162_cse.onnx",
+      "sha256": "922a106beed77fcd7e3b52f95ad5e4134a81ed4820f32f12fa7587434ce9fb83",
+      "baseline_cost": 451,
+      "candidate_cost": 451,
+      "fresh_differential_disabled_ort": "500/500 raw bitwise equal, errors=0",
+      "reasons": [
+        "60 exact duplicate CenterCropPad nodes removed but official-like cost remains 451",
+        "not strictly cheaper",
+        "inherits shape cloak"
+      ]
+    },
+    {
+      "task": 268,
+      "candidate": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task268_r01_static327.onnx",
+      "sha256": "22ea97ffce8b14fbf923a89a0cda2233d83469201732ed3f4e914e5b2b1ced69",
+      "baseline_cost": 446,
+      "candidate_cost": 327,
+      "reasons": [
+        "historical independent differential found 12/3000 threshold mismatches",
+        "not exact-baseline-equivalent, so the >=95% exception is unavailable",
+        "TfIdfVectorizer lookup construction is prohibited"
+      ]
+    },
+    {
+      "task": 268,
+      "candidate": "scripts/golf/scratch_codex_7991/lane3/task268_cast.onnx",
+      "baseline_cost": 446,
+      "candidate_cost": 1344,
+      "reasons": [
+        "replacing the bool CastLike witness with Cast exposes runtime tensor memory",
+        "cost increases by 898"
+      ]
+    },
+    {
+      "task": 268,
+      "candidate": null,
+      "baseline_cost": 446,
+      "reasons": [
+        "exact Wave13 baseline contains TfIdfVectorizer lookup",
+        "runtime-shape audit finds 32/45 intermediate declarations unequal to runtime under both ORTs",
+        "all local exact shaves inherit prohibited lookup/shape-cloak behavior"
+      ]
+    }
+  ]
+}

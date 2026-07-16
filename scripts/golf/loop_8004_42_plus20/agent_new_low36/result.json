@@ -1,0 +1,116 @@
+{
+  "lane": "agent_new_low36",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00"
+  },
+  "policy": {
+    "nonprivate": "strictly cheaper, known100 dual, two independent fresh seeds each >=90%, runtime0, checker full, strict/data_prop, truthful shapes, standard domains, no lookup/cloak/giant, Conv-bias UB0",
+    "private_risk": "same gates but known/fresh must be 100% dual and the model must be demonstrably SOUND",
+    "fail_closed": "known/fresh candidate testing is not run when cost, checker, or structural prerequisites fail"
+  },
+  "targets_requested": [149, 390, 272, 147, 40, 176, 252, 127],
+  "targets_completed": 8,
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_integration": false,
+  "rows": [
+    {
+      "task": 149,
+      "baseline_sha256": "58cbccdbdc239b8262efc621dee56d41dd58d42d48171a0284be97281cfea8d6",
+      "baseline_cost": 84,
+      "true_rule_known": "267/267",
+      "baseline_known": "267/267 dual ORT, runtime0",
+      "structure": "one output-only 19-input giant Einsum; truthful runtime shape",
+      "best_probe": "cost-84 incumbent; 21-input giant alternate; conventional alternate cost136",
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "reason": "No below-84 history and every compact lineage violates the no-giant gate."
+    },
+    {
+      "task": 390,
+      "baseline_sha256": "d6270401ff09159b593c479d675f32edc091f9aed6dc89886e16b4cbbe9cddf6",
+      "baseline_cost": 84,
+      "true_rule_known": "266/266",
+      "baseline_known": "266/266 dual ORT, runtime0",
+      "structure": "one output-only 56-input giant Einsum; truthful runtime shape",
+      "best_probe": "36/56-input giant alternates; conventional alternate cost2699",
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "reason": "No structurally safe below-84 history; compact alternates are giant Einsum."
+    },
+    {
+      "task": 272,
+      "baseline_sha256": "577cc2e7b616703d0e8f0eca4168451031b91427da82d703bf721bec9e01cd91",
+      "baseline_cost": 83,
+      "true_rule_known": "267/267",
+      "baseline_known": "ORT_DISABLE_ALL 267/267; default ORT session creation fails",
+      "structure": "35 declared/runtime shape mismatches including output [1,10,1,1] versus [1,10,30,30]",
+      "best_probe": "archive static-cost82 mixed-dtype Max graph",
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "reason": "The sole lower graph cannot create an ORT session because Max mixes int64 and int32; all other history costs >=83."
+    },
+    {
+      "task": 147,
+      "baseline_sha256": "54a440efadf4bb22fa0110284ad064c43c4c0851d219d47ed5b9c113c20b0151",
+      "baseline_cost": 82,
+      "true_rule_known": "267/267",
+      "baseline_known": "ORT_DISABLE_ALL 267/267; default ORT session creation fails",
+      "structure": "33 declared/runtime shape mismatches including output [1,10,1,1] versus [1,10,30,30]",
+      "best_probe": "historical static floors 84, 85, and 532",
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "reason": "No historical or exact rewrite is strictly below 82; a truthful conventional graph cannot beat the inherited metadata-cloaked floor."
+    },
+    {
+      "task": 40,
+      "baseline_sha256": "a6c6c695df06e685e98138657af0b746e4cb77ae67d793c2a82e84c8c93f68d6",
+      "baseline_cost": 80,
+      "true_rule_known": "266/266",
+      "baseline_known": "266/266 dual ORT, runtime0",
+      "structure": "truthful one-node 9-input Einsum; rank-2 quadrant selector (60 params) plus color factors (20 params)",
+      "best_probe": "exact sparse-H expected parameter cost30 before validation",
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "reason": "Sparse-H is rejected by full checker because Einsum sees operand rank0; dense rank-2 representation is already at cost80 and all history ties or exceeds it."
+    },
+    {
+      "task": 176,
+      "baseline_sha256": "ae036e252e8d4c016ffda9317964208372a7177cb77de57347b24fb66b874606",
+      "baseline_cost": 80,
+      "true_rule_known": "25/25",
+      "baseline_known": "25/25 dual ORT, runtime0",
+      "structure": "truthful one-node 7-input Einsum with two full-rank dense factors",
+      "best_probe": "exact sparse-E expected parameter cost63 before validation",
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "reason": "Sparse-E is rejected by full checker because Einsum sees operand rank0; the only harvested dense alternate costs210."
+    },
+    {
+      "task": 252,
+      "baseline_sha256": "acf00e6384a04ebbb4d9064f9b127460ea86feea9e3e1dbc510adf2fadf3f157",
+      "baseline_cost": 80,
+      "true_rule_known": "266/266",
+      "baseline_known": "266/266 dual ORT, runtime0",
+      "structure": "truthful one-node 13-input Einsum with two full-rank dense factors",
+      "best_probe": "exact sparse-W expected parameter cost54 before validation",
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "reason": "Sparse-W is rejected by full checker because Einsum sees operand rank0; historical alternatives cost84 and96."
+    },
+    {
+      "task": 127,
+      "baseline_sha256": "18cc32bd4071a793fadcebbc5e303cedacf268020e23a512f72eecf384c8ece7",
+      "baseline_cost": 84,
+      "true_rule_known": "267/267",
+      "baseline_known": "267/267 dual ORT, runtime0",
+      "structure": "one output-only 46-input giant Einsum; truthful runtime shape",
+      "best_probe": "55/56-input giant alternates; conventional alternate cost396",
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "reason": "No below-84 history and every compact alternative violates the no-giant gate."
+    }
+  ],
+  "fresh_gate": "NOT_RUN: no candidate passed strict cost, full-check, and structural prerequisites",
+  "evidence": {
+    "baseline": "scripts/golf/loop_8004_42_plus20/agent_new_low36/baseline_audit.json",
+    "true_rules": "scripts/golf/loop_8004_42_plus20/agent_new_low36/true_rule_audit.json",
+    "known_dual": "scripts/golf/loop_8004_42_plus20/agent_new_low36/known_dual.json",
+    "history": "scripts/golf/loop_8004_42_plus20/agent_new_low36/history_audit.json",
+    "sparse_attempts": "scripts/golf/loop_8004_42_plus20/agent_new_low36/sparse_build_manifest.json"
+  }
+}

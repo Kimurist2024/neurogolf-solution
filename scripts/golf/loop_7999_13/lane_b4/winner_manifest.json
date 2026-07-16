@@ -1,0 +1,142 @@
+{
+  "lane": "b4_exact_factor_wave",
+  "baseline": {
+    "path": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "score": 7999.13
+  },
+  "targets": [107, 156, 251, 275, 310, 328, 333],
+  "accepted": [
+    {
+      "task": 107,
+      "candidate": "scripts/golf/loop_7999_13/lane_b4/candidate_task107_shared_coefficients_rank4.onnx",
+      "candidate_sha256": "b47fbb5396e88ce90d2bfecc98ea3e62b303a1cd51784a92b20f6ff7a961a071",
+      "baseline": "scripts/golf/loop_7999_13/lane_b4/baseline_task107.onnx",
+      "baseline_sha256": "a7b3bfe7b6b188e7086dd7cf0826268e91cd85c70f55b92fb8b46d7f37e74664",
+      "baseline_memory": 470,
+      "baseline_params": 274,
+      "baseline_cost": 744,
+      "baseline_score": 18.38795896516691,
+      "candidate_memory": 470,
+      "candidate_params": 238,
+      "candidate_cost": 708,
+      "candidate_score": 18.43755590630628,
+      "cost_reduction": 36,
+      "projected_gain": 0.04959694113937019,
+      "projected_aggregate_score": 7999.17959694114,
+      "algebraic_proof": {
+        "original_coefficients": "Acoef/Bcoef: 128 elements",
+        "shared_slices": "Acoef[1] == Bcoef[0] exactly",
+        "shared_bank_support": "the 12x8 ABbank matricization has nonzero columns only at indices 3,5,6,7",
+        "factorized_coefficients": "ABselA + ABselB + ABleft + ABright: 92 elements",
+        "initializer_reconstruction_exact": true,
+        "runtime_nodes_added": 0
+      },
+      "external_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "preflight_valid": true
+      },
+      "verify_fix": {
+        "lib_gold": true,
+        "official_gold": true,
+        "margin_stable": true,
+        "margin_min": 0.405029296875,
+        "fresh_right": 5000,
+        "fresh_total": 5000,
+        "fresh_wrong": 0,
+        "fresh_rate": 1.0
+      },
+      "independent_domain_differential": {
+        "seed": 799913107,
+        "valid": 3000,
+        "baseline_gold_correct": 3000,
+        "candidate_gold_correct": 3000,
+        "decoded_equal": 3000,
+        "raw_bitwise_equal": 3000,
+        "max_abs_raw_difference": 0.0,
+        "baseline_runtime_errors": 0,
+        "candidate_runtime_errors": 0,
+        "candidate_only_runtime_errors": 0
+      },
+      "structural_gates": {
+        "checker_full": true,
+        "strict_shape_inference": true,
+        "dynamic_or_nonpositive_tensors": 0,
+        "standard_domains": true,
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graphs": 0,
+        "banned_ops": 0,
+        "sequence_ops": 0,
+        "conv_bias_issues": 0,
+        "nonfinite_initializers": 0,
+        "file_under_1_44mb": true,
+        "node_sequence_identical_to_baseline": true,
+        "max_einsum_inputs": 58,
+        "note": "The incumbent is already a 50-input monolithic Einsum. The candidate adds no node/op/domain and completed 5000 fresh cases plus a 3000-case dual-session bitwise differential without runtime errors."
+      }
+    }
+  ],
+  "fallbacks": [
+    {
+      "task": 107,
+      "candidate": "scripts/golf/loop_7999_13/lane_b4/candidate_task107_shared_coefficients.onnx",
+      "candidate_sha256": "0b07289c8fdcd9ac416cf56f363f0b2acd5bcba2797d45b252d94d19f06875c5",
+      "candidate_cost": 724,
+      "projected_gain": 0.027249642447372935,
+      "known": "266/266",
+      "fresh": "5000/5000",
+      "reason_not_primary": "Strictly dominated by the independently validated rank-4 cost-708 candidate."
+    }
+  ],
+  "audited_not_accepted": [
+    {
+      "task": 156,
+      "baseline_cost": 556,
+      "baseline_memory": 330,
+      "baseline_params": 226,
+      "reason": "The terminal 10x2x3x3 QLinearConv kernel has output-flatten rank 3, but exact two-stage factorization adds at least a 3x30x30 uint8 runtime tensor (2700 scored bytes), far exceeding the 96-parameter saving."
+    },
+    {
+      "task": 251,
+      "baseline_cost": 755,
+      "baseline_memory": 527,
+      "baseline_params": 228,
+      "reason": "detW has exact output rank 4 and paintW exact input-channel rank 4; no repeated initializer or parameter-only exact rank compression exists."
+    },
+    {
+      "task": 275,
+      "baseline_cost": 432,
+      "baseline_memory": 12,
+      "baseline_params": 420,
+      "reason": "MA != BA and MB != BB. Their zero tails can only be removed by slicing the dynamic grid axes or materializing padded masks, whose runtime allocation exceeds the saved parameters. Historical lower-cost polynomial variants are known-gold wrong."
+    },
+    {
+      "task": 310,
+      "baseline_cost": 566,
+      "baseline_memory": 202,
+      "baseline_params": 364,
+      "reason": "The reusable E3/E4 tensors also carry the 30-wide output axes, so the cap-supported 8-row contraction axes cannot be trimmed without duplicate constants or runtime slices. HB3/HB4 and the final constant network expose no cheaper exact factor reuse."
+    },
+    {
+      "task": 328,
+      "baseline_cost": 558,
+      "baseline_memory": 200,
+      "baseline_params": 358,
+      "reason": "CoreB has full mode ranks (4,4,5) and TFeat rank 4. The sum-CoreB probe is not algebraically exact and failed the first archived known case (0/1), so it was rejected before fresh validation."
+    },
+    {
+      "task": 333,
+      "baseline_cost": 449,
+      "baseline_memory": 0,
+      "baseline_params": 449,
+      "reason": "C5/C2 equal the first ten columns of D5/D2, but direct reuse is shape-invalid (10 versus 30). A valid two-Slice realization saves 70 parameters while allocating at least 280 scored bytes, giving a cost lower bound of 659 > 449."
+    }
+  ],
+  "aggregate_lane_gain": 0.04959694113937019,
+  "projected_score_from_7999_13": 7999.17959694114,
+  "root_artifacts_modified": false
+}

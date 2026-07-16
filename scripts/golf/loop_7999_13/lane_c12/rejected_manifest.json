@@ -1,0 +1,54 @@
+{
+  "baseline_costs": {
+    "102": {"cost": 493, "memory": 381, "params": 112},
+    "124": {"cost": 265, "memory": 234, "params": 31},
+    "132": {"cost": 316, "memory": 0, "params": 316},
+    "163": {"cost": 196, "memory": 0, "params": 196},
+    "175": {"cost": 166, "memory": 0, "params": 166},
+    "178": {"cost": 269, "memory": 208, "params": 61},
+    "228": {"cost": 302, "memory": 252, "params": 50}
+  },
+  "archive_candidate_count": 39,
+  "decisions": {
+    "102": {
+      "audited": 8,
+      "actual_costs": [500, 510, 491, 1391, 494, 522, 537, 642],
+      "closest": "r03 costs 491 and passes 267/267 only with ORT_DISABLE_ALL, but default ORT rejects CenterCropPad, it has 55 false declared shapes, and prior independent fresh is 925/1000."
+    },
+    "124": {
+      "audited": 5,
+      "actual_costs": [null, 265, 266, 266, 277],
+      "closest": "r01 is the nominal one-byte split-output shave but reproducibly exits with SIGSEGV; r02 only ties cost 265 and, like the baseline, incurs 267/267 default-ORT runtime errors."
+    },
+    "132": {
+      "audited": 8,
+      "actual_costs": [282, 282, 282, 282, 287, 287, 287, 287],
+      "closest": "Seven candidates pass 0/267 known and r06 passes only 14/267. All are invalid component-deletion variants of the one-node Einsum."
+    },
+    "163": {
+      "audited": 4,
+      "actual_costs": [136, 136, 188, 188],
+      "closest": "Every factor-sharing/deletion candidate passes 0/267 known. The exact incumbent is already one output-free Einsum with initializer-only cost."
+    },
+    "175": {
+      "audited": 4,
+      "actual_costs": [129, 129, 129, 129],
+      "closest": "Every joint feature-deletion candidate passes 0/266 known. The exact incumbent is already one output-free Einsum with initializer-only cost."
+    },
+    "178": {
+      "audited": 2,
+      "actual_costs": [8355, 261],
+      "closest": "r01 has 268/268 runtime errors and truthful cost 8355; r02 costs 261 but passes only 68/268. The cost-269 incumbent is the prior generator-exact floor."
+    },
+    "228": {
+      "audited": 8,
+      "actual_costs": [294, 302, 305, null, 315, 338, 340, 325],
+      "closest": "r01 costs 294 but passes 0/266; r02 ties 302 and retains shape/value cloak; r04 uses an unsupported TopK kernel; all other complete-known models cost more."
+    }
+  },
+  "fresh_5000": {
+    "eligible_candidates": [],
+    "runs": [],
+    "reason": "Fresh validation cannot rescue a known failure, runtime crash/error, cost tie, metadata/shape cloak, or unsupported kernel. No candidate reached the fresh prerequisite gate."
+  }
+}

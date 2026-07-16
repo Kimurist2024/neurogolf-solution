@@ -1,0 +1,27 @@
+{
+  "task": 333,
+  "baseline": "submission_base_8005.17.zip::task333.onnx",
+  "candidate": "scripts/golf/loop_8004_42_plus20/root_sweep33/shared_sign/task333_r01.onnx",
+  "proved": true,
+  "rewrite": {
+    "removed_operand": "GE[Z]=[1,-1]",
+    "first_HC_use": "HC_new[Z,d] = GE[Z] * HC_old[Z,d]",
+    "compensation": "GHHT_new[t,U] = GHHT_old[t,U] * GE[U]",
+    "second_HC_use": "GHHT_new[t,U]*HC_new[U,c] = GHHT_old[t,U]*HC_old[U,c] because GE[U]^2=1"
+  },
+  "exhaustive_changed_factor_checks": {
+    "first_use_entries": 20,
+    "second_use_entries": 60,
+    "total": 80,
+    "all_float32_exact": true
+  },
+  "unchanged_initializer_count": 8,
+  "all_other_initializers_byte_equal": true,
+  "node_and_output_count_unchanged": true,
+  "einsum_operand_count": {
+    "baseline": 36,
+    "candidate": 35
+  },
+  "termwise_statement": "For every assignment of all Einsum indices, including every batch/output/source/green/current-cell index, the candidate monomial equals the baseline monomial exactly in real arithmetic. Therefore the full output tensor is equal for every possible input tensor; no generator distribution assumption is used.",
+  "platform_residual_needed": "The operand-count/contraction plan changes 36->35, so four-configuration execution of the complete trilinear coefficient support is still required before adoption."
+}

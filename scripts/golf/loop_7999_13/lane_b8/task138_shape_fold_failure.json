@@ -1,0 +1,12 @@
+{
+  "task": 138,
+  "baseline_cost": 2731,
+  "attempt": "replace Shape(qcol) with a schema-valid dense one-axis target initializer [1]",
+  "candidate_emitted": false,
+  "gate": "onnx.checker.check_model(full_check=True)",
+  "result": "REJECT",
+  "error": "InferenceError: CenterCropPad input_hid inferred channel dimension 10 differs from incumbent-declared dimension 1",
+  "diagnosis": "The incumbent deliberately hides three CenterCropPad runtime shapes behind a dynamically produced Shape tensor. Constant-folding the effective [1] target lets full shape inference expose the true CenterCropPad shape and conflicts with the incumbent value_info. Keeping the hidden declaration would fail full checker; removing it would charge the honest large tensors and cannot be a cheaper candidate.",
+  "new_shape_cloak_added": false,
+  "source": "build_task138_shape_fold.py"
+}

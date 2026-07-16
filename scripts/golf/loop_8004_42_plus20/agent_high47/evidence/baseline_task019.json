@@ -1,0 +1,107 @@
+{
+  "label": "baseline_task019",
+  "task": 19,
+  "path": "scripts/golf/loop_8004_42_plus20/agent_high47/baselines/task019.onnx",
+  "sha256": "5877c02c963dd27374fb7188dd63173f193bc7745e3910b25dab4101af75f6bf",
+  "file_bytes": 1587,
+  "nodes": 23,
+  "initializers": 6,
+  "params": 113,
+  "op_histogram": {
+    "Sub": 10,
+    "ReduceMax": 2,
+    "Split": 2,
+    "Concat": 2,
+    "QLinearConv": 2,
+    "ConvTranspose": 1,
+    "Cast": 1,
+    "QLinearMatMul": 1,
+    "ReduceMin": 1,
+    "Mul": 1
+  },
+  "max_node_inputs": 9,
+  "lookup_red_flags": {
+    "tfidf": 0,
+    "hardmax": 0,
+    "giant_einsum_nodes": 0,
+    "params_over_10000": false
+  },
+  "nonstandard_domains": [],
+  "banned_ops": [],
+  "nested_graph_attributes": 0,
+  "function_count": 0,
+  "sparse_initializer_count": 0,
+  "conv_bias_findings": [
+    {
+      "node": "output",
+      "op": "QLinearConv",
+      "bias": "Bstatic",
+      "bias_is_initializer": true,
+      "bias_shape": [
+        10
+      ],
+      "expected_channels": 10,
+      "safe": true
+    }
+  ],
+  "full_check": true,
+  "strict_shape_data_prop": true,
+  "runtime_shape_trace": {
+    "runtime_tensors": 33,
+    "declared_tensors": 1,
+    "declared_actual_mismatches": [],
+    "undeclared_intermediate_count": 32,
+    "single_example_intermediate_bytes": 423
+  },
+  "official_like_score": {
+    "memory": 423,
+    "params": 113,
+    "cost": 536,
+    "score": 18.715865838929197,
+    "correct": true
+  },
+  "known_disable_all": {
+    "train": {
+      "right": 4,
+      "wrong": 0,
+      "errors": 0
+    },
+    "test": {
+      "right": 1,
+      "wrong": 0,
+      "errors": 0
+    },
+    "arc-gen": {
+      "right": 262,
+      "wrong": 0,
+      "errors": 0
+    },
+    "total": {
+      "right": 267,
+      "wrong": 0,
+      "errors": 0
+    }
+  },
+  "known_default": {
+    "train": {
+      "right": 4,
+      "wrong": 0,
+      "errors": 0
+    },
+    "test": {
+      "right": 1,
+      "wrong": 0,
+      "errors": 0
+    },
+    "arc-gen": {
+      "right": 262,
+      "wrong": 0,
+      "errors": 0
+    },
+    "total": {
+      "right": 267,
+      "wrong": 0,
+      "errors": 0
+    }
+  }
+}

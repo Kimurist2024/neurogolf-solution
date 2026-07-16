@@ -1,0 +1,44 @@
+{
+  "task": 233,
+  "candidate": "scripts/golf/loop_8003_40/agent_exact_resume/candidates/task233_requested.onnx",
+  "candidate_sha256": "94cb98f706b7117336640949ca34ba92dc49c58a3bebd5708d90799ed160b123",
+  "baseline_sha256": "941a95b0af623a5e0596147b66200b3ae645f997ec8cbfd2cdbd53d6d484bccb",
+  "rewrite": "replace audit_one_i16 with byte-identical one_i8 initializer",
+  "cost_before": 7432,
+  "cost_after": 7431,
+  "cost_reduction": 1,
+  "projected_gain": 0.0001345623362034587,
+  "known": {
+    "right": 266,
+    "wrong": 0,
+    "skipped": 0,
+    "errors": 0,
+    "total_seen": 266
+  },
+  "fresh_ground_truth": {
+    "status": "not_completed_before_policy_rejection",
+    "count": 0
+  },
+  "exact_initializer_proof": {
+    "task": 233,
+    "replacements": {
+      "audit_one_i16": "one_i8"
+    }
+  },
+  "checker": {
+    "checker": "PASS",
+    "strict_shape_inference": "PASS",
+    "static_shapes": true,
+    "banned_ops": [],
+    "conv_bias_ub": [],
+    "errors": [],
+    "pass": true
+  },
+  "runtime_errors": 0,
+  "verdict": "REJECT",
+  "reasons": [
+    "catalogued highest-risk task",
+    "dust gain of +0.000134562 does not justify changing its submitted bytes",
+    "fresh adoption gate was not completed; policy rejection makes further execution unnecessary"
+  ]
+}

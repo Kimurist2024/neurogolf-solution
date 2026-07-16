@@ -1,0 +1,105 @@
+{
+  "baseline": {
+    "score": 8004.5,
+    "zip": "submission_base_8004.50.zip",
+    "sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "fixed_tasks_changed": [],
+  "selected_tasks": [125, 145, 187, 192, 196, 204, 208, 340, 344],
+  "accepted": [],
+  "projected_gain": 0.0,
+  "results": [
+    {
+      "task": 125,
+      "baseline_cost": 1050,
+      "rule_type": "A_local_ordered",
+      "reference_known": "265/265",
+      "reference_fresh": "2000/2000",
+      "decision": "REJECT",
+      "reason": "The literal reverse-scan rule rewrites neighbors in place; identical original 3x3 patches require different outputs. A one-Conv cost-910 implementation is therefore impossible, while truthful unrolling exceeds the incumbent."
+    },
+    {
+      "task": 145,
+      "baseline_cost": 5130,
+      "rule_type": "C_global_topology",
+      "reference_known": "267/267",
+      "reference_fresh": "2000/2000",
+      "decision": "REJECT",
+      "reason": "Requires connected-component flood fill, component-size extrema, and a second recoloring flood. A static truthful <=30-grid unroll has a structural cost above the incumbent."
+    },
+    {
+      "task": 187,
+      "baseline_cost": 1814,
+      "rule_type": "B_iterative_rotation",
+      "reference_known": "266/266",
+      "reference_fresh": "1965/2000",
+      "decision": "REJECT",
+      "reason": "The supplied Sakana rule disagrees with the authoritative generator on 35/2000 fresh cases, so it is not a sound compilation target."
+    },
+    {
+      "task": 192,
+      "baseline_cost": 1609,
+      "rule_type": "A_local_plus_global_color",
+      "reference_known": "265/265",
+      "reference_fresh": "2000/2000",
+      "best_candidate": "candidates/task192_true_local_lp_k4.onnx",
+      "candidate_cost": 1322,
+      "candidate_gain": 0.19646712658075152,
+      "candidate_known": "complete in both local and official verifier",
+      "candidate_margin_min": 0.999267578125,
+      "candidate_independent_fresh": "440/500 (88.0%), runtime errors 0",
+      "decision": "REJECT",
+      "reason": "Independent fresh accuracy is below the user-authorized 95% floor."
+    },
+    {
+      "task": 196,
+      "baseline_cost": 1210,
+      "rule_type": "B_bounded_box_topology",
+      "reference_known": "266/266",
+      "reference_fresh": "2000/2000",
+      "decision": "REJECT",
+      "reason": "Closed-versus-broken rectangles range to 5x5. Radius-one patches conflict; a dense truthful 5x5 final Conv alone costs 2510, above the incumbent."
+    },
+    {
+      "task": 204,
+      "baseline_cost": 2240,
+      "rule_type": "B_bounded_rectangle_fill",
+      "reference_known": "268/268",
+      "reference_fresh": "2000/2000",
+      "decision": "REJECT",
+      "reason": "A 1x19 row model cannot distinguish rectangle side rows from unrelated endpoints and has conflicting patches. Adding the required vertical context makes the final dense Conv exceed the incumbent."
+    },
+    {
+      "task": 208,
+      "baseline_cost": 1422,
+      "rule_type": "D_global_rectangle_search",
+      "reference_known": "266/266",
+      "reference_fresh": "2000/2000",
+      "decision": "REJECT",
+      "reason": "Selects the globally largest empty rectangle and draws its boundary. Local patches conflict; truthful global integral/selection tensors exceed the incumbent."
+    },
+    {
+      "task": 340,
+      "baseline_cost": 1173,
+      "rule_type": "D_global_row_column_projection",
+      "reference_known": "266/266",
+      "reference_fresh": "2000/2000",
+      "decision": "REJECT",
+      "reason": "Dynamic edge colors are projected by whole-row/column equality before the center is cleared. Radius-one patches conflict and truthful row/column reductions exceed the incumbent."
+    },
+    {
+      "task": 344,
+      "baseline_cost": 197,
+      "rule_type": "A_local",
+      "reference_known": "266/266",
+      "reference_fresh": "2000/2000",
+      "decision": "REJECT",
+      "reason": "The rule is exact local 2/3 adjacency, but any ordinary truthful mask is at least 900 bytes and a dense 3x3 final Conv has 910 parameters, both above cost 197. Giant floating Einsum compression is prohibited."
+    }
+  ],
+  "evidence": {
+    "true_rule": "true_rule_audit.json",
+    "task192_known": "task192_current_known_check.json",
+    "task192_independent": "task192_independent500.json"
+  }
+}

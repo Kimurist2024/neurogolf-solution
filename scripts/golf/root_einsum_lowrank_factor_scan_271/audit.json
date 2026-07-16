@@ -1,0 +1,81 @@
+{
+  "audit": "root_einsum_lowrank_factor_scan_271",
+  "pass": true,
+  "decision": "NO_BUILDABLE_RGE2_EINSUM_FACTOR",
+  "scan_sha256": "54219ad46e0f35d9973cca22b399f6c3a917ed4e5bd41cd6496d0875d390f60e",
+  "scanner_sha256": "10b83a6693f320b2ce48adb587d654f6f295f4d7122071b9e68a4a749d0b3677",
+  "candidates_sha256": "6cc7245eb94d000f7bee96bd250412c861660bf846b3d067b7593203e1b9948c",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "active_stage_manifest_sha256": "6f0cea4ca1c6744e5deb9f6f2ad505222d7d3203d1921114966a8c9584300016",
+  "invalid_latent_label_probes": [
+    {
+      "label": "0",
+      "equation": "a0,0b->ab",
+      "checker_rejected": true,
+      "ort_disable_all_rejected": true
+    },
+    {
+      "label": "_",
+      "equation": "a_,_b->ab",
+      "checker_rejected": true,
+      "ort_disable_all_rejected": true
+    },
+    {
+      "label": "@",
+      "equation": "a@,@b->ab",
+      "checker_rejected": true,
+      "ort_disable_all_rejected": true
+    },
+    {
+      "label": "\u03b1",
+      "equation": "a\u03b1,\u03b1b->ab",
+      "checker_rejected": true,
+      "ort_disable_all_rejected": true
+    }
+  ],
+  "checks": [
+    "authority SHA matches",
+    "authority covers 400 models",
+    "active-stage manifest SHA matches",
+    "active-stage byte snapshot matches manifest descendants",
+    "active-stage model count matches manifest",
+    "digits, punctuation, and Unicode cannot extend the Einsum latent-label alphabet",
+    "authority: every axis bipartition appears exactly once",
+    "authority: partition rows contain no duplicates",
+    "authority: all recorded exact rational ranks independently recompute",
+    "active_stage: every axis bipartition appears exactly once",
+    "active_stage: partition rows contain no duplicates",
+    "active_stage: all recorded exact rational ranks independently recompute",
+    "composite covers 400 models",
+    "composite has six exact R>=2 parameter-saving bipartitions",
+    "R>=2 rows occur only in tasks 013/107/398",
+    "task013 Qor: factor coefficients reconstruct exactly",
+    "task013 Qor: factors are exactly serialized in source dtype",
+    "task013 Qor: independent latent-label budget is insufficient",
+    "task107 Tleft: factor coefficients reconstruct exactly",
+    "task107 Tleft: factors are exactly serialized in source dtype",
+    "task107 Tleft: independent latent-label budget is insufficient",
+    "task398 K: factor coefficients reconstruct exactly",
+    "task398 K: factors are exactly serialized in source dtype",
+    "task398 K: independent latent-label budget is insufficient",
+    "task398 K: factor coefficients reconstruct exactly",
+    "task398 K: factors are exactly serialized in source dtype",
+    "task398 K: independent latent-label budget is insufficient",
+    "task398 K: factor coefficients reconstruct exactly",
+    "task398 K: factors are exactly serialized in source dtype",
+    "task398 K: independent latent-label budget is insufficient",
+    "task398 K: factor coefficients reconstruct exactly",
+    "task398 K: factors are exactly serialized in source dtype",
+    "task398 K: independent latent-label budget is insufficient",
+    "structural candidate list is empty",
+    "strict-lower candidate list is empty",
+    "winner is null",
+    "standalone candidate ledger is empty",
+    "runtime gates are explicitly skipped because no graph can be formed",
+    "policy rejects approximation, rank1 adoption, partial sharing, cloaks, private-zero, and protected writes"
+  ],
+  "candidate_execution_gate": {
+    "required": false,
+    "reason": "All exact rank-R>=2 parameter-saving decompositions fail the independent-latent label budget before a candidate graph can be formed."
+  }
+}

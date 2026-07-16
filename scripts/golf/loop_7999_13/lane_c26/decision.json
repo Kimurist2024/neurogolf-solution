@@ -1,0 +1,50 @@
+{
+  "lane": "C26",
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "tasks": [310, 328],
+  "accepted": [],
+  "projected_gain": 0.0,
+  "decisions": {
+    "310": {
+      "generator": "task_c909285e.py",
+      "baseline_cost": 566,
+      "baseline_sha256": "f7ad4fb86c5aa78aeb9e3ea8239bf0ba52af1249988a5065992a4e8c58861d79",
+      "best_truthful_candidate_cost": 633,
+      "best_truthful_candidate_sha256": "ad81c541e1164adc0e6a7971ae62a013b79e3bd6a1a3efcbca93b4400084c496",
+      "decision": "REJECT_NO_CHEAPER_STRICT_WINNER",
+      "reason": "The 5000/5000 dual-ORT truthful selector costs 633. The exact 566 model is cheaper, and its shared 30-row periodic factors cannot be cropped or split without increasing cost."
+    },
+    "328": {
+      "generator": "task_d22278a0.py",
+      "baseline_cost": 558,
+      "baseline_sha256": "08ba1aa525d67f290c13e7b79aef339aeb5912bf0d1b0b379ff6ab8792cf576a",
+      "candidate": "task328_r01_reuse_ninv.onnx",
+      "candidate_sha256": "f54a45f3148614e33130faa52af24fcf9605b0fd5ac167a2a33a5994b3f080bb",
+      "candidate_cost": 557,
+      "nominal_gain": 0.0017937224540247598,
+      "known": {
+        "candidate_right": 267,
+        "candidate_wrong": 0,
+        "candidate_errors": 0,
+        "baseline_right": 267,
+        "baseline_wrong": 0,
+        "baseline_errors": 0
+      },
+      "dual_ort_probe": {
+        "cases": 16,
+        "candidate_right_each_mode": 16,
+        "candidate_errors_each_mode": 0,
+        "near_margin_cases_each_mode": 3
+      },
+      "raw_differential": {
+        "cases": 4,
+        "raw_bitwise_equal_each_mode": 0,
+        "decoded_equal_each_mode": 4,
+        "max_abs_raw_difference": 1.2379400392853803e+27
+      },
+      "decision": "REJECT_MARGIN_AND_NOT_RAW_EQUIVALENT",
+      "reason": "The candidate inherits positive values in (0, 0.25) and is not bitwise-equivalent to the baseline, so it satisfies neither the normal margin gate nor the >=95% exact-baseline exception."
+    }
+  }
+}

@@ -1,0 +1,868 @@
+{
+  "tasks": {
+    "178": {
+      "baseline_sha256": "8e63512bb0f2f742fe1e9b1efc8751a82db1808c98c2636f6a37f98eada57823",
+      "baseline_cost": {
+        "memory": 206,
+        "params": 56,
+        "cost": 262
+      },
+      "variants_unique": 1,
+      "strict_lower": [],
+      "rows": [
+        {
+          "label": "onnxsim",
+          "sha256": "1d137ef9d80725c34e5f7c51d674e67e1761b39d58ad7f7b16dd89bbf5778fc8",
+          "serialized_bytes": 8620,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 98,
+            "initializer_count": 6,
+            "value_info_count": 97,
+            "op_histogram": {
+              "Add": 1,
+              "Cast": 15,
+              "Concat": 1,
+              "Conv": 13,
+              "DequantizeLinear": 1,
+              "Div": 3,
+              "Equal": 8,
+              "Max": 1,
+              "MaxUnpool": 1,
+              "Min": 1,
+              "Mod": 3,
+              "Sub": 3,
+              "Where": 47
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "not_strict_lower",
+          "official_cost": {
+            "memory": 206,
+            "params": 56,
+            "cost": 262
+          }
+        }
+      ]
+    },
+    "228": {
+      "baseline_sha256": "13946c8d5a52886212f495b13fa6c128a091e77b84e10e27b442ed87f9694a45",
+      "baseline_cost": {
+        "memory": 241,
+        "params": 50,
+        "cost": 291
+      },
+      "variants_unique": 2,
+      "strict_lower": [],
+      "rows": [
+        {
+          "label": "opt_eliminate_nop_cast",
+          "sha256": "7e85c05e9961296b6ceb2f87360ff54449124d509b2b328a8492c8751d3305c1",
+          "serialized_bytes": 2774,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 28,
+            "initializer_count": 6,
+            "value_info_count": 28,
+            "op_histogram": {
+              "CastLike": 3,
+              "CenterCropPad": 6,
+              "Concat": 4,
+              "Div": 2,
+              "Einsum": 1,
+              "Gather": 2,
+              "Mod": 2,
+              "ScatterND": 1,
+              "Shape": 1,
+              "Shrink": 4,
+              "Slice": 1,
+              "TopK": 1
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "not_strict_lower",
+          "official_cost": {
+            "memory": 241,
+            "params": 50,
+            "cost": 291
+          }
+        },
+        {
+          "label": "opt_eliminate_shape_op",
+          "sha256": "2f2ed863357101619916efd4a3a3aac2f1e4e30e35dd709ec0c138b70ed2385a",
+          "serialized_bytes": 2723,
+          "structural": {
+            "full_check": false,
+            "strict_data_prop": false,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": false,
+            "finite_initializers": false,
+            "conv_bias_ub0": false,
+            "reasons": [
+              "checker"
+            ],
+            "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: chcol): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (16) vs (1)\n(op_type:CenterCropPad, node name: rowcol): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (16) vs (1)\n(op_type:CenterCropPad, node name: colcol): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (16) vs (1)\n(op_type:CenterCropPad, node name: idx_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (16) vs (1)\n"
+          },
+          "status": "structural_reject"
+        }
+      ]
+    },
+    "234": {
+      "baseline_sha256": "c66bb8c3e92a3a2ef5844872cb36d54076ba697f8ee6e777ceef6c2dd0997c8a",
+      "baseline_cost": {
+        "memory": 229,
+        "params": 132,
+        "cost": 361
+      },
+      "variants_unique": 2,
+      "strict_lower": [],
+      "rows": [
+        {
+          "label": "opt_eliminate_nop_cast",
+          "sha256": "bff878783e3e7de0b21ba9aba6063d1c45be142cdd82e8cd8ee0264017cb2fdd",
+          "serialized_bytes": 6104,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 75,
+            "initializer_count": 11,
+            "value_info_count": 8,
+            "op_histogram": {
+              "Add": 3,
+              "Cast": 4,
+              "CastLike": 6,
+              "CenterCropPad": 8,
+              "Concat": 3,
+              "Div": 2,
+              "Einsum": 5,
+              "Gather": 9,
+              "Greater": 2,
+              "GreaterOrEqual": 3,
+              "Less": 1,
+              "LessOrEqual": 2,
+              "Log": 3,
+              "Or": 1,
+              "QuantizeLinear": 3,
+              "Shape": 3,
+              "Split": 2,
+              "Sub": 10,
+              "Where": 5
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "not_strict_lower",
+          "official_cost": {
+            "memory": 229,
+            "params": 132,
+            "cost": 361
+          }
+        },
+        {
+          "label": "opt_eliminate_shape_op",
+          "sha256": "cc37abf7ec0616516cd496391a5e952078c0c71f774ad0da188e518bae77c06f",
+          "serialized_bytes": 5889,
+          "structural": {
+            "full_check": false,
+            "strict_data_prop": false,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": false,
+            "finite_initializers": false,
+            "conv_bias_ub0": false,
+            "reasons": [
+              "checker"
+            ],
+            "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: color_weights_crop): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (2) vs (1)\n(op_type:CenterCropPad, node name: idx_hid_u8): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (30) vs (1)\n(op_type:CenterCropPad, node name: kc_idx_u8_cloak): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (2) vs (1)\n(op_type:CenterCropPad, node name: kc_ge_cloak): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad, node name: kc_le_cloak): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad, node name: start_pack_b_cloak): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:CenterCropPad, node name: end_pack_b_cloak): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:CenterCropPad, node name: n_armed_cloak): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (2) vs (1)\n"
+          },
+          "status": "structural_reject"
+        }
+      ]
+    },
+    "264": {
+      "baseline_sha256": "44163ea87aca5993f076612fd1f8d1c21a232521964666c3644e7dc3817b9160",
+      "baseline_cost": {
+        "memory": 321,
+        "params": 23,
+        "cost": 344
+      },
+      "variants_unique": 4,
+      "strict_lower": [
+        {
+          "label": "alias_initializers",
+          "sha256": "52802ff9cf366a2528eb282e26722e9b53a8aab22d86dbd29095a1add21aaf8e",
+          "serialized_bytes": 7312,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 87,
+            "initializer_count": 4,
+            "value_info_count": 86,
+            "op_histogram": {
+              "Cast": 8,
+              "CenterCropPad": 43,
+              "Concat": 8,
+              "ConstantOfShape": 3,
+              "Einsum": 8,
+              "Equal": 1,
+              "Sub": 8,
+              "Unsqueeze": 8
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "strict_lower_needs_runtime",
+          "official_cost": {
+            "memory": 321,
+            "params": 22,
+            "cost": 343
+          },
+          "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/candidates/task264_alias_initializers_52802ff9cf36.onnx",
+          "cost_reduction": 1
+        },
+        {
+          "label": "opt_eliminate_duplicate_initializer",
+          "sha256": "42b1438c91f40309e69ea6e44c9c1a8aaeb7f3ffba29d7ea30e21475d2b7d5a3",
+          "serialized_bytes": 7312,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 87,
+            "initializer_count": 4,
+            "value_info_count": 86,
+            "op_histogram": {
+              "Cast": 8,
+              "CenterCropPad": 43,
+              "Concat": 8,
+              "ConstantOfShape": 3,
+              "Einsum": 8,
+              "Equal": 1,
+              "Sub": 8,
+              "Unsqueeze": 8
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "strict_lower_needs_runtime",
+          "official_cost": {
+            "memory": 321,
+            "params": 22,
+            "cost": 343
+          },
+          "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/candidates/task264_opt_eliminate_duplicate_initializer_42b1438c91f4.onnx",
+          "cost_reduction": 1
+        }
+      ],
+      "rows": [
+        {
+          "label": "alias_initializers",
+          "sha256": "52802ff9cf366a2528eb282e26722e9b53a8aab22d86dbd29095a1add21aaf8e",
+          "serialized_bytes": 7312,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 87,
+            "initializer_count": 4,
+            "value_info_count": 86,
+            "op_histogram": {
+              "Cast": 8,
+              "CenterCropPad": 43,
+              "Concat": 8,
+              "ConstantOfShape": 3,
+              "Einsum": 8,
+              "Equal": 1,
+              "Sub": 8,
+              "Unsqueeze": 8
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "strict_lower_needs_runtime",
+          "official_cost": {
+            "memory": 321,
+            "params": 22,
+            "cost": 343
+          },
+          "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/candidates/task264_alias_initializers_52802ff9cf36.onnx",
+          "cost_reduction": 1
+        },
+        {
+          "label": "opt_eliminate_nop_cast",
+          "sha256": "fe1a571577de52a2f760a35807d4d00645627072689c4f8c4b5d891e30ec0fd6",
+          "serialized_bytes": 7359,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 87,
+            "initializer_count": 5,
+            "value_info_count": 86,
+            "op_histogram": {
+              "Cast": 8,
+              "CenterCropPad": 43,
+              "Concat": 8,
+              "ConstantOfShape": 3,
+              "Einsum": 8,
+              "Equal": 1,
+              "Sub": 8,
+              "Unsqueeze": 8
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "not_strict_lower",
+          "official_cost": {
+            "memory": 321,
+            "params": 23,
+            "cost": 344
+          }
+        },
+        {
+          "label": "opt_eliminate_duplicate_initializer",
+          "sha256": "42b1438c91f40309e69ea6e44c9c1a8aaeb7f3ffba29d7ea30e21475d2b7d5a3",
+          "serialized_bytes": 7312,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 87,
+            "initializer_count": 4,
+            "value_info_count": 86,
+            "op_histogram": {
+              "Cast": 8,
+              "CenterCropPad": 43,
+              "Concat": 8,
+              "ConstantOfShape": 3,
+              "Einsum": 8,
+              "Equal": 1,
+              "Sub": 8,
+              "Unsqueeze": 8
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "strict_lower_needs_runtime",
+          "official_cost": {
+            "memory": 321,
+            "params": 22,
+            "cost": 343
+          },
+          "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/candidates/task264_opt_eliminate_duplicate_initializer_42b1438c91f4.onnx",
+          "cost_reduction": 1
+        },
+        {
+          "label": "onnxsim",
+          "sha256": "ebb6ee36ee4d2b34292a772741846e938bede09f30f07e9efefe43243008dd7d",
+          "serialized_bytes": 6977,
+          "structural": {
+            "full_check": false,
+            "strict_data_prop": false,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": false,
+            "finite_initializers": false,
+            "conv_bias_ub0": false,
+            "reasons": [
+              "checker"
+            ],
+            "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (29) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (31) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (31) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n"
+          },
+          "status": "structural_reject"
+        }
+      ]
+    },
+    "325": {
+      "baseline_sha256": "5e8e919a23dd9f6e8ba0f82ff08ebef634b1b1975e466ce80bf03ed5288ef3b1",
+      "baseline_cost": {
+        "memory": 165,
+        "params": 57,
+        "cost": 222
+      },
+      "variants_unique": 1,
+      "strict_lower": [],
+      "rows": [
+        {
+          "label": "onnxsim",
+          "sha256": "03f68fc3b1615b10723f0a8ee02620133d602c7e53b6f384b5980809c619a1b5",
+          "serialized_bytes": 4286,
+          "structural": {
+            "full_check": false,
+            "strict_data_prop": false,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": false,
+            "finite_initializers": false,
+            "conv_bias_ub0": false,
+            "reasons": [
+              "checker"
+            ],
+            "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: hidden_input): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad, node name: right_0): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (31) vs (1)\n(op_type:CenterCropPad, node name: right_1): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad, node name: right): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: down_0): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (0)\n(op_type:CenterCropPad, node name: down_1): [ShapeInferenceError] Unexpected axis value: 2. Expected range [0, 0)\n(op_type:CenterCropPad, node name: down): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: down_right_0): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (31) vs (1)\n(op_type:CenterCropPad, node name: down_right_1): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (29) vs (1)\n(op_type:CenterCropPad, node name: down_right): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: down_right2_0): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (31) vs (1)\n(op_type:CenterCropPad, node name: down_right2_1): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad, node name: down_right2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: down2_right_0): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (31) vs (1)\n(op_type:CenterCropPad, node name: down2_right_1): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (29) vs (1)\n(op_type:CenterCropPad, node name: down2_right): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: down2_right2_0): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (31) vs (1)\n(op_type:CenterCropPad, node name: down2_right2_1): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (29) vs (1)\n(op_type:CenterCropPad, node name: down2_right2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: active_bool_h): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n"
+          },
+          "status": "structural_reject"
+        }
+      ]
+    },
+    "344": {
+      "baseline_sha256": "05bedf3ca834aadfc973c00fc91cafdb4d0ae1aaab374115d924e2e33fb1bf6c",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 137,
+        "cost": 137
+      },
+      "variants_unique": 0,
+      "strict_lower": [],
+      "rows": []
+    },
+    "357": {
+      "baseline_sha256": "3c2e8d92b0c893c6836c64119074a2e38e7b975cf7bf8ef09654953b054e6d6c",
+      "baseline_cost": {
+        "memory": 196,
+        "params": 61,
+        "cost": 257
+      },
+      "variants_unique": 1,
+      "strict_lower": [],
+      "rows": [
+        {
+          "label": "onnxsim",
+          "sha256": "2311fd0e4558debcdbe17721bdc43b189ad0c88f4149cb7d3faa4d0ef9840bd2",
+          "serialized_bytes": 878,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 8,
+            "initializer_count": 8,
+            "value_info_count": 7,
+            "op_histogram": {
+              "Max": 1,
+              "Min": 1,
+              "Mod": 1,
+              "QLinearConv": 1,
+              "QuantizeLinear": 2,
+              "ReduceSum": 1,
+              "Sub": 1
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "not_strict_lower",
+          "official_cost": {
+            "memory": 196,
+            "params": 61,
+            "cost": 257
+          }
+        }
+      ]
+    },
+    "387": {
+      "baseline_sha256": "21a0c07d0101a7c538210dc44553f807d1bddcf755746ceaabad20c69561c160",
+      "baseline_cost": {
+        "memory": 234,
+        "params": 95,
+        "cost": 329
+      },
+      "variants_unique": 1,
+      "strict_lower": [],
+      "rows": [
+        {
+          "label": "opt_eliminate_nop_cast",
+          "sha256": "09d15d464ca8e28c9d93315c65c2d2ee94037cfc840d599436035d93c13c459e",
+          "serialized_bytes": 4558,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 79,
+            "initializer_count": 9,
+            "value_info_count": 78,
+            "op_histogram": {
+              "Add": 10,
+              "BitwiseAnd": 2,
+              "Cast": 8,
+              "CastLike": 8,
+              "CenterCropPad": 7,
+              "Concat": 3,
+              "Div": 5,
+              "Einsum": 8,
+              "Flatten": 4,
+              "Mean": 1,
+              "Mul": 3,
+              "ScatterElements": 3,
+              "Size": 1,
+              "Sqrt": 2,
+              "Sub": 14
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "not_strict_lower",
+          "official_cost": {
+            "memory": 234,
+            "params": 95,
+            "cost": 329
+          }
+        }
+      ]
+    },
+    "388": {
+      "baseline_sha256": "f27fa5f4f0bcade23d02fed2a74e3c2b826b11140bd03d29f47e0c59c382a8e1",
+      "baseline_cost": {
+        "memory": 63,
+        "params": 22,
+        "cost": 85
+      },
+      "variants_unique": 1,
+      "strict_lower": [],
+      "rows": [
+        {
+          "label": "opt_eliminate_nop_cast",
+          "sha256": "8f34cf544b9b89cec2a52412d5cabf308dff079474ed2fbca737ebd2e7af04ac",
+          "serialized_bytes": 2071,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 19,
+            "initializer_count": 12,
+            "value_info_count": 18,
+            "op_histogram": {
+              "ArgMax": 1,
+              "CastLike": 7,
+              "CenterCropPad": 1,
+              "Concat": 1,
+              "GroupNormalization": 1,
+              "ReduceL2": 1,
+              "ReduceMax": 1,
+              "ReduceMin": 1,
+              "ScatterElements": 1,
+              "Slice": 1,
+              "Tile": 1,
+              "Where": 2
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "not_strict_lower",
+          "official_cost": {
+            "memory": 63,
+            "params": 22,
+            "cost": 85
+          }
+        }
+      ]
+    },
+    "392": {
+      "baseline_sha256": "96ed4658476f09cb77f09848081bb5830b96b6ea65c8a5a3278f28f9036e32f9",
+      "baseline_cost": {
+        "memory": 272,
+        "params": 57,
+        "cost": 329
+      },
+      "variants_unique": 1,
+      "strict_lower": [],
+      "rows": [
+        {
+          "label": "onnxsim",
+          "sha256": "720708d04197d4cd80a78ee9136f2430348ccb461ce7da5f7795623789e30c2e",
+          "serialized_bytes": 675305,
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 14,
+            "initializer_count": 8,
+            "value_info_count": 13,
+            "op_histogram": {
+              "Cast": 4,
+              "Concat": 1,
+              "Einsum": 1,
+              "QLinearConv": 1,
+              "ScatterElements": 1,
+              "Sub": 1,
+              "TfIdfVectorizer": 3,
+              "Unsqueeze": 2
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "not_strict_lower",
+          "official_cost": {
+            "memory": 272,
+            "params": 57,
+            "cost": 329
+          }
+        }
+      ]
+    },
+    "397": {
+      "baseline_sha256": "2361956a9b6d1391aff9d8bc4af26d5112877e0e2946b365d04e461899f4d7e1",
+      "baseline_cost": {
+        "memory": 249,
+        "params": 89,
+        "cost": 338
+      },
+      "variants_unique": 1,
+      "strict_lower": [],
+      "rows": [
+        {
+          "label": "opt_eliminate_shape_op",
+          "sha256": "df96d98e13d88bc76980f21247d3c4b32e48d799015f06db5b6ced5aaf964a85",
+          "serialized_bytes": 20632,
+          "structural": {
+            "full_check": false,
+            "strict_data_prop": false,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": false,
+            "finite_initializers": false,
+            "conv_bias_ub0": false,
+            "reasons": [
+              "checker"
+            ],
+            "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:TopK): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (5) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (5) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (5) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (5) vs (1)\n"
+          },
+          "status": "structural_reject"
+        }
+      ]
+    },
+    "398": {
+      "baseline_sha256": "339e0b25b3f45862f51b98c239755e597aca040b951acec5065b380a753d2513",
+      "baseline_cost": {
+        "memory": 144,
+        "params": 202,
+        "cost": 346
+      },
+      "variants_unique": 0,
+      "strict_lower": [],
+      "rows": []
+    }
+  },
+  "winner_candidates": [
+    {
+      "task": 264,
+      "label": "alias_initializers",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/candidates/task264_alias_initializers_52802ff9cf36.onnx",
+      "sha256": "52802ff9cf366a2528eb282e26722e9b53a8aab22d86dbd29095a1add21aaf8e",
+      "official_cost": {
+        "memory": 321,
+        "params": 22,
+        "cost": 343
+      }
+    },
+    {
+      "task": 264,
+      "label": "opt_eliminate_duplicate_initializer",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/candidates/task264_opt_eliminate_duplicate_initializer_42b1438c91f4.onnx",
+      "sha256": "42b1438c91f40309e69ea6e44c9c1a8aaeb7f3ffba29d7ea30e21475d2b7d5a3",
+      "official_cost": {
+        "memory": 321,
+        "params": 22,
+        "cost": 343
+      }
+    }
+  ],
+  "summary": {
+    "tasks": 12,
+    "unique_variants": 15,
+    "strict_lower_candidates": 2
+  }
+}

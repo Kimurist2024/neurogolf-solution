@@ -1,0 +1,49 @@
+{
+  "baseline": {
+    "zip": "submission_base_8002.63.zip",
+    "member": "task219.onnx",
+    "path": "scripts/golf/loop_7999_13/lane_b32/baseline_task219.onnx",
+    "sha256": "7a2ead58107803948d316fb8e00c4fd3ff601769309f9ad99661976f1a51bd67",
+    "nodes": 113,
+    "params": 226
+  },
+  "candidates": {
+    "unit_dims_folded": {
+      "path": "scripts/golf/loop_7999_13/lane_b32/task219_unit_dims_folded.onnx",
+      "sha256": "971699a97cd64012fb0855422557e35fec065bf379018867da47e95f347aeb4e",
+      "nodes": 107,
+      "params": 224,
+      "removed_intermediates": [
+        "ha2",
+        "hb2",
+        "kernel4u8",
+        "tr_cond4",
+        "te_cond4",
+        "bcond4"
+      ],
+      "expected_memory_reduction": 23,
+      "value_semantics": "unit-dimension broadcasting only"
+    },
+    "unit_dims_bool_scale_fused": {
+      "path": "scripts/golf/loop_7999_13/lane_b32/task219_unit_dims_bool_scale_fused.onnx",
+      "sha256": "18d2c8487b63122b83d938a5d3d43686e7f79e0f512f2ea77d652091eb1a745e",
+      "nodes": 106,
+      "params": 224,
+      "additional_removed_intermediate": "k2mask16",
+      "expected_additional_memory_reduction": 1,
+      "value_semantics": "Where(tall3,98,0) == Cast(tall3,uint8)*98"
+    },
+    "winner": {
+      "path": "scripts/golf/loop_7999_13/lane_b32/task219_b32_winner.onnx",
+      "sha256": "e6b9793c6c54db7c795c355d82853b6d2100c2992f5c887e7ee34a2ae07a172c",
+      "nodes": 105,
+      "params": 217,
+      "additional_removed_intermediate": "cmask1u8",
+      "removed_initializer": "cmaskv8",
+      "identity": "(x & (3*s))/s == (x/s)&3 for power-of-two s"
+    }
+  },
+  "rejected_designs": {
+    "variadic_sum_uint8": "ONNX full checker rejects uint8 Sum"
+  }
+}

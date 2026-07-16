@@ -1,0 +1,474 @@
+{
+  "exact_wave12_baselines": {
+    "354": {
+      "task": 354,
+      "path": "scripts/golf/loop_7999_13/lane_a27/base/task354.onnx",
+      "sha256": "c86ec60a3cf1241903cd6ebdf11f210f24f9e57216927c5654985d8f2d28efe4",
+      "nodes": 21,
+      "op_histogram": {
+        "GroupNormalization": 2,
+        "CastLike": 3,
+        "Resize": 1,
+        "QLinearConv": 4,
+        "Where": 1,
+        "Transpose": 2,
+        "QLinearMatMul": 3,
+        "BitwiseAnd": 1,
+        "Max": 1,
+        "Identity": 1,
+        "CenterCropPad": 1,
+        "ScatterElements": 1
+      },
+      "params": 76,
+      "declared_static_memory": 461,
+      "declared_static_cost": 537,
+      "output_shapes": [
+        [
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "reachability": {
+        "nodes": 21,
+        "live_nodes": 21,
+        "dead_nodes": 0
+      },
+      "duplicate_initializers": [],
+      "banned_ops": [],
+      "nested_graphs": 0,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "shape_cloak_witnesses": [
+        {
+          "tensor": "gn_f",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "guaranteed_runtime": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "reason": "GroupNormalization preserves the fixed input shape"
+        },
+        {
+          "tensor": "data_clear_f",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "guaranteed_runtime": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "reason": "GroupNormalization preserves the fixed input shape"
+        },
+        {
+          "tensor": "output",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "guaranteed_runtime": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "reason": "known examples and ScatterElements path return a full padded grid"
+        }
+      ],
+      "shape_cloak_free": false
+    },
+    "368": {
+      "task": 368,
+      "path": "scripts/golf/loop_7999_13/lane_a27/base/task368.onnx",
+      "sha256": "0d950f5053aa62e7a3208be01514ad061b85580875e0e93aa7ee941cbacaa811",
+      "nodes": 9,
+      "op_histogram": {
+        "GroupNormalization": 1,
+        "CastLike": 1,
+        "QLinearConv": 6,
+        "Mul": 1
+      },
+      "params": 40,
+      "declared_static_memory": 481,
+      "declared_static_cost": 521,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "reachability": {
+        "nodes": 9,
+        "live_nodes": 9,
+        "dead_nodes": 0
+      },
+      "duplicate_initializers": [],
+      "banned_ops": [],
+      "nested_graphs": 0,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "shape_cloak_witnesses": [
+        {
+          "tensor": "gn",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "guaranteed_runtime": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "reason": "GroupNormalization preserves the fixed input shape"
+        }
+      ],
+      "shape_cloak_free": false
+    }
+  },
+  "algebraic_probes": {
+    "task354_no_identity": {
+      "task": 354,
+      "path": "scripts/golf/loop_7999_13/lane_a27/candidates/task354_no_identity.onnx",
+      "sha256": "97545f618f21c3fb4d9f08899d9e6f913906d826985e7ea44ca45d4020edca46",
+      "nodes": 20,
+      "op_histogram": {
+        "GroupNormalization": 2,
+        "CastLike": 3,
+        "Resize": 1,
+        "QLinearConv": 4,
+        "Where": 1,
+        "Transpose": 2,
+        "QLinearMatMul": 3,
+        "BitwiseAnd": 1,
+        "Max": 1,
+        "CenterCropPad": 1,
+        "ScatterElements": 1
+      },
+      "params": 76,
+      "declared_static_memory": null,
+      "declared_static_cost": null,
+      "output_shapes": [
+        [
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "reachability": {
+        "nodes": 20,
+        "live_nodes": 20,
+        "dead_nodes": 0
+      },
+      "duplicate_initializers": [],
+      "banned_ops": [],
+      "nested_graphs": 0,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "full_check": false,
+      "full_check_error": "InferenceError('[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: idx_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (12) vs (1)\\n')",
+      "strict_shape_data_prop": false,
+      "strict_shape_error": "InferenceError('[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: idx_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (12) vs (1)\\n')",
+      "shape_cloak_witnesses": [
+        {
+          "tensor": "gn_f",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "guaranteed_runtime": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "reason": "GroupNormalization preserves the fixed input shape"
+        },
+        {
+          "tensor": "data_clear_f",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "guaranteed_runtime": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "reason": "GroupNormalization preserves the fixed input shape"
+        },
+        {
+          "tensor": "output",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "guaranteed_runtime": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "reason": "known examples and ScatterElements path return a full padded grid"
+        }
+      ],
+      "shape_cloak_free": false
+    },
+    "task354_archive560": {
+      "task": 354,
+      "path": "scripts/golf/loop_7999_13/lane_a27/candidates/task354_archive531.onnx",
+      "sha256": "65ed30c939b7c9e3e5aec6846a7963a4c095cb5387f21108dbf68fe373633aa7",
+      "nodes": 21,
+      "op_histogram": {
+        "GroupNormalization": 2,
+        "CastLike": 3,
+        "Resize": 2,
+        "QLinearConv": 3,
+        "Where": 1,
+        "Transpose": 2,
+        "QLinearMatMul": 3,
+        "BitwiseAnd": 1,
+        "Max": 1,
+        "Identity": 1,
+        "CenterCropPad": 1,
+        "ScatterElements": 1
+      },
+      "params": 79,
+      "declared_static_memory": 452,
+      "declared_static_cost": 531,
+      "output_shapes": [
+        [
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "reachability": {
+        "nodes": 21,
+        "live_nodes": 21,
+        "dead_nodes": 0
+      },
+      "duplicate_initializers": [],
+      "banned_ops": [],
+      "nested_graphs": 0,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "shape_cloak_witnesses": [
+        {
+          "tensor": "gn_f",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "guaranteed_runtime": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "reason": "GroupNormalization preserves the fixed input shape"
+        },
+        {
+          "tensor": "data_clear_f",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "guaranteed_runtime": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "reason": "GroupNormalization preserves the fixed input shape"
+        },
+        {
+          "tensor": "output",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "guaranteed_runtime": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "reason": "known examples and ScatterElements path return a full padded grid"
+        }
+      ],
+      "shape_cloak_free": false
+    }
+  },
+  "history": {
+    "354": {
+      "rows": 5,
+      "stage_counts": {
+        "static_reject": 4,
+        "actual_reject": 1
+      },
+      "lowest_actual": [
+        {
+          "scan": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+          "sha256": "65ed30c939b7c9e3e5aec6846a7963a4c095cb5387f21108dbf68fe373633aa7",
+          "source": "others/2/1200/task354_cost560.onnx",
+          "stage": "actual_reject",
+          "actual_cost": 560,
+          "static_cost_floor": 531,
+          "correct": null,
+          "reason": "actual_cost_not_strictly_cheaper_or_timeout"
+        }
+      ],
+      "lowest_static_floor": [
+        {
+          "scan": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+          "sha256": "65ed30c939b7c9e3e5aec6846a7963a4c095cb5387f21108dbf68fe373633aa7",
+          "source": "others/2/1200/task354_cost560.onnx",
+          "stage": "actual_reject",
+          "actual_cost": 560,
+          "static_cost_floor": 531,
+          "correct": null,
+          "reason": "actual_cost_not_strictly_cheaper_or_timeout"
+        },
+        {
+          "scan": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+          "sha256": "15118ccd1d4ca0043ecface15103a48137a2f2249b7237783d3141dfc6b130be",
+          "source": "others/7131/task354_improved_cost540.onnx",
+          "stage": "static_reject",
+          "actual_cost": null,
+          "static_cost_floor": 540,
+          "correct": null,
+          "reason": "static_floor_not_strictly_cheaper"
+        },
+        {
+          "scan": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+          "sha256": "03a4aecaa73f3c10c65cccb0b6416d75e0a47640a70615cb29143be3dfb64969",
+          "source": "others/2/1203/submission (59).zip::task354.onnx",
+          "stage": "static_reject",
+          "actual_cost": null,
+          "static_cost_floor": 555,
+          "correct": null,
+          "reason": "static_floor_not_strictly_cheaper"
+        },
+        {
+          "scan": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+          "sha256": "28364fd6a7cc2feeb04043b1da5efb48b7aaae070e5f01b7ac2d00ff7c470899",
+          "source": "others/2/7908/submission (57).zip::task354.onnx",
+          "stage": "static_reject",
+          "actual_cost": null,
+          "static_cost_floor": 863,
+          "correct": null,
+          "reason": "static_floor_not_strictly_cheaper"
+        },
+        {
+          "scan": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+          "sha256": "051af87bad4927423d8d962c8cc0fe0cd645b5abd69e89a4f6105d9d0191e11e",
+          "source": "others/2/1300/submission7300+/task354.onnx",
+          "stage": "static_reject",
+          "actual_cost": null,
+          "static_cost_floor": 2064,
+          "correct": null,
+          "reason": "static_floor_not_strictly_cheaper"
+        }
+      ]
+    },
+    "368": {
+      "rows": 4,
+      "stage_counts": {
+        "static_reject": 4
+      },
+      "lowest_actual": [],
+      "lowest_static_floor": [
+        {
+          "scan": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+          "sha256": "10a51e7d4b63a8a3d510a2f3745af874ff7b8ca18323fd0875f414d88ef90e84",
+          "source": "others/2/7908/submission (57).zip::task368.onnx",
+          "stage": "static_reject",
+          "actual_cost": null,
+          "static_cost_floor": 522,
+          "correct": null,
+          "reason": "static_floor_not_strictly_cheaper"
+        },
+        {
+          "scan": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+          "sha256": "bf678acefd73ededf7e93d0c7d3fa82901f19c76c668f1039b7632dae6727063",
+          "source": "others/2/1200/task368_best_valid_nonadopted.onnx",
+          "stage": "static_reject",
+          "actual_cost": null,
+          "static_cost_floor": 522,
+          "correct": null,
+          "reason": "static_floor_not_strictly_cheaper"
+        },
+        {
+          "scan": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+          "sha256": "34868ff3f6018b4fb055d238202896eea9ea1a3c63634de0922005dfde277434",
+          "source": "others/7131/task368_reduced.onnx",
+          "stage": "static_reject",
+          "actual_cost": null,
+          "static_cost_floor": 522,
+          "correct": null,
+          "reason": "static_floor_not_strictly_cheaper"
+        },
+        {
+          "scan": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+          "sha256": "9051eaff449b27cf2e92207f66bbc2c60e100922844cef47d865a67cb370bbab",
+          "source": "others/2/1300/submission7300+/task368.onnx",
+          "stage": "static_reject",
+          "actual_cost": null,
+          "static_cost_floor": 1611,
+          "correct": null,
+          "reason": "static_floor_not_strictly_cheaper"
+        }
+      ]
+    }
+  },
+  "generator_rules": {
+    "354": "replace each gray rectangle by the color of its uniquely aligned top-row light",
+    "368": "copy the unique colored prototype sprite into every gray sprite footprint"
+  },
+  "decision": {
+    "accepted": [],
+    "projected_gain": 0.0,
+    "reason": "no candidate is both strictly cheaper and free of shape cloaking"
+  }
+}

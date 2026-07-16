@@ -1,0 +1,204 @@
+{
+  "baseline": {
+    "path": "submission_base_8004.50.zip",
+    "sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+    "lb_score": 8004.50,
+    "origin_score": 8004.42,
+    "target_score": 8024.42
+  },
+  "coverage": {
+    "all400_archive_inventory": {
+      "evidence": "scripts/golf/loop_7999_13/lane_archive_all400/inventory.json",
+      "zips_seen": 1196,
+      "zip_members_seen": 448568,
+      "loose_onnx_seen": 233751,
+      "unique_different_sha": 13591
+    },
+    "later_artifact_rescreen": {
+      "evidence": "scripts/golf/loop_8004_42/agent_archive_safe/recent_structural_leads.json",
+      "files_seen": 1882,
+      "unique_sha": 643
+    },
+    "explicit_final_acceptance_records": {
+      "evidence": "scripts/golf/loop_8004_42_plus20/agent_history_miner/history_inventory.json",
+      "json_files_scanned": 134,
+      "unique_task_sha": 50
+    },
+    "others_reports_reviewed": 22
+  },
+  "accepted": [],
+  "accepted_count": 0,
+  "aggregate_projected_gain": 0.0,
+  "ranked_rejected_finalists": [
+    {
+      "rank": 1,
+      "task": 202,
+      "candidate_path": "scripts/golf/loop_7999_13/lane_a18/candidates/task202_r03.onnx",
+      "sha256": "cd442a7cb2df00311044258ded1c9e1635bb19193fba6940e4b803831d6d03ea",
+      "current_sha256": "12c2f62bc5097af89a7130860a29fd180731786c241aad7ca2563327642708ad",
+      "current_cost": 48,
+      "candidate_cost": 28,
+      "projected_gain": 0.5389965007326869,
+      "known": {
+        "disable_all": {"right": 230, "wrong": 0, "errors": 0},
+        "default": {"right": 230, "wrong": 0, "errors": 0}
+      },
+      "fresh": {
+        "disable_all": {"right": 4993, "wrong": 7, "errors": 0, "rate": 0.9986},
+        "default": {"right": 4993, "wrong": 7, "errors": 0, "rate": 0.9986}
+      },
+      "strict": true,
+      "conv_bias_ub": 0,
+      "lineage": [
+        "scripts/golf/loop_7999_13/lane_a18/model_manifest.json",
+        "scripts/golf/loop_7999_13/lane_a18/candidate_audit.json",
+        "scripts/golf/loop_7999_13/lane_a18/fresh_dual_5000.json",
+        "others/2/7907/task202_cost28_fast.onnx"
+      ],
+      "verdict": "REJECT",
+      "reasons": [
+        "task202 is in the project private-zero/highest-risk catalog",
+        "the candidate changes a 21-input floating Einsum contraction",
+        "fresh behavior is not generator-complete"
+      ]
+    },
+    {
+      "rank": 2,
+      "task": 205,
+      "candidate_path": "scripts/golf/loop_7999_13/lane_a23/candidates/task205_r02.onnx",
+      "sha256": "bbfa8f5b79d2e8345a39a41f327ac1c2c851f3c7f388dd595c72ef951e1b3050",
+      "current_sha256": "8a6acdc20a366ccbd32cf761285cbb2f1cbcf7d3d2ef8ea71d0fb5a3ed6f1468",
+      "current_cost": 1042,
+      "candidate_cost": 937,
+      "projected_gain": 0.10621394007489116,
+      "known": {
+        "disable_all": {"right": 266, "wrong": 0, "errors": 0},
+        "default": {"right": 266, "wrong": 0, "errors": 0}
+      },
+      "fresh": {
+        "disable_all": {"right": 4904, "wrong": 96, "errors": 0, "rate": 0.9808},
+        "default": {"right": 4904, "wrong": 96, "errors": 0, "rate": 0.9808}
+      },
+      "strict": true,
+      "conv_bias_ub": 0,
+      "lineage": [
+        "scripts/golf/loop_8004_42/agent_archive_safe/winner_manifest.json",
+        "scripts/golf/loop_8004_42/agent_archive_safe/task205_external_current500.json",
+        "others/2/7805/task205_rebuilt_top2_cost937.onnx"
+      ],
+      "verdict": "REJECT",
+      "reasons": [
+        "task205 is in the project private-zero/highest-risk catalog",
+        "fresh accuracy is lower than the current member (4904 versus 4928 of 5000)",
+        "arbitrary-input validation emitted output-shape warnings"
+      ]
+    },
+    {
+      "rank": 3,
+      "task": 23,
+      "candidate_path": "scripts/golf/loop_7999_13/lane_harvest/winner_task023.onnx",
+      "sha256": "61313447a8f811f65257ae079330a956e63e8722daf4197f62316649e31798a7",
+      "current_sha256": "bd242d29ab9514b2432dce31e6df28dd67f00bf1bdcb54c8a00f28614f974fb0",
+      "current_cost": 1622,
+      "candidate_cost": 1497,
+      "projected_gain": 0.08019685025572992,
+      "known": {"right": 266, "wrong": 0, "errors": 0},
+      "fresh": {
+        "disable_all": {"right": 2, "wrong_or_output_failure": 498, "rate": 0.004},
+        "default": {"right": 2, "wrong_or_output_failure": 498, "rate": 0.004}
+      },
+      "strict": true,
+      "conv_bias_ub": 0,
+      "lineage": [
+        "scripts/golf/loop_7999_13/lane_harvest/known_winner_manifest.json",
+        "scripts/golf/loop_7999_13/lane_harvest/external_task023.json",
+        "scripts/golf/loop_8004_42_plus20/agent_history_miner/task023_fresh500_dual.json",
+        "others/2/1203/task023_improved_v2.onnx"
+      ],
+      "verdict": "REJECT",
+      "reasons": [
+        "fresh generator accuracy is 0.4%, far below the authorized 95% gate",
+        "the prior 3000-case arbitrary differential mismatched on all 3000 cases"
+      ]
+    },
+    {
+      "rank": 4,
+      "task": 344,
+      "candidate_path": "scripts/golf/loop_8002_63/wave4_replacements/task344.onnx",
+      "sha256": "e980db3f1083e1edecd9b10ca19b7483103db0fc3b8d535a1c1e2248d57672b0",
+      "current_sha256": "d0902dc6498525c5f62f12fc02e25fe7914afbae4a583fd77b71f8f05f08019f",
+      "current_cost": 197,
+      "candidate_cost": 191,
+      "projected_gain": 0.03093030069135949,
+      "known": {"right": 266, "wrong": 0, "errors": 0},
+      "fresh": {
+        "disable_all": {"right": 4972, "wrong": 28, "errors": 0, "rate": 0.9944},
+        "default": {"right": 4972, "wrong": 28, "errors": 0, "rate": 0.9944}
+      },
+      "strict": true,
+      "conv_bias_ub": 0,
+      "lineage": [
+        "scripts/golf/loop_8002_63/wave4_compare.json",
+        "scripts/golf/loop_8002_63/lane_task344_r02/fresh_dual5000.json",
+        "scripts/golf/loop_8003_40/LOOP_STATUS.md"
+      ],
+      "verdict": "REJECT",
+      "reasons": [
+        "task344 is in the confirmed private-zero catalog",
+        "the candidate changes a 24-input floating Einsum contraction",
+        "the 8004.50 baseline intentionally retained the LB-white cost-197 member"
+      ]
+    },
+    {
+      "rank": 5,
+      "task": 153,
+      "candidate_path": "scripts/golf/loop_8003_40/archive_screen/models/task153.onnx",
+      "sha256": "e929949186c3b676fb09ce5e7554e688dd6144f935a3daa794fa35704ee64d0f",
+      "current_sha256": "ba23d57cd777f0247028025ed48ec24558c5ee9234cb3ca0d4932b4abc11a949",
+      "current_cost": 237,
+      "candidate_cost": 236,
+      "projected_gain": 0.004228336109523667,
+      "known": {"right": 265, "wrong": 0, "errors": 0},
+      "fresh": {
+        "disable_all": {"right": 5000, "wrong": 0, "errors": 0, "rate": 1.0},
+        "default": {"right": 5000, "wrong": 0, "errors": 0, "rate": 1.0}
+      },
+      "strict": true,
+      "conv_bias_ub": 1,
+      "lineage": [
+        "scripts/golf/loop_8003_40/wave2_compare.json",
+        "scripts/golf/loop_8003_40/archive_screen/task153_fresh5000.json",
+        "scripts/golf/loop_8003_40/LOOP_STATUS.md"
+      ],
+      "verdict": "REJECT",
+      "reasons": [
+        "QLinearConv bias length is 9 for 10 output channels",
+        "task153 is explicitly excluded by the campaign safety policy"
+      ]
+    },
+    {
+      "rank": 6,
+      "task": 204,
+      "candidate_path": "scripts/golf/loop_7999_13/submission_7999.13_wave6_safe_meta.zip::task204.onnx",
+      "sha256": "6e21b4c6a53d3f8a56d165e4a2e29dcc12aba66c77759e5e56ab032dff12bb3f",
+      "current_sha256": "7405b5d8560f0bbd4626c5ca6a1c416d21947d3bb9572941b6b37ff10d39ad88",
+      "current_cost": 2240,
+      "candidate_cost": 2544,
+      "projected_gain": -0.12726177961092588,
+      "known": {"right": 268, "wrong": 0, "errors": 0},
+      "fresh": null,
+      "strict": true,
+      "conv_bias_ub": 0,
+      "lineage": [
+        "scripts/golf/loop_7999_13/wave6_compare.json",
+        "scripts/golf/loop_8004_42_plus20/agent_history_miner/task204_current_reprofile.json"
+      ],
+      "verdict": "REJECT",
+      "reasons": [
+        "8004.50-current runtime profiling gives cost 2544, which is 304 worse than the current cost 2240",
+        "the apparent static cost 573 was caused by false small value_info declarations and is not an admissible cost"
+      ]
+    }
+  ],
+  "conclusion": "No historical candidate outside the forbidden private-zero/UB/lookup/shape-cloak/runtime-risk classes is both cheaper than the 8004.50 payload and supported by complete known plus fresh>=95% evidence."
+}

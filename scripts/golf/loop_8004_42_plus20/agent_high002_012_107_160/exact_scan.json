@@ -1,0 +1,956 @@
+{
+  "tasks": {
+    "2": {
+      "baseline_sha256": "20f024826fc233dd1a90e6e10052627cc6ea2847d337a7210c5173b84a6a6eb8",
+      "baseline_official_profile": {
+        "memory": 360,
+        "params": 926,
+        "cost": 1286,
+        "score": 17.840708095202437,
+        "correct": true
+      },
+      "rows": [
+        {
+          "task": 2,
+          "kind": "normalize",
+          "sha256": "10dd7f0b3fe6e62868427045d9cf452452800dad71c9788a6b5c31e221e25c20",
+          "actions": {
+            "cleared_value_info": [
+              "rc",
+              "Feat"
+            ]
+          },
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 3,
+            "initializer_count": 4,
+            "value_info_count": 0,
+            "op_histogram": {
+              "Einsum": 2,
+              "Pow": 1
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "NOT_LOWER",
+          "declared_shape_cost_profile": {
+            "memory": 360,
+            "params": 926,
+            "cost": 1286
+          },
+          "preliminary_lower": false,
+          "runtime_shape_trace": {
+            "traced": 3,
+            "actual_shapes": {
+              "rc": [
+                1,
+                30
+              ],
+              "Feat": [
+                2,
+                30
+              ],
+              "output": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            "mismatch_count": 0,
+            "mismatches": [],
+            "nonfinite_values": 0,
+            "truthful": true
+          }
+        }
+      ]
+    },
+    "12": {
+      "baseline_sha256": "478a310e10fcf0a3e82df943fd6ab43671c47059f8e6eb675bf0004bef576500",
+      "baseline_official_profile": {
+        "memory": 0,
+        "params": 710,
+        "cost": 710,
+        "score": 18.43473502996464,
+        "correct": true
+      },
+      "rows": []
+    },
+    "107": {
+      "baseline_sha256": "39e937f3065e013a25795a61b1760c23d6cf683a3411c581205ec22a2ddabdbf",
+      "baseline_official_profile": {
+        "memory": 365,
+        "params": 299,
+        "cost": 664,
+        "score": 18.501717850523566,
+        "correct": true
+      },
+      "rows": [
+        {
+          "task": 107,
+          "kind": "fold",
+          "sha256": "01816bed65925e3bdc9aa3d9526dffd64f78a2e58fda6933d8e3033842a21592",
+          "actions": {
+            "constant_folds": [
+              {
+                "op": "Shape",
+                "output": "sh30",
+                "shape": [
+                  1
+                ],
+                "dtype": "int64",
+                "proof": "all_inputs_constant_numpy_equivalent"
+              }
+            ]
+          },
+          "structural": {
+            "full_check": false,
+            "strict_data_prop": false,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": false,
+            "finite_initializers": false,
+            "conv_bias_ub0": false,
+            "reasons": [
+              "checker"
+            ],
+            "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: hid_edge_eq): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (2)\n(op_type:CenterCropPad, node name: hid_qfeat_u8): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (2) vs (1)\n(op_type:CenterCropPad, node name: hid_qmask_b): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (30) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (2) vs (1)\n"
+          },
+          "status": "STRUCTURAL_REJECT"
+        },
+        {
+          "task": 107,
+          "kind": "normalize",
+          "sha256": "ec4716010e75f8b378c5d025a78fcf2caf8eed9d844ca6ccb0ccaa2e12b093b1",
+          "actions": {
+            "cleared_value_info": [
+              "sh30",
+              "g32",
+              "g",
+              "edge_a",
+              "edge_b",
+              "edge_eq",
+              "hid_edge_eq",
+              "edge_same",
+              "nsame",
+              "nsame_u8",
+              "factor_m1",
+              "factor",
+              "pos_g",
+              "pos_zero",
+              "quot",
+              "pR",
+              "pC",
+              "fm1v",
+              "ffeat_u8",
+              "ffeat",
+              "cg_u8",
+              "sh_cg",
+              "hid_cg_u8",
+              "cg",
+              "qfeat_u8",
+              "hid_qfeat_u8",
+              "qfeat",
+              "qmask_b",
+              "hid_qmask_b",
+              "qmask",
+              "remfeat",
+              "pR0_tmp",
+              "pC0_tmp",
+              "pR_u8",
+              "pC_u8",
+              "hid_pR_u8",
+              "hid_pC_u8"
+            ]
+          },
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 37,
+            "initializer_count": 27,
+            "value_info_count": 0,
+            "op_histogram": {
+              "Add": 1,
+              "Cast": 9,
+              "CenterCropPad": 7,
+              "Conv": 1,
+              "Div": 1,
+              "Einsum": 1,
+              "Equal": 1,
+              "GatherND": 1,
+              "Less": 2,
+              "Pad": 5,
+              "ReduceSum": 1,
+              "Shape": 2,
+              "Slice": 2,
+              "Split": 1,
+              "Sub": 1,
+              "Unsqueeze": 1
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "NOT_LOWER",
+          "declared_shape_cost_profile": {
+            "memory": -1,
+            "params": -1,
+            "cost": -1
+          },
+          "preliminary_lower": false,
+          "runtime_shape_trace": {
+            "traced": 38,
+            "actual_shapes": {
+              "sh30": [
+                1
+              ],
+              "g32": [
+                1,
+                1,
+                5,
+                5
+              ],
+              "g": [
+                1,
+                1,
+                5,
+                5
+              ],
+              "cg_u8": [
+                1,
+                2,
+                5,
+                5
+              ],
+              "sh_cg": [
+                1
+              ],
+              "edge_a": [
+                1,
+                1,
+                4,
+                1
+              ],
+              "edge_b": [
+                1,
+                1,
+                4,
+                1
+              ],
+              "edge_eq": [
+                1,
+                1,
+                4,
+                1
+              ],
+              "hid_edge_eq": [
+                1,
+                1,
+                30,
+                1
+              ],
+              "edge_same": [
+                1,
+                1,
+                30,
+                1
+              ],
+              "nsame": [],
+              "nsame_u8": [],
+              "factor_m1": [],
+              "factor": [],
+              "pos_g": [
+                1,
+                2,
+                1
+              ],
+              "pos_zero": [
+                1,
+                2,
+                1
+              ],
+              "pR0_tmp": [
+                1,
+                1,
+                1
+              ],
+              "pC0_tmp": [
+                1,
+                1,
+                1
+              ],
+              "quot": [
+                1,
+                30
+              ],
+              "pR_u8": [
+                1,
+                2,
+                1
+              ],
+              "hid_pR_u8": [
+                1,
+                2,
+                1
+              ],
+              "pR": [
+                1,
+                2,
+                1
+              ],
+              "pC_u8": [
+                1,
+                2,
+                1
+              ],
+              "hid_pC_u8": [
+                1,
+                2,
+                1
+              ],
+              "pC": [
+                1,
+                2,
+                1
+              ],
+              "fm1v": [
+                1
+              ],
+              "ffeat_u8": [
+                2
+              ],
+              "ffeat": [
+                2
+              ],
+              "hid_cg_u8": [
+                1,
+                2,
+                5,
+                5
+              ],
+              "cg": [
+                1,
+                2,
+                5,
+                5
+              ],
+              "qfeat_u8": [
+                2,
+                30
+              ],
+              "hid_qfeat_u8": [
+                2,
+                30
+              ],
+              "qfeat": [
+                2,
+                30
+              ],
+              "qmask_b": [
+                1,
+                30
+              ],
+              "hid_qmask_b": [
+                1,
+                30
+              ],
+              "qmask": [
+                1,
+                30
+              ],
+              "remfeat": [
+                2,
+                30
+              ],
+              "output": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            "mismatch_count": 20,
+            "mismatches": [
+              {
+                "name": "hid_edge_eq",
+                "declared": [],
+                "actual": [
+                  1,
+                  1,
+                  30,
+                  1
+                ]
+              },
+              {
+                "name": "edge_same",
+                "declared": [],
+                "actual": [
+                  1,
+                  1,
+                  30,
+                  1
+                ]
+              },
+              {
+                "name": "quot",
+                "declared": [],
+                "actual": [
+                  1,
+                  30
+                ]
+              },
+              {
+                "name": "hid_pR_u8",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "name": "pR",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "name": "hid_pC_u8",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "name": "pC",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "name": "fm1v",
+                "declared": [],
+                "actual": [
+                  1
+                ]
+              },
+              {
+                "name": "ffeat_u8",
+                "declared": [],
+                "actual": [
+                  2
+                ]
+              },
+              {
+                "name": "ffeat",
+                "declared": [],
+                "actual": [
+                  2
+                ]
+              },
+              {
+                "name": "hid_cg_u8",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  5,
+                  5
+                ]
+              },
+              {
+                "name": "cg",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  5,
+                  5
+                ]
+              },
+              {
+                "name": "qfeat_u8",
+                "declared": [],
+                "actual": [
+                  2,
+                  30
+                ]
+              },
+              {
+                "name": "hid_qfeat_u8",
+                "declared": [],
+                "actual": [
+                  2,
+                  30
+                ]
+              },
+              {
+                "name": "qfeat",
+                "declared": [],
+                "actual": [
+                  2,
+                  30
+                ]
+              },
+              {
+                "name": "qmask_b",
+                "declared": [],
+                "actual": [
+                  1,
+                  30
+                ]
+              },
+              {
+                "name": "hid_qmask_b",
+                "declared": [],
+                "actual": [
+                  1,
+                  30
+                ]
+              },
+              {
+                "name": "qmask",
+                "declared": [],
+                "actual": [
+                  1,
+                  30
+                ]
+              },
+              {
+                "name": "remfeat",
+                "declared": [],
+                "actual": [
+                  2,
+                  30
+                ]
+              },
+              {
+                "name": "output",
+                "declared": [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                "actual": [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              }
+            ],
+            "nonfinite_values": 904,
+            "truthful": false
+          }
+        },
+        {
+          "task": 107,
+          "kind": "normalized_combined",
+          "sha256": "c3687e089f8f1cc7fa8505fc9b9e6dfca1de4926ef4e725a8428e6fe6f1bda38",
+          "actions": {
+            "dead_nodes": [],
+            "unused_initializers": [],
+            "dead_value_info": [],
+            "deduplicated_initializers": [],
+            "removed_optional_outputs": [],
+            "bypassed_noops": [],
+            "common_subexpressions": [],
+            "constant_folds": [
+              {
+                "op": "Shape",
+                "output": "sh30",
+                "shape": [
+                  1
+                ],
+                "dtype": "int64",
+                "proof": "all_inputs_constant_numpy_equivalent"
+              }
+            ],
+            "second_noops": [],
+            "second_cse": [],
+            "final_dead_nodes": [],
+            "final_unused_initializers": [],
+            "cleared_value_info": [
+              "sh30",
+              "g32",
+              "g",
+              "edge_a",
+              "edge_b",
+              "edge_eq",
+              "hid_edge_eq",
+              "edge_same",
+              "nsame",
+              "nsame_u8",
+              "factor_m1",
+              "factor",
+              "pos_g",
+              "pos_zero",
+              "quot",
+              "pR",
+              "pC",
+              "fm1v",
+              "ffeat_u8",
+              "ffeat",
+              "cg_u8",
+              "sh_cg",
+              "hid_cg_u8",
+              "cg",
+              "qfeat_u8",
+              "hid_qfeat_u8",
+              "qfeat",
+              "qmask_b",
+              "hid_qmask_b",
+              "qmask",
+              "remfeat",
+              "pR0_tmp",
+              "pC0_tmp",
+              "pR_u8",
+              "pC_u8",
+              "hid_pR_u8",
+              "hid_pC_u8"
+            ]
+          },
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": true,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [],
+            "node_count": 36,
+            "initializer_count": 28,
+            "value_info_count": 0,
+            "op_histogram": {
+              "Add": 1,
+              "Cast": 9,
+              "CenterCropPad": 7,
+              "Conv": 1,
+              "Div": 1,
+              "Einsum": 1,
+              "Equal": 1,
+              "GatherND": 1,
+              "Less": 2,
+              "Pad": 5,
+              "ReduceSum": 1,
+              "Shape": 1,
+              "Slice": 2,
+              "Split": 1,
+              "Sub": 1,
+              "Unsqueeze": 1
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": true
+          },
+          "status": "NOT_LOWER",
+          "declared_shape_cost_profile": {
+            "memory": -1,
+            "params": -1,
+            "cost": -1
+          },
+          "preliminary_lower": false,
+          "runtime_shape_trace": {
+            "traced": 37,
+            "actual_shapes": {
+              "g32": [
+                1,
+                1,
+                5,
+                5
+              ],
+              "g": [
+                1,
+                1,
+                5,
+                5
+              ],
+              "cg_u8": [
+                1,
+                2,
+                5,
+                5
+              ],
+              "sh_cg": [
+                1
+              ],
+              "edge_a": [
+                1,
+                1,
+                4,
+                1
+              ],
+              "edge_b": [
+                1,
+                1,
+                4,
+                1
+              ],
+              "edge_eq": [
+                1,
+                1,
+                4,
+                1
+              ],
+              "hid_edge_eq": [
+                1,
+                1,
+                30,
+                1
+              ],
+              "edge_same": [
+                1,
+                1,
+                30,
+                1
+              ],
+              "nsame": [],
+              "nsame_u8": [],
+              "factor_m1": [],
+              "factor": [],
+              "pos_g": [
+                1,
+                2,
+                1
+              ],
+              "pos_zero": [
+                1,
+                2,
+                1
+              ],
+              "pR0_tmp": [
+                1,
+                1,
+                1
+              ],
+              "pC0_tmp": [
+                1,
+                1,
+                1
+              ],
+              "quot": [
+                1,
+                30
+              ],
+              "pR_u8": [
+                1,
+                2,
+                1
+              ],
+              "hid_pR_u8": [
+                1,
+                2,
+                1
+              ],
+              "pR": [
+                1,
+                2,
+                1
+              ],
+              "pC_u8": [
+                1,
+                2,
+                1
+              ],
+              "hid_pC_u8": [
+                1,
+                2,
+                1
+              ],
+              "pC": [
+                1,
+                2,
+                1
+              ],
+              "fm1v": [
+                1
+              ],
+              "ffeat_u8": [
+                2
+              ],
+              "ffeat": [
+                2
+              ],
+              "hid_cg_u8": [
+                1,
+                2,
+                5,
+                5
+              ],
+              "cg": [
+                1,
+                2,
+                5,
+                5
+              ],
+              "qfeat_u8": [
+                2,
+                30
+              ],
+              "hid_qfeat_u8": [
+                2,
+                30
+              ],
+              "qfeat": [
+                2,
+                30
+              ],
+              "qmask_b": [
+                1,
+                30
+              ],
+              "hid_qmask_b": [
+                1,
+                30
+              ],
+              "qmask": [
+                1,
+                30
+              ],
+              "remfeat": [
+                2,
+                30
+              ],
+              "output": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            "mismatch_count": 7,
+            "mismatches": [
+              {
+                "name": "hid_pR_u8",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "name": "pR",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "name": "hid_pC_u8",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "name": "pC",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  1
+                ]
+              },
+              {
+                "name": "hid_cg_u8",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  5,
+                  5
+                ]
+              },
+              {
+                "name": "cg",
+                "declared": [],
+                "actual": [
+                  1,
+                  2,
+                  5,
+                  5
+                ]
+              },
+              {
+                "name": "output",
+                "declared": [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                "actual": [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              }
+            ],
+            "nonfinite_values": 904,
+            "truthful": false
+          }
+        }
+      ]
+    }
+  },
+  "preliminary_lower": []
+}

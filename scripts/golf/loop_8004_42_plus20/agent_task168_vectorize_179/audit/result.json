@@ -1,0 +1,1027 @@
+{
+  "task": 168,
+  "decision": "NO_STRICT_LOWER_PRE_GATE",
+  "authority": {
+    "checkpoint": 8009.46,
+    "root_guards": {
+      "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+      "submission_base_8009.46.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+      "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78",
+      "baseline/task168.onnx": "642cba5c350b35774bf98e427ca858a675cd8dd483ea6d1b2ec7e13287739b92"
+    },
+    "zip_member_sha256": "642cba5c350b35774bf98e427ca858a675cd8dd483ea6d1b2ec7e13287739b92",
+    "ir_version": 10,
+    "opsets": [
+      {
+        "domain": "",
+        "version": 18
+      }
+    ],
+    "nodes": 54,
+    "initializers": 16,
+    "functions": 0,
+    "sparse_initializers": 0,
+    "score": {
+      "memory": 237,
+      "params": 178,
+      "cost": 415,
+      "score": 18.9717214797693,
+      "correct": true
+    },
+    "known_examples": {
+      "train": 2,
+      "test": 1,
+      "arc-gen": 262
+    },
+    "known_total": 265
+  },
+  "structure": {
+    "checker_full": "PASS",
+    "shape_inference_strict_data_prop": "PASS",
+    "truthful_declared_value_info_count": 0,
+    "truthful_io_shapes": {
+      "input": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output": [
+        1,
+        10,
+        30,
+        30
+      ]
+    },
+    "conv_family_bias_ub_count": 0
+  },
+  "initializer_inventory": [
+    {
+      "name": "u1",
+      "dtype": "uint8",
+      "shape": [
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "Bc",
+      "dtype": "float32",
+      "shape": [
+        30,
+        2
+      ],
+      "elements": 60
+    },
+    {
+      "name": "ch",
+      "dtype": "float32",
+      "shape": [
+        10
+      ],
+      "elements": 10
+    },
+    {
+      "name": "C1T",
+      "dtype": "float32",
+      "shape": [
+        3,
+        2,
+        2
+      ],
+      "elements": 12
+    },
+    {
+      "name": "sn2",
+      "dtype": "float32",
+      "shape": [
+        2
+      ],
+      "elements": 2
+    },
+    {
+      "name": "sd",
+      "dtype": "float32",
+      "shape": [
+        3
+      ],
+      "elements": 3
+    },
+    {
+      "name": "sc",
+      "dtype": "float32",
+      "shape": [
+        2
+      ],
+      "elements": 2
+    },
+    {
+      "name": "Xrow",
+      "dtype": "float32",
+      "shape": [
+        1,
+        10,
+        1,
+        8
+      ],
+      "elements": 80
+    },
+    {
+      "name": "axis2",
+      "dtype": "int64",
+      "shape": [
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "cur_start",
+      "dtype": "int64",
+      "shape": [
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "cur_end",
+      "dtype": "int64",
+      "shape": [
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "nxt_start",
+      "dtype": "int64",
+      "shape": [
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "nxt_end",
+      "dtype": "int64",
+      "shape": [
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "minus2_i8",
+      "dtype": "int8",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "six_i8",
+      "dtype": "int8",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "eight_i8",
+      "dtype": "int8",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "elements": 1
+    }
+  ],
+  "initializer_ranks": {
+    "Bc": {
+      "shape": [
+        30,
+        2
+      ],
+      "mode_ranks": [
+        2,
+        2
+      ]
+    },
+    "C1T": {
+      "shape": [
+        3,
+        2,
+        2
+      ],
+      "mode_ranks": [
+        2,
+        2,
+        2
+      ]
+    },
+    "Xrow": {
+      "shape": [
+        1,
+        10,
+        1,
+        8
+      ],
+      "mode_ranks": [
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "node_output_memory": [
+    {
+      "node_index": 0,
+      "op_type": "Conv",
+      "output": "rowsf",
+      "shape": [
+        1,
+        1,
+        8,
+        1
+      ],
+      "dtype": "FLOAT",
+      "bytes": 32
+    },
+    {
+      "node_index": 1,
+      "op_type": "Cast",
+      "output": "rows30",
+      "shape": [
+        1,
+        1,
+        8,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 8
+    },
+    {
+      "node_index": 2,
+      "op_type": "Slice",
+      "output": "cur",
+      "shape": [
+        1,
+        1,
+        7,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 7
+    },
+    {
+      "node_index": 3,
+      "op_type": "Slice",
+      "output": "nxt",
+      "shape": [
+        1,
+        1,
+        7,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 7
+    },
+    {
+      "node_index": 4,
+      "op_type": "BitwiseAnd",
+      "output": "common",
+      "shape": [
+        1,
+        1,
+        7,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 7
+    },
+    {
+      "node_index": 5,
+      "op_type": "BitShift",
+      "output": "cs",
+      "shape": [
+        1,
+        1,
+        7,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 7
+    },
+    {
+      "node_index": 6,
+      "op_type": "BitShift",
+      "output": "cr",
+      "shape": [
+        1,
+        1,
+        7,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 7
+    },
+    {
+      "node_index": 7,
+      "op_type": "BitwiseAnd",
+      "output": "seed0",
+      "shape": [
+        1,
+        1,
+        7,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 7
+    },
+    {
+      "node_index": 8,
+      "op_type": "BitwiseAnd",
+      "output": "seed1",
+      "shape": [
+        1,
+        1,
+        7,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 7
+    },
+    {
+      "node_index": 9,
+      "op_type": "BitwiseAnd",
+      "output": "seed2",
+      "shape": [
+        1,
+        1,
+        7,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 7
+    },
+    {
+      "node_index": 10,
+      "op_type": "BitwiseAnd",
+      "output": "seed3",
+      "shape": [
+        1,
+        1,
+        7,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 7
+    },
+    {
+      "node_index": 11,
+      "op_type": "ReduceMax",
+      "output": "maxv0",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 12,
+      "op_type": "BitShift",
+      "output": "maxv0s",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 13,
+      "op_type": "ArgMax",
+      "output": "ridx0",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT64",
+      "bytes": 8
+    },
+    {
+      "node_index": 14,
+      "op_type": "Cast",
+      "output": "r8_0",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 15,
+      "op_type": "Sub",
+      "output": "rt_0",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 16,
+      "op_type": "Cast",
+      "output": "sf0",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 17,
+      "op_type": "Log",
+      "output": "lg0",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 18,
+      "op_type": "Selu",
+      "output": "l2_0",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 19,
+      "op_type": "Cast",
+      "output": "b0",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 20,
+      "op_type": "Concat",
+      "output": "d0i",
+      "shape": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 3
+    },
+    {
+      "node_index": 21,
+      "op_type": "Cast",
+      "output": "d0",
+      "shape": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "dtype": "FLOAT",
+      "bytes": 12
+    },
+    {
+      "node_index": 22,
+      "op_type": "ReduceMax",
+      "output": "maxv1",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 23,
+      "op_type": "ArgMax",
+      "output": "ridx1",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT64",
+      "bytes": 8
+    },
+    {
+      "node_index": 24,
+      "op_type": "Cast",
+      "output": "r8_1",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 25,
+      "op_type": "Sub",
+      "output": "rt_1",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 26,
+      "op_type": "Cast",
+      "output": "sfbase1",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 27,
+      "op_type": "Log",
+      "output": "lg1",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 28,
+      "op_type": "Selu",
+      "output": "l2_1",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 29,
+      "op_type": "Cast",
+      "output": "b1",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 30,
+      "op_type": "Concat",
+      "output": "d1i",
+      "shape": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 3
+    },
+    {
+      "node_index": 31,
+      "op_type": "Cast",
+      "output": "d1",
+      "shape": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "dtype": "FLOAT",
+      "bytes": 12
+    },
+    {
+      "node_index": 32,
+      "op_type": "ReduceMax",
+      "output": "maxv2",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 33,
+      "op_type": "BitShift",
+      "output": "maxv2s",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 34,
+      "op_type": "ArgMax",
+      "output": "ridx2",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT64",
+      "bytes": 8
+    },
+    {
+      "node_index": 35,
+      "op_type": "Cast",
+      "output": "r8_2",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 36,
+      "op_type": "Sub",
+      "output": "rneg2",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 37,
+      "op_type": "Cast",
+      "output": "sf2",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 38,
+      "op_type": "Log",
+      "output": "lg2",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 39,
+      "op_type": "Selu",
+      "output": "l2_2",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 40,
+      "op_type": "Cast",
+      "output": "b2",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 41,
+      "op_type": "Concat",
+      "output": "d2i",
+      "shape": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 3
+    },
+    {
+      "node_index": 42,
+      "op_type": "Cast",
+      "output": "d2",
+      "shape": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "dtype": "FLOAT",
+      "bytes": 12
+    },
+    {
+      "node_index": 43,
+      "op_type": "ReduceMax",
+      "output": "maxv3",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "UINT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 44,
+      "op_type": "ArgMax",
+      "output": "ridx3",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT64",
+      "bytes": 8
+    },
+    {
+      "node_index": 45,
+      "op_type": "Cast",
+      "output": "r8_3",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 46,
+      "op_type": "Sub",
+      "output": "rneg3",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 47,
+      "op_type": "Cast",
+      "output": "sfbase3",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 48,
+      "op_type": "Log",
+      "output": "lg3",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 49,
+      "op_type": "Selu",
+      "output": "l2_3",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "FLOAT16",
+      "bytes": 2
+    },
+    {
+      "node_index": 50,
+      "op_type": "Cast",
+      "output": "b3",
+      "shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 1
+    },
+    {
+      "node_index": 51,
+      "op_type": "Concat",
+      "output": "d3i",
+      "shape": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "dtype": "INT8",
+      "bytes": 3
+    },
+    {
+      "node_index": 52,
+      "op_type": "Cast",
+      "output": "d3",
+      "shape": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "dtype": "FLOAT",
+      "bytes": 12
+    }
+  ],
+  "branch_memory": {
+    "seed0": 34,
+    "seed1": 33,
+    "seed2": 34,
+    "seed3": 33
+  },
+  "transformations": [
+    {
+      "name": "four_branch_vectorize_via_concat",
+      "status": "PRE_GATE_REJECT",
+      "memory_delta_lower_bound": 28,
+      "params_delta_lower_bound": 0,
+      "cost_lower_bound": 443,
+      "proof": "batched downstream tensors retain 134 bytes; materializing [4,7] uint8 from four seed outputs adds 28 bytes"
+    },
+    {
+      "name": "two_direction_pair_vectorizations",
+      "status": "PRE_GATE_REJECT",
+      "memory_delta_lower_bound": 28,
+      "params_delta_lower_bound": 0,
+      "cost_lower_bound": 443,
+      "proof": "pairs (0,2) and (1,3) each need a [2,7] uint8 stack; element counts after ReduceMax/ArgMax/Cast/Log/Selu are conserved"
+    },
+    {
+      "name": "Xrow_rank1_factor",
+      "status": "PRE_GATE_REJECT",
+      "memory_delta_lower_bound": 320,
+      "params_delta": -62,
+      "cost_delta_lower_bound": 258,
+      "cost_lower_bound": 673,
+      "proof": "80-element Conv weight becomes 10+8 parameters, but the reconstructed float32 [1,10,1,8] tensor is a scored 320-byte intermediate"
+    },
+    {
+      "name": "Bc_rank2_factor_inside_Einsum",
+      "status": "PRE_GATE_REJECT",
+      "memory_delta": 0,
+      "params_delta_lower_bound": 4,
+      "cost_lower_bound": 419,
+      "proof": "rank(Bc)=2; a direct rank-2 factorization needs 30*2+2*2=64 parameters versus the dense 60"
+    },
+    {
+      "name": "C1T_low_rank_factor_inside_Einsum",
+      "status": "PRE_GATE_REJECT",
+      "memory_delta": 0,
+      "params_delta_lower_bound": 2,
+      "cost_lower_bound": 417,
+      "proof": "even the optimistic CP-rank-2 storage is 3*2+2*2+2*2=14 parameters versus dense 12"
+    },
+    {
+      "name": "absorb_sd_sc_into_duplicate_C1T",
+      "status": "PRE_GATE_REJECT",
+      "memory_delta": 0,
+      "params_delta": 7,
+      "cost_lower_bound": 422,
+      "proof": "removing sd(3)+sc(2) requires at least one additional 12-element branch-specific C1T while retaining the unscaled C1T"
+    },
+    {
+      "name": "compress_C1T_descriptor_axis_3_to_2",
+      "status": "PRE_GATE_REJECT",
+      "memory_delta": null,
+      "params_delta": null,
+      "proof": "unscaled use depends on q0=10*b+11*r, but the sd=[0.9,1,0.9] use depends on q1=10*b+9.9*r; (a,q0,q1) has rank 3 in (a,b,r), so one shared 2-vector cannot be raw-equivalent",
+      "runtime_control": "changing d/C1T to length 2 alone leaves the sd operand length 3 and ORT rejects the Einsum dimension"
+    },
+    {
+      "name": "derive_sc_or_sn2_by_slicing_existing_initializers",
+      "status": "PRE_GATE_REJECT",
+      "memory_delta_lower_bound": 8,
+      "params_delta_best": -2,
+      "cost_delta_lower_bound": 6,
+      "proof": "a length-2 float slice is an 8-byte scored intermediate; the directly stored vector costs only 2 parameters"
+    },
+    {
+      "name": "row_coordinate_rebase",
+      "status": "PRE_GATE_REJECT",
+      "proof": "Bc is shared for row and column indices; rebasing its second column changes both coordinates and the sn2/sc gauges do not commute with the required shear"
+    }
+  ],
+  "strict_lower_candidates": 0,
+  "raw_equivalence_runs": 0,
+  "known_candidate_runs": 0,
+  "fresh": {
+    "required_if_strict_lower": {
+      "seeds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "per_seed": 10000
+    },
+    "runs": 0,
+    "reason": "no transformation passed the strict-lower algebraic/cost pre-gate"
+  },
+  "root_mutations": []
+}

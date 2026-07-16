@@ -1,0 +1,190 @@
+{
+  "authority": {
+    "path": "others/71403/lb_verified_8006.61/submission.zip",
+    "zip_sha256": "9085e2f795c0a73d44d27d712ad8fbaad67a3f37b1d8363a0f33305fbafa4118",
+    "task192_sha256": "e7f9a11b93b611acfa4bba39e90e1ddf24223d50add4277fe9716f21f6ede10c",
+    "profile": {
+      "memory": 88,
+      "params": 1521,
+      "cost": 1609
+    }
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_8004_42_plus20/root_task192_threshold_188/candidates/task192_hardsigmoid_k31.onnx",
+    "sha256": "91315f9982649a65341134c541f904dc5398168600475a4d4f916b09b2f41941",
+    "serialized_bytes": 4518,
+    "profile": {
+      "memory": 200,
+      "params": 938,
+      "cost": 1138
+    },
+    "cost_reduction": 471,
+    "projected_gain": 0.346340532306107
+  },
+  "static": {
+    "serialized_bytes": 4518,
+    "full_check": true,
+    "strict_data_prop": true,
+    "all_node_outputs_static_positive": true,
+    "standard_domains": true,
+    "conv_bias_ub0": true,
+    "reasons": [],
+    "node_count": 4,
+    "initializer_count": 6,
+    "op_histogram": {
+      "Concat": 1,
+      "Einsum": 2,
+      "HardSigmoid": 1
+    },
+    "max_einsum_inputs": 13,
+    "giant_einsum": false,
+    "giant_initializers": [],
+    "lookup": false,
+    "nested_graph_count": 0,
+    "functions_count": 0,
+    "sparse_initializer_count": 0,
+    "banned_ops": [],
+    "finite_initializers": true,
+    "nonstatic_node_outputs": [],
+    "static_memory": 200,
+    "params": 938,
+    "static_cost": 1138,
+    "conv_bias_findings": [],
+    "pre_runtime_structural_pass": true
+  },
+  "known_four_configs": {
+    "disable_all_threads1": {
+      "total": 265,
+      "right": 265,
+      "wrong": 0,
+      "runtime_errors": 0,
+      "nonfinite_values": 0,
+      "near_positive_values": 0,
+      "min_positive": 1.0,
+      "max_abs_raw": 72.0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "first_failure": null,
+      "perfect": true
+    },
+    "disable_all_threads4": {
+      "total": 265,
+      "right": 265,
+      "wrong": 0,
+      "runtime_errors": 0,
+      "nonfinite_values": 0,
+      "near_positive_values": 0,
+      "min_positive": 1.0,
+      "max_abs_raw": 72.0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "first_failure": null,
+      "perfect": true
+    },
+    "default_threads1": {
+      "total": 265,
+      "right": 265,
+      "wrong": 0,
+      "runtime_errors": 0,
+      "nonfinite_values": 0,
+      "near_positive_values": 0,
+      "min_positive": 1.0,
+      "max_abs_raw": 72.0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "first_failure": null,
+      "perfect": true
+    },
+    "default_threads4": {
+      "total": 265,
+      "right": 265,
+      "wrong": 0,
+      "runtime_errors": 0,
+      "nonfinite_values": 0,
+      "near_positive_values": 0,
+      "min_positive": 1.0,
+      "max_abs_raw": 72.0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "first_failure": null,
+      "perfect": true
+    }
+  },
+  "runtime_shape_trace": {
+    "traced": 4,
+    "mismatch_count": 0,
+    "mismatches": [],
+    "nonfinite_values": 0,
+    "truthful": true
+  },
+  "fresh": [
+    {
+      "seed": 192800661,
+      "total": 5000,
+      "reference_right": 5000,
+      "model_right": 4997,
+      "runtime_errors": 0,
+      "nonfinite_values": 0,
+      "min_positive": -9.0,
+      "max_nonpositive": 9.0,
+      "first_failure": {
+        "index": 1170,
+        "different_cells": 184,
+        "height": 18,
+        "width": 20
+      },
+      "perfect": false
+    },
+    {
+      "seed": 192930007,
+      "total": 5000,
+      "reference_right": 5000,
+      "model_right": 4997,
+      "runtime_errors": 0,
+      "nonfinite_values": 0,
+      "min_positive": -9.0,
+      "max_nonpositive": 9.0,
+      "first_failure": {
+        "index": 2805,
+        "different_cells": 180,
+        "height": 20,
+        "width": 20
+      },
+      "perfect": false
+    }
+  ],
+  "exhaustive_local_sign_proof": {
+    "cases": 163,
+    "failures": [],
+    "perfect": true,
+    "argument": "P=center_nonzero*horizontal_A*vertical_A. P>0 iff all three rule conditions hold. Inside-grid B=horizontal_inside*vertical_inside is in [1,9]. Therefore B-9P>0 iff P=0; when P>=1 it is <=0. Outside-grid the center factors are zero, so all outputs are zero."
+  },
+  "reasons": [
+    "fresh_not_perfect"
+  ],
+  "accepted": false
+}

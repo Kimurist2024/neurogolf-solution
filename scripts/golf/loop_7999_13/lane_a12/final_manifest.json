@@ -1,0 +1,39 @@
+{
+  "lane": "a12",
+  "baseline": {
+    "zip": "submission_base_7999.13.zip",
+    "zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "score": 7999.13
+  },
+  "tasks": [198, 200, 201, 219, 302, 343],
+  "baseline_costs": {
+    "198": 661,
+    "200": 346,
+    "201": 811,
+    "219": 1479,
+    "302": 160,
+    "343": 173
+  },
+  "candidate_count": 23,
+  "outcomes": {
+    "198": "All eight candidates retain a 24-26 input giant Einsum and fail the structural gate.",
+    "200": "The cost-344 candidate fails known examples; both cost-345 known passes use a one-element bias for a two-output-channel Conv and are UB rejects.",
+    "201": "All three cheaper known passes fail fresh data: r01 and r02 are 0/500 in both modes; r03 is 4290/5000 in both modes.",
+    "219": "r04 fails known data; all other cheaper known passes fail fresh data, with r01/r02/r03 only 32/500, 9/500, and 7/500 and r05 417/500 in both modes.",
+    "302": "r01 costs 52355; r02 is executable-byte equivalent to the baseline after metadata removal and obtains 159 only by falsifying one value_info dimension.",
+    "343": "Both cost-172 known passes fail fresh data: r01 is 4975/5000 and r02 is 497/500 in both modes."
+  },
+  "winners": [],
+  "verified_gain": 0.0,
+  "root_artifacts_modified": false,
+  "root_submission_created": false,
+  "evidence": [
+    "scripts/golf/loop_7999_13/lane_a12/model_manifest.json",
+    "scripts/golf/loop_7999_13/lane_a12/retained_scan.json",
+    "scripts/golf/loop_7999_13/lane_a12/diff_audit.json",
+    "scripts/golf/loop_7999_13/lane_a12/fresh_evidence_summary.json",
+    "scripts/golf/loop_7999_13/lane_b6/audit_rejections.json",
+    "scripts/golf/loop_7999_13/lane_archive_top200/task201_r03_dual5000.json",
+    "scripts/golf/loop_7999_13/lane_archive_top200/task343_r01_dual5000.json"
+  ]
+}

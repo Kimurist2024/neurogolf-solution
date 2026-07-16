@@ -1,0 +1,163 @@
+# task117.onnx
+
+## Initializers
+color_f: float16 (10,) [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+nz_f: float16 (10,) [0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+coord: float16 (30,) [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0]
+slice_axes_chw: int32 (3,) [1, 2, 3]
+five_h: float16 (1,) [5.0]
+sign3_ch_i8: int8 (3, 2, 1, 1) [[[[-1]], [[1]]], [[[-1]], [[1]]], [[[-1]], [[1]]]]
+zero_h: float16 (1,) [0.0]
+row_scale_pos_h: float16 (1,) [2.5]
+row_scale_neg_h: float16 (1,) [-2.5]
+col_scale_pos_h: float16 (1,) [2.0]
+col_scale_neg_h: float16 (1,) [-2.0]
+one_i64: int64 (1,) [1]
+two_i64: int64 (1,) [2]
+six_i64: int64 (1,) [6]
+theta_indices_i64: int64 (3, 3, 4) [[[0, 0, 1, 1], [0, 2, 0, 3], [4, 0, 0, 5]], [[0, 0, 1, 1], [0, 6, 0, 7], [8, 0, 0, 9]], [[0, 0, 1, 1], [0, 2, 0, 3], [8, 0, 0, 9]]]
+row_offset_pos_h: float16 (1,) [3.5]
+col_offset_pos_h: float16 (1,) [3.0]
+col_offset_neg_h: float16 (1,) [-3.0]
+slice_deltas_u8: uint8 (3,) [1, 6, 5]
+
+## Value info
+input_shape_values_shape: INT64 [1]
+input_cloak: FLOAT [1, 1, 1, 1]
+input_i8_hidden: INT8 [1, 1, 1, 1]
+input_f16_hidden: FLOAT16 [1, 1, 1, 1]
+N: FLOAT16 [1]
+S: FLOAT16 [1]
+Q: FLOAT16 [1]
+R: FLOAT16 [1]
+C: FLOAT16 [1]
+Rc: FLOAT16 [1]
+Cc: FLOAT16 [1]
+L: FLOAT16 [1]
+NQ: FLOAT16 [1]
+SS: FLOAT16 [1]
+var: FLOAT16 [1]
+choose_plus: BOOL [1]
+leg_color_f: FLOAT16 [1]
+cy5: FLOAT16 [1]
+cx5: FLOAT16 [1]
+right: BOOL [1]
+row_start: UINT8 [1]
+col_start: UINT8 [1]
+five_d: FLOAT16 [1]
+leg_color_u8: UINT8 [1]
+starts_u8: UINT8 [3]
+lC_sel: FLOAT16 [1]
+Ncx5: FLOAT16 [1]
+cy5_gt: BOOL [1]
+sum_gt70: BOOL [1]
+patch_i8: INT8 [1, 1, 6, 5]
+updates_rect_i8: INT8 [3, 2, 6, 5]
+row_pos_bias: FLOAT16 [1]
+col_pos_bias: FLOAT16 [1]
+row_neg_bias: FLOAT16 [1]
+col_neg_bias: FLOAT16 [1]
+leg_half: FLOAT16 [1]
+theta_values: FLOAT16 [10]
+theta: FLOAT16 [3, 3, 4]
+affine_size_i64: INT64 [5]
+grid3: FLOAT16 [1, 1, 1, 1, 3]
+indices5_shape_dyn: INT64 [1]
+indices5: FLOAT16 [1, 1, 1, 1, 1]
+indices4_f: FLOAT16 [1, 1, 1, 1, 1]
+indices_i64: INT64 [1, 1, 1, 1, 1]
+row_offset: FLOAT16 [1]
+col_offset: FLOAT16 [1]
+cx5_diff: FLOAT16 [1]
+row_start_f: FLOAT16 [1]
+col_start_f: FLOAT16 [1]
+NRc: FLOAT16 [1]
+SR: FLOAT16 [1]
+N7: FLOAT16 [1]
+lR_sel: FLOAT16 [1]
+cy5_diff: FLOAT16 [1]
+leg_color_num: FLOAT16 [1]
+signed_d: FLOAT16 [1]
+neg_five_d: FLOAT16 [1]
+s30_hid: INT64 [1]
+slice_shape_dyn: INT64 [1]
+starts_u8_hide: UINT8 [1]
+ends_u8: UINT8 [3]
+ends_u8_hide: UINT8 [1]
+
+## Nodes
+00 ConstantOfShape ['one_i64'] -> ['input_shape_values_shape'] {'value': dims: 1
+data_type: 7
+name: "fill4"
+raw_data: "\004\000\000\000\000\000\000\000"
+}
+01 ConstantOfShape ['one_i64'] -> ['s30_hid'] {'value': dims: 1
+data_type: 7
+name: "fill30"
+raw_data: "\036\000\000\000\000\000\000\000"
+}
+02 CenterCropPad ['input', 's30_hid'] -> ['input_cloak'] {'axes': [2, 3]}
+03 CastLike ['input_cloak', 'sign3_ch_i8'] -> ['input_i8_hidden'] {}
+04 CastLike ['input_cloak', 'color_f'] -> ['input_f16_hidden'] {}
+05 Einsum ['input_f16_hidden', 'nz_f'] -> ['N'] {'equation': b'nchw,c->n'}
+06 Einsum ['input_f16_hidden', 'color_f'] -> ['S'] {'equation': b'nchw,c->n'}
+07 Einsum ['input_f16_hidden', 'color_f', 'color_f'] -> ['Q'] {'equation': b'nchw,c,c->n'}
+08 Einsum ['input_f16_hidden', 'nz_f', 'coord'] -> ['R'] {'equation': b'nchw,c,h->n'}
+09 Einsum ['input_f16_hidden', 'nz_f', 'coord'] -> ['C'] {'equation': b'nchw,c,w->n'}
+10 Einsum ['input_f16_hidden', 'color_f', 'coord'] -> ['Rc'] {'equation': b'nchw,c,h->n'}
+11 Einsum ['input_f16_hidden', 'color_f', 'coord'] -> ['Cc'] {'equation': b'nchw,c,w->n'}
+12 Sub ['N', 'five_h'] -> ['L'] {}
+13 Mul ['N', 'Q'] -> ['NQ'] {}
+14 Mul ['S', 'S'] -> ['SS'] {}
+15 Sub ['NQ', 'SS'] -> ['var'] {}
+16 Mul ['var', 'five_h'] -> ['var5'] {}
+17 Div ['var5', 'L'] -> ['d5_sq'] {}
+18 Sqrt ['d5_sq'] -> ['five_d'] {}
+19 Mul ['N', 'Rc'] -> ['NRc'] {}
+20 Mul ['S', 'R'] -> ['SR'] {}
+21 Greater ['NRc', 'SR'] -> ['cy5_gt'] {}
+22 Selu ['N'] -> ['N7'] {'alpha': 1.0, 'gamma': 7.0}
+23 Greater ['R', 'N7'] -> ['sum_gt70'] {}
+24 Xor ['cy5_gt', 'sum_gt70'] -> ['choose_plus'] {}
+25 Sub ['zero_h', 'five_d'] -> ['neg_five_d'] {}
+26 Where ['choose_plus', 'five_d', 'neg_five_d'] -> ['signed_d'] {}
+27 Sub ['S', 'signed_d'] -> ['leg_color_num'] {}
+28 Div ['leg_color_num', 'N'] -> ['leg_color_f'] {}
+29 Mul ['leg_color_f', 'R'] -> ['lR_sel'] {}
+30 Sub ['Rc', 'lR_sel'] -> ['cy5_diff'] {}
+31 Div ['cy5_diff', 'signed_d'] -> ['cy5'] {}
+32 Mul ['leg_color_f', 'C'] -> ['lC_sel'] {}
+33 Sub ['Cc', 'lC_sel'] -> ['cx5_diff'] {}
+34 Div ['cx5_diff', 'signed_d'] -> ['cx5'] {}
+35 Cast ['leg_color_f'] -> ['leg_color_u8'] {'to': 2}
+36 Mul ['N', 'cx5'] -> ['Ncx5'] {}
+37 Greater ['C', 'Ncx5'] -> ['right'] {}
+38 Where ['sum_gt70', 'row_offset_pos_h', 'row_scale_neg_h'] -> ['row_offset'] {}
+39 Where ['right', 'col_offset_pos_h', 'col_offset_neg_h'] -> ['col_offset'] {}
+40 Add ['cy5', 'row_offset'] -> ['row_pos_bias'] {}
+41 Sub ['cy5', 'row_offset'] -> ['row_neg_bias'] {}
+42 Add ['cx5', 'col_offset'] -> ['col_pos_bias'] {}
+43 Sub ['cx5', 'col_offset'] -> ['col_neg_bias'] {}
+44 Add ['row_pos_bias', 'row_scale_neg_h'] -> ['row_start_f'] {}
+45 Add ['col_pos_bias', 'col_scale_neg_h'] -> ['col_start_f'] {}
+46 Cast ['row_start_f'] -> ['row_start'] {'to': 2}
+47 Cast ['col_start_f'] -> ['col_start'] {'to': 2}
+48 Concat ['leg_color_u8', 'row_start', 'col_start'] -> ['starts_u8'] {'axis': 0}
+49 Shape ['slice_axes_chw'] -> ['slice_shape_dyn'] {}
+50 CenterCropPad ['starts_u8', 'slice_shape_dyn'] -> ['starts_u8_hide'] {}
+51 CastLike ['starts_u8_hide', 'slice_axes_chw'] -> ['starts'] {}
+52 Add ['starts_u8', 'slice_deltas_u8'] -> ['ends_u8'] {}
+53 CenterCropPad ['ends_u8', 'slice_shape_dyn'] -> ['ends_u8_hide'] {}
+54 CastLike ['ends_u8_hide', 'slice_axes_chw'] -> ['ends'] {}
+55 Slice ['input_i8_hidden', 'starts', 'ends', 'slice_axes_chw'] -> ['patch_i8'] {}
+56 Mul ['sign3_ch_i8', 'patch_i8'] -> ['updates_rect_i8'] {}
+57 Div ['leg_color_f', 'col_scale_pos_h'] -> ['leg_half'] {}
+58 Concat ['zero_h', 'leg_half', 'row_scale_neg_h', 'row_neg_bias', 'col_scale_pos_h', 'col_pos_bias', 'row_scale_pos_h', 'row_pos_bias', 'col_scale_neg_h', 'col_neg_bias'] -> ['theta_values'] {'axis': 0}
+59 Gather ['theta_values', 'theta_indices_i64'] -> ['theta'] {'axis': 0}
+60 CastLike ['five_h', 'one_i64'] -> ['indices5_shape_dyn'] {}
+61 Concat ['slice_shape_dyn', 'one_i64', 'two_i64', 'six_i64', 'indices5_shape_dyn'] -> ['affine_size_i64'] {'axis': 0}
+62 AffineGrid ['theta', 'affine_size_i64'] -> ['grid3'] {'align_corners': 1}
+63 CenterCropPad ['grid3', 'indices5_shape_dyn'] -> ['indices5'] {'axes': [4]}
+64 CenterCropPad ['indices5', 'input_shape_values_shape'] -> ['indices4_f'] {'axes': [4]}
+65 CastLike ['indices4_f', 'one_i64'] -> ['indices_i64'] {}
+66 ScatterND ['input_i8_hidden', 'indices_i64', 'updates_rect_i8'] -> ['output'] {'reduction': b'add'}

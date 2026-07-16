@@ -1,0 +1,144 @@
+{
+  "baseline_requested": "submission_base_8004.50.zip",
+  "baseline_rebased": "submission_base_8005.16.zip",
+  "rebase_compatible": true,
+  "all_eight_member_sha256_unchanged": true,
+  "scope": [37, 92, 132, 159, 218, 226, 228, 297],
+  "accepted_count": 1,
+  "aggregate_projected_gain": 0.008032171697262669,
+  "accepted": [
+    {
+      "task": 226,
+      "candidate": "scripts/golf/loop_8004_42_plus20/agent_target_mid19/task226_sixbit.onnx",
+      "sha256": "852b6091385d97df6899e21304bf194440fb5cd3343385693093c24be0cb8203",
+      "baseline_cost": 375,
+      "candidate_cost": 372,
+      "baseline_memory": 334,
+      "candidate_memory": 333,
+      "baseline_params": 41,
+      "candidate_params": 39,
+      "cost_reduction": 3,
+      "projected_gain": 0.008032171697262669,
+      "decision": "ACCEPT_STRICT_TRUE_RULE",
+      "generator_hash": "941d9a10",
+      "generator_rule": "Detect the fixed 10x10 gray separator grid and color the first, middle, and last cells blue, red, and green.",
+      "proof": {
+        "known_disable_all": "133/133, errors 0",
+        "known_default": "133/133, errors 0",
+        "known100_disable_all": "100/100, errors 0",
+        "known100_default": "100/100, errors 0",
+        "fresh_seed_22650001_disable_all": "5000/5000, errors 0",
+        "fresh_seed_22650001_default": "5000/5000, errors 0",
+        "fresh_seed_22650002_disable_all": "5000/5000, errors 0",
+        "fresh_seed_22650002_default": "5000/5000, errors 0",
+        "complete_generator_domain": "17 valid widths x 8 valid heights = 136/136 in both ORT modes; raw-equal to pinned baseline on all 136",
+        "strict_shape_inference_data_prop": "PASS",
+        "runtime_shapes": "65/65 node outputs match inferred shapes in both ORT modes",
+        "standard_domain": true,
+        "banned_ops": [],
+        "functions": 0,
+        "nested_graphs": 0,
+        "conv_bias_ub": 0,
+        "margin_min_positive": 1.0,
+        "margin_open_0_025_cells": 0
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "task": 37,
+      "baseline_cost": 374,
+      "generator_hash": "1f876c06",
+      "generator_rule": "Join each same-colored endpoint pair by its length-3..7 diagonal in either diagonal direction.",
+      "decision": "NO_ADMISSIBLE_LOWER_MODEL",
+      "reasons": [
+        "The incumbent is shape-cloaked: 76 CenterCropPad nodes carry false compact declarations.",
+        "The pinned member is 266/266 with ORT_DISABLE_ALL but default ORT has 266/266 runtime errors.",
+        "Truthful Boolean exposure costs 437668; harvested truthful/static alternatives begin at cost 497, above 374."
+      ]
+    },
+    {
+      "task": 92,
+      "baseline_cost": 366,
+      "generator_hash": "40853293",
+      "generator_rule": "Join the two endpoints of each unique-colored horizontal or vertical stick; the random generator bug only emits horizontal sticks, while known fixtures include both.",
+      "decision": "NO_ADMISSIBLE_LOWER_MODEL",
+      "reasons": [
+        "The incumbent declares output [1,10,1,1] while ORT returns [1,10,30,30], and similarly hides full input/index tensors behind CenterCropPad.",
+        "The cheapest archived sub-baseline model costs 340 but is only 221/265 known-correct and therefore cannot use the private true-rule exception.",
+        "All known-complete harvested alternatives profile at cost at least 366 and retain shape cloaks; the earlier truthful family starts at 393."
+      ]
+    },
+    {
+      "task": 132,
+      "baseline_cost": 312,
+      "generator_hash": "56ff96f3",
+      "generator_rule": "Each color marks two opposite corners; fill the complete axis-aligned rectangle between them.",
+      "decision": "NO_ADMISSIBLE_LOWER_MODEL",
+      "reasons": [
+        "The incumbent is a prohibited 47-input giant Einsum, so it is not an acceptable reconstruction parent.",
+        "There is no intermediate memory to shave; all cost is 312 parameters.",
+        "Eight prior factor deletions at costs 282/287 score 0/267 on seven variants and 14/267 on one."
+      ]
+    },
+    {
+      "task": 159,
+      "baseline_cost": 293,
+      "generator_hash": "6b9890af",
+      "generator_rule": "Extract the separate diagonally connected 3x3 sprite and magnify it inside the red square frame.",
+      "decision": "NO_ADMISSIBLE_LOWER_MODEL",
+      "reasons": [
+        "The incumbent has eight known declared/runtime shape contradictions and a 22-input terminal Einsum.",
+        "The compact family reproducibly segfaults ORT on legal generator inputs, so it cannot satisfy runtime-error zero.",
+        "The archive scan covered 35 models; the cheaper costs 236/291/291 are known-wrong."
+      ]
+    },
+    {
+      "task": 218,
+      "baseline_cost": 329,
+      "generator_hash": "90c28cc7",
+      "generator_rule": "Recover the compact 2x2/2x3/3x2/3x3 color table from the rectangular quilt.",
+      "decision": "NO_ADMISSIBLE_LOWER_MODEL",
+      "reasons": [
+        "The incumbent GroupNormalization output is declared [1,1,1,1] but executes as [1,10,30,30]; the model is shape-cloaked.",
+        "Its prior strict fresh audit was 4996/5000, so it is not itself a 100% true-rule equivalence certificate.",
+        "The archive scan covered 29 models; the only cheaper model costs 314 and is known-wrong."
+      ]
+    },
+    {
+      "task": 228,
+      "baseline_cost": 302,
+      "generator_hash": "952a094c",
+      "generator_rule": "Erase the four colored inner-corner markers and place them at the four diagonally opposite outer corners.",
+      "decision": "NO_ADMISSIBLE_LOWER_MODEL",
+      "reasons": [
+        "The coordinate carrier hides four to eight 16-way tensors behind false [1,1] CenterCropPad declarations.",
+        "The archive scan covered 26 models; the only cheaper cost-294 candidate is 0/266 known-correct.",
+        "The complete-known alternate only ties cost 302 and remains shape-cloaked."
+      ]
+    },
+    {
+      "task": 297,
+      "baseline_cost": 371,
+      "generator_hash": "bd4472b8",
+      "generator_rule": "Repeat the top-row color sequence twice as constant-color rows below the gray separator.",
+      "decision": "NO_ADMISSIBLE_LOWER_MODEL",
+      "reasons": [
+        "The truthful incumbent is already at 320 memory plus 51 parameters.",
+        "Thirty historical models were reprofiled; all eleven cost-370 scale-sharing variants fail known gold.",
+        "Trimming the zero Conv kernel column reaches 361 only with illegal negative padding; standard alternatives cost 484 or 511."
+      ]
+    }
+  ],
+  "evidence": [
+    "scripts/golf/loop_8004_42_plus20/agent_target_mid19/baseline_known_static.json",
+    "scripts/golf/loop_8004_42_plus20/agent_target_mid19/task226_known_validator.json",
+    "scripts/golf/loop_8004_42_plus20/agent_target_mid19/task226_strict_audit.json",
+    "scripts/golf/loop_8004_42_plus20/agent_target_mid19/task092_archive340_validator.json",
+    "scripts/golf/loop_7999_13/lane_a10/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_b5/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_c10/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_c12/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_a33/REPORT.md"
+  ]
+}

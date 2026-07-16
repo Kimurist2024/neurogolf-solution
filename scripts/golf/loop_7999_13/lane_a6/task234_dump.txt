@@ -1,0 +1,89 @@
+# task234.onnx
+
+## Initializers
+dim_w_idx: int32 () 1
+idx30_u8: float16 (1, 27) [[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0]]
+max_u8_1x1: uint8 (1, 1) [[255]]
+qscale_f: float32 (2,) [-4.0, 4.0]
+fg_pick_f: float32 (3, 2) [[0.0, 0.0], [1.0, 0.0], [0.0, 1.0]]
+term_U_order_f: float32 (2, 3) [[1.0, 1.0, -1.0], [1.0, -1.0, 1.0]]
+term_V_order_f: float32 (2, 3, 2) [[[1.0, -2.0], [0.0, 1.0], [-1.0, -2.0]], [[1.0, -2.0], [-1.0, -2.0], [0.0, 1.0]]]
+nine_u8_1x1: uint8 (1, 1) [[10]]
+moment_weights_cloak: float32 (2, 30) [[0.0, 0.0038874573074281216, 7.120126247173175e-05, 1.30409659959696e-06, 2.388536302078137e-08, 4.374756668035218e-10, 8.012646969535187e-12, 1.467567387058999e-13, 2.687943438114222e-15, 4.9231401161547154e-17, 9.017046226603802e-19, 1.6515295855364817e-20, 3.0248819661424315e-22, 5.54026440624534e-24, 1.0147348319153619e-25, 1.8585516704688373e-27, 3.404056199800473e-29, 6.23474633492522e-31, 1.1419336197643266e-32, 2.0915242672282197e-34, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 11.588346481323242, 632.7022705078125, 34544.375, 1886059.0, 102975328.0, 5622262272.0, 306965118976.0, 16759727849472.0, 915050164387840.0, 4.996004742955008e+16, 2.727726170547159e+18, 1.4892879720570107e+20, 8.131236742318455e+21, 4.439504757761729e+23, 2.423887644474477e+25, 1.3233977540468205e+27, 7.225506894199419e+28, 3.9449930287030345e+30, 2.153893228349551e+32, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+nonbg_cz: float32 (10, 1) [[0.0], [0.19204990565776825], [0.19204990565776825], [0.19204990565776825], [0.19204990565776825], [0.19204990565776825], [0.19204990565776825], [0.19204990565776825], [0.19204990565776825], [0.19204990565776825]]
+col_sel2_f: float32 (3, 2) [[0.0, 1.0], [1.0, 0.0], [0.0, 0.0]]
+
+## Nodes
+00 Shape ['input'] -> ['fg_sel_shape'] {'end': 2, 'start': 1}
+01 CenterCropPad ['moment_weights_cloak', 'fg_sel_shape'] -> ['color_weights_crop'] {'axes': [1]}
+02 Einsum ['input', 'color_weights_crop', 'nonbg_cz'] -> ['color_mom'] {'equation': 'bcrw,kc,cz->kz'}
+03 Log ['color_mom'] -> ['color_log'] {}
+04 QuantizeLinear ['color_log', 'qscale_f'] -> ['color_d_u8'] {'axis': 0}
+05 Shape ['input'] -> ['__cloak_sh_row_f'] {'end': 3, 'start': 2}
+06 CenterCropPad ['idx30_u8', '__cloak_sh_row_f'] -> ['idx_hid_u8'] {'axes': [1]}
+07 Concat ['nine_u8_1x1', 'color_d_u8'] -> ['kc_idx_u8'] {'axis': 0}
+08 Cast ['kc_idx_u8'] -> ['kc_idx_f16'] {'to': 10}
+09 GreaterOrEqual ['kc_idx_f16', 'idx_hid_u8'] -> ['kc_ge_b'] {}
+10 LessOrEqual ['kc_idx_f16', 'idx_hid_u8'] -> ['kc_le_b'] {}
+11 CenterCropPad ['kc_ge_b', 'fg_sel_shape'] -> ['kc_ge_cloak'] {'axes': [1]}
+12 CenterCropPad ['kc_le_b', 'fg_sel_shape'] -> ['kc_le_cloak'] {'axes': [1]}
+13 CastLike ['kc_ge_cloak', 'input'] -> ['kc_ge_f'] {}
+14 CastLike ['kc_le_cloak', 'input'] -> ['kc_le_f'] {}
+15 Einsum ['input', 'kc_ge_f', 'kc_le_f', 'fg_pick_f'] -> ['fg_counts_f'] {'equation': 'bcrw,uc,uc,up->pb'}
+16 CastLike ['fg_counts_f', 'max_u8_1x1'] -> ['fg_counts'] {}
+17 Einsum ['input', 'kc_ge_f', 'kc_le_f', 'fg_pick_f', 'moment_weights_cloak'] -> ['fg_rowmom'] {'equation': 'bcrw,uc,uc,up,kr->pk'}
+18 Einsum ['input', 'kc_ge_f', 'kc_le_f', 'fg_pick_f', 'moment_weights_cloak'] -> ['fg_colmom'] {'equation': 'bcrw,uc,uc,up,kw->pk'}
+19 Log ['fg_rowmom'] -> ['fg_row_log'] {}
+20 QuantizeLinear ['fg_row_log', 'qscale_f'] -> ['fg_row_d_u8'] {'axis': 1}
+21 Log ['fg_colmom'] -> ['fg_col_log'] {}
+22 QuantizeLinear ['fg_col_log', 'qscale_f'] -> ['fg_col_d_u8'] {'axis': 1}
+23 Split ['fg_row_d_u8'] -> ['fg_r0_u8', 'fg_r1_u8'] {'axis': 1, 'num_outputs': 2}
+24 Split ['fg_col_d_u8'] -> ['fg_c0_u8', 'fg_c1_u8'] {'axis': 1, 'num_outputs': 2}
+25 Sub ['fg_r1_u8', 'fg_r0_u8'] -> ['fg_h0_2d'] {}
+26 Sub ['fg_c1_u8', 'fg_c0_u8'] -> ['fg_w0_2d'] {}
+27 Sub ['fg_w0_2d', 'max_u8_1x1'] -> ['fg_w_2d'] {}
+28 Div ['fg_counts', 'fg_w_2d'] -> ['count_over_w'] {}
+29 LessOrEqual ['count_over_w', 'fg_h0_2d'] -> ['armed_b'] {}
+30 Gather ['armed_b', 'dim_w_idx'] -> ['armed_is_second'] {'axis': 0}
+31 Cast ['armed_is_second'] -> ['armed_pos__bd_6'] {'to': 6}
+32 Sub ['dim_w_idx', 'armed_pos__bd_6'] -> ['pure_pos__bd_6'] {}
+33 Gather ['fg_r0_u8', 'pure_pos__bd_6'] -> ['pure_r0'] {'axis': 0}
+34 Gather ['fg_r1_u8', 'pure_pos__bd_6'] -> ['pure_r1'] {'axis': 0}
+35 Gather ['fg_c0_u8', 'pure_pos__bd_6'] -> ['pure_c0'] {'axis': 0}
+36 Gather ['fg_r0_u8', 'armed_pos__bd_6'] -> ['arm_r0'] {'axis': 0}
+37 Gather ['fg_r1_u8', 'armed_pos__bd_6'] -> ['arm_r1'] {'axis': 0}
+38 Gather ['fg_c0_u8', 'armed_pos__bd_6'] -> ['arm_c0'] {'axis': 0}
+39 Gather ['fg_c1_u8', 'armed_pos__bd_6'] -> ['arm_c1'] {'axis': 0}
+40 Gather ['fg_counts', 'armed_pos__bd_6'] -> ['arm_count'] {'axis': 0}
+41 Sub ['arm_r1', 'arm_r0'] -> ['bbox_h0'] {}
+42 Sub ['arm_c1', 'arm_c0'] -> ['bbox_w0'] {}
+43 Less ['pure_r1', 'arm_r0'] -> ['top_arm'] {}
+44 Greater ['pure_r0', 'arm_r1'] -> ['bottom_arm'] {}
+45 Greater ['pure_c0', 'arm_c1'] -> ['right_arm'] {}
+46 Or ['top_arm', 'bottom_arm'] -> ['vertical'] {}
+47 Where ['vertical', 'bbox_w0', 'bbox_h0'] -> ['rect_den'] {}
+48 Add ['bbox_h0', 'bbox_w0'] -> ['bbox_sum'] {}
+49 Sub ['arm_count', 'bbox_sum'] -> ['rect_num_adj'] {}
+50 Div ['rect_num_adj', 'rect_den'] -> ['rect_hm1'] {}
+51 Sub ['arm_r1', 'rect_hm1'] -> ['row_bottom_start'] {}
+52 Sub ['arm_c1', 'rect_hm1'] -> ['col_right_start'] {}
+53 Where ['bottom_arm', 'row_bottom_start', 'arm_r0'] -> ['row_out_start'] {}
+54 Where ['right_arm', 'col_right_start', 'arm_c0'] -> ['col_out_start'] {}
+55 Where ['vertical', 'rect_hm1', 'bbox_h0'] -> ['row_span_out'] {}
+56 Where ['vertical', 'bbox_w0', 'rect_hm1'] -> ['col_span_out'] {}
+57 Sub ['max_u8_1x1', 'max_u8_1x1'] -> ['zero_u8_1x1'] {}
+58 Add ['row_out_start', 'row_span_out'] -> ['row_end_u8'] {}
+59 Add ['col_out_start', 'col_span_out'] -> ['col_end_u8'] {}
+60 Concat ['col_out_start', 'zero_u8_1x1', 'row_out_start'] -> ['start_pack_b'] {'axis': 0}
+61 Concat ['col_end_u8', 'max_u8_1x1', 'row_end_u8'] -> ['end_pack_b'] {'axis': 0}
+62 Cast ['start_pack_b'] -> ['start_pack_f16'] {'to': 10}
+63 Cast ['end_pack_b'] -> ['end_pack_f16'] {'to': 10}
+64 GreaterOrEqual ['idx_hid_u8', 'start_pack_f16'] -> ['pack_ge_b'] {}
+65 CenterCropPad ['pack_ge_b', '__cloak_sh_row_f'] -> ['pack_ge_cloak'] {'axes': [1]}
+66 GreaterOrEqual ['end_pack_f16', 'idx_hid_u8'] -> ['pack_le_b'] {}
+67 CenterCropPad ['pack_le_b', '__cloak_sh_row_f'] -> ['pack_le_cloak'] {'axes': [1]}
+68 CastLike ['pack_ge_cloak', 'input'] -> ['pack_ge_f'] {}
+69 CastLike ['pack_le_cloak', 'input'] -> ['pack_le_f'] {}
+70 CenterCropPad ['armed_b', 'fg_sel_shape'] -> ['armed_b_cloak'] {'axes': [1]}
+71 CastLike ['armed_b_cloak', 'input'] -> ['armed_b_f'] {}
+72 Einsum ['input', 'pack_ge_f', 'pack_le_f', 'pack_ge_f', 'pack_le_f', 'fg_pick_f', 'fg_pick_f', 'col_sel2_f', 'col_sel2_f', 'kc_ge_f', 'kc_le_f', 'kc_ge_f', 'kc_le_f', 'armed_b_f', 'term_U_order_f', 'term_V_order_f'] -> ['output'] {'equation': 'bdrw,er,fr,gw,hw,et,ft,gt,ht,ud,ud,vc,vc,az,au,avt->bcrw'}

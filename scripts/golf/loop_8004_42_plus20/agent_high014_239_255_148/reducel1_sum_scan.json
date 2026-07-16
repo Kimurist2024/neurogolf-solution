@@ -1,0 +1,3674 @@
+{
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "baseline_sha256": "15a7de7d7ad08eeb693bbe82b7527f34c15fb539b8a4b5a079daceac6c1fe7eb",
+  "baseline_official_cost": 360,
+  "rewrite_family": "all 7 nonempty subsets of the 3 exact nonnegative ReduceL1->ReduceSum replacements",
+  "rows": [
+    {
+      "replaced_node_indices": [
+        3
+      ],
+      "sha256": "f6eb4cef1dffc634f71481d30bc9076732d4149f4f6d25dd78538d0682dea245",
+      "official_profile": {
+        "memory": 327,
+        "params": 51,
+        "cost": 378,
+        "score": 19.065105804380412,
+        "correct": true
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 54,
+        "initializer_count": 11,
+        "value_info_count": 53,
+        "op_histogram": {
+          "Add": 2,
+          "ArgMax": 1,
+          "BatchNormalization": 5,
+          "Cast": 1,
+          "CastLike": 14,
+          "Ceil": 2,
+          "Concat": 2,
+          "Div": 4,
+          "Einsum": 4,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 2,
+          "ReduceL1": 2,
+          "ReduceMax": 1,
+          "ReduceMean": 1,
+          "ReduceSum": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sqrt": 2,
+          "Sub": 3
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 54,
+        "actual_shapes": {
+          "fg_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "counts": [
+            1,
+            10
+          ],
+          "total_count": [],
+          "max_count": [],
+          "rare_count": [],
+          "selector_b": [
+            1,
+            10
+          ],
+          "selector_f": [
+            1,
+            10
+          ],
+          "k64": [
+            1
+          ],
+          "masked_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "masked_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask1_h": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "mask1_u8": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "row_sum": [
+            1
+          ],
+          "col_sum": [
+            1
+          ],
+          "row2_sum": [
+            1
+          ],
+          "col2_sum": [
+            1
+          ],
+          "row_mean": [
+            1
+          ],
+          "col_mean": [
+            1
+          ],
+          "row2_mean": [
+            1
+          ],
+          "col2_mean": [
+            1
+          ],
+          "row_mean2": [
+            1
+          ],
+          "col_mean2": [
+            1
+          ],
+          "row_var": [
+            1
+          ],
+          "col_var": [
+            1
+          ],
+          "row_std": [
+            1
+          ],
+          "col_std": [
+            1
+          ],
+          "rstart0": [
+            1
+          ],
+          "rstartceil": [
+            1
+          ],
+          "cstart0": [
+            1
+          ],
+          "cstartceil": [
+            1
+          ],
+          "rend0": [
+            1
+          ],
+          "cend0": [
+            1
+          ],
+          "rmin": [
+            1
+          ],
+          "cmin": [
+            1
+          ],
+          "rmax": [
+            1
+          ],
+          "cmax": [
+            1
+          ],
+          "rend": [
+            1
+          ],
+          "cend": [
+            1
+          ],
+          "starts_u8": [
+            2
+          ],
+          "starts": [
+            2
+          ],
+          "ends_u8": [
+            2
+          ],
+          "ends": [
+            2
+          ],
+          "mask_crop_u8": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "mask_crop_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "p": [
+            1,
+            1
+          ],
+          "kf": [
+            1
+          ],
+          "bias": [
+            1,
+            1
+          ],
+          "labels_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "indices": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "zero_f_full": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 17,
+        "mismatches": [
+          {
+            "name": "fg_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_b",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_f",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "masked_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "masked_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_crop_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "mask_crop_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "labels_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "indices",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "zero_f_full",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "algebraic_proof": "all rewritten inputs are nonnegative, so ReduceL1(x) == ReduceSum(x)",
+      "accepted": false,
+      "reasons": [
+        "official_cost_not_strict_lower",
+        "runtime_shape_witness"
+      ]
+    },
+    {
+      "replaced_node_indices": [
+        4
+      ],
+      "sha256": "ca708342e011f983e43ac4d048ab8b8e3eed8d2d4a5a84ac67e33fd94aed3803",
+      "official_profile": {
+        "memory": 309,
+        "params": 51,
+        "cost": 360,
+        "score": 19.113895968549844,
+        "correct": true
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 54,
+        "initializer_count": 11,
+        "value_info_count": 53,
+        "op_histogram": {
+          "Add": 2,
+          "ArgMax": 1,
+          "BatchNormalization": 5,
+          "Cast": 1,
+          "CastLike": 14,
+          "Ceil": 2,
+          "Concat": 2,
+          "Div": 4,
+          "Einsum": 4,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 2,
+          "ReduceL1": 2,
+          "ReduceMax": 1,
+          "ReduceMean": 1,
+          "ReduceSum": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sqrt": 2,
+          "Sub": 3
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 54,
+        "actual_shapes": {
+          "fg_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "counts": [
+            1,
+            10
+          ],
+          "total_count": [],
+          "max_count": [],
+          "rare_count": [],
+          "selector_b": [
+            1,
+            10
+          ],
+          "selector_f": [
+            1,
+            10
+          ],
+          "k64": [
+            1
+          ],
+          "masked_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "masked_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask1_h": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "mask1_u8": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "row_sum": [
+            1
+          ],
+          "col_sum": [
+            1
+          ],
+          "row2_sum": [
+            1
+          ],
+          "col2_sum": [
+            1
+          ],
+          "row_mean": [
+            1
+          ],
+          "col_mean": [
+            1
+          ],
+          "row2_mean": [
+            1
+          ],
+          "col2_mean": [
+            1
+          ],
+          "row_mean2": [
+            1
+          ],
+          "col_mean2": [
+            1
+          ],
+          "row_var": [
+            1
+          ],
+          "col_var": [
+            1
+          ],
+          "row_std": [
+            1
+          ],
+          "col_std": [
+            1
+          ],
+          "rstart0": [
+            1
+          ],
+          "rstartceil": [
+            1
+          ],
+          "cstart0": [
+            1
+          ],
+          "cstartceil": [
+            1
+          ],
+          "rend0": [
+            1
+          ],
+          "cend0": [
+            1
+          ],
+          "rmin": [
+            1
+          ],
+          "cmin": [
+            1
+          ],
+          "rmax": [
+            1
+          ],
+          "cmax": [
+            1
+          ],
+          "rend": [
+            1
+          ],
+          "cend": [
+            1
+          ],
+          "starts_u8": [
+            2
+          ],
+          "starts": [
+            2
+          ],
+          "ends_u8": [
+            2
+          ],
+          "ends": [
+            2
+          ],
+          "mask_crop_u8": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "mask_crop_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "p": [
+            1,
+            1
+          ],
+          "kf": [
+            1
+          ],
+          "bias": [
+            1,
+            1
+          ],
+          "labels_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "indices": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "zero_f_full": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 17,
+        "mismatches": [
+          {
+            "name": "fg_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_b",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_f",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "masked_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "masked_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_crop_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "mask_crop_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "labels_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "indices",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "zero_f_full",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "algebraic_proof": "all rewritten inputs are nonnegative, so ReduceL1(x) == ReduceSum(x)",
+      "accepted": false,
+      "reasons": [
+        "official_cost_not_strict_lower",
+        "runtime_shape_witness"
+      ]
+    },
+    {
+      "replaced_node_indices": [
+        13
+      ],
+      "sha256": "b30c799b6a87f30c9ceae633fbed852830a1388a3cfc7b0997008a37ba43208f",
+      "official_profile": {
+        "memory": 2107,
+        "params": 51,
+        "cost": 2158,
+        "score": 17.32306285418192,
+        "correct": true
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 54,
+        "initializer_count": 11,
+        "value_info_count": 53,
+        "op_histogram": {
+          "Add": 2,
+          "ArgMax": 1,
+          "BatchNormalization": 5,
+          "Cast": 1,
+          "CastLike": 14,
+          "Ceil": 2,
+          "Concat": 2,
+          "Div": 4,
+          "Einsum": 4,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 2,
+          "ReduceL1": 2,
+          "ReduceMax": 1,
+          "ReduceMean": 1,
+          "ReduceSum": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sqrt": 2,
+          "Sub": 3
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 54,
+        "actual_shapes": {
+          "fg_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "counts": [
+            1,
+            10
+          ],
+          "total_count": [],
+          "max_count": [],
+          "rare_count": [],
+          "selector_b": [
+            1,
+            10
+          ],
+          "selector_f": [
+            1,
+            10
+          ],
+          "k64": [
+            1
+          ],
+          "masked_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "masked_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask1_h": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "mask1_u8": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "row_sum": [
+            1
+          ],
+          "col_sum": [
+            1
+          ],
+          "row2_sum": [
+            1
+          ],
+          "col2_sum": [
+            1
+          ],
+          "row_mean": [
+            1
+          ],
+          "col_mean": [
+            1
+          ],
+          "row2_mean": [
+            1
+          ],
+          "col2_mean": [
+            1
+          ],
+          "row_mean2": [
+            1
+          ],
+          "col_mean2": [
+            1
+          ],
+          "row_var": [
+            1
+          ],
+          "col_var": [
+            1
+          ],
+          "row_std": [
+            1
+          ],
+          "col_std": [
+            1
+          ],
+          "rstart0": [
+            1
+          ],
+          "rstartceil": [
+            1
+          ],
+          "cstart0": [
+            1
+          ],
+          "cstartceil": [
+            1
+          ],
+          "rend0": [
+            1
+          ],
+          "cend0": [
+            1
+          ],
+          "rmin": [
+            1
+          ],
+          "cmin": [
+            1
+          ],
+          "rmax": [
+            1
+          ],
+          "cmax": [
+            1
+          ],
+          "rend": [
+            1
+          ],
+          "cend": [
+            1
+          ],
+          "starts_u8": [
+            2
+          ],
+          "starts": [
+            2
+          ],
+          "ends_u8": [
+            2
+          ],
+          "ends": [
+            2
+          ],
+          "mask_crop_u8": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "mask_crop_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "p": [
+            1,
+            1
+          ],
+          "kf": [
+            1
+          ],
+          "bias": [
+            1,
+            1
+          ],
+          "labels_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "indices": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "zero_f_full": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 17,
+        "mismatches": [
+          {
+            "name": "fg_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_b",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_f",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "masked_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "masked_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_crop_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "mask_crop_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "labels_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "indices",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "zero_f_full",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "algebraic_proof": "all rewritten inputs are nonnegative, so ReduceL1(x) == ReduceSum(x)",
+      "accepted": false,
+      "reasons": [
+        "official_cost_not_strict_lower",
+        "runtime_shape_witness"
+      ]
+    },
+    {
+      "replaced_node_indices": [
+        3,
+        4
+      ],
+      "sha256": "c8cfdfbff1d0404be56f9ec355b04535cab59fe3b5b8521560d8aab1efbf4c19",
+      "official_profile": {
+        "memory": 327,
+        "params": 51,
+        "cost": 378,
+        "score": 19.065105804380412,
+        "correct": true
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 54,
+        "initializer_count": 11,
+        "value_info_count": 53,
+        "op_histogram": {
+          "Add": 2,
+          "ArgMax": 1,
+          "BatchNormalization": 5,
+          "Cast": 1,
+          "CastLike": 14,
+          "Ceil": 2,
+          "Concat": 2,
+          "Div": 4,
+          "Einsum": 4,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 2,
+          "ReduceL1": 1,
+          "ReduceMax": 1,
+          "ReduceMean": 1,
+          "ReduceSum": 2,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sqrt": 2,
+          "Sub": 3
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 54,
+        "actual_shapes": {
+          "fg_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "counts": [
+            1,
+            10
+          ],
+          "total_count": [],
+          "max_count": [],
+          "rare_count": [],
+          "selector_b": [
+            1,
+            10
+          ],
+          "selector_f": [
+            1,
+            10
+          ],
+          "k64": [
+            1
+          ],
+          "masked_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "masked_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask1_h": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "mask1_u8": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "row_sum": [
+            1
+          ],
+          "col_sum": [
+            1
+          ],
+          "row2_sum": [
+            1
+          ],
+          "col2_sum": [
+            1
+          ],
+          "row_mean": [
+            1
+          ],
+          "col_mean": [
+            1
+          ],
+          "row2_mean": [
+            1
+          ],
+          "col2_mean": [
+            1
+          ],
+          "row_mean2": [
+            1
+          ],
+          "col_mean2": [
+            1
+          ],
+          "row_var": [
+            1
+          ],
+          "col_var": [
+            1
+          ],
+          "row_std": [
+            1
+          ],
+          "col_std": [
+            1
+          ],
+          "rstart0": [
+            1
+          ],
+          "rstartceil": [
+            1
+          ],
+          "cstart0": [
+            1
+          ],
+          "cstartceil": [
+            1
+          ],
+          "rend0": [
+            1
+          ],
+          "cend0": [
+            1
+          ],
+          "rmin": [
+            1
+          ],
+          "cmin": [
+            1
+          ],
+          "rmax": [
+            1
+          ],
+          "cmax": [
+            1
+          ],
+          "rend": [
+            1
+          ],
+          "cend": [
+            1
+          ],
+          "starts_u8": [
+            2
+          ],
+          "starts": [
+            2
+          ],
+          "ends_u8": [
+            2
+          ],
+          "ends": [
+            2
+          ],
+          "mask_crop_u8": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "mask_crop_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "p": [
+            1,
+            1
+          ],
+          "kf": [
+            1
+          ],
+          "bias": [
+            1,
+            1
+          ],
+          "labels_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "indices": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "zero_f_full": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 17,
+        "mismatches": [
+          {
+            "name": "fg_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_b",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_f",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "masked_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "masked_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_crop_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "mask_crop_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "labels_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "indices",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "zero_f_full",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "algebraic_proof": "all rewritten inputs are nonnegative, so ReduceL1(x) == ReduceSum(x)",
+      "accepted": false,
+      "reasons": [
+        "official_cost_not_strict_lower",
+        "runtime_shape_witness"
+      ]
+    },
+    {
+      "replaced_node_indices": [
+        3,
+        13
+      ],
+      "sha256": "ca23c991d99a242178294d7378b4c239b5690593e16e5bfccf7aa5659052fe2c",
+      "official_profile": {
+        "memory": 2125,
+        "params": 51,
+        "cost": 2176,
+        "score": 17.314756392024165,
+        "correct": true
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 54,
+        "initializer_count": 11,
+        "value_info_count": 53,
+        "op_histogram": {
+          "Add": 2,
+          "ArgMax": 1,
+          "BatchNormalization": 5,
+          "Cast": 1,
+          "CastLike": 14,
+          "Ceil": 2,
+          "Concat": 2,
+          "Div": 4,
+          "Einsum": 4,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 2,
+          "ReduceL1": 1,
+          "ReduceMax": 1,
+          "ReduceMean": 1,
+          "ReduceSum": 2,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sqrt": 2,
+          "Sub": 3
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 54,
+        "actual_shapes": {
+          "fg_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "counts": [
+            1,
+            10
+          ],
+          "total_count": [],
+          "max_count": [],
+          "rare_count": [],
+          "selector_b": [
+            1,
+            10
+          ],
+          "selector_f": [
+            1,
+            10
+          ],
+          "k64": [
+            1
+          ],
+          "masked_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "masked_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask1_h": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "mask1_u8": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "row_sum": [
+            1
+          ],
+          "col_sum": [
+            1
+          ],
+          "row2_sum": [
+            1
+          ],
+          "col2_sum": [
+            1
+          ],
+          "row_mean": [
+            1
+          ],
+          "col_mean": [
+            1
+          ],
+          "row2_mean": [
+            1
+          ],
+          "col2_mean": [
+            1
+          ],
+          "row_mean2": [
+            1
+          ],
+          "col_mean2": [
+            1
+          ],
+          "row_var": [
+            1
+          ],
+          "col_var": [
+            1
+          ],
+          "row_std": [
+            1
+          ],
+          "col_std": [
+            1
+          ],
+          "rstart0": [
+            1
+          ],
+          "rstartceil": [
+            1
+          ],
+          "cstart0": [
+            1
+          ],
+          "cstartceil": [
+            1
+          ],
+          "rend0": [
+            1
+          ],
+          "cend0": [
+            1
+          ],
+          "rmin": [
+            1
+          ],
+          "cmin": [
+            1
+          ],
+          "rmax": [
+            1
+          ],
+          "cmax": [
+            1
+          ],
+          "rend": [
+            1
+          ],
+          "cend": [
+            1
+          ],
+          "starts_u8": [
+            2
+          ],
+          "starts": [
+            2
+          ],
+          "ends_u8": [
+            2
+          ],
+          "ends": [
+            2
+          ],
+          "mask_crop_u8": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "mask_crop_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "p": [
+            1,
+            1
+          ],
+          "kf": [
+            1
+          ],
+          "bias": [
+            1,
+            1
+          ],
+          "labels_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "indices": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "zero_f_full": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 17,
+        "mismatches": [
+          {
+            "name": "fg_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_b",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_f",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "masked_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "masked_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_crop_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "mask_crop_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "labels_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "indices",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "zero_f_full",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "algebraic_proof": "all rewritten inputs are nonnegative, so ReduceL1(x) == ReduceSum(x)",
+      "accepted": false,
+      "reasons": [
+        "official_cost_not_strict_lower",
+        "runtime_shape_witness"
+      ]
+    },
+    {
+      "replaced_node_indices": [
+        4,
+        13
+      ],
+      "sha256": "9f67427eedc80d546a4e253909a0bae8152a8d7e99879034fcef74cf23d69d26",
+      "official_profile": {
+        "memory": 2107,
+        "params": 51,
+        "cost": 2158,
+        "score": 17.32306285418192,
+        "correct": true
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 54,
+        "initializer_count": 11,
+        "value_info_count": 53,
+        "op_histogram": {
+          "Add": 2,
+          "ArgMax": 1,
+          "BatchNormalization": 5,
+          "Cast": 1,
+          "CastLike": 14,
+          "Ceil": 2,
+          "Concat": 2,
+          "Div": 4,
+          "Einsum": 4,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 2,
+          "ReduceL1": 1,
+          "ReduceMax": 1,
+          "ReduceMean": 1,
+          "ReduceSum": 2,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sqrt": 2,
+          "Sub": 3
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 54,
+        "actual_shapes": {
+          "fg_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "counts": [
+            1,
+            10
+          ],
+          "total_count": [],
+          "max_count": [],
+          "rare_count": [],
+          "selector_b": [
+            1,
+            10
+          ],
+          "selector_f": [
+            1,
+            10
+          ],
+          "k64": [
+            1
+          ],
+          "masked_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "masked_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask1_h": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "mask1_u8": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "row_sum": [
+            1
+          ],
+          "col_sum": [
+            1
+          ],
+          "row2_sum": [
+            1
+          ],
+          "col2_sum": [
+            1
+          ],
+          "row_mean": [
+            1
+          ],
+          "col_mean": [
+            1
+          ],
+          "row2_mean": [
+            1
+          ],
+          "col2_mean": [
+            1
+          ],
+          "row_mean2": [
+            1
+          ],
+          "col_mean2": [
+            1
+          ],
+          "row_var": [
+            1
+          ],
+          "col_var": [
+            1
+          ],
+          "row_std": [
+            1
+          ],
+          "col_std": [
+            1
+          ],
+          "rstart0": [
+            1
+          ],
+          "rstartceil": [
+            1
+          ],
+          "cstart0": [
+            1
+          ],
+          "cstartceil": [
+            1
+          ],
+          "rend0": [
+            1
+          ],
+          "cend0": [
+            1
+          ],
+          "rmin": [
+            1
+          ],
+          "cmin": [
+            1
+          ],
+          "rmax": [
+            1
+          ],
+          "cmax": [
+            1
+          ],
+          "rend": [
+            1
+          ],
+          "cend": [
+            1
+          ],
+          "starts_u8": [
+            2
+          ],
+          "starts": [
+            2
+          ],
+          "ends_u8": [
+            2
+          ],
+          "ends": [
+            2
+          ],
+          "mask_crop_u8": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "mask_crop_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "p": [
+            1,
+            1
+          ],
+          "kf": [
+            1
+          ],
+          "bias": [
+            1,
+            1
+          ],
+          "labels_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "indices": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "zero_f_full": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 17,
+        "mismatches": [
+          {
+            "name": "fg_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_b",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_f",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "masked_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "masked_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_crop_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "mask_crop_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "labels_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "indices",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "zero_f_full",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "algebraic_proof": "all rewritten inputs are nonnegative, so ReduceL1(x) == ReduceSum(x)",
+      "accepted": false,
+      "reasons": [
+        "official_cost_not_strict_lower",
+        "runtime_shape_witness"
+      ]
+    },
+    {
+      "replaced_node_indices": [
+        3,
+        4,
+        13
+      ],
+      "sha256": "c55aad649ca509aeca7e415ab1448aeb489d883d7e01a77c9adf770df8ea0bd9",
+      "official_profile": {
+        "memory": 2125,
+        "params": 51,
+        "cost": 2176,
+        "score": 17.314756392024165,
+        "correct": true
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 54,
+        "initializer_count": 11,
+        "value_info_count": 53,
+        "op_histogram": {
+          "Add": 2,
+          "ArgMax": 1,
+          "BatchNormalization": 5,
+          "Cast": 1,
+          "CastLike": 14,
+          "Ceil": 2,
+          "Concat": 2,
+          "Div": 4,
+          "Einsum": 4,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 2,
+          "ReduceMax": 1,
+          "ReduceMean": 1,
+          "ReduceSum": 3,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sqrt": 2,
+          "Sub": 3
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 54,
+        "actual_shapes": {
+          "fg_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "fg_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "counts": [
+            1,
+            10
+          ],
+          "total_count": [],
+          "max_count": [],
+          "rare_count": [],
+          "selector_b": [
+            1,
+            10
+          ],
+          "selector_f": [
+            1,
+            10
+          ],
+          "k64": [
+            1
+          ],
+          "masked_f": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "masked_u8": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask_h": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "mask1_h": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "mask1_u8": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "row_sum": [
+            1
+          ],
+          "col_sum": [
+            1
+          ],
+          "row2_sum": [
+            1
+          ],
+          "col2_sum": [
+            1
+          ],
+          "row_mean": [
+            1
+          ],
+          "col_mean": [
+            1
+          ],
+          "row2_mean": [
+            1
+          ],
+          "col2_mean": [
+            1
+          ],
+          "row_mean2": [
+            1
+          ],
+          "col_mean2": [
+            1
+          ],
+          "row_var": [
+            1
+          ],
+          "col_var": [
+            1
+          ],
+          "row_std": [
+            1
+          ],
+          "col_std": [
+            1
+          ],
+          "rstart0": [
+            1
+          ],
+          "rstartceil": [
+            1
+          ],
+          "cstart0": [
+            1
+          ],
+          "cstartceil": [
+            1
+          ],
+          "rend0": [
+            1
+          ],
+          "cend0": [
+            1
+          ],
+          "rmin": [
+            1
+          ],
+          "cmin": [
+            1
+          ],
+          "rmax": [
+            1
+          ],
+          "cmax": [
+            1
+          ],
+          "rend": [
+            1
+          ],
+          "cend": [
+            1
+          ],
+          "starts_u8": [
+            2
+          ],
+          "starts": [
+            2
+          ],
+          "ends_u8": [
+            2
+          ],
+          "ends": [
+            2
+          ],
+          "mask_crop_u8": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "mask_crop_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "p": [
+            1,
+            1
+          ],
+          "kf": [
+            1
+          ],
+          "bias": [
+            1,
+            1
+          ],
+          "labels_f": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "indices": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "zero_f_full": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 17,
+        "mismatches": [
+          {
+            "name": "fg_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fg_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_b",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "selector_f",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "masked_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "masked_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask1_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "mask_crop_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "mask_crop_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "labels_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "indices",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "zero_f_full",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "algebraic_proof": "all rewritten inputs are nonnegative, so ReduceL1(x) == ReduceSum(x)",
+      "accepted": false,
+      "reasons": [
+        "official_cost_not_strict_lower",
+        "runtime_shape_witness"
+      ]
+    }
+  ],
+  "strict_lower_survivors": []
+}

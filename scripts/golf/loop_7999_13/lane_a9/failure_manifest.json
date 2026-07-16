@@ -1,0 +1,84 @@
+{
+  "lane": "a9",
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "archive_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "authority": "exact archive members"
+  },
+  "targets": [8, 25, 62, 250, 268, 275, 308],
+  "baseline_costs": {
+    "8": {"sha256": "30abdd1f30f1aa88549edbf22c6e7a4af4fec3036fd8809812456ccb0df6e292", "memory": 331, "params": 100, "cost": 431},
+    "25": {"sha256": "22a44063541ed6c696b535d4059abf5dd4844a0fafef2df6006b6f1e027ea595", "memory": 396, "params": 78, "cost": 474},
+    "62": {"sha256": "ab49737eda12f816c79d80fa60f74cec3768ef723156b81420c5cf15a1a029f2", "memory": 372, "params": 93, "cost": 465},
+    "250": {"sha256": "bd479d52a359a4a1162387298b3f78691e7fa882a771afd5dda7313b92db6b0e", "memory": 279, "params": 189, "cost": 468},
+    "268": {"sha256": "14aa4e593cbe98d8291b33606f24fab049c5311fdcc7866067b792923736c91a", "memory": 399, "params": 47, "cost": 446},
+    "275": {"sha256": "0223b550b6555a701e44a2d5b6a77afdf4650f2225f398c5d9096e65869e8d11", "memory": 12, "params": 420, "cost": 432},
+    "308": {"sha256": "06d6ae77684ccb19ec9e22721cfa4424c8d74282ca921b8168dc36aaba17056c", "memory": 376, "params": 58, "cost": 434}
+  },
+  "rejected_candidates": [
+    {
+      "task": 25,
+      "candidate": "scripts/golf/loop_7999_13/lane_a9/task025_causal_mask.onnx",
+      "sha256": "a8b2e0eecb42f3c2c7a6ea6b5878a54127537fa1270b0f165bd8ae20fe533f86",
+      "memory": 396,
+      "params": 76,
+      "cost": 472,
+      "nominal_reduction": 2,
+      "checker_full": "pass",
+      "strict_shape_inference": "pass",
+      "ort_disable_all": {"right": 0, "wrong": 266, "errors": 0},
+      "ort_default": {"right": 0, "wrong": 266, "errors": 0},
+      "decision": "REJECT_KNOWN_INCORRECT",
+      "reason": "The finite [0,-40] two-position attention mask is not equivalent to omitting the mask and setting is_causal=1; every known case changes class output."
+    },
+    {
+      "task": 268,
+      "candidate": "scripts/golf/loop_7999_13/lane_a9/task268_cast_bool.onnx",
+      "sha256": "2788ce7880785287786ddb8d2ec8835136aaefb2fe82c23a4a0698bf3e19f7d6",
+      "memory": 1298,
+      "params": 46,
+      "cost": 1344,
+      "nominal_parameter_reduction": 1,
+      "actual_cost_delta": 898,
+      "checker_full": "pass",
+      "strict_shape_inference": "pass",
+      "ort_disable_all": {"right": 266, "wrong": 0, "errors": 0},
+      "ort_default": {"right": 266, "wrong": 0, "errors": 0},
+      "decision": "REJECT_NOT_CHEAPER",
+      "reason": "Replacing the boolean CastLike anchor with Cast exposes the real 30x30 boolean carrier to the profiler: memory rises from 399 to 1298."
+    },
+    {
+      "task": 268,
+      "candidate": "others/7907/task268_improved_rebuild.onnx",
+      "sha256": "22ea97ffce8b14fbf923a89a0cda2233d83469201732ed3f4e914e5b2b1ced69",
+      "cost": 327,
+      "known": {"right": 266, "wrong": 0, "errors": 0},
+      "fresh5000": {"right": 2219, "wrong": 2781, "rate": 0.4438},
+      "decision": "REJECT_GENERATOR_UNSOUND",
+      "reason": "The historical lower-cost model fails the mandatory generator-domain gate."
+    }
+  ],
+  "non_candidate_findings": {
+    "task8": "Exact-hash lane_a5 audit already tested int32 anchor removal: known-correct but cost 431 to 454. No initializer-only exact substitution survives shape/cost checks.",
+    "task25": "sigV and negsigK are proportional, but their compensated reuse requires a negative Attention scale and produces NaNs. outscale cannot be folded only into the final Einsum because it is also an Attention operand.",
+    "task62": "Equal-valued scalar initializers have incompatible schema-required ranks; reuse needs an added shape carrier and is not cheaper.",
+    "task250": "Exact-hash lane_a4 and harvest evidence found best alternate known-correct cost 473 versus 468. The rank-full 4x4 absent/present code tables have no exact smaller shared factor.",
+    "task275": "MA differs from BA and MB differs from BB. Their common zero rows 16..29 cannot be trimmed without reconstructing the 30-output axis; joint family ranks are full and historical cost-317 polynomial models fail known gold.",
+    "task308": "Exact-hash lane_a4 audit confirms the incumbent already has the newer 4x4 index and reflect-pad reduction; no lower known-correct historical member exists."
+  },
+  "evidence": {
+    "baseline_extraction": "scripts/golf/loop_7999_13/lane_a9/baseline_manifest.json",
+    "rejected_candidate_audit": "scripts/golf/loop_7999_13/lane_a9/rejected_candidate_audit.json",
+    "task8_25_62_exact_audit": "scripts/golf/loop_7999_13/lane_a5/REPORT.md",
+    "task250_308_exact_audit": "scripts/golf/loop_7999_13/lane_a4/REPORT.md",
+    "task268_historical_scan": "scripts/golf/loop_7999_13/lane_b5/REPORT.md",
+    "task275_factor_audit": "scripts/golf/loop_7999_13/lane_b4/REPORT.md"
+  },
+  "fresh5000": {
+    "run": false,
+    "reason": "No new candidate passed both strict-cheaper and complete-known gates; the only historical cheaper known-pass task268 model already has a recorded 2219/5000 fresh rejection."
+  },
+  "accepted": [],
+  "projected_gain": 0.0,
+  "root_artifacts_modified": false
+}

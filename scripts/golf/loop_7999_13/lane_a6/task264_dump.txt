@@ -1,0 +1,83 @@
+# task264.onnx
+
+## Initializers
+s1: int64 (1,) [1]
+color_vals: float32 (10,) [0.0, 1.0, 2.0, 3.0, 4.0, 0.0, 6.0, 7.0, 8.0, 9.0]
+gray_scalar: int8 (1,) [5]
+eq_vals: int8 (1, 10, 1, 1) [[[[-1]], [[1]], [[2]], [[3]], [[4]], [[5]], [[6]], [[7]], [[8]], [[9]]]]
+slot_map: int32 (9, 9) [[0, 0, 8, 1, 1, 1, 8, 2, 2], [0, 8, 8, 8, 1, 8, 8, 8, 2], [8, 8, 8, 8, 8, 8, 8, 8, 8], [3, 8, 8, 8, 8, 8, 8, 8, 4], [3, 3, 8, 8, 8, 8, 8, 4, 4], [3, 8, 8, 8, 8, 8, 8, 8, 4], [8, 8, 8, 8, 8, 8, 8, 8, 8], [5, 8, 8, 8, 6, 8, 8, 8, 7], [5, 5, 8, 6, 6, 6, 8, 7, 7]]
+
+## Nodes
+00 ConstantOfShape ['s1'] -> ['s29'] {'value': [29]}
+01 ConstantOfShape ['s1'] -> ['s30'] {'value': [30]}
+02 ConstantOfShape ['s1'] -> ['s31'] {'value': [31]}
+03 CenterCropPad ['input', 's31'] -> ['rp0'] {'axes': [2]}
+04 CenterCropPad ['rp0', 's29'] -> ['rp1'] {'axes': [2]}
+05 CenterCropPad ['rp1', 's30'] -> ['rp'] {'axes': [2]}
+06 CenterCropPad ['input', 's29'] -> ['rm0'] {'axes': [2]}
+07 CenterCropPad ['rm0', 's31'] -> ['rm1'] {'axes': [2]}
+08 CenterCropPad ['rm1', 's30'] -> ['rm'] {'axes': [2]}
+09 CenterCropPad ['input', 's31'] -> ['cp0'] {'axes': [3]}
+10 CenterCropPad ['cp0', 's29'] -> ['cp1'] {'axes': [3]}
+11 CenterCropPad ['cp1', 's30'] -> ['cp'] {'axes': [3]}
+12 CenterCropPad ['input', 's29'] -> ['cm0'] {'axes': [3]}
+13 CenterCropPad ['cm0', 's31'] -> ['cm1'] {'axes': [3]}
+14 CenterCropPad ['cm1', 's30'] -> ['cm'] {'axes': [3]}
+15 Einsum ['input', 'cp', 'rp', 'color_vals'] -> ['c0a'] {'equation': 'nkhw,nkhw,nkhw,k->n'}
+16 Cast ['c0a'] -> ['c0ai'] {'to': 3}
+17 Einsum ['input', 'cm', 'cp', 'rp', 'color_vals'] -> ['c1'] {'equation': 'nkhw,nkhw,nkhw,nkhw,k->n'}
+18 Cast ['c1'] -> ['c1i'] {'to': 3}
+19 Einsum ['input', 'cm', 'rp', 'color_vals'] -> ['c2a'] {'equation': 'nkhw,nkhw,nkhw,k->n'}
+20 Cast ['c2a'] -> ['c2ai'] {'to': 3}
+21 Einsum ['input', 'rm', 'rp', 'cp', 'color_vals'] -> ['c3'] {'equation': 'nkhw,nkhw,nkhw,nkhw,k->n'}
+22 Cast ['c3'] -> ['c3i'] {'to': 3}
+23 Einsum ['input', 'rm', 'rp', 'cm', 'color_vals'] -> ['c5'] {'equation': 'nkhw,nkhw,nkhw,nkhw,k->n'}
+24 Cast ['c5'] -> ['c5i'] {'to': 3}
+25 Einsum ['input', 'rm', 'cp', 'color_vals'] -> ['c6a'] {'equation': 'nkhw,nkhw,nkhw,k->n'}
+26 Cast ['c6a'] -> ['c6ai'] {'to': 3}
+27 Einsum ['input', 'cm', 'cp', 'rm', 'color_vals'] -> ['c7'] {'equation': 'nkhw,nkhw,nkhw,nkhw,k->n'}
+28 Cast ['c7'] -> ['c7i'] {'to': 3}
+29 Einsum ['input', 'rm', 'cm', 'color_vals'] -> ['c8a'] {'equation': 'nkhw,nkhw,nkhw,k->n'}
+30 Cast ['c8a'] -> ['c8ai'] {'to': 3}
+31 Sub ['c0ai', 'c1i'] -> ['c0t'] {}
+32 Sub ['c0t', 'c3i'] -> ['c0i'] {}
+33 Sub ['c2ai', 'c1i'] -> ['c2t'] {}
+34 Sub ['c2t', 'c5i'] -> ['c2i'] {}
+35 Sub ['c6ai', 'c3i'] -> ['c6t'] {}
+36 Sub ['c6t', 'c7i'] -> ['c6i'] {}
+37 Sub ['c8ai', 'c5i'] -> ['c8t'] {}
+38 Sub ['c8t', 'c7i'] -> ['c8i'] {}
+39 Concat ['c0i', 'c1i', 'c2i', 'c3i', 'c5i', 'c6i', 'c7i', 'c8i', 'gray_scalar'] -> ['palette_u'] {'axis': 0}
+40 Gather ['palette_u', 'slot_map'] -> ['label9'] {'axis': 0}
+41 CenterCropPad ['label9', 's30'] -> ['lab_pad0'] {'axes': [0, 1]}
+42 CenterCropPad ['lab_pad0', 's31'] -> ['lab_l0_31'] {'axes': [0, 1]}
+43 CenterCropPad ['lab_l0_31', 's29'] -> ['lab_l0_29'] {'axes': [0, 1]}
+44 CenterCropPad ['lab_l0_29', 's30'] -> ['lab_l0_30'] {'axes': [0, 1]}
+45 CenterCropPad ['lab_l0_30', 's31'] -> ['lab_l1_31'] {'axes': [0, 1]}
+46 CenterCropPad ['lab_l1_31', 's29'] -> ['lab_l1_29'] {'axes': [0, 1]}
+47 CenterCropPad ['lab_l1_29', 's30'] -> ['lab_l1_30'] {'axes': [0, 1]}
+48 CenterCropPad ['lab_l1_30', 's31'] -> ['lab_l2_31'] {'axes': [0, 1]}
+49 CenterCropPad ['lab_l2_31', 's29'] -> ['lab_l2_29'] {'axes': [0, 1]}
+50 CenterCropPad ['lab_l2_29', 's30'] -> ['lab_l2_30'] {'axes': [0, 1]}
+51 CenterCropPad ['lab_l2_30', 's31'] -> ['lab_l3_31'] {'axes': [0, 1]}
+52 CenterCropPad ['lab_l3_31', 's29'] -> ['lab_l3_29'] {'axes': [0, 1]}
+53 CenterCropPad ['lab_l3_29', 's30'] -> ['lab_l3_30'] {'axes': [0, 1]}
+54 CenterCropPad ['lab_l3_30', 's31'] -> ['lab_l4_31'] {'axes': [0, 1]}
+55 CenterCropPad ['lab_l4_31', 's29'] -> ['lab_l4_29'] {'axes': [0, 1]}
+56 CenterCropPad ['lab_l4_29', 's30'] -> ['lab_l4_30'] {'axes': [0, 1]}
+57 CenterCropPad ['lab_l4_30', 's31'] -> ['lab_l5_31'] {'axes': [0, 1]}
+58 CenterCropPad ['lab_l5_31', 's29'] -> ['lab_l5_29'] {'axes': [0, 1]}
+59 CenterCropPad ['lab_l5_29', 's30'] -> ['lab_l5_30'] {'axes': [0, 1]}
+60 CenterCropPad ['lab_l5_30', 's31'] -> ['lab_l6_31'] {'axes': [0, 1]}
+61 CenterCropPad ['lab_l6_31', 's29'] -> ['lab_l6_29'] {'axes': [0, 1]}
+62 CenterCropPad ['lab_l6_29', 's30'] -> ['lab_l6_30'] {'axes': [0, 1]}
+63 CenterCropPad ['lab_l6_30', 's31'] -> ['lab_l7_31'] {'axes': [0, 1]}
+64 CenterCropPad ['lab_l7_31', 's29'] -> ['lab_l7_29'] {'axes': [0, 1]}
+65 CenterCropPad ['lab_l7_29', 's30'] -> ['lab_l7_30'] {'axes': [0, 1]}
+66 CenterCropPad ['lab_l7_30', 's31'] -> ['lab_l8_31'] {'axes': [0, 1]}
+67 CenterCropPad ['lab_l8_31', 's29'] -> ['lab_l8_29'] {'axes': [0, 1]}
+68 CenterCropPad ['lab_l8_29', 's30'] -> ['lab_l8_30'] {'axes': [0, 1]}
+69 CenterCropPad ['lab_l8_30', 's31'] -> ['lab_l9_31'] {'axes': [0, 1]}
+70 CenterCropPad ['lab_l9_31', 's29'] -> ['lab_l9_29'] {'axes': [0, 1]}
+71 CenterCropPad ['lab_l9_29', 's30'] -> ['lab_l9_30'] {'axes': [0, 1]}
+72 Equal ['lab_l9_30', 'eq_vals'] -> ['output'] {}

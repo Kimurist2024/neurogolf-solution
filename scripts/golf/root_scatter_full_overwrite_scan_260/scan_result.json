@@ -1,0 +1,3857 @@
+{
+  "authority": "submission.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "tasks_scanned": 400,
+  "synthetic_self_tests": [
+    {
+      "name": "scatternd_identity",
+      "passed": true,
+      "expected_convertible": true,
+      "actual_convertible": true,
+      "expected_op_type": "Identity",
+      "actual_op_type": "Identity",
+      "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite"
+    },
+    {
+      "name": "scatternd_reshape",
+      "passed": true,
+      "expected_convertible": true,
+      "actual_convertible": true,
+      "expected_op_type": "Reshape",
+      "actual_op_type": "Reshape",
+      "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite"
+    },
+    {
+      "name": "scatternd_transpose",
+      "passed": true,
+      "expected_convertible": true,
+      "actual_convertible": true,
+      "expected_op_type": "Transpose",
+      "actual_op_type": "Transpose",
+      "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite"
+    },
+    {
+      "name": "scatternd_duplicate_reject",
+      "passed": true,
+      "expected_convertible": false,
+      "actual_convertible": false,
+      "expected_op_type": null,
+      "actual_op_type": null,
+      "reason": "duplicate_normalized_prefix"
+    },
+    {
+      "name": "scatterelements_identity",
+      "passed": true,
+      "expected_convertible": true,
+      "actual_convertible": true,
+      "expected_op_type": "Identity",
+      "actual_op_type": "Identity",
+      "reason": "exhaustive_same_full_permutation_on_every_axis_line"
+    },
+    {
+      "name": "scatterelements_reverse_slice",
+      "passed": true,
+      "expected_convertible": true,
+      "actual_convertible": true,
+      "expected_op_type": "Slice",
+      "actual_op_type": "Slice",
+      "reason": "exhaustive_same_full_permutation_on_every_axis_line"
+    },
+    {
+      "name": "scatterelements_inverse_gather",
+      "passed": true,
+      "expected_convertible": true,
+      "actual_convertible": true,
+      "expected_op_type": "Gather",
+      "actual_op_type": "Gather",
+      "reason": "exhaustive_same_full_permutation_on_every_axis_line"
+    },
+    {
+      "name": "scatterelements_duplicate_reject",
+      "passed": true,
+      "expected_convertible": false,
+      "actual_convertible": false,
+      "expected_op_type": null,
+      "actual_op_type": null,
+      "reason": "axis_line_has_duplicate_or_missing_target"
+    }
+  ],
+  "tasks_with_scatter": 74,
+  "scatter_nd_nodes": 22,
+  "scatter_elements_nodes": 117,
+  "convertible_nodes": 1,
+  "all_use_groups": 0,
+  "retained_index_rewrite_groups": 1,
+  "candidate_tasks": 1,
+  "discoveries": [
+    {
+      "task": 8,
+      "authority_sha256": "30abdd1f30f1aa88549edbf22c6e7a4af4fec3036fd8809812456ccb0df6e292",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 59,
+          "output": "output",
+          "data": "input_i8_hidden",
+          "indices": "indices_i64_hidden",
+          "updates": "updates2x2hw_i8",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 14,
+      "authority_sha256": "15a7de7d7ad08eeb693bbe82b7527f34c15fb539b8a4b5a079daceac6c1fe7eb",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 53,
+          "output": "output",
+          "data": "zero_f_full",
+          "indices": "indices",
+          "updates": "labels_f",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 133,
+          "params": 51,
+          "cost": 184
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 18,
+      "authority_sha256": "36eef8bf93f0e79ea8e730594a986add071ee30ea92fc8f662c61663bd6c52c3",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 186,
+          "output": "output",
+          "data": "input",
+          "indices": "scatter_idx64",
+          "updates": "scatter_updates",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 20,
+      "authority_sha256": "326e7e4a93748cdd8498a2213261edb8a85ae5f6df23ac84ec3a1e183401c6a4",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 42,
+          "output": "output",
+          "data": "input",
+          "indices": "idx64",
+          "updates": "updates_dyn",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 22,
+      "authority_sha256": "e4ae2d2db6145719e6fce388f44b70ea3ac5a0ffa848386d1b4a73cce16233bb",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 11,
+          "output": "output",
+          "data": "data0",
+          "indices": "idx",
+          "updates": "raw",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 50,
+          "params": 13,
+          "cost": 63
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 31,
+      "authority_sha256": "75419f6661d917ccf861c05bf15f2fd190643e13c16883b2e68d0841fb102a49",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 33,
+          "output": "output",
+          "data": "zero_full",
+          "indices": "indices",
+          "updates": "cropf",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 103,
+          "params": 76,
+          "cost": 179
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 34,
+      "authority_sha256": "1d13df745203958b5b477bf96b88ad73aefd1ad66971b132a569334d94da974c",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 41,
+          "output": "wmask_new",
+          "data": "wbase",
+          "indices": "q_i32_4d",
+          "updates": "code_u8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 48,
+      "authority_sha256": "04455e6bef7fc9252df79102c3fbc914855199ae834adc356ecd2365a11d12a8",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 13,
+          "output": "box_top",
+          "data": "zero_rows",
+          "indices": "first_idx",
+          "updates": "selected_boxtop",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 54,
+      "authority_sha256": "783e18d6e3ec8abef5c7aae6111b80f47583bc2d0b02954984414efc1a3b86b8",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 4,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 83,
+          "output": "fillR",
+          "data": "__zero1430i8",
+          "indices": "fillR_idx",
+          "updates": "fill_upd3",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 84,
+          "output": "fillC",
+          "data": "__zero1430i8",
+          "indices": "fillC_idx",
+          "updates": "fill_upd3",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 104,
+          "output": "__groupR_i8",
+          "data": "__zero1230i8",
+          "indices": "__gr_idx",
+          "updates": "__gr_upd_H",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 109,
+          "output": "__groupC_i8",
+          "data": "__zero1230i8",
+          "indices": "__gc_idx",
+          "updates": "__gc_mask_V",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 62,
+      "authority_sha256": "6767dbf75899d7330115c9f9a8fda97c77e6dcf84f3e5c9de7ba88d79ae2004e",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 56,
+          "output": "w_dyn",
+          "data": "base_w_u8",
+          "indices": "obj_color_i32",
+          "updates": "two_w_1x1",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 68,
+      "authority_sha256": "dda85b9652900dd20dc7db715835f03d657a306d45ffa05b2322cf412572003b",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 2,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 9,
+          "output": "row_code_i8",
+          "data": "coord_cloak_i8",
+          "indices": "row_indices_i32",
+          "updates": "updates_i8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 10,
+          "output": "col_code_i8",
+          "data": "coord_cloak_i8",
+          "indices": "col_indices_i32",
+          "updates": "updates_i8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 76,
+      "authority_sha256": "9d31114f8af80bf54b6c908ad61eadd6dbe4fb63f52b5b97ecb70f1f0fcce791",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 146,
+          "output": "output",
+          "data": "input_u8",
+          "indices": "idx_i64",
+          "updates": "updates_f16",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 79,
+      "authority_sha256": "70ff92f5ebcbe9dac63b5af12215e42433596d0cdfa93901e2a8fb0b7a2e3a12",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 27,
+          "output": "dyn_w",
+          "data": "base_w",
+          "indices": "color_idx",
+          "updates": "two_u8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 108,
+          "params": 64,
+          "cost": 172
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 88,
+      "authority_sha256": "40ce4f7849f7e5ea07f181b3e947d7a9528feef6b29ed7e9d3e836c9515be4b3",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 35,
+          "output": "output",
+          "data": "zero_canvas",
+          "indices": "label_indices",
+          "updates": "updates",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 100,
+          "params": 19,
+          "cost": 119
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 90,
+      "authority_sha256": "dfda7e4272b31e33f0fcf68939f33392b1ea784664be729491d3055227980047",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 43,
+          "output": "select_width",
+          "data": "width5",
+          "indices": "idx_02",
+          "updates": "update2_02",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 96,
+      "authority_sha256": "97f05f8495c7e69a7f86f62bb4b2568d2fdcb7e5b908d008b9788356d44e67de",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 3,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 14,
+          "output": "code",
+          "data": "raw",
+          "indices": "bg64",
+          "updates": "zero_u8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 22,
+          "output": "byc",
+          "data": "seed",
+          "indices": "safe_r",
+          "updates": "color_valid",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 23,
+          "output": "bycode",
+          "data": "seed",
+          "indices": "safe_r",
+          "updates": "code",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 101,
+      "authority_sha256": "ad535c519c18681700f956262c48ca5990f15ff4b58fd94de95ef3beff69a84b",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 4,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 5,
+          "output": "row_map",
+          "data": "row_zero",
+          "indices": "row_idx",
+          "updates": "one4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 8,
+          "output": "col_map",
+          "data": "col_zero",
+          "indices": "col_idx",
+          "updates": "one4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 19,
+          "output": "p_red_row2_fix",
+          "data": "p_red_row2",
+          "indices": "idx0_4d",
+          "updates": "row0val",
+          "convertible": false,
+          "reason": "not_full_shape_overwrite"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 22,
+          "output": "p_row_map",
+          "data": "p_row_zero",
+          "indices": "p_row_idx",
+          "updates": "one4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterND",
+          "node_index": 59,
+          "output": "cand3",
+          "data": "cand3_base",
+          "indices": "inj_idx",
+          "updates": "is_wide_u8",
+          "convertible": false,
+          "reason": "prefix_block_count_not_full",
+          "prefix_count": 1,
+          "expected_prefix_count": 112
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 106,
+      "authority_sha256": "e5c7fecef8da43647de0259bb8c6d18d556d8c924139ac40236d6eca52fee377",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 36,
+          "output": "output",
+          "data": "in_u8",
+          "indices": "channels",
+          "updates": "chan_hid",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 114,
+          "params": 13,
+          "cost": 127
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 109,
+      "authority_sha256": "2e7be8671e2e8abe9d3f2f77f0b068f54a70a584ce477affb28fee6372bd25ef",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 15,
+          "output": "dyn_qw",
+          "data": "base_qw",
+          "indices": "top_indices",
+          "updates": "updates",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 135,
+          "params": 43,
+          "cost": 178
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 112,
+      "authority_sha256": "ab7dbcf736393fa12966686d190a0838ec056d9eac5ceee3c4840e36a4839621",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 30,
+          "output": "output",
+          "data": "input_i8_base",
+          "indices": "indices_i64",
+          "updates": "updates",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 343,
+          "params": 79,
+          "cost": 422
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 117,
+      "authority_sha256": "042e3ee0976af0c684fb98064800ab0b84e8bf53273a0c4121315ab7a0bfaac2",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 66,
+          "output": "output",
+          "data": "input_i8_hidden",
+          "indices": "indices_i64",
+          "updates": "updates_rect_i8",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 126,
+      "authority_sha256": "2b42a9b1c6e4390f29faece29888f7626ad4eb18b27c3362aa6fd1b8e75926e5",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 19,
+          "output": "output",
+          "data": "input_u8",
+          "indices": "indices_i32",
+          "updates": "updates_u8",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 44,
+          "params": 8,
+          "cost": 52
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 131,
+      "authority_sha256": "d72faec0655603b5dc7e6857799988200a08953f724b0d6f58703dbfbed5ebc4",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 86,
+          "output": "output",
+          "data": "gn_data",
+          "indices": "scatter_idx",
+          "updates": "updates_hid",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 455,
+          "params": 119,
+          "cost": 574
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 133,
+      "authority_sha256": "6c5dc3a593b0900e16966b9d4c40af509a34c1dd1f0264c31cd30eaf9b4570e5",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 35,
+          "output": "main_score9",
+          "data": "counts__cast1_t",
+          "indices": "main_excl_idx",
+          "updates": "neg_update_1x2",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 138,
+      "authority_sha256": "55e71aec7157b719042cf082c02150fb13ec5fd7cf93cf805aa60e6cb905f20f",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 8,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 117,
+          "output": "TL",
+          "data": "row_line_base",
+          "indices": "row_corner_idx__cast_int32",
+          "updates": "TLpair_u4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 120,
+          "output": "TR",
+          "data": "row_line_base",
+          "indices": "row_corner_idx__cast_int32",
+          "updates": "TRpair_u4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 123,
+          "output": "CT",
+          "data": "cinner_u8",
+          "indices": "col_corner_idx__cast_int32",
+          "updates": "CTpair_u4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 126,
+          "output": "CB",
+          "data": "cinner_u8",
+          "indices": "col_corner_idx__cast_int32",
+          "updates": "CBpair_u4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 127,
+          "output": "CR",
+          "data": "CL",
+          "indices": "col_corner_idx__cast_int32",
+          "updates": "CRpair_u4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 137,
+          "output": "tdraw_h",
+          "data": "tdraw_h_base",
+          "indices": "row_corner_idx__cast_int32",
+          "updates": "TDHpair_u4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 142,
+          "output": "cdraw_v",
+          "data": "cdraw_v_base",
+          "indices": "col_corner_idx__cast_int32",
+          "updates": "CDVpair_u4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 150,
+          "output": "rolemap",
+          "data": "role_base",
+          "indices": "line_colors__cast_int32",
+          "updates": "line_role_updates6",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 143,
+      "authority_sha256": "c1f3481c23d501fdd1d6046fec6a6c14c4a4e777896cedb32fd522d64c37079c",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 7,
+          "output": "hash2",
+          "data": "hash",
+          "indices": "ri",
+          "updates": "rh",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 158,
+      "authority_sha256": "2823587ecc3f1b5b158357b5c32638003130f133ba6ab64a35337238f134aead",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 163,
+          "output": "pq_seed_flat",
+          "data": "pq_zero_seed",
+          "indices": "pq_cell_index",
+          "updates": "pq_cell_code",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 6709,
+          "params": 869,
+          "cost": 7578
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 170,
+      "authority_sha256": "e5fea4c41d22fabbb6f0c6a9c9838ebf5ac65fdd189ed51e7f8f77ca3d8a3268",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 59,
+          "output": "output",
+          "data": "zero_full",
+          "indices": "labels_i32",
+          "updates": "box_labels",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 173,
+      "authority_sha256": "a23d2448c52fe24e949b7758aa754feddfb93012b430fbb1dec10c3e5ce183bf",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 7,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 53,
+          "output": "c2o",
+          "data": "zero_vec10",
+          "indices": "pix_color_i32",
+          "updates": "proto_outer_update",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 54,
+          "output": "c2f",
+          "data": "zero_vec10",
+          "indices": "pix_color_i32",
+          "updates": "proto_family_update",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 55,
+          "output": "o2c",
+          "data": "zero_vec10",
+          "indices": "outer_color_i32",
+          "updates": "proto_center",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 56,
+          "output": "o2f",
+          "data": "c2f",
+          "indices": "outer_color_i32",
+          "updates": "proto_family_update",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 66,
+          "output": "st_outer_color",
+          "data": "st_outer_color_pre",
+          "indices": "inj_slot",
+          "updates": "upd_outer_col",
+          "convertible": false,
+          "reason": "not_full_shape_overwrite"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 72,
+          "output": "st_center_pos",
+          "data": "st_center_pos_pre",
+          "indices": "inj_slot",
+          "updates": "upd_center_pos",
+          "convertible": false,
+          "reason": "not_full_shape_overwrite"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 75,
+          "output": "st_center_fam",
+          "data": "st_center_fam_pre",
+          "indices": "inj_slot",
+          "updates": "upd_center_fam",
+          "convertible": false,
+          "reason": "not_full_shape_overwrite"
+        },
+        {
+          "kind": "ScatterND",
+          "node_index": 136,
+          "output": "output",
+          "data": "qcu",
+          "indices": "rc_indices_i64",
+          "updates": "rc_updates",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 174,
+      "authority_sha256": "3725330e512eb69d4970181345457630736af31299f6758492191eb8dd9b7e69",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 23,
+          "output": "dyn_w_i8",
+          "data": "base_w_i8",
+          "indices": "target_i32_4d",
+          "updates": "target_i8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 181,
+      "authority_sha256": "6c8e5ee411c4c7421df50df3ad182414d04f641503aa768c25759fcf131e6ac4",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 8,
+          "output": "output",
+          "data": "data",
+          "indices": "idx",
+          "updates": "updates",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 38,
+          "params": 25,
+          "cost": 63
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 183,
+      "authority_sha256": "b2bc81fbe6bbd288b1e4f59048a38216530be07f3896bdfe2b4d568e64d5849b",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 35,
+          "output": "output",
+          "data": "neg_full_h",
+          "indices": "indices",
+          "updates": "updates_h",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 63,
+          "params": 27,
+          "cost": 90
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 189,
+      "authority_sha256": "9bedf9f8ff6e402c2111409893d90ff5c2a1c2069326c3b07c3a8794364bb6a9",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 23,
+          "output": "output",
+          "data": "zero_full_i8",
+          "indices": "indices",
+          "updates": "updates_i8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 114,
+          "params": 34,
+          "cost": 148
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 192,
+      "authority_sha256": "e7f9a11b93b611acfa4bba39e90e1ddf24223d50add4277fe9716f21f6ede10c",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 2,
+          "output": "bias",
+          "data": "bias_base",
+          "indices": "bc",
+          "updates": "bias_update",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 200,
+      "authority_sha256": "8c91d1a61ac9bdd4cb5e812b5f0db57e0bf49c1cf2fd256724960118430df8f3",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 7,
+          "output": "Bfac",
+          "data": "Bbase",
+          "indices": "color_idx",
+          "updates": "update",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 201,
+      "authority_sha256": "fb28f6065fbac760fd5a9e40d00af44eb5128c3d76676e852e62baddb574beda",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 3,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 91,
+          "output": "weights",
+          "data": "wbase3",
+          "indices": "cidx__cast_int32",
+          "updates": "wupdates3",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 96,
+          "output": "arows",
+          "data": "lpad4",
+          "indices": "bottomrow4i",
+          "updates": "cornerbyte4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 97,
+          "output": "brows",
+          "data": "rpad4",
+          "indices": "bottomrow4i",
+          "updates": "cornerbyte4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 619,
+          "params": 170,
+          "cost": 789
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 206,
+      "authority_sha256": "cf0011a5073a7e99270c7abd5be6382f2dfbd370ca820ae0b9719311b498a8f9",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 30,
+          "output": "output",
+          "data": "input_i8",
+          "indices": "idx_full_i32",
+          "updates": "idx_full_i8",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 78,
+          "params": 68,
+          "cost": 146
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 208,
+      "authority_sha256": "6c9bad970152f9380f07954878876c474dda51752586a200e4a911105fa4d016",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 51,
+          "output": "starts_clean",
+          "data": "cand_fullh",
+          "indices": "first_r_shift",
+          "updates": "neg_first_bit",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 209,
+      "authority_sha256": "80c19164133eac51fffb38021ee1a0923cea34bcba32b5e4efc1251f47615f27",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 2,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 148,
+          "output": "rowcat",
+          "data": "cat_h",
+          "indices": "rowidx2",
+          "updates": "rowupdates8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 151,
+          "output": "cidx_y",
+          "data": "cidx_in",
+          "indices": "yidx",
+          "updates": "yidx6_2",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 214,
+      "authority_sha256": "353079a7edef05433eead39ee3a452863c29feeac95777b6edb2212ce6a21a4c",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 9,
+          "output": "output",
+          "data": "input_i8",
+          "indices": "idx",
+          "updates": "c1",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 69,
+          "params": 16,
+          "cost": 85
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 219,
+      "authority_sha256": "7a2ead58107803948d316fb8e00c4fd3ff601769309f9ad99661976f1a51bd67",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 104,
+          "output": "blue4",
+          "data": "paint15u8",
+          "indices": "patch_idx4",
+          "updates": "patch_update",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 228,
+      "authority_sha256": "13946c8d5a52886212f495b13fa6c128a091e77b84e10e27b442ed87f9694a45",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 27,
+          "output": "output",
+          "data": "input",
+          "indices": "indices",
+          "updates": "updates",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 196,
+          "params": 50,
+          "cost": 246
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 231,
+      "authority_sha256": "13d4171760d1f4b25fdc38d6e9e9f5a56ed02644656f08c8cca28783c9028057",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 2,
+          "output": "x",
+          "data": "base",
+          "indices": "w_i",
+          "updates": "nanv",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 52,
+          "params": 12,
+          "cost": 64
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 233,
+      "authority_sha256": "4263f04fd9a4fd783182ea66cd4164ab6a51f4109eca71e7f591057f3018a89f",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 2,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 105,
+          "output": "qfr_rows_clean",
+          "data": "qfr_row_profile_i8",
+          "indices": "qfr_row_idx",
+          "updates": "qfr_updates15",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 106,
+          "output": "qfr_cols_clean",
+          "data": "qfr_col_profile_i8",
+          "indices": "qfr_col_idx",
+          "updates": "qfr_updates15",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterND",
+          "node_index": 185,
+          "output": "renderer_paint",
+          "data": "renderer_base",
+          "indices": "renderer_indices",
+          "updates": "renderer_updates",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 238,
+      "authority_sha256": "02489424605187a9d67031bb25f0befc5f1130230cca411aee008d0f47d723cc",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 50,
+          "output": "dyn_w",
+          "data": "base_w",
+          "indices": "side_indices",
+          "updates": "upd_w",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 415,
+          "params": 144,
+          "cost": 559
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 245,
+      "authority_sha256": "228b6ad9f24579bc6f5840da4e5a18f08343b76a26538f500e7e77d328d6e9d5",
+      "scatter_nd_count": 2,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 22,
+          "output": "theta_f16",
+          "data": "theta_base_f16",
+          "indices": "theta_indices_i64",
+          "updates": "theta_updates_f16",
+          "convertible": false,
+          "reason": "prefix_block_count_not_full",
+          "prefix_count": 4,
+          "expected_prefix_count": 24
+        },
+        {
+          "kind": "ScatterND",
+          "node_index": 31,
+          "output": "output",
+          "data": "qin",
+          "indices": "indices_i64_hidden",
+          "updates": "updates2x2hw_i8",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 186,
+          "params": 79,
+          "cost": 265
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 248,
+      "authority_sha256": "d590b67fc928d646e0c8580a96f899a3bc27e674e42a07c0ea0b2ff9f8cf25bc",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 10,
+          "output": "output",
+          "data": "input",
+          "indices": "indices_i32",
+          "updates": "updates_gn",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 62,
+          "params": 16,
+          "cost": 78
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 259,
+      "authority_sha256": "ec0806a9cd6b934e59eee227c74de76881f37a4277ac7aa7bf5a88c6d0893ba6",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 35,
+          "output": "output",
+          "data": "zero_u8",
+          "indices": "idx32",
+          "updates": "maskgrid",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 266,
+      "authority_sha256": "eb3b6f582d8b1f8db88d938e906575fa9d924a66ee38250c49dd0a1082bda828",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 9,
+          "output": "output",
+          "data": "gn",
+          "indices": "idx",
+          "updates": "uf",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 56,
+          "params": 17,
+          "cost": 73
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 270,
+      "authority_sha256": "0d848124abafda1daf24fe5f779ed5249c9b8b2054854264dde838b05e27a443",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 2,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 45,
+          "output": "R",
+          "data": "base",
+          "indices": "Ridx",
+          "updates": "upd_ppc",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 51,
+          "output": "C",
+          "data": "base",
+          "indices": "Cidx",
+          "updates": "upd_ppc",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 280,
+      "authority_sha256": "19d38b7bff083fd7da14262714afa75345594b91e39d978ada0d25a912971793",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 4,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 64,
+          "output": "hseed",
+          "data": "seed_one",
+          "indices": "hri",
+          "updates": "hamp",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 66,
+          "output": "hhalfseed",
+          "data": "seed_one",
+          "indices": "hci",
+          "updates": "hls8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 68,
+          "output": "vseed",
+          "data": "seed_one",
+          "indices": "vci",
+          "updates": "vamp",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 70,
+          "output": "vhalfseed",
+          "data": "seed_one",
+          "indices": "vri",
+          "updates": "vls8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 284,
+      "authority_sha256": "0d03efd73a591a1f2c61885cb2c987cd63ebc6bd3eb3c5906f758011d424811a",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 113,
+          "output": "output",
+          "data": "xi",
+          "indices": "x82",
+          "updates": "x74",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 285,
+      "authority_sha256": "366212e29105fde0295030f3ec3bb014bd300f23aa8259ccd79da2eea720b9e2",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 2,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 197,
+          "output": "union",
+          "data": "zero30",
+          "indices": "ridxf__cast_int32",
+          "updates": "updf",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 206,
+          "output": "rows300",
+          "data": "zero300",
+          "indices": "allidx__cast_int32",
+          "updates": "allupd",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 286,
+      "authority_sha256": "06fd64e351d4332c0419908456002128730921a4dd80e019befc482ba2ee600d",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 3,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 989,
+          "output": "rowsN",
+          "data": "zero_rows",
+          "indices": "node_rows",
+          "updates": "nodephys",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 990,
+          "output": "comp_base",
+          "data": "rowsN",
+          "indices": "vert_rows",
+          "updates": "Vphys",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 1005,
+          "output": "comp",
+          "data": "comp_base",
+          "indices": "ex_add_indices",
+          "updates": "ex_update",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 300,
+      "authority_sha256": "59f0709f43159a56f5676a903c44f65c6d5d3aa6f3dcac24e29d9e16b79ab0e6",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 1,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 25,
+          "output": "dyn_w",
+          "data": "sel_w_i8",
+          "indices": "bg_index",
+          "updates": "bg_update",
+          "convertible": true,
+          "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite",
+          "data_shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "indices_shape": [
+            1
+          ],
+          "updates_shape": [
+            1,
+            1,
+            1
+          ],
+          "output_shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "index_tuple_length": 1,
+          "prefix_block_count": 1,
+          "normalized_prefixes": [
+            [
+              0
+            ]
+          ],
+          "replacement": {
+            "op_type": "Reshape",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [
+        {
+          "initializer": "bg_index",
+          "initializer_params": 1,
+          "initializer_dtype": "int64",
+          "remove_initializer": false,
+          "shared_uses": [
+            [
+              6,
+              1
+            ],
+            [
+              25,
+              1
+            ]
+          ],
+          "node_indices": [
+            25
+          ],
+          "proofs": [
+            {
+              "kind": "ScatterND",
+              "node_index": 25,
+              "output": "dyn_w",
+              "data": "sel_w_i8",
+              "indices": "bg_index",
+              "updates": "bg_update",
+              "convertible": true,
+              "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite",
+              "data_shape": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "indices_shape": [
+                1
+              ],
+              "updates_shape": [
+                1,
+                1,
+                1
+              ],
+              "output_shape": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "index_tuple_length": 1,
+              "prefix_block_count": 1,
+              "normalized_prefixes": [
+                [
+                  0
+                ]
+              ],
+              "replacement": {
+                "op_type": "Reshape",
+                "shape": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "rewrite_groups": [
+        {
+          "initializer": "bg_index",
+          "initializer_params": 1,
+          "initializer_dtype": "int64",
+          "remove_initializer": false,
+          "shared_uses": [
+            [
+              6,
+              1
+            ],
+            [
+              25,
+              1
+            ]
+          ],
+          "node_indices": [
+            25
+          ],
+          "proofs": [
+            {
+              "kind": "ScatterND",
+              "node_index": 25,
+              "output": "dyn_w",
+              "data": "sel_w_i8",
+              "indices": "bg_index",
+              "updates": "bg_update",
+              "convertible": true,
+              "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite",
+              "data_shape": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "indices_shape": [
+                1
+              ],
+              "updates_shape": [
+                1,
+                1,
+                1
+              ],
+              "output_shape": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "index_tuple_length": 1,
+              "prefix_block_count": 1,
+              "normalized_prefixes": [
+                [
+                  0
+                ]
+              ],
+              "replacement": {
+                "op_type": "Reshape",
+                "shape": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "candidate_possible": true,
+      "selected_groups": [
+        {
+          "initializer": "bg_index",
+          "initializer_params": 1,
+          "initializer_dtype": "int64",
+          "remove_initializer": false,
+          "shared_uses": [
+            [
+              6,
+              1
+            ],
+            [
+              25,
+              1
+            ]
+          ],
+          "node_indices": [
+            25
+          ],
+          "proofs": [
+            {
+              "kind": "ScatterND",
+              "node_index": 25,
+              "output": "dyn_w",
+              "data": "sel_w_i8",
+              "indices": "bg_index",
+              "updates": "bg_update",
+              "convertible": true,
+              "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite",
+              "data_shape": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "indices_shape": [
+                1
+              ],
+              "updates_shape": [
+                1,
+                1,
+                1
+              ],
+              "output_shape": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "index_tuple_length": 1,
+              "prefix_block_count": 1,
+              "normalized_prefixes": [
+                [
+                  0
+                ]
+              ],
+              "replacement": {
+                "op_type": "Reshape",
+                "shape": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 93,
+          "params": 55,
+          "cost": 148
+        },
+        "candidate_declared_cost": {
+          "memory_bytes": 92,
+          "params": 59,
+          "cost": 151
+        },
+        "selected_group_indices": [
+          0
+        ],
+        "subsets_evaluated": 1,
+        "build_metadata": {
+          "removed_indices_initializers": [],
+          "added_initializers": [
+            {
+              "name": "scatter_overwrite_shape",
+              "values": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "dead_nodes_pruned": 1,
+          "params_before_prune": 59,
+          "params_after_prune": 59,
+          "replacement_nodes": [
+            {
+              "node_index": 25,
+              "kind": "ScatterND",
+              "replacement": {
+                "op_type": "Reshape",
+                "shape": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task": 308,
+      "authority_sha256": "fc845e9edee06830a880be6f385f2601d1d0ff7f017cb54b64b36cb84da7785d",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 2,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 39,
+          "output": "slots",
+          "data": "base_slots",
+          "indices": "slot_i32",
+          "updates": "update_ch",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 46,
+          "output": "output",
+          "data": "base_full_u8",
+          "indices": "chan_indices",
+          "updates": "labels_crop",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 316,
+      "authority_sha256": "3c84610b001e252e3861203767b5a60682784a26c42f2fce111c73bb3b391640",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 21,
+          "output": "slots",
+          "data": "ones10",
+          "indices": "rank",
+          "updates": "c3",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 327,
+      "authority_sha256": "5aaf9d4a19b52d470dd638194baae8a8308515ba8f5367d94049c7d1d5489f60",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 8,
+          "output": "output",
+          "data": "input_i8",
+          "indices": "indices",
+          "updates": "label_hidden",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 79,
+          "params": 27,
+          "cost": 106
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 340,
+      "authority_sha256": "d7454585167715648c3757cb52373a6c40363753f69cfbd5e28265c2f62413a5",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 3,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 24,
+          "output": "colMask",
+          "data": "colBase",
+          "indices": "colIdxI4",
+          "updates": "colUpd",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 29,
+          "output": "rowU",
+          "data": "rowBase",
+          "indices": "rowIdxI4",
+          "updates": "rowUpd",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 33,
+          "output": "invI",
+          "data": "inv_baseI",
+          "indices": "rolesI",
+          "updates": "role_idsI",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 341,
+      "authority_sha256": "03775b8b7d7a79549816cb66b328bc21a5b8b3d5713e23e1ce100b40afbce6c1",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 24,
+          "output": "output",
+          "data": "x_i8",
+          "indices": "idx10",
+          "updates": "upd10",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 231,
+          "params": 29,
+          "cost": 260
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 349,
+      "authority_sha256": "f7ec94cbd38b44979a254b26f7cf670dbada27fffd954bf7e12554a6aa08cd7c",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 5,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 15,
+          "output": "irem_vec0",
+          "data": "event_vals",
+          "indices": "idx0r4",
+          "updates": "irem0",
+          "convertible": false,
+          "reason": "not_full_shape_overwrite"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 23,
+          "output": "irem_vec1",
+          "data": "irem_vec0",
+          "indices": "iidx1",
+          "updates": "irem1",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 31,
+          "output": "irem_vec2",
+          "data": "irem_vec1",
+          "indices": "iidx2",
+          "updates": "irem2",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 78,
+          "output": "halo_diff",
+          "data": "zero30",
+          "indices": "halo_indices",
+          "updates": "halo_updates",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 103,
+          "output": "beam_diff",
+          "data": "zero30",
+          "indices": "beam_indices",
+          "updates": "beam_updates",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 353,
+      "authority_sha256": "86ffba41daf10b4639e909f745f340d5302a6b9d94da99c29fd1d327edb536ef",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 28,
+          "output": "output",
+          "data": "input",
+          "indices": "idx",
+          "updates": "upd4",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 65,
+          "params": 16,
+          "cost": 81
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 354,
+      "authority_sha256": "4ba066a4ccb09bb0c1b52834e4cf17a4cf6515fbe9af76363e4b9f5a98bfe92f",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 20,
+          "output": "output",
+          "data": "data_clear",
+          "indices": "idx_i32",
+          "updates": "idx_hid",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 361,
+      "authority_sha256": "d606fcf6e11548c562db31cd942be67071b5932b9510a3858f87dd9ca4f315e4",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 55,
+          "output": "output",
+          "data": "input",
+          "indices": "idx2_i32",
+          "updates": "updates_pm",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 363,
+      "authority_sha256": "5daecf63ed4badce69970a3632afd52bf972b67d6f4dfaa3b41dbb93943d05e8",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 2,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 21,
+          "output": "safe_name_44",
+          "data": "safe_name_34",
+          "indices": "safe_name_21",
+          "updates": "safe_name_43",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 30,
+          "output": "output",
+          "data": "data_u8_hid",
+          "indices": "idx_hid",
+          "updates": "safe_name_24",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 430,
+          "params": 82,
+          "cost": 512
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 366,
+      "authority_sha256": "072ca4f43fb6fe6e96cf90826d5f9b2dbdbe5016f7db3daa14f265620c1a010a",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 12,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 156,
+          "output": "safe_name_192",
+          "data": "safe_name_175_u16_b0",
+          "indices": "safe_name_190",
+          "updates": "safe_name_191",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 175,
+          "output": "safe_name_211",
+          "data": "safe_name_192",
+          "indices": "safe_name_209",
+          "updates": "safe_name_210",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 251,
+          "output": "safe_name_287",
+          "data": "safe_name_270",
+          "indices": "safe_name_285",
+          "updates": "safe_name_286",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 270,
+          "output": "safe_name_306",
+          "data": "safe_name_287",
+          "indices": "safe_name_304",
+          "updates": "safe_name_305",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 335,
+          "output": "safe_name_371",
+          "data": "safe_name_352",
+          "indices": "safe_name_369",
+          "updates": "safe_name_370",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 354,
+          "output": "safe_name_390",
+          "data": "safe_name_371",
+          "indices": "safe_name_388",
+          "updates": "safe_name_389",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 430,
+          "output": "safe_name_467",
+          "data": "safe_name_117_u16_b1",
+          "indices": "safe_name_465",
+          "updates": "safe_name_466",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 449,
+          "output": "safe_name_486",
+          "data": "safe_name_467",
+          "indices": "safe_name_484",
+          "updates": "safe_name_485",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 467,
+          "output": "safe_name_504",
+          "data": "safe_name_486",
+          "indices": "safe_name_502",
+          "updates": "safe_name_503",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 486,
+          "output": "safe_name_523",
+          "data": "safe_name_504",
+          "indices": "safe_name_521",
+          "updates": "safe_name_522",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 505,
+          "output": "safe_name_542",
+          "data": "safe_name_523",
+          "indices": "safe_name_540",
+          "updates": "safe_name_541",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterND",
+          "node_index": 745,
+          "output": "safe_name_782",
+          "data": "safe_name_36",
+          "indices": "safe_name_781",
+          "updates": "safe_name_778",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 751,
+          "output": "safe_name_788",
+          "data": "safe_name_26",
+          "indices": "safe_name_34",
+          "updates": "safe_name_787",
+          "convertible": false,
+          "reason": "not_full_shape_overwrite"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 5993,
+          "params": 365,
+          "cost": 6358
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 374,
+      "authority_sha256": "93fb94260388ab83bc35043c0ee11ae08b1bf3e8fa962a3b47b08ba73794d24a",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 30,
+          "output": "output",
+          "data": "__sp_hid",
+          "indices": "grid_idx",
+          "updates": "grid_upd",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 451,
+          "params": 30,
+          "cost": 481
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 378,
+      "authority_sha256": "a5cf4a598239b77f38a40da0b1d6596ac29f4e03f6ba930c0cabb1f9df19e22c",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 87,
+          "output": "output",
+          "data": "input_i8",
+          "indices": "indices_i64",
+          "updates": "updates18_const",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 379,
+      "authority_sha256": "854c63d966310949803391cf4c019b02a9c0f2a53578257fee5898386e53cf64",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 7,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 41,
+          "output": "bt",
+          "data": "vzero",
+          "indices": "idx_top",
+          "updates": "upd_line",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 43,
+          "output": "bb",
+          "data": "vzero",
+          "indices": "idx_bot",
+          "updates": "upd_line",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 45,
+          "output": "ls",
+          "data": "vzero",
+          "indices": "idx_ls",
+          "updates": "upd_ls_const",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 55,
+          "output": "P0",
+          "data": "vzero",
+          "indices": "ridx64",
+          "updates": "Ppre_k",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 56,
+          "output": "A",
+          "data": "vzero",
+          "indices": "ridx64",
+          "updates": "Ak",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 59,
+          "output": "ct",
+          "data": "vzero",
+          "indices": "ridx64",
+          "updates": "ct_k",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 60,
+          "output": "tb",
+          "data": "vzero",
+          "indices": "ridx64",
+          "updates": "tb_k",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 387,
+      "authority_sha256": "21a0c07d0101a7c538210dc44553f807d1bddcf755746ceaabad20c69561c160",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 3,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 56,
+          "output": "bj",
+          "data": "g",
+          "indices": "bi",
+          "updates": "h",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 72,
+          "output": "by",
+          "data": "g",
+          "indices": "bx",
+          "updates": "h",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        },
+        {
+          "kind": "ScatterElements",
+          "node_index": 75,
+          "output": "bz8",
+          "data": "e8",
+          "indices": "Y",
+          "updates": "f8",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 234,
+          "params": 95,
+          "cost": 329
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 388,
+      "authority_sha256": "f27fa5f4f0bcade23d02fed2a74e3c2b826b11140bd03d29f47e0c59c382a8e1",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 18,
+          "output": "output",
+          "data": "gn",
+          "indices": "indices",
+          "updates": "updates_float",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 54,
+          "params": 22,
+          "cost": 76
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 392,
+      "authority_sha256": "96ed4658476f09cb77f09848081bb5830b96b6ea65c8a5a3278f28f9036e32f9",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 12,
+          "output": "dynw",
+          "data": "basew",
+          "indices": "color4",
+          "updates": "upd1",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": null,
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 396,
+      "authority_sha256": "ce0bd7c49e11cbde341756993a71618c5c0bf8e086de6caf56ad93e8588e1d94",
+      "scatter_nd_count": 0,
+      "scatter_elements_count": 1,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterElements",
+          "node_index": 61,
+          "output": "dw",
+          "data": "baseW2",
+          "indices": "si",
+          "updates": "one_i8_4d",
+          "convertible": false,
+          "reason": "indices_not_initializer"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 924,
+          "params": 95,
+          "cost": 1019
+        },
+        "subsets_evaluated": 0
+      }
+    },
+    {
+      "task": 397,
+      "authority_sha256": "2361956a9b6d1391aff9d8bc4af26d5112877e0e2946b365d04e461899f4d7e1",
+      "scatter_nd_count": 1,
+      "scatter_elements_count": 0,
+      "convertible_node_count": 0,
+      "proofs": [
+        {
+          "kind": "ScatterND",
+          "node_index": 59,
+          "output": "output",
+          "data": "input_i8",
+          "indices": "scatternd_idx",
+          "updates": "updates_i8",
+          "convertible": false,
+          "reason": "reduction_not_none"
+        }
+      ],
+      "all_use_convertible_groups": [],
+      "retained_index_rewrite_groups": [],
+      "rewrite_groups": [],
+      "candidate_possible": false,
+      "selected_groups": [],
+      "selection": {
+        "authority_declared_cost": {
+          "memory_bytes": 155,
+          "params": 89,
+          "cost": 244
+        },
+        "subsets_evaluated": 0
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "task": 300,
+      "path": "scripts/golf/root_scatter_full_overwrite_scan_260/candidates/task300_scatter_overwrite.onnx",
+      "authority_sha256": "59f0709f43159a56f5676a903c44f65c6d5d3aa6f3dcac24e29d9e16b79ab0e6",
+      "candidate_sha256": "ed76ddfeb07ba59af5a6fab88edaee46d11f0cf6d06c653a571805e2e94d12bd",
+      "discovery": {
+        "task": 300,
+        "authority_sha256": "59f0709f43159a56f5676a903c44f65c6d5d3aa6f3dcac24e29d9e16b79ab0e6",
+        "scatter_nd_count": 1,
+        "scatter_elements_count": 0,
+        "convertible_node_count": 1,
+        "proofs": [
+          {
+            "kind": "ScatterND",
+            "node_index": 25,
+            "output": "dyn_w",
+            "data": "sel_w_i8",
+            "indices": "bg_index",
+            "updates": "bg_update",
+            "convertible": true,
+            "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite",
+            "data_shape": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "indices_shape": [
+              1
+            ],
+            "updates_shape": [
+              1,
+              1,
+              1
+            ],
+            "output_shape": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "index_tuple_length": 1,
+            "prefix_block_count": 1,
+            "normalized_prefixes": [
+              [
+                0
+              ]
+            ],
+            "replacement": {
+              "op_type": "Reshape",
+              "shape": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          }
+        ],
+        "all_use_convertible_groups": [],
+        "retained_index_rewrite_groups": [
+          {
+            "initializer": "bg_index",
+            "initializer_params": 1,
+            "initializer_dtype": "int64",
+            "remove_initializer": false,
+            "shared_uses": [
+              [
+                6,
+                1
+              ],
+              [
+                25,
+                1
+              ]
+            ],
+            "node_indices": [
+              25
+            ],
+            "proofs": [
+              {
+                "kind": "ScatterND",
+                "node_index": 25,
+                "output": "dyn_w",
+                "data": "sel_w_i8",
+                "indices": "bg_index",
+                "updates": "bg_update",
+                "convertible": true,
+                "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite",
+                "data_shape": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "indices_shape": [
+                  1
+                ],
+                "updates_shape": [
+                  1,
+                  1,
+                  1
+                ],
+                "output_shape": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "index_tuple_length": 1,
+                "prefix_block_count": 1,
+                "normalized_prefixes": [
+                  [
+                    0
+                  ]
+                ],
+                "replacement": {
+                  "op_type": "Reshape",
+                  "shape": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "rewrite_groups": [
+          {
+            "initializer": "bg_index",
+            "initializer_params": 1,
+            "initializer_dtype": "int64",
+            "remove_initializer": false,
+            "shared_uses": [
+              [
+                6,
+                1
+              ],
+              [
+                25,
+                1
+              ]
+            ],
+            "node_indices": [
+              25
+            ],
+            "proofs": [
+              {
+                "kind": "ScatterND",
+                "node_index": 25,
+                "output": "dyn_w",
+                "data": "sel_w_i8",
+                "indices": "bg_index",
+                "updates": "bg_update",
+                "convertible": true,
+                "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite",
+                "data_shape": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "indices_shape": [
+                  1
+                ],
+                "updates_shape": [
+                  1,
+                  1,
+                  1
+                ],
+                "output_shape": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "index_tuple_length": 1,
+                "prefix_block_count": 1,
+                "normalized_prefixes": [
+                  [
+                    0
+                  ]
+                ],
+                "replacement": {
+                  "op_type": "Reshape",
+                  "shape": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "candidate_possible": true,
+        "selected_groups": [
+          {
+            "initializer": "bg_index",
+            "initializer_params": 1,
+            "initializer_dtype": "int64",
+            "remove_initializer": false,
+            "shared_uses": [
+              [
+                6,
+                1
+              ],
+              [
+                25,
+                1
+              ]
+            ],
+            "node_indices": [
+              25
+            ],
+            "proofs": [
+              {
+                "kind": "ScatterND",
+                "node_index": 25,
+                "output": "dyn_w",
+                "data": "sel_w_i8",
+                "indices": "bg_index",
+                "updates": "bg_update",
+                "convertible": true,
+                "reason": "exhaustive_duplicate_free_full_prefix_block_overwrite",
+                "data_shape": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "indices_shape": [
+                  1
+                ],
+                "updates_shape": [
+                  1,
+                  1,
+                  1
+                ],
+                "output_shape": [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                "index_tuple_length": 1,
+                "prefix_block_count": 1,
+                "normalized_prefixes": [
+                  [
+                    0
+                  ]
+                ],
+                "replacement": {
+                  "op_type": "Reshape",
+                  "shape": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "selection": {
+          "authority_declared_cost": {
+            "memory_bytes": 93,
+            "params": 55,
+            "cost": 148
+          },
+          "candidate_declared_cost": {
+            "memory_bytes": 92,
+            "params": 59,
+            "cost": 151
+          },
+          "selected_group_indices": [
+            0
+          ],
+          "subsets_evaluated": 1,
+          "build_metadata": {
+            "removed_indices_initializers": [],
+            "added_initializers": [
+              {
+                "name": "scatter_overwrite_shape",
+                "values": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ],
+            "dead_nodes_pruned": 1,
+            "params_before_prune": 59,
+            "params_after_prune": 59,
+            "replacement_nodes": [
+              {
+                "node_index": 25,
+                "kind": "ScatterND",
+                "replacement": {
+                  "op_type": "Reshape",
+                  "shape": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "build_metadata": {
+        "removed_indices_initializers": [],
+        "added_initializers": [
+          {
+            "name": "scatter_overwrite_shape",
+            "values": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ],
+        "dead_nodes_pruned": 1,
+        "params_before_prune": 59,
+        "params_after_prune": 59,
+        "replacement_nodes": [
+          {
+            "node_index": 25,
+            "kind": "ScatterND",
+            "replacement": {
+              "op_type": "Reshape",
+              "shape": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          }
+        ]
+      },
+      "authority_score": {
+        "memory": 120,
+        "params": 55,
+        "cost": 175,
+        "score": 19.835214026076486,
+        "correct": true
+      },
+      "candidate_score": {
+        "memory": 110,
+        "params": 59,
+        "cost": 169,
+        "score": 19.870101285076927,
+        "correct": false
+      },
+      "full_validation": {
+        "checker_full": true,
+        "shape_inference_strict_data_prop": true
+      },
+      "strict": {
+        "pass": true,
+        "hard_failures": [],
+        "policy_markers": [
+          "giant_einsum:20",
+          "giant_einsum:25",
+          "giant_einsum:26"
+        ],
+        "op_histogram": {
+          "GroupNormalization": 1,
+          "CastLike": 2,
+          "Einsum": 3,
+          "QuantizeLinear": 2,
+          "Reshape": 2,
+          "Cast": 2,
+          "OneHot": 1,
+          "Log": 1,
+          "Div": 1,
+          "Mod": 1,
+          "Concat": 1,
+          "Add": 1,
+          "Slice": 1,
+          "MaxPool": 2,
+          "ReduceMin": 1,
+          "Sign": 1,
+          "Min": 1,
+          "Sub": 1,
+          "ConvInteger": 1
+        },
+        "negative_conv_pads": [],
+        "nonstatic_shapes": [],
+        "nonfinite_initializers": [],
+        "giant_initializers": [],
+        "conv_bias_ub0": true,
+        "conv_bias_findings": []
+      },
+      "authority_runtime_shape": {
+        "runtime_tensors": 27,
+        "declared_tensors": 27,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              1,
+              30,
+              30
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "gnq",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "qin",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "qin_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "selector_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              10,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "tensor": "sel_w_i8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              10,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "tensor": "dyn_w",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              10,
+              1,
+              1,
+              1
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 63122
+      },
+      "runtime_shape": {
+        "runtime_tensors": 26,
+        "declared_tensors": 26,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "gnq",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "qin",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "qin_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "selector_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              10,
+              1,
+              1,
+              1
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 63103
+      },
+      "truthful": false,
+      "strictly_lower": true,
+      "known_raw_four": {
+        "disable_all_threads1": {
+          "total": 267,
+          "candidate_right": 0,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "authority_errors": 0,
+          "candidate_errors": 0
+        },
+        "disable_all_threads4": {
+          "total": 267,
+          "candidate_right": 0,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "authority_errors": 0,
+          "candidate_errors": 0
+        },
+        "default_threads1": {
+          "total": 267,
+          "candidate_right": 0,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "authority_errors": 0,
+          "candidate_errors": 0
+        },
+        "default_threads4": {
+          "total": 267,
+          "candidate_right": 0,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "authority_errors": 0,
+          "candidate_errors": 0
+        }
+      },
+      "known_raw_four_pass": false,
+      "decision": "REJECT_OFFICIAL_KNOWN"
+    }
+  ],
+  "accepted": [],
+  "decision": "NO_SAFE_SCATTER_FULL_OVERWRITE_WINNER"
+}

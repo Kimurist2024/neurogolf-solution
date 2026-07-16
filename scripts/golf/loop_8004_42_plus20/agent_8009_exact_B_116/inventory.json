@@ -1,0 +1,8038 @@
+{
+  "authority": "submission_base_8009.46.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "tasks": {
+    "178": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task178.onnx",
+      "sha256": "8e63512bb0f2f742fe1e9b1efc8751a82db1808c98c2636f6a37f98eada57823",
+      "serialized_bytes": 5494,
+      "official_cost": {
+        "memory": 206,
+        "params": 56,
+        "cost": 262
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 98,
+        "initializer_count": 6,
+        "value_info_count": 0,
+        "op_histogram": {
+          "Add": 1,
+          "Cast": 15,
+          "Concat": 1,
+          "Conv": 13,
+          "DequantizeLinear": 1,
+          "Div": 3,
+          "Equal": 8,
+          "Max": 1,
+          "MaxUnpool": 1,
+          "Min": 1,
+          "Mod": 3,
+          "Sub": 3,
+          "Where": 47
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "fpf",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "fpf"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "fp",
+            "op": "Cast",
+            "inputs": [
+              "fpf"
+            ],
+            "outputs": [
+              "fp"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "firstq",
+            "op": "Div",
+            "inputs": [
+              "fp",
+              "base16"
+            ],
+            "outputs": [
+              "firstq"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "rp1f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "rp1f"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "rp1",
+            "op": "Cast",
+            "inputs": [
+              "rp1f"
+            ],
+            "outputs": [
+              "rp1"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "cp1f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "cp1f"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "cp1",
+            "op": "Cast",
+            "inputs": [
+              "cp1f"
+            ],
+            "outputs": [
+              "cp1"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "rp2f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "rp2f"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "rp2",
+            "op": "Cast",
+            "inputs": [
+              "rp2f"
+            ],
+            "outputs": [
+              "rp2"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "cp2f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "cp2f"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "cp2",
+            "op": "Cast",
+            "inputs": [
+              "cp2f"
+            ],
+            "outputs": [
+              "cp2"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "t4f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "t4f"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "t4",
+            "op": "Cast",
+            "inputs": [
+              "t4f"
+            ],
+            "outputs": [
+              "t4"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "t5f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "t5f"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "t5",
+            "op": "Cast",
+            "inputs": [
+              "t5f"
+            ],
+            "outputs": [
+              "t5"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "t6f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "t6f"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "t6",
+            "op": "Cast",
+            "inputs": [
+              "t6f"
+            ],
+            "outputs": [
+              "t6"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "t7f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "t7f"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "t7",
+            "op": "Cast",
+            "inputs": [
+              "t7f"
+            ],
+            "outputs": [
+              "t7"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "t8f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "t8f"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "t8",
+            "op": "Cast",
+            "inputs": [
+              "t8f"
+            ],
+            "outputs": [
+              "t8"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "t9f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "t9f"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "t9",
+            "op": "Cast",
+            "inputs": [
+              "t9f"
+            ],
+            "outputs": [
+              "t9"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "t10f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "t10f"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "t10",
+            "op": "Cast",
+            "inputs": [
+              "t10f"
+            ],
+            "outputs": [
+              "t10"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "t11f",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "WP"
+            ],
+            "outputs": [
+              "t11f"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "t11",
+            "op": "Cast",
+            "inputs": [
+              "t11f"
+            ],
+            "outputs": [
+              "t11"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "dA",
+            "op": "Sub",
+            "inputs": [
+              "rp1",
+              "firstq"
+            ],
+            "outputs": [
+              "dA"
+            ]
+          },
+          {
+            "index": 28,
+            "name": "dB",
+            "op": "Sub",
+            "inputs": [
+              "dA",
+              "fp"
+            ],
+            "outputs": [
+              "dB"
+            ]
+          },
+          {
+            "index": 29,
+            "name": "r2_orient",
+            "op": "Mod",
+            "inputs": [
+              "rp2",
+              "base16"
+            ],
+            "outputs": [
+              "r2_orient"
+            ]
+          },
+          {
+            "index": 30,
+            "name": "d2_orient",
+            "op": "Sub",
+            "inputs": [
+              "r2_orient",
+              "firstq"
+            ],
+            "outputs": [
+              "d2_orient"
+            ]
+          },
+          {
+            "index": 31,
+            "name": "dB_or_d2",
+            "op": "Max",
+            "inputs": [
+              "dB",
+              "d2_orient"
+            ],
+            "outputs": [
+              "dB_or_d2"
+            ]
+          },
+          {
+            "index": 32,
+            "name": "p12",
+            "op": "Min",
+            "inputs": [
+              "rp1",
+              "dA",
+              "dB_or_d2"
+            ],
+            "outputs": [
+              "p12"
+            ]
+          },
+          {
+            "index": 33,
+            "name": "isrow",
+            "op": "Cast",
+            "inputs": [
+              "p12"
+            ],
+            "outputs": [
+              "isrow"
+            ]
+          },
+          {
+            "index": 34,
+            "name": "sp0",
+            "op": "Where",
+            "inputs": [
+              "isrow",
+              "rp1",
+              "cp1"
+            ],
+            "outputs": [
+              "sp0"
+            ]
+          },
+          {
+            "index": 35,
+            "name": "t0",
+            "op": "Mod",
+            "inputs": [
+              "sp0",
+              "base16"
+            ],
+            "outputs": [
+              "t0"
+            ]
+          },
+          {
+            "index": 36,
+            "name": "t2",
+            "op": "Div",
+            "inputs": [
+              "sp0",
+              "base16"
+            ],
+            "outputs": [
+              "t2"
+            ]
+          },
+          {
+            "index": 37,
+            "name": "sp1",
+            "op": "Where",
+            "inputs": [
+              "isrow",
+              "rp2",
+              "cp2"
+            ],
+            "outputs": [
+              "sp1"
+            ]
+          },
+          {
+            "index": 38,
+            "name": "t1",
+            "op": "Mod",
+            "inputs": [
+              "sp1",
+              "base16"
+            ],
+            "outputs": [
+              "t1"
+            ]
+          },
+          {
+            "index": 39,
+            "name": "t3",
+            "op": "Div",
+            "inputs": [
+              "sp1",
+              "base16"
+            ],
+            "outputs": [
+              "t3"
+            ]
+          },
+          {
+            "index": 40,
+            "name": "y1_a0",
+            "op": "Equal",
+            "inputs": [
+              "t0",
+              "firstq"
+            ],
+            "outputs": [
+              "y1_a0"
+            ]
+          },
+          {
+            "index": 41,
+            "name": "y1_a1",
+            "op": "Equal",
+            "inputs": [
+              "t1",
+              "firstq"
+            ],
+            "outputs": [
+              "y1_a1"
+            ]
+          },
+          {
+            "index": 42,
+            "name": "y1_tmp",
+            "op": "Where",
+            "inputs": [
+              "y1_a1",
+              "t2",
+              "t1"
+            ],
+            "outputs": [
+              "y1_tmp"
+            ]
+          },
+          {
+            "index": 43,
+            "name": "y1",
+            "op": "Where",
+            "inputs": [
+              "y1_a0",
+              "y1_tmp",
+              "t0"
+            ],
+            "outputs": [
+              "y1"
+            ]
+          },
+          {
+            "index": 44,
+            "name": "y1w0_i",
+            "op": "Where",
+            "inputs": [
+              "y1_a1",
+              "t3",
+              "t2"
+            ],
+            "outputs": [
+              "y1w0_i"
+            ]
+          },
+          {
+            "index": 45,
+            "name": "y1w0",
+            "op": "Where",
+            "inputs": [
+              "y1_a0",
+              "y1w0_i",
+              "t1"
+            ],
+            "outputs": [
+              "y1w0"
+            ]
+          },
+          {
+            "index": 46,
+            "name": "y1w1_i",
+            "op": "Where",
+            "inputs": [
+              "y1_a1",
+              "t4",
+              "t3"
+            ],
+            "outputs": [
+              "y1w1_i"
+            ]
+          },
+          {
+            "index": 47,
+            "name": "y1w1",
+            "op": "Where",
+            "inputs": [
+              "y1_a0",
+              "y1w1_i",
+              "t2"
+            ],
+            "outputs": [
+              "y1w1"
+            ]
+          },
+          {
+            "index": 48,
+            "name": "y1w2_i",
+            "op": "Where",
+            "inputs": [
+              "y1_a1",
+              "t5",
+              "t4"
+            ],
+            "outputs": [
+              "y1w2_i"
+            ]
+          },
+          {
+            "index": 49,
+            "name": "y1w2",
+            "op": "Where",
+            "inputs": [
+              "y1_a0",
+              "y1w2_i",
+              "t3"
+            ],
+            "outputs": [
+              "y1w2"
+            ]
+          },
+          {
+            "index": 50,
+            "name": "y1w3_i",
+            "op": "Where",
+            "inputs": [
+              "y1_a1",
+              "t6",
+              "t5"
+            ],
+            "outputs": [
+              "y1w3_i"
+            ]
+          },
+          {
+            "index": 51,
+            "name": "y1w3",
+            "op": "Where",
+            "inputs": [
+              "y1_a0",
+              "y1w3_i",
+              "t4"
+            ],
+            "outputs": [
+              "y1w3"
+            ]
+          },
+          {
+            "index": 52,
+            "name": "y1w4_i",
+            "op": "Where",
+            "inputs": [
+              "y1_a1",
+              "t7",
+              "t6"
+            ],
+            "outputs": [
+              "y1w4_i"
+            ]
+          },
+          {
+            "index": 53,
+            "name": "y1w4",
+            "op": "Where",
+            "inputs": [
+              "y1_a0",
+              "y1w4_i",
+              "t5"
+            ],
+            "outputs": [
+              "y1w4"
+            ]
+          },
+          {
+            "index": 54,
+            "name": "y1w5_i",
+            "op": "Where",
+            "inputs": [
+              "y1_a1",
+              "t8",
+              "t7"
+            ],
+            "outputs": [
+              "y1w5_i"
+            ]
+          },
+          {
+            "index": 55,
+            "name": "y1w5",
+            "op": "Where",
+            "inputs": [
+              "y1_a0",
+              "y1w5_i",
+              "t6"
+            ],
+            "outputs": [
+              "y1w5"
+            ]
+          },
+          {
+            "index": 56,
+            "name": "y1w6_i",
+            "op": "Where",
+            "inputs": [
+              "y1_a1",
+              "t9",
+              "t8"
+            ],
+            "outputs": [
+              "y1w6_i"
+            ]
+          },
+          {
+            "index": 57,
+            "name": "y1w6",
+            "op": "Where",
+            "inputs": [
+              "y1_a0",
+              "y1w6_i",
+              "t7"
+            ],
+            "outputs": [
+              "y1w6"
+            ]
+          },
+          {
+            "index": 58,
+            "name": "y1w7_i",
+            "op": "Where",
+            "inputs": [
+              "y1_a1",
+              "t10",
+              "t9"
+            ],
+            "outputs": [
+              "y1w7_i"
+            ]
+          },
+          {
+            "index": 59,
+            "name": "y1w7",
+            "op": "Where",
+            "inputs": [
+              "y1_a0",
+              "y1w7_i",
+              "t8"
+            ],
+            "outputs": [
+              "y1w7"
+            ]
+          },
+          {
+            "index": 60,
+            "name": "y1w8_i",
+            "op": "Where",
+            "inputs": [
+              "y1_a1",
+              "t11",
+              "t10"
+            ],
+            "outputs": [
+              "y1w8_i"
+            ]
+          },
+          {
+            "index": 61,
+            "name": "y1w8",
+            "op": "Where",
+            "inputs": [
+              "y1_a0",
+              "y1w8_i",
+              "t9"
+            ],
+            "outputs": [
+              "y1w8"
+            ]
+          },
+          {
+            "index": 62,
+            "name": "y2_a0",
+            "op": "Equal",
+            "inputs": [
+              "y1w0",
+              "y1"
+            ],
+            "outputs": [
+              "y2_a0"
+            ]
+          },
+          {
+            "index": 63,
+            "name": "y2_a1",
+            "op": "Equal",
+            "inputs": [
+              "y1w1",
+              "y1"
+            ],
+            "outputs": [
+              "y2_a1"
+            ]
+          },
+          {
+            "index": 64,
+            "name": "y2_tmp",
+            "op": "Where",
+            "inputs": [
+              "y2_a1",
+              "y1w2",
+              "y1w1"
+            ],
+            "outputs": [
+              "y2_tmp"
+            ]
+          },
+          {
+            "index": 65,
+            "name": "y2",
+            "op": "Where",
+            "inputs": [
+              "y2_a0",
+              "y2_tmp",
+              "y1w0"
+            ],
+            "outputs": [
+              "y2"
+            ]
+          },
+          {
+            "index": 66,
+            "name": "y2w0_i",
+            "op": "Where",
+            "inputs": [
+              "y2_a1",
+              "y1w3",
+              "y1w2"
+            ],
+            "outputs": [
+              "y2w0_i"
+            ]
+          },
+          {
+            "index": 67,
+            "name": "y2w0",
+            "op": "Where",
+            "inputs": [
+              "y2_a0",
+              "y2w0_i",
+              "y1w1"
+            ],
+            "outputs": [
+              "y2w0"
+            ]
+          },
+          {
+            "index": 68,
+            "name": "y2w1_i",
+            "op": "Where",
+            "inputs": [
+              "y2_a1",
+              "y1w4",
+              "y1w3"
+            ],
+            "outputs": [
+              "y2w1_i"
+            ]
+          },
+          {
+            "index": 69,
+            "name": "y2w1",
+            "op": "Where",
+            "inputs": [
+              "y2_a0",
+              "y2w1_i",
+              "y1w2"
+            ],
+            "outputs": [
+              "y2w1"
+            ]
+          },
+          {
+            "index": 70,
+            "name": "y2w2_i",
+            "op": "Where",
+            "inputs": [
+              "y2_a1",
+              "y1w5",
+              "y1w4"
+            ],
+            "outputs": [
+              "y2w2_i"
+            ]
+          },
+          {
+            "index": 71,
+            "name": "y2w2",
+            "op": "Where",
+            "inputs": [
+              "y2_a0",
+              "y2w2_i",
+              "y1w3"
+            ],
+            "outputs": [
+              "y2w2"
+            ]
+          },
+          {
+            "index": 72,
+            "name": "y2w3_i",
+            "op": "Where",
+            "inputs": [
+              "y2_a1",
+              "y1w6",
+              "y1w5"
+            ],
+            "outputs": [
+              "y2w3_i"
+            ]
+          },
+          {
+            "index": 73,
+            "name": "y2w3",
+            "op": "Where",
+            "inputs": [
+              "y2_a0",
+              "y2w3_i",
+              "y1w4"
+            ],
+            "outputs": [
+              "y2w3"
+            ]
+          },
+          {
+            "index": 74,
+            "name": "y2w4_i",
+            "op": "Where",
+            "inputs": [
+              "y2_a1",
+              "y1w7",
+              "y1w6"
+            ],
+            "outputs": [
+              "y2w4_i"
+            ]
+          },
+          {
+            "index": 75,
+            "name": "y2w4",
+            "op": "Where",
+            "inputs": [
+              "y2_a0",
+              "y2w4_i",
+              "y1w5"
+            ],
+            "outputs": [
+              "y2w4"
+            ]
+          },
+          {
+            "index": 76,
+            "name": "y2w5_i",
+            "op": "Where",
+            "inputs": [
+              "y2_a1",
+              "y1w8",
+              "y1w7"
+            ],
+            "outputs": [
+              "y2w5_i"
+            ]
+          },
+          {
+            "index": 77,
+            "name": "y2w5",
+            "op": "Where",
+            "inputs": [
+              "y2_a0",
+              "y2w5_i",
+              "y1w6"
+            ],
+            "outputs": [
+              "y2w5"
+            ]
+          },
+          {
+            "index": 78,
+            "name": "y3_a0",
+            "op": "Equal",
+            "inputs": [
+              "y2w0",
+              "y2"
+            ],
+            "outputs": [
+              "y3_a0"
+            ]
+          },
+          {
+            "index": 79,
+            "name": "y3_a1",
+            "op": "Equal",
+            "inputs": [
+              "y2w1",
+              "y2"
+            ],
+            "outputs": [
+              "y3_a1"
+            ]
+          },
+          {
+            "index": 80,
+            "name": "y3_tmp",
+            "op": "Where",
+            "inputs": [
+              "y3_a1",
+              "y2w2",
+              "y2w1"
+            ],
+            "outputs": [
+              "y3_tmp"
+            ]
+          },
+          {
+            "index": 81,
+            "name": "y3",
+            "op": "Where",
+            "inputs": [
+              "y3_a0",
+              "y3_tmp",
+              "y2w0"
+            ],
+            "outputs": [
+              "y3"
+            ]
+          },
+          {
+            "index": 82,
+            "name": "y3w0_i",
+            "op": "Where",
+            "inputs": [
+              "y3_a1",
+              "y2w3",
+              "y2w2"
+            ],
+            "outputs": [
+              "y3w0_i"
+            ]
+          },
+          {
+            "index": 83,
+            "name": "y3w0",
+            "op": "Where",
+            "inputs": [
+              "y3_a0",
+              "y3w0_i",
+              "y2w1"
+            ],
+            "outputs": [
+              "y3w0"
+            ]
+          },
+          {
+            "index": 84,
+            "name": "y3w1_i",
+            "op": "Where",
+            "inputs": [
+              "y3_a1",
+              "y2w4",
+              "y2w3"
+            ],
+            "outputs": [
+              "y3w1_i"
+            ]
+          },
+          {
+            "index": 85,
+            "name": "y3w1",
+            "op": "Where",
+            "inputs": [
+              "y3_a0",
+              "y3w1_i",
+              "y2w2"
+            ],
+            "outputs": [
+              "y3w1"
+            ]
+          },
+          {
+            "index": 86,
+            "name": "y3w2_i",
+            "op": "Where",
+            "inputs": [
+              "y3_a1",
+              "y2w5",
+              "y2w4"
+            ],
+            "outputs": [
+              "y3w2_i"
+            ]
+          },
+          {
+            "index": 87,
+            "name": "y3w2",
+            "op": "Where",
+            "inputs": [
+              "y3_a0",
+              "y3w2_i",
+              "y2w3"
+            ],
+            "outputs": [
+              "y3w2"
+            ]
+          },
+          {
+            "index": 88,
+            "name": "y4_a0",
+            "op": "Equal",
+            "inputs": [
+              "y3w0",
+              "y3"
+            ],
+            "outputs": [
+              "y4_a0"
+            ]
+          },
+          {
+            "index": 89,
+            "name": "y4_a1",
+            "op": "Equal",
+            "inputs": [
+              "y3w1",
+              "y3"
+            ],
+            "outputs": [
+              "y4_a1"
+            ]
+          },
+          {
+            "index": 90,
+            "name": "y4_tmp",
+            "op": "Where",
+            "inputs": [
+              "y4_a1",
+              "y3w2",
+              "y3w1"
+            ],
+            "outputs": [
+              "y4_tmp"
+            ]
+          },
+          {
+            "index": 91,
+            "name": "y4",
+            "op": "Where",
+            "inputs": [
+              "y4_a0",
+              "y4_tmp",
+              "y3w0"
+            ],
+            "outputs": [
+              "y4"
+            ]
+          },
+          {
+            "index": 92,
+            "name": "labels",
+            "op": "Concat",
+            "inputs": [
+              "firstq",
+              "y1",
+              "y2",
+              "y3",
+              "y4"
+            ],
+            "outputs": [
+              "labels"
+            ]
+          },
+          {
+            "index": 93,
+            "name": "base",
+            "op": "DequantizeLinear",
+            "inputs": [
+              "labels",
+              "scale900"
+            ],
+            "outputs": [
+              "base"
+            ]
+          },
+          {
+            "index": 94,
+            "name": "pos",
+            "op": "Where",
+            "inputs": [
+              "isrow",
+              "p_row",
+              "p_col"
+            ],
+            "outputs": [
+              "pos"
+            ]
+          },
+          {
+            "index": 95,
+            "name": "flat16",
+            "op": "Add",
+            "inputs": [
+              "base",
+              "pos"
+            ],
+            "outputs": [
+              "flat16"
+            ]
+          },
+          {
+            "index": 96,
+            "name": "flat",
+            "op": "Cast",
+            "inputs": [
+              "flat16"
+            ],
+            "outputs": [
+              "flat"
+            ]
+          },
+          {
+            "index": 97,
+            "name": "output",
+            "op": "MaxUnpool",
+            "inputs": [
+              "base",
+              "flat",
+              "oshape"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "WP",
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              10,
+              2,
+              2
+            ],
+            "elements": 40
+          },
+          {
+            "name": "base16",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "scale900",
+            "dtype": "FLOAT16",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "p_row",
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              5
+            ],
+            "elements": 5
+          },
+          {
+            "name": "p_col",
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              5
+            ],
+            "elements": 5
+          },
+          {
+            "name": "oshape",
+            "dtype": "INT64",
+            "shape": [
+              4
+            ],
+            "elements": 4
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "228": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task228.onnx",
+      "sha256": "13946c8d5a52886212f495b13fa6c128a091e77b84e10e27b442ed87f9694a45",
+      "serialized_bytes": 2774,
+      "official_cost": {
+        "memory": 241,
+        "params": 50,
+        "cost": 291
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 28,
+        "initializer_count": 6,
+        "value_info_count": 28,
+        "op_histogram": {
+          "CastLike": 3,
+          "CenterCropPad": 6,
+          "Concat": 4,
+          "Div": 2,
+          "Einsum": 1,
+          "Gather": 2,
+          "Mod": 2,
+          "ScatterND": 1,
+          "Shape": 1,
+          "Shrink": 4,
+          "Slice": 1,
+          "TopK": 1
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "einsum",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "coord",
+              "coord",
+              "coord",
+              "coord",
+              "coord",
+              "coord",
+              "coord",
+              "coord",
+              "coord"
+            ],
+            "outputs": [
+              "code_f"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "topk",
+            "op": "TopK",
+            "inputs": [
+              "code_f",
+              "k5"
+            ],
+            "outputs": [
+              "top_code_f",
+              "colors64"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "castc",
+            "op": "CastLike",
+            "inputs": [
+              "colors64",
+              "u8"
+            ],
+            "outputs": [
+              "colors"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "topu",
+            "op": "CastLike",
+            "inputs": [
+              "top_code_f",
+              "u8"
+            ],
+            "outputs": [
+              "topu"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "slice_cvec",
+            "op": "Slice",
+            "inputs": [
+              "colors",
+              "gidx1",
+              "k5"
+            ],
+            "outputs": [
+              "cvec"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "gather_q0u",
+            "op": "Gather",
+            "inputs": [
+              "topu",
+              "gidx1"
+            ],
+            "outputs": [
+              "q0"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "gather_q3u",
+            "op": "Gather",
+            "inputs": [
+              "topu",
+              "shape4"
+            ],
+            "outputs": [
+              "q3"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "rmax",
+            "op": "Div",
+            "inputs": [
+              "q0",
+              "u8"
+            ],
+            "outputs": [
+              "rmax"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "rmin",
+            "op": "Div",
+            "inputs": [
+              "q3",
+              "u8"
+            ],
+            "outputs": [
+              "rmin"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "cmax",
+            "op": "Mod",
+            "inputs": [
+              "q0",
+              "u8"
+            ],
+            "outputs": [
+              "cmax"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "cmin",
+            "op": "Mod",
+            "inputs": [
+              "q3",
+              "u8"
+            ],
+            "outputs": [
+              "cmin"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "rt",
+            "op": "Shrink",
+            "inputs": [
+              "rmin"
+            ],
+            "outputs": [
+              "rt"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "rb",
+            "op": "Shrink",
+            "inputs": [
+              "rmax"
+            ],
+            "outputs": [
+              "rb"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "cl",
+            "op": "Shrink",
+            "inputs": [
+              "cmin"
+            ],
+            "outputs": [
+              "cl"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "cr",
+            "op": "Shrink",
+            "inputs": [
+              "cmax"
+            ],
+            "outputs": [
+              "cr"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "shape16",
+            "op": "Shape",
+            "inputs": [
+              "updates"
+            ],
+            "outputs": [
+              "shape16"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "chraw8",
+            "op": "Concat",
+            "inputs": [
+              "cvec",
+              "cvec"
+            ],
+            "outputs": [
+              "chraw8"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "chcol",
+            "op": "CenterCropPad",
+            "inputs": [
+              "chraw8",
+              "shape16"
+            ],
+            "outputs": [
+              "chcol"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "rowraw",
+            "op": "Concat",
+            "inputs": [
+              "rt",
+              "rt",
+              "rb",
+              "rb",
+              "rt",
+              "rt",
+              "rb",
+              "rb",
+              "rmax",
+              "rmax",
+              "rmin",
+              "rmin",
+              "rmax",
+              "rmax",
+              "rmin",
+              "rmin"
+            ],
+            "outputs": [
+              "rowraw"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "rowcol",
+            "op": "CenterCropPad",
+            "inputs": [
+              "rowraw",
+              "shape16"
+            ],
+            "outputs": [
+              "rowcol"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "colraw",
+            "op": "Concat",
+            "inputs": [
+              "cl",
+              "cr",
+              "cl",
+              "cr",
+              "cl",
+              "cr",
+              "cl",
+              "cr",
+              "cmax",
+              "cmin",
+              "cmax",
+              "cmin",
+              "cmax",
+              "cmin",
+              "cmax",
+              "cmin"
+            ],
+            "outputs": [
+              "colraw"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "colcol",
+            "op": "CenterCropPad",
+            "inputs": [
+              "colraw",
+              "shape16"
+            ],
+            "outputs": [
+              "colcol"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "idx3",
+            "op": "Concat",
+            "inputs": [
+              "chcol",
+              "rowcol",
+              "colcol"
+            ],
+            "outputs": [
+              "idx3"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "idx5",
+            "op": "CenterCropPad",
+            "inputs": [
+              "idx3",
+              "k5"
+            ],
+            "outputs": [
+              "idx5"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "idx_u8",
+            "op": "CenterCropPad",
+            "inputs": [
+              "idx5",
+              "shape4"
+            ],
+            "outputs": [
+              "idx_u8"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "idx_hid",
+            "op": "CenterCropPad",
+            "inputs": [
+              "idx_u8",
+              "shape16"
+            ],
+            "outputs": [
+              "idx_hid"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "indices",
+            "op": "CastLike",
+            "inputs": [
+              "idx_hid",
+              "colors64"
+            ],
+            "outputs": [
+              "indices"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "scatter",
+            "op": "ScatterND",
+            "inputs": [
+              "input",
+              "indices",
+              "updates"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "coord",
+            "dtype": "FLOAT",
+            "shape": [
+              30,
+              1
+            ],
+            "elements": 30
+          },
+          {
+            "name": "k5",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "u8",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "updates",
+            "dtype": "FLOAT",
+            "shape": [
+              16
+            ],
+            "elements": 16
+          },
+          {
+            "name": "shape4",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "gidx1",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "234": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task234.onnx",
+      "sha256": "c66bb8c3e92a3a2ef5844872cb36d54076ba697f8ee6e777ceef6c2dd0997c8a",
+      "serialized_bytes": 6104,
+      "official_cost": {
+        "memory": 229,
+        "params": 132,
+        "cost": 361
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 75,
+        "initializer_count": 11,
+        "value_info_count": 8,
+        "op_histogram": {
+          "Add": 3,
+          "Cast": 4,
+          "CastLike": 6,
+          "CenterCropPad": 8,
+          "Concat": 3,
+          "Div": 2,
+          "Einsum": 5,
+          "Gather": 9,
+          "Greater": 2,
+          "GreaterOrEqual": 3,
+          "Less": 1,
+          "LessOrEqual": 2,
+          "Log": 3,
+          "Or": 1,
+          "QuantizeLinear": 3,
+          "Shape": 3,
+          "Split": 2,
+          "Sub": 10,
+          "Where": 5
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "one_shape",
+            "op": "Shape",
+            "inputs": [
+              "max_u8_1x1"
+            ],
+            "outputs": [
+              "one_shape"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "n_sel_shape",
+            "op": "Shape",
+            "inputs": [
+              "input"
+            ],
+            "outputs": [
+              "fg_sel_shape"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "color_weights_crop",
+            "op": "CenterCropPad",
+            "inputs": [
+              "moment_weights_cloak",
+              "fg_sel_shape"
+            ],
+            "outputs": [
+              "color_weights_crop"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "color_weights_crop",
+              "nonbg_cz"
+            ],
+            "outputs": [
+              "color_mom"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "",
+            "op": "Log",
+            "inputs": [
+              "color_mom"
+            ],
+            "outputs": [
+              "color_log"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "color_quant",
+            "op": "QuantizeLinear",
+            "inputs": [
+              "color_log",
+              "qscale_f"
+            ],
+            "outputs": [
+              "color_d_u8"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "n_row_shape2",
+            "op": "Shape",
+            "inputs": [
+              "input"
+            ],
+            "outputs": [
+              "__cloak_sh_row_f"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "idx_hid_u8",
+            "op": "CenterCropPad",
+            "inputs": [
+              "idx30_u8",
+              "__cloak_sh_row_f"
+            ],
+            "outputs": [
+              "idx_hid_u8"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "kc_idx_raw_concat",
+            "op": "Concat",
+            "inputs": [
+              "nine_u8_1x1",
+              "color_d_u8"
+            ],
+            "outputs": [
+              "kc_idx_raw"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "kc_idx_u8_cloak",
+            "op": "CenterCropPad",
+            "inputs": [
+              "kc_idx_raw",
+              "one_shape"
+            ],
+            "outputs": [
+              "kc_idx_u8"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "kc_idx_f16",
+            "op": "Cast",
+            "inputs": [
+              "kc_idx_u8"
+            ],
+            "outputs": [
+              "kc_idx_f16"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "kc_ge_b",
+            "op": "GreaterOrEqual",
+            "inputs": [
+              "kc_idx_f16",
+              "idx_hid_u8"
+            ],
+            "outputs": [
+              "kc_ge_b"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "kc_le_b",
+            "op": "LessOrEqual",
+            "inputs": [
+              "kc_idx_f16",
+              "idx_hid_u8"
+            ],
+            "outputs": [
+              "kc_le_b"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "kc_ge_cloak",
+            "op": "CenterCropPad",
+            "inputs": [
+              "kc_ge_b",
+              "fg_sel_shape"
+            ],
+            "outputs": [
+              "kc_ge_cloak"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "kc_le_cloak",
+            "op": "CenterCropPad",
+            "inputs": [
+              "kc_le_b",
+              "fg_sel_shape"
+            ],
+            "outputs": [
+              "kc_le_cloak"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "kc_ge_f",
+            "op": "CastLike",
+            "inputs": [
+              "kc_ge_cloak",
+              "input"
+            ],
+            "outputs": [
+              "kc_ge_f"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "kc_le_f",
+            "op": "CastLike",
+            "inputs": [
+              "kc_le_cloak",
+              "input"
+            ],
+            "outputs": [
+              "kc_le_f"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "kc_ge_f",
+              "kc_le_f",
+              "fg_pick_f"
+            ],
+            "outputs": [
+              "fg_counts_f"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "fg_counts_castlike",
+            "op": "CastLike",
+            "inputs": [
+              "fg_counts_f",
+              "max_u8_1x1"
+            ],
+            "outputs": [
+              "fg_counts"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "n5",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "kc_ge_f",
+              "kc_le_f",
+              "fg_pick_f",
+              "moment_weights_cloak"
+            ],
+            "outputs": [
+              "fg_rowmom"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "n6",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "kc_ge_f",
+              "kc_le_f",
+              "fg_pick_f",
+              "moment_weights_cloak"
+            ],
+            "outputs": [
+              "fg_colmom"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "n9",
+            "op": "Log",
+            "inputs": [
+              "fg_rowmom"
+            ],
+            "outputs": [
+              "fg_row_log"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "row_quant",
+            "op": "QuantizeLinear",
+            "inputs": [
+              "fg_row_log",
+              "qscale_f"
+            ],
+            "outputs": [
+              "fg_row_d_u8"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "n12",
+            "op": "Log",
+            "inputs": [
+              "fg_colmom"
+            ],
+            "outputs": [
+              "fg_col_log"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "col_quant",
+            "op": "QuantizeLinear",
+            "inputs": [
+              "fg_col_log",
+              "qscale_f"
+            ],
+            "outputs": [
+              "fg_col_d_u8"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "",
+            "op": "Split",
+            "inputs": [
+              "fg_row_d_u8"
+            ],
+            "outputs": [
+              "fg_r0_u8",
+              "fg_r1_u8"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "",
+            "op": "Split",
+            "inputs": [
+              "fg_col_d_u8"
+            ],
+            "outputs": [
+              "fg_c0_u8",
+              "fg_c1_u8"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "fg_h0_2d",
+            "op": "Sub",
+            "inputs": [
+              "fg_r1_u8",
+              "fg_r0_u8"
+            ],
+            "outputs": [
+              "fg_h0_2d"
+            ]
+          },
+          {
+            "index": 28,
+            "name": "fg_w0_2d",
+            "op": "Sub",
+            "inputs": [
+              "fg_c1_u8",
+              "fg_c0_u8"
+            ],
+            "outputs": [
+              "fg_w0_2d"
+            ]
+          },
+          {
+            "index": 29,
+            "name": "fg_w_2d",
+            "op": "Sub",
+            "inputs": [
+              "fg_w0_2d",
+              "max_u8_1x1"
+            ],
+            "outputs": [
+              "fg_w_2d"
+            ]
+          },
+          {
+            "index": 30,
+            "name": "n39",
+            "op": "Div",
+            "inputs": [
+              "fg_counts",
+              "fg_w_2d"
+            ],
+            "outputs": [
+              "count_over_w"
+            ]
+          },
+          {
+            "index": 31,
+            "name": "n40",
+            "op": "LessOrEqual",
+            "inputs": [
+              "count_over_w",
+              "fg_h0_2d"
+            ],
+            "outputs": [
+              "armed_b"
+            ]
+          },
+          {
+            "index": 32,
+            "name": "",
+            "op": "Gather",
+            "inputs": [
+              "armed_b",
+              "dim_w_idx"
+            ],
+            "outputs": [
+              "armed_is_second"
+            ]
+          },
+          {
+            "index": 33,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "armed_is_second"
+            ],
+            "outputs": [
+              "armed_pos__bd_6"
+            ]
+          },
+          {
+            "index": 34,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "dim_w_idx",
+              "armed_pos__bd_6"
+            ],
+            "outputs": [
+              "pure_pos__bd_6"
+            ]
+          },
+          {
+            "index": 35,
+            "name": "pure_r0",
+            "op": "Gather",
+            "inputs": [
+              "fg_r0_u8",
+              "pure_pos__bd_6"
+            ],
+            "outputs": [
+              "pure_r0"
+            ]
+          },
+          {
+            "index": 36,
+            "name": "pure_r1",
+            "op": "Gather",
+            "inputs": [
+              "fg_r1_u8",
+              "pure_pos__bd_6"
+            ],
+            "outputs": [
+              "pure_r1"
+            ]
+          },
+          {
+            "index": 37,
+            "name": "pure_c0",
+            "op": "Gather",
+            "inputs": [
+              "fg_c0_u8",
+              "pure_pos__bd_6"
+            ],
+            "outputs": [
+              "pure_c0"
+            ]
+          },
+          {
+            "index": 38,
+            "name": "arm_r0",
+            "op": "Gather",
+            "inputs": [
+              "fg_r0_u8",
+              "armed_pos__bd_6"
+            ],
+            "outputs": [
+              "arm_r0"
+            ]
+          },
+          {
+            "index": 39,
+            "name": "arm_r1",
+            "op": "Gather",
+            "inputs": [
+              "fg_r1_u8",
+              "armed_pos__bd_6"
+            ],
+            "outputs": [
+              "arm_r1"
+            ]
+          },
+          {
+            "index": 40,
+            "name": "arm_c0",
+            "op": "Gather",
+            "inputs": [
+              "fg_c0_u8",
+              "armed_pos__bd_6"
+            ],
+            "outputs": [
+              "arm_c0"
+            ]
+          },
+          {
+            "index": 41,
+            "name": "arm_c1",
+            "op": "Gather",
+            "inputs": [
+              "fg_c1_u8",
+              "armed_pos__bd_6"
+            ],
+            "outputs": [
+              "arm_c1"
+            ]
+          },
+          {
+            "index": 42,
+            "name": "n46",
+            "op": "Gather",
+            "inputs": [
+              "fg_counts",
+              "armed_pos__bd_6"
+            ],
+            "outputs": [
+              "arm_count"
+            ]
+          },
+          {
+            "index": 43,
+            "name": "n55",
+            "op": "Sub",
+            "inputs": [
+              "arm_r1",
+              "arm_r0"
+            ],
+            "outputs": [
+              "bbox_h0"
+            ]
+          },
+          {
+            "index": 44,
+            "name": "n57",
+            "op": "Sub",
+            "inputs": [
+              "arm_c1",
+              "arm_c0"
+            ],
+            "outputs": [
+              "bbox_w0"
+            ]
+          },
+          {
+            "index": 45,
+            "name": "n59",
+            "op": "Less",
+            "inputs": [
+              "pure_r1",
+              "arm_r0"
+            ],
+            "outputs": [
+              "top_arm"
+            ]
+          },
+          {
+            "index": 46,
+            "name": "n60",
+            "op": "Greater",
+            "inputs": [
+              "pure_r0",
+              "arm_r1"
+            ],
+            "outputs": [
+              "bottom_arm"
+            ]
+          },
+          {
+            "index": 47,
+            "name": "n62",
+            "op": "Greater",
+            "inputs": [
+              "pure_c0",
+              "arm_c1"
+            ],
+            "outputs": [
+              "right_arm"
+            ]
+          },
+          {
+            "index": 48,
+            "name": "n63",
+            "op": "Or",
+            "inputs": [
+              "top_arm",
+              "bottom_arm"
+            ],
+            "outputs": [
+              "vertical"
+            ]
+          },
+          {
+            "index": 49,
+            "name": "n69",
+            "op": "Where",
+            "inputs": [
+              "vertical",
+              "bbox_w0",
+              "bbox_h0"
+            ],
+            "outputs": [
+              "rect_den"
+            ]
+          },
+          {
+            "index": 50,
+            "name": "bbox_sum",
+            "op": "Add",
+            "inputs": [
+              "bbox_h0",
+              "bbox_w0"
+            ],
+            "outputs": [
+              "bbox_sum"
+            ]
+          },
+          {
+            "index": 51,
+            "name": "rect_num_adj",
+            "op": "Sub",
+            "inputs": [
+              "arm_count",
+              "bbox_sum"
+            ],
+            "outputs": [
+              "rect_num_adj"
+            ]
+          },
+          {
+            "index": 52,
+            "name": "rect_hm1",
+            "op": "Div",
+            "inputs": [
+              "rect_num_adj",
+              "rect_den"
+            ],
+            "outputs": [
+              "rect_hm1"
+            ]
+          },
+          {
+            "index": 53,
+            "name": "n72",
+            "op": "Sub",
+            "inputs": [
+              "arm_r1",
+              "rect_hm1"
+            ],
+            "outputs": [
+              "row_bottom_start"
+            ]
+          },
+          {
+            "index": 54,
+            "name": "n74",
+            "op": "Sub",
+            "inputs": [
+              "arm_c1",
+              "rect_hm1"
+            ],
+            "outputs": [
+              "col_right_start"
+            ]
+          },
+          {
+            "index": 55,
+            "name": "n76",
+            "op": "Where",
+            "inputs": [
+              "bottom_arm",
+              "row_bottom_start",
+              "arm_r0"
+            ],
+            "outputs": [
+              "row_out_start"
+            ]
+          },
+          {
+            "index": 56,
+            "name": "n78",
+            "op": "Where",
+            "inputs": [
+              "right_arm",
+              "col_right_start",
+              "arm_c0"
+            ],
+            "outputs": [
+              "col_out_start"
+            ]
+          },
+          {
+            "index": 57,
+            "name": "row_span_out",
+            "op": "Where",
+            "inputs": [
+              "vertical",
+              "rect_hm1",
+              "bbox_h0"
+            ],
+            "outputs": [
+              "row_span_out"
+            ]
+          },
+          {
+            "index": 58,
+            "name": "col_span_out",
+            "op": "Where",
+            "inputs": [
+              "vertical",
+              "bbox_w0",
+              "rect_hm1"
+            ],
+            "outputs": [
+              "col_span_out"
+            ]
+          },
+          {
+            "index": 59,
+            "name": "zero_u8_1x1",
+            "op": "Sub",
+            "inputs": [
+              "max_u8_1x1",
+              "max_u8_1x1"
+            ],
+            "outputs": [
+              "zero_u8_1x1"
+            ]
+          },
+          {
+            "index": 60,
+            "name": "row_end_u8",
+            "op": "Add",
+            "inputs": [
+              "row_out_start",
+              "row_span_out"
+            ],
+            "outputs": [
+              "row_end_u8"
+            ]
+          },
+          {
+            "index": 61,
+            "name": "col_end_u8",
+            "op": "Add",
+            "inputs": [
+              "col_out_start",
+              "col_span_out"
+            ],
+            "outputs": [
+              "col_end_u8"
+            ]
+          },
+          {
+            "index": 62,
+            "name": "start_pack_raw_concat",
+            "op": "Concat",
+            "inputs": [
+              "col_out_start",
+              "zero_u8_1x1",
+              "row_out_start"
+            ],
+            "outputs": [
+              "start_pack_raw"
+            ]
+          },
+          {
+            "index": 63,
+            "name": "start_pack_b_cloak",
+            "op": "CenterCropPad",
+            "inputs": [
+              "start_pack_raw",
+              "one_shape"
+            ],
+            "outputs": [
+              "start_pack_b"
+            ]
+          },
+          {
+            "index": 64,
+            "name": "end_pack_raw_concat",
+            "op": "Concat",
+            "inputs": [
+              "col_end_u8",
+              "max_u8_1x1",
+              "row_end_u8"
+            ],
+            "outputs": [
+              "end_pack_raw"
+            ]
+          },
+          {
+            "index": 65,
+            "name": "end_pack_b_cloak",
+            "op": "CenterCropPad",
+            "inputs": [
+              "end_pack_raw",
+              "one_shape"
+            ],
+            "outputs": [
+              "end_pack_b"
+            ]
+          },
+          {
+            "index": 66,
+            "name": "start_pack_f16",
+            "op": "Cast",
+            "inputs": [
+              "start_pack_b"
+            ],
+            "outputs": [
+              "start_pack_f16"
+            ]
+          },
+          {
+            "index": 67,
+            "name": "end_pack_f16",
+            "op": "Cast",
+            "inputs": [
+              "end_pack_b"
+            ],
+            "outputs": [
+              "end_pack_f16"
+            ]
+          },
+          {
+            "index": 68,
+            "name": "pack_ge_b",
+            "op": "GreaterOrEqual",
+            "inputs": [
+              "idx_hid_u8",
+              "start_pack_f16"
+            ],
+            "outputs": [
+              "pack_ge_b"
+            ]
+          },
+          {
+            "index": 69,
+            "name": "pack_le_b",
+            "op": "GreaterOrEqual",
+            "inputs": [
+              "end_pack_f16",
+              "idx_hid_u8"
+            ],
+            "outputs": [
+              "pack_le_b"
+            ]
+          },
+          {
+            "index": 70,
+            "name": "pack_ge_f",
+            "op": "CastLike",
+            "inputs": [
+              "pack_ge_b",
+              "input"
+            ],
+            "outputs": [
+              "pack_ge_f"
+            ]
+          },
+          {
+            "index": 71,
+            "name": "pack_le_f",
+            "op": "CastLike",
+            "inputs": [
+              "pack_le_b",
+              "input"
+            ],
+            "outputs": [
+              "pack_le_f"
+            ]
+          },
+          {
+            "index": 72,
+            "name": "n_armed_cloak",
+            "op": "CenterCropPad",
+            "inputs": [
+              "armed_b",
+              "fg_sel_shape"
+            ],
+            "outputs": [
+              "armed_b_cloak"
+            ]
+          },
+          {
+            "index": 73,
+            "name": "armed_b_f",
+            "op": "CastLike",
+            "inputs": [
+              "armed_b_cloak",
+              "input"
+            ],
+            "outputs": [
+              "armed_b_f"
+            ]
+          },
+          {
+            "index": 74,
+            "name": "n_output_term",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "pack_ge_f",
+              "pack_le_f",
+              "pack_ge_f",
+              "pack_le_f",
+              "fg_pick_f",
+              "fg_pick_f",
+              "col_sel2_f",
+              "col_sel2_f",
+              "kc_ge_f",
+              "kc_le_f",
+              "kc_ge_f",
+              "kc_le_f",
+              "armed_b_f",
+              "term_U_order_f",
+              "term_V_order_f"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "dim_w_idx",
+            "dtype": "INT32",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "idx30_u8",
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              27
+            ],
+            "elements": 27
+          },
+          {
+            "name": "max_u8_1x1",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "qscale_f",
+            "dtype": "FLOAT",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "fg_pick_f",
+            "dtype": "FLOAT",
+            "shape": [
+              3,
+              2
+            ],
+            "elements": 6
+          },
+          {
+            "name": "term_U_order_f",
+            "dtype": "FLOAT",
+            "shape": [
+              2,
+              3
+            ],
+            "elements": 6
+          },
+          {
+            "name": "term_V_order_f",
+            "dtype": "FLOAT",
+            "shape": [
+              2,
+              3,
+              2
+            ],
+            "elements": 12
+          },
+          {
+            "name": "nine_u8_1x1",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "moment_weights_cloak",
+            "dtype": "FLOAT",
+            "shape": [
+              2,
+              30
+            ],
+            "elements": 60
+          },
+          {
+            "name": "nonbg_cz",
+            "dtype": "FLOAT",
+            "shape": [
+              10,
+              1
+            ],
+            "elements": 10
+          },
+          {
+            "name": "col_sel2_f",
+            "dtype": "FLOAT",
+            "shape": [
+              3,
+              2
+            ],
+            "elements": 6
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "264": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task264.onnx",
+      "sha256": "44163ea87aca5993f076612fd1f8d1c21a232521964666c3644e7dc3817b9160",
+      "serialized_bytes": 7359,
+      "official_cost": {
+        "memory": 321,
+        "params": 23,
+        "cost": 344
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 87,
+        "initializer_count": 5,
+        "value_info_count": 86,
+        "op_histogram": {
+          "Cast": 8,
+          "CenterCropPad": 43,
+          "Concat": 8,
+          "ConstantOfShape": 3,
+          "Einsum": 8,
+          "Equal": 1,
+          "Sub": 8,
+          "Unsqueeze": 8
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "",
+            "op": "ConstantOfShape",
+            "inputs": [
+              "s1"
+            ],
+            "outputs": [
+              "s29"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "",
+            "op": "ConstantOfShape",
+            "inputs": [
+              "s1"
+            ],
+            "outputs": [
+              "s30"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "",
+            "op": "ConstantOfShape",
+            "inputs": [
+              "s1"
+            ],
+            "outputs": [
+              "s31"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "input",
+              "s31"
+            ],
+            "outputs": [
+              "rp0"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "rp0",
+              "s29"
+            ],
+            "outputs": [
+              "rp1"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "rp1",
+              "s30"
+            ],
+            "outputs": [
+              "rp"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "input",
+              "s29"
+            ],
+            "outputs": [
+              "rm0"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "rm0",
+              "s31"
+            ],
+            "outputs": [
+              "rm1"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "rm1",
+              "s30"
+            ],
+            "outputs": [
+              "rm"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "input",
+              "s31"
+            ],
+            "outputs": [
+              "cp0"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "cp0",
+              "s29"
+            ],
+            "outputs": [
+              "cp1"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "cp1",
+              "s30"
+            ],
+            "outputs": [
+              "cp"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "input",
+              "s29"
+            ],
+            "outputs": [
+              "cm0"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "cm0",
+              "s31"
+            ],
+            "outputs": [
+              "cm1"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "cm1",
+              "s30"
+            ],
+            "outputs": [
+              "cm"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "cp",
+              "rp",
+              "color_vals"
+            ],
+            "outputs": [
+              "c0a"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "c0a"
+            ],
+            "outputs": [
+              "c0ai"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "cm",
+              "cp",
+              "rp",
+              "color_vals"
+            ],
+            "outputs": [
+              "c1"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "c1"
+            ],
+            "outputs": [
+              "c1i"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "cm",
+              "rp",
+              "color_vals"
+            ],
+            "outputs": [
+              "c2a"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "c2a"
+            ],
+            "outputs": [
+              "c2ai"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "rm",
+              "rp",
+              "cp",
+              "color_vals"
+            ],
+            "outputs": [
+              "c3"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "c3"
+            ],
+            "outputs": [
+              "c3i"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "rm",
+              "rp",
+              "cm",
+              "color_vals"
+            ],
+            "outputs": [
+              "c5"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "c5"
+            ],
+            "outputs": [
+              "c5i"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "rm",
+              "cp",
+              "color_vals"
+            ],
+            "outputs": [
+              "c6a"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "c6a"
+            ],
+            "outputs": [
+              "c6ai"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "cm",
+              "cp",
+              "rm",
+              "color_vals"
+            ],
+            "outputs": [
+              "c7"
+            ]
+          },
+          {
+            "index": 28,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "c7"
+            ],
+            "outputs": [
+              "c7i"
+            ]
+          },
+          {
+            "index": 29,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "rm",
+              "cm",
+              "color_vals"
+            ],
+            "outputs": [
+              "c8a"
+            ]
+          },
+          {
+            "index": 30,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "c8a"
+            ],
+            "outputs": [
+              "c8ai"
+            ]
+          },
+          {
+            "index": 31,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "c0ai",
+              "c1i"
+            ],
+            "outputs": [
+              "c0t"
+            ]
+          },
+          {
+            "index": 32,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "c0t",
+              "c3i"
+            ],
+            "outputs": [
+              "c0i"
+            ]
+          },
+          {
+            "index": 33,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "c2ai",
+              "c1i"
+            ],
+            "outputs": [
+              "c2t"
+            ]
+          },
+          {
+            "index": 34,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "c2t",
+              "c5i"
+            ],
+            "outputs": [
+              "c2i"
+            ]
+          },
+          {
+            "index": 35,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "c6ai",
+              "c3i"
+            ],
+            "outputs": [
+              "c6t"
+            ]
+          },
+          {
+            "index": 36,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "c6t",
+              "c7i"
+            ],
+            "outputs": [
+              "c6i"
+            ]
+          },
+          {
+            "index": 37,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "c8ai",
+              "c5i"
+            ],
+            "outputs": [
+              "c8t"
+            ]
+          },
+          {
+            "index": 38,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "c8t",
+              "c7i"
+            ],
+            "outputs": [
+              "c8i"
+            ]
+          },
+          {
+            "index": 39,
+            "name": "c0iu",
+            "op": "Unsqueeze",
+            "inputs": [
+              "c0i",
+              "axes1"
+            ],
+            "outputs": [
+              "c0iu"
+            ]
+          },
+          {
+            "index": 40,
+            "name": "c1iu",
+            "op": "Unsqueeze",
+            "inputs": [
+              "c1i",
+              "axes1"
+            ],
+            "outputs": [
+              "c1iu"
+            ]
+          },
+          {
+            "index": 41,
+            "name": "c2iu",
+            "op": "Unsqueeze",
+            "inputs": [
+              "c2i",
+              "axes1"
+            ],
+            "outputs": [
+              "c2iu"
+            ]
+          },
+          {
+            "index": 42,
+            "name": "c3iu",
+            "op": "Unsqueeze",
+            "inputs": [
+              "c3i",
+              "axes1"
+            ],
+            "outputs": [
+              "c3iu"
+            ]
+          },
+          {
+            "index": 43,
+            "name": "c5iu",
+            "op": "Unsqueeze",
+            "inputs": [
+              "c5i",
+              "axes1"
+            ],
+            "outputs": [
+              "c5iu"
+            ]
+          },
+          {
+            "index": 44,
+            "name": "c6iu",
+            "op": "Unsqueeze",
+            "inputs": [
+              "c6i",
+              "axes1"
+            ],
+            "outputs": [
+              "c6iu"
+            ]
+          },
+          {
+            "index": 45,
+            "name": "c7iu",
+            "op": "Unsqueeze",
+            "inputs": [
+              "c7i",
+              "axes1"
+            ],
+            "outputs": [
+              "c7iu"
+            ]
+          },
+          {
+            "index": 46,
+            "name": "c8iu",
+            "op": "Unsqueeze",
+            "inputs": [
+              "c8i",
+              "axes1"
+            ],
+            "outputs": [
+              "c8iu"
+            ]
+          },
+          {
+            "index": 47,
+            "name": "row0",
+            "op": "Concat",
+            "inputs": [
+              "c0iu",
+              "c0iu",
+              "gray_scalar",
+              "c1iu",
+              "c1iu",
+              "c1iu",
+              "gray_scalar",
+              "c2iu",
+              "c2iu"
+            ],
+            "outputs": [
+              "row0"
+            ]
+          },
+          {
+            "index": 48,
+            "name": "row1",
+            "op": "Concat",
+            "inputs": [
+              "c0iu",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "c1iu",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "c2iu"
+            ],
+            "outputs": [
+              "row1"
+            ]
+          },
+          {
+            "index": 49,
+            "name": "row2",
+            "op": "Concat",
+            "inputs": [
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar"
+            ],
+            "outputs": [
+              "row2"
+            ]
+          },
+          {
+            "index": 50,
+            "name": "row3",
+            "op": "Concat",
+            "inputs": [
+              "c3iu",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "c5iu"
+            ],
+            "outputs": [
+              "row3"
+            ]
+          },
+          {
+            "index": 51,
+            "name": "row4",
+            "op": "Concat",
+            "inputs": [
+              "c3iu",
+              "c3iu",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "c5iu",
+              "c5iu"
+            ],
+            "outputs": [
+              "row4"
+            ]
+          },
+          {
+            "index": 52,
+            "name": "row7",
+            "op": "Concat",
+            "inputs": [
+              "c6iu",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "c7iu",
+              "gray_scalar",
+              "gray_scalar",
+              "gray_scalar",
+              "c8iu"
+            ],
+            "outputs": [
+              "row7"
+            ]
+          },
+          {
+            "index": 53,
+            "name": "row8",
+            "op": "Concat",
+            "inputs": [
+              "c6iu",
+              "c6iu",
+              "gray_scalar",
+              "c7iu",
+              "c7iu",
+              "c7iu",
+              "gray_scalar",
+              "c8iu",
+              "c8iu"
+            ],
+            "outputs": [
+              "row8"
+            ]
+          },
+          {
+            "index": 54,
+            "name": "label9",
+            "op": "Concat",
+            "inputs": [
+              "row0",
+              "row1",
+              "row2",
+              "row3",
+              "row4",
+              "row3",
+              "row2",
+              "row7",
+              "row8"
+            ],
+            "outputs": [
+              "label9"
+            ]
+          },
+          {
+            "index": 55,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "label9",
+              "s30"
+            ],
+            "outputs": [
+              "lab_pad0"
+            ]
+          },
+          {
+            "index": 56,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_pad0",
+              "s31"
+            ],
+            "outputs": [
+              "lab_l0_31"
+            ]
+          },
+          {
+            "index": 57,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l0_31",
+              "s29"
+            ],
+            "outputs": [
+              "lab_l0_29"
+            ]
+          },
+          {
+            "index": 58,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l0_29",
+              "s30"
+            ],
+            "outputs": [
+              "lab_l0_30"
+            ]
+          },
+          {
+            "index": 59,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l0_30",
+              "s31"
+            ],
+            "outputs": [
+              "lab_l1_31"
+            ]
+          },
+          {
+            "index": 60,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l1_31",
+              "s29"
+            ],
+            "outputs": [
+              "lab_l1_29"
+            ]
+          },
+          {
+            "index": 61,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l1_29",
+              "s30"
+            ],
+            "outputs": [
+              "lab_l1_30"
+            ]
+          },
+          {
+            "index": 62,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l1_30",
+              "s31"
+            ],
+            "outputs": [
+              "lab_l2_31"
+            ]
+          },
+          {
+            "index": 63,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l2_31",
+              "s29"
+            ],
+            "outputs": [
+              "lab_l2_29"
+            ]
+          },
+          {
+            "index": 64,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l2_29",
+              "s30"
+            ],
+            "outputs": [
+              "lab_l2_30"
+            ]
+          },
+          {
+            "index": 65,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l2_30",
+              "s31"
+            ],
+            "outputs": [
+              "lab_l3_31"
+            ]
+          },
+          {
+            "index": 66,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l3_31",
+              "s29"
+            ],
+            "outputs": [
+              "lab_l3_29"
+            ]
+          },
+          {
+            "index": 67,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l3_29",
+              "s30"
+            ],
+            "outputs": [
+              "lab_l3_30"
+            ]
+          },
+          {
+            "index": 68,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l3_30",
+              "s31"
+            ],
+            "outputs": [
+              "lab_l4_31"
+            ]
+          },
+          {
+            "index": 69,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l4_31",
+              "s29"
+            ],
+            "outputs": [
+              "lab_l4_29"
+            ]
+          },
+          {
+            "index": 70,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l4_29",
+              "s30"
+            ],
+            "outputs": [
+              "lab_l4_30"
+            ]
+          },
+          {
+            "index": 71,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l4_30",
+              "s31"
+            ],
+            "outputs": [
+              "lab_l5_31"
+            ]
+          },
+          {
+            "index": 72,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l5_31",
+              "s29"
+            ],
+            "outputs": [
+              "lab_l5_29"
+            ]
+          },
+          {
+            "index": 73,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l5_29",
+              "s30"
+            ],
+            "outputs": [
+              "lab_l5_30"
+            ]
+          },
+          {
+            "index": 74,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l5_30",
+              "s31"
+            ],
+            "outputs": [
+              "lab_l6_31"
+            ]
+          },
+          {
+            "index": 75,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l6_31",
+              "s29"
+            ],
+            "outputs": [
+              "lab_l6_29"
+            ]
+          },
+          {
+            "index": 76,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l6_29",
+              "s30"
+            ],
+            "outputs": [
+              "lab_l6_30"
+            ]
+          },
+          {
+            "index": 77,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l6_30",
+              "s31"
+            ],
+            "outputs": [
+              "lab_l7_31"
+            ]
+          },
+          {
+            "index": 78,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l7_31",
+              "s29"
+            ],
+            "outputs": [
+              "lab_l7_29"
+            ]
+          },
+          {
+            "index": 79,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l7_29",
+              "s30"
+            ],
+            "outputs": [
+              "lab_l7_30"
+            ]
+          },
+          {
+            "index": 80,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l7_30",
+              "s31"
+            ],
+            "outputs": [
+              "lab_l8_31"
+            ]
+          },
+          {
+            "index": 81,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l8_31",
+              "s29"
+            ],
+            "outputs": [
+              "lab_l8_29"
+            ]
+          },
+          {
+            "index": 82,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l8_29",
+              "s30"
+            ],
+            "outputs": [
+              "lab_l8_30"
+            ]
+          },
+          {
+            "index": 83,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l8_30",
+              "s31"
+            ],
+            "outputs": [
+              "lab_l9_31"
+            ]
+          },
+          {
+            "index": 84,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l9_31",
+              "s29"
+            ],
+            "outputs": [
+              "lab_l9_29"
+            ]
+          },
+          {
+            "index": 85,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "lab_l9_29",
+              "s30"
+            ],
+            "outputs": [
+              "lab_l9_30"
+            ]
+          },
+          {
+            "index": 86,
+            "name": "",
+            "op": "Equal",
+            "inputs": [
+              "lab_l9_30",
+              "eq_vals"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "s1",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "color_vals",
+            "dtype": "FLOAT",
+            "shape": [
+              10
+            ],
+            "elements": 10
+          },
+          {
+            "name": "gray_scalar",
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "eq_vals",
+            "dtype": "INT8",
+            "shape": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "elements": 10
+          },
+          {
+            "name": "axes1",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [
+          [
+            "s1",
+            "axes1"
+          ]
+        ],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "325": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task325.onnx",
+      "sha256": "5e8e919a23dd9f6e8ba0f82ff08ebef634b1b1975e466ce80bf03ed5288ef3b1",
+      "serialized_bytes": 4521,
+      "official_cost": {
+        "memory": 165,
+        "params": 57,
+        "cost": 222
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 37,
+        "initializer_count": 5,
+        "value_info_count": 36,
+        "op_histogram": {
+          "CastLike": 2,
+          "CenterCropPad": 20,
+          "ConstantOfShape": 3,
+          "Einsum": 9,
+          "Greater": 1,
+          "MaxUnpool": 1,
+          "Sum": 1
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "s29",
+            "op": "ConstantOfShape",
+            "inputs": [
+              "len1"
+            ],
+            "outputs": [
+              "s29"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "s30",
+            "op": "ConstantOfShape",
+            "inputs": [
+              "len1"
+            ],
+            "outputs": [
+              "s30"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "s31",
+            "op": "ConstantOfShape",
+            "inputs": [
+              "len1"
+            ],
+            "outputs": [
+              "s31"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "hidden_input",
+            "op": "CenterCropPad",
+            "inputs": [
+              "input",
+              "s30"
+            ],
+            "outputs": [
+              "hidden_input"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "x",
+            "op": "CastLike",
+            "inputs": [
+              "hidden_input",
+              "selector"
+            ],
+            "outputs": [
+              "x"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "right_0",
+            "op": "CenterCropPad",
+            "inputs": [
+              "x",
+              "s31"
+            ],
+            "outputs": [
+              "right_0"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "right_1",
+            "op": "CenterCropPad",
+            "inputs": [
+              "right_0",
+              "s29"
+            ],
+            "outputs": [
+              "right_1"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "right",
+            "op": "CenterCropPad",
+            "inputs": [
+              "right_1",
+              "s30"
+            ],
+            "outputs": [
+              "right"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "down_0",
+            "op": "CenterCropPad",
+            "inputs": [
+              "x",
+              "s31"
+            ],
+            "outputs": [
+              "down_0"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "down_1",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down_0",
+              "s29"
+            ],
+            "outputs": [
+              "down_1"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "down",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down_1",
+              "s30"
+            ],
+            "outputs": [
+              "down"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "down_right_0",
+            "op": "CenterCropPad",
+            "inputs": [
+              "right",
+              "s31"
+            ],
+            "outputs": [
+              "down_right_0"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "down_right_1",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down_right_0",
+              "s29"
+            ],
+            "outputs": [
+              "down_right_1"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "down_right",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down_right_1",
+              "s30"
+            ],
+            "outputs": [
+              "down_right"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "down_right2_0",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down_right",
+              "s31"
+            ],
+            "outputs": [
+              "down_right2_0"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "down_right2_1",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down_right2_0",
+              "s29"
+            ],
+            "outputs": [
+              "down_right2_1"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "down_right2",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down_right2_1",
+              "s30"
+            ],
+            "outputs": [
+              "down_right2"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "down2_right_0",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down_right",
+              "s31"
+            ],
+            "outputs": [
+              "down2_right_0"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "down2_right_1",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down2_right_0",
+              "s29"
+            ],
+            "outputs": [
+              "down2_right_1"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "down2_right",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down2_right_1",
+              "s30"
+            ],
+            "outputs": [
+              "down2_right"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "down2_right2_0",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down_right2",
+              "s31"
+            ],
+            "outputs": [
+              "down2_right2_0"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "down2_right2_1",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down2_right2_0",
+              "s29"
+            ],
+            "outputs": [
+              "down2_right2_1"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "down2_right2",
+            "op": "CenterCropPad",
+            "inputs": [
+              "down2_right2_1",
+              "s30"
+            ],
+            "outputs": [
+              "down2_right2"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "t0",
+            "op": "Einsum",
+            "inputs": [
+              "x",
+              "selector",
+              "selector"
+            ],
+            "outputs": [
+              "t0"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "t01",
+            "op": "Einsum",
+            "inputs": [
+              "x",
+              "right",
+              "selector"
+            ],
+            "outputs": [
+              "t01"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "t03",
+            "op": "Einsum",
+            "inputs": [
+              "x",
+              "down",
+              "selector"
+            ],
+            "outputs": [
+              "t03"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "t04",
+            "op": "Einsum",
+            "inputs": [
+              "x",
+              "down_right",
+              "selector"
+            ],
+            "outputs": [
+              "t04"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "t014",
+            "op": "Einsum",
+            "inputs": [
+              "x",
+              "right",
+              "down_right",
+              "selector",
+              "selector"
+            ],
+            "outputs": [
+              "t014"
+            ]
+          },
+          {
+            "index": 28,
+            "name": "t034",
+            "op": "Einsum",
+            "inputs": [
+              "x",
+              "down",
+              "down_right",
+              "selector",
+              "selector"
+            ],
+            "outputs": [
+              "t034"
+            ]
+          },
+          {
+            "index": 29,
+            "name": "t13578",
+            "op": "Einsum",
+            "inputs": [
+              "right",
+              "down",
+              "down_right2",
+              "down2_right",
+              "down2_right2",
+              "selector",
+              "selector"
+            ],
+            "outputs": [
+              "t13578"
+            ]
+          },
+          {
+            "index": 30,
+            "name": "t134578",
+            "op": "Einsum",
+            "inputs": [
+              "right",
+              "down",
+              "down_right",
+              "down_right2",
+              "down2_right",
+              "down2_right2",
+              "selector"
+            ],
+            "outputs": [
+              "t134578"
+            ]
+          },
+          {
+            "index": 31,
+            "name": "n",
+            "op": "Sum",
+            "inputs": [
+              "t0",
+              "t01",
+              "t03",
+              "t04",
+              "t014",
+              "t034",
+              "t13578",
+              "t134578"
+            ],
+            "outputs": [
+              "n"
+            ]
+          },
+          {
+            "index": 32,
+            "name": "active_bool",
+            "op": "Greater",
+            "inputs": [
+              "n",
+              "thresholds"
+            ],
+            "outputs": [
+              "active_bool"
+            ]
+          },
+          {
+            "index": 33,
+            "name": "active_bool_h",
+            "op": "CenterCropPad",
+            "inputs": [
+              "active_bool",
+              "s30"
+            ],
+            "outputs": [
+              "active_bool_h"
+            ]
+          },
+          {
+            "index": 34,
+            "name": "active",
+            "op": "CastLike",
+            "inputs": [
+              "active_bool_h",
+              "selector"
+            ],
+            "outputs": [
+              "active"
+            ]
+          },
+          {
+            "index": 35,
+            "name": "square",
+            "op": "Einsum",
+            "inputs": [
+              "active",
+              "active"
+            ],
+            "outputs": [
+              "square"
+            ]
+          },
+          {
+            "index": 36,
+            "name": "output",
+            "op": "MaxUnpool",
+            "inputs": [
+              "square",
+              "indices",
+              "output_shape"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "len1",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "selector",
+            "dtype": "FLOAT16",
+            "shape": [
+              10
+            ],
+            "elements": 10
+          },
+          {
+            "name": "thresholds",
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              6
+            ],
+            "elements": 6
+          },
+          {
+            "name": "indices",
+            "dtype": "INT64",
+            "shape": [
+              1,
+              1,
+              6,
+              6
+            ],
+            "elements": 36
+          },
+          {
+            "name": "output_shape",
+            "dtype": "INT64",
+            "shape": [
+              4
+            ],
+            "elements": 4
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "344": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task344.onnx",
+      "sha256": "05bedf3ca834aadfc973c00fc91cafdb4d0ae1aaab374115d924e2e33fb1bf6c",
+      "serialized_bytes": 1205,
+      "official_cost": {
+        "memory": 0,
+        "params": 137,
+        "cost": 137
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 1,
+        "initializer_count": 5,
+        "value_info_count": 0,
+        "op_histogram": {
+          "Einsum": 1
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "output",
+            "op": "Einsum",
+            "inputs": [
+              "H",
+              "V",
+              "input",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "B",
+              "input",
+              "V",
+              "S",
+              "H",
+              "M",
+              "V"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "H",
+            "dtype": "FLOAT",
+            "shape": [
+              3,
+              4
+            ],
+            "elements": 12
+          },
+          {
+            "name": "V",
+            "dtype": "FLOAT",
+            "shape": [
+              4,
+              10
+            ],
+            "elements": 40
+          },
+          {
+            "name": "B",
+            "dtype": "FLOAT",
+            "shape": [
+              2,
+              30
+            ],
+            "elements": 60
+          },
+          {
+            "name": "S",
+            "dtype": "FLOAT",
+            "shape": [
+              3,
+              3
+            ],
+            "elements": 9
+          },
+          {
+            "name": "M",
+            "dtype": "FLOAT",
+            "shape": [
+              4,
+              4
+            ],
+            "elements": 16
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "357": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task357.onnx",
+      "sha256": "3c2e8d92b0c893c6836c64119074a2e38e7b975cf7bf8ef09654953b054e6d6c",
+      "serialized_bytes": 689,
+      "official_cost": {
+        "memory": 196,
+        "params": 61,
+        "cost": 257
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 8,
+        "initializer_count": 8,
+        "value_info_count": 0,
+        "op_histogram": {
+          "Max": 1,
+          "Min": 1,
+          "Mod": 1,
+          "QLinearConv": 1,
+          "QuantizeLinear": 2,
+          "ReduceSum": 1,
+          "Sub": 1
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "",
+            "op": "ReduceSum",
+            "inputs": [
+              "input"
+            ],
+            "outputs": [
+              "total_f"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "",
+            "op": "QuantizeLinear",
+            "inputs": [
+              "total_f",
+              "scale",
+              "neg_ten"
+            ],
+            "outputs": [
+              "period"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "",
+            "op": "Mod",
+            "inputs": [
+              "step",
+              "period"
+            ],
+            "outputs": [
+              "phase"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "period",
+              "phase"
+            ],
+            "outputs": [
+              "reflected"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "",
+            "op": "Min",
+            "inputs": [
+              "phase",
+              "reflected"
+            ],
+            "outputs": [
+              "path"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "",
+            "op": "QuantizeLinear",
+            "inputs": [
+              "total_f",
+              "scale2",
+              "neg72"
+            ],
+            "outputs": [
+              "y_zero"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "",
+            "op": "Max",
+            "inputs": [
+              "columns",
+              "path"
+            ],
+            "outputs": [
+              "code"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "",
+            "op": "QLinearConv",
+            "inputs": [
+              "code",
+              "scale",
+              "x_zero",
+              "weights",
+              "scale",
+              "neg_ten",
+              "scale",
+              "y_zero"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "step",
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              10,
+              1
+            ],
+            "elements": 10
+          },
+          {
+            "name": "columns",
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              16
+            ],
+            "elements": 16
+          },
+          {
+            "name": "neg_ten",
+            "dtype": "INT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "x_zero",
+            "dtype": "INT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "scale",
+            "dtype": "FLOAT",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "scale2",
+            "dtype": "FLOAT",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "neg72",
+            "dtype": "INT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "weights",
+            "dtype": "INT8",
+            "shape": [
+              10,
+              1,
+              1,
+              3
+            ],
+            "elements": 30
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "387": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task387.onnx",
+      "sha256": "21a0c07d0101a7c538210dc44553f807d1bddcf755746ceaabad20c69561c160",
+      "serialized_bytes": 4568,
+      "official_cost": {
+        "memory": 234,
+        "params": 95,
+        "cost": 329
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 79,
+        "initializer_count": 9,
+        "value_info_count": 78,
+        "op_histogram": {
+          "Add": 10,
+          "BitwiseAnd": 2,
+          "Cast": 8,
+          "CastLike": 8,
+          "CenterCropPad": 7,
+          "Concat": 3,
+          "Div": 5,
+          "Einsum": 8,
+          "Flatten": 4,
+          "Mean": 1,
+          "Mul": 3,
+          "ScatterElements": 3,
+          "Size": 1,
+          "Sqrt": 2,
+          "Sub": 14
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "",
+            "op": "Size",
+            "inputs": [
+              "input"
+            ],
+            "outputs": [
+              "shape_dyn"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "input",
+              "shape_dyn"
+            ],
+            "outputs": [
+              "input_f_lie"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "input_f_lie",
+              "b"
+            ],
+            "outputs": [
+              "input_f"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input_f",
+              "b"
+            ],
+            "outputs": [
+              "j"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "input_f_lie",
+              "scale"
+            ],
+            "outputs": [
+              "input_i"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input_f",
+              "b",
+              "a"
+            ],
+            "outputs": [
+              "l"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "",
+            "op": "Div",
+            "inputs": [
+              "l",
+              "j"
+            ],
+            "outputs": [
+              "n"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input_f",
+              "b",
+              "a",
+              "a"
+            ],
+            "outputs": [
+              "o"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "",
+            "op": "Div",
+            "inputs": [
+              "o",
+              "j"
+            ],
+            "outputs": [
+              "q"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input_f",
+              "b",
+              "a"
+            ],
+            "outputs": [
+              "r"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "",
+            "op": "Div",
+            "inputs": [
+              "r",
+              "j"
+            ],
+            "outputs": [
+              "t"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input_f",
+              "b",
+              "a",
+              "a"
+            ],
+            "outputs": [
+              "u"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "",
+            "op": "Div",
+            "inputs": [
+              "u",
+              "j"
+            ],
+            "outputs": [
+              "w"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "",
+            "op": "Mul",
+            "inputs": [
+              "n",
+              "n"
+            ],
+            "outputs": [
+              "x"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "q",
+              "x"
+            ],
+            "outputs": [
+              "y"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "",
+            "op": "Sqrt",
+            "inputs": [
+              "y"
+            ],
+            "outputs": [
+              "z"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "z"
+            ],
+            "outputs": [
+              "A"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "n"
+            ],
+            "outputs": [
+              "B"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "B",
+              "A"
+            ],
+            "outputs": [
+              "C"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "",
+            "op": "Flatten",
+            "inputs": [
+              "C"
+            ],
+            "outputs": [
+              "C2"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "n",
+              "z"
+            ],
+            "outputs": [
+              "D"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "D"
+            ],
+            "outputs": [
+              "E"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "",
+            "op": "Flatten",
+            "inputs": [
+              "E"
+            ],
+            "outputs": [
+              "E2"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "",
+            "op": "Mul",
+            "inputs": [
+              "t",
+              "t"
+            ],
+            "outputs": [
+              "F"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "w",
+              "F"
+            ],
+            "outputs": [
+              "G"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "",
+            "op": "Sqrt",
+            "inputs": [
+              "G"
+            ],
+            "outputs": [
+              "H"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "H"
+            ],
+            "outputs": [
+              "I"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "t"
+            ],
+            "outputs": [
+              "J"
+            ]
+          },
+          {
+            "index": 28,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "J",
+              "I"
+            ],
+            "outputs": [
+              "K"
+            ]
+          },
+          {
+            "index": 29,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "t",
+              "H"
+            ],
+            "outputs": [
+              "L"
+            ]
+          },
+          {
+            "index": 30,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "L"
+            ],
+            "outputs": [
+              "M"
+            ]
+          },
+          {
+            "index": 31,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input_f",
+              "b",
+              "a",
+              "a"
+            ],
+            "outputs": [
+              "N"
+            ]
+          },
+          {
+            "index": 32,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "j",
+              "n",
+              "t"
+            ],
+            "outputs": [
+              "P"
+            ]
+          },
+          {
+            "index": 33,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "N",
+              "P"
+            ],
+            "outputs": [
+              "Q"
+            ]
+          },
+          {
+            "index": 34,
+            "name": "",
+            "op": "Mul",
+            "inputs": [
+              "z",
+              "H"
+            ],
+            "outputs": [
+              "R"
+            ]
+          },
+          {
+            "index": 35,
+            "name": "",
+            "op": "Div",
+            "inputs": [
+              "Q",
+              "R"
+            ],
+            "outputs": [
+              "S"
+            ]
+          },
+          {
+            "index": 36,
+            "name": "",
+            "op": "Mean",
+            "inputs": [
+              "j",
+              "S"
+            ],
+            "outputs": [
+              "T"
+            ]
+          },
+          {
+            "index": 37,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "j"
+            ],
+            "outputs": [
+              "U"
+            ]
+          },
+          {
+            "index": 38,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "T"
+            ],
+            "outputs": [
+              "V"
+            ]
+          },
+          {
+            "index": 39,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "U",
+              "V"
+            ],
+            "outputs": [
+              "W"
+            ]
+          },
+          {
+            "index": 40,
+            "name": "",
+            "op": "Concat",
+            "inputs": [
+              "V",
+              "W"
+            ],
+            "outputs": [
+              "X"
+            ]
+          },
+          {
+            "index": 41,
+            "name": "",
+            "op": "Flatten",
+            "inputs": [
+              "X"
+            ],
+            "outputs": [
+              "X2_i8"
+            ]
+          },
+          {
+            "index": 42,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "X2_i8",
+              "shape_dyn"
+            ],
+            "outputs": [
+              "X_lie"
+            ]
+          },
+          {
+            "index": 43,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "X_lie",
+              "scale"
+            ],
+            "outputs": [
+              "Y"
+            ]
+          },
+          {
+            "index": 44,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "C2",
+              "c"
+            ],
+            "outputs": [
+              "5"
+            ]
+          },
+          {
+            "index": 45,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "C2",
+              "c"
+            ],
+            "outputs": [
+              "6"
+            ]
+          },
+          {
+            "index": 46,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "E2",
+              "c"
+            ],
+            "outputs": [
+              "7"
+            ]
+          },
+          {
+            "index": 47,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "E2",
+              "c"
+            ],
+            "outputs": [
+              "8"
+            ]
+          },
+          {
+            "index": 48,
+            "name": "",
+            "op": "BitwiseAnd",
+            "inputs": [
+              "A",
+              "d"
+            ],
+            "outputs": [
+              "9"
+            ]
+          },
+          {
+            "index": 49,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "6",
+              "c"
+            ],
+            "outputs": [
+              "ba"
+            ]
+          },
+          {
+            "index": 50,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "7",
+              "c"
+            ],
+            "outputs": [
+              "bb"
+            ]
+          },
+          {
+            "index": 51,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "C2",
+              "9"
+            ],
+            "outputs": [
+              "bc"
+            ]
+          },
+          {
+            "index": 52,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "E2",
+              "9"
+            ],
+            "outputs": [
+              "bd"
+            ]
+          },
+          {
+            "index": 53,
+            "name": "",
+            "op": "Concat",
+            "inputs": [
+              "5",
+              "C2",
+              "6",
+              "7",
+              "E2",
+              "8",
+              "ba",
+              "bb",
+              "bc",
+              "bd"
+            ],
+            "outputs": [
+              "bh"
+            ]
+          },
+          {
+            "index": 54,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "bh",
+              "shape_dyn"
+            ],
+            "outputs": [
+              "bh_lie"
+            ]
+          },
+          {
+            "index": 55,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "bh_lie",
+              "scale"
+            ],
+            "outputs": [
+              "bi"
+            ]
+          },
+          {
+            "index": 56,
+            "name": "",
+            "op": "ScatterElements",
+            "inputs": [
+              "g",
+              "bi",
+              "h"
+            ],
+            "outputs": [
+              "bj"
+            ]
+          },
+          {
+            "index": 57,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "bj",
+              "shape_dyn"
+            ],
+            "outputs": [
+              "bj_lie_u8"
+            ]
+          },
+          {
+            "index": 58,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "bj_lie_u8",
+              "scale"
+            ],
+            "outputs": [
+              "bj_i32"
+            ]
+          },
+          {
+            "index": 59,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "K",
+              "c"
+            ],
+            "outputs": [
+              "bk"
+            ]
+          },
+          {
+            "index": 60,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "K",
+              "c"
+            ],
+            "outputs": [
+              "bl"
+            ]
+          },
+          {
+            "index": 61,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "M",
+              "c"
+            ],
+            "outputs": [
+              "bm"
+            ]
+          },
+          {
+            "index": 62,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "M",
+              "c"
+            ],
+            "outputs": [
+              "bn"
+            ]
+          },
+          {
+            "index": 63,
+            "name": "",
+            "op": "BitwiseAnd",
+            "inputs": [
+              "I",
+              "d"
+            ],
+            "outputs": [
+              "bo"
+            ]
+          },
+          {
+            "index": 64,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "bl",
+              "c"
+            ],
+            "outputs": [
+              "bp"
+            ]
+          },
+          {
+            "index": 65,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "bm",
+              "c"
+            ],
+            "outputs": [
+              "bq"
+            ]
+          },
+          {
+            "index": 66,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "K",
+              "bo"
+            ],
+            "outputs": [
+              "br"
+            ]
+          },
+          {
+            "index": 67,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "M",
+              "bo"
+            ],
+            "outputs": [
+              "bs"
+            ]
+          },
+          {
+            "index": 68,
+            "name": "",
+            "op": "Concat",
+            "inputs": [
+              "bk",
+              "K",
+              "bl",
+              "bm",
+              "M",
+              "bn",
+              "bp",
+              "bq",
+              "br",
+              "bs"
+            ],
+            "outputs": [
+              "bw"
+            ]
+          },
+          {
+            "index": 69,
+            "name": "",
+            "op": "Flatten",
+            "inputs": [
+              "bw"
+            ],
+            "outputs": [
+              "bw2_u8"
+            ]
+          },
+          {
+            "index": 70,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "bw2_u8",
+              "shape_dyn"
+            ],
+            "outputs": [
+              "bw_lie"
+            ]
+          },
+          {
+            "index": 71,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "bw_lie",
+              "scale"
+            ],
+            "outputs": [
+              "bx"
+            ]
+          },
+          {
+            "index": 72,
+            "name": "",
+            "op": "ScatterElements",
+            "inputs": [
+              "g",
+              "bx",
+              "h"
+            ],
+            "outputs": [
+              "by"
+            ]
+          },
+          {
+            "index": 73,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "by",
+              "shape_dyn"
+            ],
+            "outputs": [
+              "by_lie_u8"
+            ]
+          },
+          {
+            "index": 74,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "by_lie_u8",
+              "scale"
+            ],
+            "outputs": [
+              "by_i32"
+            ]
+          },
+          {
+            "index": 75,
+            "name": "",
+            "op": "ScatterElements",
+            "inputs": [
+              "e8",
+              "Y",
+              "f8"
+            ],
+            "outputs": [
+              "bz8"
+            ]
+          },
+          {
+            "index": 76,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "bz8",
+              "shape_dyn"
+            ],
+            "outputs": [
+              "bz8_lie"
+            ]
+          },
+          {
+            "index": 77,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "bz8_lie",
+              "scale"
+            ],
+            "outputs": [
+              "bz_i32"
+            ]
+          },
+          {
+            "index": 78,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input_i",
+              "bz_i32",
+              "bj_i32",
+              "by_i32",
+              "scale"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "a",
+            "dtype": "FLOAT16",
+            "shape": [
+              30
+            ],
+            "elements": 30
+          },
+          {
+            "name": "b",
+            "dtype": "FLOAT16",
+            "shape": [
+              10
+            ],
+            "elements": 10
+          },
+          {
+            "name": "c",
+            "dtype": "UINT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "d",
+            "dtype": "UINT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "g",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              30
+            ],
+            "elements": 30
+          },
+          {
+            "name": "h",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              10
+            ],
+            "elements": 10
+          },
+          {
+            "name": "scale",
+            "dtype": "INT32",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "e8",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              10
+            ],
+            "elements": 10
+          },
+          {
+            "name": "f8",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              2
+            ],
+            "elements": 2
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "388": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task388.onnx",
+      "sha256": "f27fa5f4f0bcade23d02fed2a74e3c2b826b11140bd03d29f47e0c59c382a8e1",
+      "serialized_bytes": 2071,
+      "official_cost": {
+        "memory": 63,
+        "params": 22,
+        "cost": 85
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 19,
+        "initializer_count": 12,
+        "value_info_count": 18,
+        "op_histogram": {
+          "ArgMax": 1,
+          "CastLike": 7,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "GroupNormalization": 1,
+          "ReduceL2": 1,
+          "ReduceMax": 1,
+          "ReduceMin": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Tile": 1,
+          "Where": 2
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "nf",
+            "op": "ReduceL2",
+            "inputs": [
+              "input",
+              "axes_all"
+            ],
+            "outputs": [
+              "nf"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "ni",
+            "op": "CastLike",
+            "inputs": [
+              "nf",
+              "starts_bg"
+            ],
+            "outputs": [
+              "ni"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "gn",
+            "op": "GroupNormalization",
+            "inputs": [
+              "input",
+              "gn_zero",
+              "gn_zero"
+            ],
+            "outputs": [
+              "gn"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "q",
+            "op": "CastLike",
+            "inputs": [
+              "gn",
+              "eight_u8"
+            ],
+            "outputs": [
+              "q"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "qb",
+            "op": "CastLike",
+            "inputs": [
+              "q",
+              "bool_ref"
+            ],
+            "outputs": [
+              "qb"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "presence",
+            "op": "ReduceMax",
+            "inputs": [
+              "q",
+              "axes_hw"
+            ],
+            "outputs": [
+              "presence"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "color64",
+            "op": "ArgMax",
+            "inputs": [
+              "presence"
+            ],
+            "outputs": [
+              "color64"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "color_u8",
+            "op": "CastLike",
+            "inputs": [
+              "color64",
+              "eight_u8"
+            ],
+            "outputs": [
+              "color_u8"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "ends_bg",
+            "op": "Concat",
+            "inputs": [
+              "one_i32_1",
+              "ni",
+              "ni"
+            ],
+            "outputs": [
+              "ends_bg"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "background",
+            "op": "Slice",
+            "inputs": [
+              "qb",
+              "starts_bg",
+              "ends_bg",
+              "axes_slice"
+            ],
+            "outputs": [
+              "background"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "all_bg",
+            "op": "ReduceMin",
+            "inputs": [
+              "background",
+              "axes_row"
+            ],
+            "outputs": [
+              "all_bg"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "stripe",
+            "op": "Where",
+            "inputs": [
+              "all_bg",
+              "minus10_u8",
+              "eight_u8"
+            ],
+            "outputs": [
+              "stripe"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "tile_ids",
+            "op": "Where",
+            "inputs": [
+              "background",
+              "stripe",
+              "color_u8"
+            ],
+            "outputs": [
+              "tile_ids"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "ids",
+            "op": "Tile",
+            "inputs": [
+              "tile_ids",
+              "repeats"
+            ],
+            "outputs": [
+              "ids"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "ids_hid",
+            "op": "CenterCropPad",
+            "inputs": [
+              "ids",
+              "color64"
+            ],
+            "outputs": [
+              "ids_hid"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "idx_i8",
+            "op": "CastLike",
+            "inputs": [
+              "ids_hid",
+              "i8_ref"
+            ],
+            "outputs": [
+              "idx_i8"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "indices",
+            "op": "CastLike",
+            "inputs": [
+              "idx_i8",
+              "starts_bg"
+            ],
+            "outputs": [
+              "indices"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "updates_float",
+            "op": "CastLike",
+            "inputs": [
+              "ids_hid",
+              "gn"
+            ],
+            "outputs": [
+              "updates_float"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "output",
+            "op": "ScatterElements",
+            "inputs": [
+              "gn",
+              "indices",
+              "updates_float"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "axes_all",
+            "dtype": "INT64",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "axes_row",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "axes_slice",
+            "dtype": "INT32",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "starts_bg",
+            "dtype": "INT32",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "one_i32_1",
+            "dtype": "INT32",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "eight_u8",
+            "dtype": "UINT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "minus10_u8",
+            "dtype": "UINT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "repeats",
+            "dtype": "INT64",
+            "shape": [
+              4
+            ],
+            "elements": 4
+          },
+          {
+            "name": "gn_zero",
+            "dtype": "FLOAT",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "i8_ref",
+            "dtype": "INT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "bool_ref",
+            "dtype": "BOOL",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "axes_hw",
+            "dtype": "INT64",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "392": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task392.onnx",
+      "sha256": "96ed4658476f09cb77f09848081bb5830b96b6ea65c8a5a3278f28f9036e32f9",
+      "serialized_bytes": 675006,
+      "official_cost": {
+        "memory": 272,
+        "params": 57,
+        "cost": 329
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 14,
+        "initializer_count": 8,
+        "value_info_count": 0,
+        "op_histogram": {
+          "Cast": 4,
+          "Concat": 1,
+          "Einsum": 1,
+          "QLinearConv": 1,
+          "ScatterElements": 1,
+          "Sub": 1,
+          "TfIdfVectorizer": 3,
+          "Unsqueeze": 2
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "keyf",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "hq",
+              "hs",
+              "hs",
+              "hs"
+            ],
+            "outputs": [
+              "keyf"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "key",
+            "op": "Cast",
+            "inputs": [
+              "keyf"
+            ],
+            "outputs": [
+              "key"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "seq",
+            "op": "Concat",
+            "inputs": [
+              "tokA",
+              "tokA",
+              "key",
+              "key",
+              "key",
+              "tokA",
+              "key",
+              "tokA"
+            ],
+            "outputs": [
+              "seq"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "rf",
+            "op": "TfIdfVectorizer",
+            "inputs": [
+              "seq"
+            ],
+            "outputs": [
+              "rf"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "cf",
+            "op": "TfIdfVectorizer",
+            "inputs": [
+              "seq"
+            ],
+            "outputs": [
+              "cf"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "ri",
+            "op": "Cast",
+            "inputs": [
+              "rf"
+            ],
+            "outputs": [
+              "ri"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "ci",
+            "op": "Cast",
+            "inputs": [
+              "cf"
+            ],
+            "outputs": [
+              "ci"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "r4",
+            "op": "Unsqueeze",
+            "inputs": [
+              "ri",
+              "uaxes"
+            ],
+            "outputs": [
+              "r4"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "z",
+            "op": "Sub",
+            "inputs": [
+              "r4",
+              "ci"
+            ],
+            "outputs": [
+              "z"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "colorf",
+            "op": "TfIdfVectorizer",
+            "inputs": [
+              "seq"
+            ],
+            "outputs": [
+              "colorf"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "colori",
+            "op": "Cast",
+            "inputs": [
+              "colorf"
+            ],
+            "outputs": [
+              "colori"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "color4",
+            "op": "Unsqueeze",
+            "inputs": [
+              "colori",
+              "uaxes"
+            ],
+            "outputs": [
+              "color4"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "dynw",
+            "op": "ScatterElements",
+            "inputs": [
+              "basew",
+              "color4",
+              "upd1"
+            ],
+            "outputs": [
+              "dynw"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "output",
+            "op": "QLinearConv",
+            "inputs": [
+              "z",
+              "scale1",
+              "xm1",
+              "dynw",
+              "scale1",
+              "xm1",
+              "scale1",
+              "xm1"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "hq",
+            "dtype": "FLOAT",
+            "shape": [
+              10
+            ],
+            "elements": 10
+          },
+          {
+            "name": "hs",
+            "dtype": "FLOAT",
+            "shape": [
+              30
+            ],
+            "elements": 30
+          },
+          {
+            "name": "tokA",
+            "dtype": "INT32",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "xm1",
+            "dtype": "INT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "uaxes",
+            "dtype": "INT64",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "basew",
+            "dtype": "INT8",
+            "shape": [
+              10,
+              1,
+              1,
+              1
+            ],
+            "elements": 10
+          },
+          {
+            "name": "upd1",
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "scale1",
+            "dtype": "FLOAT",
+            "shape": [],
+            "elements": 1
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "397": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task397.onnx",
+      "sha256": "2361956a9b6d1391aff9d8bc4af26d5112877e0e2946b365d04e461899f4d7e1",
+      "serialized_bytes": 20809,
+      "official_cost": {
+        "memory": 249,
+        "params": 89,
+        "cost": 338
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": false,
+        "all_node_outputs_static_positive": false,
+        "standard_domains": false,
+        "finite_initializers": false,
+        "conv_bias_ub0": false,
+        "reasons": [
+          "strict_data_prop"
+        ],
+        "strict_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Gather): [ShapeInferenceError] indices must be in [-rank, rank-1].\n"
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "",
+            "op": "Shape",
+            "inputs": [
+              "input"
+            ],
+            "outputs": [
+              "batch_shape"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "input",
+              "batch_shape"
+            ],
+            "outputs": [
+              "input_cloak"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "input_cloak",
+              "one_f16"
+            ],
+            "outputs": [
+              "input_f16"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "neg_color_sidon",
+              "batch_shape"
+            ],
+            "outputs": [
+              "color_w_cloak"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "",
+            "op": "PRelu",
+            "inputs": [
+              "color_w_cloak",
+              "input_f16"
+            ],
+            "outputs": [
+              "color_cw"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "",
+            "op": "ReduceL1",
+            "inputs": [
+              "color_cw",
+              "reduce_axes012"
+            ],
+            "outputs": [
+              "color_desc"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "neg_color_mask",
+              "batch_shape"
+            ],
+            "outputs": [
+              "mask_w_cloak"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "",
+            "op": "PRelu",
+            "inputs": [
+              "mask_w_cloak",
+              "input_f16"
+            ],
+            "outputs": [
+              "mask_cw"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "neg_row_linear",
+              "batch_shape"
+            ],
+            "outputs": [
+              "row_w_cloak"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "",
+            "op": "PRelu",
+            "inputs": [
+              "mask_cw",
+              "row_w_cloak"
+            ],
+            "outputs": [
+              "row_cw"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "",
+            "op": "ReduceL1",
+            "inputs": [
+              "row_cw",
+              "reduce_axes012"
+            ],
+            "outputs": [
+              "row_desc"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "",
+            "op": "Gather",
+            "inputs": [
+              "color_desc",
+              "even_idx"
+            ],
+            "outputs": [
+              "even_color"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "",
+            "op": "Shape",
+            "inputs": [
+              "reduce_axes012"
+            ],
+            "outputs": [
+              "idx_shape3"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "",
+            "op": "TopK",
+            "inputs": [
+              "even_color",
+              "idx_shape3"
+            ],
+            "outputs": [
+              "sel_color",
+              "sel_pos"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "sel_pos"
+            ],
+            "outputs": [
+              "sel_pos_u8"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "sel_pos_u8",
+              "sel_pos_u8"
+            ],
+            "outputs": [
+              "even_col"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "even_col",
+              "even_idx"
+            ],
+            "outputs": [
+              "even_col_i32"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "",
+            "op": "Gather",
+            "inputs": [
+              "row_desc",
+              "even_col_i32"
+            ],
+            "outputs": [
+              "row_sum"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "row_sum",
+              "one_f16"
+            ],
+            "outputs": [
+              "row_minus1"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "",
+            "op": "Cast",
+            "inputs": [
+              "row_minus1"
+            ],
+            "outputs": [
+              "row_u8"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "even_col",
+              "one_u8"
+            ],
+            "outputs": [
+              "left_idx_i8"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "left_idx_i8",
+              "even_idx"
+            ],
+            "outputs": [
+              "left_idx_i32"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "",
+            "op": "Gather",
+            "inputs": [
+              "row_desc",
+              "left_idx_i32"
+            ],
+            "outputs": [
+              "left_row_sum"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "",
+            "op": "Equal",
+            "inputs": [
+              "left_row_sum",
+              "row_sum"
+            ],
+            "outputs": [
+              "same_left"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "same_left",
+              "one_u8"
+            ],
+            "outputs": [
+              "same_left_u8"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "even_col",
+              "same_left_u8"
+            ],
+            "outputs": [
+              "left_col"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "one_u8",
+              "same_left_u8"
+            ],
+            "outputs": [
+              "one_minus_u8"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "left_col",
+              "one_minus_u8"
+            ],
+            "outputs": [
+              "other_col_u8"
+            ]
+          },
+          {
+            "index": 28,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "other_col_u8",
+              "even_idx"
+            ],
+            "outputs": [
+              "other_col_i32"
+            ]
+          },
+          {
+            "index": 29,
+            "name": "",
+            "op": "Gather",
+            "inputs": [
+              "color_desc",
+              "other_col_i32"
+            ],
+            "outputs": [
+              "other_color"
+            ]
+          },
+          {
+            "index": 30,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "sel_color",
+              "idx_shape3"
+            ],
+            "outputs": [
+              "qleft_f_cloak"
+            ]
+          },
+          {
+            "index": 31,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "qleft_f_cloak",
+              "one_u8"
+            ],
+            "outputs": [
+              "qleft"
+            ]
+          },
+          {
+            "index": 32,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "other_color",
+              "one_u8"
+            ],
+            "outputs": [
+              "qright"
+            ]
+          },
+          {
+            "index": 33,
+            "name": "",
+            "op": "Flatten",
+            "inputs": [
+              "qleft"
+            ],
+            "outputs": [
+              "qleft31"
+            ]
+          },
+          {
+            "index": 34,
+            "name": "",
+            "op": "Flatten",
+            "inputs": [
+              "qright"
+            ],
+            "outputs": [
+              "qright31"
+            ]
+          },
+          {
+            "index": 35,
+            "name": "",
+            "op": "Concat",
+            "inputs": [
+              "qleft31",
+              "qright31",
+              "qleft31"
+            ],
+            "outputs": [
+              "qseq"
+            ]
+          },
+          {
+            "index": 36,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "qseq",
+              "idx_shape3"
+            ],
+            "outputs": [
+              "qseq_cloak"
+            ]
+          },
+          {
+            "index": 37,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "qseq_cloak",
+              "even_idx"
+            ],
+            "outputs": [
+              "qseq_i32"
+            ]
+          },
+          {
+            "index": 38,
+            "name": "",
+            "op": "TfIdfVectorizer",
+            "inputs": [
+              "qseq_i32"
+            ],
+            "outputs": [
+              "hcode_f"
+            ]
+          },
+          {
+            "index": 39,
+            "name": "",
+            "op": "Greater",
+            "inputs": [
+              "hcode_f",
+              "h_thresholds"
+            ],
+            "outputs": [
+              "hgate_bool"
+            ]
+          },
+          {
+            "index": 40,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "hgate_bool",
+              "idx_marker_f16"
+            ],
+            "outputs": [
+              "hgate_f16"
+            ]
+          },
+          {
+            "index": 41,
+            "name": "",
+            "op": "PRelu",
+            "inputs": [
+              "neg_one_11_f16",
+              "hgate_f16"
+            ],
+            "outputs": [
+              "neg_hgate_f16"
+            ]
+          },
+          {
+            "index": 42,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "input_cloak",
+              "one_u8"
+            ],
+            "outputs": [
+              "input_i8"
+            ]
+          },
+          {
+            "index": 43,
+            "name": "",
+            "op": "PRelu",
+            "inputs": [
+              "neg_hgate_f16",
+              "upd_slope_f16"
+            ],
+            "outputs": [
+              "updates_f16"
+            ]
+          },
+          {
+            "index": 44,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "updates_f16",
+              "one_u8"
+            ],
+            "outputs": [
+              "updates_i8"
+            ]
+          },
+          {
+            "index": 45,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "idx_marker_f16",
+              "batch_shape"
+            ],
+            "outputs": [
+              "idx_marker_cloak"
+            ]
+          },
+          {
+            "index": 46,
+            "name": "",
+            "op": "Unsqueeze",
+            "inputs": [
+              "row_u8",
+              "axes12"
+            ],
+            "outputs": [
+              "row_neg_u_i8"
+            ]
+          },
+          {
+            "index": 47,
+            "name": "",
+            "op": "Sub",
+            "inputs": [
+              "neg_row_offsets_i8",
+              "row_neg_u_i8"
+            ],
+            "outputs": [
+              "row_slope_34_i8"
+            ]
+          },
+          {
+            "index": 48,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "row_slope_34_i8",
+              "idx_shape3"
+            ],
+            "outputs": [
+              "row_slope_cloak_i8"
+            ]
+          },
+          {
+            "index": 49,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "row_slope_cloak_i8",
+              "idx_marker_f16"
+            ],
+            "outputs": [
+              "row_slope_cloak"
+            ]
+          },
+          {
+            "index": 50,
+            "name": "",
+            "op": "Unsqueeze",
+            "inputs": [
+              "left_col",
+              "axes12"
+            ],
+            "outputs": [
+              "col_pos_u_i8"
+            ]
+          },
+          {
+            "index": 51,
+            "name": "",
+            "op": "Add",
+            "inputs": [
+              "col_pos_u_i8",
+              "pos_col_offsets_i8"
+            ],
+            "outputs": [
+              "col_pos_32_i8"
+            ]
+          },
+          {
+            "index": 52,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "col_pos_32_i8",
+              "idx_shape3"
+            ],
+            "outputs": [
+              "col_pos_u5_cloak_i8"
+            ]
+          },
+          {
+            "index": 53,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "col_pos_u5_cloak_i8",
+              "idx_marker_f16"
+            ],
+            "outputs": [
+              "col_pos_u5_f16"
+            ]
+          },
+          {
+            "index": 54,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "col_marker_f16",
+              "batch_shape"
+            ],
+            "outputs": [
+              "col_marker_cloak"
+            ]
+          },
+          {
+            "index": 55,
+            "name": "",
+            "op": "PRelu",
+            "inputs": [
+              "col_marker_cloak",
+              "col_pos_u5_f16"
+            ],
+            "outputs": [
+              "col_slope_coord_cloak"
+            ]
+          },
+          {
+            "index": 56,
+            "name": "",
+            "op": "PRelu",
+            "inputs": [
+              "idx_marker_cloak",
+              "col_slope_coord_cloak"
+            ],
+            "outputs": [
+              "idx_col_stage"
+            ]
+          },
+          {
+            "index": 57,
+            "name": "",
+            "op": "PRelu",
+            "inputs": [
+              "idx_col_stage",
+              "row_slope_cloak"
+            ],
+            "outputs": [
+              "idx_float5"
+            ]
+          },
+          {
+            "index": 58,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "idx_float5",
+              "idx_shape3"
+            ],
+            "outputs": [
+              "scatternd_idx"
+            ]
+          },
+          {
+            "index": 59,
+            "name": "",
+            "op": "ScatterND",
+            "inputs": [
+              "input_i8",
+              "scatternd_idx",
+              "updates_i8"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "even_idx",
+            "dtype": "INT32",
+            "shape": [
+              5
+            ],
+            "elements": 5
+          },
+          {
+            "name": "one_u8",
+            "dtype": "INT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "one_f16",
+            "dtype": "FLOAT16",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "h_thresholds",
+            "dtype": "FLOAT",
+            "shape": [
+              4
+            ],
+            "elements": 4
+          },
+          {
+            "name": "col_marker_f16",
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1,
+              4
+            ],
+            "elements": 4
+          },
+          {
+            "name": "idx_marker_f16",
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              2,
+              1,
+              1,
+              4
+            ],
+            "elements": 8
+          },
+          {
+            "name": "upd_slope_f16",
+            "dtype": "FLOAT16",
+            "shape": [
+              2,
+              2,
+              1,
+              1
+            ],
+            "elements": 4
+          },
+          {
+            "name": "neg_one_11_f16",
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "neg_row_offsets_i8",
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              4,
+              1
+            ],
+            "elements": 4
+          },
+          {
+            "name": "pos_col_offsets_i8",
+            "dtype": "INT8",
+            "shape": [
+              2,
+              1,
+              1,
+              1,
+              1
+            ],
+            "elements": 2
+          },
+          {
+            "name": "neg_color_sidon",
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "elements": 10
+          },
+          {
+            "name": "neg_color_mask",
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "elements": 10
+          },
+          {
+            "name": "neg_row_linear",
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              30,
+              1
+            ],
+            "elements": 30
+          },
+          {
+            "name": "reduce_axes012",
+            "dtype": "INT64",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "axes12",
+            "dtype": "INT64",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    },
+    "398": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/baseline/task398.onnx",
+      "sha256": "339e0b25b3f45862f51b98c239755e597aca040b951acec5065b380a753d2513",
+      "serialized_bytes": 1933,
+      "official_cost": {
+        "memory": 144,
+        "params": 202,
+        "cost": 346
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 5,
+        "initializer_count": 10,
+        "value_info_count": 4,
+        "op_histogram": {
+          "Concat": 1,
+          "Div": 1,
+          "Einsum": 2,
+          "Resize": 1
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "graph": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "T"
+            ],
+            "outputs": [
+              "n"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "",
+            "op": "Concat",
+            "inputs": [
+              "resize_data",
+              "n"
+            ],
+            "outputs": [
+              "N"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "",
+            "op": "Div",
+            "inputs": [
+              "resize_data",
+              "n"
+            ],
+            "outputs": [
+              "roi"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "",
+            "op": "Resize",
+            "inputs": [
+              "resize_data",
+              "roi",
+              "",
+              "out_size"
+            ],
+            "outputs": [
+              "inside"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "Q0",
+              "N",
+              "K",
+              "V",
+              "V",
+              "V",
+              "Q0",
+              "Q4",
+              "N",
+              "K",
+              "V",
+              "V",
+              "V",
+              "Q1",
+              "N",
+              "K",
+              "V",
+              "V",
+              "V",
+              "Q1",
+              "Q4",
+              "N",
+              "K",
+              "V",
+              "V",
+              "V",
+              "Q2",
+              "N",
+              "K",
+              "V",
+              "V",
+              "V",
+              "Q2",
+              "Q4",
+              "N",
+              "K",
+              "V",
+              "V",
+              "V",
+              "Q3",
+              "N",
+              "K",
+              "V",
+              "V",
+              "V",
+              "Q3",
+              "Q4",
+              "N",
+              "K",
+              "V",
+              "V",
+              "V",
+              "Q4",
+              "N",
+              "K",
+              "V",
+              "V",
+              "V",
+              "Q4",
+              "Q4",
+              "N",
+              "K",
+              "V",
+              "V",
+              "V",
+              "input",
+              "T",
+              "inside",
+              "inside"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "T",
+            "dtype": "FLOAT",
+            "shape": [
+              10,
+              10
+            ],
+            "elements": 100
+          },
+          {
+            "name": "V",
+            "dtype": "FLOAT",
+            "shape": [
+              30,
+              2
+            ],
+            "elements": 60
+          },
+          {
+            "name": "K",
+            "dtype": "FLOAT",
+            "shape": [
+              3,
+              2,
+              2,
+              2
+            ],
+            "elements": 24
+          },
+          {
+            "name": "resize_data",
+            "dtype": "FLOAT",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "out_size",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "Q0",
+            "dtype": "FLOAT",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "Q1",
+            "dtype": "FLOAT",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "Q2",
+            "dtype": "FLOAT",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "Q3",
+            "dtype": "FLOAT",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "Q4",
+            "dtype": "FLOAT",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      }
+    }
+  },
+  "summary": {
+    "tasks": 12,
+    "authority_hash_ok": true
+  }
+}

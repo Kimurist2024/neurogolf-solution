@@ -1,0 +1,85 @@
+# task088.onnx
+
+## Initializers
+color_coordinates: float32 (10,) [1.0, 4.0242228507995605, 4.030968189239502, 4.037328720092773, 4.043358325958252, 4.0491042137146, 4.054606914520264, 4.059885025024414, 4.064970016479492, 4.069881439208984]
+slice_axes: int32 (2,) [2, 3]
+row_axes: int64 (2,) [1, 3]
+col_axes: int64 (2,) [1, 2]
+zero_bool: bool (1,) [False]
+one_i8: int8 (1,) [1]
+marker_bias: float32 (1,) [-60.0]
+small_scale: float32 (1,) [0.13500000536441803]
+channel_axis: int64 (1,) [1]
+
+## Value info
+marker_affine_f: FLOAT [1, 1, 1, 1]
+marker_f: FLOAT [1, 1, 1, 1]
+marker_h: FLOAT16 [1, 1, 1, 1]
+row_signal: FLOAT16 [1, 1]
+col_signal: FLOAT16 [1, 1]
+top_i64: INT64 [1]
+bottom_i64: INT64 [1]
+left_i64: INT64 [1]
+right_i64: INT64 [1]
+top: INT8 [1]
+bottom: INT8 [1]
+left: INT8 [1]
+right: INT8 [1]
+row_start: INT8 [1]
+col_start: INT8 [1]
+starts_i8: INT8 [2]
+ends_i8: INT8 [2]
+starts: INT32 [2]
+ends: INT32 [2]
+non_background: INT8 [1, 1, 1, 1]
+roi_mask: INT8 [1, 1, 1, 1]
+roi_mask_f: FLOAT [1, 1, 1, 1]
+occupancy: FLOAT []
+dynamic_scale: FLOAT [1]
+dynamic_bias: FLOAT [1]
+labels_f: FLOAT [1, 1, 1, 1]
+label_indices: INT32 [1, 1, 1, 1]
+zero_canvas: INT8 [1, 1, 1, 1]
+present: BOOL [1, 1, 1, 1]
+updates: INT8 [1, 1, 1, 1]
+colored_affine_f: FLOAT [1, 1, 1, 1]
+colored_i8: INT8 [1, 1, 1, 1]
+colored_h: FLOAT16 [1, 1, 1, 1]
+object_mask_h: FLOAT16 [1, 1, 1, 1]
+
+## Nodes
+00 GroupNormalization ['input', 'color_coordinates', 'marker_bias'] -> ['marker_affine_f'] {'epsilon': 9.999999747378752e-06, 'num_groups': 10, 'stash_type': 1}
+01 HardSwish ['marker_affine_f'] -> ['marker_f'] {}
+02 Cast ['marker_f'] -> ['marker_h'] {'to': 10}
+03 ReduceL1 ['marker_h', 'row_axes'] -> ['row_signal'] {'keepdims': 0}
+04 ReduceL1 ['marker_h', 'col_axes'] -> ['col_signal'] {'keepdims': 0}
+05 ArgMax ['row_signal'] -> ['top_i64'] {'axis': 1, 'keepdims': 0, 'select_last_index': 0}
+06 ArgMax ['row_signal'] -> ['bottom_i64'] {'axis': 1, 'keepdims': 0, 'select_last_index': 1}
+07 ArgMax ['col_signal'] -> ['left_i64'] {'axis': 1, 'keepdims': 0, 'select_last_index': 0}
+08 ArgMax ['col_signal'] -> ['right_i64'] {'axis': 1, 'keepdims': 0, 'select_last_index': 1}
+09 Cast ['top_i64'] -> ['top'] {'to': 3}
+10 Cast ['bottom_i64'] -> ['bottom'] {'to': 3}
+11 Cast ['left_i64'] -> ['left'] {'to': 3}
+12 Cast ['right_i64'] -> ['right'] {'to': 3}
+13 Add ['top', 'one_i8'] -> ['row_start'] {}
+14 Add ['left', 'one_i8'] -> ['col_start'] {}
+15 Concat ['row_start', 'col_start'] -> ['starts_i8'] {'axis': 0}
+16 Concat ['bottom', 'right'] -> ['ends_i8'] {'axis': 0}
+17 Cast ['starts_i8'] -> ['starts'] {'to': 6}
+18 Cast ['ends_i8'] -> ['ends'] {'to': 6}
+19 GroupNormalization ['input', 'small_scale', 'small_scale'] -> ['colored_affine_f'] {'epsilon': 9.999999747378752e-06, 'num_groups': 10, 'stash_type': 1}
+20 CastLike ['colored_affine_f', 'one_i8'] -> ['colored_i8'] {}
+21 CastLike ['colored_i8', 'marker_h'] -> ['colored_h'] {}
+22 ReduceL1 ['colored_h', 'channel_axis'] -> ['object_mask_h'] {'keepdims': 1}
+23 CastLike ['object_mask_h', 'one_i8'] -> ['non_background'] {}
+24 Slice ['non_background', 'starts', 'ends', 'slice_axes'] -> ['roi_mask'] {}
+25 CastLike ['roi_mask', 'marker_f'] -> ['roi_mask_f'] {}
+26 ReduceMean ['roi_mask_f'] -> ['occupancy'] {'keepdims': 0}
+27 Einsum ['marker_f', 'color_coordinates'] -> ['dynamic_scale'] {'equation': b'nchw,c->n'}
+28 Einsum ['marker_f', 'color_coordinates', 'occupancy'] -> ['dynamic_bias'] {'equation': b'nchw,c,->n'}
+29 GroupNormalization ['roi_mask_f', 'dynamic_scale', 'dynamic_bias'] -> ['labels_f'] {'epsilon': 0.5936726927757263, 'num_groups': 1, 'stash_type': 1}
+30 CastLike ['labels_f', 'slice_axes'] -> ['label_indices'] {}
+31 CastLike ['marker_f', 'one_i8'] -> ['zero_canvas'] {}
+32 CastLike ['labels_f', 'zero_bool'] -> ['present'] {}
+33 CastLike ['present', 'one_i8'] -> ['updates'] {}
+34 ScatterElements ['zero_canvas', 'label_indices', 'updates'] -> ['output'] {'axis': 1, 'reduction': b'none'}

@@ -1,0 +1,7212 @@
+{
+  "authority": "submission_base_8009.46.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "models_scanned": 400,
+  "method": {
+    "rank": "exact rational Gaussian elimination over serialized values",
+    "approximate_svd": false,
+    "shared_initializer_rule": "remove only when every graph occurrence is covered",
+    "factor_reuse_rule": "deduplicate by dtype+shape+raw bytes against all surviving initializers and selected factors",
+    "cost": "official ORT_DISABLE_ALL profile plus exact added activation bytes and parameter delta",
+    "candidate_emission": "strict-lower global choices only"
+  },
+  "node_census": {
+    "Conv": 156,
+    "Gemm": 7,
+    "MatMul": 4
+  },
+  "task_census": {
+    "tasks_with_target_op": 37,
+    "official_profile_matches_ledger": 37
+  },
+  "constant_position_census": {
+    "Conv:weight": 135,
+    "Conv:bias": 9,
+    "Conv:dynamic_weight": 21,
+    "Gemm:dynamic_weight": 3,
+    "Gemm:weight": 4,
+    "MatMul:weight": 4,
+    "Gemm:bias": 1
+  },
+  "structure_census": {
+    "block_group_plans": 0,
+    "conv_axis_partitions": 60,
+    "conv_stored_exact_factorizations": 46,
+    "depthwise_pointwise_scans": 16,
+    "exact_depthwise_then_pointwise": 14,
+    "pointwise_depthwise_scans": 16,
+    "exact_pointwise_then_depthwise": 15,
+    "existing_depthwise_kernels": 3,
+    "conv_shared_bank_parameter_reductions": 2,
+    "conv_parameter_reducing_partitions": 11,
+    "pointwise_then_depthwise_parameter_reductions": 5,
+    "matrix_rank_scans": 7,
+    "matrix_diagonal": 2,
+    "matrix_onehot_selection": 1
+  },
+  "official_profiles": {
+    "5": {
+      "memory": 2112,
+      "params": 213,
+      "cost": 2325
+    },
+    "9": {
+      "memory": 2567,
+      "params": 52,
+      "cost": 2619
+    },
+    "12": {
+      "memory": 0,
+      "params": 710,
+      "cost": 710
+    },
+    "18": {
+      "memory": 4520,
+      "params": 233,
+      "cost": 4753
+    },
+    "21": {
+      "memory": 48,
+      "params": 3,
+      "cost": 51
+    },
+    "22": {
+      "memory": 50,
+      "params": 13,
+      "cost": 63
+    },
+    "39": {
+      "memory": 35,
+      "params": 7,
+      "cost": 42
+    },
+    "80": {
+      "memory": 2837,
+      "params": 213,
+      "cost": 3050
+    },
+    "103": {
+      "memory": 4,
+      "params": 11,
+      "cost": 15
+    },
+    "107": {
+      "memory": 365,
+      "params": 299,
+      "cost": 664
+    },
+    "137": {
+      "memory": 196,
+      "params": 52,
+      "cost": 248
+    },
+    "146": {
+      "memory": 36,
+      "params": 4,
+      "cost": 40
+    },
+    "158": {
+      "memory": 6709,
+      "params": 869,
+      "cost": 7578
+    },
+    "168": {
+      "memory": 237,
+      "params": 178,
+      "cost": 415
+    },
+    "177": {
+      "memory": 48,
+      "params": 33,
+      "cost": 81
+    },
+    "178": {
+      "memory": 206,
+      "params": 56,
+      "cost": 262
+    },
+    "184": {
+      "memory": 389,
+      "params": 32,
+      "cost": 421
+    },
+    "192": {
+      "memory": 88,
+      "params": 1521,
+      "cost": 1609
+    },
+    "193": {
+      "memory": 0,
+      "params": 170,
+      "cost": 170
+    },
+    "200": {
+      "memory": 200,
+      "params": 146,
+      "cost": 346
+    },
+    "207": {
+      "memory": 72,
+      "params": 40,
+      "cost": 112
+    },
+    "230": {
+      "memory": 52,
+      "params": 56,
+      "cost": 108
+    },
+    "233": {
+      "memory": 6991,
+      "params": 317,
+      "cost": 7308
+    },
+    "235": {
+      "memory": 36,
+      "params": 28,
+      "cost": 64
+    },
+    "244": {
+      "memory": 32,
+      "params": 9,
+      "cost": 41
+    },
+    "259": {
+      "memory": 134,
+      "params": 53,
+      "cost": 187
+    },
+    "275": {
+      "memory": 12,
+      "params": 416,
+      "cost": 428
+    },
+    "284": {
+      "memory": 465,
+      "params": 52,
+      "cost": 517
+    },
+    "295": {
+      "memory": 20,
+      "params": 117,
+      "cost": 137
+    },
+    "297": {
+      "memory": 320,
+      "params": 51,
+      "cost": 371
+    },
+    "340": {
+      "memory": 1014,
+      "params": 159,
+      "cost": 1173
+    },
+    "343": {
+      "memory": 140,
+      "params": 33,
+      "cost": 173
+    },
+    "345": {
+      "memory": 248,
+      "params": 141,
+      "cost": 389
+    },
+    "349": {
+      "memory": 3225,
+      "params": 339,
+      "cost": 3564
+    },
+    "367": {
+      "memory": 1959,
+      "params": 220,
+      "cost": 2179
+    },
+    "370": {
+      "memory": 824,
+      "params": 120,
+      "cost": 944
+    },
+    "379": {
+      "memory": 1570,
+      "params": 377,
+      "cost": 1947
+    }
+  },
+  "consecutive_linear_edges": [],
+  "initializer_rows": [
+    {
+      "task": 5,
+      "initializer": "qW",
+      "shape": [
+        1,
+        10,
+        1,
+        1
+      ],
+      "dtype": "float32",
+      "elements": 10,
+      "nonzero": 9,
+      "uses": 2,
+      "all_uses_are_linear_weights": false,
+      "op_types": [
+        "Conv",
+        "Einsum"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 20,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 11,
+          "parameter_delta": 1
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 11,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 76,
+          "official_delta_lower_bound_with_factors": 77,
+          "official_delta_lower_bound_even_if_all_factors_reused": 66
+        },
+        {
+          "kind": "conv_1x1_matrix_structure",
+          "input_to_output": {},
+          "output_to_input": {}
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 9,
+      "initializer": "color_w",
+      "shape": [
+        1,
+        10,
+        1,
+        1
+      ],
+      "dtype": "float32",
+      "elements": 10,
+      "nonzero": 10,
+      "uses": 101,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 20,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 11,
+          "parameter_delta": 1
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 11,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 404,
+          "official_delta_lower_bound_with_factors": 405,
+          "official_delta_lower_bound_even_if_all_factors_reused": 394
+        },
+        {
+          "kind": "conv_1x1_matrix_structure",
+          "input_to_output": {},
+          "output_to_input": {
+            "selection": true,
+            "selection_plus_one": false,
+            "permutation": false,
+            "selection_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 12,
+      "initializer": "w",
+      "shape": [
+        10,
+        1,
+        7,
+        10
+      ],
+      "dtype": "float32",
+      "elements": 700,
+      "nonzero": 646,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "rank": 1,
+              "factor_params": 710,
+              "parameter_delta": 10,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                7,
+                7,
+                7,
+                7,
+                7,
+                7,
+                7,
+                7,
+                7,
+                7
+              ],
+              "rank": 7,
+              "factor_params": 1190,
+              "parameter_delta": 490,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                7,
+                7,
+                7,
+                7,
+                7,
+                7,
+                7,
+                7,
+                7,
+                7
+              ],
+              "rank": 7,
+              "factor_params": 1190,
+              "parameter_delta": 490,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "rank": 1,
+              "factor_params": 710,
+              "parameter_delta": 10,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": false,
+          "factor_params": 710,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": false,
+          "factor_params": 710,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 2,
+          "factor_params": 160,
+          "parameter_delta": -540,
+          "requires_reshape_batch_and_added_activation": true,
+          "added_activation_lower_bound": 72000,
+          "official_delta_lower_bound_with_factors": 71460,
+          "official_delta_lower_bound_even_if_all_factors_reused": 71300
+        }
+      ],
+      "group": 10,
+      "existing_depthwise": true,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 18,
+      "initializer": "q_w",
+      "shape": [
+        1,
+        10,
+        2,
+        8
+      ],
+      "dtype": "float32",
+      "elements": 160,
+      "nonzero": 54,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 26,
+              "parameter_delta": -134,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  8
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 28,
+              "parameter_delta": -132,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  8
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 82,
+              "parameter_delta": -78,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  8
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 161,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  2,
+                  8
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 170,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 26,
+          "parameter_delta": -134
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 161,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 368,
+          "official_delta_lower_bound_with_factors": 369,
+          "official_delta_lower_bound_even_if_all_factors_reused": 208
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 80,
+      "initializer": "wcol",
+      "shape": [
+        1,
+        10,
+        1,
+        1
+      ],
+      "dtype": "float32",
+      "elements": 10,
+      "nonzero": 10,
+      "uses": 3,
+      "all_uses_are_linear_weights": false,
+      "op_types": [
+        "Cast",
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 20,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 11,
+          "parameter_delta": 1
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 11,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 408,
+          "official_delta_lower_bound_with_factors": 409,
+          "official_delta_lower_bound_even_if_all_factors_reused": 398
+        },
+        {
+          "kind": "conv_1x1_matrix_structure",
+          "input_to_output": {},
+          "output_to_input": {
+            "selection": true,
+            "selection_plus_one": false,
+            "permutation": false,
+            "selection_indices": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 107,
+      "initializer": "color_w",
+      "shape": [
+        1,
+        10,
+        1,
+        1
+      ],
+      "dtype": "float32",
+      "elements": 10,
+      "nonzero": 9,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 11,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 20,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 11,
+          "parameter_delta": 1
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 11,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 100,
+          "official_delta_lower_bound_with_factors": 101,
+          "official_delta_lower_bound_even_if_all_factors_reused": 90
+        },
+        {
+          "kind": "conv_1x1_matrix_structure",
+          "input_to_output": {},
+          "output_to_input": {}
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 177,
+      "initializer": "psph",
+      "shape": [
+        1,
+        1
+      ],
+      "dtype": "float16",
+      "elements": 1,
+      "nonzero": 1,
+      "uses": 15,
+      "all_uses_are_linear_weights": false,
+      "op_types": [
+        "Add",
+        "Einsum",
+        "Gemm",
+        "Mod",
+        "Sub"
+      ],
+      "families": [
+        {
+          "kind": "matrix_exact_rank",
+          "matrix_shape": [
+            1,
+            1
+          ],
+          "rank": 1,
+          "factor_params": 2,
+          "parameter_delta": 1,
+          "structure": {
+            "diagonal": true,
+            "identity": false,
+            "selection": true,
+            "selection_plus_one": false,
+            "permutation": true,
+            "selection_indices": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "task": 178,
+      "initializer": "WP",
+      "shape": [
+        1,
+        10,
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "elements": 40,
+      "nonzero": 27,
+      "uses": 13,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 14,
+              "parameter_delta": -26,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  2
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                2
+              ],
+              "rank": 2,
+              "factor_params": 44,
+              "parameter_delta": 4,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  2,
+                  10,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  2,
+                  1,
+                  2
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                2
+              ],
+              "rank": 2,
+              "factor_params": 44,
+              "parameter_delta": 4,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  2,
+                  10,
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  2,
+                  2,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 41,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  2,
+                  2
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 50,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 14,
+          "parameter_delta": -26
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 41,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 52,
+          "official_delta_lower_bound_with_factors": 53,
+          "official_delta_lower_bound_even_if_all_factors_reused": 12
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 184,
+      "initializer": "W",
+      "shape": [
+        10,
+        1,
+        1,
+        1
+      ],
+      "dtype": "float16",
+      "elements": 10,
+      "nonzero": 10,
+      "uses": 4,
+      "all_uses_are_linear_weights": false,
+      "op_types": [
+        "CastLike",
+        "Conv",
+        "Einsum"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "rank": 1,
+              "factor_params": 20,
+              "parameter_delta": 10,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "rank": 1,
+              "factor_params": 20,
+              "parameter_delta": 10,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "rank": 1,
+              "factor_params": 20,
+              "parameter_delta": 10,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "rank": 1,
+              "factor_params": 20,
+              "parameter_delta": 10,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 20,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 20,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 11,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": true,
+          "added_activation_lower_bound": 18080,
+          "official_delta_lower_bound_with_factors": 18081,
+          "official_delta_lower_bound_even_if_all_factors_reused": 18070
+        }
+      ],
+      "group": 10,
+      "existing_depthwise": true,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 192,
+      "initializer": "W",
+      "shape": [
+        10,
+        10,
+        3,
+        5
+      ],
+      "dtype": "float32",
+      "elements": 1500,
+      "nonzero": 1500,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                10
+              ],
+              "rank": 10,
+              "factor_params": 1600,
+              "parameter_delta": 100
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                30
+              ],
+              "rank": 30,
+              "factor_params": 2400,
+              "parameter_delta": 900
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                30
+              ],
+              "rank": 30,
+              "factor_params": 2400,
+              "parameter_delta": 900,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  30,
+                  10,
+                  1,
+                  5
+                ],
+                [
+                  10,
+                  30,
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                10
+              ],
+              "rank": 10,
+              "factor_params": 1600,
+              "parameter_delta": 100,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  10,
+                  10,
+                  3,
+                  5
+                ],
+                [
+                  10,
+                  10,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            2,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "exact": false,
+          "stored_dtype_exact_factors": false,
+          "factor_params": 250,
+          "parameter_delta": -1250
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            10,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "exact": false,
+          "stored_dtype_exact_factors": false,
+          "factor_params": 250,
+          "parameter_delta": -1250
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 10,
+          "factor_params": 1600,
+          "parameter_delta": 100,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 36000,
+          "official_delta_lower_bound_with_factors": 36100,
+          "official_delta_lower_bound_even_if_all_factors_reused": 34500
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 193,
+      "initializer": "W",
+      "shape": [
+        10,
+        1,
+        4,
+        4
+      ],
+      "dtype": "float32",
+      "elements": 160,
+      "nonzero": 60,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "rank": 1,
+              "factor_params": 170,
+              "parameter_delta": 10,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                4,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "rank": 4,
+              "factor_params": 320,
+              "parameter_delta": 160,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                4,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "rank": 4,
+              "factor_params": 320,
+              "parameter_delta": 160,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "rank": 1,
+              "factor_params": 170,
+              "parameter_delta": 10,
+              "stored_dtype_exact_factors": false,
+              "factor_build_reason": "grouped per-block rank census; sequential factors require duplicated group-local banks"
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": false,
+          "factor_params": 170,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": false,
+          "factor_params": 170,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 2,
+          "factor_params": 52,
+          "parameter_delta": -108,
+          "requires_reshape_batch_and_added_activation": true,
+          "added_activation_lower_bound": 72000,
+          "official_delta_lower_bound_with_factors": 71892,
+          "official_delta_lower_bound_even_if_all_factors_reused": 71840
+        }
+      ],
+      "group": 10,
+      "existing_depthwise": true,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 200,
+      "initializer": "W_kernel",
+      "shape": [
+        2,
+        1,
+        10
+      ],
+      "dtype": "float16",
+      "elements": 20,
+      "nonzero": 10,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 21,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1,
+                  10
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                2
+              ],
+              "rank": 2,
+              "factor_params": 24,
+              "parameter_delta": 4,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  2,
+                  1,
+                  10
+                ],
+                [
+                  2,
+                  2,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            2
+          ],
+          "exact": false,
+          "stored_dtype_exact_factors": false,
+          "factor_params": 12,
+          "parameter_delta": -8
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 22,
+          "parameter_delta": 2
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 2,
+          "factor_params": 24,
+          "parameter_delta": 4,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 120,
+          "official_delta_lower_bound_with_factors": 124,
+          "official_delta_lower_bound_even_if_all_factors_reused": 100
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 207,
+      "initializer": "Wagg",
+      "shape": [
+        1,
+        10,
+        2,
+        2
+      ],
+      "dtype": "float32",
+      "elements": 40,
+      "nonzero": 40,
+      "uses": 2,
+      "all_uses_are_linear_weights": false,
+      "op_types": [
+        "Conv",
+        "Einsum"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 14,
+              "parameter_delta": -26,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  2
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 22,
+              "parameter_delta": -18,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  2,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  2
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 22,
+              "parameter_delta": -18,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  1,
+                  2,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 41,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  2,
+                  2
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 50,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 14,
+          "parameter_delta": -26
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 41,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 56,
+          "official_delta_lower_bound_with_factors": 57,
+          "official_delta_lower_bound_even_if_all_factors_reused": 16
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 233,
+      "initializer": "rotw",
+      "shape": [
+        9,
+        4
+      ],
+      "dtype": "float16",
+      "elements": 36,
+      "nonzero": 36,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "MatMul"
+      ],
+      "families": [
+        {
+          "kind": "matrix_exact_rank",
+          "matrix_shape": [
+            9,
+            4
+          ],
+          "rank": 4,
+          "factor_params": 52,
+          "parameter_delta": 16,
+          "structure": {}
+        }
+      ]
+    },
+    {
+      "task": 259,
+      "initializer": "invT",
+      "shape": [
+        1,
+        1,
+        3,
+        3,
+        1
+      ],
+      "dtype": "float32",
+      "elements": 9,
+      "nonzero": 9,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "MatMul"
+      ],
+      "families": [
+        {
+          "kind": "matrix_exact_rank",
+          "matrix_shape": [
+            9,
+            1
+          ],
+          "rank": 1,
+          "factor_params": 10,
+          "parameter_delta": 1,
+          "structure": {}
+        }
+      ]
+    },
+    {
+      "task": 275,
+      "initializer": "GW",
+      "shape": [
+        2,
+        1,
+        1,
+        1
+      ],
+      "dtype": "float32",
+      "elements": 2,
+      "nonzero": 1,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 3,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 3,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 3,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 3,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 3,
+          "parameter_delta": 1
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1,
+            0
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 4,
+          "parameter_delta": 2
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 3,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 4,
+          "official_delta_lower_bound_with_factors": 5,
+          "official_delta_lower_bound_even_if_all_factors_reused": 2
+        },
+        {
+          "kind": "conv_1x1_matrix_structure",
+          "input_to_output": {},
+          "output_to_input": {
+            "selection": true,
+            "selection_plus_one": false,
+            "permutation": false,
+            "selection_indices": [
+              0
+            ]
+          }
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 295,
+      "initializer": "M",
+      "shape": [
+        2,
+        3
+      ],
+      "dtype": "float32",
+      "elements": 6,
+      "nonzero": 6,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Gemm"
+      ],
+      "families": [
+        {
+          "kind": "matrix_exact_rank",
+          "matrix_shape": [
+            2,
+            3
+          ],
+          "rank": 2,
+          "factor_params": 10,
+          "parameter_delta": 4,
+          "structure": {}
+        }
+      ]
+    },
+    {
+      "task": 297,
+      "initializer": "conv_w",
+      "shape": [
+        1,
+        10,
+        1,
+        2
+      ],
+      "dtype": "float32",
+      "elements": 20,
+      "nonzero": 8,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 12,
+              "parameter_delta": -8,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  2
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 12,
+              "parameter_delta": -8,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  2
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 21,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 21,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 30,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 12,
+          "parameter_delta": -8
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 21,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 24,
+          "official_delta_lower_bound_with_factors": 25,
+          "official_delta_lower_bound_even_if_all_factors_reused": 4
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 340,
+      "initializer": "oneMM",
+      "shape": [
+        1,
+        1
+      ],
+      "dtype": "float32",
+      "elements": 1,
+      "nonzero": 1,
+      "uses": 6,
+      "all_uses_are_linear_weights": false,
+      "op_types": [
+        "Einsum",
+        "Gemm"
+      ],
+      "families": [
+        {
+          "kind": "matrix_exact_rank",
+          "matrix_shape": [
+            1,
+            1
+          ],
+          "rank": 1,
+          "factor_params": 2,
+          "parameter_delta": 1,
+          "structure": {
+            "diagonal": true,
+            "identity": true,
+            "selection": true,
+            "selection_plus_one": true,
+            "permutation": true,
+            "selection_indices": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "task": 345,
+      "initializer": "Wpack",
+      "shape": [
+        1,
+        10,
+        1,
+        10
+      ],
+      "dtype": "float32",
+      "elements": 100,
+      "nonzero": 20,
+      "uses": 6,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 20,
+              "parameter_delta": -80,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  10
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 20,
+              "parameter_delta": -80,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  10
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 101,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  10
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0,
+                1
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 101,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  10,
+                  1,
+                  10
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 110,
+          "parameter_delta": 10
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 20,
+          "parameter_delta": -80
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 101,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 24,
+          "official_delta_lower_bound_with_factors": 25,
+          "official_delta_lower_bound_even_if_all_factors_reused": -76
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    },
+    {
+      "task": 349,
+      "initializer": "combine",
+      "shape": [
+        2,
+        1
+      ],
+      "dtype": "int32",
+      "elements": 2,
+      "nonzero": 2,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "MatMul"
+      ],
+      "families": [
+        {
+          "kind": "matrix_exact_rank",
+          "matrix_shape": [
+            2,
+            1
+          ],
+          "rank": 1,
+          "factor_params": 3,
+          "parameter_delta": 1,
+          "structure": {}
+        }
+      ]
+    },
+    {
+      "task": 367,
+      "initializer": "w",
+      "shape": [
+        3,
+        1
+      ],
+      "dtype": "uint64",
+      "elements": 3,
+      "nonzero": 3,
+      "uses": 1,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "MatMul"
+      ],
+      "families": [
+        {
+          "kind": "matrix_exact_rank",
+          "matrix_shape": [
+            3,
+            1
+          ],
+          "rank": 1,
+          "factor_params": 4,
+          "parameter_delta": 1,
+          "structure": {}
+        }
+      ]
+    },
+    {
+      "task": 379,
+      "initializer": "kwcode",
+      "shape": [
+        1,
+        1,
+        3
+      ],
+      "dtype": "float16",
+      "elements": 3,
+      "nonzero": 3,
+      "uses": 2,
+      "all_uses_are_linear_weights": true,
+      "op_types": [
+        "Conv"
+      ],
+      "families": [
+        {
+          "kind": "conv_axis_partitions",
+          "plans": [
+            {
+              "first_spatial_axes": [],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 4,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1,
+                  3
+                ]
+              ]
+            },
+            {
+              "first_spatial_axes": [
+                0
+              ],
+              "exact_ranks_by_group": [
+                1
+              ],
+              "rank": 1,
+              "factor_params": 4,
+              "parameter_delta": 1,
+              "stored_dtype_exact_factors": true,
+              "factor_shapes": [
+                [
+                  1,
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  1,
+                  1
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "depthwise_then_pointwise",
+          "exact_ranks_by_input_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 4,
+          "parameter_delta": 1
+        },
+        {
+          "kind": "pointwise_then_depthwise",
+          "exact_ranks_by_output_channel": [
+            1
+          ],
+          "exact": true,
+          "stored_dtype_exact_factors": true,
+          "factor_params": 4,
+          "parameter_delta": 1
+        },
+        {
+          "kind": "shared_outer_product_bank",
+          "rank": 1,
+          "factor_params": 4,
+          "parameter_delta": 1,
+          "requires_reshape_batch_and_added_activation": false,
+          "added_activation_lower_bound": 120,
+          "official_delta_lower_bound_with_factors": 121,
+          "official_delta_lower_bound_even_if_all_factors_reused": 117
+        }
+      ],
+      "group": 1,
+      "existing_depthwise": false,
+      "exact_stricter_block_groups": []
+    }
+  ],
+  "global_factor_choices": [
+    {
+      "task": 9,
+      "actions": [
+        {
+          "task": 9,
+          "initializer": "color_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [],
+          "rank": 1,
+          "removed_params": 10,
+          "activation_bytes": 404,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "color_w"
+      ],
+      "removed_params": 10,
+      "new_unique_params": 11,
+      "added_activation_bytes": 404,
+      "official_cost_delta": 405,
+      "projected_official_cost": 3024,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:aeecbb3b1aed358ac7f9d029020a77f3dafcb2e6d4e524864454114ab991231e",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 9,
+      "actions": [
+        {
+          "task": 9,
+          "initializer": "color_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0
+          ],
+          "rank": 1,
+          "removed_params": 10,
+          "activation_bytes": 404,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "color_w"
+      ],
+      "removed_params": 10,
+      "new_unique_params": 11,
+      "added_activation_bytes": 404,
+      "official_cost_delta": 405,
+      "projected_official_cost": 3024,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:aeecbb3b1aed358ac7f9d029020a77f3dafcb2e6d4e524864454114ab991231e",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 9,
+      "actions": [
+        {
+          "task": 9,
+          "initializer": "color_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            1
+          ],
+          "rank": 1,
+          "removed_params": 10,
+          "activation_bytes": 404,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "color_w"
+      ],
+      "removed_params": 10,
+      "new_unique_params": 11,
+      "added_activation_bytes": 404,
+      "official_cost_delta": 405,
+      "projected_official_cost": 3024,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:aeecbb3b1aed358ac7f9d029020a77f3dafcb2e6d4e524864454114ab991231e",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 9,
+      "actions": [
+        {
+          "task": 9,
+          "initializer": "color_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0,
+            1
+          ],
+          "rank": 1,
+          "removed_params": 10,
+          "activation_bytes": 404,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "color_w"
+      ],
+      "removed_params": 10,
+      "new_unique_params": 11,
+      "added_activation_bytes": 404,
+      "official_cost_delta": 405,
+      "projected_official_cost": 3024,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:aeecbb3b1aed358ac7f9d029020a77f3dafcb2e6d4e524864454114ab991231e",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 18,
+      "actions": [
+        {
+          "task": 18,
+          "initializer": "q_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [],
+          "rank": 1,
+          "removed_params": 160,
+          "activation_bytes": 3600,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              30,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "q_w"
+      ],
+      "removed_params": 160,
+      "new_unique_params": 26,
+      "added_activation_bytes": 3600,
+      "official_cost_delta": 3466,
+      "projected_official_cost": 8219,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:143de3a0e04132658d3c3d7087e2b201facebd593af25fd77b2f3508baa8a6b9",
+        "<f4:1x1x2x8:3ecae451e32c566e539174d1258120e12b82b9494fca5900a1d429d8e00ddf08"
+      ]
+    },
+    {
+      "task": 18,
+      "actions": [
+        {
+          "task": 18,
+          "initializer": "q_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0
+          ],
+          "rank": 1,
+          "removed_params": 160,
+          "activation_bytes": 2760,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              23,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "q_w"
+      ],
+      "removed_params": 160,
+      "new_unique_params": 28,
+      "added_activation_bytes": 2760,
+      "official_cost_delta": 2628,
+      "projected_official_cost": 7381,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x2x1:29f0fdf30a21163bd5d37f39f18a2eb759e15fc7b8914a9a8db36b2d77a1e172",
+        "<f4:1x1x1x8:39bf11d4ac84fee1eb6310ac5651ed61009839a6974ffd88e15c3a7c456dec57"
+      ]
+    },
+    {
+      "task": 18,
+      "actions": [
+        {
+          "task": 18,
+          "initializer": "q_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            1
+          ],
+          "rank": 1,
+          "removed_params": 160,
+          "activation_bytes": 480,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              30,
+              4
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "q_w"
+      ],
+      "removed_params": 160,
+      "new_unique_params": 82,
+      "added_activation_bytes": 480,
+      "official_cost_delta": 402,
+      "projected_official_cost": 5155,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x8:17f72ca77368c49725cf952a01d3b391d396df14db10bdb348db8d3d42ac544e",
+        "<f4:1x1x2x1:434b26042aff3fb844a4c4c6be0d81a079b0ce84cfb8190679024404e5dc4822"
+      ]
+    },
+    {
+      "task": 18,
+      "actions": [
+        {
+          "task": 18,
+          "initializer": "q_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0,
+            1
+          ],
+          "rank": 1,
+          "removed_params": 160,
+          "activation_bytes": 368,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              23,
+              4
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "q_w"
+      ],
+      "removed_params": 160,
+      "new_unique_params": 161,
+      "added_activation_bytes": 368,
+      "official_cost_delta": 369,
+      "projected_official_cost": 5122,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x2x8:0261c279d29a071b73eb0842852a5e3e707fc09c637029edc21ce1570e8a0944",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 107,
+      "actions": [
+        {
+          "task": 107,
+          "initializer": "color_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [],
+          "rank": 1,
+          "removed_params": 10,
+          "activation_bytes": 100,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              5,
+              5
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "color_w"
+      ],
+      "removed_params": 10,
+      "new_unique_params": 11,
+      "added_activation_bytes": 100,
+      "official_cost_delta": 101,
+      "projected_official_cost": 765,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:143de3a0e04132658d3c3d7087e2b201facebd593af25fd77b2f3508baa8a6b9",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 107,
+      "actions": [
+        {
+          "task": 107,
+          "initializer": "color_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0
+          ],
+          "rank": 1,
+          "removed_params": 10,
+          "activation_bytes": 100,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              5,
+              5
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "color_w"
+      ],
+      "removed_params": 10,
+      "new_unique_params": 11,
+      "added_activation_bytes": 100,
+      "official_cost_delta": 101,
+      "projected_official_cost": 765,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:143de3a0e04132658d3c3d7087e2b201facebd593af25fd77b2f3508baa8a6b9",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 107,
+      "actions": [
+        {
+          "task": 107,
+          "initializer": "color_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            1
+          ],
+          "rank": 1,
+          "removed_params": 10,
+          "activation_bytes": 100,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              5,
+              5
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "color_w"
+      ],
+      "removed_params": 10,
+      "new_unique_params": 11,
+      "added_activation_bytes": 100,
+      "official_cost_delta": 101,
+      "projected_official_cost": 765,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:143de3a0e04132658d3c3d7087e2b201facebd593af25fd77b2f3508baa8a6b9",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 107,
+      "actions": [
+        {
+          "task": 107,
+          "initializer": "color_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0,
+            1
+          ],
+          "rank": 1,
+          "removed_params": 10,
+          "activation_bytes": 100,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              5,
+              5
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "color_w"
+      ],
+      "removed_params": 10,
+      "new_unique_params": 11,
+      "added_activation_bytes": 100,
+      "official_cost_delta": 101,
+      "projected_official_cost": 765,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:143de3a0e04132658d3c3d7087e2b201facebd593af25fd77b2f3508baa8a6b9",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 178,
+      "actions": [
+        {
+          "task": 178,
+          "initializer": "WP",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [],
+          "rank": 1,
+          "removed_params": 40,
+          "activation_bytes": 46800,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ],
+            [
+              1,
+              1,
+              30,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "WP"
+      ],
+      "removed_params": 40,
+      "new_unique_params": 14,
+      "added_activation_bytes": 46800,
+      "official_cost_delta": 46774,
+      "projected_official_cost": 47036,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:143de3a0e04132658d3c3d7087e2b201facebd593af25fd77b2f3508baa8a6b9",
+        "<f4:1x1x2x2:296b163d80c62fcb88db8d2bcd99b0afc0c91c509ca3a725c8ff4ee9a6c47575"
+      ]
+    },
+    {
+      "task": 178,
+      "actions": [
+        {
+          "task": 178,
+          "initializer": "WP",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0
+          ],
+          "rank": 2,
+          "removed_params": 40,
+          "activation_bytes": 3120,
+          "activation_shapes": [
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ],
+            [
+              1,
+              2,
+              1,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "WP"
+      ],
+      "removed_params": 40,
+      "new_unique_params": 44,
+      "added_activation_bytes": 3120,
+      "official_cost_delta": 3124,
+      "projected_official_cost": 3386,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:2x10x2x1:8ac68798ade962da4416e97de9b81da002cfbb40ab25328ec0474a6f6e9d28cb",
+        "<f4:1x2x1x2:a666c95f0822c64e01580063e9bb27c629d4d0534e3163a9611738599f97df2a"
+      ]
+    },
+    {
+      "task": 178,
+      "actions": [
+        {
+          "task": 178,
+          "initializer": "WP",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            1
+          ],
+          "rank": 2,
+          "removed_params": 40,
+          "activation_bytes": 3120,
+          "activation_shapes": [
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ],
+            [
+              1,
+              2,
+              30,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "WP"
+      ],
+      "removed_params": 40,
+      "new_unique_params": 44,
+      "added_activation_bytes": 3120,
+      "official_cost_delta": 3124,
+      "projected_official_cost": 3386,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:2x10x1x2:8ac68798ade962da4416e97de9b81da002cfbb40ab25328ec0474a6f6e9d28cb",
+        "<f4:1x2x2x1:a666c95f0822c64e01580063e9bb27c629d4d0534e3163a9611738599f97df2a"
+      ]
+    },
+    {
+      "task": 178,
+      "actions": [
+        {
+          "task": 178,
+          "initializer": "WP",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0,
+            1
+          ],
+          "rank": 1,
+          "removed_params": 40,
+          "activation_bytes": 52,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "WP"
+      ],
+      "removed_params": 40,
+      "new_unique_params": 41,
+      "added_activation_bytes": 52,
+      "official_cost_delta": 53,
+      "projected_official_cost": 315,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x2x2:7945b5f0659793cc1089dee6e16a04e350e441ceb8fe95f10c7dceae2b0d4962",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 192,
+      "actions": [
+        {
+          "task": 192,
+          "initializer": "W",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            1
+          ],
+          "rank": 30,
+          "removed_params": 1500,
+          "activation_bytes": 108000,
+          "activation_shapes": [
+            [
+              1,
+              30,
+              30,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "W"
+      ],
+      "removed_params": 1500,
+      "new_unique_params": 2400,
+      "added_activation_bytes": 108000,
+      "official_cost_delta": 108900,
+      "projected_official_cost": 110509,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:30x10x1x5:daac741ce044daa089340b965093df97cf445c1666a81a0adc7293d600261236",
+        "<f4:10x30x3x1:86c290ea3343a9d4148a33985ec08cb9ef9686c21d1a25e99c1fd32efaf28298"
+      ]
+    },
+    {
+      "task": 192,
+      "actions": [
+        {
+          "task": 192,
+          "initializer": "W",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0,
+            1
+          ],
+          "rank": 10,
+          "removed_params": 1500,
+          "activation_bytes": 36000,
+          "activation_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "W"
+      ],
+      "removed_params": 1500,
+      "new_unique_params": 1600,
+      "added_activation_bytes": 36000,
+      "official_cost_delta": 36100,
+      "projected_official_cost": 37709,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:10x10x3x5:7f65e85d8dcc52ee2f2e2241b099b08d46a1c921cb46a2dfa7bc255a7743d52f",
+        "<f4:10x10x1x1:77c0baf32850e55ce77945f5c2a6240043b7445c20ff10ab6c1c16cbcd699447"
+      ]
+    },
+    {
+      "task": 200,
+      "actions": [
+        {
+          "task": 200,
+          "initializer": "W_kernel",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [],
+          "rank": 1,
+          "removed_params": 20,
+          "activation_bytes": 20,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              10
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "W_kernel"
+      ],
+      "removed_params": 20,
+      "new_unique_params": 21,
+      "added_activation_bytes": 20,
+      "official_cost_delta": 21,
+      "projected_official_cost": 367,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f2:1x1x1:81c2a21c99c2e261ad6d91443ffb383b57c321d7e33f09cb64c8b946bb14939b",
+        "<f2:2x1x10:ded5495983c5b0682d6fa3e1e0e6e6e9ba05170c0af8118dc14a4075a246075f"
+      ]
+    },
+    {
+      "task": 200,
+      "actions": [
+        {
+          "task": 200,
+          "initializer": "W_kernel",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0
+          ],
+          "rank": 2,
+          "removed_params": 20,
+          "activation_bytes": 120,
+          "activation_shapes": [
+            [
+              1,
+              2,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "W_kernel"
+      ],
+      "removed_params": 20,
+      "new_unique_params": 24,
+      "added_activation_bytes": 120,
+      "official_cost_delta": 124,
+      "projected_official_cost": 470,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f2:2x1x10:937f07927d4c93b04ad7ec3766db1889f779e7993aa6e9f4c9a98b1183a93496",
+        "<f2:2x2x1:314751446dcce24e540f85fef0e101b1a75bfc90b95e9c09283e0c8ad87f234f"
+      ]
+    },
+    {
+      "task": 275,
+      "actions": [
+        {
+          "task": 275,
+          "initializer": "GW",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [],
+          "rank": 1,
+          "removed_params": 2,
+          "activation_bytes": 4,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "GW"
+      ],
+      "removed_params": 2,
+      "new_unique_params": 3,
+      "added_activation_bytes": 4,
+      "official_cost_delta": 5,
+      "projected_official_cost": 433,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x1x1x1:c68830a25204a09f8e77aada6bc5807f607cccaaa0ebb2a7122d317584478a8b",
+        "<f4:2x1x1x1:434b26042aff3fb844a4c4c6be0d81a079b0ce84cfb8190679024404e5dc4822"
+      ]
+    },
+    {
+      "task": 275,
+      "actions": [
+        {
+          "task": 275,
+          "initializer": "GW",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0
+          ],
+          "rank": 1,
+          "removed_params": 2,
+          "activation_bytes": 4,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "GW"
+      ],
+      "removed_params": 2,
+      "new_unique_params": 3,
+      "added_activation_bytes": 4,
+      "official_cost_delta": 5,
+      "projected_official_cost": 433,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x1x1x1:c68830a25204a09f8e77aada6bc5807f607cccaaa0ebb2a7122d317584478a8b",
+        "<f4:2x1x1x1:434b26042aff3fb844a4c4c6be0d81a079b0ce84cfb8190679024404e5dc4822"
+      ]
+    },
+    {
+      "task": 275,
+      "actions": [
+        {
+          "task": 275,
+          "initializer": "GW",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            1
+          ],
+          "rank": 1,
+          "removed_params": 2,
+          "activation_bytes": 4,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "GW"
+      ],
+      "removed_params": 2,
+      "new_unique_params": 3,
+      "added_activation_bytes": 4,
+      "official_cost_delta": 5,
+      "projected_official_cost": 433,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x1x1x1:c68830a25204a09f8e77aada6bc5807f607cccaaa0ebb2a7122d317584478a8b",
+        "<f4:2x1x1x1:434b26042aff3fb844a4c4c6be0d81a079b0ce84cfb8190679024404e5dc4822"
+      ]
+    },
+    {
+      "task": 275,
+      "actions": [
+        {
+          "task": 275,
+          "initializer": "GW",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0,
+            1
+          ],
+          "rank": 1,
+          "removed_params": 2,
+          "activation_bytes": 4,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "GW"
+      ],
+      "removed_params": 2,
+      "new_unique_params": 3,
+      "added_activation_bytes": 4,
+      "official_cost_delta": 5,
+      "projected_official_cost": 433,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x1x1x1:c68830a25204a09f8e77aada6bc5807f607cccaaa0ebb2a7122d317584478a8b",
+        "<f4:2x1x1x1:434b26042aff3fb844a4c4c6be0d81a079b0ce84cfb8190679024404e5dc4822"
+      ]
+    },
+    {
+      "task": 297,
+      "actions": [
+        {
+          "task": 297,
+          "initializer": "conv_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [],
+          "rank": 1,
+          "removed_params": 20,
+          "activation_bytes": 120,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "conv_w"
+      ],
+      "removed_params": 20,
+      "new_unique_params": 12,
+      "added_activation_bytes": 120,
+      "official_cost_delta": 112,
+      "projected_official_cost": 483,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:76214f21f44eff23f058a54d6b578fbe4eabfcee81955b9fffa89d447f029bd7",
+        "<f4:1x1x1x2:434b26042aff3fb844a4c4c6be0d81a079b0ce84cfb8190679024404e5dc4822"
+      ]
+    },
+    {
+      "task": 297,
+      "actions": [
+        {
+          "task": 297,
+          "initializer": "conv_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0
+          ],
+          "rank": 1,
+          "removed_params": 20,
+          "activation_bytes": 120,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "conv_w"
+      ],
+      "removed_params": 20,
+      "new_unique_params": 12,
+      "added_activation_bytes": 120,
+      "official_cost_delta": 112,
+      "projected_official_cost": 483,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:76214f21f44eff23f058a54d6b578fbe4eabfcee81955b9fffa89d447f029bd7",
+        "<f4:1x1x1x2:434b26042aff3fb844a4c4c6be0d81a079b0ce84cfb8190679024404e5dc4822"
+      ]
+    },
+    {
+      "task": 297,
+      "actions": [
+        {
+          "task": 297,
+          "initializer": "conv_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            1
+          ],
+          "rank": 1,
+          "removed_params": 20,
+          "activation_bytes": 24,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              6
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "conv_w"
+      ],
+      "removed_params": 20,
+      "new_unique_params": 21,
+      "added_activation_bytes": 24,
+      "official_cost_delta": 25,
+      "projected_official_cost": 396,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x2:8bb0bb30438dc5c653b6e9b6de6676cb63c74e067bc5647cf44fe65af58cc208",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 297,
+      "actions": [
+        {
+          "task": 297,
+          "initializer": "conv_w",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0,
+            1
+          ],
+          "rank": 1,
+          "removed_params": 20,
+          "activation_bytes": 24,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              6
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "conv_w"
+      ],
+      "removed_params": 20,
+      "new_unique_params": 21,
+      "added_activation_bytes": 24,
+      "official_cost_delta": 25,
+      "projected_official_cost": 396,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x2:8bb0bb30438dc5c653b6e9b6de6676cb63c74e067bc5647cf44fe65af58cc208",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 345,
+      "actions": [
+        {
+          "task": 345,
+          "initializer": "Wpack",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [],
+          "rank": 1,
+          "removed_params": 100,
+          "activation_bytes": 720,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              1,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "Wpack"
+      ],
+      "removed_params": 100,
+      "new_unique_params": 20,
+      "added_activation_bytes": 720,
+      "official_cost_delta": 640,
+      "projected_official_cost": 1029,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:aa9db793adddaf99cd966da670eb8fe215b530dbc57024fd43cdf22014779e0a",
+        "<f4:1x1x1x10:45128f706b910588ce57d78f623e86fac34220d4ab5ab3d841360f279fc3b281"
+      ]
+    },
+    {
+      "task": 345,
+      "actions": [
+        {
+          "task": 345,
+          "initializer": "Wpack",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0
+          ],
+          "rank": 1,
+          "removed_params": 100,
+          "activation_bytes": 720,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              1,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "Wpack"
+      ],
+      "removed_params": 100,
+      "new_unique_params": 20,
+      "added_activation_bytes": 720,
+      "official_cost_delta": 640,
+      "projected_official_cost": 1029,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x1:aa9db793adddaf99cd966da670eb8fe215b530dbc57024fd43cdf22014779e0a",
+        "<f4:1x1x1x10:45128f706b910588ce57d78f623e86fac34220d4ab5ab3d841360f279fc3b281"
+      ]
+    },
+    {
+      "task": 345,
+      "actions": [
+        {
+          "task": 345,
+          "initializer": "Wpack",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            1
+          ],
+          "rank": 1,
+          "removed_params": 100,
+          "activation_bytes": 24,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "Wpack"
+      ],
+      "removed_params": 100,
+      "new_unique_params": 101,
+      "added_activation_bytes": 24,
+      "official_cost_delta": 25,
+      "projected_official_cost": 414,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x10:b6457d066bb6192f4918e4e0154d5a7aba4e744eb0dbf0c80d6ba1c05990e11e",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 345,
+      "actions": [
+        {
+          "task": 345,
+          "initializer": "Wpack",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0,
+            1
+          ],
+          "rank": 1,
+          "removed_params": 100,
+          "activation_bytes": 24,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              1,
+              1
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "Wpack"
+      ],
+      "removed_params": 100,
+      "new_unique_params": 101,
+      "added_activation_bytes": 24,
+      "official_cost_delta": 25,
+      "projected_official_cost": 414,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f4:1x10x1x10:b6457d066bb6192f4918e4e0154d5a7aba4e744eb0dbf0c80d6ba1c05990e11e",
+        "<f4:1x1x1x1:e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      ]
+    },
+    {
+      "task": 379,
+      "actions": [
+        {
+          "task": 379,
+          "initializer": "kwcode",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [],
+          "rank": 1,
+          "removed_params": 3,
+          "activation_bytes": 120,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "kwcode"
+      ],
+      "removed_params": 3,
+      "new_unique_params": 4,
+      "added_activation_bytes": 120,
+      "official_cost_delta": 121,
+      "projected_official_cost": 2068,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f2:1x1x1:505114fe537172ea35e17ca1a7516edac516a89b31f983f7c6387d5d2bb462aa",
+        "<f2:1x1x3:2de31f8a156a7b2f6ca10d4cb6107c1df919c17bbd408e27abd5c31151905952"
+      ]
+    },
+    {
+      "task": 379,
+      "actions": [
+        {
+          "task": 379,
+          "initializer": "kwcode",
+          "kind": "conv_exact_axis_factor",
+          "first_spatial_axes": [
+            0
+          ],
+          "rank": 1,
+          "removed_params": 3,
+          "activation_bytes": 120,
+          "activation_shapes": [
+            [
+              1,
+              1,
+              30
+            ],
+            [
+              1,
+              1,
+              30
+            ]
+          ],
+          "activation_unresolved": false
+        }
+      ],
+      "removed_initializers": [
+        "kwcode"
+      ],
+      "removed_params": 3,
+      "new_unique_params": 4,
+      "added_activation_bytes": 120,
+      "official_cost_delta": 121,
+      "projected_official_cost": 2068,
+      "strict_lower": false,
+      "new_factor_keys": [
+        "<f2:1x1x3:2de31f8a156a7b2f6ca10d4cb6107c1df919c17bbd408e27abd5c31151905952",
+        "<f2:1x1x1:505114fe537172ea35e17ca1a7516edac516a89b31f983f7c6387d5d2bb462aa"
+      ]
+    }
+  ],
+  "direct_simplification_rows": [
+    {
+      "task": 177,
+      "initializer": "psph",
+      "kind": "matrix_diagonal_mul",
+      "structure": {
+        "diagonal": true,
+        "identity": false,
+        "selection": true,
+        "selection_plus_one": false,
+        "permutation": true,
+        "selection_indices": [
+          0
+        ]
+      },
+      "all_uses_are_linear_weights": false,
+      "strict_lower_eligible": false,
+      "barrier": "initializer also has non-linear-weight uses and cannot be removed"
+    },
+    {
+      "task": 340,
+      "initializer": "oneMM",
+      "kind": "matrix_onehot_gather",
+      "structure": {
+        "diagonal": true,
+        "identity": true,
+        "selection": true,
+        "selection_plus_one": true,
+        "permutation": true,
+        "selection_indices": [
+          0
+        ]
+      },
+      "all_uses_are_linear_weights": false,
+      "strict_lower_eligible": false,
+      "barrier": "initializer also has non-linear-weight uses and cannot be removed"
+    }
+  ],
+  "direct_strict_lower_count": 0,
+  "strict_lower_count": 0,
+  "strict_lower_choices": [],
+  "candidate_files": []
+}

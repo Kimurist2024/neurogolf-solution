@@ -1,0 +1,19 @@
+{
+  "task": 13,
+  "proved": true,
+  "ordered_distinct_nonzero_colour_pairs": 72,
+  "colour_selector_checks": 90,
+  "colour_recovery_checks": 48600,
+  "minimum_colour_selector_absolute_margin": 0.25,
+  "identities": {
+    "marker_colour_feature": "[1, k-c]",
+    "marker_colour_selector": "[0.25-(k-c)^2, -1]",
+    "marker_positive_iff": "k=c for integer channels k,c in 0..9",
+    "background_feature": "[1,k]",
+    "background_E0_F0_score": "0.0625-1000000*k^2",
+    "background_positive_iff": "k=0",
+    "recovery": "S=c0+c1; T=c0*p0+c1*(p0+d); (T-S*p0)/d=c1; S-c1=c0"
+  },
+  "colour_independent_geometry": "All geometry moments use nz_f=[0,1,...,1], so they depend on marker occupancy/positions but not nonzero colour IDs. Colours enter only through the proved recovery and selector identities.",
+  "reduction": "Executing all 37,800 structural states with canonical colours [1,2] covers all 72 ordered distinct nonzero colour pairs because changing colours only relocates the exactly-positive output channel selectors."
+}

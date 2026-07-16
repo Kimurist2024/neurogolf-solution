@@ -1,0 +1,55 @@
+{
+  "lane": "c22",
+  "baseline_archive": "submission_base_7999.13.zip",
+  "rejected": [
+    {
+      "task": 9,
+      "candidate": "candidates/task009_r01_static2072.onnx",
+      "sha256": "64cfd428f621598ffd7f89a6980480cdd520d7ebe85455d836555a9d53638798",
+      "baseline_cost": 2619,
+      "candidate_cost": 2072,
+      "known_disable_all": "265/265, errors=0",
+      "known_default": "265/265, errors=0",
+      "lookup_red_flags": "101 TfIdfVectorizer nodes",
+      "retained_fresh_evidence": "lane_root21 reports 0/5000 on a separate dual-mode stream; lane_sound_a2 direct audit reports 375/5000",
+      "reason": "explicitly excluded failed lookup lineage; not a generator-rule compiler"
+    },
+    {
+      "task": 9,
+      "candidate": "candidates/task009_r02_static2457.onnx",
+      "sha256": "a27a90fbfe69afc7ad46efa5a8ea03a73071aa876f9d4bed7376a33621bf53af",
+      "baseline_cost": 2619,
+      "candidate_cost": 2457,
+      "known_disable_all": "265/265, errors=0",
+      "known_default": "265/265, errors=0",
+      "fresh_disable_all": "4327/5000, wrong=673, errors=0, accuracy=86.54%",
+      "fresh_default": "4327/5000, wrong=673, errors=0, accuracy=86.54%",
+      "runtime_shape_mismatches": 0,
+      "reason": "scalar propagation pruning is not equivalent to the generator rule"
+    },
+    {
+      "task": 76,
+      "candidates": [
+        {"path": "candidates/task076_r01_static1676.onnx", "sha256": "9eae24b32dbd8d7086bfbf6641b8ec7f2db426330f527dd1c4b1bd2ee9110711"},
+        {"path": "candidates/task076_r02_static1704.onnx", "sha256": "333bdfe9bdefaa78fc785f6e0af04eb0d931c845f26f66983dfcbe5b0cfcdded"},
+        {"path": "candidates/task076_r03_static1912.onnx", "sha256": "61eafd102b2cbd5d69cf1200b2bb24679b1022ba0e7f8a72042dfe345cd42ba8"},
+        {"path": "candidates/task076_r04_static1918.onnx", "sha256": "7f9be3498aa4156462503b400160794d4e76ee8ec0aa3709341472195245ff41"},
+        {"path": "candidates/task076_r05_static1930.onnx", "sha256": "dea465672f41a08b1694d952849fe1178e4cff86d5faa028368e85f64f5501ad"},
+        {"path": "candidates/task076_r06_static1971.onnx", "sha256": "99efef4c5b23582360e76073ab6a8b076034e8b7855c457a0c2a626b56116df2"},
+        {"path": "candidates/task076_r07_static1973.onnx", "sha256": "794983e332d263b2f9120c46440d4005f40620ea4765ebbb1de1dc9e9c3d4ed0"},
+        {"path": "candidates/task076_r08_static2029.onnx", "sha256": "6227ff66515acd9ec318f14dfb727e8ed5177aca1f64ea31545b791986468f3f"}
+      ],
+      "baseline_cost": 2550,
+      "candidate_cost": null,
+      "known_disable_all": "SESSION_ERROR for every candidate: unsupported int8/uint8 TopK",
+      "known_default": "SESSION_ERROR for every candidate: CenterCropPad shape contract",
+      "reason": "all eight archive leads fail the runtime/session-error-zero gate before fresh testing"
+    },
+    {
+      "task": 76,
+      "candidate": "raw-generator sound rebuild",
+      "candidate_cost": null,
+      "reason": "impossible: two valid generator parameterizations have identical input and outputs differing at 12 cells"
+    }
+  ]
+}

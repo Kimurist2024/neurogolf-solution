@@ -1,0 +1,97 @@
+{
+  "task": 121,
+  "baseline_sha256": "e7bce1643482ae7121290f25a504663888f8da12ec8ef5b4f6605b98b68bf843",
+  "candidate_sha256": "caf95e8c8ed7d2117f0c6b5e6b746d987e08d2c881e9fbf21e52a40ab7e75602",
+  "baseline_cost": {
+    "memory": 82,
+    "params": 43,
+    "cost": 125
+  },
+  "candidate_cost": {
+    "memory": 82,
+    "params": 42,
+    "cost": 124
+  },
+  "rewrite": "Slice axis-1 start -12 and 0 both clamp to 0 for extent 10",
+  "checker_full": true,
+  "shape_cloak": {
+    "present": true,
+    "reason": "GroupNormalization preserves the input [1,10,30,30] shape, but gnq is declared [1,1,1,1]; both CastLike outputs preserve that runtime shape and are declared [1,1,1,1] as well",
+    "baseline_declared": {
+      "gnq": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "qin": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "qini": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "candidate_declared": {
+      "gnq": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "qin": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "qini": [
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "baseline_representative_runtime": [
+    {
+      "mode": "disabled",
+      "session": "ok",
+      "run": "ok",
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ]
+    },
+    {
+      "mode": "default",
+      "session": "ok",
+      "run": "ok",
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ]
+    }
+  ],
+  "candidate_representative_runtime": [
+    {
+      "mode": "disabled",
+      "session_or_run": "Fail: [ONNXRuntimeError] : 1 : FAIL : Non-zero status code returned while running QLinearConv node. Name:'offu' Status Message: Input channels C is not equal to kernel channels * group. C: 0 kernel channels: 1 group: 1"
+    },
+    {
+      "mode": "default",
+      "session_or_run": "Fail: [ONNXRuntimeError] : 1 : FAIL : Non-zero status code returned while running QLinearConv node. Name:'offu_token_3' Status Message: Input channels C is not equal to kernel channels * group. C: 0 kernel channels: 1 group: 1"
+    }
+  ],
+  "decision": "reject_shape_cloak_and_runtime_errors",
+  "fresh5000_started": false
+}

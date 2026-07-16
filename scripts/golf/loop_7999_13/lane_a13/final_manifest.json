@@ -1,0 +1,51 @@
+{
+  "lane": "a13",
+  "baseline": {
+    "zip": "submission_base_7999.13.zip",
+    "zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "score": 7999.13
+  },
+  "tasks": [20, 30, 31, 42, 55, 59, 64],
+  "baseline_costs": {
+    "20": 156,
+    "30": 162,
+    "31": 227,
+    "42": 217,
+    "55": 234,
+    "59": 156,
+    "64": 271
+  },
+  "coverage": {
+    "archive_inventory_global": {
+      "zips_seen": 1195,
+      "zip_members_seen": 224111,
+      "loose_observations_seen": 118938,
+      "unique_different_models": 9572
+    },
+    "target_retained_candidates_profiled": 44,
+    "target_loose_exact_byte_distinct_models_screened": 227
+  },
+  "outcomes": {
+    "20": "Four profiled candidates are nominally cheaper but all fail known data or runtime; the two known-correct candidates both cost 156, equal to baseline.",
+    "30": "Both retained lower-static candidates keep a 51-input Einsum and fail the structural gate; the prior exact-factor/full-history audit found no sound lower factorization.",
+    "31": "All eight retained candidates are known-correct but cost at least 227, equal to baseline; six additional full-history candidates also profile at or above baseline.",
+    "42": "All retained candidates keep a 31-input giant Einsum; every non-giant loose-history model screens at or above cost 217.",
+    "55": "All retained candidates keep a 19-28-input giant Einsum; prior exact-rank and refit work found no known-correct lower-cost standard graph.",
+    "59": "All retained candidates keep an 18-41-input giant Einsum; all structurally valid loose-history models screen at or above cost 156.",
+    "64": "All retained candidates keep a 58-input giant Einsum; all structurally valid loose-history models screen at or above cost 271."
+  },
+  "winners": [],
+  "verified_gain": 0.0,
+  "fresh5000_run": false,
+  "fresh5000_skip_reason": "No candidate passed the prerequisite strictly-cheaper plus complete-known plus structural gates.",
+  "root_artifacts_modified": false,
+  "root_submission_created": false,
+  "evidence": [
+    "scripts/golf/loop_7999_13/lane_a13/model_manifest.json",
+    "scripts/golf/loop_7999_13/lane_a13/current_model_audit.json",
+    "scripts/golf/loop_7999_13/lane_a13/retained_scan.json",
+    "scripts/golf/loop_7999_13/lane_a13/loose_history_scan.json",
+    "scripts/golf/loop_7999_13/lane_b7/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_a7/REPORT.md"
+  ]
+}

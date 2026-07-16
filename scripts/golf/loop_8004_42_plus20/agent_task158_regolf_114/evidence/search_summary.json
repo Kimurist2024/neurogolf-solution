@@ -1,0 +1,42 @@
+{
+  "baseline_cost": 7529,
+  "baseline_scan": {
+    "dead_initializers": 0,
+    "identical_typed_initializer_aliases": 0,
+    "duplicate_pure_node_signatures": 0,
+    "dead_node_outputs": [
+      "low_rank_values",
+      "high_rank_values"
+    ],
+    "dead_output_disposition": "Both are schema-required Single outputs of TopK and cannot be omitted under full ONNX checker.",
+    "value_info_only_removal_score_effect": 0
+  },
+  "explored": [
+    {
+      "candidate": "task158_uint8_rank_topk.onnx",
+      "idea": "replace masked float16 rank payloads with uint8 positional ranks",
+      "decision": "REJECT",
+      "reason": "ONNX checker passes but ORT CPU has no TopK uint8 kernel in either required mode"
+    },
+    {
+      "candidate": "task158_anchor_bias_shift.onnx",
+      "cost": 7527,
+      "decision": "SOUND_BUT_DOMINATED",
+      "reason": "exact bias translation, superseded by initializer CSE"
+    },
+    {
+      "candidate": "task158_anchor_bias_shift_alias.onnx",
+      "cost": 7526,
+      "decision": "SOUND_BUT_DOMINATED",
+      "reason": "one alias, superseded by exact x2 scaling with two aliases"
+    },
+    {
+      "candidate": "task158_anchor_bias_shift_scaled_alias.onnx",
+      "cost": 7525,
+      "decision": "ACCEPT_SOUND_STRICTLY_CHEAPER"
+    }
+  ],
+  "scatter_gating": "The cost-7529 -1 base gate is already the smallest safe typed carrier found: one [1,3] float16 output. Moving the gate to final [1,18] indices or adding Mod/Clip increases official memory.",
+  "permutation_initializer": "Empirical best_perm support was narrower, but the full 6-permutation initializer was retained because no all-generator formal proof justified pruning it.",
+  "complete": true
+}

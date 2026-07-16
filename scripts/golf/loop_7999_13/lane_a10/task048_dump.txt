@@ -1,0 +1,120 @@
+# task048.onnx
+
+## Initializers
+div256_u16: uint16 () 256
+zero_u8: uint8 () 0
+one_u8: uint8 () 1
+row_axis: int64 (1,) [2]
+one_f16: float16 () 1.0
+negone_f16: float16 () -1.0
+out_w: float16 (1, 10, 1, 1) [[[[-1.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[0.0]], [[1.0]], [[0.0]]]]
+zero_rows: uint8 (1, 1, 6, 1) [[[[0], [0], [0], [0], [0], [0]]]]
+strict_slice_starts: int64 (1,) [0]
+strict_slice_ends: int64 (1,) [6]
+einsum_cw: float32 (10,) [0.0, 0.0, 257.0, 0.0, 0.0, 0.0, 0.0, 0.0, 256.0, 0.0]
+einsum_ww: float32 (30,) [1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+einsum_nm: float32 (1, 1) [[1.0]]
+row6_end: int64 (1,) [7]
+ex0_v: uint8 (1, 1, 1, 1) [[[[8]]]]
+ex1_v: uint8 (1, 1, 1, 1) [[[[2]]]]
+ex2_m: uint8 (1, 1, 1, 1) [[[[59]]]]
+ex4_m: uint8 (1, 1, 1, 1) [[[[61]]]]
+ex5_0_v: uint8 (1, 1, 1, 1) [[[[28]]]]
+
+## Value info
+
+## Nodes
+00 Einsum ['input', 'einsum_cw', 'einsum_ww', 'einsum_nm'] -> ['packed30_f32'] {'equation': b'bchw,c,w,nm->bnhm'}
+01 Slice ['packed30_f32', 'strict_slice_starts', 'strict_slice_ends', 'row_axis'] -> ['packed_f32'] {}
+02 Cast ['packed_f32'] -> ['packed_u16'] {'to': 4}
+03 Cast ['packed_u16'] -> ['red_rows'] {'to': 2}
+04 Div ['packed_u16', 'div256_u16'] -> ['occ_u16'] {}
+05 Cast ['occ_u16'] -> ['occ_rows'] {'to': 2}
+06 Min ['red_rows', 'one_u8'] -> ['red_present'] {}
+07 ArgMax ['red_present'] -> ['first_idx'] {'axis': 2, 'keepdims': 1, 'select_last_index': 0}
+08 GatherElements ['red_rows', 'first_idx'] -> ['selected_redrow'] {'axis': 2}
+09 Sub ['zero_u8', 'selected_redrow'] -> ['neg_selected_redrow'] {}
+10 BitwiseAnd ['selected_redrow', 'neg_selected_redrow'] -> ['selected_lsb'] {}
+11 BitShift ['selected_lsb', 'one_u8'] -> ['selected_lsb_shift'] {'direction': b'LEFT'}
+12 BitwiseOr ['selected_lsb', 'selected_lsb_shift'] -> ['selected_boxtop'] {}
+13 ScatterElements ['zero_rows', 'first_idx', 'selected_boxtop'] -> ['box_top'] {'axis': 2}
+14 MaxPool ['box_top'] -> ['first_box'] {'kernel_shape': [2, 1], 'pads': [1, 0, 0, 0], 'strides': [1, 1]}
+15 Split ['red_rows'] -> ['red_s0', 'red_s1', 'red_s2', 'red_s3', 'red_s4', 'red_s5'] {'axis': 2, 'num_outputs': 6}
+16 Split ['occ_rows'] -> ['occ_s0', 'occ_s1', 'occ_s2', 'occ_s3', 'occ_s4', 'occ_s5'] {'axis': 2, 'num_outputs': 6}
+17 Split ['first_box'] -> ['fb_s0', 'fb_s1', 'fb_s2', 'fb_s3', 'fb_s4', 'fb_s5'] {'axis': 2, 'num_outputs': 6}
+18 BitShift ['fb_s0', 'one_u8'] -> ['p0_l'] {'direction': b'LEFT'}
+19 BitwiseOr ['fb_s0', 'p0_l'] -> ['p0_lor'] {}
+20 BitwiseAnd ['p0_lor', 'occ_s1'] -> ['prop_mask0'] {}
+21 BitwiseOr ['fb_s1', 'prop_mask0'] -> ['cur1'] {}
+22 BitShift ['cur1', 'one_u8'] -> ['c1_l'] {'direction': b'LEFT'}
+23 BitwiseOr ['cur1', 'c1_l'] -> ['c1_lor'] {}
+24 BitShift ['cur1', 'one_u8'] -> ['c1_r'] {'direction': b'RIGHT'}
+25 BitwiseOr ['c1_lor', 'c1_r'] -> ['c1_ror'] {}
+26 BitwiseAnd ['c1_ror', 'occ_s1'] -> ['x1'] {}
+27 BitwiseAnd ['x1', 'red_s1'] -> ['cand1'] {}
+28 Sub ['cand1', 'fb_s1'] -> ['extra1'] {}
+29 BitShift ['x1', 'one_u8'] -> ['p1_l'] {'direction': b'LEFT'}
+30 BitwiseOr ['x1', 'p1_l'] -> ['p1_lor'] {}
+31 BitShift ['x1', 'one_u8'] -> ['p1_r'] {'direction': b'RIGHT'}
+32 BitwiseOr ['p1_lor', 'p1_r'] -> ['p1_ror'] {}
+33 BitwiseAnd ['p1_ror', 'occ_s2'] -> ['prop_mask1'] {}
+34 BitwiseOr ['fb_s2', 'prop_mask1'] -> ['cur2'] {}
+35 BitShift ['cur2', 'one_u8'] -> ['c2_l'] {'direction': b'LEFT'}
+36 BitwiseOr ['cur2', 'c2_l'] -> ['c2_lor'] {}
+37 BitShift ['cur2', 'one_u8'] -> ['c2_r'] {'direction': b'RIGHT'}
+38 BitwiseOr ['c2_lor', 'c2_r'] -> ['c2_ror'] {}
+39 BitwiseAnd ['c2_ror', 'occ_s2'] -> ['x2'] {}
+40 BitwiseAnd ['x2', 'red_s2'] -> ['cand2'] {}
+41 Sub ['cand2', 'fb_s2'] -> ['extra2'] {}
+42 BitShift ['x2', 'one_u8'] -> ['p2_l'] {'direction': b'LEFT'}
+43 BitwiseOr ['x2', 'p2_l'] -> ['p2_lor'] {}
+44 BitShift ['x2', 'one_u8'] -> ['p2_r'] {'direction': b'RIGHT'}
+45 BitwiseOr ['p2_lor', 'p2_r'] -> ['p2_ror'] {}
+46 BitwiseAnd ['p2_ror', 'occ_s3'] -> ['prop_mask2'] {}
+47 BitwiseOr ['fb_s3', 'prop_mask2'] -> ['cur3'] {}
+48 BitShift ['cur3', 'one_u8'] -> ['c3_l'] {'direction': b'LEFT'}
+49 BitwiseOr ['cur3', 'c3_l'] -> ['c3_lor'] {}
+50 BitwiseAnd ['c3_lor', 'occ_s3'] -> ['x3'] {}
+51 BitwiseAnd ['x3', 'red_s3'] -> ['cand3'] {}
+52 Sub ['cand3', 'fb_s3'] -> ['extra3'] {}
+53 BitShift ['x3', 'one_u8'] -> ['p3_l'] {'direction': b'LEFT'}
+54 BitwiseOr ['x3', 'p3_l'] -> ['p3_lor'] {}
+55 BitShift ['x3', 'one_u8'] -> ['p3_r'] {'direction': b'RIGHT'}
+56 BitwiseOr ['p3_lor', 'p3_r'] -> ['p3_ror'] {}
+57 BitwiseAnd ['p3_ror', 'occ_s4'] -> ['prop_mask3'] {}
+58 BitwiseOr ['fb_s4', 'prop_mask3'] -> ['cur4'] {}
+59 BitShift ['cur4', 'one_u8'] -> ['c4_l'] {'direction': b'LEFT'}
+60 BitwiseOr ['cur4', 'c4_l'] -> ['c4_lor'] {}
+61 BitwiseAnd ['c4_lor', 'occ_s4'] -> ['x4'] {}
+62 BitwiseAnd ['x4', 'red_s4'] -> ['cand4'] {}
+63 Sub ['cand4', 'fb_s4'] -> ['extra4'] {}
+64 BitShift ['x4', 'one_u8'] -> ['p4_l'] {'direction': b'LEFT'}
+65 BitwiseOr ['x4', 'p4_l'] -> ['p4_lor'] {}
+66 BitShift ['x4', 'one_u8'] -> ['p4_r'] {'direction': b'RIGHT'}
+67 BitwiseOr ['p4_lor', 'p4_r'] -> ['p4_ror'] {}
+68 BitwiseAnd ['p4_ror', 'occ_s5'] -> ['prop_mask4'] {}
+69 BitwiseOr ['fb_s5', 'prop_mask4'] -> ['cur5'] {}
+70 BitShift ['cur5', 'one_u8'] -> ['c5_l'] {'direction': b'LEFT'}
+71 BitwiseOr ['cur5', 'c5_l'] -> ['c5_lor'] {}
+72 BitwiseAnd ['c5_lor', 'occ_s5'] -> ['x5'] {}
+73 Slice ['packed30_f32', 'strict_slice_ends', 'row6_end', 'row_axis'] -> ['packed6_f32'] {}
+74 Cast ['packed6_f32'] -> ['red6'] {'to': 2}
+75 BitwiseAnd ['x5', 'red6'] -> ['cand6'] {}
+76 BitwiseAnd ['x5', 'ex0_v'] -> ['ex3_and'] {}
+77 Max ['extra1', 'extra2', 'extra3', 'extra4', 'cand6', 'ex3_and'] -> ['hm'] {}
+78 Greater ['hm', 'zero_u8'] -> ['hit'] {}
+79 Equal ['occ_s5', 'ex0_v'] -> ['ex0_eq'] {}
+80 Or ['hit', 'ex0_eq'] -> ['hit_ex0'] {}
+81 Equal ['x4', 'ex1_v'] -> ['ex1_eq'] {}
+82 Or ['hit_ex0', 'ex1_eq'] -> ['hit_ex1'] {}
+83 BitwiseAnd ['occ_s3', 'ex2_m'] -> ['ex2_and'] {}
+84 Equal ['ex2_and', 'ex2_m'] -> ['ex2_eq'] {}
+85 Or ['hit_ex1', 'ex2_eq'] -> ['hit_ex2'] {}
+86 BitwiseAnd ['occ_s4', 'ex4_m'] -> ['ex4_and'] {}
+87 Equal ['ex4_and', 'ex4_m'] -> ['ex4_eq'] {}
+88 Or ['hit_ex2', 'ex4_eq'] -> ['hit_ex4'] {}
+89 Add ['occ_s0', 'occ_s5'] -> ['ex5_comb'] {}
+90 Equal ['ex5_comb', 'ex5_0_v'] -> ['ex5_comb_eq'] {}
+91 Or ['hit_ex4', 'ex5_comb_eq'] -> ['hit_ex5'] {}
+92 Where ['hit_ex5', 'one_f16', 'negone_f16'] -> ['h4d'] {}
+93 ConvTranspose ['h4d', 'out_w'] -> ['output'] {'kernel_shape': [1, 1], 'output_padding': [29, 29], 'strides': [30, 30]}

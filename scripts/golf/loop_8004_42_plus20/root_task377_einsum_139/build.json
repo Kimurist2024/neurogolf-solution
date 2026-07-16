@@ -1,0 +1,32 @@
+{
+  "task": 377,
+  "authority_sha256": "ce349264110182cfdb5c8dbbefcd4bb36db5c1f83d143e38a4514f32d03c4318",
+  "candidate_sha256": "2602f85ff43fe229fc46ce51d6f649e2be80061e2e6a260edb475a04e825aad5",
+  "rewrite": "ReduceL1(x, axes=[2,3], keepdims=0) -> Einsum('abcd->ab', x)",
+  "valid_domain": "x is binary one-hot input converted to float16; abs(x)=x and each reduced sum is an exactly representable integer in [0,900]",
+  "authority_profile": {
+    "memory": 344,
+    "params": 65,
+    "cost": 409
+  },
+  "candidate_profile": {
+    "memory": 362,
+    "params": 63,
+    "cost": 425
+  },
+  "authority_structure": {
+    "full_check": true,
+    "strict_data_prop": true,
+    "conv_bias_findings": [],
+    "conv_bias_ub0": true,
+    "pass": true
+  },
+  "candidate_structure": {
+    "full_check": true,
+    "strict_data_prop": true,
+    "conv_bias_findings": [],
+    "conv_bias_ub0": true,
+    "pass": true
+  },
+  "strict_lower": false
+}

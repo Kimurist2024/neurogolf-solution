@@ -1,0 +1,99 @@
+{
+  "baseline": {
+    "zip": "submission_base_8004.50.zip",
+    "sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+    "md5": "32fb6e647d4dedcbf2033c53d0747b55",
+    "lb_verified_score": 8004.5
+  },
+  "policy": {
+    "priority_gain": 0.05,
+    "known_complete": true,
+    "fresh_minimum": 0.95,
+    "prefer_fresh": 1.0,
+    "runtime_errors": 0,
+    "strict_shape_data_prop": true,
+    "runtime_shape_truthful": true,
+    "conv_bias_ub": 0,
+    "excluded": [
+      "lookup",
+      "private_zero",
+      "shape_cloak",
+      "giant_floating_contraction"
+    ]
+  },
+  "archive_scan": {
+    "primary_tasks": [145, 191, 204, 205, 285],
+    "unique_sha": 645,
+    "collection_errors": 0,
+    "machine_inventory": "static_inventory.json",
+    "note": "Static optimistic floors are only prefilters. Historical dual-runtime, fresh, and runtime-shape audits give the terminal dispositions below."
+  },
+  "primary_results": [
+    {
+      "task": 145,
+      "baseline_cost": 5130,
+      "baseline_sha256": "4c37375014f721e4209e76e91903d0f0977e6ec83f4fc944da18e77e51682e50",
+      "best_sound_cost": 10175,
+      "projected_gain": 0.0,
+      "decision": "REJECT_NO_CHEAPER_SOUND_MODEL",
+      "reason": "The generator-compiled model is 3000/3000 and shape truthful but costs 10175. Sub-5130 histories and crop-fusion probes are wrong, runtime-invalid, or shape-cloaked."
+    },
+    {
+      "task": 191,
+      "baseline_cost": 3444,
+      "baseline_sha256": "109928c1f7ec9fd2ca497bcc538bd0a7065cc5fda572855b0ac7a12299c3c115",
+      "best_lead_cost": 3426,
+      "optimistic_gain": 0.00524018666355625,
+      "projected_gain": 0.0,
+      "decision": "REJECT_RUNTIME_AND_SHAPE",
+      "reason": "Below the +0.05 priority even before safety. Both cheaper retained models fail default-ORT session creation; the cost-3430 model has 27 runtime/declaration mismatches."
+    },
+    {
+      "task": 204,
+      "baseline_cost": 2240,
+      "baseline_sha256": "7405b5d8560f0bbd4626c5ca6a1c416d21947d3bb9572941b6b37ff10d39ad88",
+      "best_sound_history_cost": 2544,
+      "projected_gain": 0.0,
+      "decision": "REJECT_NO_CHEAPER_SAFE_MODEL",
+      "reason": "Every full archived model costs 2544 or more and carries non-truthful runtime shapes. New sub-2240 static probes are partial/wrong or inherit the shape-cloak family."
+    },
+    {
+      "task": 205,
+      "baseline_cost": 1042,
+      "baseline_sha256": "8a6acdc20a366ccbd32cf761285cbb2f1cbcf7d3d2ef8ea71d0fb5a3ed6f1468",
+      "lead_cost": 937,
+      "lead_sha256": "bbfa8f5b79d2e8345a39a41f327ac1c2c851f3c7f388dd595c72ef951e1b3050",
+      "optimistic_gain": 0.10621394007489005,
+      "baseline_fresh": "4928/5000",
+      "lead_fresh": "4904/5000",
+      "lead_runtime_errors": 0,
+      "projected_gain": 0.0,
+      "decision": "REJECT_WORSE_THAN_BASELINE_FRESH",
+      "reason": "It exceeds the relaxed 95% threshold but introduces 24 additional fresh errors. The other sub-1042 families are runtime/cloak, private-zero, or 20-input floating-Einsum variants with recorded fresh failure."
+    },
+    {
+      "task": 285,
+      "baseline_cost": 8623,
+      "baseline_sha256": "366212e29105fde0295030f3ec3bb014bd300f23aa8259ccd79da2eea720b9e2",
+      "best_sound_cost": 14699,
+      "projected_gain": 0.0,
+      "decision": "REJECT_NO_CHEAPER_SOUND_MODEL",
+      "reason": "The specification-derived model is known-complete and generator-sound but costs 14699. Cheaper archive members and partial subgraph probes are heuristic, shape-cloaked, runtime-invalid, or not complete task models."
+    }
+  ],
+  "additional_high_cost_results": [
+    {"task": 366, "baseline_cost": 7987, "lead_cost": 7646, "optimistic_gain": 0.043632584661030774, "decision": "REJECT_SHAPE_CLOAK_AND_FRESH_98_49"},
+    {"task": 286, "baseline_cost": 7481, "lead_cost": 7122, "optimistic_gain": 0.04917788803468191, "decision": "REJECT_LOOKUP_AND_FRESH_85_88"},
+    {"task": 233, "baseline_cost": 7432, "best_sound_cost": 17007, "decision": "REJECT_NO_CHEAPER_SOUND_MODEL"},
+    {"task": 101, "baseline_cost": 5712, "lead_cost": 5672, "optimistic_gain": 0.007027435807456876, "decision": "REJECT_FIXTURE_SIGNATURE_BRANCH"},
+    {"task": 18, "baseline_cost": 4754, "lead_cost": 4733, "optimistic_gain": 0.004427118013891248, "decision": "REJECT_DEFAULT_ORT_AND_SHAPE_CLOAK"},
+    {"task": 133, "baseline_cost": 4403, "best_sound_cost": 5570, "decision": "REJECT_NO_CHEAPER_SOUND_MODEL"},
+    {"task": 118, "baseline_cost": 3665, "decision": "REJECT_NONDETERMINISTIC_GENERATOR_AND_NO_SAFE_LEAD"},
+    {"task": 173, "baseline_cost": 3525, "lead_cost": 3513, "optimistic_gain": 0.003410062980541964, "decision": "REJECT_OUTPUT_SHAPE_CLOAK"},
+    {"task": 77, "baseline_cost": 3364, "lead_cost": 3345, "optimistic_gain": 0.005664048530509835, "decision": "REJECT_SHAPE_CLOAK_AND_FRESH_96_14"}
+  ],
+  "accepted": [],
+  "aggregate_projected_gain": 0.0,
+  "zip_built": false,
+  "protected_files_modified": false
+}

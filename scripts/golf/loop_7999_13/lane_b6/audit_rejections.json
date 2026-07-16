@@ -1,0 +1,37 @@
+{
+  "baseline_archive": {
+    "path": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1"
+  },
+  "rejections": [
+    {
+      "all_known_correct": true,
+      "baseline_cost": 346,
+      "candidate_cost": 345,
+      "candidate_sha256": "b9036595a17fbda8c08f195465f8e65d4cfa8bf62a6102db70d41759d8c87432",
+      "gate": "structural_ub",
+      "nominal_score_gain": 0.0028943580263645565,
+      "path": "artifacts/handcrafted/task200.onnx",
+      "reason": "Conv has 2 output channels but conv_bias has shape [1]; this is an out-of-bounds/uninitialized-memory dependency.",
+      "task": 200
+    },
+    {
+      "all_known_correct": true,
+      "baseline_cost": 346,
+      "candidate_cost": 345,
+      "candidate_sha256": "a54e5330e112fd7cb26cd0f3da03ff582cec7d424c27c4f4b65e1fd04d8575bb",
+      "gate": "structural_ub",
+      "nominal_score_gain": 0.0028943580263645565,
+      "path": "others/2/7501/task200_improved_cost345.onnx",
+      "reason": "Conv has 2 output channels but conv_bias has shape [1]; this is an out-of-bounds/uninitialized-memory dependency.",
+      "task": 200
+    },
+    {
+      "baseline_cost": 311,
+      "gate": "onnx_checker_full_check",
+      "nominal_candidate_cost": 308,
+      "reason": "Slice index tensors must use a consistent integer type; axes_all is int64 while starts_bg and ends_bg are int32.",
+      "task": 388
+    }
+  ]
+}

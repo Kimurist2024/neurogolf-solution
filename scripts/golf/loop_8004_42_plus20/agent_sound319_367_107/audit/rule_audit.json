@@ -1,0 +1,84 @@
+{
+  "task319": {
+    "classification": "Type D: global magnification cross-correlation plus data-dependent crop",
+    "readable_rule": [
+      "background is the most frequent color",
+      "magnified color is the most frequent non-background color",
+      "score each remaining color by the maximum translation-aligned overlap between its 2x expansion and the magnified pixels",
+      "select the highest score with the raw solver's count tie-break and crop that color's bounding box"
+    ],
+    "known_rule_check": {
+      "right": 267,
+      "total": 267,
+      "first_failure": null
+    },
+    "constructive_generator_collision": {
+      "same_input": true,
+      "different_output": true,
+      "input_sha256": "a41dee2aa1b515dbea59d22bb18cbd4798d17503d1cc6e949d8555d20ebd16a5",
+      "output_a_sha256": "119a188ad515e877df286dc447c5e3bd3d835f98fb217957766584917937ab7f",
+      "output_b_sha256": "8ccd980b3c0c7977d73aa9bf4d756085aaa6c8eb7598464bc81c44534a1d3823",
+      "output_a": [
+        [
+          9,
+          5,
+          9
+        ],
+        [
+          9,
+          9,
+          5
+        ],
+        [
+          5,
+          5,
+          9
+        ]
+      ],
+      "output_b": [
+        [
+          9,
+          4,
+          9
+        ],
+        [
+          9,
+          9,
+          4
+        ],
+        [
+          4,
+          4,
+          9
+        ]
+      ],
+      "consequence": "No deterministic ONNX can be correct for every valid generator call; the latent identity of sprite0 is not always observable from the grid."
+    },
+    "fresh_rule_check_source": "audit/fresh_two_seed.json"
+  },
+  "task367": {
+    "classification": "Type B/D bounded structural scan: hollow rectangle interiors with connector-line rejection",
+    "readable_rule": [
+      "input colors are black 0 and gray 5",
+      "find the interiors of 2-4 hollow gray rectangles, including one-column left/right clipping",
+      "exclude gray connector corridors by detecting corner/endpoints and propagating each top-frame interior span downward through black cells",
+      "recolor exactly those interior black cells yellow 4"
+    ],
+    "generator_bounds": {
+      "grid_width_height": [
+        10,
+        20
+      ],
+      "box_count": [
+        2,
+        4
+      ],
+      "box_width_height": [
+        3,
+        7
+      ],
+      "horizontal_clip": "at most one column at either side"
+    },
+    "prior_independent_true_rule_evidence": "scripts/golf/scratch_claude/task367/REPORT.md and scripts/golf/loop_8004_42_plus20/agent_rebuild_mid5/REPORT.md"
+  }
+}

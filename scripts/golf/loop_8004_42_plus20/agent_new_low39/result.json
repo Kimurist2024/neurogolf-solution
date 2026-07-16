@@ -1,0 +1,722 @@
+{
+  "lane": "agent_new_low39",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "previous_path": "submission_base_8004.50.zip",
+    "previous_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "policy": {
+    "nonprivate": "strictly cheaper, known100 dual, two independent fresh seeds each >=90%, runtime0, checker full, strict/data_prop, truthful shapes, standard domains, no lookup/cloak/giant, Conv-bias UB0",
+    "private_risk": "same gates but known/fresh must be 100% dual and the model must have a decoded true-rule guarantee or exact LB-white lineage",
+    "fail_closed": "fresh is not run if actual price, structure, runtime-shape, or known100 pre-gates fail"
+  },
+  "targets_requested": [
+    32,
+    41,
+    215,
+    211,
+    120,
+    235,
+    258,
+    292
+  ],
+  "targets_completed": 8,
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_integration": false,
+  "rows": [
+    {
+      "task": 32,
+      "rule_summary": "Sort every column ascending, which moves each column's nonzero cells to its bottom while preserving their colors.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task032.onnx",
+      "baseline_sha256": "cca9c0dbd3f8141edbc3d2499b93be3427cf5f6c8ed76091d39b62f8bbc5a234",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 70,
+        "cost": 70
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 32,
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 15,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "runtime_error": null,
+        "checker_full": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-46 Q[6] row-coefficient probe",
+      "reason": "The only below-70 archive graph fails all 266 known cases in both ORT modes: its six-row coefficient cannot broadcast against the static 30-row output. All other complete-history graphs cost at least 76/80 or the clean spec floor 94.",
+      "evidence": "history_audit.json and lower_leads_dual.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ELIGIBLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ELIGIBLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 41,
+      "rule_summary": "Scan the grid row-major with cumulative XOR state a and emit cell OR a at each position.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task041.onnx",
+      "baseline_sha256": "b2bedf03fbfc6ca7ac3eeb72f2635f6daf971ec25278642de1846efc04e3364e",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 70,
+        "cost": 70
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 41,
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 13,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "runtime_error": null,
+        "checker_full": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "no below-70 archive or exact-rewrite graph",
+      "reason": "The complete archive retains no numeric lower graph; the focused harvest begins at 74/78 and the clean generator-compiled interval-fill model costs 925. Exact Wave2 and initializer-alias scans emit nothing.",
+      "evidence": "history_audit.json and lower_leads_dual.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ELIGIBLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ELIGIBLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 215,
+      "rule_summary": "For output row h, repeat the lexicographically maximum input row among rows h mod 3.",
+      "true_rule_known": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "total": 265,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task215.onnx",
+      "baseline_sha256": "9903f2714b1d4921042cbd3da6886f2205c814bfc5cfdaa156cb60ed16d0d38c",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 70,
+        "cost": 70
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 215,
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 18,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 18
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "runtime_error": null,
+        "checker_full": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "same-cost 70 rebuild only",
+      "reason": "History contains two cost-70 output-only rebuilds and no strictly lower member. The incumbent itself uses an 18-input giant Einsum; no new clean below-70 lineage was found.",
+      "evidence": "history_audit.json and lower_leads_dual.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ELIGIBLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ELIGIBLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 211,
+      "rule_summary": "Vertically concatenate reverse(input), input, reverse(input), and mirror every row horizontally as reverse(row)+row.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task211.onnx",
+      "baseline_sha256": "9ae2c13fb51b7bdae97d4175d202d3ae3590bda2f9a3c39e4107a25055a0c714",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 66,
+        "cost": 66
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 211,
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 22,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 22
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "runtime_error": null,
+        "checker_full": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-64 output-only 25-input Einsum",
+      "reason": "The apparent two-point saving is a prohibited giant contraction and is only 9/266 correct in both ORT modes. All other history starts at 66 or 126, and exact scans emit nothing.",
+      "evidence": "history_audit.json and lower_leads_dual.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ELIGIBLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ELIGIBLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 120,
+      "rule_summary": "Replace a positive cell C by color 8 iff its 3x3 neighborhood sum is greater than 8*C; otherwise keep C.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task120.onnx",
+      "baseline_sha256": "20afaea86b1cd37806c768f28af6c2221d1bf11103ca52064899264a5dc9a80c",
+      "baseline_cost": {
+        "memory": 53,
+        "params": 11,
+        "cost": 64
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 120,
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_13) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "CenterCropPad": 7,
+          "ConstantOfShape": 3,
+          "LessOrEqual": 1,
+          "PRelu": 3,
+          "ReduceL1": 1,
+          "Selu": 1,
+          "Where": 1
+        },
+        "node_count": 18,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 15,
+        "runtime_error": null,
+        "checker_full": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "static-41 AveragePool rebuild",
+      "reason": "Runtime profiling measures the static-41 lead at actual cost 2738, far above current 64, with seven declared/runtime shape contradictions. Lower-looking scratch variants are shape-cloaked or fail ORT; no truthful candidate is cheaper.",
+      "evidence": "history_audit.json and lower_leads_dual.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ELIGIBLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ELIGIBLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 235,
+      "rule_summary": "Emit three identical rows of three decoded glyph colors, using the fixed second/third-row probes and the generator's modulo-9 formula.",
+      "true_rule_known": {
+        "right": 69,
+        "wrong": 0,
+        "errors": 0,
+        "total": 69,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task235.onnx",
+      "baseline_sha256": "926178539453716928dd8dab3f851b0d15b9ef9ca4c17e9a34ba1a14368389f2",
+      "baseline_cost": {
+        "memory": 36,
+        "params": 28,
+        "cost": 64
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 235,
+        "disable_all": {
+          "right": 69,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 69,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 69,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 69,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "BitwiseAnd": 1,
+          "Concat": 1,
+          "Conv": 3,
+          "ConvInteger": 1,
+          "QuantizeLinear": 3
+        },
+        "node_count": 9,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "runtime_error": null,
+        "checker_full": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "spec rebuild cost115; reduced variants cost107/91",
+      "reason": "No history member is below actual 64. The decoded clean rebuild costs 115, while its smaller 107/91 variants are wrong; exact Wave2 and initializer scans find no shave in the cost-64 member.",
+      "evidence": "history_audit.json and lower_leads_dual.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ELIGIBLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ELIGIBLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 258,
+      "rule_summary": "Copy the grid and paint 2 exactly in horizontal 1,0,1 gaps (the generator's missing alternating red cells).",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task258.onnx",
+      "baseline_sha256": "2ff7450a9e90c415d24ce731c2f066060a0f722d9c91adcf3232d661db45115e",
+      "baseline_cost": {
+        "memory": 50,
+        "params": 14,
+        "cost": 64
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 258,
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_13) Op (NegativeLogLikelihoodLoss) [ShapeInferenceError] Input and target dimension value mismatch."
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Add": 1,
+          "CastLike": 4,
+          "CenterCropPad": 5,
+          "GreaterOrEqual": 1,
+          "NegativeLogLikelihoodLoss": 2,
+          "Shape": 1,
+          "Sub": 1,
+          "Where": 1
+        },
+        "node_count": 16,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": null,
+        "runtime_error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_l1' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,30,30} != {1,10,30,27}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n",
+        "checker_full": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "no below-64 graph; clean grouped-Conv floor160",
+      "reason": "The complete archive/focused harvest supplies no strict lower lead. The direct spec-derived grouped Conv is correct at cost160; every loss/shift reduction below the historical clean floor either fails correctness/runtime or relies on false shapes.",
+      "evidence": "history_audit.json and lower_leads_dual.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ELIGIBLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ELIGIBLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 292,
+      "rule_summary": "Preserve every cell except apply bitwise value OR value>>1 in columns whose index is 0 mod 3.",
+      "true_rule_known": {
+        "right": 28,
+        "wrong": 0,
+        "errors": 0,
+        "total": 28,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task292.onnx",
+      "baseline_sha256": "18f6fced60ffc3acd8b9bf122cdbc9f980bd477b59880471e891590a130daec5",
+      "baseline_cost": {
+        "memory": 12,
+        "params": 52,
+        "cost": 64
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 292,
+        "disable_all": {
+          "right": 28,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 28,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 28,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 28,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "Einsum": 1,
+          "PRelu": 1
+        },
+        "node_count": 3,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "runtime_error": null,
+        "checker_full": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-50/50/54 rank-one/sign-core graphs",
+      "reason": "All three truthful sub-64 graphs are 0/28 known in both ORT modes. They cannot retain the width-independent background branch while changing yellow by column phase; the next rank-one candidate costs70 and is also wrong.",
+      "evidence": "history_audit.json and lower_leads_dual.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ELIGIBLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ELIGIBLE_CANDIDATE",
+      "projected_gain": 0.0
+    }
+  ],
+  "final_verdict": "NO_SAFE_CANDIDATE"
+}

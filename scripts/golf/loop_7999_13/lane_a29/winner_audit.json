@@ -1,0 +1,281 @@
+{
+  "task": 275,
+  "base": {
+    "path": "scripts/golf/loop_7999_13/lane_a29/task275_base.onnx",
+    "sha256": "0223b550b6555a701e44a2d5b6a77afdf4650f2225f398c5d9096e65869e8d11",
+    "bytes": 2403,
+    "checker_full": true,
+    "strict_shape_inference": true,
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "inferred_shapes": {
+      "input": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "total": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "gate": [
+        1,
+        2,
+        1,
+        1
+      ],
+      "output": [
+        1,
+        10,
+        30,
+        30
+      ]
+    },
+    "node_count": 3,
+    "op_histogram": {
+      "ReduceSum": 1,
+      "Conv": 1,
+      "Einsum": 1
+    },
+    "einsum_operand_count": 41,
+    "params": 420,
+    "initializer_names": [
+      "S",
+      "T",
+      "W",
+      "MA",
+      "MB",
+      "BA",
+      "BB",
+      "GW",
+      "GB",
+      "GU",
+      "GV"
+    ],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "foreign_domains": [],
+    "bad_ops": [],
+    "nested_graphs": [],
+    "conv_family": []
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_7999_13/lane_a29/task275_shared_gate_router.onnx",
+    "sha256": "d31e860f7243a66917a06b306b6bd856da71a0f09dfc4d4d0e6472f1c9e2003f",
+    "bytes": 2373,
+    "checker_full": true,
+    "strict_shape_inference": true,
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "inferred_shapes": {
+      "input": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "total": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "gate": [
+        1,
+        2,
+        1,
+        1
+      ],
+      "output": [
+        1,
+        10,
+        30,
+        30
+      ]
+    },
+    "node_count": 3,
+    "op_histogram": {
+      "ReduceSum": 1,
+      "Conv": 1,
+      "Einsum": 1
+    },
+    "einsum_operand_count": 41,
+    "params": 416,
+    "initializer_names": [
+      "S",
+      "T",
+      "W",
+      "MA",
+      "MB",
+      "BA",
+      "BB",
+      "GW",
+      "GB",
+      "GU"
+    ],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "foreign_domains": [],
+    "bad_ops": [],
+    "nested_graphs": [],
+    "conv_family": []
+  },
+  "removed_initializers": [
+    "GV"
+  ],
+  "added_initializers": [],
+  "router_proof": {
+    "symbolic_identity": "GV[0] = -GU[0], GV[1] = 7*GU[1]; therefore (total-25)*GU[0]xGV[0] + GU[1]xGV[1] = (25-total)*GU[0]xGU[0] + 7*GU[1]xGU[1]",
+    "real_arithmetic_exact_for_all_totals": true,
+    "generator_reachable_totals": [
+      18,
+      32
+    ],
+    "rows": [
+      {
+        "total": 18.0,
+        "base_gate": [
+          -7.0,
+          1.0
+        ],
+        "candidate_gate": [
+          7.0,
+          7.0
+        ],
+        "base_router": [
+          [
+            14.0,
+            0.0
+          ],
+          [
+            0.0,
+            14.0
+          ]
+        ],
+        "candidate_router": [
+          [
+            14.0,
+            0.0
+          ],
+          [
+            0.0,
+            14.0
+          ]
+        ],
+        "exact": true
+      },
+      {
+        "total": 32.0,
+        "base_gate": [
+          7.0,
+          1.0
+        ],
+        "candidate_gate": [
+          -7.0,
+          7.0
+        ],
+        "base_router": [
+          [
+            0.0,
+            14.0
+          ],
+          [
+            14.0,
+            0.0
+          ]
+        ],
+        "candidate_router": [
+          [
+            0.0,
+            14.0
+          ],
+          [
+            14.0,
+            0.0
+          ]
+        ],
+        "exact": true
+      }
+    ],
+    "exact": true
+  },
+  "known": {
+    "candidate_disable_all": {
+      "right": 266,
+      "wrong": 0,
+      "errors": 0,
+      "total": 266,
+      "nonfinite_values": 0,
+      "minimum_positive": 38415.98046875,
+      "maximum_nonpositive": 0.0,
+      "margin_stable": true,
+      "perfect": true
+    },
+    "candidate_default": {
+      "right": 266,
+      "wrong": 0,
+      "errors": 0,
+      "total": 266,
+      "nonfinite_values": 0,
+      "minimum_positive": 38415.98046875,
+      "maximum_nonpositive": 0.0,
+      "margin_stable": true,
+      "perfect": true
+    },
+    "base_disable_all": {
+      "right": 266,
+      "wrong": 0,
+      "errors": 0,
+      "total": 266,
+      "nonfinite_values": 0,
+      "minimum_positive": 38415.94921875,
+      "maximum_nonpositive": 0.0,
+      "margin_stable": true,
+      "perfect": true
+    },
+    "base_default": {
+      "right": 266,
+      "wrong": 0,
+      "errors": 0,
+      "total": 266,
+      "nonfinite_values": 0,
+      "minimum_positive": 38415.94921875,
+      "maximum_nonpositive": 0.0,
+      "margin_stable": true,
+      "perfect": true
+    }
+  },
+  "cost": {
+    "base_memory": 12,
+    "base_params": 420,
+    "base_cost": 432,
+    "candidate_memory": 12,
+    "candidate_params": 416,
+    "candidate_cost": 428,
+    "score_gain": 0.00930239266231341
+  },
+  "pass": true
+}

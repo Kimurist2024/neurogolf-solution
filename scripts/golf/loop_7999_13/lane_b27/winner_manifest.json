@@ -1,0 +1,51 @@
+{
+  "lane": "b27",
+  "baseline": {
+    "score_label": 8000.46,
+    "zip": "submission_base_8000.46.zip",
+    "zip_sha256": "74cb9c4a96dcf9d1d1ca4ad1e0afdb67f5218c0a06ad8e896ad1654b6548f534",
+    "task382_sha256": "67a510b15c399a6bbe0edbf169c1a4d0dcba655241b720df7d279fdbc5ca28fd",
+    "task382_cost": 820
+  },
+  "winners": [],
+  "winner_count": 0,
+  "verified_gain": 0.0,
+  "rejected": [
+    {
+      "task": 382,
+      "source_candidate": "scripts/golf/loop_7999_13/lane_headroom/candidates/task382.onnx",
+      "source_sha256": "ac0d47cfa37effc8453f77a8498a0a8516ef63ab610ed6e4fb49afef485dee29",
+      "source_claimed_cost": 814,
+      "status": "REJECT_COST_AND_SHAPE",
+      "output_only_repair": {
+        "path": "scripts/golf/loop_7999_13/lane_b27/task382_output_shape_only.onnx",
+        "sha256": "d488cf492f67dcf2f7c17842226440df6e5dc1dbc8e306dad28a0660a2f7991c",
+        "declared_output": [1, 10, 30, 30],
+        "checker_full": false,
+        "disable_all_known": {"right": 266, "wrong": 0, "errors": 0},
+        "default_known": {"right": 0, "wrong": 0, "errors": 266},
+        "conv_bias_ub_count": 0,
+        "reason": "the corrected output contradicts spoofed intermediate declarations; default ORT allocator still fails"
+      },
+      "declared_observed_runtime_repair": {
+        "representative_path": "scripts/golf/loop_7999_13/lane_b27/task382_declared_horizontal_runtime.onnx",
+        "sha256": "f5e243771be7fbfd5256c57a1378fbb4118d122bec6a7fa3b83113c589eafc5e",
+        "checker_full": true,
+        "strict_shape_inference": true,
+        "declared_output": [1, 10, 30, 30],
+        "cost": 55417,
+        "cost_delta_vs_baseline": 54597,
+        "projected_score_delta": -4.213337344611196,
+        "disable_all_known": {"right": 266, "wrong": 0, "errors": 0},
+        "default_known": {"right": 266, "wrong": 0, "errors": 0},
+        "conv_bias_ub_count": 0,
+        "opposite_orientation_shape_mismatches": 8,
+        "reason": "truthful full-size declarations expose 55275 bytes of intermediate memory, and eight tensors have data-dependent row/column shapes"
+      },
+      "fresh5000": "SKIPPED_TERMINAL_COST_GATE",
+      "external_validator": "SKIPPED_TERMINAL_COST_GATE"
+    }
+  ],
+  "rejected_count": 1,
+  "task328_status": "TERMINAL_REJECT_MARGIN_UNCHANGED"
+}

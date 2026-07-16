@@ -1,0 +1,155 @@
+{
+  "model_sha256": "478a310e10fcf0a3e82df943fd6ab43671c47059f8e6eb675bf0004bef576500",
+  "graph": {
+    "nodes": 1,
+    "ops": [
+      "Conv"
+    ],
+    "weight_shape": [
+      10,
+      1,
+      7,
+      10
+    ],
+    "bias_shape": [
+      10
+    ],
+    "parameter_elements": 710
+  },
+  "kernels": [
+    {
+      "channel": 0,
+      "matrix_rank": 7,
+      "zero_elements": 0,
+      "zero_top_border": false,
+      "zero_bottom_border": false,
+      "zero_left_border": false,
+      "zero_right_border": false
+    },
+    {
+      "channel": 1,
+      "matrix_rank": 7,
+      "zero_elements": 6,
+      "zero_top_border": false,
+      "zero_bottom_border": false,
+      "zero_left_border": false,
+      "zero_right_border": false
+    },
+    {
+      "channel": 2,
+      "matrix_rank": 7,
+      "zero_elements": 6,
+      "zero_top_border": false,
+      "zero_bottom_border": false,
+      "zero_left_border": false,
+      "zero_right_border": false
+    },
+    {
+      "channel": 3,
+      "matrix_rank": 7,
+      "zero_elements": 6,
+      "zero_top_border": false,
+      "zero_bottom_border": false,
+      "zero_left_border": false,
+      "zero_right_border": false
+    },
+    {
+      "channel": 4,
+      "matrix_rank": 7,
+      "zero_elements": 6,
+      "zero_top_border": false,
+      "zero_bottom_border": false,
+      "zero_left_border": false,
+      "zero_right_border": false
+    },
+    {
+      "channel": 5,
+      "matrix_rank": 7,
+      "zero_elements": 6,
+      "zero_top_border": false,
+      "zero_bottom_border": false,
+      "zero_left_border": false,
+      "zero_right_border": false
+    },
+    {
+      "channel": 6,
+      "matrix_rank": 7,
+      "zero_elements": 6,
+      "zero_top_border": false,
+      "zero_bottom_border": false,
+      "zero_left_border": false,
+      "zero_right_border": false
+    },
+    {
+      "channel": 7,
+      "matrix_rank": 7,
+      "zero_elements": 6,
+      "zero_top_border": false,
+      "zero_bottom_border": false,
+      "zero_left_border": false,
+      "zero_right_border": false
+    },
+    {
+      "channel": 8,
+      "matrix_rank": 7,
+      "zero_elements": 6,
+      "zero_top_border": false,
+      "zero_bottom_border": false,
+      "zero_left_border": false,
+      "zero_right_border": false
+    },
+    {
+      "channel": 9,
+      "matrix_rank": 7,
+      "zero_elements": 6,
+      "zero_top_border": false,
+      "zero_bottom_border": false,
+      "zero_left_border": false,
+      "zero_right_border": false
+    }
+  ],
+  "sharing": {
+    "foreground_kernels_byte_identical": true,
+    "foreground_biases_byte_identical": true,
+    "background_kernel_scalar_multiple_of_foreground": false,
+    "onnx_grouped_conv_contract": "group=10 requires serialized W shape [10,1,kH,kW]; equal values do not share initializer elements",
+    "batched_shared_kernel_blocker": "separate background and foreground convolutions expose at least 900+8100 output elements before canonical one-output assembly, already above incumbent cost 710"
+  },
+  "factorization": {
+    "background_spatial_rank": 7,
+    "foreground_spatial_rank": 7,
+    "exact_rank_one_separable": false,
+    "rank7_two_stage_minimum_intermediate_elements": 63000,
+    "blocker": "any explicit two-stage rank factorization creates an intermediate far above cost 710"
+  },
+  "grouped_active_column_budgets_below_710": [
+    {
+      "groups": 1,
+      "input_columns_per_output": 10,
+      "maximum_kernel_area_with_bias": 6
+    },
+    {
+      "groups": 2,
+      "input_columns_per_output": 5,
+      "maximum_kernel_area_with_bias": 13
+    },
+    {
+      "groups": 5,
+      "input_columns_per_output": 2,
+      "maximum_kernel_area_with_bias": 34
+    },
+    {
+      "groups": 10,
+      "input_columns_per_output": 1,
+      "maximum_kernel_area_with_bias": 69
+    }
+  ],
+  "grouped_active_column_lower_bound": "group=1 permits area only 6, already below the radius-2 spatial lower bound 5x5. For groups=2/5, every foreground output has legal cases where all other active colours lie outside its input-channel group, reducing its classifier to the depthwise case. Those groups permit areas only 13/34 below cost 710; the radius bound rejects <=13 and the exhaustive depthwise sweep rejects every geometry through area34.",
+  "gauge": {
+    "bias_free_area70_feasible": false,
+    "evidence": [
+      "homogeneous_search_area70_strict.json",
+      "homogeneous_search_weak.json"
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "baseline_zip": "scripts/golf/loop_7999_13/submission_7999.13_wave17_candidate_meta.zip",
+  "baseline_zip_sha256": "74cb9c4a96dcf9d1d1ca4ad1e0afdb67f5218c0a06ad8e896ad1654b6548f534",
+  "baselines": [
+    {
+      "task": 328,
+      "path": "scripts/golf/loop_7999_13/lane_b26/baseline_task328.onnx",
+      "sha256": "08ba1aa525d67f290c13e7b79aef339aeb5912bf0d1b0b379ff6ab8792cf576a",
+      "initializer_params": 358,
+      "nodes": 8,
+      "max_einsum_inputs": 58
+    },
+    {
+      "task": 358,
+      "path": "scripts/golf/loop_7999_13/lane_b26/baseline_task358.onnx",
+      "sha256": "3ea6a4be62e0ee5e50ae94c1e89db81e2eb12f98b97317e28f0fb27ff81105a9",
+      "initializer_params": 149,
+      "nodes": 3,
+      "max_einsum_inputs": 44
+    }
+  ],
+  "candidates": [
+    {
+      "task": 328,
+      "path": "scripts/golf/loop_7999_13/lane_b26/task328_reuse_j_diagonal.onnx",
+      "sha256": "4d0fc5264833fbf46609fde690ad8635e208a2cec381e749b5707ef828866cb2",
+      "serialized_bytes": 2572,
+      "initializer_params": 354,
+      "nodes": 8,
+      "max_einsum_inputs": 58,
+      "proof": {
+        "identity": "e[a] = sum_t J[t,a,a]",
+        "exact_float32": true,
+        "removed_initializers": [
+          "e"
+        ],
+        "added_initializers": [],
+        "baseline_max_einsum_inputs": 58,
+        "candidate_max_einsum_inputs": 58
+      }
+    },
+    {
+      "task": 358,
+      "path": "scripts/golf/loop_7999_13/lane_b26/task358_combine_r2_r3.onnx",
+      "sha256": "8d7c4eb231ce8f92d5dd413a0a36b19f74ab5b3e843507499102012d8bdee34d",
+      "serialized_bytes": 1261,
+      "initializer_params": 143,
+      "nodes": 3,
+      "max_einsum_inputs": 42,
+      "proof": {
+        "identity": "(x-2)*(x+2) = x^2-4 for both selected coordinate features",
+        "exhaustive_local_float32_checks": 1800,
+        "removed_initializers": [
+          "R2",
+          "R3"
+        ],
+        "added_initializers": [
+          "R23"
+        ],
+        "baseline_max_einsum_inputs": 44,
+        "candidate_max_einsum_inputs": 42
+      }
+    }
+  ]
+}

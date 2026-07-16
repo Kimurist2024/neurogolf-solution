@@ -1,0 +1,2364 @@
+{
+  "baseline": {
+    "path": "submission_base_8005.17.zip",
+    "sha256": "c48fa65401a5bd26d3ed1c556eee8f85c0a2063db313be6b96c73e86159b0a04",
+    "audit_source_equivalent": "submission_base_8005.16.zip",
+    "equivalence_basis": "task226 is the only changed member; all six audited members are byte-identical"
+  },
+  "targets": [
+    134,
+    202,
+    219,
+    271,
+    343,
+    396
+  ],
+  "baseline_rows": [
+    {
+      "task": 134,
+      "sha256": "046aecb0760955e0f3063d9172c3ec46e118da940ff35d5ebf66abb108b6a620",
+      "actual_cost": {
+        "memory": 365,
+        "params": 58,
+        "cost": 423,
+        "error": null
+      },
+      "retained_count": 5
+    },
+    {
+      "task": 202,
+      "sha256": "12c2f62bc5097af89a7130860a29fd180731786c241aad7ca2563327642708ad",
+      "actual_cost": {
+        "memory": 0,
+        "params": 48,
+        "cost": 48,
+        "error": null
+      },
+      "retained_count": 3
+    },
+    {
+      "task": 219,
+      "sha256": "7a2ead58107803948d316fb8e00c4fd3ff601769309f9ad99661976f1a51bd67",
+      "actual_cost": {
+        "memory": 1253,
+        "params": 226,
+        "cost": 1479,
+        "error": null
+      },
+      "retained_count": 5
+    },
+    {
+      "task": 271,
+      "sha256": "31394a849c0861a1dc2cc47e51aa287b9ab93cd5f64fafaee06b61651f4ad2df",
+      "actual_cost": {
+        "memory": 99,
+        "params": 36,
+        "cost": 135,
+        "error": null
+      },
+      "retained_count": 2
+    },
+    {
+      "task": 343,
+      "sha256": "7d64c3eda1167f322d8981531e433e7195e54d48e16e29c771b52a379af17ab1",
+      "actual_cost": {
+        "memory": 140,
+        "params": 33,
+        "cost": 173,
+        "error": null
+      },
+      "retained_count": 2
+    },
+    {
+      "task": 396,
+      "sha256": "ce0bd7c49e11cbde341756993a71618c5c0bf8e086de6caf56ad93e8588e1d94",
+      "actual_cost": {
+        "memory": 924,
+        "params": 95,
+        "cost": 1019,
+        "error": null
+      },
+      "retained_count": 5
+    }
+  ],
+  "lead_rows": [
+    {
+      "task": 134,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task134_r01_static284.onnx",
+      "sha256": "0cc62d5848313c2434f1205883070fb90b2d696bce903da2dc004541ededa820",
+      "reported_static_cost": 284,
+      "baseline_actual_cost": 423,
+      "actual_cost": {
+        "memory": 337,
+        "params": 35,
+        "cost": 372,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 5,
+          "And": 1,
+          "Cast": 13,
+          "CastLike": 2,
+          "Concat": 1,
+          "ConvInteger": 1,
+          "Div": 2,
+          "Einsum": 1,
+          "Gather": 2,
+          "GatherElements": 4,
+          "GroupNormalization": 1,
+          "Less": 3,
+          "MaxPool": 2,
+          "Mod": 3,
+          "Mul": 3,
+          "Or": 1,
+          "Reshape": 2,
+          "Resize": 1,
+          "ScatterElements": 1,
+          "Slice": 6,
+          "Sqrt": 1,
+          "Sub": 4,
+          "TfIdfVectorizer": 1,
+          "TopK": 1,
+          "Where": 1
+        },
+        "node_count": 63,
+        "initializer_count": 15,
+        "max_node_inputs": 6,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "TfIdfVectorizer",
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 249,
+          "params": 35,
+          "cost": 284
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 6,
+          "mismatches": [
+            {
+              "tensor": "gn2",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_u8",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_h",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "counts",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "poolv",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "pooli",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 134,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task134_r02_static310.onnx",
+      "sha256": "6986b30e4e505e20b2cfff14f6f0c9d148c5e8694319508f3e1668f74444d825",
+      "reported_static_cost": 310,
+      "baseline_actual_cost": 423,
+      "actual_cost": {
+        "memory": 216,
+        "params": 94,
+        "cost": 310,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 0,
+        "wrong": 266,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": {
+          "split": "train",
+          "index": 0,
+          "kind": "wrong"
+        }
+      },
+      "known_default": {
+        "not_run": "disable_all_not_perfect"
+      },
+      "structure": null,
+      "promising_pre_fresh": false
+    },
+    {
+      "task": 134,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task134_r03_static319.onnx",
+      "sha256": "e53848f894aa49d590093c2ea2692d2fe5ed0dbfd25d733cd7c714b09f3db2b7",
+      "reported_static_cost": 319,
+      "baseline_actual_cost": 423,
+      "actual_cost": {
+        "memory": 237,
+        "params": 82,
+        "cost": 319,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 264,
+        "wrong": 2,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": {
+          "split": "arc-gen",
+          "index": 88,
+          "kind": "wrong"
+        }
+      },
+      "known_default": {
+        "not_run": "disable_all_not_perfect"
+      },
+      "structure": null,
+      "promising_pre_fresh": false
+    },
+    {
+      "task": 134,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task134_r04_static320.onnx",
+      "sha256": "a610dcc58d2715ea4c39e000bfc83bb39ee69b69b95ee4a7ead252f3b126880b",
+      "reported_static_cost": 320,
+      "baseline_actual_cost": 423,
+      "actual_cost": {
+        "memory": 237,
+        "params": 83,
+        "cost": 320,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 1,
+          "ArgMax": 1,
+          "Cast": 11,
+          "Concat": 2,
+          "Einsum": 1,
+          "GatherElements": 2,
+          "Log": 1,
+          "Mod": 1,
+          "Mul": 1,
+          "QLinearConv": 1,
+          "QuantizeLinear": 1,
+          "Reshape": 1,
+          "Sub": 1,
+          "TfIdfVectorizer": 10,
+          "TopK": 1,
+          "Transpose": 1,
+          "Where": 1
+        },
+        "node_count": 38,
+        "initializer_count": 14,
+        "max_node_inputs": 9,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer"
+        ],
+        "declared_cost": {
+          "memory": 237,
+          "params": 83,
+          "cost": 320
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 134,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task134_r05_static320.onnx",
+      "sha256": "c5fd09fae66de35b0d820653ce148f4ee462ce5d150dfc2612fe70f958a53e52",
+      "reported_static_cost": 320,
+      "baseline_actual_cost": 423,
+      "actual_cost": {
+        "memory": 351,
+        "params": 57,
+        "cost": 408,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 6,
+          "And": 1,
+          "Cast": 11,
+          "CastLike": 3,
+          "Concat": 2,
+          "Div": 2,
+          "Einsum": 1,
+          "GatherElements": 4,
+          "GroupNormalization": 1,
+          "LessOrEqual": 3,
+          "MaxPool": 2,
+          "Mod": 3,
+          "Mul": 5,
+          "Not": 1,
+          "Or": 1,
+          "QLinearConv": 1,
+          "Reshape": 2,
+          "Resize": 1,
+          "Slice": 8,
+          "Sqrt": 1,
+          "Sub": 5,
+          "TfIdfVectorizer": 1,
+          "TopK": 1
+        },
+        "node_count": 66,
+        "initializer_count": 18,
+        "max_node_inputs": 9,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "TfIdfVectorizer"
+        ],
+        "declared_cost": {
+          "memory": 263,
+          "params": 57,
+          "cost": 320
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 7,
+          "mismatches": [
+            {
+              "tensor": "gn2",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_u8",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_h",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "counts",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "poolv",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "pooli",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "pooli_i16",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 202,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task202_r01_static20.onnx",
+      "sha256": "11c9d787f99ce439e7674a5a45899162d54d8005c356644a4762d0ca958b6283",
+      "reported_static_cost": 20,
+      "baseline_actual_cost": 48,
+      "actual_cost": {
+        "memory": 0,
+        "params": 20,
+        "cost": 20,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 230,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 37,
+        "total": 230,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 230,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 37,
+        "total": 230,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 2,
+        "max_node_inputs": 16,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 20,
+          "cost": 20
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 202,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task202_r02_static28.onnx",
+      "sha256": "6475e689805ea6176a6ae05a6730e07f665f8b4e0b4bf74d1a0ee0379f75f227",
+      "reported_static_cost": 28,
+      "baseline_actual_cost": 48,
+      "actual_cost": {
+        "memory": 0,
+        "params": 28,
+        "cost": 28,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 230,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 37,
+        "total": 230,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 230,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 37,
+        "total": 230,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 2,
+        "max_node_inputs": 25,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 25
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 28,
+          "cost": 28
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 202,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task202_r03_static28.onnx",
+      "sha256": "cd442a7cb2df00311044258ded1c9e1635bb19193fba6940e4b803831d6d03ea",
+      "reported_static_cost": 28,
+      "baseline_actual_cost": 48,
+      "actual_cost": {
+        "memory": 0,
+        "params": 28,
+        "cost": 28,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 230,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 37,
+        "total": 230,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 230,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 37,
+        "total": 230,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 3,
+        "max_node_inputs": 21,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 21
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 28,
+          "cost": 28
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 219,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task219_r01_static1081.onnx",
+      "sha256": "6fffa0b87f151603b0def28aa6ef29a4b46c1334a8a21a54d27eea16741ff186",
+      "reported_static_cost": 1081,
+      "baseline_actual_cost": 1479,
+      "actual_cost": {
+        "memory": 965,
+        "params": 116,
+        "cost": 1081,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 265,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 265,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "BitwiseAnd": 1,
+          "BitwiseNot": 1,
+          "BitwiseOr": 1,
+          "Cast": 13,
+          "Concat": 2,
+          "Einsum": 1,
+          "Pad": 3,
+          "Slice": 1,
+          "Sum": 11,
+          "TfIdfVectorizer": 55,
+          "Unsqueeze": 2
+        },
+        "node_count": 91,
+        "initializer_count": 11,
+        "max_node_inputs": 15,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer"
+        ],
+        "declared_cost": {
+          "memory": 965,
+          "params": 116,
+          "cost": 1081
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 219,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task219_r02_static1103.onnx",
+      "sha256": "8a5431580aa6e50b8b719294b67d5c508f9fea2e7b02a740731cd3fa5856a7ea",
+      "reported_static_cost": 1103,
+      "baseline_actual_cost": 1479,
+      "actual_cost": {
+        "memory": 938,
+        "params": 165,
+        "cost": 1103,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 265,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 265,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 1,
+          "BitwiseAnd": 1,
+          "BitwiseNot": 1,
+          "BitwiseOr": 1,
+          "Cast": 3,
+          "Concat": 1,
+          "Einsum": 2,
+          "Pad": 2,
+          "Slice": 1,
+          "Sum": 1,
+          "TfIdfVectorizer": 5,
+          "Unsqueeze": 2
+        },
+        "node_count": 21,
+        "initializer_count": 14,
+        "max_node_inputs": 10,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer"
+        ],
+        "declared_cost": {
+          "memory": 938,
+          "params": 165,
+          "cost": 1103
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 219,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task219_r03_static1174.onnx",
+      "sha256": "192ab4e910ce562d387ec5ff1d11c35d5fa9d965d176e20a264d1dd712edc303",
+      "reported_static_cost": 1174,
+      "baseline_actual_cost": 1479,
+      "actual_cost": {
+        "memory": 1058,
+        "params": 116,
+        "cost": 1174,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 265,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 265,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "BitwiseAnd": 1,
+          "BitwiseNot": 1,
+          "BitwiseOr": 1,
+          "Cast": 3,
+          "Concat": 2,
+          "Einsum": 1,
+          "Pad": 3,
+          "Slice": 1,
+          "Sum": 11,
+          "TfIdfVectorizer": 66,
+          "Unsqueeze": 2
+        },
+        "node_count": 92,
+        "initializer_count": 11,
+        "max_node_inputs": 15,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer"
+        ],
+        "declared_cost": {
+          "memory": 1058,
+          "params": 116,
+          "cost": 1174
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 219,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task219_r04_static1191.onnx",
+      "sha256": "edce39967e0565741d854597382b8e46a0155354afdf18d0d5f9a5aa6a02207f",
+      "reported_static_cost": 1191,
+      "baseline_actual_cost": 1479,
+      "actual_cost": {
+        "memory": 1019,
+        "params": 172,
+        "cost": 1191,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 0,
+        "wrong": 265,
+        "errors": 0,
+        "skipped": 0,
+        "total": 265,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            9,
+            15,
+            10
+          ]
+        ],
+        "first_failure": {
+          "split": "train",
+          "index": 0,
+          "kind": "wrong"
+        }
+      },
+      "known_default": {
+        "not_run": "disable_all_not_perfect"
+      },
+      "structure": null,
+      "promising_pre_fresh": false
+    },
+    {
+      "task": 219,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task219_r05_static1467.onnx",
+      "sha256": "9cc12a6acd21e847e4ffc6625078c31d98b03cf2228626426396c1f0eec73881",
+      "reported_static_cost": 1467,
+      "baseline_actual_cost": 1479,
+      "actual_cost": {
+        "memory": 1249,
+        "params": 218,
+        "cost": 1467,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 265,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 265,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 9,
+          "And": 10,
+          "ArgMax": 1,
+          "BitwiseAnd": 10,
+          "BitwiseNot": 1,
+          "BitwiseOr": 1,
+          "Cast": 5,
+          "Concat": 3,
+          "Div": 6,
+          "Einsum": 1,
+          "Equal": 12,
+          "Gather": 19,
+          "Greater": 2,
+          "Mul": 14,
+          "Not": 1,
+          "Pad": 3,
+          "QLinearConv": 1,
+          "QLinearMatMul": 2,
+          "ReduceMax": 2,
+          "ScatterElements": 2,
+          "Slice": 8,
+          "Unsqueeze": 9,
+          "Where": 5
+        },
+        "node_count": 127,
+        "initializer_count": 44,
+        "max_node_inputs": 10,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements",
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 1249,
+          "params": 218,
+          "cost": 1467
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : This is an invalid model. Error: two nodes with same node name (bestmatches)."
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 271,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task271_r01_static10.onnx",
+      "sha256": "d6c7c02fe2bf418140136570c266fac48035eca273ef8f30c7947fa5bfe1d180",
+      "reported_static_cost": 10,
+      "baseline_actual_cost": 135,
+      "actual_cost": {
+        "memory": 0,
+        "params": 10,
+        "cost": 10,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 0,
+        "wrong": 267,
+        "errors": 0,
+        "skipped": 0,
+        "total": 267,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": {
+          "split": "train",
+          "index": 0,
+          "kind": "wrong"
+        }
+      },
+      "known_default": {
+        "not_run": "disable_all_not_perfect"
+      },
+      "structure": null,
+      "promising_pre_fresh": false
+    },
+    {
+      "task": 271,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task271_r02_static126.onnx",
+      "sha256": "98b00edd2f236d5de07ad49c90382621f29b363acd612bc5299b4793802bf2fc",
+      "reported_static_cost": 126,
+      "baseline_actual_cost": 135,
+      "actual_cost": {
+        "memory": 71,
+        "params": 55,
+        "cost": 126,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 267,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 267,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 10,
+          "Concat": 1,
+          "ConvInteger": 1,
+          "Einsum": 1,
+          "Reshape": 1,
+          "TfIdfVectorizer": 9
+        },
+        "node_count": 23,
+        "initializer_count": 5,
+        "max_node_inputs": 9,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer",
+          "TfIdfVectorizer"
+        ],
+        "declared_cost": {
+          "memory": 71,
+          "params": 55,
+          "cost": 126
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 343,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task343_r01_static172.onnx",
+      "sha256": "6ada3c411cf90b4bcb42ff69e47eee35ed1c1b7d8b842c96c5c02c0eb06bec9e",
+      "reported_static_cost": 172,
+      "baseline_actual_cost": 173,
+      "actual_cost": {
+        "memory": 140,
+        "params": 32,
+        "cost": 172,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "And": 1,
+          "Conv": 3,
+          "Equal": 1,
+          "Gather": 1,
+          "GreaterOrEqual": 1,
+          "Mod": 1,
+          "Squeeze": 1,
+          "Where": 1
+        },
+        "node_count": 10,
+        "initializer_count": 3,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 140,
+          "params": 32,
+          "cost": 172
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 343,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task343_r02_static172.onnx",
+      "sha256": "c1047d40b875d37a7a9e28a52a47e2c569f5156924691118082aaca4ed5198e6",
+      "reported_static_cost": 172,
+      "baseline_actual_cost": 173,
+      "actual_cost": {
+        "memory": 140,
+        "params": 32,
+        "cost": 172,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Conv": 3,
+          "Gather": 1,
+          "Greater": 2,
+          "Mod": 1,
+          "Or": 1,
+          "Squeeze": 1,
+          "Where": 1
+        },
+        "node_count": 10,
+        "initializer_count": 3,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 140,
+          "params": 32,
+          "cost": 172
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 396,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task396_r01_static947.onnx",
+      "sha256": "95b41e2deca620c011cb5af28ccb0741bd78d3bd1033740d0e7e074ad873ff46",
+      "reported_static_cost": 947,
+      "baseline_actual_cost": 1019,
+      "actual_cost": {
+        "memory": 854,
+        "params": 93,
+        "cost": 947,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 1,
+          "ArgMax": 1,
+          "ArgMin": 1,
+          "BitShift": 2,
+          "BitwiseAnd": 9,
+          "Cast": 11,
+          "Concat": 1,
+          "ConvInteger": 1,
+          "Div": 7,
+          "Einsum": 3,
+          "Equal": 1,
+          "Gather": 4,
+          "Hardmax": 1,
+          "LessOrEqual": 1,
+          "Max": 1,
+          "Mod": 1,
+          "ReduceMax": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sub": 2,
+          "TopK": 2,
+          "Where": 7
+        },
+        "node_count": 60,
+        "initializer_count": 22,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "Hardmax",
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 854,
+          "params": 93,
+          "cost": 947
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : This is an invalid model. Error: two nodes with same node name (a4)."
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 396,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task396_r02_static961.onnx",
+      "sha256": "43bab65ff82dbbf377cad0160a7650ea2554ac6c3beb219ef1825f521b6fd55d",
+      "reported_static_cost": 961,
+      "baseline_actual_cost": 1019,
+      "actual_cost": {
+        "memory": 867,
+        "params": 94,
+        "cost": 961,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 1,
+          "And": 1,
+          "ArgMax": 1,
+          "ArgMin": 1,
+          "BitShift": 3,
+          "BitwiseAnd": 9,
+          "Cast": 12,
+          "Concat": 1,
+          "ConvInteger": 1,
+          "Div": 6,
+          "Einsum": 3,
+          "Equal": 2,
+          "Gather": 4,
+          "Greater": 1,
+          "Hardmax": 1,
+          "LessOrEqual": 1,
+          "Max": 1,
+          "Mod": 1,
+          "ReduceMax": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sub": 2,
+          "TopK": 2,
+          "Unsqueeze": 2,
+          "Where": 8
+        },
+        "node_count": 67,
+        "initializer_count": 21,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "Hardmax",
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 867,
+          "params": 94,
+          "cost": 961
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 396,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task396_r03_static964.onnx",
+      "sha256": "08bac1c184449b5438a2b68548fd74c901eac7fba66f5cd85c10fe050a124b25",
+      "reported_static_cost": 964,
+      "baseline_actual_cost": 1019,
+      "actual_cost": {
+        "memory": 870,
+        "params": 94,
+        "cost": 964,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 1,
+          "ArgMax": 1,
+          "ArgMin": 1,
+          "BitShift": 3,
+          "BitwiseAnd": 9,
+          "Cast": 11,
+          "Concat": 1,
+          "ConvInteger": 1,
+          "Div": 6,
+          "Einsum": 3,
+          "Equal": 1,
+          "Gather": 4,
+          "Hardmax": 1,
+          "LessOrEqual": 1,
+          "Max": 1,
+          "Mod": 1,
+          "ReduceMax": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sub": 2,
+          "TopK": 2,
+          "Unsqueeze": 2,
+          "Where": 7
+        },
+        "node_count": 62,
+        "initializer_count": 21,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "Hardmax",
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 870,
+          "params": 94,
+          "cost": 964
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : This is an invalid model. Error: two nodes with same node name (a4)."
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 396,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task396_r04_static965.onnx",
+      "sha256": "13a3892a52d0553c038ced7cfb548cd5f2f62eedf5e34a6b44ffa1e9dee55b3d",
+      "reported_static_cost": 965,
+      "baseline_actual_cost": 1019,
+      "actual_cost": {
+        "memory": 868,
+        "params": 97,
+        "cost": 965,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 1,
+          "And": 2,
+          "ArgMax": 1,
+          "ArgMin": 1,
+          "BitShift": 2,
+          "BitwiseAnd": 9,
+          "Cast": 12,
+          "Concat": 1,
+          "ConvInteger": 1,
+          "Div": 7,
+          "Einsum": 3,
+          "Equal": 4,
+          "Gather": 3,
+          "Hardmax": 1,
+          "LessOrEqual": 1,
+          "Max": 1,
+          "Mod": 1,
+          "ReduceMax": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sub": 2,
+          "TopK": 2,
+          "Unsqueeze": 2,
+          "Where": 8
+        },
+        "node_count": 68,
+        "initializer_count": 24,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "Hardmax",
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 868,
+          "params": 97,
+          "cost": 965
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : This is an invalid model. Error: two nodes with same node name (a4)."
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    },
+    {
+      "task": 396,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task396_r05_static965.onnx",
+      "sha256": "cda9acdf5168445fca48926393f0f89516d800cf14f432da1e0d04b2193980dc",
+      "reported_static_cost": 965,
+      "baseline_actual_cost": 1019,
+      "actual_cost": {
+        "memory": 868,
+        "params": 97,
+        "cost": 965,
+        "error": null
+      },
+      "strictly_cheaper": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 266,
+        "near_margin_count": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "first_failure": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 1,
+          "ArgMax": 1,
+          "ArgMin": 1,
+          "BitShift": 2,
+          "BitwiseAnd": 9,
+          "Cast": 12,
+          "Concat": 1,
+          "ConvInteger": 1,
+          "Div": 7,
+          "Einsum": 3,
+          "Equal": 2,
+          "Gather": 5,
+          "Hardmax": 1,
+          "LessOrEqual": 1,
+          "Max": 1,
+          "Mod": 1,
+          "Mul": 2,
+          "ReduceMax": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sub": 2,
+          "TopK": 2,
+          "Unsqueeze": 2,
+          "Where": 8
+        },
+        "node_count": 68,
+        "initializer_count": 24,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "Hardmax",
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 868,
+          "params": 97,
+          "cost": 965
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "promising_pre_fresh": true
+    }
+  ],
+  "promising": [
+    {
+      "task": 134,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task134_r01_static284.onnx",
+      "sha256": "0cc62d5848313c2434f1205883070fb90b2d696bce903da2dc004541ededa820"
+    },
+    {
+      "task": 134,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task134_r04_static320.onnx",
+      "sha256": "a610dcc58d2715ea4c39e000bfc83bb39ee69b69b95ee4a7ead252f3b126880b"
+    },
+    {
+      "task": 134,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task134_r05_static320.onnx",
+      "sha256": "c5fd09fae66de35b0d820653ce148f4ee462ce5d150dfc2612fe70f958a53e52"
+    },
+    {
+      "task": 202,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task202_r01_static20.onnx",
+      "sha256": "11c9d787f99ce439e7674a5a45899162d54d8005c356644a4762d0ca958b6283"
+    },
+    {
+      "task": 202,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task202_r02_static28.onnx",
+      "sha256": "6475e689805ea6176a6ae05a6730e07f665f8b4e0b4bf74d1a0ee0379f75f227"
+    },
+    {
+      "task": 202,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task202_r03_static28.onnx",
+      "sha256": "cd442a7cb2df00311044258ded1c9e1635bb19193fba6940e4b803831d6d03ea"
+    },
+    {
+      "task": 219,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task219_r01_static1081.onnx",
+      "sha256": "6fffa0b87f151603b0def28aa6ef29a4b46c1334a8a21a54d27eea16741ff186"
+    },
+    {
+      "task": 219,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task219_r02_static1103.onnx",
+      "sha256": "8a5431580aa6e50b8b719294b67d5c508f9fea2e7b02a740731cd3fa5856a7ea"
+    },
+    {
+      "task": 219,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task219_r03_static1174.onnx",
+      "sha256": "192ab4e910ce562d387ec5ff1d11c35d5fa9d965d176e20a264d1dd712edc303"
+    },
+    {
+      "task": 219,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task219_r05_static1467.onnx",
+      "sha256": "9cc12a6acd21e847e4ffc6625078c31d98b03cf2228626426396c1f0eec73881"
+    },
+    {
+      "task": 271,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task271_r02_static126.onnx",
+      "sha256": "98b00edd2f236d5de07ad49c90382621f29b363acd612bc5299b4793802bf2fc"
+    },
+    {
+      "task": 343,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task343_r01_static172.onnx",
+      "sha256": "6ada3c411cf90b4bcb42ff69e47eee35ed1c1b7d8b842c96c5c02c0eb06bec9e"
+    },
+    {
+      "task": 343,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task343_r02_static172.onnx",
+      "sha256": "c1047d40b875d37a7a9e28a52a47e2c569f5156924691118082aaca4ed5198e6"
+    },
+    {
+      "task": 396,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task396_r01_static947.onnx",
+      "sha256": "95b41e2deca620c011cb5af28ccb0741bd78d3bd1033740d0e7e074ad873ff46"
+    },
+    {
+      "task": 396,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task396_r02_static961.onnx",
+      "sha256": "43bab65ff82dbbf377cad0160a7650ea2554ac6c3beb219ef1825f521b6fd55d"
+    },
+    {
+      "task": 396,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task396_r03_static964.onnx",
+      "sha256": "08bac1c184449b5438a2b68548fd74c901eac7fba66f5cd85c10fe050a124b25"
+    },
+    {
+      "task": 396,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task396_r04_static965.onnx",
+      "sha256": "13a3892a52d0553c038ced7cfb548cd5f2f62eedf5e34a6b44ffa1e9dee55b3d"
+    },
+    {
+      "task": 396,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task396_r05_static965.onnx",
+      "sha256": "cda9acdf5168445fca48926393f0f89516d800cf14f432da1e0d04b2193980dc"
+    }
+  ]
+}

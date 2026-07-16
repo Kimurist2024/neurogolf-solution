@@ -1,0 +1,99 @@
+{
+  "complete": true,
+  "scope": [36, 208, 255, 44],
+  "baseline": {
+    "zip": "submission_base_8004.50.zip",
+    "zip_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+    "costs": {
+      "36": 1477,
+      "208": 1422,
+      "255": 1162,
+      "44": 1086
+    }
+  },
+  "accepted": [
+    {
+      "task": 36,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_rebuild_mid8/candidates/task036_truthful_gather.onnx",
+      "sha256": "fc83bef42ce52ddd5c726323bacca5c4bf59ecaa55ef2aa55b1571243e9b5738",
+      "current_cost": 1477,
+      "candidate_cost": 1428,
+      "memory": 1194,
+      "params": 234,
+      "projected_score_gain": 0.033738139631850204,
+      "known_dual": {
+        "disabled": "265/265, runtime_errors=0",
+        "default": "265/265, runtime_errors=0"
+      },
+      "fresh_dual": {
+        "seed_260714036_disabled": "5000/5000, runtime_errors=0",
+        "seed_260714036_default": "5000/5000, runtime_errors=0",
+        "seed_910714036_disabled": "5000/5000, runtime_errors=0",
+        "seed_910714036_default": "5000/5000, runtime_errors=0"
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive_shapes": true,
+        "standard_domains": true,
+        "runtime_shape_mismatches": 0,
+        "truthful_runtime_memory": 1194,
+        "conv_bias_ub_findings": 0,
+        "lookup": false,
+        "shape_cloak": false,
+        "max_einsum_inputs": 5,
+        "giant_einsum_by_campaign_max16_rule": false,
+        "giant_initializers": 0
+      },
+      "private_zero_lineage": false,
+      "evidence": "scripts/golf/loop_8004_42_plus20/agent_rebuild_mid8/task036_audit.json"
+    }
+  ],
+  "rejected_or_no_improvement": {
+    "208": {
+      "task_hash": "890034e9",
+      "rule": "Find two equal 2..5 by 2..5 black rectangles in a 21x21 noisy grid; copy the first rectangle's colored one-cell frame to the second.",
+      "history_inventory": "Three below-current static candidates were re-screened by agent_clean95_all; all are nonstatic and private-zero lineage.",
+      "best_nominal_candidate": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task208_r01_static1392.onnx",
+      "best_nominal_failure": "0/266 known with 266 runtime errors and 0/3000 fresh with 3000 runtime errors (Slice allocator shape mismatch).",
+      "sound_reference": "scripts/golf/scratch_codex/task208/cand_current_exact_full_trim.onnx",
+      "sound_reference_sha256": "185d7633417ec0885d2a55aae3a184b59f58da042944e2318a667931327aa4ab",
+      "sound_reference_cost": 1812,
+      "sound_reference_prior_evidence": "known complete; generator reference 1000/1000; ONNX fresh 1000/1000; checker/strict pass",
+      "decision": "No sound strict-cheaper candidate. Private-zero candidates cannot meet the 100% multiple-seed guarantee."
+    },
+    "255": {
+      "task_hash": "a64e4611",
+      "rule": "Recover green interiors of several artery/vein rectangles after every green cell has been replaced by black in the input.",
+      "history_inventory": "60 unique historical candidates were present in the current rescreen; all lower static families fail actual-cost or structural/private-zero policy gates.",
+      "noninjective_proof": {
+        "source": "scripts/golf/scratch_codex/task255/ambiguity_proof.py",
+        "same_legal_input": true,
+        "different_legal_outputs": true,
+        "different_output_cells": 15,
+        "witness": "bottom-clipped low-right vein, tall=3 versus tall=4"
+      },
+      "decision": "No deterministic input-only ONNX can be generator-exact; therefore no private-zero candidate can receive a pass guarantee."
+    },
+    "44": {
+      "task_hash": "228f6490",
+      "rule": "There are two gray containers with black holes and two translated external colored creatures; erase the external creatures and paint each matching creature color into its container holes while preserving unrelated dust.",
+      "history_inventory": "112 unique historical SHA values: 106 cost-floor rejects at or above old cost 1087, one old base, three structural rejects, two unscorable; no model below the new cost 1086.",
+      "noninjective_evidence": {
+        "source": "scripts/golf/loop_7999_13/lane_a23/task044_rule_evidence.json",
+        "ambiguous_seeds_in_0_2999": [1503, 1506],
+        "noninjective": true
+      },
+      "decision": "No strict-cheaper candidate exists in the exhaustive history frontier; a universally exact inverse is not generator-entailed."
+    }
+  },
+  "additional_attempts": [
+    {
+      "task": 36,
+      "attempt": "Narrow GatherND indices from int64 to int32 to save 400 intermediate bytes.",
+      "result": "Rejected before serialization: ONNX opset-23 GatherND checker reports tensor(int32) as unsupported; retained the validated int64 model."
+    }
+  ],
+  "aggregate_projected_gain": 0.033738139631850204,
+  "root_artifacts_modified": false
+}

@@ -78,8 +78,16 @@ def main() -> int:
 
     results: dict[int, dict[str, int]] = {}
     workers = max(1, (os.cpu_count() or 4) - 1)
-    with ProcessPoolExecutor(max_workers=workers) as ex:
-        for task, mem, par, cost in ex.map(_job, items):
+    try:
+        with ProcessPoolExecutor(max_workers=workers) as ex:
+            rows = ex.map(_job, items)
+            for task, mem, par, cost in rows:
+                results[task] = {"memory": mem, "params": par, "cost": cost}
+    except PermissionError:
+        # Some managed sandboxes deny the sysconf call used by
+        # ProcessPoolExecutor.  Cost profiling is still valid sequentially.
+        for item in items:
+            task, mem, par, cost = _job(item)
             results[task] = {"memory": mem, "params": par, "cost": cost}
 
     ranked = sorted(results.items(), key=lambda kv: -kv[1]["cost"])

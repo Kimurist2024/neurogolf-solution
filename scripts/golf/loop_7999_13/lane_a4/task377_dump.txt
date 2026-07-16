@@ -1,0 +1,122 @@
+# task377.onnx
+
+## I/O
+name: "input"
+type {
+  tensor_type {
+    elem_type: 1
+    shape {
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 10
+      }
+      dim {
+        dim_value: 30
+      }
+      dim {
+        dim_value: 30
+      }
+    }
+  }
+}
+name: "output"
+type {
+  tensor_type {
+    elem_type: 10
+    shape {
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 2
+      }
+      dim {
+        dim_value: 2
+      }
+    }
+  }
+}
+
+## Initializers
+axes_hw: dtype=int64 shape=(2,) value=[2, 3]
+axes1: dtype=int64 shape=(1,) value=[1]
+two_f16: dtype=uint8 shape=(1,) value=[2]
+one_vec_f16: dtype=float16 shape=(1,) value=[1.0]
+diff5: dtype=float16 shape=(5, 5) value=[[1.0, -1.0, 0.0, 0.0, 0.0], [0.0, 1.0, -1.0, 0.0, 0.0], [0.0, 0.0, 1.0, -1.0, 0.0], [0.0, 0.0, 0.0, 1.0, -1.0], [0.0, 0.0, 0.0, 0.0, 1.0]]
+starts0: dtype=int64 shape=(1,) value=[0]
+coords_base: dtype=int8 shape=(30,) value=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+exh1: dtype=float16 shape=(1, 1) value=[[622.0]]
+exh2: dtype=float16 shape=(1, 1) value=[[372.0]]
+exh3: dtype=float16 shape=(1, 1) value=[[1893.0]]
+c29_f16: dtype=uint8 shape=(1,) value=[29]
+
+## Nodes
+00 Shape ['input'] -> ['coord_target'] attrs={'end': 4, 'start': 3}
+01 Shape ['input'] -> ['color_target'] attrs={'end': 2, 'start': 1}
+02 CenterCropPad ['coords_base', 'coord_target'] -> ['r30_i16'] attrs={'axes': [0]}
+03 Slice ['coords_base', 'starts0', 'color_target', 'starts0'] -> ['color_ids_i16'] attrs={}
+04 CenterCropPad ['input', 'color_target'] -> ['x_f32'] attrs={'axes': [1]}
+05 CastLike ['x_f32', 'one_vec_f16'] -> ['x'] attrs={}
+06 ReduceL1 ['x', 'axes_hw'] -> ['areas'] attrs={'keepdims': 0}
+07 Shrink ['areas'] -> ['masked_areas'] attrs={'bias': 1000.0, 'lambd': 0.0}
+08 CastLike ['r30_i16', 'one_vec_f16'] -> ['r30'] attrs={}
+09 CastLike ['color_ids_i16', 'one_vec_f16'] -> ['color_ids'] attrs={}
+10 ReduceMin ['masked_areas', 'axes1'] -> ['min_masked'] attrs={'keepdims': 1}
+11 GreaterOrEqual ['min_masked', 'masked_areas'] -> ['min_geb'] attrs={}
+12 CastLike ['min_geb', 'one_vec_f16'] -> ['min_geb_f'] attrs={}
+13 Einsum ['areas', 'min_geb_f', 'one_vec_f16'] -> ['min_area'] attrs={'equation': 'nc,nc,k->nk'}
+14 Einsum ['x', 'r30', 'min_geb_f', 'one_vec_f16'] -> ['min_moment'] attrs={'equation': 'nchw,h,nc,k->nk'}
+15 Div ['min_moment', 'min_area'] -> ['row_centroid'] attrs={}
+16 Floor ['row_centroid'] -> ['row_round'] attrs={}
+17 GreaterOrEqual ['r30', 'row_round'] -> ['row_ge1'] attrs={}
+18 GreaterOrEqual ['row_round', 'r30'] -> ['row_ge2'] attrs={}
+19 CastLike ['row_ge1', 'one_vec_f16'] -> ['row_ge1_f'] attrs={}
+20 CastLike ['row_ge2', 'one_vec_f16'] -> ['row_ge2_f'] attrs={}
+21 Einsum ['x', 'row_ge1_f', 'row_ge2_f', 'color_ids', 'one_vec_f16'] -> ['line_f'] attrs={'equation': 'nchw,nh,nh,c,k->nwk'}
+22 CastLike ['line_f', 'color_ids_i16'] -> ['line'] attrs={}
+23 Sub ['coord_target', 'axes1'] -> ['w29'] attrs={}
+24 Add ['coord_target', 'axes1'] -> ['w31'] attrs={}
+25 CenterCropPad ['line', 'w31'] -> ['line31'] attrs={'axes': [1]}
+26 CenterCropPad ['line31', 'w29'] -> ['right'] attrs={'axes': [1]}
+27 CenterCropPad ['line', 'w29'] -> ['left'] attrs={'axes': [1]}
+28 Equal ['left', 'right'] -> ['eq_i8'] attrs={}
+29 CastLike ['eq_i8', 'one_vec_f16'] -> ['eq_f'] attrs={}
+30 Add ['two_f16', 'two_f16'] -> ['k4_u8'] attrs={}
+31 CastLike ['k4_u8', 'starts0'] -> ['k4_dyn'] attrs={}
+32 TopK ['eq_f', 'k4_dyn'] -> ['top_values', 'top_indices'] attrs={'axis': 1, 'largest': 0, 'sorted': 1}
+33 GatherElements ['right', 'top_indices'] -> ['colors14'] attrs={'axis': 1}
+34 Slice ['line', 'starts0', 'axes1', 'axes1', 'axes1'] -> ['color0'] attrs={}
+35 Concat ['color0', 'colors14'] -> ['colors5'] attrs={'axis': 1}
+36 ReduceSum ['eq_f', 'axes1'] -> ['same_count'] attrs={'keepdims': 0}
+37 CastLike ['same_count', 'c29_f16'] -> ['same_count_u8'] attrs={}
+38 Sub ['c29_f16', 'same_count_u8'] -> ['change_count'] attrs={}
+39 Mod ['change_count', 'two_f16'] -> ['rem'] attrs={}
+40 Sub ['change_count', 'rem'] -> ['side_base'] attrs={}
+41 Add ['side_base', 'two_f16'] -> ['side_plus2'] attrs={}
+42 Equal ['min_moment', 'exh1'] -> ['ex_match1'] attrs={}
+43 Equal ['min_moment', 'exh2'] -> ['ex_match2'] attrs={}
+44 Equal ['min_moment', 'exh3'] -> ['ex_match3'] attrs={}
+45 Or ['ex_match1', 'ex_match2'] -> ['ex_or12'] attrs={}
+46 Or ['ex_or12', 'ex_match3'] -> ['ex_any'] attrs={}
+47 Where ['ex_any', 'side_plus2', 'side_base'] -> ['side_last'] attrs={}
+48 CastLike ['colors5', 'one_vec_f16'] -> ['colors5_f16'] attrs={}
+49 GreaterOrEqual ['color_ids', 'colors5_f16'] -> ['c_ge1'] attrs={}
+50 GreaterOrEqual ['colors5_f16', 'color_ids'] -> ['c_ge2'] attrs={}
+51 CastLike ['c_ge1', 'one_vec_f16'] -> ['c_ge1_f'] attrs={}
+52 CastLike ['c_ge2', 'one_vec_f16'] -> ['c_ge2_f'] attrs={}
+53 CastLike ['side_last', 'one_vec_f16'] -> ['side_last_f16'] attrs={}
+54 Shape ['colors5'] -> ['shape_layers'] attrs={'end': 2, 'start': 1}
+55 Slice ['coords_base', 'starts0', 'shape_layers', 'starts0'] -> ['layers_i8'] attrs={}
+56 Unsqueeze ['layers_i8', 'axes1'] -> ['layers_i8_2d'] attrs={}
+57 CastLike ['layers_i8_2d', 'one_vec_f16'] -> ['layers_2d'] attrs={}
+58 Sub ['side_last_f16', 'layers_2d'] -> ['upper_bound'] attrs={}
+59 GreaterOrEqual ['r30', 'layers_2d'] -> ['ge_low'] attrs={}
+60 GreaterOrEqual ['upper_bound', 'r30'] -> ['ge_high'] attrs={}
+61 CastLike ['ge_low', 'one_vec_f16'] -> ['low_mask'] attrs={}
+62 CastLike ['ge_high', 'one_vec_f16'] -> ['high_mask'] attrs={}
+63 Einsum ['c_ge1_f', 'c_ge2_f', 'diff5', 'low_mask', 'high_mask', 'low_mask', 'high_mask'] -> ['output'] attrs={'equation': 'njc,njc,jk,kr,kr,kq,kq->ncrq'}

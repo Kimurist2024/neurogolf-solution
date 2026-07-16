@@ -1,0 +1,139 @@
+{
+  "task": 205,
+  "authority_member_sha256": "8a6acdc20a366ccbd32cf761285cbb2f1cbcf7d3d2ef8ea71d0fb5a3ed6f1468",
+  "candidate_sha256": "d0a53168d0a8313810b2f53cd68c0dd968533677f0b96523f4df375096f434b5",
+  "known_cases": 266,
+  "full_check": true,
+  "strict_shape_inference_data_prop": true,
+  "authority_io": {
+    "inputs": [
+      {
+        "name": "input",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "dtype": "INT32",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ]
+  },
+  "candidate_io": {
+    "inputs": [
+      {
+        "name": "input",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "dtype": "INT32",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ]
+  },
+  "io_signature_equal": true,
+  "authority_nodes": 38,
+  "candidate_nodes": 37,
+  "fusion": "ReduceSum(row_mask) + Mul(rowpow_thr) -> Einsum('ab,->')",
+  "runs": [
+    {
+      "config": "disable_t1",
+      "total": 266,
+      "raw_equal_authority": 266,
+      "threshold_equal_authority": 266,
+      "shape_equal_authority": 266,
+      "authority_right": 266,
+      "candidate_right": 266,
+      "authority_errors": 0,
+      "candidate_errors": 0,
+      "authority_nonfinite": 0,
+      "candidate_nonfinite": 0,
+      "authority_near_positive_0_0.25": 0,
+      "candidate_near_positive_0_0.25": 0,
+      "first_failure": null,
+      "pass": true
+    },
+    {
+      "config": "disable_t4",
+      "total": 266,
+      "raw_equal_authority": 266,
+      "threshold_equal_authority": 266,
+      "shape_equal_authority": 266,
+      "authority_right": 266,
+      "candidate_right": 266,
+      "authority_errors": 0,
+      "candidate_errors": 0,
+      "authority_nonfinite": 0,
+      "candidate_nonfinite": 0,
+      "authority_near_positive_0_0.25": 0,
+      "candidate_near_positive_0_0.25": 0,
+      "first_failure": null,
+      "pass": true
+    },
+    {
+      "config": "enable_t1",
+      "total": 266,
+      "raw_equal_authority": 266,
+      "threshold_equal_authority": 266,
+      "shape_equal_authority": 266,
+      "authority_right": 266,
+      "candidate_right": 266,
+      "authority_errors": 0,
+      "candidate_errors": 0,
+      "authority_nonfinite": 0,
+      "candidate_nonfinite": 0,
+      "authority_near_positive_0_0.25": 0,
+      "candidate_near_positive_0_0.25": 0,
+      "first_failure": null,
+      "pass": true
+    },
+    {
+      "config": "enable_t4",
+      "total": 266,
+      "raw_equal_authority": 266,
+      "threshold_equal_authority": 266,
+      "shape_equal_authority": 266,
+      "authority_right": 266,
+      "candidate_right": 266,
+      "authority_errors": 0,
+      "candidate_errors": 0,
+      "authority_nonfinite": 0,
+      "candidate_nonfinite": 0,
+      "authority_near_positive_0_0.25": 0,
+      "candidate_near_positive_0_0.25": 0,
+      "first_failure": null,
+      "pass": true
+    }
+  ],
+  "known_pass": true,
+  "fresh": {
+    "performed": false,
+    "reason": "Parent coordination: another lane is already performing the all-input/fresh equivalence proof for this identical cost-1038 task205 candidate."
+  }
+}

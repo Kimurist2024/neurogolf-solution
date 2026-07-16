@@ -1,0 +1,84 @@
+{
+  "campaign": "agent_private_bundle75",
+  "authority": {
+    "path": "submission_base_8005.17.zip",
+    "score": 8005.17,
+    "sha256": "c48fa65401a5bd26d3ed1c556eee8f85c0a2063db313be6b96c73e86159b0a04"
+  },
+  "decision": "NO_ADMISSIBLE_WINNER",
+  "winner_count": 0,
+  "projected_score_gain": 0.0,
+  "candidate_scope": {
+    "deduplication": "task plus exact SHA-256",
+    "archive_frontier": "larger per-task retained frontier from lane_archive_loose_sweep or lane_archive_all400",
+    "later_candidates_added": 5,
+    "unique_strict_lower_candidate_files": 33,
+    "known_dual_perfect": 26
+  },
+  "tasks": {
+    "134": {
+      "generator_hash": "5ad4f10b",
+      "baseline_cost": 423,
+      "strict_lower_files": 8,
+      "known_dual_perfect": 6,
+      "lookup_or_scatter": 7,
+      "shape_cloak": 4,
+      "decision": "REJECT",
+      "reason": "Every lower file fails known, uses lookup, or has runtime shape cloaks. The two strongest truthful lookup families fail fresh dual: r04 4840/5000 disabled and 4823/5000 default; r06 4803/5000 and 4825/5000. Exact true-rule controls cost 1555 and 3411, both above 423."
+    },
+    "202": {
+      "generator_hash": "855e0971",
+      "baseline_cost": 48,
+      "strict_lower_files": 3,
+      "known_dual_perfect": 3,
+      "giant_einsum_ge8": 3,
+      "decision": "REJECT",
+      "reason": "All three one-node contractions are private approximations. Fresh screens find r01 10/422 wrong and r02 9/422 wrong; r03 has a generator-valid counterexample reproduced in all four ORT configurations. The clean true-rule reconstruction costs 2472, above 48."
+    },
+    "219": {
+      "generator_hash": "90f3ed37",
+      "baseline_cost": 1479,
+      "strict_lower_files": 6,
+      "known_dual_perfect": 5,
+      "lookup_or_scatter": 6,
+      "shape_cloak": 1,
+      "decision": "REJECT",
+      "reason": "Archived known-pass candidates score only 32/500, 9/500, 7/500, and 417/500 fresh. The later cost1445 algebraic reduction is raw-equivalent only to the unsound incumbent, uses ScatterElements, and scores 4327/5000 fresh; it is not a true-rule compiler."
+    },
+    "271": {
+      "generator_hash": "ae4f1146",
+      "baseline_cost": 135,
+      "strict_lower_files": 2,
+      "known_dual_perfect": 1,
+      "decision": "REJECT",
+      "reason": "The cost10 file is 0/267 known. The cost126 file is dual 267/267 but uses nine TfIdfVectorizer nodes and passes only 2/5000 generated cases in each optimizer."
+    },
+    "343": {
+      "generator_hash": "d8c310e9",
+      "baseline_cost": 173,
+      "strict_lower_files": 2,
+      "known_dual_perfect": 2,
+      "lookup_or_scatter": 0,
+      "shape_cloak": 0,
+      "decision": "REJECT",
+      "reason": "Both cost172 clean classifiers have generator counterexamples. Independent streams score about 4965-4976/5000, not 100%. The exact lookup-free periodic compiler costs 178, above 173."
+    },
+    "396": {
+      "generator_hash": "fcb5c309",
+      "baseline_cost": 1019,
+      "strict_lower_files": 12,
+      "known_dual_perfect": 9,
+      "lookup_or_scatter": 12,
+      "shape_cloak": 4,
+      "decision": "REJECT",
+      "reason": "All lower files contain Hardmax/Scatter-style lookup machinery. Known-perfect costs947-965 score 4861-4908/5000 fresh; the cost1014 occupancy attempt scores 4963/5000. The generator-SOUND corner parser costs 1245, above 1019."
+    }
+  },
+  "evidence": [
+    "authority_members.json",
+    "retained_audit.json",
+    "extended_candidate_audit.json",
+    "REPORT.md"
+  ],
+  "root_or_zip_mutations": []
+}

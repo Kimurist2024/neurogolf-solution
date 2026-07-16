@@ -1,0 +1,433 @@
+{
+  "tasks": [
+    224,
+    400
+  ],
+  "rules": {
+    "224": {
+      "right": 266,
+      "wrong": 0,
+      "subsets": {
+        "train": {
+          "right": 3,
+          "wrong": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0
+        }
+      },
+      "first_failure": null,
+      "classification": "D_global_geometry",
+      "rule": "find the four gray-extrema frame markers, infer the non-gray color, and restore the outer rectangle border"
+    },
+    "400": {
+      "right": 266,
+      "wrong": 0,
+      "subsets": {
+        "train": {
+          "right": 3,
+          "wrong": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0
+        }
+      },
+      "first_failure": null,
+      "classification": "D_global_geometry",
+      "rule": "find the 5x5 blue cutout and emit the diametrically opposite 5x5 patch under the size-24 dihedral construction"
+    }
+  },
+  "baselines": [
+    {
+      "task": 224,
+      "path": "scripts/golf/loop_7999_13/lane_b22/baseline/task224.onnx",
+      "sha256": "02d6386ace32270c71ee2072328187a4c3a2a8355babd6b69fdc4a0e5b6bac79",
+      "memory": 24,
+      "params": 138,
+      "cost": 162,
+      "nodes": 3,
+      "max_einsum_inputs": 62,
+      "structure": {
+        "checks": {
+          "checker_full": true,
+          "strict_data_prop": true,
+          "canonical_io": true,
+          "standard_domains": true,
+          "no_functions_sparse_nested": true,
+          "no_banned_ops": true,
+          "no_giant_einsum": false,
+          "static_positive_shapes": true,
+          "no_external_initializers": true,
+          "finite_initializers": true,
+          "conv_bias_safe": true
+        },
+        "pass_before_runtime_shape": false,
+        "error": null
+      },
+      "runtime_shape": {
+        "declared_runtime_mismatches": [],
+        "shape_cloak": false,
+        "truthful_one_example_intermediate_bytes": 24
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        },
+        {
+          "mode": "default",
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        }
+      ],
+      "admissible_source": false
+    },
+    {
+      "task": 400,
+      "path": "scripts/golf/loop_7999_13/lane_b22/baseline/task400.onnx",
+      "sha256": "89b419dbad732d3235ac1ab7d078ef22eef3209eb8b5f30e21d3a502ccd03389",
+      "memory": 123,
+      "params": 41,
+      "cost": 164,
+      "nodes": 16,
+      "max_einsum_inputs": 0,
+      "structure": {
+        "checks": {
+          "checker_full": true,
+          "strict_data_prop": true,
+          "canonical_io": true,
+          "standard_domains": true,
+          "no_functions_sparse_nested": true,
+          "no_banned_ops": true,
+          "no_giant_einsum": true,
+          "static_positive_shapes": true,
+          "no_external_initializers": true,
+          "finite_initializers": true,
+          "conv_bias_safe": true
+        },
+        "pass_before_runtime_shape": true,
+        "error": null
+      },
+      "runtime_shape": {
+        "declared_runtime_mismatches": [
+          {
+            "tensor": "scores",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "scores_h",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "loss",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "code_i8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          }
+        ],
+        "shape_cloak": true,
+        "truthful_one_example_intermediate_bytes": 56814
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        },
+        {
+          "mode": "default",
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        }
+      ],
+      "admissible_source": false
+    }
+  ],
+  "task224_below_incumbent_archive": [
+    {
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task224_r01_static156.onnx",
+      "sha256": "cc44478420b3ff49845f8fa42266fa4c61ee6e22ce57b35371e4d66170583331",
+      "memory": 24,
+      "params": 132,
+      "cost": 156,
+      "structure": {
+        "checks": {
+          "checker_full": true,
+          "strict_data_prop": true,
+          "canonical_io": true,
+          "standard_domains": true,
+          "no_functions_sparse_nested": true,
+          "no_banned_ops": true,
+          "no_giant_einsum": false,
+          "static_positive_shapes": true,
+          "no_external_initializers": true,
+          "finite_initializers": true,
+          "conv_bias_safe": true
+        },
+        "pass_before_runtime_shape": false,
+        "error": null
+      },
+      "runtime_shape": {
+        "declared_runtime_mismatches": [],
+        "shape_cloak": false,
+        "truthful_one_example_intermediate_bytes": 24
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "first_failure": {
+            "subset": "train",
+            "index": 0
+          }
+        },
+        {
+          "mode": "default",
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "first_failure": {
+            "subset": "train",
+            "index": 0
+          }
+        }
+      ],
+      "decision": "reject_known"
+    },
+    {
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task224_r02_static156.onnx",
+      "sha256": "d37747e4104d50448854beb5155e5cc507451ddc20f1ffeddd9ec9726603b2c4",
+      "memory": 24,
+      "params": 132,
+      "cost": 156,
+      "structure": {
+        "checks": {
+          "checker_full": true,
+          "strict_data_prop": true,
+          "canonical_io": true,
+          "standard_domains": true,
+          "no_functions_sparse_nested": true,
+          "no_banned_ops": true,
+          "no_giant_einsum": false,
+          "static_positive_shapes": true,
+          "no_external_initializers": true,
+          "finite_initializers": true,
+          "conv_bias_safe": true
+        },
+        "pass_before_runtime_shape": false,
+        "error": null
+      },
+      "runtime_shape": {
+        "declared_runtime_mismatches": [],
+        "shape_cloak": false,
+        "truthful_one_example_intermediate_bytes": 24
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "first_failure": {
+            "subset": "train",
+            "index": 0
+          }
+        },
+        {
+          "mode": "default",
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "first_failure": {
+            "subset": "train",
+            "index": 0
+          }
+        }
+      ],
+      "decision": "reject_known"
+    },
+    {
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task224_r03_static158.onnx",
+      "sha256": "a59c14453a7b6a0b56ead13b68bd0d467774747eaa01b9883b0460a61ecfe652",
+      "memory": 24,
+      "params": 134,
+      "cost": 158,
+      "structure": {
+        "checks": {
+          "checker_full": true,
+          "strict_data_prop": true,
+          "canonical_io": true,
+          "standard_domains": true,
+          "no_functions_sparse_nested": true,
+          "no_banned_ops": true,
+          "no_giant_einsum": false,
+          "static_positive_shapes": true,
+          "no_external_initializers": true,
+          "finite_initializers": true,
+          "conv_bias_safe": true
+        },
+        "pass_before_runtime_shape": false,
+        "error": null
+      },
+      "runtime_shape": {
+        "declared_runtime_mismatches": [],
+        "shape_cloak": false,
+        "truthful_one_example_intermediate_bytes": 24
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "first_failure": {
+            "subset": "train",
+            "index": 0
+          }
+        },
+        {
+          "mode": "default",
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "first_failure": {
+            "subset": "train",
+            "index": 0
+          }
+        }
+      ],
+      "decision": "reject_known"
+    },
+    {
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task224_r04_static158.onnx",
+      "sha256": "d587ed38bdcef0b84e7f968c3425860824c946616d00a6442744e0883d8e6a29",
+      "memory": 24,
+      "params": 134,
+      "cost": 158,
+      "structure": {
+        "checks": {
+          "checker_full": true,
+          "strict_data_prop": true,
+          "canonical_io": true,
+          "standard_domains": true,
+          "no_functions_sparse_nested": true,
+          "no_banned_ops": true,
+          "no_giant_einsum": false,
+          "static_positive_shapes": true,
+          "no_external_initializers": true,
+          "finite_initializers": true,
+          "conv_bias_safe": true
+        },
+        "pass_before_runtime_shape": false,
+        "error": null
+      },
+      "runtime_shape": {
+        "declared_runtime_mismatches": [],
+        "shape_cloak": false,
+        "truthful_one_example_intermediate_bytes": 24
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "first_failure": {
+            "subset": "train",
+            "index": 0
+          }
+        },
+        {
+          "mode": "default",
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "first_failure": {
+            "subset": "train",
+            "index": 0
+          }
+        }
+      ],
+      "decision": "reject_known"
+    }
+  ],
+  "task400_history": {
+    "source": "scripts/golf/loop_7999_13/lane_a17/loose_history_scan.json",
+    "complete": true,
+    "rows": 22,
+    "distinct_nonbaseline": 21,
+    "minimum_nonbaseline_cost": 165,
+    "below_164": []
+  },
+  "winners": [],
+  "verified_gain": 0.0,
+  "fresh5000_run": false,
+  "fresh5000_skip_reason": "No strictly cheaper candidate passes known correctness and the structural/runtime-shape gate."
+}

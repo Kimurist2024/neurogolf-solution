@@ -1,0 +1,82 @@
+{
+  "task330_fold_constantofshape": {
+    "task": 330,
+    "path": "scripts/golf/loop_8004_42_plus20/agent_high044_117_330_153/candidates/task330_fold_constantofshape.onnx",
+    "sha256": "53a38bc9b0678ebb40bbeb210e0038b513fb7b4689160a804ed9d1858c9b7338",
+    "base_cost": 896,
+    "proof": {
+      "rewrite": "ConstantOfShape([1], scalar-value-attribute) -> one-element initializer",
+      "folded_outputs": [
+        "n10",
+        "n27",
+        "n28",
+        "n29",
+        "n8",
+        "n9"
+      ],
+      "formal_equivalence": "Each removed node has the fixed input shape [1] and emits exactly one copy of its scalar value attribute.",
+      "expected_nominal_delta": "remove six int64 scalar intermediates (48 bytes), add six parameter elements: -42 cost",
+      "warning": "Diagnostic only: admission still requires truthful runtime shapes and both ORT modes."
+    },
+    "audit": {
+      "label": "task330_fold_constantofshape",
+      "task": 330,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high044_117_330_153/candidates/task330_fold_constantofshape.onnx",
+      "sha256": "53a38bc9b0678ebb40bbeb210e0038b513fb7b4689160a804ed9d1858c9b7338",
+      "file_bytes": 3843,
+      "nodes": 38,
+      "initializers": 15,
+      "params": 172,
+      "op_histogram": {
+        "CenterCropPad": 31,
+        "QLinearConv": 3,
+        "GroupNormalization": 1,
+        "CastLike": 1,
+        "Mod": 1,
+        "Concat": 1
+      },
+      "max_node_inputs": 9,
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_einsum_nodes": 0,
+        "params_over_10000": false
+      },
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "nested_graph_attributes": 0,
+      "function_count": 0,
+      "sparse_initializer_count": 0,
+      "conv_bias_findings": [
+        {
+          "node": "q",
+          "op": "QLinearConv",
+          "bias": "bq",
+          "bias_is_initializer": true,
+          "bias_shape": [
+            3
+          ],
+          "expected_channels": 3,
+          "safe": true
+        }
+      ],
+      "full_check": false,
+      "full_check_error": "InferenceError(\"[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: uc0): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (8) vs (1)\\n(op_type:CenterCropPad, node name: uc1): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (9) vs (1)\\n(op_type:CenterCropPad, node name: s0): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s1): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s2): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s3): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s4): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s5): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s6): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s7): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s8): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s9): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s10): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s11): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s12): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s13): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s14): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s15): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s16): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s17): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s18): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s19): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s20): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s21): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s22): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s23): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s24): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s25): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s26): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: active): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n\")",
+      "strict_shape_data_prop": false,
+      "strict_shape_error": "InferenceError(\"[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: uc0): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (8) vs (1)\\n(op_type:CenterCropPad, node name: uc1): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (9) vs (1)\\n(op_type:CenterCropPad, node name: s0): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s1): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s2): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s3): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s4): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s5): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s6): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s7): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s8): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s9): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s10): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s11): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s12): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s13): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s14): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s15): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s16): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s17): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s18): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s19): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s20): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s21): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s22): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s23): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s24): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s25): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: s26): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n(op_type:CenterCropPad, node name: active): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\\n\")",
+      "runtime_shape_trace": {
+        "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (s0) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "official_like_score": null,
+      "known_disable_all": {
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_20) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "known_default": {
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_20) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      }
+    },
+    "candidate_cost": null,
+    "strictly_lower": false,
+    "truthful_runtime_shapes": false
+  }
+}

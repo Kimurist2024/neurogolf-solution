@@ -1,0 +1,34 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 20]
+>
+task184_rebuilt (float[1,10,30,30] input) => (float16[1,10,30,30] output) 
+   <float16[10,1,1,1] W = ..., float16[1] S = ..., int8[1] Z_i8 = ..., int8[1] C0_i8 = ..., uint8[1] Cbig_u8 = ..., int64[1,3,3,2] gidx =  {0,0,1,0,2,0,0,3,1,3,2,3,0,4,1,4,2,4}, int64[1] sh0, float[1,1,1,1] hid, float16[1,1,1,1] input16, int64[1] sh24, float16[1,1,1,1] rowhid, float16[1,1] br, float16[1,1] bc, int64[1] rf_i, int64[1] rl_i, bool[1] rsame, int8[1] rf_i8, uint8[1] rl_u8, uint8[1] r3_u8, int8[1] r3_i8, int64[1] cf_i, int64[1] cl_i, bool[1] csame, int8[1] cf_i8, uint8[1] cl_u8, uint8[1] c3_u8, int8[1] c3_i8, int8[5] idxvec, float16[5] coord6, float16[1,3,3,2] grid, float16[1,1,3,3] samp>
+{
+   [sh0] sh0 = Shape <end: int = 1, start: int = 0> (input)
+   [hid] hid = CenterCropPad <axes: ints = [0]> (input, sh0)
+   [input16] input16 = CastLike (hid, W)
+   [sh24] sh24 = Shrink <bias: float = -22, lambd: float = 0> (sh0)
+   [rowhid] rowhid = CenterCropPad <axes: ints = [2, 3]> (input16, sh24)
+   [br] br = Einsum <equation: string = "bchw,cxuv->xh"> (rowhid, W)
+   [bc] bc = Einsum <equation: string = "bchw,cxuv->xw"> (rowhid, W)
+   [rf_i] rf_i = ArgMin <axis: int = 1, keepdims: int = 0, select_last_index: int = 0> (br)
+   [rl_i] rl_i = ArgMin <axis: int = 1, keepdims: int = 0, select_last_index: int = 1> (br)
+   [rsame] rsame = Equal (rf_i, rl_i)
+   [rf_i8] rf_i8 = Cast <to: int = 3> (rf_i)
+   [rl_u8] rl_u8 = Cast <to: int = 2> (rl_i)
+   [r3_u8] r3_u8 = Where (rsame, Cbig_u8, rl_u8)
+   [r3_i8] r3_i8 = Cast <to: int = 3> (r3_u8)
+   [cf_i] cf_i = ArgMin <axis: int = 1, keepdims: int = 0, select_last_index: int = 0> (bc)
+   [cl_i] cl_i = ArgMin <axis: int = 1, keepdims: int = 0, select_last_index: int = 1> (bc)
+   [csame] csame = Equal (cf_i, cl_i)
+   [cf_i8] cf_i8 = Cast <to: int = 3> (cf_i)
+   [cl_u8] cl_u8 = Cast <to: int = 2> (cl_i)
+   [c3_u8] c3_u8 = Where (csame, Cbig_u8, cl_u8)
+   [c3_i8] c3_i8 = Cast <to: int = 3> (c3_u8)
+   [idxvec] idxvec = Concat <axis: int = 0> (C0_i8, cf_i8, c3_i8, rf_i8, r3_i8)
+   [coord6] coord6 = DequantizeLinear (idxvec, S, Z_i8)
+   [grid] grid = Gather <axis: int = 0> (coord6, gidx)
+   [samp] samp = GridSample <align_corners: int = 1, mode: string = "linear", padding_mode: string = "zeros"> (input16, grid)
+   [output] output = Conv <group: int = 10, kernel_shape: ints = [1, 1], pads: ints = [0, 0, 27, 27]> (samp, W)
+}

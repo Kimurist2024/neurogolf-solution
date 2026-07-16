@@ -1,0 +1,116 @@
+{
+  "task": 216,
+  "label": "task216_rule_rebuild_existing",
+  "path": "scripts/golf/scratch_wave/task216/cand.onnx",
+  "sha256": "aa3f277f034ab4f883335d4af8b6cf6bb647771052d30d0f38453bc446a61b7c",
+  "inventory_static_cost": null,
+  "baseline_actual_cost": 1511,
+  "sources": [
+    "scripts/golf/scratch_wave/task216/cand.onnx"
+  ],
+  "nodes": 81,
+  "params": 87,
+  "value_info": 1,
+  "declared_output_shapes": [
+    [
+      1,
+      10,
+      30,
+      30
+    ]
+  ],
+  "ops": {
+    "Slice": 2,
+    "Cast": 16,
+    "QLinearConv": 1,
+    "Flatten": 1,
+    "ArgMax": 7,
+    "Concat": 5,
+    "ScatterElements": 1,
+    "Squeeze": 1,
+    "Div": 1,
+    "Mod": 1,
+    "Gather": 7,
+    "ReduceMax": 4,
+    "Equal": 2,
+    "Unsqueeze": 10,
+    "Less": 2,
+    "And": 4,
+    "Where": 2,
+    "Sub": 4,
+    "LessOrEqual": 2,
+    "Transpose": 2,
+    "MatMulInteger": 2,
+    "GatherND": 1,
+    "Add": 2,
+    "Pad": 1
+  },
+  "max_einsum_inputs": 0,
+  "opsets": [
+    [
+      "",
+      12
+    ]
+  ],
+  "nonstandard_domains": [],
+  "banned_ops": [],
+  "functions": 0,
+  "sparse_initializers": 0,
+  "external_initializers": [],
+  "conv_bias_issues": [],
+  "lookup_red_flags": {
+    "tfidf": 0,
+    "hardmax": 0,
+    "giant_initializer": 0
+  },
+  "full_check": true,
+  "strict_data_prop": true,
+  "nonstatic_inferred": [],
+  "shared_structure_gate": "pass",
+  "recomputed_static_floor": 9135,
+  "runtime_shape_trace": {
+    "declared_actual_mismatch_count": 1,
+    "first_mismatches": [
+      {
+        "tensor": "crop_73",
+        "declared": [
+          1,
+          2,
+          18,
+          18
+        ],
+        "actual": [
+          1,
+          2,
+          5,
+          6
+        ]
+      }
+    ],
+    "runtime_intermediate_bytes": 8460
+  },
+  "shape_value_cloak_free": false,
+  "known_disable_all": {
+    "right": 266,
+    "wrong": 0,
+    "errors": 0
+  },
+  "known_default": {
+    "right": 266,
+    "wrong": 0,
+    "errors": 0
+  },
+  "official_like_score": {
+    "memory": 9048,
+    "params": 87,
+    "cost": 9135,
+    "score": 15.880131531187892,
+    "correct": true
+  },
+  "actual_static_agreement": false,
+  "pre_fresh_pass": false,
+  "pre_fresh_reasons": [
+    "not_strictly_cheaper_actual",
+    "shape_value_cloak_free"
+  ]
+}

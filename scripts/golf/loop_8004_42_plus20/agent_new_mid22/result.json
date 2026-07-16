@@ -1,0 +1,129 @@
+{
+  "status": "complete",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00"
+  },
+  "targets": [123, 316, 212, 301, 55, 86, 163, 206],
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_built": false,
+  "protected_files_modified": false,
+  "task_results": {
+    "123": {
+      "baseline_sha256": "824aa96cf493ae375661c17b60d917a932695f980f5e6a9c18e3111801ce040f",
+      "baseline_cost": 266,
+      "known_dual": "265/265 each, runtime0",
+      "fresh_dual_seed8005162323": "500/500 each, runtime0",
+      "structure": "PASS: strict/data_prop, truthful shapes, canonical I/O, UB0, max Einsum inputs 6",
+      "sound_control_cost": 266,
+      "decision": "NO_CHEAPER_CANDIDATE",
+      "reason": "already at the verified sound floor; no repeated initializer axis, duplicate constant/node, optional zero input, or identity exists; earlier six latent-component drops all fail"
+    },
+    "316": {
+      "baseline_sha256": "3c84610b001e252e3861203767b5a60682784a26c42f2fce111c73bb3b391640",
+      "baseline_cost": 246,
+      "known_dual": "266/266 each, runtime0",
+      "fresh_dual_seed8005162516": "500/500 each, runtime0",
+      "structure": "truthful/UB0 but contains ScatterElements rank packing",
+      "sound_control_cost": 246,
+      "new_probe": {
+        "label": "collapse_ones10_axis2",
+        "sha256": "0af6539d7c56953cedba92a5b2c303a531b56b2bb0e00ba24390529bffdcc7f2",
+        "nominal_static_params": 106,
+        "decision": "REJECT",
+        "reason": "both ORT modes fail first known case at ScatterElements: indices/updates dimension 19 vs 10"
+      },
+      "decision": "NO_ELIGIBLE_CANDIDATE",
+      "reason": "sparse projections fail full shape inference; prior direct-output and zero-point/scale searches found no sub-246 representation"
+    },
+    "212": {
+      "baseline_sha256": "e3f20fe069499de6c8ab36eadb10e69802ab61c4c87eb98d9843c7a87869ad42",
+      "baseline_cost": 240,
+      "known_dual": "265/265 each, runtime0",
+      "fresh_dual_seed8005162412": "500/500 each, runtime0",
+      "structure": "REJECT: one direct-output 48-input giant Einsum",
+      "truthful_sound_control_sha256": "a914d76e22d83fec3c3f0a6f2f1e11e74bd78fa015cfc420c26961b1dc341d4f",
+      "truthful_sound_control_cost": 4398,
+      "decision": "NO_ELIGIBLE_CANDIDATE",
+      "reason": "memory is already zero; exhaustive 123 axis collapses and six coupled rank reductions failed before this lane"
+    },
+    "301": {
+      "baseline_sha256": "f613c7078ca9e622061826376e4c628cb59e19bbba1d8ac208fc26ea0f2f4a0d",
+      "baseline_cost": 240,
+      "known_dual": "266/266 each, runtime0",
+      "fresh_dual_seed8005162501": "500/500 each, runtime0",
+      "structure": "REJECT: terminal 51-input giant Einsum",
+      "truthful_sound_control_sha256": "485a24d59af26fa06abf7ceeb985e26ac65ccba839d2544a33853218a0bca326",
+      "truthful_sound_control_cost": 1991,
+      "decision": "NO_ELIGIBLE_CANDIDATE",
+      "reason": "repository history has 22 unique task301 models and no sub-240 model; exact pair contraction and initializer-relation searches have no saving"
+    },
+    "55": {
+      "baseline_sha256": "392b4ad8b7d00564e4f5adf2963aab64d2cd941deb2ad2c857cdae639b4a4307",
+      "baseline_cost": 234,
+      "known_dual": "263/263 each, runtime0",
+      "fresh_dual_seed8005162255": "482 right / 11 wrong among 493 compatible cases in each mode (97.7688%); seven generated grids are >30 and skipped",
+      "structure": "REJECT: 28-input giant Einsum",
+      "truthful_sound_control_sha256": "18601adfbfad7e2da4446e544756ceb35424299798ad2846dcb91724a01f9ae4",
+      "truthful_sound_control_cost": 9326,
+      "decision": "NO_ELIGIBLE_CANDIDATE",
+      "reason": "current compact graph is not fresh-exact and all retained sub-baseline history keeps 19-28-input giant Einsums; safe control is far above baseline"
+    },
+    "86": {
+      "baseline_sha256": "edbf470391b7e5edb106d7682988186c8998fa26aa72b833fa92afeeb77cb58f",
+      "baseline_cost": 221,
+      "known_dual": "266/266 each, runtime0",
+      "fresh_dual_seed8005162286": "500/500 each, runtime0",
+      "structure": "REJECT: 80 CenterCropPad nodes and false output declaration rank7 [1,...,1] vs runtime [1,10,30,30]",
+      "truthful_sound_control_sha256": "9aec5951be34455dc1cb67ae11abd349a837f4f2865216f346eb75a281d33066",
+      "truthful_sound_control_cost": 17097,
+      "decision": "NO_ELIGIBLE_CANDIDATE",
+      "reason": "no truthful sub-221 graph; prior 57 unique alternatives found none cheaper"
+    },
+    "163": {
+      "baseline_sha256": "546f07f18d232047dc13db3e6611b1550e615689c1db034e8cea8a20181fa779",
+      "baseline_cost": 196,
+      "known_dual": "267/267 each, runtime0",
+      "fresh_dual_seed8005162363": "500/500 each, runtime0",
+      "structure": "REJECT: one direct-output 53-input giant Einsum",
+      "truthful_sound_control_sha256": "816068b021df957230a40b717f3e1c30c564d67c213c3c84d91e035c07c07639",
+      "truthful_sound_control_cost": 10251,
+      "root_prunes": [
+        {
+          "sha256": "13ac6f3231a9b59efc2173c79479f40bc90f88409cae13aed87b875cedd92253",
+          "cost": 184,
+          "known_dual": "0/267 each, runtime0",
+          "decision": "REJECT"
+        },
+        {
+          "sha256": "6bae6b57bbccd4dcd4a3a90767fcd50fd62ba170c0daf0ba49a2b3239a69c8dd",
+          "cost": 184,
+          "known_dual": "0/267 each, runtime0",
+          "decision": "REJECT"
+        }
+      ],
+      "decision": "NO_ELIGIBLE_CANDIDATE",
+      "reason": "all known latent/factor deletion variants fail known data; fresh is not applicable after known failure"
+    },
+    "206": {
+      "baseline_sha256": "cf0011a5073a7e99270c7abd5be6382f2dfbd370ca820ae0b9719311b498a8f9",
+      "baseline_cost": 194,
+      "known_dual": "266/266 each, runtime0",
+      "fresh_dual_seed8005162406": "500/500 each, runtime0",
+      "structure": "REJECT: CenterCropPad + ScatterElements and three false runtime shapes, including output [1,1,1,1] vs [1,10,30,30]",
+      "truthful_sound_control_sha256": "d821033f0fa93049f377d121c51ec6db6efce3b2d00f8f0edb9ef227e33a172c",
+      "truthful_sound_control_cost": 7753,
+      "decision": "NO_ELIGIBLE_CANDIDATE",
+      "reason": "the cost-194 lineage already removes the two earlier Shrink intermediates; no duplicate initializer/expression or cheaper truthful carrier remains"
+    }
+  },
+  "evidence": [
+    "scripts/golf/loop_8004_42_plus20/agent_new_mid22/baseline_audit.json",
+    "scripts/golf/loop_8004_42_plus20/agent_new_mid22/baseline_fresh_dual500.json",
+    "scripts/golf/loop_8004_42_plus20/agent_new_mid22/sound_controls_audit.json",
+    "scripts/golf/loop_8004_42_plus20/agent_new_mid22/micro_search.json",
+    "scripts/golf/loop_8004_42_plus20/agent_new_mid22/task163_root_prunes_audit.json"
+  ]
+}

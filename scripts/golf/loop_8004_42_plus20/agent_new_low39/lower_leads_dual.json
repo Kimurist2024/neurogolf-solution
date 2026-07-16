@@ -1,0 +1,600 @@
+{
+  "rows": [
+    {
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task032_r01_static46.onnx",
+      "sha256": "9c0962210138ebec8cd504c9b92ca663d89508ff5ad1de5b7b4b9c3e24c029d8",
+      "actual_cost": {
+        "memory": 12,
+        "params": 34,
+        "cost": 46
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1,
+          "Pow": 1,
+          "ReduceSum": 1
+        },
+        "node_count": 3,
+        "initializer_count": 3,
+        "max_node_inputs": 7,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 12,
+          "params": 34,
+          "cost": 46
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "InvalidArgument: [ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Non-zero status code returned while running Einsum node. Name:'' Status Message: Einsum operands could not be broadcast together. Please check input shapes/equation provided.Input shape of operand 5 is incompatible in the dimension 0. The shape is: {6,2}Another operand has a dim value of 30 in the same dimension"
+        },
+        "errors": []
+      },
+      "task": 32,
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "runtime",
+            "error": "InvalidArgument: [ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Non-zero status code returned while running Einsum node. Name:'output' Status Message: Einsum operands could not be broadcast together. Please check input shapes/equation provided.Input shape of operand 5 is incompatible in the dimension 0. The shape is: {6,2}Another operand has a dim value of 30 in the same dimension"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "runtime",
+            "error": "InvalidArgument: [ONNXRuntimeError] : 2 : INVALID_ARGUMENT : Non-zero status code returned while running Einsum node. Name:'output' Status Message: Einsum operands could not be broadcast together. Please check input shapes/equation provided.Input shape of operand 5 is incompatible in the dimension 0. The shape is: {6,2}Another operand has a dim value of 30 in the same dimension"
+          }
+        }
+      }
+    },
+    {
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task120_r01_static41.onnx",
+      "sha256": "1a70249878826a6b646c91007ad815f0b4dbcc28169c89aea527f378f5967605",
+      "actual_cost": {
+        "memory": 2726,
+        "params": 12,
+        "cost": 2738
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "AveragePool": 1,
+          "CastLike": 1,
+          "CenterCropPad": 2,
+          "ConstantOfShape": 2,
+          "Greater": 1,
+          "ReduceL1": 1,
+          "Where": 1
+        },
+        "node_count": 9,
+        "initializer_count": 3,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 29,
+          "params": 12,
+          "cost": 41
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 7,
+          "mismatches": [
+            {
+              "tensor": "xc",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "x16",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "ch17",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                7,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fgpos",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "avg",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "interior",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                10,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "task": 120,
+      "known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      }
+    },
+    {
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task211_r01_static64.onnx",
+      "sha256": "c9d37187c47523c21847f4d97ccd2ec2992141bd94c284d6d329d5ca1f6314f2",
+      "actual_cost": {
+        "memory": 0,
+        "params": 64,
+        "cost": 64
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 3,
+        "max_node_inputs": 25,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 25
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 64,
+          "cost": 64
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "task": 211,
+      "known_dual": {
+        "disable_all": {
+          "right": 9,
+          "wrong": 257,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 9,
+          "wrong": 257,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "path": "scripts/golf/scratch_codex/task292/candidate_rank1_sign_50.onnx",
+      "sha256": "bb4739e943132f46753adb2ae5ecb764dae8b274369e68bb30e93cc62e23fa35",
+      "actual_cost": {
+        "memory": 0,
+        "params": 50,
+        "cost": 50
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 3,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 50,
+          "cost": 50
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "task": 292,
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 28,
+          "errors": 0,
+          "skipped": 0,
+          "total": 28,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 28,
+          "errors": 0,
+          "skipped": 0,
+          "total": 28,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "path": "scripts/golf/scratch_codex/task292/candidate_shared_rank1_d50.onnx",
+      "sha256": "1987d6d3fdaa1ccafc7da1659bdfac985f39192aa685d3de9796113c4fcea8d2",
+      "actual_cost": {
+        "memory": 0,
+        "params": 50,
+        "cost": 50
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 2,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 50,
+          "cost": 50
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "task": 292,
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 28,
+          "errors": 0,
+          "skipped": 0,
+          "total": 28,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 28,
+          "errors": 0,
+          "skipped": 0,
+          "total": 28,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "path": "scripts/golf/scratch_codex/task292/candidate_rank2_core_sign54.onnx",
+      "sha256": "d1f60dd8356044bf2342a5283740312b7c0a563e651c4af680e959961a08f589",
+      "actual_cost": {
+        "memory": 0,
+        "params": 54,
+        "cost": 54
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 3,
+        "max_node_inputs": 5,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 54,
+          "cost": 54
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "task": 292,
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 28,
+          "errors": 0,
+          "skipped": 0,
+          "total": 28,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 28,
+          "errors": 0,
+          "skipped": 0,
+          "total": 28,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    }
+  ]
+}

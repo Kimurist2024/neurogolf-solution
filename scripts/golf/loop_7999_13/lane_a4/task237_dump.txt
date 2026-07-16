@@ -1,0 +1,78 @@
+# task237.onnx
+
+## I/O
+name: "input"
+type {
+  tensor_type {
+    elem_type: 1
+    shape {
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 10
+      }
+      dim {
+        dim_value: 30
+      }
+      dim {
+        dim_value: 30
+      }
+    }
+  }
+}
+name: "output"
+type {
+  tensor_type {
+    elem_type: 2
+    shape {
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 10
+      }
+      dim {
+        dim_value: 30
+      }
+      dim {
+        dim_value: 30
+      }
+    }
+  }
+}
+
+## Initializers
+packed_kernel: dtype=float32 shape=(10, 1, 1, 8) value=[[[[10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 169.0]]], [[[-1.0, -2.0, -3.0, -4.0, -5.0, -6.0, -7.0, 151.0]]], [[[-41.0, -42.0, -43.0, -44.0, -45.0, -46.0, -47.0, 111.0]]], [[[-71.0, -72.0, -73.0, -74.0, -75.0, -76.0, -77.0, 81.0]]], [[[-81.0, -82.0, -83.0, -84.0, -85.0, -86.0, -87.0, 71.0]]], [[[-91.0, -92.0, -93.0, -94.0, -95.0, -96.0, -97.0, 61.0]]], [[[-101.0, -102.0, -103.0, -104.0, -105.0, -106.0, -107.0, 51.0]]], [[[-141.0, -142.0, -143.0, -144.0, -145.0, -146.0, -147.0, 11.0]]], [[[-151.0, -152.0, -153.0, -154.0, -155.0, -156.0, -157.0, 1.0]]], [[[-161.0, -162.0, -163.0, -164.0, -165.0, -166.0, -167.0, -9.0]]]]
+zero_u8: dtype=uint8 shape=() value=0
+ten_u8: dtype=uint8 shape=() value=10
+q_scale: dtype=float32 shape=() value=0.0003840245772153139
+col_index_u8: dtype=uint8 shape=(1, 1, 1, 9) value=[[[[1, 2, 3, 4, 5, 6, 7, 8, 9]]]]
+hash_mul: dtype=uint8 shape=(1, 2, 1, 1) value=[[[[48]], [[226]]]]
+q_w: dtype=uint8 shape=(10, 2, 1, 1) value=[[[[122]], [[123]]], [[[120]], [[135]]], [[[139]], [[122]]], [[[131]], [[116]]], [[[132]], [[138]]], [[[135]], [[136]]], [[[118]], [[132]]], [[[137]], [[119]]], [[[117]], [[129]]], [[[129]], [[117]]]]
+zp128_u8: dtype=uint8 shape=() value=128
+w9_idx: dtype=int64 shape=(1, 1, 1, 1) value=[[[[8]]]]
+
+## Nodes
+00 ConvTranspose ['input', 'packed_kernel'] -> ['packed_grid'] attrs={'pads': [0, 7, 21, 29]}
+01 Cast ['packed_grid'] -> ['packed_code'] attrs={'to': 2}
+02 Div ['packed_code', 'ten_u8'] -> ['packed_q'] attrs={}
+03 ReduceMax ['packed_q'] -> ['max_q'] attrs={'axes': [2], 'keepdims': 1}
+04 Shrink ['max_q'] -> ['max_col_index_base'] attrs={'bias': 15.0, 'lambd': 0.0}
+05 GatherElements ['input', 'w9_idx'] -> ['w9_flag_f'] attrs={'axis': 3}
+06 Cast ['w9_flag_f'] -> ['w9_flag_u8'] attrs={'to': 2}
+07 Add ['max_col_index_base', 'w9_flag_u8'] -> ['max_col_index'] attrs={}
+08 Sub ['max_q', 'packed_q'] -> ['row_color_grid_h'] attrs={}
+09 Mod ['packed_code', 'ten_u8'] -> ['start_code'] attrs={'fmod': 0}
+10 LessOrEqual ['col_index_u8', 'max_col_index'] -> ['col_active'] attrs={}
+11 Where ['col_active', 'col_index_u8', 'zero_u8'] -> ['col_index_active'] attrs={}
+12 MaxPool ['row_color_grid_h'] -> ['near_color'] attrs={'kernel_shape': [2, 1], 'pads': [1, 0, 0, 0], 'strides': [1, 1]}
+13 MaxPool ['row_color_grid_h'] -> ['far_color'] attrs={'kernel_shape': [4, 1], 'pads': [3, 0, 0, 0], 'strides': [1, 1]}
+14 Cast ['near_color'] -> ['near_active'] attrs={'to': 9}
+15 Where ['near_active', 'near_color', 'far_color'] -> ['latest_color_4d'] attrs={}
+16 Min ['start_code', 'max_col_index'] -> ['start_for_ray'] attrs={}
+17 LessOrEqual ['start_for_ray', 'col_index_active'] -> ['ray_condition'] attrs={}
+18 Mul ['latest_color_4d', 'hash_mul'] -> ['ray_hash'] attrs={}
+19 Where ['col_active', 'zero_u8', 'ten_u8'] -> ['default_hash'] attrs={}
+20 Where ['ray_condition', 'ray_hash', 'default_hash'] -> ['combined_hash'] attrs={}
+21 QLinearConv ['combined_hash', 'q_scale', 'zp128_u8', 'q_w', 'q_scale', 'zp128_u8', 'q_scale', 'zero_u8'] -> ['output'] attrs={'pads': [0, 0, 21, 21]}

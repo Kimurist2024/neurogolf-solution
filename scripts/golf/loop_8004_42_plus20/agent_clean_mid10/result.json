@@ -1,0 +1,1899 @@
+{
+  "complete": true,
+  "scope": [
+    370,
+    182,
+    201,
+    251
+  ],
+  "base_zip": "submission_base_8004.50.zip",
+  "base_zip_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+  "admission_policy": {
+    "truthful_actual_cost_strictly_lower": true,
+    "known_complete": "100% in both ORT modes, runtime0",
+    "fresh": ">=90% on two seeds; private lineage requires decoded reference and fresh100",
+    "strict_data_prop_static_positive": true,
+    "conv_bias_ub0": true,
+    "forbidden": [
+      "lookup",
+      "shape cloak",
+      "giant contraction",
+      "nonstandard domain"
+    ]
+  },
+  "tasks": {
+    "370": {
+      "rule": {
+        "hash": "e8dc4411",
+        "type": "bounded geometric propagation",
+        "rule": "find the black origin sprite and the single colored direction hint; repeat the exact sprite along that hint vector, respecting generator flip/transpose and the true grid boundary",
+        "private_status": "outside private-zero catalog"
+      },
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_clean_mid10/baseline/task370.onnx",
+        "reported_actual_cost": {
+          "task": 370,
+          "memory": 848,
+          "params": 120,
+          "cost": 968
+        },
+        "structural": {
+          "sha256": "104eb571e60f99f9bc60ac45af60bf84e01cab014e1b804c312322d791230c9e",
+          "bytes": 8929,
+          "nodes": 83,
+          "params": 120,
+          "ops": {
+            "Abs": 1,
+            "Add": 2,
+            "BitwiseAnd": 2,
+            "Cast": 1,
+            "CastLike": 9,
+            "CenterCropPad": 24,
+            "Concat": 2,
+            "Conv": 1,
+            "ConvTranspose": 1,
+            "Div": 1,
+            "Einsum": 6,
+            "Equal": 3,
+            "Greater": 2,
+            "Mod": 1,
+            "PRelu": 2,
+            "ReduceL1": 2,
+            "ReduceMax": 2,
+            "Shape": 3,
+            "Sub": 13,
+            "Unsqueeze": 2,
+            "Where": 3
+          },
+          "domains": [
+            ""
+          ],
+          "max_einsum_inputs": 3,
+          "checks": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "no_banned": true,
+            "no_nested_functions_sparse": true,
+            "conv_bias_ub0": true,
+            "finite_initializers": true,
+            "no_giant_contraction": true,
+            "no_lookup_ops": true,
+            "no_shape_cloak_ops": false
+          },
+          "pass": false,
+          "errors": [],
+          "nonstatic": []
+        }
+      },
+      "historical_cheaper_union": [
+        {
+          "task": 370,
+          "sha256": "167983624d86b5b1e533c816a69499d55fcef81ea975778f9ff428b8c0dc51bb",
+          "sources": [
+            "others/2/7805/task370_further_improved (1).onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r04_static490.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task370_r04_static490.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r04_static490.onnx",
+          "current_sha256": "104eb571e60f99f9bc60ac45af60bf84e01cab014e1b804c312322d791230c9e",
+          "current_actual_cost": 968,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "nonstatic_shape"
+            ],
+            "static_cost": 488,
+            "memory": 324,
+            "params": 164,
+            "ops": {
+              "Shape": 3,
+              "Sub": 13,
+              "CenterCropPad": 24,
+              "CastLike": 9,
+              "Einsum": 8,
+              "Equal": 1,
+              "Div": 1,
+              "Greater": 3,
+              "Abs": 1,
+              "Add": 3,
+              "Relu": 1,
+              "Cast": 3,
+              "Unsqueeze": 3,
+              "Concat": 2,
+              "ReduceMax": 1,
+              "Min": 1,
+              "Gather": 1,
+              "Conv": 1,
+              "ConvTranspose": 1,
+              "Where": 1,
+              "BitwiseAnd": 2
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "black_max"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 370,
+          "sha256": "2317bd7ef60d8a1b9090cc9f00473303ccb3ae5b564d7960c2611eeb5571826a",
+          "sources": [
+            "others/7131/task370_more_improved.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r01_static468.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task370_r01_static468.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r01_static468.onnx",
+          "current_sha256": "104eb571e60f99f9bc60ac45af60bf84e01cab014e1b804c312322d791230c9e",
+          "current_actual_cost": 968,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "nonstatic_shape"
+            ],
+            "static_cost": 466,
+            "memory": 350,
+            "params": 116,
+            "ops": {
+              "Shape": 3,
+              "Sub": 13,
+              "CenterCropPad": 24,
+              "CastLike": 11,
+              "ReduceL1": 1,
+              "Equal": 2,
+              "Einsum": 7,
+              "Div": 1,
+              "Greater": 3,
+              "Abs": 1,
+              "Add": 2,
+              "Cast": 1,
+              "ReduceMax": 1,
+              "Mod": 1,
+              "Where": 3,
+              "Conv": 1,
+              "ConvTranspose": 1,
+              "BitwiseAnd": 2,
+              "Unsqueeze": 3,
+              "Concat": 2
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "black_max"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 370,
+          "sha256": "394d6227406309bcf672503846b364e7ceab2c57a568f31cf1a6ee1e515eb716",
+          "sources": [
+            "others/2/7613/task370_cost1965.onnx",
+            "others/2/7614/task370_cost1965.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r06_static581.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task370_r05_static581.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r06_static581.onnx",
+          "current_sha256": "104eb571e60f99f9bc60ac45af60bf84e01cab014e1b804c312322d791230c9e",
+          "current_actual_cost": 968,
+          "stage": "actual_reject",
+          "static_audit": {
+            "pass": true,
+            "reasons": [],
+            "static_cost": 581,
+            "memory": 414,
+            "params": 167,
+            "ops": {
+              "Shape": 3,
+              "Sub": 12,
+              "CenterCropPad": 35,
+              "CastLike": 6,
+              "Einsum": 8,
+              "ArgMax": 2,
+              "Equal": 1,
+              "Div": 2,
+              "Greater": 2,
+              "Abs": 1,
+              "Add": 3,
+              "Relu": 1,
+              "Cast": 3,
+              "Min": 1,
+              "Gather": 1,
+              "Conv": 1,
+              "ConvTranspose": 1,
+              "Where": 1,
+              "BitwiseAnd": 2,
+              "BitwiseXor": 1,
+              "Concat": 3,
+              "Unsqueeze": 2,
+              "ScatterND": 1
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "actual_cost_not_strictly_cheaper"
+          ],
+          "actual_cost": 1965
+        },
+        {
+          "task": 370,
+          "sha256": "92eec9bff5e5c2c716a50c645507850b37472353ad2d5b6f819c86c4f76396ca",
+          "sources": [
+            "artifacts/handcrafted/task370.onnx",
+            "others/2/1203/71202/7974-2/task370.onnx",
+            "others/2/1203/submission (60)/task370.onnx",
+            "others/2/7901/task370_further_improved-2.onnx",
+            "others/2/7902/task370_further_improved-2.onnx",
+            "others/2/7906/task100_p7_samecost_submission/task370.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r03_static475.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task370_r03_static475.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r03_static475.onnx",
+          "current_sha256": "104eb571e60f99f9bc60ac45af60bf84e01cab014e1b804c312322d791230c9e",
+          "current_actual_cost": 968,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "nonstatic_shape"
+            ],
+            "static_cost": 473,
+            "memory": 306,
+            "params": 167,
+            "ops": {
+              "Shape": 3,
+              "Sub": 13,
+              "CenterCropPad": 24,
+              "CastLike": 9,
+              "ReduceL1": 1,
+              "Equal": 1,
+              "Einsum": 7,
+              "Div": 1,
+              "Greater": 3,
+              "Abs": 1,
+              "Add": 3,
+              "Relu": 1,
+              "Cast": 3,
+              "Unsqueeze": 3,
+              "Concat": 2,
+              "ReduceMax": 1,
+              "Min": 1,
+              "Gather": 1,
+              "Conv": 1,
+              "ConvTranspose": 1,
+              "Where": 1,
+              "BitwiseAnd": 2
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "black_max"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 370,
+          "sha256": "9eda2f7bf0342011dade7904fa7ab68372d18395477e73543e055b5bf952010d",
+          "sources": [
+            "others/2/7610/task370_improved.onnx",
+            "others/2/7611/task370_improved.onnx",
+            "others/2/7613/task370_improved.onnx",
+            "others/2/7616/submission_1313_/task370.onnx",
+            "others/2/7616/submission_1327_/task370.onnx",
+            "others/2/7616/submission_1335_/task370.onnx",
+            "others/2/7616/submission_1336_/task370.onnx",
+            "others/2/7616/submission_1341_/task370.onnx",
+            "others/2/7616/submission_1350_/task370.onnx",
+            "others/2/7616/submission_task008_verified/task370.onnx",
+            "others/2/7616/submission_task031_no_overfit_345/task370.onnx",
+            "others/2/7616/submission_task156_reaudit_best/task370.onnx",
+            "others/2/7616/submission_task184_validated_cost444/task370.onnx",
+            "others/2/7616/submission_task273_checked_1_/task370.onnx",
+            "others/2/7616/submission_task279_validated_no_replacement/task370.onnx",
+            "others/2/7616/submission_task341_rebuild_validated/task370.onnx",
+            "others/2/7616/submission_task344_k9_tuned_401/task370.onnx",
+            "others/2/7616/submission_task345_audited_safe/task370.onnx",
+            "others/2/7616/submission_task388_validated/task370.onnx",
+            "others/2/7616/submission_task397_reoptimized/task370.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r08_static652.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r08_static652.onnx",
+          "current_sha256": "104eb571e60f99f9bc60ac45af60bf84e01cab014e1b804c312322d791230c9e",
+          "current_actual_cost": 968,
+          "stage": "actual_reject",
+          "static_audit": {
+            "pass": true,
+            "reasons": [],
+            "static_cost": 652,
+            "memory": 475,
+            "params": 177,
+            "ops": {
+              "Einsum": 8,
+              "ArgMax": 2,
+              "Equal": 1,
+              "Shape": 3,
+              "CenterCropPad": 25,
+              "CastLike": 9,
+              "Div": 2,
+              "Greater": 2,
+              "Sub": 12,
+              "Cast": 5,
+              "Abs": 1,
+              "Add": 3,
+              "Relu": 1,
+              "Min": 1,
+              "Gather": 1,
+              "Conv": 1,
+              "ConvTranspose": 1,
+              "Where": 1,
+              "BitwiseAnd": 2,
+              "BitwiseXor": 1,
+              "Concat": 3,
+              "Unsqueeze": 2,
+              "ScatterND": 1
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "actual_cost_not_strictly_cheaper"
+          ],
+          "actual_cost": 2018
+        },
+        {
+          "task": 370,
+          "sha256": "a81333519b03d61f7187c8b6d05f460cabdb1479bec1bda2cecfee6a24139ed2",
+          "sources": [
+            "others/2/1203/task370_improved_v2.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r02_static474.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task370_r02_static474.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r02_static474.onnx",
+          "current_sha256": "104eb571e60f99f9bc60ac45af60bf84e01cab014e1b804c312322d791230c9e",
+          "current_actual_cost": 968,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "nonstatic_shape"
+            ],
+            "static_cost": 472,
+            "memory": 306,
+            "params": 166,
+            "ops": {
+              "Shape": 3,
+              "Sub": 13,
+              "CenterCropPad": 24,
+              "CastLike": 12,
+              "ReduceL1": 1,
+              "Equal": 1,
+              "Einsum": 7,
+              "Div": 1,
+              "Greater": 3,
+              "Abs": 1,
+              "Add": 3,
+              "Cast": 3,
+              "ReduceMax": 1,
+              "Min": 1,
+              "Gather": 1,
+              "Conv": 1,
+              "ConvTranspose": 1,
+              "Where": 1,
+              "BitwiseAnd": 2,
+              "Unsqueeze": 3,
+              "Concat": 2
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "black_max"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 370,
+          "sha256": "e4875b1e532ea79d8453e85bce37cd1e00455f0cdb98947c6317e68e276d6ac5",
+          "sources": [
+            "others/2/7904/task370_rebuild_cost1227_candidate.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r07_static641.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r07_static641.onnx",
+          "current_sha256": "104eb571e60f99f9bc60ac45af60bf84e01cab014e1b804c312322d791230c9e",
+          "current_actual_cost": 968,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "nonstatic_shape"
+            ],
+            "static_cost": 635,
+            "memory": 635,
+            "params": 0,
+            "ops": {
+              "Constant": 12,
+              "Shape": 3,
+              "Sub": 13,
+              "CenterCropPad": 24,
+              "CastLike": 9,
+              "ReduceL1": 1,
+              "Equal": 1,
+              "Einsum": 7,
+              "Div": 1,
+              "Greater": 3,
+              "Abs": 1,
+              "Add": 1,
+              "Cast": 1,
+              "Max": 1,
+              "Unsqueeze": 3,
+              "Concat": 2,
+              "ReduceMax": 1,
+              "Mod": 1,
+              "Less": 1,
+              "Where": 3,
+              "Conv": 1,
+              "ConvTranspose": 1,
+              "BitwiseAnd": 2
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "zero_f16",
+              "one_i8",
+              "black_max",
+              "two_i8"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 370,
+          "sha256": "ef0232492acc257180a166bd656469cb6f5928dd9e682c06dbeb19e8270cddfb",
+          "sources": [
+            "others/2/1201/7120/task370_freshsafe.onnx",
+            "others/7907/7120/task370_freshsafe.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r05_static499.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task370_r05_static499.onnx",
+          "current_sha256": "104eb571e60f99f9bc60ac45af60bf84e01cab014e1b804c312322d791230c9e",
+          "current_actual_cost": 968,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "nonstatic_shape"
+            ],
+            "static_cost": 497,
+            "memory": 310,
+            "params": 187,
+            "ops": {
+              "Shape": 3,
+              "Sub": 12,
+              "CenterCropPad": 24,
+              "CastLike": 9,
+              "ReduceL1": 1,
+              "Equal": 1,
+              "Einsum": 7,
+              "Div": 1,
+              "Greater": 3,
+              "Abs": 1,
+              "Add": 3,
+              "Shrink": 1,
+              "Cast": 3,
+              "Unsqueeze": 3,
+              "Concat": 2,
+              "ReduceMax": 1,
+              "Min": 1,
+              "Gather": 1,
+              "Conv": 1,
+              "ConvTranspose": 1,
+              "Where": 1,
+              "BitwiseAnd": 2
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "black_max"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "nonstatic_shape"
+          ]
+        }
+      ],
+      "sound_control_attempt": {
+        "path": "artifacts/optimized/task370.onnx",
+        "structural": {
+          "sha256": "3fbe03ad7bbe499ecf7545e790e63b75e9a9b27b18223260edf1f73d3471a00d",
+          "bytes": 6539,
+          "nodes": 179,
+          "params": 158,
+          "ops": {
+            "Add": 2,
+            "And": 19,
+            "ArgMax": 2,
+            "Cast": 17,
+            "Equal": 3,
+            "Gather": 14,
+            "Greater": 2,
+            "GreaterOrEqual": 14,
+            "Less": 15,
+            "Max": 7,
+            "Mul": 21,
+            "Neg": 1,
+            "Not": 2,
+            "Pad": 2,
+            "ReduceMax": 7,
+            "ReduceSum": 2,
+            "Reshape": 4,
+            "Slice": 2,
+            "Sub": 23,
+            "Where": 20
+          },
+          "domains": [
+            ""
+          ],
+          "max_einsum_inputs": 0,
+          "checks": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "no_banned": true,
+            "no_nested_functions_sparse": true,
+            "conv_bias_ub0": true,
+            "finite_initializers": true,
+            "no_giant_contraction": true,
+            "no_lookup_ops": true,
+            "no_shape_cloak_ops": true
+          },
+          "pass": true,
+          "errors": [],
+          "nonstatic": []
+        },
+        "official_like_profile": {
+          "memory": 35487,
+          "params": 158,
+          "cost": 35645,
+          "score": 14.51863583644827,
+          "known_correct": true
+        },
+        "known_dual": {
+          "disable_all": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "total": 266
+          },
+          "default": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "total": 266
+          }
+        },
+        "strictly_cheaper_than_incumbent": false
+      }
+    },
+    "182": {
+      "rule": {
+        "hash": "776ffc46",
+        "type": "global template matching",
+        "rule": "use the colored sprite inside the gray 7x7 frame as the template; recolor every unframed color-1 sprite with identical shape to the template color",
+        "private_status": "not private-zero catalogued, but task is in the downstream-contamination ledger"
+      },
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_clean_mid10/baseline/task182.onnx",
+        "reported_actual_cost": {
+          "task": 182,
+          "memory": 894,
+          "params": 63,
+          "cost": 957
+        },
+        "structural": {
+          "sha256": "7d3f800f43ba8d2bd224e70406e967ea005df8049301fa4fb03d2ba99564f828",
+          "bytes": 8730,
+          "nodes": 89,
+          "params": 63,
+          "ops": {
+            "Add": 13,
+            "BitwiseAnd": 1,
+            "Cast": 7,
+            "CastLike": 5,
+            "CenterCropPad": 39,
+            "Concat": 1,
+            "Div": 2,
+            "Einsum": 3,
+            "Equal": 3,
+            "Identity": 2,
+            "Mul": 1,
+            "Neg": 1,
+            "Pow": 1,
+            "QLinearConv": 2,
+            "ReduceMax": 1,
+            "Slice": 1,
+            "Sub": 2,
+            "Where": 4
+          },
+          "domains": [
+            ""
+          ],
+          "max_einsum_inputs": 3,
+          "checks": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "no_banned": true,
+            "no_nested_functions_sparse": true,
+            "conv_bias_ub0": true,
+            "finite_initializers": true,
+            "no_giant_contraction": true,
+            "no_lookup_ops": true,
+            "no_shape_cloak_ops": false
+          },
+          "pass": false,
+          "errors": [],
+          "nonstatic": []
+        }
+      },
+      "historical_cheaper_union": [
+        {
+          "task": 182,
+          "sha256": "054dfce6083538795a7a1b7cd45c24425f9a107e50f8de182a14f79bae26a85a",
+          "sources": [
+            "others/2/1201/7120/task182_further_improved.onnx",
+            "others/2/1203/71202/7974-2/task182.onnx",
+            "others/7907/7120/task182_further_improved.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r02_static417.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task182_r02_static417.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r02_static417.onnx",
+          "current_sha256": "7d3f800f43ba8d2bd224e70406e967ea005df8049301fa4fb03d2ba99564f828",
+          "current_actual_cost": 957,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "nonstatic_shape"
+            ],
+            "static_cost": 409,
+            "memory": 291,
+            "params": 118,
+            "ops": {
+              "Identity": 7,
+              "CenterCropPad": 23,
+              "CastLike": 5,
+              "ConvTranspose": 1,
+              "ReduceMax": 1,
+              "Cast": 3,
+              "Mod": 1,
+              "Equal": 2,
+              "ArgMax": 1,
+              "Gather": 1,
+              "BitwiseAnd": 1,
+              "QLinearConv": 1,
+              "Sub": 1,
+              "Neg": 1,
+              "Concat": 1,
+              "Where": 1
+            },
+            "max_einsum_inputs": 0,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "input_hid",
+              "input_h",
+              "hash_w_pad"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 182,
+          "sha256": "2b0c330cf320d5b18c9cf676545b4e59c0e44004f7166f1ac640e64087bbf266",
+          "sources": [
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r04_static485.onnx",
+            "scripts/golf/loop_7999_13/lane_b9/task182_reuse_s2_s3.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r04_static485.onnx",
+          "current_sha256": "7d3f800f43ba8d2bd224e70406e967ea005df8049301fa4fb03d2ba99564f828",
+          "current_actual_cost": 957,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "conv_family_bias_ub",
+              "nonstatic_shape"
+            ],
+            "static_cost": 424,
+            "memory": 361,
+            "params": 63,
+            "ops": {
+              "Add": 14,
+              "Identity": 1,
+              "CenterCropPad": 39,
+              "Einsum": 3,
+              "Mul": 2,
+              "Equal": 3,
+              "Where": 4,
+              "Cast": 4,
+              "Div": 2,
+              "Pow": 1,
+              "BitwiseAnd": 1,
+              "Slice": 1,
+              "CastLike": 4,
+              "ReduceMax": 1,
+              "QLinearConv": 2,
+              "Sub": 2,
+              "Concat": 1
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": "dynamic_or_external_conv_bias:match_u8_raw",
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "is35",
+              "shape_idx_f",
+              "is50",
+              "detect_bias_scalar",
+              "code_a2",
+              "count_i32",
+              "hash_idx_i32",
+              "right_adj",
+              "shape_bit_u16",
+              "code_b2",
+              "is36",
+              "code",
+              "code_base2",
+              "code_i32",
+              "col_count",
+              "cnt6",
+              "shape_bit_f",
+              "gray_count"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "conv_family_bias_ub",
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 182,
+          "sha256": "4e3243918eed8190e6974b116401b82ee885969651044fbbba25e370daf33ded",
+          "sources": [
+            "others/7131/task182_further_improved.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r05_static554.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task182_r03_static554.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r05_static554.onnx",
+          "current_sha256": "7d3f800f43ba8d2bd224e70406e967ea005df8049301fa4fb03d2ba99564f828",
+          "current_actual_cost": 957,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "conv_family_bias_ub",
+              "nonstatic_shape"
+            ],
+            "static_cost": 479,
+            "memory": 361,
+            "params": 118,
+            "ops": {
+              "Identity": 2,
+              "Add": 13,
+              "Einsum": 3,
+              "Mul": 3,
+              "Sub": 2,
+              "Equal": 4,
+              "Where": 4,
+              "Cast": 5,
+              "ArgMax": 1,
+              "Pow": 1,
+              "BitwiseAnd": 1,
+              "Slice": 1,
+              "CenterCropPad": 34,
+              "CastLike": 4,
+              "Div": 1,
+              "ReduceMax": 1,
+              "QLinearConv": 2,
+              "Unsqueeze": 3,
+              "Concat": 1
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": "dynamic_or_external_conv_bias:match_u8_raw",
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "twentyfour_cr",
+              "shape_idx_f",
+              "detect_bias_scalar",
+              "is112",
+              "code_b",
+              "cnt_gr",
+              "code_base",
+              "is624",
+              "shape_bit_u16",
+              "shape_idx_i64",
+              "col_row_sum",
+              "code",
+              "code_i32",
+              "col_count",
+              "rel_code",
+              "cnt1048",
+              "shape_bit_f",
+              "gray_row_sum",
+              "code_a",
+              "c2_u8_scalar",
+              "is189",
+              "c3_present_u8"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "conv_family_bias_ub",
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 182,
+          "sha256": "6beaa897f35afb8a4364fbc170fbc2017cfa75595bec8c56e40ddae180bdf9f6",
+          "sources": [
+            "others/7130/task182_improved.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r06_static688.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task182_r04_static688.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r06_static688.onnx",
+          "current_sha256": "7d3f800f43ba8d2bd224e70406e967ea005df8049301fa4fb03d2ba99564f828",
+          "current_actual_cost": 957,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "conv_family_bias_ub",
+              "nonstatic_shape"
+            ],
+            "static_cost": 604,
+            "memory": 445,
+            "params": 159,
+            "ops": {
+              "Identity": 19,
+              "Einsum": 4,
+              "Mul": 4,
+              "Sub": 2,
+              "Add": 1,
+              "Equal": 4,
+              "Where": 4,
+              "Cast": 7,
+              "ArgMax": 1,
+              "Pow": 1,
+              "BitwiseAnd": 2,
+              "CenterCropPad": 33,
+              "CastLike": 4,
+              "Div": 1,
+              "Neg": 1,
+              "Unsqueeze": 4,
+              "QLinearConv": 2,
+              "Greater": 1,
+              "Concat": 1
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": "dynamic_or_external_conv_bias:match_u8_raw",
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "twentyfour_cr",
+              "shape_idx_f",
+              "detect_bias_scalar",
+              "is112",
+              "code_b",
+              "cnt_gr",
+              "code_base",
+              "is624",
+              "shape_bit_u16",
+              "shape_idx_i64",
+              "col_row_sum",
+              "code",
+              "code_i32",
+              "col_count",
+              "rel_code",
+              "c3_u8_scalar",
+              "is_c3",
+              "cnt1048",
+              "shape_bit_f",
+              "c3_count",
+              "gray_row_sum",
+              "code_a",
+              "active_count_i32",
+              "c2_u8_scalar",
+              "is189"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "conv_family_bias_ub",
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 182,
+          "sha256": "c36621d98f70428550b2c1d2de98ea70499630c93697d1d4ae74cebbca99949e",
+          "sources": [
+            "others/2/1203/task182_cost1330.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r01_static398.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task182_r01_static398.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r01_static398.onnx",
+          "current_sha256": "7d3f800f43ba8d2bd224e70406e967ea005df8049301fa4fb03d2ba99564f828",
+          "current_actual_cost": 957,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "nonstatic_shape"
+            ],
+            "static_cost": 387,
+            "memory": 279,
+            "params": 108,
+            "ops": {
+              "Identity": 7,
+              "CenterCropPad": 23,
+              "Cast": 5,
+              "ConvTranspose": 1,
+              "ReduceMax": 1,
+              "Mod": 1,
+              "Equal": 2,
+              "CastLike": 7,
+              "ArgMax": 1,
+              "Pow": 1,
+              "BitwiseAnd": 1,
+              "QLinearConv": 1,
+              "Greater": 1,
+              "Not": 1,
+              "Concat": 1,
+              "Where": 1
+            },
+            "max_einsum_inputs": 0,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "input_hid",
+              "hash_w_pad6a",
+              "input_h",
+              "hash_w_pad",
+              "input_u8"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 182,
+          "sha256": "d11479be2703a35afb1f5fe5224ee6a258b3d11c4480a15e8e88db50747ccff8",
+          "sources": [
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r03_static482.onnx",
+            "scripts/golf/loop_7999_13/lane_b9/task182_reuse_constants.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r03_static482.onnx",
+          "current_sha256": "7d3f800f43ba8d2bd224e70406e967ea005df8049301fa4fb03d2ba99564f828",
+          "current_actual_cost": 957,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "conv_family_bias_ub",
+              "nonstatic_shape"
+            ],
+            "static_cost": 421,
+            "memory": 361,
+            "params": 60,
+            "ops": {
+              "Add": 13,
+              "Mul": 1,
+              "Sub": 3,
+              "CenterCropPad": 39,
+              "Einsum": 3,
+              "Selu": 1,
+              "Equal": 3,
+              "Where": 4,
+              "Cast": 4,
+              "Div": 2,
+              "Pow": 1,
+              "Neg": 1,
+              "BitwiseAnd": 1,
+              "Slice": 1,
+              "CastLike": 4,
+              "ReduceMax": 1,
+              "QLinearConv": 2,
+              "Concat": 1
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": "dynamic_or_external_conv_bias:match_u8_raw",
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "is35",
+              "shape_idx_f",
+              "is50",
+              "detect_bias_scalar",
+              "code_a2",
+              "count_i32",
+              "hash_idx_i32",
+              "right_adj",
+              "shape_bit_u16",
+              "code_b2",
+              "is36",
+              "code",
+              "code_base2",
+              "code_i32",
+              "col_count",
+              "cnt6",
+              "shape_bit_f",
+              "gray_count"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "conv_family_bias_ub",
+            "nonstatic_shape"
+          ]
+        }
+      ],
+      "sound_control_attempt": {
+        "path": "scripts/golf/loop_7999_13/lane_b9/task182_static_shapes.onnx",
+        "structural": {
+          "sha256": "4c80813c6e5c0a047ff0debb35e4443766a5f58dc85294d0da80d46f75c83322",
+          "bytes": 5886,
+          "nodes": 72,
+          "params": 89,
+          "ops": {
+            "Add": 2,
+            "BitwiseAnd": 1,
+            "Cast": 4,
+            "CastLike": 4,
+            "CenterCropPad": 39,
+            "Concat": 1,
+            "Div": 2,
+            "Einsum": 3,
+            "Equal": 3,
+            "Mul": 2,
+            "Pow": 1,
+            "QLinearConv": 2,
+            "ReduceMax": 1,
+            "Slice": 1,
+            "Sub": 2,
+            "Where": 4
+          },
+          "domains": [
+            ""
+          ],
+          "max_einsum_inputs": 3,
+          "checks": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "no_banned": true,
+            "no_nested_functions_sparse": true,
+            "conv_bias_ub0": true,
+            "finite_initializers": true,
+            "no_giant_contraction": true,
+            "no_lookup_ops": true,
+            "no_shape_cloak_ops": false
+          },
+          "pass": false,
+          "errors": [],
+          "nonstatic": []
+        },
+        "official_like_profile": {
+          "memory": 169340,
+          "params": 89,
+          "cost": 169429,
+          "score": 12.959810761007743,
+          "known_correct": true
+        },
+        "known_dual": {
+          "disable_all": {
+            "right": 267,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "total": 267
+          },
+          "default": {
+            "right": 267,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "total": 267
+          }
+        },
+        "strictly_cheaper_than_incumbent": false
+      }
+    },
+    "201": {
+      "rule": {
+        "hash": "846bdb03",
+        "type": "data-dependent crop/geometry",
+        "rule": "recover two colored Conway sprites and the yellow/color frame; undo the optional horizontal flip and place the sprites into the data-dependent framed output",
+        "private_status": "historical private-zero/black lineage; only decoded sound reference plus fresh100 can qualify"
+      },
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_clean_mid10/baseline/task201.onnx",
+        "reported_actual_cost": {
+          "task": 201,
+          "memory": 623,
+          "params": 170,
+          "cost": 793
+        },
+        "structural": {
+          "sha256": "bf3fee21c1539a1084b64fffb236b7ec79915d9316d83ff50704bd7a3e3b9560",
+          "bytes": 759090,
+          "nodes": 108,
+          "params": 170,
+          "ops": {
+            "Add": 10,
+            "BitShift": 9,
+            "BitwiseAnd": 3,
+            "BitwiseOr": 5,
+            "Cast": 14,
+            "CastLike": 4,
+            "Concat": 7,
+            "ConvInteger": 1,
+            "Div": 1,
+            "Einsum": 4,
+            "Equal": 2,
+            "Gather": 2,
+            "GroupNormalization": 1,
+            "Log": 4,
+            "Min": 2,
+            "Mod": 6,
+            "Mul": 4,
+            "Pow": 2,
+            "QuantizeLinear": 4,
+            "ReduceSum": 1,
+            "ScatterElements": 3,
+            "Slice": 1,
+            "Split": 3,
+            "Squeeze": 1,
+            "Sub": 9,
+            "TfIdfVectorizer": 1,
+            "Where": 4
+          },
+          "domains": [
+            ""
+          ],
+          "max_einsum_inputs": 8,
+          "checks": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "no_banned": true,
+            "no_nested_functions_sparse": true,
+            "conv_bias_ub0": true,
+            "finite_initializers": true,
+            "no_giant_contraction": true,
+            "no_lookup_ops": false,
+            "no_shape_cloak_ops": true
+          },
+          "pass": false,
+          "errors": [],
+          "nonstatic": []
+        }
+      },
+      "historical_cheaper_union": [
+        {
+          "task": 201,
+          "sha256": "27fe7c06e77de1a9315885b3d270ebd37d74fa7acb0a7cf6ea759d49f67ff8a1",
+          "sources": [
+            "others/7906/task201_improved_v2.onnx",
+            "others/7907/task201_improved_v2.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task201_r03_static785.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task201_r03_static785.onnx",
+          "current_sha256": "bf3fee21c1539a1084b64fffb236b7ec79915d9316d83ff50704bd7a3e3b9560",
+          "current_actual_cost": 793,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "lookup_or_giant_initializer",
+              "nonstatic_shape"
+            ],
+            "static_cost": 784,
+            "memory": 614,
+            "params": 170,
+            "ops": {
+              "GroupNormalization": 1,
+              "CastLike": 4,
+              "Einsum": 4,
+              "Log": 4,
+              "QuantizeLinear": 4,
+              "Cast": 14,
+              "Pow": 2,
+              "Sub": 9,
+              "Add": 10,
+              "Equal": 2,
+              "BitShift": 9,
+              "Concat": 7,
+              "Slice": 1,
+              "Mod": 6,
+              "Where": 4,
+              "Mul": 4,
+              "Gather": 2,
+              "TfIdfVectorizer": 1,
+              "ReduceSum": 1,
+              "BitwiseAnd": 3,
+              "Split": 3,
+              "BitwiseOr": 5,
+              "Div": 1,
+              "Min": 2,
+              "ScatterElements": 3,
+              "Squeeze": 1,
+              "ConvInteger": 1
+            },
+            "max_einsum_inputs": 8,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [
+              "keep_s"
+            ],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "lookup_or_giant_initializer",
+            "nonstatic_shape"
+          ]
+        },
+        {
+          "task": 201,
+          "sha256": "c6f4b30551d34a410852b085efdff5f28b9bdd36319e05f97e1f477117dad588",
+          "sources": [
+            "others/7130/task201_improved(2).onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task201_r02_static674.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task201_r02_static674.onnx",
+          "current_sha256": "bf3fee21c1539a1084b64fffb236b7ec79915d9316d83ff50704bd7a3e3b9560",
+          "current_actual_cost": 793,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "lookup_or_giant_initializer"
+            ],
+            "static_cost": 674,
+            "memory": 537,
+            "params": 137,
+            "ops": {
+              "GroupNormalization": 1,
+              "CastLike": 1,
+              "Einsum": 1,
+              "Add": 22,
+              "Constant": 8,
+              "TfIdfVectorizer": 36,
+              "QuantizeLinear": 36,
+              "Concat": 2,
+              "Reshape": 2,
+              "Cast": 1,
+              "BitwiseAnd": 1,
+              "ScatterElements": 1,
+              "ConvInteger": 1
+            },
+            "max_einsum_inputs": 4,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "lookup_or_giant_initializer"
+          ]
+        },
+        {
+          "task": 201,
+          "sha256": "f12740f2f99504502a5f3851703b37c557de0f4310bdcf85ee4261a41be89725",
+          "sources": [
+            "others/7131/task201_improved_v2.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task201_r01_static543.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task201_r01_static543.onnx",
+          "current_sha256": "bf3fee21c1539a1084b64fffb236b7ec79915d9316d83ff50704bd7a3e3b9560",
+          "current_actual_cost": 793,
+          "stage": "static_policy_reject",
+          "static_audit": {
+            "pass": false,
+            "reasons": [
+              "lookup_or_giant_initializer"
+            ],
+            "static_cost": 543,
+            "memory": 439,
+            "params": 104,
+            "ops": {
+              "GroupNormalization": 1,
+              "CastLike": 1,
+              "Einsum": 1,
+              "Add": 10,
+              "TfIdfVectorizer": 18,
+              "Cast": 19,
+              "Min": 3,
+              "Sub": 5,
+              "Mul": 7,
+              "BitShift": 1,
+              "Concat": 2,
+              "Reshape": 1,
+              "Unsqueeze": 1,
+              "BitwiseAnd": 1,
+              "ScatterElements": 1,
+              "ConvInteger": 1
+            },
+            "max_einsum_inputs": 3,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "lookup_or_giant_initializer"
+          ]
+        }
+      ],
+      "sound_control_attempt": {
+        "path": "artifacts/optimized/task201.onnx",
+        "structural": {
+          "sha256": "e256952ce10c0cec494e92117d9f593e8605752d28336ca80a98d949b1cd3488",
+          "bytes": 7679,
+          "nodes": 89,
+          "params": 924,
+          "ops": {
+            "Add": 6,
+            "And": 6,
+            "ArgMax": 6,
+            "Cast": 7,
+            "Clip": 5,
+            "Conv": 1,
+            "Div": 1,
+            "Equal": 7,
+            "Gather": 7,
+            "Greater": 2,
+            "GreaterOrEqual": 3,
+            "Less": 4,
+            "LessOrEqual": 2,
+            "Mul": 2,
+            "Not": 1,
+            "Or": 3,
+            "Pad": 2,
+            "ReduceMax": 4,
+            "ReduceSum": 2,
+            "Reshape": 1,
+            "Slice": 1,
+            "Squeeze": 4,
+            "Sub": 8,
+            "Where": 4
+          },
+          "domains": [
+            ""
+          ],
+          "max_einsum_inputs": 0,
+          "checks": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "no_banned": true,
+            "no_nested_functions_sparse": true,
+            "conv_bias_ub0": true,
+            "finite_initializers": true,
+            "no_giant_contraction": true,
+            "no_lookup_ops": true,
+            "no_shape_cloak_ops": true
+          },
+          "pass": true,
+          "errors": [],
+          "nonstatic": []
+        },
+        "official_like_profile": {
+          "memory": 6974,
+          "params": 924,
+          "cost": 7898,
+          "score": 16.025635158153406,
+          "known_correct": true
+        },
+        "known_dual": {
+          "disable_all": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "total": 266
+          },
+          "default": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "total": 266
+          }
+        },
+        "strictly_cheaper_than_incumbent": false
+      }
+    },
+    "251": {
+      "rule": {
+        "hash": "a5313dff",
+        "type": "bounded boxes/local fill",
+        "rule": "for each fully in-grid red rectangle, paint its black interior ring blue while preserving the red border and the inner red core; clipped rectangles are unchanged",
+        "private_status": "outside private-zero catalog"
+      },
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_clean_mid10/baseline/task251.onnx",
+        "reported_actual_cost": {
+          "task": 251,
+          "memory": 527,
+          "params": 228,
+          "cost": 755
+        },
+        "structural": {
+          "sha256": "57f557717f6c9b582b0051519e722721bc5c904fd310252bcd4030f2df8d5c63",
+          "bytes": 7237,
+          "nodes": 65,
+          "params": 228,
+          "ops": {
+            "CastLike": 2,
+            "CenterCropPad": 55,
+            "ConstantOfShape": 5,
+            "QLinearConv": 2,
+            "Where": 1
+          },
+          "domains": [
+            ""
+          ],
+          "max_einsum_inputs": 0,
+          "checks": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "no_banned": true,
+            "no_nested_functions_sparse": true,
+            "conv_bias_ub0": true,
+            "finite_initializers": true,
+            "no_giant_contraction": true,
+            "no_lookup_ops": true,
+            "no_shape_cloak_ops": false
+          },
+          "pass": false,
+          "errors": [],
+          "nonstatic": []
+        }
+      },
+      "historical_cheaper_union": [
+        {
+          "task": 251,
+          "sha256": "81fe706fb059870ae3aa97ab087498c19a5a9894dbb75efb7661fd1e3245a493",
+          "sources": [
+            "artifacts/handcrafted/task251.onnx",
+            "others/2/1102/task251_improved(1).onnx",
+            "others/2/1203/71202/7974-2/task251.onnx",
+            "others/2/1203/submission (60)/task251.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task251_r02_static388.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task251_r02_static388.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task251_r02_static388.onnx",
+          "current_sha256": "57f557717f6c9b582b0051519e722721bc5c904fd310252bcd4030f2df8d5c63",
+          "current_actual_cost": 755,
+          "stage": "actual_reject",
+          "static_audit": {
+            "pass": true,
+            "reasons": [],
+            "static_cost": 388,
+            "memory": 160,
+            "params": 228,
+            "ops": {
+              "ConstantOfShape": 5,
+              "CenterCropPad": 60,
+              "CastLike": 2,
+              "QLinearConv": 2,
+              "Where": 1
+            },
+            "max_einsum_inputs": 0,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "actual_cost_not_strictly_cheaper"
+          ],
+          "actual_cost": 760
+        },
+        {
+          "task": 251,
+          "sha256": "88ab0383bb85e7f8925f6a7c8557c4c80710d04c21257728a0e128fc5adb6769",
+          "sources": [
+            "others/2/1200/task251_c3k8_cost709.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task251_r04_static477.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task251_r03_static477.onnx",
+            "scripts/golf/scratch_codex_plus10/pool_actual/task251.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task251_r04_static477.onnx",
+          "current_sha256": "57f557717f6c9b582b0051519e722721bc5c904fd310252bcd4030f2df8d5c63",
+          "current_actual_cost": 755,
+          "stage": "known_reject",
+          "static_audit": {
+            "pass": true,
+            "reasons": [],
+            "static_cost": 477,
+            "memory": 218,
+            "params": 259,
+            "ops": {
+              "ConstantOfShape": 5,
+              "CenterCropPad": 60,
+              "CastLike": 2,
+              "QLinearConv": 2,
+              "Where": 1
+            },
+            "max_einsum_inputs": 0,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "known_dual_not_100_percent"
+          ],
+          "actual_cost": 709,
+          "gain": 0.0628622227168971,
+          "known_dual": {
+            "disable_all": {
+              "right": 266,
+              "wrong": 0,
+              "errors": 0,
+              "first_failure": null
+            },
+            "default": {
+              "right": 0,
+              "wrong": 0,
+              "errors": 0,
+              "first_failure": null,
+              "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_22) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+            }
+          }
+        },
+        {
+          "task": 251,
+          "sha256": "df0ef741f4ff332de2eda62527ec8a3897a5232f68487ac3e8fde3a3930cd4a9",
+          "sources": [
+            "others/7906/task251_rebuilt_cost582.onnx",
+            "others/7907/task251_rebuilt_cost582.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task251_r03_static406.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task251_r03_static406.onnx",
+          "current_sha256": "57f557717f6c9b582b0051519e722721bc5c904fd310252bcd4030f2df8d5c63",
+          "current_actual_cost": 755,
+          "stage": "known_reject",
+          "static_audit": {
+            "pass": true,
+            "reasons": [],
+            "static_cost": 406,
+            "memory": 187,
+            "params": 219,
+            "ops": {
+              "ConstantOfShape": 5,
+              "CenterCropPad": 55,
+              "CastLike": 2,
+              "QLinearConv": 2,
+              "Where": 1
+            },
+            "max_einsum_inputs": 0,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "known_dual_not_100_percent"
+          ],
+          "actual_cost": 582,
+          "gain": 0.2602473015175869,
+          "known_dual": {
+            "disable_all": {
+              "right": 266,
+              "wrong": 0,
+              "errors": 0,
+              "first_failure": null
+            },
+            "default": {
+              "right": 0,
+              "wrong": 0,
+              "errors": 0,
+              "first_failure": null,
+              "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_17) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (3)."
+            }
+          }
+        },
+        {
+          "task": 251,
+          "sha256": "ec1402720602b81cb84175a75eb0cc16066e9f85ebce3d07ee57728b0f16d833",
+          "sources": [
+            "others/2/1101/task251_cost763.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task251_r01_static347.onnx",
+            "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task251_r01_static347.onnx"
+          ],
+          "origins": [
+            "loose_sweep"
+          ],
+          "resolved_source": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task251_r01_static347.onnx",
+          "current_sha256": "57f557717f6c9b582b0051519e722721bc5c904fd310252bcd4030f2df8d5c63",
+          "current_actual_cost": 755,
+          "stage": "actual_reject",
+          "static_audit": {
+            "pass": true,
+            "reasons": [],
+            "static_cost": 347,
+            "memory": 119,
+            "params": 228,
+            "ops": {
+              "ConstantOfShape": 4,
+              "CenterCropPad": 59,
+              "CastLike": 2,
+              "QLinearConv": 2,
+              "Where": 1
+            },
+            "max_einsum_inputs": 0,
+            "giant_initializers": [],
+            "nested_graph_count": 0,
+            "custom_node_count": 0,
+            "conv_bias_reason": null,
+            "conv_bias_findings": [],
+            "nonstatic": [],
+            "unknown_dtype": []
+          },
+          "reasons": [
+            "actual_cost_not_strictly_cheaper"
+          ],
+          "actual_cost": 763
+        }
+      ],
+      "sound_control_attempt": {
+        "path": "artifacts/optimized/task251.onnx",
+        "structural": {
+          "sha256": "708781b4d013035bff093dd8ea1d504def66989c0b29545d9097e3e0913e541a",
+          "bytes": 3768,
+          "nodes": 55,
+          "params": 36,
+          "ops": {
+            "Cast": 4,
+            "Concat": 1,
+            "Max": 9,
+            "MaxPool": 7,
+            "Mul": 9,
+            "Pad": 5,
+            "ReduceSum": 1,
+            "Relu": 4,
+            "Slice": 8,
+            "Sub": 7
+          },
+          "domains": [
+            ""
+          ],
+          "max_einsum_inputs": 0,
+          "checks": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "no_banned": true,
+            "no_nested_functions_sparse": true,
+            "conv_bias_ub0": true,
+            "finite_initializers": true,
+            "no_giant_contraction": true,
+            "no_lookup_ops": true,
+            "no_shape_cloak_ops": true
+          },
+          "pass": true,
+          "errors": [],
+          "nonstatic": []
+        },
+        "official_like_profile": {
+          "memory": 24672,
+          "params": 36,
+          "cost": 24708,
+          "score": 14.885117643184211,
+          "known_correct": true
+        },
+        "known_dual": {
+          "disable_all": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "total": 266
+          },
+          "default": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "total": 266
+          }
+        },
+        "strictly_cheaper_than_incumbent": false
+      }
+    }
+  },
+  "admitted": [],
+  "admitted_gain": 0.0,
+  "verdict": "NO_TRUTHFUL_STRICTLY_CHEAPER_CANDIDATE"
+}

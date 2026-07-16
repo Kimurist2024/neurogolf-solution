@@ -1,0 +1,1348 @@
+{
+  "authority_zip": "submission_base_8009.46.zip",
+  "authority_zip_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "base_cost": {
+    "101": 5655,
+    "133": 4393
+  },
+  "tasks": {
+    "101": {
+      "authority_member_sha256": "ad535c519c18681700f956262c48ca5990f15ff4b58fd94de95ef3beff69a84b",
+      "base_audit": {
+        "label": "base_task101",
+        "task": 101,
+        "path": "scripts/golf/loop_8004_42_plus20/agent_high101_133_118/baseline/task101.onnx",
+        "sha256": "ad535c519c18681700f956262c48ca5990f15ff4b58fd94de95ef3beff69a84b",
+        "file_bytes": 6642,
+        "nodes": 69,
+        "initializers": 24,
+        "params": 114,
+        "op_histogram": {
+          "QLinearConv": 12,
+          "Cast": 10,
+          "MaxPool": 8,
+          "ScatterElements": 4,
+          "Resize": 4,
+          "BitwiseAnd": 3,
+          "ArgMax": 3,
+          "And": 3,
+          "Mul": 2,
+          "Max": 2,
+          "Gather": 2,
+          "Concat": 2,
+          "ConvInteger": 2,
+          "Neg": 2,
+          "Pad": 2,
+          "ConvTranspose": 1,
+          "Add": 1,
+          "Xor": 1,
+          "Not": 1,
+          "Slice": 1,
+          "GatherND": 1,
+          "ScatterND": 1,
+          "Where": 1
+        },
+        "max_node_inputs": 9,
+        "lookup_red_flags": {
+          "tfidf": 0,
+          "hardmax": 0,
+          "giant_einsum_nodes": 0,
+          "params_over_10000": false
+        },
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "nested_graph_attributes": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "conv_bias_findings": [
+          {
+            "node": "t101_49_cand1_raw",
+            "op": "QLinearConv",
+            "bias": "biasi4_1",
+            "bias_is_initializer": false,
+            "bias_shape": null,
+            "expected_channels": null,
+            "safe": false
+          },
+          {
+            "node": "t101_52_cand2",
+            "op": "QLinearConv",
+            "bias": "biasi4_2",
+            "bias_is_initializer": false,
+            "bias_shape": null,
+            "expected_channels": null,
+            "safe": false
+          },
+          {
+            "node": "t101_56_cand3",
+            "op": "QLinearConv",
+            "bias": "biasi4_1",
+            "bias_is_initializer": false,
+            "bias_shape": null,
+            "expected_channels": null,
+            "safe": false
+          }
+        ],
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_trace": {
+          "runtime_tensors": 69,
+          "declared_tensors": 1,
+          "declared_actual_mismatches": [],
+          "undeclared_intermediate_count": 68,
+          "single_example_intermediate_bytes": 5541
+        },
+        "official_like_score": {
+          "memory": 5541,
+          "params": 114,
+          "cost": 5655,
+          "score": 16.35970461144978,
+          "correct": true
+        },
+        "known_disable_all": {
+          "train": {
+            "right": 3,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 266,
+            "wrong": 0,
+            "errors": 0
+          }
+        },
+        "known_default": {
+          "train": {
+            "right": 3,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 266,
+            "wrong": 0,
+            "errors": 0
+          }
+        }
+      },
+      "rewrites": [
+        {
+          "kind": "noops",
+          "path": "scripts/golf/loop_8004_42_plus20/agent_high101_133_118/candidates/task101_noops_3e60ea7e6303.onnx",
+          "sha256": "3e60ea7e630360a106c20630cf168dbd6d0c139554cfa12bb8bc6507e36afa6a",
+          "actions": {
+            "bypassed_noops": [
+              {
+                "op": "And",
+                "output": "tail3_dyn",
+                "source": "is_wide_bool",
+                "proof": "and_neutral"
+              }
+            ],
+            "semantic_action_count": 1,
+            "metadata_action_count": 0
+          },
+          "actual_cost": null,
+          "strictly_lower": false,
+          "audit": {
+            "label": "task101_noops",
+            "task": 101,
+            "path": "scripts/golf/loop_8004_42_plus20/agent_high101_133_118/candidates/task101_noops_3e60ea7e6303.onnx",
+            "sha256": "3e60ea7e630360a106c20630cf168dbd6d0c139554cfa12bb8bc6507e36afa6a",
+            "file_bytes": 6552,
+            "nodes": 68,
+            "initializers": 23,
+            "params": 96,
+            "op_histogram": {
+              "QLinearConv": 12,
+              "Cast": 10,
+              "MaxPool": 8,
+              "ScatterElements": 4,
+              "Resize": 4,
+              "BitwiseAnd": 3,
+              "ArgMax": 3,
+              "Mul": 2,
+              "Max": 2,
+              "Gather": 2,
+              "And": 2,
+              "Concat": 2,
+              "ConvInteger": 2,
+              "Neg": 2,
+              "Pad": 2,
+              "ConvTranspose": 1,
+              "Add": 1,
+              "Xor": 1,
+              "Not": 1,
+              "Slice": 1,
+              "GatherND": 1,
+              "ScatterND": 1,
+              "Where": 1
+            },
+            "max_node_inputs": 9,
+            "lookup_red_flags": {
+              "tfidf": 0,
+              "hardmax": 0,
+              "giant_einsum_nodes": 0,
+              "params_over_10000": false
+            },
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "nested_graph_attributes": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "conv_bias_findings": [
+              {
+                "node": "t101_49_cand1_raw",
+                "op": "QLinearConv",
+                "bias": "biasi4_1",
+                "bias_is_initializer": false,
+                "bias_shape": null,
+                "expected_channels": null,
+                "safe": false
+              },
+              {
+                "node": "t101_52_cand2",
+                "op": "QLinearConv",
+                "bias": "biasi4_2",
+                "bias_is_initializer": false,
+                "bias_shape": null,
+                "expected_channels": null,
+                "safe": false
+              },
+              {
+                "node": "t101_56_cand3",
+                "op": "QLinearConv",
+                "bias": "biasi4_1",
+                "bias_is_initializer": false,
+                "bias_shape": null,
+                "expected_channels": null,
+                "safe": false
+              }
+            ],
+            "full_check": false,
+            "full_check_error": "InferenceError(\"[ShapeInferenceError] Inference error(s): (op_type:Concat, node name: cond20): [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=15 Declared=17 Dimension=2\\n(op_type:Pad, node name: t101_61_cond30): [TypeInferenceError] Input 0 expected to have type but instead is null\\n\")",
+            "strict_shape_data_prop": false,
+            "strict_shape_error": "InferenceError(\"[ShapeInferenceError] Inference error(s): (op_type:Concat, node name: cond20): [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=15 Declared=17 Dimension=2\\n(op_type:Pad, node name: t101_61_cond30): [TypeInferenceError] Input 0 expected to have type but instead is null\\n\")",
+            "runtime_shape_trace": {
+              "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (cond20) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=15 Declared=17 Dimension=2"
+            },
+            "official_like_score": null,
+            "known_disable_all": {
+              "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_88) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=15 Declared=17 Dimension=2"
+            },
+            "known_default": {
+              "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_88) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=15 Declared=17 Dimension=2"
+            }
+          }
+        },
+        {
+          "kind": "exact_broadcast_expand",
+          "path": "scripts/golf/loop_8004_42_plus20/agent_high101_133_118/candidates/task101_exact_broadcast_expand_a57a944d958b.onnx",
+          "sha256": "a57a944d958be1945563a7d55320239bb0f36b4ba25af1041f589a904cc7b81e",
+          "actions": {
+            "proof": "For boolean b, And(ones([1,1,3,6]), b) = Expand(b, [1,1,3,6]) elementwise.",
+            "removed_initializer": {
+              "name": "tail3x6",
+              "elements": 18
+            },
+            "added_initializer": {
+              "name": "tail3x6_shape",
+              "elements": 4
+            },
+            "output_shape_preserved": [
+              1,
+              1,
+              3,
+              6
+            ]
+          },
+          "actual_cost": 5641,
+          "strictly_lower": true,
+          "audit": {
+            "label": "task101_exact_broadcast_expand",
+            "task": 101,
+            "path": "scripts/golf/loop_8004_42_plus20/agent_high101_133_118/candidates/task101_exact_broadcast_expand_a57a944d958b.onnx",
+            "sha256": "a57a944d958be1945563a7d55320239bb0f36b4ba25af1041f589a904cc7b81e",
+            "file_bytes": 6678,
+            "nodes": 69,
+            "initializers": 24,
+            "params": 100,
+            "op_histogram": {
+              "QLinearConv": 12,
+              "Cast": 10,
+              "MaxPool": 8,
+              "ScatterElements": 4,
+              "Resize": 4,
+              "BitwiseAnd": 3,
+              "ArgMax": 3,
+              "Mul": 2,
+              "Max": 2,
+              "Gather": 2,
+              "And": 2,
+              "Concat": 2,
+              "ConvInteger": 2,
+              "Neg": 2,
+              "Pad": 2,
+              "ConvTranspose": 1,
+              "Add": 1,
+              "Xor": 1,
+              "Not": 1,
+              "Slice": 1,
+              "GatherND": 1,
+              "ScatterND": 1,
+              "Expand": 1,
+              "Where": 1
+            },
+            "max_node_inputs": 9,
+            "lookup_red_flags": {
+              "tfidf": 0,
+              "hardmax": 0,
+              "giant_einsum_nodes": 0,
+              "params_over_10000": false
+            },
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "nested_graph_attributes": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "conv_bias_findings": [
+              {
+                "node": "t101_49_cand1_raw",
+                "op": "QLinearConv",
+                "bias": "biasi4_1",
+                "bias_is_initializer": false,
+                "bias_shape": null,
+                "expected_channels": null,
+                "safe": false
+              },
+              {
+                "node": "t101_52_cand2",
+                "op": "QLinearConv",
+                "bias": "biasi4_2",
+                "bias_is_initializer": false,
+                "bias_shape": null,
+                "expected_channels": null,
+                "safe": false
+              },
+              {
+                "node": "t101_56_cand3",
+                "op": "QLinearConv",
+                "bias": "biasi4_1",
+                "bias_is_initializer": false,
+                "bias_shape": null,
+                "expected_channels": null,
+                "safe": false
+              }
+            ],
+            "full_check": true,
+            "strict_shape_data_prop": true,
+            "runtime_shape_trace": {
+              "runtime_tensors": 69,
+              "declared_tensors": 1,
+              "declared_actual_mismatches": [],
+              "undeclared_intermediate_count": 68,
+              "single_example_intermediate_bytes": 5541
+            },
+            "official_like_score": {
+              "memory": 5541,
+              "params": 100,
+              "cost": 5641,
+              "score": 16.362183366260023,
+              "correct": true
+            },
+            "known_disable_all": {
+              "train": {
+                "right": 3,
+                "wrong": 0,
+                "errors": 0
+              },
+              "test": {
+                "right": 1,
+                "wrong": 0,
+                "errors": 0
+              },
+              "arc-gen": {
+                "right": 262,
+                "wrong": 0,
+                "errors": 0
+              },
+              "total": {
+                "right": 266,
+                "wrong": 0,
+                "errors": 0
+              }
+            },
+            "known_default": {
+              "train": {
+                "right": 3,
+                "wrong": 0,
+                "errors": 0
+              },
+              "test": {
+                "right": 1,
+                "wrong": 0,
+                "errors": 0
+              },
+              "arc-gen": {
+                "right": 262,
+                "wrong": 0,
+                "errors": 0
+              },
+              "total": {
+                "right": 266,
+                "wrong": 0,
+                "errors": 0
+              }
+            }
+          }
+        },
+        {
+          "kind": "exact_broadcast_resize",
+          "path": "scripts/golf/loop_8004_42_plus20/agent_high101_133_118/candidates/task101_exact_broadcast_resize_788c809c9886.onnx",
+          "sha256": "788c809c98869afded6dc6dc553de139d0149da53cf32acc7a1156431bc47255",
+          "actions": {
+            "proof": "Nearest Resize of a scalar bool to axes[2,3]=[3,6] replicates that scalar exactly; this equals And(all_true[1,1,3,6], scalar).",
+            "removed_initializer": {
+              "name": "tail3x6",
+              "elements": 18
+            },
+            "added_initializer": {
+              "name": "tail_hw",
+              "elements": 2
+            },
+            "output_shape_preserved": [
+              1,
+              1,
+              3,
+              6
+            ]
+          },
+          "actual_cost": null,
+          "strictly_lower": false,
+          "audit": {
+            "label": "task101_exact_broadcast_resize",
+            "task": 101,
+            "path": "scripts/golf/loop_8004_42_plus20/agent_high101_133_118/candidates/task101_exact_broadcast_resize_788c809c9886.onnx",
+            "sha256": "788c809c98869afded6dc6dc553de139d0149da53cf32acc7a1156431bc47255",
+            "file_bytes": 6765,
+            "nodes": 69,
+            "initializers": 24,
+            "params": 98,
+            "op_histogram": {
+              "QLinearConv": 12,
+              "Cast": 10,
+              "MaxPool": 8,
+              "Resize": 5,
+              "ScatterElements": 4,
+              "BitwiseAnd": 3,
+              "ArgMax": 3,
+              "Mul": 2,
+              "Max": 2,
+              "Gather": 2,
+              "And": 2,
+              "Concat": 2,
+              "ConvInteger": 2,
+              "Neg": 2,
+              "Pad": 2,
+              "ConvTranspose": 1,
+              "Add": 1,
+              "Xor": 1,
+              "Not": 1,
+              "Slice": 1,
+              "GatherND": 1,
+              "ScatterND": 1,
+              "Where": 1
+            },
+            "max_node_inputs": 9,
+            "lookup_red_flags": {
+              "tfidf": 0,
+              "hardmax": 0,
+              "giant_einsum_nodes": 0,
+              "params_over_10000": false
+            },
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "nested_graph_attributes": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "conv_bias_findings": [
+              {
+                "node": "t101_49_cand1_raw",
+                "op": "QLinearConv",
+                "bias": "biasi4_1",
+                "bias_is_initializer": false,
+                "bias_shape": null,
+                "expected_channels": null,
+                "safe": false
+              },
+              {
+                "node": "t101_52_cand2",
+                "op": "QLinearConv",
+                "bias": "biasi4_2",
+                "bias_is_initializer": false,
+                "bias_shape": null,
+                "expected_channels": null,
+                "safe": false
+              },
+              {
+                "node": "t101_56_cand3",
+                "op": "QLinearConv",
+                "bias": "biasi4_1",
+                "bias_is_initializer": false,
+                "bias_shape": null,
+                "expected_channels": null,
+                "safe": false
+              }
+            ],
+            "full_check": true,
+            "strict_shape_data_prop": true,
+            "runtime_shape_trace": {
+              "error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for Resize(18) node with name 'tail3_dyn_exact_resize'"
+            },
+            "official_like_score": null,
+            "known_disable_all": {
+              "session_error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for Resize(18) node with name 'safe_name_88'"
+            },
+            "known_default": {
+              "session_error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for Resize(18) node with name 'safe_name_88'"
+            }
+          }
+        }
+      ]
+    },
+    "133": {
+      "authority_member_sha256": "6c5dc3a593b0900e16966b9d4c40af509a34c1dd1f0264c31cd30eaf9b4570e5",
+      "base_audit": {
+        "label": "base_task133",
+        "task": 133,
+        "path": "scripts/golf/loop_8004_42_plus20/agent_high101_133_118/baseline/task133.onnx",
+        "sha256": "6c5dc3a593b0900e16966b9d4c40af509a34c1dd1f0264c31cd30eaf9b4570e5",
+        "file_bytes": 26723,
+        "nodes": 231,
+        "initializers": 38,
+        "params": 217,
+        "op_histogram": {
+          "Cast": 28,
+          "Sub": 22,
+          "Mul": 21,
+          "Add": 19,
+          "Concat": 19,
+          "CenterCropPad": 13,
+          "CastLike": 13,
+          "Gather": 13,
+          "Pad": 12,
+          "GatherElements": 9,
+          "Equal": 7,
+          "ReduceSum": 6,
+          "Unsqueeze": 6,
+          "Squeeze": 6,
+          "Split": 5,
+          "Div": 4,
+          "QLinearMatMul": 4,
+          "ReduceMax": 4,
+          "Einsum": 3,
+          "Slice": 2,
+          "Max": 2,
+          "Where": 2,
+          "LessOrEqual": 2,
+          "Shape": 1,
+          "ArgMax": 1,
+          "ScatterElements": 1,
+          "TopK": 1,
+          "Sqrt": 1,
+          "Round": 1,
+          "Expand": 1,
+          "GatherND": 1,
+          "ArgMin": 1
+        },
+        "max_node_inputs": 8,
+        "lookup_red_flags": {
+          "tfidf": 0,
+          "hardmax": 0,
+          "giant_einsum_nodes": 0,
+          "params_over_10000": false
+        },
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "nested_graph_attributes": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "conv_bias_findings": [],
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_trace": {
+          "runtime_tensors": 243,
+          "declared_tensors": 239,
+          "declared_actual_mismatches": [
+            {
+              "tensor": "target_marker_c__cast_int32",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                4
+              ]
+            },
+            {
+              "tensor": "cand_indices__cast3_s",
+              "declared": [
+                1,
+                1,
+                1,
+                3
+              ],
+              "actual": [
+                1,
+                4,
+                2,
+                3
+              ]
+            },
+            {
+              "tensor": "target_marker_r__cast_int32",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                4
+              ]
+            },
+            {
+              "tensor": "cand_values",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                4,
+                2
+              ]
+            },
+            {
+              "tensor": "cand_pc",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                4,
+                2
+              ]
+            },
+            {
+              "tensor": "cand_pc_u",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                4,
+                2,
+                1
+              ]
+            },
+            {
+              "tensor": "cand_hit_i8",
+              "declared": [
+                1,
+                4,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                4,
+                2,
+                1
+              ]
+            },
+            {
+              "tensor": "sum_c_var",
+              "declared": [
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "sum_r2_var",
+              "declared": [
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "hpads_0__cast5_s",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "vpads_0__cast6_s",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "hpads_1__cast7_s",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "vpads_1__cast8_s",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "hpads_2__cast9_s",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "vpads_2__cast10_s",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "hpads_tpl_i64",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "vpads_tpl_i64",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "sum_c_var_ccp",
+              "declared": [
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "sum_r2_var_ccp",
+              "declared": [
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "__hid_cand_indices__cast3_s",
+              "declared": [
+                1,
+                1,
+                1,
+                3
+              ],
+              "actual": [
+                1,
+                4,
+                2,
+                3
+              ]
+            },
+            {
+              "tensor": "hpads_0__cast5_s_ccp",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "vpads_0__cast6_s_ccp",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "hpads_1__cast7_s_ccp",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "vpads_1__cast8_s_ccp",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "hpads_2__cast9_s_ccp",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "vpads_2__cast10_s_ccp",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "hpads_tpl_ccp",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "vpads_tpl_ccp",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                2
+              ]
+            },
+            {
+              "tensor": "target_marker_r__cast_int32__hack_ccp",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                4
+              ]
+            },
+            {
+              "tensor": "target_marker_c__cast_int32__hack_ccp",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                4
+              ]
+            }
+          ],
+          "undeclared_intermediate_count": 4,
+          "single_example_intermediate_bytes": 4563
+        },
+        "official_like_score": {
+          "memory": 4176,
+          "params": 217,
+          "cost": 4393,
+          "score": 16.612232356024222,
+          "correct": true
+        },
+        "known_disable_all": {
+          "train": {
+            "right": 4,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 267,
+            "wrong": 0,
+            "errors": 0
+          }
+        },
+        "known_default": {
+          "train": {
+            "right": 4,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 267,
+            "wrong": 0,
+            "errors": 0
+          }
+        }
+      },
+      "rewrites": [
+        {
+          "kind": "normalize",
+          "path": "scripts/golf/loop_8004_42_plus20/agent_high101_133_118/candidates/task133_normalize_f7dd6c37e74f.onnx",
+          "sha256": "f7dd6c37e74f1d6e6cc88b2f3311fb1ce667a7fc62717f7eac4c75d53bedf24a",
+          "actions": {
+            "cleared_value_info": [
+              "R_2",
+              "target_marker_c__cast_int32",
+              "is_target",
+              "pad_bottom_0",
+              "tmr_scaled_all",
+              "target_pc_sr",
+              "pad_right_0",
+              "p_sum_c__cast11_t",
+              "pattern_values_2",
+              "main_values_1",
+              "scale_0_i8",
+              "main_top",
+              "scale_f",
+              "main_vals",
+              "sum_r2",
+              "tmc_abs",
+              "target_pc_sc",
+              "main_values_0",
+              "target_pc_sr0",
+              "scale_1_i8",
+              "sleft_2",
+              "pad_bottom_1",
+              "var_r",
+              "vsmall_1",
+              "msr",
+              "tmr_abs",
+              "sprite_lefts",
+              "p_sum_r__cast10_t",
+              "hpads_0",
+              "cand_indices__cast3_s",
+              "scale_m1",
+              "vsmall_2",
+              "sum_r",
+              "msc",
+              "stop_2",
+              "top_f0",
+              "main_rel",
+              "main_left",
+              "main_top_u",
+              "C_2",
+              "mean_r",
+              "stop_0",
+              "pad_bottom_2",
+              "template_slot",
+              "C_0",
+              "scolor_0",
+              "scolor_2",
+              "target_center_r",
+              "R_0",
+              "vsmall_0",
+              "pattern_values_1",
+              "C_1",
+              "tmc_f0",
+              "scolor_1",
+              "n_sum2",
+              "main_values_2",
+              "counts__cast1_t",
+              "sum_c",
+              "square_shape_u",
+              "mean_c",
+              "sr_sq",
+              "pad_right_2",
+              "target_marker_r__cast_int32",
+              "R_all",
+              "tmr_f0",
+              "horizontal_0",
+              "tmc_scaled_all",
+              "R_1",
+              "stop_1",
+              "sum_r_var",
+              "main_left_u",
+              "C_all",
+              "main_rel__cast2_t",
+              "pad_right_1",
+              "counts",
+              "count_square",
+              "scale64",
+              "target_pc_sc0",
+              "hpads_2",
+              "sleft_0",
+              "left_f0",
+              "pattern_values_0",
+              "vpads_0",
+              "scale_2_i8",
+              "target_pc_sc_sum",
+              "horizontal_1",
+              "horizontal_2",
+              "scale_sqrt",
+              "target_center_c",
+              "target_pc_sr_sum",
+              "sprite_tops",
+              "hpads_1",
+              "scale_half",
+              "label",
+              "vpads_1",
+              "sleft_1",
+              "tcolor",
+              "vpads_2",
+              "var_r9",
+              "p_rel",
+              "p_rel__cast1_t",
+              "pcolor",
+              "pcolor_u__cast_int32",
+              "main_score9",
+              "hidx_scalar_0_i8",
+              "hidx_scalar_0",
+              "hidx_0",
+              "pattern_pad_0",
+              "hidx_scalar_1_i8",
+              "hidx_scalar_1",
+              "hidx_1",
+              "pattern_pad_1",
+              "hidx_scalar_2_i8",
+              "hidx_scalar_2",
+              "hidx_2",
+              "pattern_pad_2",
+              "target_scales",
+              "target_tops",
+              "target_lefts",
+              "target_colors",
+              "main_values_tpl",
+              "pattern_values_tpl",
+              "pad_right_tpl",
+              "hpads_tpl",
+              "C_tpl",
+              "pad_bottom_tpl",
+              "vpads_tpl",
+              "R_tpl",
+              "target_idx",
+              "manual_feat_vec",
+              "total_count",
+              "total_sum_r",
+              "total_sum_c",
+              "double_sum_r",
+              "double_sum_c",
+              "height_m1",
+              "width_m1",
+              "pfix_key",
+              "pfix_mask",
+              "pfix_mask_i8",
+              "pfix_delta_i8",
+              "p_rel_fixed_i8",
+              "template_top",
+              "template_left_raw",
+              "template_left",
+              "template_top_1",
+              "tcolor_1d_i8",
+              "marker_row",
+              "marker_col",
+              "marker_values",
+              "tres_slice3",
+              "pat_i8_3",
+              "pat_i8",
+              "marker_row_i8",
+              "marker_col_i8",
+              "marker_row_values",
+              "main_excl_idx",
+              "height_m1_f16",
+              "width_m1_f16",
+              "square_shape_i8",
+              "is_target_i8",
+              "target_marker_r",
+              "target_marker_c",
+              "pfix_c6",
+              "manual_key",
+              "manual_mask",
+              "manual_mask_i8",
+              "tmc_off_h",
+              "rhit1_i8_h",
+              "train1_i8_2d",
+              "cand_c",
+              "cand_r",
+              "pcolor_grid",
+              "hit_r_weighted",
+              "hit_c_weighted",
+              "cand_indices",
+              "cand_values",
+              "cand_pc",
+              "cand_pc_u",
+              "cand_hit_i8",
+              "vis_c4",
+              "vis_key",
+              "vis_mask",
+              "vis_mask_i8",
+              "vis_m0",
+              "vis_m1",
+              "vis_m2",
+              "vis_m3",
+              "vis_r1",
+              "vis_d0",
+              "vis_zero11",
+              "vis_right_flags",
+              "vis_down_flags",
+              "vis_extra_any",
+              "is_target2_i8",
+              "extra_r_base",
+              "extra_r_delta",
+              "extra_c_base",
+              "extra_c_delta",
+              "vis_marker_r",
+              "vis_marker_c",
+              "target_marker_r2",
+              "target_marker_c2",
+              "top_minus",
+              "left_minus",
+              "top_minus_u",
+              "left_minus_u",
+              "sum_c_var",
+              "sum_r2_var",
+              "hpads_0__cast5_s",
+              "vpads_0__cast6_s",
+              "hpads_1__cast7_s",
+              "vpads_1__cast8_s",
+              "hpads_2__cast9_s",
+              "vpads_2__cast10_s",
+              "hpads_tpl_i64",
+              "vpads_tpl_i64",
+              "tcolor_end_i8",
+              "slice_h_end_i8",
+              "slice_w_end_i8",
+              "shape_1x10_dyn",
+              "sum_c_var_ccp",
+              "sum_r2_var_ccp",
+              "__hid_cand_indices__cast3_s",
+              "hpads_0__cast5_s_ccp",
+              "vpads_0__cast6_s_ccp",
+              "hpads_1__cast7_s_ccp",
+              "vpads_1__cast8_s_ccp",
+              "hpads_2__cast9_s_ccp",
+              "vpads_2__cast10_s_ccp",
+              "hpads_tpl_ccp",
+              "vpads_tpl_ccp",
+              "slice_starts_i8",
+              "slice_starts",
+              "slice_ends_i8",
+              "slice_ends",
+              "target_marker_r__cast_int32__hack_ccp",
+              "target_marker_c__cast_int32__hack_ccp"
+            ],
+            "semantic_action_count": 0,
+            "metadata_action_count": 238
+          },
+          "actual_cost": null,
+          "strictly_lower": false,
+          "audit": {
+            "label": "task133_normalize",
+            "task": 133,
+            "path": "scripts/golf/loop_8004_42_plus20/agent_high101_133_118/candidates/task133_normalize_f7dd6c37e74f.onnx",
+            "sha256": "f7dd6c37e74f1d6e6cc88b2f3311fb1ce667a7fc62717f7eac4c75d53bedf24a",
+            "file_bytes": 19081,
+            "nodes": 231,
+            "initializers": 38,
+            "params": 217,
+            "op_histogram": {
+              "Cast": 28,
+              "Sub": 22,
+              "Mul": 21,
+              "Add": 19,
+              "Concat": 19,
+              "CenterCropPad": 13,
+              "CastLike": 13,
+              "Gather": 13,
+              "Pad": 12,
+              "GatherElements": 9,
+              "Equal": 7,
+              "ReduceSum": 6,
+              "Unsqueeze": 6,
+              "Squeeze": 6,
+              "Split": 5,
+              "Div": 4,
+              "QLinearMatMul": 4,
+              "ReduceMax": 4,
+              "Einsum": 3,
+              "Slice": 2,
+              "Max": 2,
+              "Where": 2,
+              "LessOrEqual": 2,
+              "Shape": 1,
+              "ArgMax": 1,
+              "ScatterElements": 1,
+              "TopK": 1,
+              "Sqrt": 1,
+              "Round": 1,
+              "Expand": 1,
+              "GatherND": 1,
+              "ArgMin": 1
+            },
+            "max_node_inputs": 8,
+            "lookup_red_flags": {
+              "tfidf": 0,
+              "hardmax": 0,
+              "giant_einsum_nodes": 0,
+              "params_over_10000": false
+            },
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "nested_graph_attributes": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "conv_bias_findings": [],
+            "full_check": true,
+            "strict_shape_data_prop": true,
+            "runtime_shape_trace": {
+              "runtime_tensors": 243,
+              "declared_tensors": 1,
+              "declared_actual_mismatches": [],
+              "undeclared_intermediate_count": 242,
+              "single_example_intermediate_bytes": 4563
+            },
+            "official_like_score": null,
+            "known_disable_all": {
+              "train": {
+                "right": 4,
+                "wrong": 0,
+                "errors": 0
+              },
+              "test": {
+                "right": 1,
+                "wrong": 0,
+                "errors": 0
+              },
+              "arc-gen": {
+                "right": 262,
+                "wrong": 0,
+                "errors": 0
+              },
+              "total": {
+                "right": 267,
+                "wrong": 0,
+                "errors": 0
+              }
+            },
+            "known_default": {
+              "train": {
+                "right": 4,
+                "wrong": 0,
+                "errors": 0
+              },
+              "test": {
+                "right": 1,
+                "wrong": 0,
+                "errors": 0
+              },
+              "arc-gen": {
+                "right": 262,
+                "wrong": 0,
+                "errors": 0
+              },
+              "total": {
+                "right": 267,
+                "wrong": 0,
+                "errors": 0
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

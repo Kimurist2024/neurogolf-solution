@@ -1,0 +1,674 @@
+{
+  "lane": "agent_new_low37",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "previous_path": "submission_base_8004.50.zip",
+    "previous_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "policy": {
+    "nonprivate": "strictly cheaper, known100 dual, two independent fresh seeds each >=90%, runtime0, checker full, strict/data_prop, truthful runtime shapes, standard domains, no lookup/cloak/giant, Conv-bias UB0",
+    "private_risk": "same gates but known/fresh must be 100% dual and require decoded true-rule guarantee or exact LB-white lineage",
+    "fail_closed": "known/fresh candidate runs do not start when cost or structure gates fail"
+  },
+  "targets_requested": [
+    320,
+    154,
+    393,
+    290,
+    336,
+    3,
+    58,
+    72
+  ],
+  "targets_completed": 8,
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_integration": false,
+  "rows": [
+    {
+      "task": 320,
+      "rule_summary": "For every red vertical bar, recolor its bottom floor(length/2) cells cyan.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task320.onnx",
+      "baseline_sha256": "c82bb7bf1468d1c0aa57de6e39de68595bd675198d4cfea5909d4d2119a6a46b",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 80,
+        "cost": 80
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 266,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 266,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 14,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "no graph below cost 80; one conventional truthful history model has static floor 770",
+      "reason": "The incumbent is already an output-only 14-operand rank-two Einsum with only 80 parameters. Complete archive, focused harvest, and exact-rewrite scans expose no strict decrease.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 154,
+      "rule_summary": "Reflect every gray outside-box pixel across its nearest red gripper boundary into the box, handling the transposed orientation.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task154.onnx",
+      "baseline_sha256": "e56132cc5ff44e63572f84c2c08844fa97593fe0a0606f8a2ad735777a9b8f35",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 88,
+        "cost": 88
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 266,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 266,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 54,
+        "giant_einsum": [
+          {
+            "node_index": 0,
+            "inputs": 54
+          }
+        ],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "44/48-operand giant-Einsum alternates and a conventional static-floor 2679 model",
+      "reason": "Every compact lineage is a prohibited giant contraction; the only truthful conventional lineage is far above the cost-88 floor.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 393,
+      "rule_summary": "Count every nonzero color and emit the three colors in descending population order as a 3x1 column.",
+      "true_rule_known": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "total": 265,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task393.onnx",
+      "baseline_sha256": "cd189fa29df4d9be5f0545f4401a40ad22d96e479736749a96e6f67f4a06904f",
+      "baseline_cost": {
+        "memory": 61,
+        "params": 25,
+        "cost": 86
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 265,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 265,
+          "skipped": 0,
+          "total_executable": 265,
+          "runtime_output_shapes": [],
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_9) Op (TopK) [ShapeInferenceError] Axis has less than the requested k elements."
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Cast": 2,
+          "Concat": 1,
+          "GroupNormalization": 1,
+          "Mul": 1,
+          "QLinearConv": 1,
+          "ReduceL1": 1,
+          "ReduceMax": 1,
+          "TopK": 1,
+          "Transpose": 1
+        },
+        "node_count": 10,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 3,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "latest cost 86; historical clean/alternate floors are 95, 117, or 121",
+      "reason": "The current 8004.50-era one-parameter shave is already present. It has three runtime shape contradictions and default TopK session failure; truthfully computing color counts and ranking exceeds cost 86.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 290,
+      "rule_summary": "Crop the nonzero square and swap its two nonzero colors everywhere.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task290.onnx",
+      "baseline_sha256": "9c6eb4e508d27ab0a3c5cd44438001ef4971a26cbc85cee5ae5f7dc904a1c728",
+      "baseline_cost": {
+        "memory": 74,
+        "params": 17,
+        "cost": 91
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 266,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 266,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "BitwiseAnd": 1,
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "MaxPool": 1,
+          "Mul": 1,
+          "ReduceMin": 1,
+          "Transpose": 2
+        },
+        "node_count": 9,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 5,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "archive static floors 73/75/88",
+      "reason": "Runtime profiling raises them to costs 91/93/97. The cost-73 lead is exact-known/fresh-correct but only ties the latest actual cost 91, so there is no strict decrease; all inherit shape-cloak behavior.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 336,
+      "rule_summary": "Fill the gray container interior cyan and extend cyan through its single opening to the corresponding grid edge.",
+      "true_rule_known": {
+        "right": 31,
+        "wrong": 0,
+        "errors": 0,
+        "total": 31,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task336.onnx",
+      "baseline_sha256": "ebdba81d4d746e1c96429e5de0f6863a77dd8654455147008232b21bedc0e380",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 92,
+        "cost": 92
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "disable_all": {
+          "right": 31,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 31,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "default": {
+          "right": 31,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 31,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 42,
+        "giant_einsum": [
+          {
+            "node_index": 0,
+            "inputs": 42
+          }
+        ],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "no below-92 safe graph; conventional generator-compiled history is cost 4746",
+      "reason": "The incumbent is a prohibited 42-operand output-only Einsum. The harvested conventional model has a Conv bias-shape UB finding and is orders of magnitude above the floor.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 3,
+      "rule_summary": "Continue the 2/3-row stencil from height 6 to height 9, preserving its optional alternating horizontal reflection, and recolor 1 to 2.",
+      "true_rule_known": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "total": 265,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task003.onnx",
+      "baseline_sha256": "9161d9556a4caca892887ff3837aa76c960df34037c4100d4c283f42430b27d3",
+      "baseline_cost": {
+        "memory": 50,
+        "params": 28,
+        "cost": 78
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 265,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "default": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 265,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "QLinearConv": 1,
+          "Resize": 1
+        },
+        "node_count": 5,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 2,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "one cost-78 same-cost lineage and a conventional static-floor 260 model",
+      "reason": "The only compact alternate ties. The incumbent itself relies on two runtime shape contradictions, while making those tensors truthful destroys the 78-cost floor.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 58,
+      "rule_summary": "Ignore the empty input content and draw the deterministic color-3 inward spiral for the observed square size.",
+      "true_rule_known": {
+        "right": 22,
+        "wrong": 0,
+        "errors": 0,
+        "total": 22,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task058.onnx",
+      "baseline_sha256": "2f5dbca078f8703f63cb73296b1b75f5478f654ce2b9d0b72e640b85a8460f7f",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 78,
+        "cost": 78
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "disable_all": {
+          "right": 22,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 22,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "default": {
+          "right": 22,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 22,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 16,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "historical static floors 86, 94, and 213 versus cost 78",
+      "reason": "No history member is strictly lower. The incumbent is already a single output-only 16-operand contraction with 78 parameters.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 72,
+      "rule_summary": "Split at the yellow row and emit color 3 exactly where the red top and bottom half masks differ.",
+      "true_rule_known": {
+        "right": 268,
+        "wrong": 0,
+        "errors": 0,
+        "total": 268,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task072.onnx",
+      "baseline_sha256": "2566a28170c157ccf0685114e89542462ccf7e9dd78ec0107a3fe6f976b80894",
+      "baseline_cost": {
+        "memory": 65,
+        "params": 13,
+        "cost": 78
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "disable_all": {
+          "right": 268,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 268,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "default": {
+          "right": 268,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total_executable": 268,
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "QLinearConv": 2
+        },
+        "node_count": 5,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 2,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "one cost-78 same-cost lineage; other history floors are 120 and 180",
+      "reason": "The tie cannot promote and the incumbent has two runtime shape contradictions. A truthful XOR implementation exceeds the 78-cost floor.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    }
+  ],
+  "final_verdict": "NO_SAFE_CANDIDATE"
+}

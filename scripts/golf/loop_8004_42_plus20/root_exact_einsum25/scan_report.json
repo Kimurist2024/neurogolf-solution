@@ -1,0 +1,169 @@
+{
+  "baseline": "submission_base_8005.16.zip",
+  "baseline_sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+  "task_count": 400,
+  "private_zero_excluded": [],
+  "existing_candidate_copies": [],
+  "initializer_dedup": [],
+  "outer_fusion": [
+    {
+      "task": 48,
+      "label": "outer_01",
+      "path": "scripts/golf/loop_8004_42_plus20/root_exact_einsum25/candidates/task048_outer_01.onnx",
+      "sha256": "c71df5f572e3d804115a00283628de7f20a857a2f62d0d8dc6b6ee531d30663f",
+      "baseline_params": 71,
+      "candidate_params": 70,
+      "parameter_reduction": 1,
+      "excluded_private_zero": false,
+      "rewrite": {
+        "node_index": 0,
+        "first": "einsum_cw",
+        "first_term": "c",
+        "second": "einsum_nm",
+        "second_term": "nm",
+        "fused_term": "cnm"
+      },
+      "structural_gate": {
+        "checker": "PASS",
+        "strict_shape_inference": "PASS",
+        "static_shapes": true,
+        "banned_ops": [],
+        "conv_bias_ub": [],
+        "errors": [],
+        "pass": true
+      }
+    },
+    {
+      "task": 48,
+      "label": "outer_02",
+      "path": "scripts/golf/loop_8004_42_plus20/root_exact_einsum25/candidates/task048_outer_02.onnx",
+      "sha256": "cdde85d8a5a50f3c050b6ee337db399849b819cf67771daa965e7fedd6e2e6b3",
+      "baseline_params": 71,
+      "candidate_params": 70,
+      "parameter_reduction": 1,
+      "excluded_private_zero": false,
+      "rewrite": {
+        "node_index": 0,
+        "first": "einsum_ww",
+        "first_term": "w",
+        "second": "einsum_nm",
+        "second_term": "nm",
+        "fused_term": "wnm"
+      },
+      "structural_gate": {
+        "checker": "PASS",
+        "strict_shape_inference": "PASS",
+        "static_shapes": true,
+        "banned_ops": [],
+        "conv_bias_ub": [],
+        "errors": [],
+        "pass": true
+      }
+    }
+  ],
+  "sign_absorption": [
+    {
+      "task": 333,
+      "label": "sign_01",
+      "path": "scripts/golf/loop_8004_42_plus20/root_exact_einsum25/candidates/task333_sign_01.onnx",
+      "sha256": "0628a573302f0a816d010482ed8b883caac7c307a27f47c9b53df85e2042a6bc",
+      "baseline_params": 423,
+      "candidate_params": 421,
+      "parameter_reduction": 2,
+      "excluded_private_zero": false,
+      "rewrite": {
+        "node_index": 0,
+        "source": "GE",
+        "source_term": "Z",
+        "target": "HC",
+        "target_term": "Zd",
+        "target_axis": 0,
+        "compensations": [
+          {
+            "input_index": 34,
+            "name": "GHHT",
+            "axis": 1,
+            "label": "U"
+          }
+        ]
+      },
+      "structural_gate": {
+        "checker": "PASS",
+        "strict_shape_inference": "PASS",
+        "static_shapes": true,
+        "banned_ops": [],
+        "conv_bias_ub": [],
+        "errors": [],
+        "pass": true
+      }
+    }
+  ],
+  "metadata_scan": [
+    {
+      "task": 14,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:ScatterElements, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    },
+    {
+      "task": 15,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:HardSwish, node name: C): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: w0): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: nw31): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: h0): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: h0_h31w31): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: w0_h31w31): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: rightbranch32): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: c_right): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: down_right_h31): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: downbranch32): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: down_right_h32): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: down_right): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: c_left): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: up_c): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: up_right_pre): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: up_left): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: down_left_pre): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: down_left): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: down_c): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: up_right): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Einsum, node name: output): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    },
+    {
+      "task": 25,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Einsum, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    },
+    {
+      "task": 31,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:ScatterElements): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    },
+    {
+      "task": 49,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:HardSwish, node name: scores): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    },
+    {
+      "task": 130,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:RoiAlign): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    },
+    {
+      "task": 131,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:ScatterND, node name: output): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    },
+    {
+      "task": 183,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:PRelu): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:ScatterElements): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    },
+    {
+      "task": 243,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:Einsum, node name: ): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n"
+    },
+    {
+      "task": 266,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:ScatterElements): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    },
+    {
+      "task": 374,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:CastLike): [TypeInferenceError] Input 1 expected to have type but instead is null\n(op_type:ScatterElements): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    },
+    {
+      "task": 388,
+      "status": "inference_failed",
+      "error": "[ShapeInferenceError] Inference error(s): (op_type:CastLike, node name: updates_float): [TypeInferenceError] Input 1 expected to have type but instead is null\n(op_type:ScatterElements, node name: output): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+    }
+  ],
+  "errors": [],
+  "metadata_scan_summary": {
+    "scanned": 400,
+    "inference_failures": 12,
+    "tasks_with_overdeclared_value_info": []
+  }
+}

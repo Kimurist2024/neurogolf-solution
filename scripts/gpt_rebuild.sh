@@ -26,6 +26,7 @@ N="${GR_SLOTS:-6}"; TIMEOUT="${GR_TIMEOUT:-3000}"; HOURS="${GR_HOURS:-8}"
 GOAL="${GR_GOAL:-1000}"
 ENGINE="${GR_ENGINE:-codex}"   # codex | claude | kimi
 MODE="${GR_MODE:-rebuild}"     # rebuild | memshave
+EFFORT="${GR_EFFORT:-}"        # codex only: none|minimal|low|medium|high|xhigh|ultra (empty -> config.toml default)
 case "$MODE" in rebuild|memshave) ;; *) echo "FATAL bad GR_MODE=$MODE (rebuild|memshave)"; exit 2;; esac
 case "$ENGINE" in
   codex)  MODEL="${GR_MODEL:-gpt-5.5}";;
@@ -106,7 +107,7 @@ launch(){ # $1=task $2=hash $3=cost
   build_prompt "$TASK" "$HASH" "$COST" > "$pf"
   local lg="$LOGDIR/${ENGINE}_task${T3}.log"
   case "$ENGINE" in
-    codex)  ( codex exec -m "$MODEL" -s workspace-write --skip-git-repo-check -C "$REPO" - < "$pf" > "$lg" 2>&1 & \
+    codex)  ( codex exec -m "$MODEL" ${EFFORT:+-c model_reasoning_effort="$EFFORT"} -s workspace-write --skip-git-repo-check -C "$REPO" - < "$pf" > "$lg" 2>&1 & \
               w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
     claude) ( claude -p --model "$MODEL" --dangerously-skip-permissions --verbose --output-format stream-json < "$pf" > "$lg" 2>&1 & \
               w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
@@ -155,7 +156,7 @@ refill(){
 
 END=$(( $(date +%s) + HOURS*3600 ))
 rm -f "$LOGDIR/.pids"
-log "==== REBUILD START engine=${ENGINE} mode=${MODE} slots=${N} model=${MODEL} timeout=${TIMEOUT}s budget=${HOURS}h goal<=${GOAL} targets=${GR_TARGETS_FILE:-default} ===="
+log "==== REBUILD START engine=${ENGINE} mode=${MODE} slots=${N} model=${MODEL} effort=${EFFORT:-config-default} timeout=${TIMEOUT}s budget=${HOURS}h goal<=${GOAL} targets=${GR_TARGETS_FILE:-default} ===="
 while [ "$(date +%s)" -lt "$END" ]; do
   refill
   sleep 20

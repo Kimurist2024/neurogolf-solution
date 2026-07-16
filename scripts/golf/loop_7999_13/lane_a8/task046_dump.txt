@@ -1,0 +1,196 @@
+# task046.onnx
+
+## Initializers
+code_w: float32 (10, 1, 3, 2) [[[[0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]], [[[1104644.0, 1104768.0], [1104644.0, 1104704.0], [1104644.0, 1104672.0]]], [[[3704324.0, 3704448.0], [3704324.0, 3704384.0], [3704324.0, 3704352.0]]], [[[772.0, 896.0], [772.0, 832.0], [772.0, 800.0]]], [[[2564.0, 2688.0], [2564.0, 2624.0], [2820.0, 2592.0]]], [[[4.0, 131.0], [4.0, 66.0], [4.0, 33.0]]], [[[8708.0, 8832.0], [8708.0, 8768.0], [8708.0, 8736.0]]], [[[29188.0, 29312.0], [29444.0, 29504.0], [29444.0, 29472.0]]], [[[98308.0, 98176.0], [98308.0, 98368.0], [98308.0, 98336.0]]], [[[329476.0, 329344.0], [329476.0, 329536.0], [329476.0, 329504.0]]]]
+one_u8: uint8 () 1
+two_u8: uint8 () 2
+three_u8: uint8 () 3
+occ_center_mask: uint8 () 28
+q_s: float32 () 1.2100000381469727
+two_i32: int32 (1,) [2]
+flat_w: uint8 (10, 1, 3, 5) [[[[17, 27, 0, 113, 50], [30, 28, 28, 0, 28], [18, 28, 44, 33, 28]]], [[[32, 23, 33, 19, 159], [28, 23, 28, 31, 162], [31, 23, 25, 28, 162]]], [[[19, 34, 59, 22, 7], [13, 34, 48, 57, 10], [30, 34, 26, 29, 11]]], [[[28, 18, 66, 16, 115], [23, 18, 33, 82, 134], [29, 20, 27, 28, 126]]], [[[30, 20, 33, 24, 155], [27, 20, 29, 67, 154], [30, 19, 26, 28, 168]]], [[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]], [[[32, 17, 39, 13, 227], [28, 15, 28, 29, 255], [32, 16, 24, 26, 245]]], [[[25, 17, 34, 30, 248], [30, 17, 26, 34, 249], [32, 17, 24, 28, 249]]], [[[33, 19, 35, 16, 227], [26, 18, 30, 33, 244], [32, 18, 25, 27, 244]]], [[[28, 19, 30, 27, 244], [29, 19, 28, 32, 244], [33, 19, 23, 28, 244]]]]
+flat_b: int32 (10,) [-27, -771, -949, -205, -415, -100000, -776, -904, -963, -1094]
+six_u8: uint8 () 6
+nine_u8: uint8 () 9
+idx_30_1: int32 (1, 1, 1, 1) [[[[0]]]]
+five_u8: uint8 () 5
+
+## Value info
+
+## Nodes
+00 ConvTranspose ['input', 'code_w'] -> ['code_grid'] {'pads': [2, 1, 29, 11]}
+01 Cast ['code_grid'] -> ['state_cols'] {'to': 2}
+02 Split ['state_cols'] -> ['sc0', 'sc1', 'sc2', 'sc3', 'sc4', 'sc5', 'sc6', 'sc7', 'sc8', 'sc9', 'sc10', 'sc11', 'sc12', 'sc13', 'sc14', 'sc15', 'sc16', 'sc17', 'sc18'] {'axis': 3, 'num_outputs': 19}
+03 Greater ['sc2', 'occ_center_mask'] -> ['a_cur_occ'] {}
+04 Cast ['a_cur_occ'] -> ['a_f2'] {'to': 2}
+05 BitwiseAnd ['sc2', 'occ_center_mask'] -> ['a_next_occ'] {}
+06 Min ['a_next_occ', 'a_f2'] -> ['a_both'] {}
+07 Add ['a_f2', 'a_both'] -> ['a_inc'] {}
+08 GreaterOrEqual ['one_u8', 'a_inc'] -> ['g1_1'] {}
+09 Add ['a_inc', 'three_u8'] -> ['s2'] {}
+10 Cast ['s2'] -> ['s2_i32'] {'to': 6}
+11 Where ['g1_1', 'sc6', 'sc7'] -> ['b_p2_tmp'] {}
+12 Where ['a_cur_occ', 'b_p2_tmp', 'sc5'] -> ['b_p2'] {}
+13 Greater ['b_p2', 'occ_center_mask'] -> ['b_cur_occ'] {}
+14 Cast ['b_cur_occ'] -> ['b_f2'] {'to': 2}
+15 BitwiseAnd ['b_p2', 'occ_center_mask'] -> ['b_next_occ'] {}
+16 Min ['b_next_occ', 'b_f2'] -> ['b_both'] {}
+17 Add ['b_f2', 'b_both'] -> ['b_inc'] {}
+18 Add ['a_inc', 'b_inc'] -> ['b2'] {}
+19 Greater ['one_u8', 'b2'] -> ['g245_0'] {}
+20 GreaterOrEqual ['one_u8', 'b2'] -> ['g245_1'] {}
+21 GreaterOrEqual ['two_u8', 'b2'] -> ['g267_0'] {}
+22 GreaterOrEqual ['three_u8', 'b2'] -> ['g267_1'] {}
+23 Where ['g267_1', 'sc11', 'sc12'] -> ['c_p2_t3'] {}
+24 Where ['g267_0', 'sc10', 'c_p2_t3'] -> ['c_p2_t2'] {}
+25 Where ['g245_1', 'sc9', 'c_p2_t2'] -> ['c_p2_t1'] {}
+26 Where ['g245_0', 'sc8', 'c_p2_t1'] -> ['c_p2'] {}
+27 Add ['b2', 'six_u8'] -> ['s3'] {}
+28 Cast ['s3'] -> ['s3_i32'] {'to': 6}
+29 Greater ['c_p2', 'occ_center_mask'] -> ['c_cur_occ'] {}
+30 Cast ['c_cur_occ'] -> ['c_f2'] {'to': 2}
+31 BitwiseAnd ['c_p2', 'occ_center_mask'] -> ['c_next_occ'] {}
+32 Min ['c_next_occ', 'c_f2'] -> ['c_both'] {}
+33 Add ['c_f2', 'c_both'] -> ['c_inc'] {}
+34 Add ['b2', 'c_inc'] -> ['b3'] {}
+35 Add ['b3', 'nine_u8'] -> ['s4'] {}
+36 Cast ['s4'] -> ['s4_i32'] {'to': 6}
+37 GatherElements ['code_grid', 'idx_30_1'] -> ['c1_rep'] {'axis': 3}
+38 Log ['c1_rep'] -> ['c1_log'] {}
+39 QuantizeLinear ['c1_log', 'q_s', 'one_u8'] -> ['c1'] {}
+40 GatherElements ['code_grid', 's2_i32'] -> ['c2_rep'] {'axis': 3}
+41 Log ['c2_rep'] -> ['c2_log'] {}
+42 QuantizeLinear ['c2_log', 'q_s', 'one_u8'] -> ['c2'] {}
+43 GatherElements ['code_grid', 's3_i32'] -> ['c3_rep'] {'axis': 3}
+44 Log ['c3_rep'] -> ['c3_log'] {}
+45 QuantizeLinear ['c3_log', 'q_s', 'one_u8'] -> ['c3'] {}
+46 GatherElements ['code_grid', 's4_i32'] -> ['c4_rep'] {'axis': 3}
+47 Log ['c4_rep'] -> ['c4_log'] {}
+48 QuantizeLinear ['c4_log', 'q_s', 'one_u8'] -> ['c4'] {}
+49 Where ['g1_1', 'sc2', 'sc3'] -> ['d1_gray_l_tmp'] {}
+50 Where ['a_cur_occ', 'd1_gray_l_tmp', 'sc1'] -> ['d1_gray_l'] {}
+51 GatherElements ['state_cols', 's2_i32'] -> ['d1_gray_r'] {'axis': 3}
+52 BitwiseAnd ['d1_gray_l', 'three_u8'] -> ['d1_gray_l_row'] {}
+53 BitwiseAnd ['d1_gray_r', 'three_u8'] -> ['d1_gray_r_row'] {}
+54 Sub ['d1_gray_r_row', 'd1_gray_l_row'] -> ['d1'] {}
+55 Where ['g267_1', 'sc7', 'sc8'] -> ['d2_gray_l_t3'] {}
+56 Where ['g267_0', 'sc6', 'd2_gray_l_t3'] -> ['d2_gray_l_t2'] {}
+57 Where ['g245_1', 'sc5', 'd2_gray_l_t2'] -> ['d2_gray_l_t1'] {}
+58 Where ['g245_0', 'sc4', 'd2_gray_l_t1'] -> ['d2_gray_l'] {}
+59 GatherElements ['state_cols', 's3_i32'] -> ['d2_gray_r'] {'axis': 3}
+60 BitwiseAnd ['d2_gray_l', 'three_u8'] -> ['d2_gray_l_row'] {}
+61 BitwiseAnd ['d2_gray_r', 'three_u8'] -> ['d2_gray_r_row'] {}
+62 Sub ['d2_gray_r_row', 'd2_gray_l_row'] -> ['d2'] {}
+63 Sub ['s4_i32', 'two_i32'] -> ['d3_m2_i32'] {}
+64 GatherElements ['state_cols', 'd3_m2_i32'] -> ['d3_gray_l'] {'axis': 3}
+65 GatherElements ['state_cols', 's4_i32'] -> ['d3_gray_r'] {'axis': 3}
+66 BitwiseAnd ['d3_gray_l', 'three_u8'] -> ['d3_gray_l_row'] {}
+67 BitwiseAnd ['d3_gray_r', 'three_u8'] -> ['d3_gray_r_row'] {}
+68 Sub ['d3_gray_r_row', 'd3_gray_l_row'] -> ['d3'] {}
+69 Add ['d1', 'five_u8'] -> ['sh2'] {}
+70 Add ['sh2', 'd2'] -> ['sh3'] {}
+71 Add ['sh3', 'd3'] -> ['sh4'] {}
+72 Greater ['one_u8', 'b3'] -> ['g367_0'] {}
+73 GreaterOrEqual ['one_u8', 'b3'] -> ['g367_1'] {}
+74 GreaterOrEqual ['two_u8', 'b3'] -> ['g3811_0'] {}
+75 GreaterOrEqual ['three_u8', 'b3'] -> ['g3811_1'] {}
+76 Greater ['five_u8', 'b3'] -> ['g3811_2'] {}
+77 Greater ['six_u8', 'b3'] -> ['g3811_3'] {}
+78 Where ['a_cur_occ', 'c1', 'c2'] -> ['ocol2'] {}
+79 Where ['a_cur_occ', 'five_u8', 'sh2'] -> ['osh2'] {}
+80 Where ['a_cur_occ', 'sc2', 'sc3'] -> ['ost2'] {}
+81 Where ['g1_1', 'c2', 'c1'] -> ['ocol3'] {}
+82 Where ['g1_1', 'sh2', 'five_u8'] -> ['osh3'] {}
+83 Where ['g1_1', 'sc4', 'sc3'] -> ['ost3'] {}
+84 Where ['g245_0', 'c3', 'c2'] -> ['ocol4'] {}
+85 Where ['g245_0', 'sh3', 'sh2'] -> ['osh4'] {}
+86 Where ['g245_0', 'sc6', 'sc5'] -> ['ost4'] {}
+87 Where ['g245_1', 'c3', 'c2'] -> ['ocol5'] {}
+88 Where ['g245_1', 'sh3', 'sh2'] -> ['osh5'] {}
+89 Where ['g245_1', 'sc7', 'sc6'] -> ['ost5'] {}
+90 Where ['g267_0', 'c3', 'c2'] -> ['ocol6_tmp'] {}
+91 Where ['g267_0', 'sh3', 'sh2'] -> ['osh6_tmp'] {}
+92 Where ['g267_0', 'sc8', 'sc7'] -> ['ost6_tmp'] {}
+93 Where ['g367_0', 'c4', 'ocol6_tmp'] -> ['ocol6'] {}
+94 Where ['g367_0', 'sh4', 'osh6_tmp'] -> ['osh6'] {}
+95 Where ['g367_0', 'sc9', 'ost6_tmp'] -> ['ost6'] {}
+96 Where ['g267_1', 'c3', 'c2'] -> ['ocol7_tmp'] {}
+97 Where ['g267_1', 'sh3', 'sh2'] -> ['osh7_tmp'] {}
+98 Where ['g267_1', 'sc9', 'sc8'] -> ['ost7_tmp'] {}
+99 Where ['g367_1', 'c4', 'ocol7_tmp'] -> ['ocol7'] {}
+100 Where ['g367_1', 'sh4', 'osh7_tmp'] -> ['osh7'] {}
+101 Where ['g367_1', 'sc10', 'ost7_tmp'] -> ['ost7'] {}
+102 Where ['g3811_0', 'c4', 'c3'] -> ['ocol8'] {}
+103 Where ['g3811_0', 'sh4', 'sh3'] -> ['osh8'] {}
+104 Where ['g3811_0', 'sc11', 'sc10'] -> ['ost8'] {}
+105 Where ['g3811_1', 'c4', 'c3'] -> ['ocol9'] {}
+106 Where ['g3811_1', 'sh4', 'sh3'] -> ['osh9'] {}
+107 Where ['g3811_1', 'sc12', 'sc11'] -> ['ost9'] {}
+108 Where ['g3811_2', 'c4', 'c3'] -> ['ocol10'] {}
+109 Where ['g3811_2', 'sh4', 'sh3'] -> ['osh10'] {}
+110 Where ['g3811_2', 'sc13', 'sc12'] -> ['ost10'] {}
+111 Where ['g3811_3', 'c4', 'c3'] -> ['ocol11'] {}
+112 Where ['g3811_3', 'sh4', 'sh3'] -> ['osh11'] {}
+113 Where ['g3811_3', 'sc14', 'sc13'] -> ['ost11'] {}
+114 Mul ['c1', 'c1'] -> ['sq_c1'] {}
+115 Mul ['c4', 'c4'] -> ['sq_c4'] {}
+116 BitShift ['sc0', 'five_u8'] -> ['sm0'] {'direction': b'RIGHT'}
+117 BitwiseXor ['sm0', 'one_u8'] -> ['xor_sm0'] {}
+118 BitwiseAnd ['sm0', 'two_u8'] -> ['and2_sm0'] {}
+119 BitShift ['sc1', 'five_u8'] -> ['sm1'] {'direction': b'RIGHT'}
+120 BitwiseXor ['sm1', 'one_u8'] -> ['xor_sm1'] {}
+121 BitwiseAnd ['sm1', 'two_u8'] -> ['and2_sm1'] {}
+122 BitShift ['ost2', 'osh2'] -> ['sm2'] {'direction': b'RIGHT'}
+123 BitwiseXor ['sm2', 'one_u8'] -> ['xor_sm2'] {}
+124 BitwiseAnd ['sm2', 'two_u8'] -> ['and2_sm2'] {}
+125 Mul ['ocol2', 'ocol2'] -> ['sq_ocol2'] {}
+126 BitShift ['ost3', 'osh3'] -> ['sm3'] {'direction': b'RIGHT'}
+127 BitwiseXor ['sm3', 'one_u8'] -> ['xor_sm3'] {}
+128 BitwiseAnd ['sm3', 'two_u8'] -> ['and2_sm3'] {}
+129 Mul ['ocol3', 'ocol3'] -> ['sq_ocol3'] {}
+130 BitShift ['ost4', 'osh4'] -> ['sm4'] {'direction': b'RIGHT'}
+131 BitwiseXor ['sm4', 'one_u8'] -> ['xor_sm4'] {}
+132 BitwiseAnd ['sm4', 'two_u8'] -> ['and2_sm4'] {}
+133 Mul ['ocol4', 'ocol4'] -> ['sq_ocol4'] {}
+134 BitShift ['ost5', 'osh5'] -> ['sm5'] {'direction': b'RIGHT'}
+135 BitwiseXor ['sm5', 'one_u8'] -> ['xor_sm5'] {}
+136 BitwiseAnd ['sm5', 'two_u8'] -> ['and2_sm5'] {}
+137 Mul ['ocol5', 'ocol5'] -> ['sq_ocol5'] {}
+138 BitShift ['ost6', 'osh6'] -> ['sm6'] {'direction': b'RIGHT'}
+139 BitwiseXor ['sm6', 'one_u8'] -> ['xor_sm6'] {}
+140 BitwiseAnd ['sm6', 'two_u8'] -> ['and2_sm6'] {}
+141 Mul ['ocol6', 'ocol6'] -> ['sq_ocol6'] {}
+142 BitShift ['ost7', 'osh7'] -> ['sm7'] {'direction': b'RIGHT'}
+143 BitwiseXor ['sm7', 'one_u8'] -> ['xor_sm7'] {}
+144 BitwiseAnd ['sm7', 'two_u8'] -> ['and2_sm7'] {}
+145 Mul ['ocol7', 'ocol7'] -> ['sq_ocol7'] {}
+146 BitShift ['ost8', 'osh8'] -> ['sm8'] {'direction': b'RIGHT'}
+147 BitwiseXor ['sm8', 'one_u8'] -> ['xor_sm8'] {}
+148 BitwiseAnd ['sm8', 'two_u8'] -> ['and2_sm8'] {}
+149 Mul ['ocol8', 'ocol8'] -> ['sq_ocol8'] {}
+150 BitShift ['ost9', 'osh9'] -> ['sm9'] {'direction': b'RIGHT'}
+151 BitwiseXor ['sm9', 'one_u8'] -> ['xor_sm9'] {}
+152 BitwiseAnd ['sm9', 'two_u8'] -> ['and2_sm9'] {}
+153 Mul ['ocol9', 'ocol9'] -> ['sq_ocol9'] {}
+154 BitShift ['ost10', 'osh10'] -> ['sm10'] {'direction': b'RIGHT'}
+155 BitwiseXor ['sm10', 'one_u8'] -> ['xor_sm10'] {}
+156 BitwiseAnd ['sm10', 'two_u8'] -> ['and2_sm10'] {}
+157 Mul ['ocol10', 'ocol10'] -> ['sq_ocol10'] {}
+158 BitShift ['ost11', 'osh11'] -> ['sm11'] {'direction': b'RIGHT'}
+159 BitwiseXor ['sm11', 'one_u8'] -> ['xor_sm11'] {}
+160 BitwiseAnd ['sm11', 'two_u8'] -> ['and2_sm11'] {}
+161 Mul ['ocol11', 'ocol11'] -> ['sq_ocol11'] {}
+162 BitShift ['sc15', 'sh4'] -> ['sm12'] {'direction': b'RIGHT'}
+163 BitwiseXor ['sm12', 'one_u8'] -> ['xor_sm12'] {}
+164 BitwiseAnd ['sm12', 'two_u8'] -> ['and2_sm12'] {}
+165 BitShift ['sc16', 'sh4'] -> ['sm13'] {'direction': b'RIGHT'}
+166 BitwiseXor ['sm13', 'one_u8'] -> ['xor_sm13'] {}
+167 BitwiseAnd ['sm13', 'two_u8'] -> ['and2_sm13'] {}
+168 BitShift ['sc17', 'sh4'] -> ['sm14'] {'direction': b'RIGHT'}
+169 BitwiseXor ['sm14', 'one_u8'] -> ['xor_sm14'] {}
+170 BitwiseAnd ['sm14', 'two_u8'] -> ['and2_sm14'] {}
+171 BitShift ['sc18', 'sh4'] -> ['sm15'] {'direction': b'RIGHT'}
+172 BitwiseXor ['sm15', 'one_u8'] -> ['xor_sm15'] {}
+173 BitwiseAnd ['sm15', 'two_u8'] -> ['and2_sm15'] {}
+174 Concat ['sm0', 'sm1', 'sm2', 'sm3', 'sm4', 'sm5', 'sm6', 'sm7', 'sm8', 'sm9', 'sm10', 'sm11', 'sm12', 'sm13', 'sm14', 'sm15', 'sq_c1', 'sq_c1', 'sq_ocol2', 'sq_ocol3', 'sq_ocol4', 'sq_ocol5', 'sq_ocol6', 'sq_ocol7', 'sq_ocol8', 'sq_ocol9', 'sq_ocol10', 'sq_ocol11', 'sq_c4', 'sq_c4', 'sq_c4', 'sq_c4', 'xor_sm0', 'xor_sm1', 'xor_sm2', 'xor_sm3', 'xor_sm4', 'xor_sm5', 'xor_sm6', 'xor_sm7', 'xor_sm8', 'xor_sm9', 'xor_sm10', 'xor_sm11', 'xor_sm12', 'xor_sm13', 'xor_sm14', 'xor_sm15', 'and2_sm0', 'and2_sm1', 'and2_sm2', 'and2_sm3', 'and2_sm4', 'and2_sm5', 'and2_sm6', 'and2_sm7', 'and2_sm8', 'and2_sm9', 'and2_sm10', 'and2_sm11', 'and2_sm12', 'and2_sm13', 'and2_sm14', 'and2_sm15', 'c1', 'c1', 'ocol2', 'ocol3', 'ocol4', 'ocol5', 'ocol6', 'ocol7', 'ocol8', 'ocol9', 'ocol10', 'ocol11', 'c4', 'c4', 'c4', 'c4'] -> ['flat80'] {'axis': 3}
+175 QLinearConv ['flat80', 'q_s', 'one_u8', 'flat_w', 'q_s', 'occ_center_mask', 'q_s', 'one_u8', 'flat_b'] -> ['output'] {'dilations': [1, 16], 'pads': [2, 0, 29, 14]}

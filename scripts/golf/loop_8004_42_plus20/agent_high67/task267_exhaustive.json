@@ -1,0 +1,282 @@
+{
+  "immutable_base": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00"
+  },
+  "task": 267,
+  "generator": {
+    "hash": "aabf363d",
+    "path": "inputs/arc-gen-repo/tasks/task_aabf363d.py",
+    "fixed_grid": [
+      7,
+      7
+    ],
+    "creature_count_support": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "ordered_distinct_color_pairs": 72,
+    "finite_reduced_state_count": 288
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_7999_13/lane_archive_all400/task267_r02_static30.onnx",
+    "sha256": "4ca7f921c34f87ef71512a8b680de7c984a2b42cd55b338b57aaabc012321387",
+    "baseline_task_sha256": "cba1649faabef75df8a041c1737731d47d09d1be7239705055a3d9b26dc6b6ed",
+    "baseline_actual_cost": {
+      "memory": 0,
+      "params": 60,
+      "cost": 60,
+      "error": null
+    },
+    "actual_cost": {
+      "memory": 0,
+      "params": 30,
+      "cost": 30,
+      "error": null
+    },
+    "known_disable_all": {
+      "right": 264,
+      "wrong": 0,
+      "errors": 0,
+      "skipped": 0,
+      "total": 264,
+      "near_margin_count": 0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "first_failure": null
+    },
+    "known_default": {
+      "right": 264,
+      "wrong": 0,
+      "errors": 0,
+      "skipped": 0,
+      "total": 264,
+      "near_margin_count": 0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "first_failure": null
+    },
+    "checker_full": true,
+    "strict_shape_inference_data_prop": true,
+    "static_shapes": [
+      {
+        "name": "input",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      {
+        "name": "output",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "structure": {
+      "checker_full": true,
+      "strict_data_prop": true,
+      "static_positive": true,
+      "standard_domains": true,
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "ops": {
+        "Einsum": 1
+      },
+      "node_count": 1,
+      "initializer_count": 1,
+      "max_node_inputs": 73,
+      "giant_einsum": [
+        {
+          "index": 0,
+          "inputs": 73
+        }
+      ],
+      "huge_fanin": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": 73
+        }
+      ],
+      "lookup_or_scatter": [],
+      "declared_cost": {
+        "memory": 0,
+        "params": 30,
+        "cost": 30
+      },
+      "runtime_shapes": {
+        "shape_cloak": false,
+        "mismatch_count": 0,
+        "mismatches": []
+      },
+      "errors": []
+    },
+    "initializer": {
+      "name": "p",
+      "dtype": "float32",
+      "shape": [
+        30
+      ],
+      "all_finite": true,
+      "values": [
+        1.2000000476837158,
+        0.05000000074505806,
+        0.05000000074505806,
+        0.05000000074505806,
+        0.05000000074505806,
+        0.05000000074505806,
+        -1.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "undefined_behavior_findings": []
+  },
+  "algebraic_support_proof": {
+    "equation": "borc,r,bouv,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,bdst,s,s,s,s,s,s,s,bdhw->bohw",
+    "reduction": [
+      "A_o=sum_rc X[o,r,c]*p[r]",
+      "D_o=sum_uv X[o,u,v]*p[u]^61",
+      "C_d=sum_st X[d,s,t]*p[s]^7",
+      "Y[o,h,w]=A_o*D_o*sum_d(C_d*X[d,h,w])"
+    ],
+    "placement_independence": "Every generated creature cell lies in rows 1..5, where p is identically 0.05. Therefore A, D, and C depend only on N, source color, and marker color; the final X[d,h,w] factor transfers the arbitrary creature occupancy pointwise. Columns never affect a reduction coefficient.",
+    "float32_zero_safety": "For the source channel D_source=N*(float32(0.05)^61); its exact magnitude is below the smallest float32 subnormal and necessarily rounds to +0 in the float32 graph output. All retained true-positive logits are >=775.58."
+  },
+  "exhaustive_runs": [
+    {
+      "threads": 1,
+      "optimization": "ORT_DISABLE_ALL",
+      "right": 288,
+      "wrong": 0,
+      "runtime_errors": 0,
+      "total": 288,
+      "perfect": true,
+      "nonfinite_elements": 0,
+      "near_margin_elements": 0,
+      "min_positive": 775.5848999023438,
+      "max_nonpositive": 0.0,
+      "max_abs": 14093206421504.0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ]
+    },
+    {
+      "threads": 1,
+      "optimization": "ORT_ENABLE_ALL",
+      "right": 288,
+      "wrong": 0,
+      "runtime_errors": 0,
+      "total": 288,
+      "perfect": true,
+      "nonfinite_elements": 0,
+      "near_margin_elements": 0,
+      "min_positive": 775.5848999023438,
+      "max_nonpositive": 0.0,
+      "max_abs": 14093206421504.0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ]
+    },
+    {
+      "threads": 4,
+      "optimization": "ORT_DISABLE_ALL",
+      "right": 288,
+      "wrong": 0,
+      "runtime_errors": 0,
+      "total": 288,
+      "perfect": true,
+      "nonfinite_elements": 0,
+      "near_margin_elements": 0,
+      "min_positive": 775.5848999023438,
+      "max_nonpositive": 0.0,
+      "max_abs": 14093206421504.0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ]
+    },
+    {
+      "threads": 4,
+      "optimization": "ORT_ENABLE_ALL",
+      "right": 288,
+      "wrong": 0,
+      "runtime_errors": 0,
+      "total": 288,
+      "perfect": true,
+      "nonfinite_elements": 0,
+      "near_margin_elements": 0,
+      "min_positive": 775.5848999023438,
+      "max_nonpositive": 0.0,
+      "max_abs": 14093206421504.0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ]
+    }
+  ],
+  "decision": {
+    "winner": true,
+    "policy": "private-zero guarantee exception"
+  }
+}

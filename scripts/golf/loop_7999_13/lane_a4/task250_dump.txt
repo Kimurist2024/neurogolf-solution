@@ -1,0 +1,120 @@
+# task250.onnx
+
+## I/O
+name: "input"
+type {
+  tensor_type {
+    elem_type: 1
+    shape {
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 10
+      }
+      dim {
+        dim_value: 30
+      }
+      dim {
+        dim_value: 30
+      }
+    }
+  }
+}
+name: "output"
+type {
+  tensor_type {
+    elem_type: 2
+    shape {
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 10
+      }
+      dim {
+        dim_value: 30
+      }
+      dim {
+        dim_value: 30
+      }
+    }
+  }
+}
+
+## Initializers
+red_sel: dtype=float32 shape=(10, 1, 1, 1) value=[[[[0.0]]], [[[0.0]]], [[[0.34839877486228943]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]]]
+gray_sel: dtype=float32 shape=(10, 1, 1, 1) value=[[[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[1.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]]]
+col_bits: dtype=float32 shape=(30, 1, 1, 1) value=[[[[1.0]]], [[[1.0]]], [[[2.0]]], [[[4.0]]], [[[8.0]]], [[[16.0]]], [[[32.0]]], [[[64.0]]], [[[128.0]]], [[[128.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]]]
+roww0: dtype=float32 shape=(30, 1, 1, 1) value=[[[[1.0]]], [[[1.0]]], [[[256.0]]], [[[65536.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]]]
+roww1: dtype=float32 shape=(30, 1, 1, 1) value=[[[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[65536.0]]], [[[16777216.0]]], [[[256.0]]], [[[1.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]], [[[0.0]]]]
+zero_u8: dtype=uint8 shape=() value=0
+qscale: dtype=float32 shape=(1,) value=[0.4124999940395355]
+one4_u8: dtype=uint8 shape=(1, 1, 1, 1) value=[[[[1]]]]
+absent4: dtype=uint8 shape=(1, 1, 4, 4) value=[[[[90, 90, 91, 125], [90, 102, 108, 126], [90, 108, 153, 126], [125, 126, 126, 137]]]]
+present4: dtype=uint8 shape=(1, 1, 4, 4) value=[[[[176, 163, 172, 138], [165, 132, 131, 138], [168, 131, 122, 143], [138, 138, 142, 147]]]]
+xzp: dtype=uint8 shape=() value=128
+W: dtype=uint8 shape=(10, 1, 2, 2) value=[[[[116, 128], [128, 124]]], [[[128, 128], [128, 128]]], [[[128, 151], [151, 183]]], [[[128, 128], [128, 128]]], [[[128, 128], [128, 128]]], [[[143, 128], [129, 125]]], [[[128, 128], [128, 128]]], [[[128, 128], [128, 128]]], [[[128, 128], [128, 128]]], [[[128, 128], [128, 128]]]]
+yscale: dtype=float32 shape=(1,) value=[136.125]
+size_hw_i64: dtype=int64 shape=(2,) value=[10, 10]
+
+## Nodes
+00 Einsum ['input', 'red_sel', 'col_bits'] -> ['r_pow'] attrs={'equation': 'nchw,cpqr,hpqr->n'}
+01 Pow ['r_pow', 'qscale'] -> ['r_pos'] attrs={}
+02 Einsum ['input', 'red_sel', 'col_bits'] -> ['c_pow'] attrs={'equation': 'nchw,cpqr,wpqr->n'}
+03 Pow ['c_pow', 'qscale'] -> ['c_pos'] attrs={}
+04 Cast ['r_pos'] -> ['r_i32v'] attrs={'to': 6}
+05 Shrink ['r_i32v'] -> ['r_p1_i32v'] attrs={'bias': -1.0, 'lambd': 0.0}
+06 Einsum ['input', 'gray_sel', 'roww0', 'col_bits'] -> ['bb0_f'] attrs={'equation': 'nchw,cpqr,hpqr,wpqr->npqr'}
+07 Cast ['bb0_f'] -> ['bb0_h'] attrs={'to': 10}
+08 Cast ['bb0_h'] -> ['row0_u8'] attrs={'to': 2}
+09 Selu ['bb0_h'] -> ['bb0_div1'] attrs={'alpha': 1.0, 'gamma': 0.00390625}
+10 Cast ['bb0_div1'] -> ['row1_u8'] attrs={'to': 2}
+11 Selu ['bb0_div1'] -> ['bb0_div2'] attrs={'alpha': 1.0, 'gamma': 0.00390625}
+12 Cast ['bb0_div2'] -> ['row2_u8'] attrs={'to': 2}
+13 Einsum ['input', 'gray_sel', 'roww1', 'col_bits'] -> ['bb1_f'] attrs={'equation': 'nchw,cpqr,hpqr,wpqr->npqr'}
+14 Cast ['bb1_f'] -> ['bb1_h'] attrs={'to': 10}
+15 Cast ['bb1_h'] -> ['row6_u8'] attrs={'to': 2}
+16 Selu ['bb1_h'] -> ['bb1_div1'] attrs={'alpha': 1.0, 'gamma': 0.00390625}
+17 Cast ['bb1_div1'] -> ['row5_u8'] attrs={'to': 2}
+18 Selu ['bb1_div1'] -> ['bb1_div2'] attrs={'alpha': 1.0, 'gamma': 0.00390625}
+19 Cast ['bb1_div2'] -> ['row3_u8'] attrs={'to': 2}
+20 Selu ['bb1_div2'] -> ['bb1_div3'] attrs={'alpha': 1.0, 'gamma': 0.00390625}
+21 Cast ['bb1_div3'] -> ['row4_u8'] attrs={'to': 2}
+22 Einsum ['input', 'gray_sel', 'col_bits'] -> ['total_f'] attrs={'equation': 'nchw,cpqr,wpqr->npqr'}
+23 Cast ['total_f'] -> ['pcs7_u8'] attrs={'to': 2}
+24 Add ['row0_u8', 'row1_u8'] -> ['pcs1_u8'] attrs={}
+25 Add ['pcs1_u8', 'row2_u8'] -> ['pcs2_u8'] attrs={}
+26 Add ['pcs2_u8', 'row3_u8'] -> ['pcs3_u8'] attrs={}
+27 Add ['pcs3_u8', 'row4_u8'] -> ['pcs4_u8'] attrs={}
+28 Add ['pcs4_u8', 'row5_u8'] -> ['pcs5_u8'] attrs={}
+29 Add ['pcs5_u8', 'row6_u8'] -> ['pcs6_u8'] attrs={}
+30 Concat ['row0_u8', 'pcs1_u8', 'pcs2_u8', 'pcs3_u8', 'pcs4_u8', 'pcs5_u8', 'pcs6_u8'] -> ['prefix7_u8'] attrs={'axis': 2}
+31 Shrink ['r_i32v'] -> ['r_m1_i32v'] attrs={'bias': 1.0, 'lambd': 0.0}
+32 Gather ['prefix7_u8', 'r_m1_i32v'] -> ['p0_u8'] attrs={'axis': 2}
+33 Gather ['prefix7_u8', 'r_i32v'] -> ['pg_u8'] attrs={'axis': 2}
+34 Gather ['prefix7_u8', 'r_p1_i32v'] -> ['p2_u8'] attrs={'axis': 2}
+35 Sub ['pg_u8', 'p0_u8'] -> ['d1_u8'] attrs={}
+36 Sub ['p2_u8', 'pg_u8'] -> ['d2_u8'] attrs={}
+37 Sub ['pcs7_u8', 'p2_u8'] -> ['d3_u8'] attrs={}
+38 Concat ['p0_u8', 'd1_u8', 'd2_u8', 'd3_u8'] -> ['groups_u8'] attrs={'axis': 2}
+39 Cast ['c_pos'] -> ['c_beg_u8'] attrs={'to': 2}
+40 BitShift ['one4_u8', 'c_beg_u8'] -> ['pow_m1_u8'] attrs={'direction': 'LEFT'}
+41 BitShift ['pow_m1_u8', 'one4_u8'] -> ['pow_c_u8'] attrs={'direction': 'LEFT'}
+42 BitShift ['pow_c_u8', 'one4_u8'] -> ['pow_p1_u8'] attrs={'direction': 'LEFT'}
+43 Sub ['pow_m1_u8', 'one4_u8'] -> ['mask0_u8'] attrs={}
+44 Sub ['zero_u8', 'pow_p1_u8'] -> ['mask3_u8'] attrs={}
+45 Concat ['mask0_u8', 'pow_m1_u8', 'pow_c_u8', 'mask3_u8'] -> ['masks_u8'] attrs={'axis': 3}
+46 BitwiseAnd ['groups_u8', 'masks_u8'] -> ['gray4'] attrs={}
+47 Cast ['gray4'] -> ['gcond'] attrs={'to': 9}
+48 Where ['gcond', 'present4', 'absent4'] -> ['feature4'] attrs={}
+49 Cast ['r_i32v'] -> ['r_beg_f16'] attrs={'to': 10}
+50 Cast ['c_beg_u8'] -> ['c_beg_f16'] attrs={'to': 10}
+51 Selu ['r_beg_f16'] -> ['r_start_f16'] attrs={'alpha': 1.0, 'gamma': -0.2433333396911621}
+52 Selu ['c_beg_f16'] -> ['c_start_f16'] attrs={'alpha': 1.0, 'gamma': -0.2433333396911621}
+53 Shrink ['r_start_f16'] -> ['r_end_f16'] attrs={'bias': 2.4600000381469727, 'lambd': 0.0}
+54 Shrink ['c_start_f16'] -> ['c_end_f16'] attrs={'bias': 2.4600000381469727, 'lambd': 0.0}
+55 Concat ['r_start_f16', 'c_start_f16', 'r_end_f16', 'c_end_f16'] -> ['roi4_f16'] attrs={'axis': 0}
+56 Cast ['roi4_f16'] -> ['roi4_f'] attrs={'to': 1}
+57 Resize ['feature4', 'roi4_f', '', 'size_hw_i64'] -> ['feature10'] attrs={'axes': [2, 3], 'coordinate_transformation_mode': 'tf_crop_and_resize', 'mode': 'nearest', 'nearest_mode': 'round_prefer_floor'}
+58 QLinearConv ['feature10', 'qscale', 'xzp', 'W', 'qscale', 'xzp', 'yscale', 'zero_u8'] -> ['output'] attrs={'pads': [0, 0, 21, 21]}

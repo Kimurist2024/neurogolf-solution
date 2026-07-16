@@ -1,0 +1,545 @@
+{
+  "authority": {
+    "path": "others/71407/task349.onnx",
+    "sha256": "179bbed5bd313a1f6ec62f573fd725ab71ff55a9509daaceff3f40274ac514c7"
+  },
+  "intermediate": {
+    "path": "scripts/golf/loop_8004_42_plus20/root_task349_affine_203/task349_affine_no_scalar.onnx",
+    "sha256": "849d49e462ca94b5e4f9120434a39e1982d9dce521863e80b29d80ad9b02406b"
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_8004_42_plus20/root_task349_affine_203/task349_affine_max29.onnx",
+    "sha256": "f7531b66a5399973ed57835584023c5bf1f61966c218b283cb721ba7ca45c8e2"
+  },
+  "profiles": {
+    "authority": {
+      "memory": 3229,
+      "params": 327,
+      "cost": 3556
+    },
+    "intermediate": {
+      "memory": 3233,
+      "params": 316,
+      "cost": 3549
+    },
+    "candidate": {
+      "memory": 3233,
+      "params": 315,
+      "cost": 3548
+    }
+  },
+  "strict_lower_than_authority": true,
+  "cost_delta_from_authority": 8,
+  "cost_delta_from_intermediate": 1,
+  "projected_log_gain": 0.002252253204325053,
+  "prior_affine_all_input_exact_audit_pass": true,
+  "generator_ast_proof": {
+    "generator_sha256": "680f6bdc6ac51591c42f0486a2db6cd8c430b3e218c93f1434838da125d92d62",
+    "common_sha256": "56f9be46fc563f2754c3d506ff0d4aa8fa97c181c1c6db209a21ffd4707b9bc9",
+    "factor_is_common_randint_2_6": true,
+    "common_randint_delegates_random_randint": true,
+    "size_is_5_times_factor": true,
+    "supported_square_sides": [
+      10,
+      15,
+      20,
+      25,
+      30
+    ],
+    "maximum_side": 30,
+    "pass": true
+  },
+  "max29_mechanical_diff": {
+    "source_only_initializers": [
+      "max30_i8"
+    ],
+    "candidate_only_initializers": [],
+    "max30_i8_exact": true,
+    "max29_i8_exact": true,
+    "exact_node_rewrites": {
+      "halo_end_is30": true,
+      "beam_end_is30": true
+    },
+    "all_common_initializers_byte_identical": true,
+    "all_other_nodes_byte_identical_and_ordered": true,
+    "all_other_model_fields_byte_identical": true,
+    "halo_end_clip_is_zero_to_side": true,
+    "side_integer_path": {
+      "side_i8": [
+        "Cast",
+        [
+          "side"
+        ]
+      ],
+      "side": [
+        "Cast",
+        [
+          "side_f"
+        ]
+      ],
+      "side_f": [
+        "Sqrt",
+        [
+          "area"
+        ]
+      ],
+      "area": [
+        "ReduceSum",
+        [
+          "input"
+        ]
+      ]
+    },
+    "side_integer_path_exact": true,
+    "comparison_inputs_are_int8": true,
+    "integer_identity_checked_count": 159,
+    "equal30_iff_greater29_for_every_int8_x_le_30": true
+  },
+  "mechanical_pass": true,
+  "generator_support_pass": true,
+  "static": {
+    "authority": {
+      "sha256": "179bbed5bd313a1f6ec62f573fd725ab71ff55a9509daaceff3f40274ac514c7",
+      "ir_version": 10,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": 111,
+      "initializers": 32,
+      "initializer_elements": 327,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nested_graphs": 0,
+      "conv_family_nodes": 0,
+      "nonfinite_initializers": 0,
+      "standard_domain_only": true,
+      "full_check": true,
+      "strict": true,
+      "strict_data_prop": true
+    },
+    "candidate": {
+      "sha256": "f7531b66a5399973ed57835584023c5bf1f61966c218b283cb721ba7ca45c8e2",
+      "ir_version": 10,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": 112,
+      "initializers": 30,
+      "initializer_elements": 315,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nested_graphs": 0,
+      "conv_family_nodes": 0,
+      "nonfinite_initializers": 0,
+      "standard_domain_only": true,
+      "full_check": true,
+      "strict": true,
+      "strict_data_prop": true
+    }
+  },
+  "runtime_shape_truth": {
+    "traced": 120,
+    "mismatch_count": 0,
+    "mismatches": [],
+    "nonfinite_values": 0,
+    "truthful": true
+  },
+  "known_count": 267,
+  "known_four_configs": {
+    "disable_all_threads1": {
+      "total": 267,
+      "valid": 267,
+      "conversion_skips": 0,
+      "raw_equal": 267,
+      "threshold_equal": 267,
+      "right": {
+        "authority": 267,
+        "candidate": 267
+      },
+      "runtime_errors": {
+        "authority": 0,
+        "candidate": 0
+      },
+      "nonfinite_values": {
+        "authority": 0,
+        "candidate": 0
+      },
+      "first_failure": null,
+      "accuracy": {
+        "authority": 1.0,
+        "candidate": 1.0
+      },
+      "runtime_errors_total": 0,
+      "nonfinite_values_total": 0,
+      "exact_equivalent": true
+    },
+    "disable_all_threads4": {
+      "total": 267,
+      "valid": 267,
+      "conversion_skips": 0,
+      "raw_equal": 267,
+      "threshold_equal": 267,
+      "right": {
+        "authority": 267,
+        "candidate": 267
+      },
+      "runtime_errors": {
+        "authority": 0,
+        "candidate": 0
+      },
+      "nonfinite_values": {
+        "authority": 0,
+        "candidate": 0
+      },
+      "first_failure": null,
+      "accuracy": {
+        "authority": 1.0,
+        "candidate": 1.0
+      },
+      "runtime_errors_total": 0,
+      "nonfinite_values_total": 0,
+      "exact_equivalent": true
+    },
+    "default_threads1": {
+      "total": 267,
+      "valid": 267,
+      "conversion_skips": 0,
+      "raw_equal": 267,
+      "threshold_equal": 267,
+      "right": {
+        "authority": 267,
+        "candidate": 267
+      },
+      "runtime_errors": {
+        "authority": 0,
+        "candidate": 0
+      },
+      "nonfinite_values": {
+        "authority": 0,
+        "candidate": 0
+      },
+      "first_failure": null,
+      "accuracy": {
+        "authority": 1.0,
+        "candidate": 1.0
+      },
+      "runtime_errors_total": 0,
+      "nonfinite_values_total": 0,
+      "exact_equivalent": true
+    },
+    "default_threads4": {
+      "total": 267,
+      "valid": 267,
+      "conversion_skips": 0,
+      "raw_equal": 267,
+      "threshold_equal": 267,
+      "right": {
+        "authority": 267,
+        "candidate": 267
+      },
+      "runtime_errors": {
+        "authority": 0,
+        "candidate": 0
+      },
+      "nonfinite_values": {
+        "authority": 0,
+        "candidate": 0
+      },
+      "first_failure": null,
+      "accuracy": {
+        "authority": 1.0,
+        "candidate": 1.0
+      },
+      "runtime_errors_total": 0,
+      "nonfinite_values_total": 0,
+      "exact_equivalent": true
+    }
+  },
+  "fresh": [
+    {
+      "seed": 20434947,
+      "requested": 2500,
+      "generated": 2500,
+      "attempts": 2500,
+      "configs": {
+        "disable_all_threads1": {
+          "total": 2500,
+          "valid": 2500,
+          "conversion_skips": 0,
+          "raw_equal": 2500,
+          "threshold_equal": 2500,
+          "right": {
+            "authority": 2492,
+            "candidate": 2492
+          },
+          "runtime_errors": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "nonfinite_values": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "first_failure": null,
+          "accuracy": {
+            "authority": 0.9968,
+            "candidate": 0.9968
+          },
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "exact_equivalent": true
+        },
+        "disable_all_threads4": {
+          "total": 2500,
+          "valid": 2500,
+          "conversion_skips": 0,
+          "raw_equal": 2500,
+          "threshold_equal": 2500,
+          "right": {
+            "authority": 2492,
+            "candidate": 2492
+          },
+          "runtime_errors": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "nonfinite_values": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "first_failure": null,
+          "accuracy": {
+            "authority": 0.9968,
+            "candidate": 0.9968
+          },
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "exact_equivalent": true
+        },
+        "default_threads1": {
+          "total": 2500,
+          "valid": 2500,
+          "conversion_skips": 0,
+          "raw_equal": 2500,
+          "threshold_equal": 2500,
+          "right": {
+            "authority": 2492,
+            "candidate": 2492
+          },
+          "runtime_errors": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "nonfinite_values": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "first_failure": null,
+          "accuracy": {
+            "authority": 0.9968,
+            "candidate": 0.9968
+          },
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "exact_equivalent": true
+        },
+        "default_threads4": {
+          "total": 2500,
+          "valid": 2500,
+          "conversion_skips": 0,
+          "raw_equal": 2500,
+          "threshold_equal": 2500,
+          "right": {
+            "authority": 2492,
+            "candidate": 2492
+          },
+          "runtime_errors": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "nonfinite_values": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "first_failure": null,
+          "accuracy": {
+            "authority": 0.9968,
+            "candidate": 0.9968
+          },
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "exact_equivalent": true
+        }
+      }
+    },
+    {
+      "seed": 20434961,
+      "requested": 2500,
+      "generated": 2500,
+      "attempts": 2500,
+      "configs": {
+        "disable_all_threads1": {
+          "total": 2500,
+          "valid": 2500,
+          "conversion_skips": 0,
+          "raw_equal": 2500,
+          "threshold_equal": 2500,
+          "right": {
+            "authority": 2486,
+            "candidate": 2486
+          },
+          "runtime_errors": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "nonfinite_values": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "first_failure": null,
+          "accuracy": {
+            "authority": 0.9944,
+            "candidate": 0.9944
+          },
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "exact_equivalent": true
+        },
+        "disable_all_threads4": {
+          "total": 2500,
+          "valid": 2500,
+          "conversion_skips": 0,
+          "raw_equal": 2500,
+          "threshold_equal": 2500,
+          "right": {
+            "authority": 2486,
+            "candidate": 2486
+          },
+          "runtime_errors": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "nonfinite_values": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "first_failure": null,
+          "accuracy": {
+            "authority": 0.9944,
+            "candidate": 0.9944
+          },
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "exact_equivalent": true
+        },
+        "default_threads1": {
+          "total": 2500,
+          "valid": 2500,
+          "conversion_skips": 0,
+          "raw_equal": 2500,
+          "threshold_equal": 2500,
+          "right": {
+            "authority": 2486,
+            "candidate": 2486
+          },
+          "runtime_errors": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "nonfinite_values": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "first_failure": null,
+          "accuracy": {
+            "authority": 0.9944,
+            "candidate": 0.9944
+          },
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "exact_equivalent": true
+        },
+        "default_threads4": {
+          "total": 2500,
+          "valid": 2500,
+          "conversion_skips": 0,
+          "raw_equal": 2500,
+          "threshold_equal": 2500,
+          "right": {
+            "authority": 2486,
+            "candidate": 2486
+          },
+          "runtime_errors": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "nonfinite_values": {
+            "authority": 0,
+            "candidate": 0
+          },
+          "first_failure": null,
+          "accuracy": {
+            "authority": 0.9944,
+            "candidate": 0.9944
+          },
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "exact_equivalent": true
+        }
+      }
+    }
+  ],
+  "support_traces": [
+    {
+      "seed": 20434947,
+      "cases": 2500,
+      "observed_sides": [
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "halo_min": 3,
+      "halo_max": 30,
+      "bound_violations": 0,
+      "errors": 0
+    },
+    {
+      "seed": 20434961,
+      "cases": 2500,
+      "observed_sides": [
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "halo_min": 3,
+      "halo_max": 30,
+      "bound_violations": 0,
+      "errors": 0
+    }
+  ],
+  "all_raw_bitwise_equivalent": true,
+  "runtime_errors_total": 0,
+  "nonfinite_values_total": 0,
+  "minimum_fresh_candidate_accuracy": 0.9944,
+  "root_guards_before": {
+    "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "submission_base_8009.46.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+  },
+  "root_guards_after": {
+    "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "submission_base_8009.46.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+  },
+  "pass": true
+}

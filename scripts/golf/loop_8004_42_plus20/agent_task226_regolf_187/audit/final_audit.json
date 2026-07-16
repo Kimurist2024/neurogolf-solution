@@ -1,0 +1,314 @@
+{
+  "lane": "agent_task226_regolf_187",
+  "task": 226,
+  "authority": {
+    "lb": 8009.46,
+    "path": "scripts/golf/loop_8004_42_plus20/agent_task226_regolf_187/baseline/task226.onnx",
+    "sha256": "852b6091385d97df6899e21304bf194440fb5cd3343385693093c24be0cb8203",
+    "cost": {
+      "memory": 333,
+      "params": 39,
+      "cost": 372
+    }
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_task226_regolf_187/candidates/task226_greater_cost370.onnx",
+    "sha256": "aebca4b2e7c3ce5cb5663a6f8b88e428e9bcf53b3e9f1161728c7dd9c502389f",
+    "cost": {
+      "memory": 331,
+      "params": 39,
+      "cost": 370
+    },
+    "strict_lower": true,
+    "score_gain": 0.005390848634876373
+  },
+  "proof": {
+    "generator": "inputs/arc-gen-repo/tasks/task_941d9a10.py",
+    "valid_width_sequences": 17,
+    "valid_height_sequences": 8,
+    "complete_support_cases": 136,
+    "complete_support_formula": "17 widths x 8 heights = 136",
+    "rewrite_identity": "bool(a) AND NOT bool(b) == (a > b) for a,b in {0.0,1.0}",
+    "truth_table": [
+      {
+        "a": 0.0,
+        "b": 0.0,
+        "old": false,
+        "new": false
+      },
+      {
+        "a": 0.0,
+        "b": 1.0,
+        "old": false,
+        "new": false
+      },
+      {
+        "a": 1.0,
+        "b": 0.0,
+        "old": true,
+        "new": true
+      },
+      {
+        "a": 1.0,
+        "b": 1.0,
+        "old": false,
+        "new": false
+      }
+    ],
+    "carrier_reason": "One-hot channel-0 GatherElements values are exactly 0.0 or 1.0.",
+    "lookup_or_fixture_used": false
+  },
+  "official_score_and_verify": {
+    "memory": 331,
+    "params": 39,
+    "cost": 370,
+    "score": 19.08649699436173,
+    "correct": true
+  },
+  "team_validator": {
+    "audit": {
+      "task": 226,
+      "source": "task226_regolf187_greater370",
+      "sha256": "aebca4b2e7c3ce5cb5663a6f8b88e428e9bcf53b3e9f1161728c7dd9c502389f",
+      "serialized_size": 2904,
+      "valid": true,
+      "preflight_ok": true,
+      "known": {
+        "right": 133,
+        "wrong": 0,
+        "skipped": 0,
+        "errors": 0,
+        "total_seen": 133
+      },
+      "memory": 331,
+      "params": 39,
+      "cost": 370,
+      "score": 19.08649699436173,
+      "node_count": 63,
+      "initializer_count": 17,
+      "error": "",
+      "warnings": []
+    },
+    "failures": []
+  },
+  "structure": {
+    "checker_full": true,
+    "strict_data_prop": true,
+    "static_positive": true,
+    "standard_domains": true,
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "conv_bias_findings": [],
+    "ops": {
+      "BitwiseAnd": 1,
+      "Cast": 10,
+      "Concat": 2,
+      "GatherElements": 10,
+      "Greater": 2,
+      "QLinearConv": 1,
+      "Where": 37
+    },
+    "node_count": 63,
+    "initializer_count": 17,
+    "max_node_inputs": 10,
+    "giant_einsum": [],
+    "huge_fanin": [],
+    "lookup_or_scatter": [],
+    "declared_cost": {
+      "memory": 331,
+      "params": 39,
+      "cost": 370
+    },
+    "runtime_shapes": {
+      "shape_cloak": false,
+      "mismatch_count": 0,
+      "mismatches": []
+    },
+    "errors": []
+  },
+  "runtime_shapes_four_modes": [
+    {
+      "mode": "disable_all",
+      "outputs_exposed": 63,
+      "mismatches": [],
+      "nonfinite": 0,
+      "pass": true
+    },
+    {
+      "mode": "basic",
+      "outputs_exposed": 63,
+      "mismatches": [],
+      "nonfinite": 0,
+      "pass": true
+    },
+    {
+      "mode": "extended",
+      "outputs_exposed": 63,
+      "mismatches": [],
+      "nonfinite": 0,
+      "pass": true
+    },
+    {
+      "mode": "enable_all",
+      "outputs_exposed": 63,
+      "mismatches": [],
+      "nonfinite": 0,
+      "pass": true
+    }
+  ],
+  "known_four_modes": {
+    "disable_all": {
+      "right": 133,
+      "wrong": 0,
+      "errors": 0,
+      "nonfinite": 0,
+      "raw_equal_to_authority": 133,
+      "first_failure": null,
+      "total": 133
+    },
+    "basic": {
+      "right": 133,
+      "wrong": 0,
+      "errors": 0,
+      "nonfinite": 0,
+      "raw_equal_to_authority": 133,
+      "first_failure": null,
+      "total": 133
+    },
+    "extended": {
+      "right": 133,
+      "wrong": 0,
+      "errors": 0,
+      "nonfinite": 0,
+      "raw_equal_to_authority": 133,
+      "first_failure": null,
+      "total": 133
+    },
+    "enable_all": {
+      "right": 133,
+      "wrong": 0,
+      "errors": 0,
+      "nonfinite": 0,
+      "raw_equal_to_authority": 133,
+      "first_failure": null,
+      "total": 133
+    }
+  },
+  "exhaustive_136_four_modes": {
+    "disable_all": {
+      "right": 136,
+      "wrong": 0,
+      "errors": 0,
+      "nonfinite": 0,
+      "raw_equal_to_authority": 136,
+      "first_failure": null,
+      "total": 136
+    },
+    "basic": {
+      "right": 136,
+      "wrong": 0,
+      "errors": 0,
+      "nonfinite": 0,
+      "raw_equal_to_authority": 136,
+      "first_failure": null,
+      "total": 136
+    },
+    "extended": {
+      "right": 136,
+      "wrong": 0,
+      "errors": 0,
+      "nonfinite": 0,
+      "raw_equal_to_authority": 136,
+      "first_failure": null,
+      "total": 136
+    },
+    "enable_all": {
+      "right": 136,
+      "wrong": 0,
+      "errors": 0,
+      "nonfinite": 0,
+      "raw_equal_to_authority": 136,
+      "first_failure": null,
+      "total": 136
+    }
+  },
+  "fresh_2x5000_four_modes": {
+    "226187501": {
+      "disable_all": {
+        "right": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "first_failure": null,
+        "total": 5000
+      },
+      "basic": {
+        "right": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "first_failure": null,
+        "total": 5000
+      },
+      "extended": {
+        "right": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "first_failure": null,
+        "total": 5000
+      },
+      "enable_all": {
+        "right": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "first_failure": null,
+        "total": 5000
+      }
+    },
+    "226187777": {
+      "disable_all": {
+        "right": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "first_failure": null,
+        "total": 5000
+      },
+      "basic": {
+        "right": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "first_failure": null,
+        "total": 5000
+      },
+      "extended": {
+        "right": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "first_failure": null,
+        "total": 5000
+      },
+      "enable_all": {
+        "right": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "first_failure": null,
+        "total": 5000
+      }
+    }
+  },
+  "gates": {
+    "static": true,
+    "known": true,
+    "exhaustive_full_support": true,
+    "fresh": true
+  },
+  "winner_eligible": true,
+  "verdict": "SAFE_PRIVATE_ZERO",
+  "protected_files_modified": false
+}

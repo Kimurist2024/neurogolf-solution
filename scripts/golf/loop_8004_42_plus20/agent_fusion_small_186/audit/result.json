@@ -1,0 +1,440 @@
+{
+  "decision": "NO_SAFE",
+  "safe_count": 0,
+  "tasks": [
+    {
+      "task": 39,
+      "decision": "REJECT_KNOWN_RUNTIME",
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_fusion_small_186/baseline/task039.onnx",
+        "sha256": "bf56afdd9be313f34951cf8b9b92bb755316fe157c63a55bd5add7cfce47c8e7",
+        "nodes": 10,
+        "profile": {
+          "memory": 35,
+          "params": 7,
+          "cost": 42,
+          "score": 21.26233038171663,
+          "correct": true
+        }
+      },
+      "candidate": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_fusion_small_186/candidates/task039_all_fusions.onnx",
+        "sha256": "9a4104dcdba70b40055d06fd87cdd83eca555e9d4c090b67b17b78c411ed77dd",
+        "nodes": 9,
+        "profile": {
+          "memory": 34,
+          "params": 7,
+          "cost": 41,
+          "score": 21.28642793329569,
+          "correct": false
+        },
+        "strict_lower": true
+      },
+      "transformation": {
+        "removed_nodes": [
+          {
+            "op_type": "Equal",
+            "inputs": [
+              "bg_r",
+              "bg_c"
+            ],
+            "outputs": [
+              "keep_bg_equal"
+            ],
+            "output_bytes": 1,
+            "consumers": {
+              "keep_bg_equal": 0
+            },
+            "is_graph_output": false
+          }
+        ],
+        "added_nodes": [],
+        "retained_nodes_changed": [],
+        "initializers_bit_identical": true,
+        "pure_deadend_deletion": true
+      },
+      "structure": {
+        "full_checker": "PASS",
+        "strict_data_prop": "PASS",
+        "truthful_declared": true,
+        "truthful_declared_mismatches": [],
+        "conv_family_bias_ub_count": 0,
+        "conv_family_bias_ub": []
+      },
+      "known_dual_ort": [
+        {
+          "mode": "default_enable_all",
+          "known_total": 264,
+          "baseline": {
+            "correct": 264,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 1.0,
+            "runtime0": true,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": true,
+            "passes_90": true
+          },
+          "candidate": {
+            "correct": 0,
+            "runtime_errors": 264,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 0.0,
+            "runtime0": false,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": false,
+            "passes_90": false
+          },
+          "raw_equal": 0,
+          "raw_compared": 0,
+          "max_abs_raw_difference": 0.0,
+          "first_candidate_errors": [
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,10,19,19}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.",
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,10,21,21}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.",
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,10,20,20}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model."
+          ]
+        },
+        {
+          "mode": "disable_all",
+          "known_total": 264,
+          "baseline": {
+            "correct": 264,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 1.0,
+            "runtime0": true,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": true,
+            "passes_90": true
+          },
+          "candidate": {
+            "correct": 0,
+            "runtime_errors": 264,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 0.0,
+            "runtime0": false,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": false,
+            "passes_90": false
+          },
+          "raw_equal": 0,
+          "raw_compared": 0,
+          "max_abs_raw_difference": 0.0,
+          "first_candidate_errors": [
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,10,19,19}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.",
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,10,21,21}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.",
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,10,20,20}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model."
+          ]
+        }
+      ],
+      "fresh": {
+        "required_if_known_gate_passes": {
+          "seeds": [
+            0,
+            1
+          ],
+          "per_seed": 5000
+        },
+        "runs": 0,
+        "reason": "complete known-set runtime gate failed before fresh admission"
+      },
+      "safe": false
+    },
+    {
+      "task": 111,
+      "decision": "REJECT_KNOWN_RUNTIME",
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_fusion_small_186/baseline/task111.onnx",
+        "sha256": "6af4011ea696c39460f4bbef5ead6ee6c7a80780ffca1a5b50e8e4534ad8fcf2",
+        "nodes": 15,
+        "profile": {
+          "memory": 71,
+          "params": 18,
+          "cost": 89,
+          "score": 20.51136363026786,
+          "correct": true
+        }
+      },
+      "candidate": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_fusion_small_186/candidates/task111_all_fusions.onnx",
+        "sha256": "e470a25e5281bef3693e88c94950c4e15fa934ae4cc8c0b6cb0c85990808c9b5",
+        "nodes": 14,
+        "profile": {
+          "memory": 70,
+          "params": 18,
+          "cost": 88,
+          "score": 20.522663185521793,
+          "correct": false
+        },
+        "strict_lower": true
+      },
+      "transformation": {
+        "removed_nodes": [
+          {
+            "op_type": "CenterCropPad",
+            "inputs": [
+              "marker",
+              "shape1"
+            ],
+            "outputs": [
+              "dummy_13"
+            ],
+            "output_bytes": 1,
+            "consumers": {
+              "dummy_13": 0
+            },
+            "is_graph_output": false
+          }
+        ],
+        "added_nodes": [],
+        "retained_nodes_changed": [],
+        "initializers_bit_identical": true,
+        "pure_deadend_deletion": true
+      },
+      "structure": {
+        "full_checker": "PASS",
+        "strict_data_prop": "PASS",
+        "truthful_declared": true,
+        "truthful_declared_mismatches": [],
+        "conv_family_bias_ub_count": 0,
+        "conv_family_bias_ub": []
+      },
+      "known_dual_ort": [
+        {
+          "mode": "default_enable_all",
+          "known_total": 265,
+          "baseline": {
+            "correct": 265,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 1.0,
+            "runtime0": true,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": true,
+            "passes_90": true
+          },
+          "candidate": {
+            "correct": 265,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 1.0,
+            "runtime0": true,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": true,
+            "passes_90": true
+          },
+          "raw_equal": 265,
+          "raw_compared": 265,
+          "max_abs_raw_difference": 0.0,
+          "first_candidate_errors": []
+        },
+        {
+          "mode": "disable_all",
+          "known_total": 265,
+          "baseline": {
+            "correct": 265,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 1.0,
+            "runtime0": true,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": true,
+            "passes_90": true
+          },
+          "candidate": {
+            "correct": 0,
+            "runtime_errors": 265,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 0.0,
+            "runtime0": false,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": false,
+            "passes_90": false
+          },
+          "raw_equal": 0,
+          "raw_compared": 0,
+          "max_abs_raw_difference": 0.0,
+          "first_candidate_errors": [
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {10,1,1,1} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.",
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {10,1,1,1} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.",
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {10,1,1,1} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model."
+          ]
+        }
+      ],
+      "fresh": {
+        "required_if_known_gate_passes": {
+          "seeds": [
+            0,
+            1
+          ],
+          "per_seed": 5000
+        },
+        "runs": 0,
+        "reason": "complete known-set runtime gate failed before fresh admission"
+      },
+      "safe": false
+    },
+    {
+      "task": 122,
+      "decision": "REJECT_KNOWN_RUNTIME",
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_fusion_small_186/baseline/task122.onnx",
+        "sha256": "90c12806b6712f409a41b61b64a8b8256038a1c0b6707230b4d8bdc6cbce67e1",
+        "nodes": 60,
+        "profile": {
+          "memory": 99,
+          "params": 2,
+          "cost": 101,
+          "score": 20.38487948315874,
+          "correct": true
+        }
+      },
+      "candidate": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_fusion_small_186/candidates/task122_all_fusions.onnx",
+        "sha256": "78677808b3f61a872a8b70dba998d7b854b6559734a7551a4e11ceeb7e446b46",
+        "nodes": 59,
+        "profile": {
+          "memory": 98,
+          "params": 2,
+          "cost": 100,
+          "score": 20.394829814011906,
+          "correct": false
+        },
+        "strict_lower": true
+      },
+      "transformation": {
+        "removed_nodes": [
+          {
+            "op_type": "GreaterOrEqual",
+            "inputs": [
+              "negRd2",
+              "red_h_pos"
+            ],
+            "outputs": [
+              "d_keep"
+            ],
+            "output_bytes": 1,
+            "consumers": {
+              "d_keep": 0
+            },
+            "is_graph_output": false
+          }
+        ],
+        "added_nodes": [],
+        "retained_nodes_changed": [],
+        "initializers_bit_identical": true,
+        "pure_deadend_deletion": true
+      },
+      "structure": {
+        "full_checker": "PASS",
+        "strict_data_prop": "PASS",
+        "truthful_declared": true,
+        "truthful_declared_mismatches": [],
+        "conv_family_bias_ub_count": 0,
+        "conv_family_bias_ub": []
+      },
+      "known_dual_ort": [
+        {
+          "mode": "default_enable_all",
+          "known_total": 266,
+          "baseline": {
+            "correct": 266,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 1.0,
+            "runtime0": true,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": true,
+            "passes_90": true
+          },
+          "candidate": {
+            "correct": 266,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 1.0,
+            "runtime0": true,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": true,
+            "passes_90": true
+          },
+          "raw_equal": 266,
+          "raw_compared": 266,
+          "max_abs_raw_difference": 0.0,
+          "first_candidate_errors": []
+        },
+        {
+          "mode": "disable_all",
+          "known_total": 266,
+          "baseline": {
+            "correct": 266,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 1.0,
+            "runtime0": true,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": true,
+            "passes_90": true
+          },
+          "candidate": {
+            "correct": 0,
+            "runtime_errors": 266,
+            "nonfinite_values": 0,
+            "shape_mismatches": 0,
+            "normal_accuracy": 0.0,
+            "runtime0": false,
+            "nonfinite0": true,
+            "truthful_runtime_shapes": false,
+            "passes_90": false
+          },
+          "raw_equal": 0,
+          "raw_compared": 0,
+          "max_abs_raw_difference": 0.0,
+          "first_candidate_errors": [
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,31,30} != {1,30,30,31}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.",
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,31,30} != {1,30,30,31}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.",
+            "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,31,30} != {1,30,30,31}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model."
+          ]
+        }
+      ],
+      "fresh": {
+        "required_if_known_gate_passes": {
+          "seeds": [
+            0,
+            1
+          ],
+          "per_seed": 5000
+        },
+        "runs": 0,
+        "reason": "complete known-set runtime gate failed before fresh admission"
+      },
+      "safe": false
+    }
+  ],
+  "fresh_runs": 0,
+  "root_guards": {
+    "before": {
+      "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+      "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+    },
+    "after": {
+      "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+      "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+    }
+  },
+  "others_71407_tree_sha256": {
+    "before": "21d9656e3f4934bcea66c94dca03216c7eba791980bc6ba637a369a60144410a",
+    "after": "21d9656e3f4934bcea66c94dca03216c7eba791980bc6ba637a369a60144410a"
+  },
+  "root_mutations": []
+}

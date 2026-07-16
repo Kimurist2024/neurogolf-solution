@@ -1,0 +1,195 @@
+# task338.onnx
+
+## Initializers
+s1: int64 (1,) [1]
+oneh: float16 (1,) [1.0]
+
+## Nodes
+00 ConstantOfShape ['s1'] -> ['n29'] {'value': [29]}
+01 ConstantOfShape ['s1'] -> ['n30'] {'value': [30]}
+02 ConstantOfShape ['s1'] -> ['n31'] {'value': [31]}
+03 ConstantOfShape ['s1'] -> ['n3'] {'value': [3]}
+04 ConstantOfShape ['s1'] -> ['n4'] {'value': [4]}
+05 ConstantOfShape ['s1'] -> ['n5'] {'value': [5]}
+06 CenterCropPad ['input', 'n30'] -> ['xc'] {'axes': [2]}
+07 CastLike ['xc', 'oneh'] -> ['x16'] {}
+08 ReduceL1 ['x16', 's1'] -> ['valid'] {'keepdims': 1}
+09 CenterCropPad ['x16', 'n5'] -> ['rc0'] {'axes': [1]}
+10 CenterCropPad ['rc0', 'n4'] -> ['rc1'] {'axes': [1]}
+11 CenterCropPad ['rc1', 'n3'] -> ['rc2'] {'axes': [1]}
+12 CenterCropPad ['rc2', 'n5'] -> ['rc3'] {'axes': [1]}
+13 CenterCropPad ['rc3', 'n4'] -> ['rc4'] {'axes': [1]}
+14 CenterCropPad ['rc4', 's1'] -> ['red'] {'axes': [1]}
+15 HardSigmoid ['red'] -> ['not_red'] {'alpha': -1.0, 'beta': 1.0}
+16 Selu ['red'] -> ['neg_red'] {'alpha': 1.0, 'gamma': -1.0}
+17 CenterCropPad ['red', 'n29'] -> ['red_up_mc'] {'axes': [2]}
+18 CenterCropPad ['red_up_mc', 'n31'] -> ['red_up_mp'] {'axes': [2]}
+19 CenterCropPad ['red_up_mp', 'n30'] -> ['red_up_mb'] {'axes': [2]}
+20 CenterCropPad ['red', 'n31'] -> ['red_down_pp'] {'axes': [2]}
+21 CenterCropPad ['red_down_pp', 'n29'] -> ['red_down_pc'] {'axes': [2]}
+22 CenterCropPad ['red_down_pc', 'n30'] -> ['red_down_pb'] {'axes': [2]}
+23 HardSigmoid ['red_up_mb'] -> ['not_up'] {'alpha': -1.0, 'beta': 1.0}
+24 HardSigmoid ['red_down_pb'] -> ['not_down'] {'alpha': -1.0, 'beta': 1.0}
+25 PRelu ['neg_red', 'red_up_mb'] -> ['vert_prelu1'] {}
+26 PRelu ['vert_prelu1', 'red_down_pb'] -> ['vert_prelu2'] {}
+27 HardSigmoid ['vert_prelu2'] -> ['vert'] {'alpha': -1.0, 'beta': 0.0}
+28 PRelu ['neg_red', 'not_up'] -> ['horiz_prelu3'] {}
+29 PRelu ['horiz_prelu3', 'not_down'] -> ['horiz_prelu4'] {}
+30 HardSigmoid ['horiz_prelu4'] -> ['horiz'] {'alpha': -1.0, 'beta': 0.0}
+31 HardSigmoid ['horiz'] -> ['not_horiz'] {'alpha': -1.0, 'beta': 1.0}
+32 CenterCropPad ['vert', 'n29'] -> ['L1_mc'] {'axes': [3]}
+33 CenterCropPad ['L1_mc', 'n31'] -> ['L1_mp'] {'axes': [3]}
+34 CenterCropPad ['L1_mp', 'n30'] -> ['L1_mb'] {'axes': [3]}
+35 CenterCropPad ['L1_mb', 'n29'] -> ['L2_mc'] {'axes': [3]}
+36 CenterCropPad ['L2_mc', 'n31'] -> ['L2_mp'] {'axes': [3]}
+37 CenterCropPad ['L2_mp', 'n30'] -> ['L2_mb'] {'axes': [3]}
+38 CenterCropPad ['L2_mb', 'n29'] -> ['L3_mc'] {'axes': [3]}
+39 CenterCropPad ['L3_mc', 'n31'] -> ['L3_mp'] {'axes': [3]}
+40 CenterCropPad ['L3_mp', 'n30'] -> ['L3_mb'] {'axes': [3]}
+41 CenterCropPad ['L3_mb', 'n29'] -> ['L4_mc'] {'axes': [3]}
+42 CenterCropPad ['L4_mc', 'n31'] -> ['L4_mp'] {'axes': [3]}
+43 CenterCropPad ['L4_mp', 'n30'] -> ['L4_mb'] {'axes': [3]}
+44 CenterCropPad ['L4_mb', 'n29'] -> ['L5_mc'] {'axes': [3]}
+45 CenterCropPad ['L5_mc', 'n31'] -> ['L5_mp'] {'axes': [3]}
+46 CenterCropPad ['L5_mp', 'n30'] -> ['L5_mb'] {'axes': [3]}
+47 CenterCropPad ['L5_mb', 'n29'] -> ['L6_mc'] {'axes': [3]}
+48 CenterCropPad ['L6_mc', 'n31'] -> ['L6_mp'] {'axes': [3]}
+49 CenterCropPad ['L6_mp', 'n30'] -> ['L6_mb'] {'axes': [3]}
+50 CenterCropPad ['L6_mb', 'n29'] -> ['L7_mc'] {'axes': [3]}
+51 CenterCropPad ['L7_mc', 'n31'] -> ['L7_mp'] {'axes': [3]}
+52 CenterCropPad ['L7_mp', 'n30'] -> ['L7_mb'] {'axes': [3]}
+53 CenterCropPad ['vert', 'n31'] -> ['R1_pp'] {'axes': [3]}
+54 CenterCropPad ['R1_pp', 'n29'] -> ['R1_pc'] {'axes': [3]}
+55 CenterCropPad ['R1_pc', 'n30'] -> ['R1_pb'] {'axes': [3]}
+56 CenterCropPad ['R1_pb', 'n31'] -> ['R2_pp'] {'axes': [3]}
+57 CenterCropPad ['R2_pp', 'n29'] -> ['R2_pc'] {'axes': [3]}
+58 CenterCropPad ['R2_pc', 'n30'] -> ['R2_pb'] {'axes': [3]}
+59 CenterCropPad ['R2_pb', 'n31'] -> ['R3_pp'] {'axes': [3]}
+60 CenterCropPad ['R3_pp', 'n29'] -> ['R3_pc'] {'axes': [3]}
+61 CenterCropPad ['R3_pc', 'n30'] -> ['R3_pb'] {'axes': [3]}
+62 CenterCropPad ['R3_pb', 'n31'] -> ['R4_pp'] {'axes': [3]}
+63 CenterCropPad ['R4_pp', 'n29'] -> ['R4_pc'] {'axes': [3]}
+64 CenterCropPad ['R4_pc', 'n30'] -> ['R4_pb'] {'axes': [3]}
+65 CenterCropPad ['R4_pb', 'n31'] -> ['R5_pp'] {'axes': [3]}
+66 CenterCropPad ['R5_pp', 'n29'] -> ['R5_pc'] {'axes': [3]}
+67 CenterCropPad ['R5_pc', 'n30'] -> ['R5_pb'] {'axes': [3]}
+68 CenterCropPad ['R5_pb', 'n31'] -> ['R6_pp'] {'axes': [3]}
+69 CenterCropPad ['R6_pp', 'n29'] -> ['R6_pc'] {'axes': [3]}
+70 CenterCropPad ['R6_pc', 'n30'] -> ['R6_pb'] {'axes': [3]}
+71 CenterCropPad ['R6_pb', 'n31'] -> ['R7_pp'] {'axes': [3]}
+72 CenterCropPad ['R7_pp', 'n29'] -> ['R7_pc'] {'axes': [3]}
+73 CenterCropPad ['R7_pc', 'n30'] -> ['R7_pb'] {'axes': [3]}
+74 CenterCropPad ['horiz', 'n29'] -> ['U1_mc'] {'axes': [2]}
+75 CenterCropPad ['U1_mc', 'n31'] -> ['U1_mp'] {'axes': [2]}
+76 CenterCropPad ['U1_mp', 'n30'] -> ['U1_mb'] {'axes': [2]}
+77 CenterCropPad ['U1_mb', 'n29'] -> ['U2_mc'] {'axes': [2]}
+78 CenterCropPad ['U2_mc', 'n31'] -> ['U2_mp'] {'axes': [2]}
+79 CenterCropPad ['U2_mp', 'n30'] -> ['U2_mb'] {'axes': [2]}
+80 CenterCropPad ['U2_mb', 'n29'] -> ['U3_mc'] {'axes': [2]}
+81 CenterCropPad ['U3_mc', 'n31'] -> ['U3_mp'] {'axes': [2]}
+82 CenterCropPad ['U3_mp', 'n30'] -> ['U3_mb'] {'axes': [2]}
+83 CenterCropPad ['U3_mb', 'n29'] -> ['U4_mc'] {'axes': [2]}
+84 CenterCropPad ['U4_mc', 'n31'] -> ['U4_mp'] {'axes': [2]}
+85 CenterCropPad ['U4_mp', 'n30'] -> ['U4_mb'] {'axes': [2]}
+86 CenterCropPad ['U4_mb', 'n29'] -> ['U5_mc'] {'axes': [2]}
+87 CenterCropPad ['U5_mc', 'n31'] -> ['U5_mp'] {'axes': [2]}
+88 CenterCropPad ['U5_mp', 'n30'] -> ['U5_mb'] {'axes': [2]}
+89 CenterCropPad ['U5_mb', 'n29'] -> ['U6_mc'] {'axes': [2]}
+90 CenterCropPad ['U6_mc', 'n31'] -> ['U6_mp'] {'axes': [2]}
+91 CenterCropPad ['U6_mp', 'n30'] -> ['U6_mb'] {'axes': [2]}
+92 CenterCropPad ['U6_mb', 'n29'] -> ['U7_mc'] {'axes': [2]}
+93 CenterCropPad ['U7_mc', 'n31'] -> ['U7_mp'] {'axes': [2]}
+94 CenterCropPad ['U7_mp', 'n30'] -> ['U7_mb'] {'axes': [2]}
+95 CenterCropPad ['not_horiz', 'n31'] -> ['D1_pp'] {'axes': [2]}
+96 CenterCropPad ['D1_pp', 'n29'] -> ['D1_pc'] {'axes': [2]}
+97 CenterCropPad ['D1_pc', 'n30'] -> ['D1_pb'] {'axes': [2]}
+98 CenterCropPad ['D1_pb', 'n31'] -> ['D2_pp'] {'axes': [2]}
+99 CenterCropPad ['D2_pp', 'n29'] -> ['D2_pc'] {'axes': [2]}
+100 CenterCropPad ['D2_pc', 'n30'] -> ['D2_pb'] {'axes': [2]}
+101 CenterCropPad ['D2_pb', 'n31'] -> ['D3_pp'] {'axes': [2]}
+102 CenterCropPad ['D3_pp', 'n29'] -> ['D3_pc'] {'axes': [2]}
+103 CenterCropPad ['D3_pc', 'n30'] -> ['D3_pb'] {'axes': [2]}
+104 CenterCropPad ['D3_pb', 'n31'] -> ['D4_pp'] {'axes': [2]}
+105 CenterCropPad ['D4_pp', 'n29'] -> ['D4_pc'] {'axes': [2]}
+106 CenterCropPad ['D4_pc', 'n30'] -> ['D4_pb'] {'axes': [2]}
+107 CenterCropPad ['D4_pb', 'n31'] -> ['D5_pp'] {'axes': [2]}
+108 CenterCropPad ['D5_pp', 'n29'] -> ['D5_pc'] {'axes': [2]}
+109 CenterCropPad ['D5_pc', 'n30'] -> ['D5_pb'] {'axes': [2]}
+110 CenterCropPad ['D5_pb', 'n31'] -> ['D6_pp'] {'axes': [2]}
+111 CenterCropPad ['D6_pp', 'n29'] -> ['D6_pc'] {'axes': [2]}
+112 CenterCropPad ['D6_pc', 'n30'] -> ['D6_pb'] {'axes': [2]}
+113 CenterCropPad ['D6_pb', 'n31'] -> ['D7_pp'] {'axes': [2]}
+114 CenterCropPad ['D7_pp', 'n29'] -> ['D7_pc'] {'axes': [2]}
+115 CenterCropPad ['D7_pc', 'n30'] -> ['D7_pb'] {'axes': [2]}
+116 HardSigmoid ['L1_mb'] -> ['L1_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+117 HardSigmoid ['L2_mb'] -> ['L2_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+118 HardSigmoid ['L3_mb'] -> ['L3_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+119 HardSigmoid ['L4_mb'] -> ['L4_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+120 HardSigmoid ['L5_mb'] -> ['L5_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+121 HardSigmoid ['L6_mb'] -> ['L6_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+122 HardSigmoid ['L7_mb'] -> ['L7_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+123 Selu ['L1_s7_not'] -> ['L_s7_neg0'] {'alpha': 1.0, 'gamma': -1.0}
+124 PRelu ['L_s7_neg0', 'L2_s7_not'] -> ['L_s7_prelu2'] {}
+125 PRelu ['L_s7_prelu2', 'L3_s7_not'] -> ['L_s7_prelu3'] {}
+126 PRelu ['L_s7_prelu3', 'L4_s7_not'] -> ['L_s7_prelu4'] {}
+127 PRelu ['L_s7_prelu4', 'L5_s7_not'] -> ['L_s7_prelu5'] {}
+128 PRelu ['L_s7_prelu5', 'L6_s7_not'] -> ['L_s7_prelu6'] {}
+129 PRelu ['L_s7_prelu6', 'L7_s7_not'] -> ['L_s7_prelu7'] {}
+130 HardSigmoid ['L_s7_prelu7'] -> ['L7_seen'] {'alpha': 1.0, 'beta': 1.0}
+131 HardSigmoid ['R1_pb'] -> ['R1_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+132 HardSigmoid ['R2_pb'] -> ['R2_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+133 HardSigmoid ['R3_pb'] -> ['R3_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+134 HardSigmoid ['R4_pb'] -> ['R4_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+135 HardSigmoid ['R5_pb'] -> ['R5_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+136 HardSigmoid ['R6_pb'] -> ['R6_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+137 HardSigmoid ['R7_pb'] -> ['R7_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+138 Selu ['R1_s7_not'] -> ['R_s7_neg0'] {'alpha': 1.0, 'gamma': -1.0}
+139 PRelu ['R_s7_neg0', 'R2_s7_not'] -> ['R_s7_prelu2'] {}
+140 PRelu ['R_s7_prelu2', 'R3_s7_not'] -> ['R_s7_prelu3'] {}
+141 PRelu ['R_s7_prelu3', 'R4_s7_not'] -> ['R_s7_prelu4'] {}
+142 PRelu ['R_s7_prelu4', 'R5_s7_not'] -> ['R_s7_prelu5'] {}
+143 PRelu ['R_s7_prelu5', 'R6_s7_not'] -> ['R_s7_prelu6'] {}
+144 PRelu ['R_s7_prelu6', 'R7_s7_not'] -> ['R_s7_prelu7'] {}
+145 HardSigmoid ['R_s7_prelu7'] -> ['R7_seen'] {'alpha': 1.0, 'beta': 1.0}
+146 HardSigmoid ['U1_mb'] -> ['U1_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+147 HardSigmoid ['U2_mb'] -> ['U2_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+148 HardSigmoid ['U3_mb'] -> ['U3_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+149 HardSigmoid ['U4_mb'] -> ['U4_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+150 HardSigmoid ['U5_mb'] -> ['U5_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+151 HardSigmoid ['U6_mb'] -> ['U6_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+152 HardSigmoid ['U7_mb'] -> ['U7_s7_not'] {'alpha': -1.0, 'beta': 1.0}
+153 Selu ['U1_s7_not'] -> ['U_s7_neg0'] {'alpha': 1.0, 'gamma': -1.0}
+154 PRelu ['U_s7_neg0', 'U2_s7_not'] -> ['U_s7_prelu2'] {}
+155 PRelu ['U_s7_prelu2', 'U3_s7_not'] -> ['U_s7_prelu3'] {}
+156 PRelu ['U_s7_prelu3', 'U4_s7_not'] -> ['U_s7_prelu4'] {}
+157 PRelu ['U_s7_prelu4', 'U5_s7_not'] -> ['U_s7_prelu5'] {}
+158 PRelu ['U_s7_prelu5', 'U6_s7_not'] -> ['U_s7_prelu6'] {}
+159 PRelu ['U_s7_prelu6', 'U7_s7_not'] -> ['U_s7_prelu7'] {}
+160 HardSigmoid ['U_s7_prelu7'] -> ['U7_seen'] {'alpha': 1.0, 'beta': 1.0}
+161 Selu ['D1_pb'] -> ['D_s7_neg0'] {'alpha': 1.0, 'gamma': -1.0}
+162 PRelu ['D_s7_neg0', 'D2_pb'] -> ['D_s7_prelu2'] {}
+163 PRelu ['D_s7_prelu2', 'D3_pb'] -> ['D_s7_prelu3'] {}
+164 PRelu ['D_s7_prelu3', 'D4_pb'] -> ['D_s7_prelu4'] {}
+165 PRelu ['D_s7_prelu4', 'D5_pb'] -> ['D_s7_prelu5'] {}
+166 PRelu ['D_s7_prelu5', 'D6_pb'] -> ['D_s7_prelu6'] {}
+167 PRelu ['D_s7_prelu6', 'D7_pb'] -> ['D_s7_prelu7'] {}
+168 HardSigmoid ['D_s7_prelu7'] -> ['D7_seen'] {'alpha': 1.0, 'beta': 1.0}
+169 HardSigmoid ['D1_pb'] -> ['D1_raw'] {'alpha': -1.0, 'beta': 1.0}
+170 HardSigmoid ['D4_pb'] -> ['D4_raw'] {'alpha': -1.0, 'beta': 1.0}
+171 Selu ['U6_mb'] -> ['sup_neg0'] {'alpha': 1.0, 'gamma': -1.0}
+172 PRelu ['sup_neg0', 'D1_raw'] -> ['sup_prelu1'] {}
+173 PRelu ['sup_prelu1', 'D4_raw'] -> ['sup_prelu2'] {}
+174 PRelu ['sup_prelu2', 'D7_pb'] -> ['sup_prelu3'] {}
+175 HardSigmoid ['sup_prelu3'] -> ['sup'] {'alpha': 1.0, 'beta': 1.0}
+176 Selu ['valid'] -> ['neg_valid'] {'alpha': 1.0, 'gamma': -1.0}
+177 PRelu ['neg_valid', 'not_red'] -> ['cand_prelu1'] {}
+178 PRelu ['cand_prelu1', 'L7_seen'] -> ['cand_prelu2'] {}
+179 PRelu ['cand_prelu2', 'R7_seen'] -> ['cand_prelu3'] {}
+180 PRelu ['cand_prelu3', 'U7_seen'] -> ['cand_prelu4'] {}
+181 PRelu ['cand_prelu4', 'D7_seen'] -> ['cand_prelu5'] {}
+182 PRelu ['cand_prelu5', 'sup'] -> ['cand_prelu6'] {}
+183 HardSigmoid ['cand_prelu6'] -> ['cand'] {'alpha': -1.0, 'beta': 0.0}
+184 HardSigmoid ['cand'] -> ['not_cand'] {'alpha': -1.0, 'beta': 1.0}
+185 PRelu ['neg_valid', 'not_cand'] -> ['black_out_prelu1'] {}
+186 HardSigmoid ['black_out_prelu1'] -> ['black_out'] {'alpha': -1.0, 'beta': 0.0}
+187 Concat ['black_out', 'neg_valid', 'neg_valid', 'cand', 'neg_valid', 'neg_valid', 'neg_valid', 'neg_valid', 'neg_valid', 'neg_valid'] -> ['output'] {'axis': 1}

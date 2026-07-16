@@ -1,0 +1,365 @@
+{
+  "task044_rule_autocorr": {
+    "label": "task044_rule_autocorr",
+    "task": 44,
+    "path": "scripts/golf/loop_7999_13/lane_a23/rule_references/task044_rule_autocorr.onnx",
+    "sha256": "d126ffafc8c547689aaac836a67ad1681f48d97023ce8168ff0b9757769e6060",
+    "file_bytes": 3682,
+    "nodes": 33,
+    "initializers": 25,
+    "params": 250,
+    "op_histogram": {
+      "Mul": 4,
+      "CastLike": 3,
+      "Resize": 2,
+      "MaxPool": 2,
+      "Clip": 2,
+      "QLinearConv": 2,
+      "Pad": 2,
+      "Einsum": 2,
+      "Where": 2,
+      "QLinearMatMul": 2,
+      "Sub": 2,
+      "GroupNormalization": 1,
+      "Equal": 1,
+      "Split": 1,
+      "Add": 1,
+      "Greater": 1,
+      "DequantizeLinear": 1,
+      "Concat": 1,
+      "Max": 1
+    },
+    "max_node_inputs": 13,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 2,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [
+      {
+        "node": "output",
+        "op": "QLinearConv",
+        "bias": "b2",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          10
+        ],
+        "expected_channels": 10,
+        "safe": true
+      }
+    ],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 34,
+      "declared_tensors": 5,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "gn",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "u",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 29,
+      "single_example_intermediate_bytes": 46447
+    },
+    "official_like_score": {
+      "memory": 1452,
+      "params": 250,
+      "cost": 1702,
+      "score": 17.56044069086668,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    }
+  },
+  "task117_truthful_copy_hist": {
+    "label": "task117_truthful_copy_hist",
+    "task": 117,
+    "path": "scripts/golf/loop_7999_13/lane_a25/rule_references/task117_truthful_copy_hist.onnx",
+    "sha256": "8a57a033316f9c587ee071ece51bef8a0e6841d4dd783afab8ff40d3b29ecb14",
+    "file_bytes": 14421,
+    "nodes": 56,
+    "initializers": 29,
+    "params": 2679,
+    "op_histogram": {
+      "Cast": 10,
+      "Equal": 6,
+      "And": 6,
+      "Where": 6,
+      "Slice": 5,
+      "Gather": 4,
+      "ReduceSum": 3,
+      "ReduceMax": 3,
+      "Mul": 2,
+      "Sub": 2,
+      "Less": 2,
+      "Greater": 2,
+      "Conv": 1,
+      "Max": 1,
+      "Reshape": 1,
+      "Not": 1,
+      "Pad": 1
+    },
+    "max_node_inputs": 5,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 56,
+      "declared_tensors": 1,
+      "declared_actual_mismatches": [],
+      "undeclared_intermediate_count": 55,
+      "single_example_intermediate_bytes": 4083
+    },
+    "official_like_score": {
+      "memory": 4083,
+      "params": 2679,
+      "cost": 6762,
+      "score": 16.18092601673217,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 261,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 261,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0
+      }
+    }
+  },
+  "task330_truthful_component_rect": {
+    "label": "task330_truthful_component_rect",
+    "task": 330,
+    "path": "scripts/golf/loop_7999_13/lane_a26/rule_references/task330_truthful_component_rect.onnx",
+    "sha256": "6268e9acdeb8a79af2c1dc2485bc843a54d0b599ec41be1de74faa75ac5c610d",
+    "file_bytes": 6134,
+    "nodes": 50,
+    "initializers": 31,
+    "params": 1263,
+    "op_histogram": {
+      "QLinearConv": 24,
+      "Cast": 12,
+      "Equal": 11,
+      "Pad": 1,
+      "Max": 1,
+      "Concat": 1
+    },
+    "max_node_inputs": 11,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [
+      {
+        "node": "features",
+        "op": "QLinearConv",
+        "bias": "feature_b",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          4
+        ],
+        "expected_channels": 4,
+        "safe": true
+      },
+      {
+        "node": "output",
+        "op": "QLinearConv",
+        "bias": "final_b",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          10
+        ],
+        "expected_channels": 10,
+        "safe": true
+      }
+    ],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 50,
+      "declared_tensors": 1,
+      "declared_actual_mismatches": [],
+      "undeclared_intermediate_count": 49,
+      "single_example_intermediate_bytes": 4262
+    },
+    "official_like_score": {
+      "memory": 4262,
+      "params": 1263,
+      "cost": 5525,
+      "score": 16.382961473614046,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    }
+  }
+}

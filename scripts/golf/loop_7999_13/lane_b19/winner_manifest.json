@@ -1,0 +1,33 @@
+{
+  "lane": "B19",
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "tasks": [340, 361],
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "decisions": {
+    "340": {
+      "baseline_cost": 1173,
+      "decision": "CURRENT_SOUND_FLOOR_NO_WINNER",
+      "reason": "No dead node, duplicate initializer, exact no-op, initializer reuse, low-rank, slice, proportional, tensor-mode, or safe Einsum absorption candidate exists; the 6x9 ACTable has exact real rank five, so dense factors require 75 parameters versus 54 direct."
+    },
+    "361": {
+      "baseline_cost": 968,
+      "decision": "REJECT_ALL",
+      "reason": "The baseline and every harvested lineage have explicit GroupNormalization shape-cloak witnesses and fail default-ORT session creation; the two cheaper archives additionally fail 68/266 and 48/266 known cases."
+    }
+  },
+  "evidence": [
+    "audit_evidence.json",
+    "task340_dual5000.json",
+    "task361_base_dual5000.json",
+    "history/*_known.json",
+    "history/*_dual100.json",
+    "scan_exact/manifest_pre_differential.json",
+    "scan_fusion_full/build_manifest.json",
+    "scan_inline_full/build_manifest.json",
+    "scan_sign_full/build_manifest.json",
+    "scan_perm_full/build_manifest.json"
+  ]
+}

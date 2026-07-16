@@ -1,0 +1,440 @@
+{
+  "lane": "agent_new_low35",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "previous_path": "submission_base_8004.50.zip",
+    "previous_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "policy": {
+    "nonprivate": "strictly cheaper, known100 dual, two independent fresh seeds each >=90%, runtime0, checker full, strict/data_prop, truthful shapes, standard domains, no lookup/cloak/giant, Conv-bias UB0",
+    "private_risk": "same gates but known/fresh must be 100% dual and the model must be demonstrably SOUND",
+    "fail_closed": "known/fresh are not run if price or structural gates fail"
+  },
+  "targets_requested": [
+    50,
+    329,
+    350,
+    356,
+    371,
+    360,
+    214,
+    83
+  ],
+  "targets_completed": 8,
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_integration": false,
+  "rows": [
+    {
+      "task": 50,
+      "rule_summary": "Fill zero cells lying strictly between color-8 cells along either their row or column; preserve every other cell.",
+      "true_rule_known": {
+        "right": 271,
+        "wrong": 0,
+        "errors": 0,
+        "total": 271,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task050.onnx",
+      "baseline_sha256": "63dcf2dac0ab38c95afe890e5ba2decac3e7d35d622172a8bee9dc78ea23d45a",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 88,
+        "cost": 88
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 35,
+        "giant_einsum": [
+          {
+            "node_index": 0,
+            "inputs": 35
+          }
+        ],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "four cost-84 common-transition factorizations",
+      "reason": "All four fail train[0] in both ORT modes. The dedicated scan covered 566 files / 18 unique task050 graphs and found no other below-88 model.",
+      "evidence": "scripts/golf/loop_7999_13/lane_c30/audit.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 329,
+      "rule_summary": "In each odd-width row preserve only its center cell and replace all other cells with zero.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task329.onnx",
+      "baseline_sha256": "f47efe92588bbe80b96c90467b4bfbc349ccb12a88a61e8a6a7b46f0f4bf0ff3",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 88,
+        "cost": 88
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 15,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "no below-88 graph; cost-88 incumbent and cost-1050 conventional control",
+      "reason": "The 13,591-graph archive found no lower member. A harvested alternate increases Einsum fan-in from 15 to 19 and still offers no established lower actual cost.",
+      "evidence": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 350,
+      "rule_summary": "Fill zero cells lying strictly between color-1 cells along either their row or column with color 8; preserve nonzero cells.",
+      "true_rule_known": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "total": 267,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task350.onnx",
+      "baseline_sha256": "4dd1e410385ff952d01ccfbd157742b831f36090720495421166a650c6fb19c2",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 88,
+        "cost": 88
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 33,
+        "giant_einsum": [
+          {
+            "node_index": 0,
+            "inputs": 33
+          }
+        ],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-60 rank-one initializer approximation",
+      "reason": "It is not an exact factorization (max reconstruction error 32) and scores 0/100 in both ORT modes, with 100/100 runtime/output failures. The complete archive screen also gives known/fresh 0%.",
+      "evidence": "scripts/golf/loop_7999_13/lane_rank1_wave13/dual100.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 356,
+      "rule_summary": "At each cell, emit the bitwise union of the row-prefix/suffix maxima intersection and the column-prefix/suffix maxima intersection.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task356.onnx",
+      "baseline_sha256": "3924998416eab98875e9ed96ccace638b71c29c3e599fae0184535050af37281",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 88,
+        "cost": 88
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 29,
+        "giant_einsum": [
+          {
+            "node_index": 0,
+            "inputs": 29
+          }
+        ],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-60 rank-one initializer approximation",
+      "reason": "It is not an exact factorization (max reconstruction error 32) and scores 0/100 in both ORT modes, with 100/100 runtime/output failures. The complete archive screen also gives known/fresh 0%.",
+      "evidence": "scripts/golf/loop_7999_13/lane_rank1_wave13/dual100.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 371,
+      "rule_summary": "Find the midpoint of the first two color-1 cells and paint the midpoint plus its four orthogonal neighbors color 3, preserving the input.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task371.onnx",
+      "baseline_sha256": "a22ee20707c35004c61621ef158113186c5b45bea8c5c0e9ab902017ab22f4b8",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 88,
+        "cost": 88
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 20,
+        "giant_einsum": [
+          {
+            "node_index": 0,
+            "inputs": 20
+          }
+        ],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-88 same-cost giant-Einsum alternates",
+      "reason": "Every compact alternate only ties and retains 20-input Einsum lineage; the conventional harvested graph has a static floor of 467. No strict decrease exists.",
+      "evidence": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 360,
+      "rule_summary": "For each row, fold the right four-cell arm onto the left four-cell arm with elementwise maximum, yielding width four.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task360.onnx",
+      "baseline_sha256": "cd3b2eb2f2269221ea6b4d541df4d2dfa28cb1ab0d19cbfb45de89648c85e250",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 86,
+        "cost": 86
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 53,
+        "giant_einsum": [
+          {
+            "node_index": 0,
+            "inputs": 53
+          }
+        ],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-86 incumbent; conventional harvested graph has static floor 340",
+      "reason": "The exhaustive archive and focused harvest expose no below-86 graph, while exact rewrites produced no candidate.",
+      "evidence": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 214,
+      "rule_summary": "For the fixed 3x11 layout, keep the first four columns and append the reversed concatenation of the reversed-row first four cells and the current input column.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task214.onnx",
+      "baseline_sha256": "353079a7edef05433eead39ee3a452863c29feeac95777b6edb2212ce6a21a4c",
+      "baseline_cost": {
+        "memory": 69,
+        "params": 16,
+        "cost": 85
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "CastLike": 2,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "Gather": 1,
+          "GroupNormalization": 1,
+          "Identity": 1,
+          "QLinearConv": 1,
+          "ScatterElements": 1,
+          "Transpose": 1
+        },
+        "node_count": 10,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 5,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "static cost-75 archive graph",
+      "reason": "It fails both known gold implementations and all 20 fresh cases. Its actual scorer cost is unavailable, so it cannot establish a safe strict decrease; Identity removal also fails strict inference.",
+      "evidence": "scripts/golf/loop_7999_13/lane_archive_all400/lower_quick_k20.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 83,
+      "rule_summary": "Mirror the fixed 3x4 input horizontally and vertically with duplicated seams, yielding 6x8.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task083.onnx",
+      "baseline_sha256": "e1b50f9d2a5ed3f53976a2bc8ef51aa2a9938339b47b3a78a1ae8d7c6bbb052d",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 84,
+        "cost": 84
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 55,
+        "giant_einsum": [
+          {
+            "node_index": 0,
+            "inputs": 55
+          }
+        ],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "giant-Einsum alternate with 49 inputs; conventional graph static floor 210",
+      "reason": "The alternate is structurally forbidden and has no established lower actual cost; all valid history is cost >=84. Exact rewrites produced no candidate.",
+      "evidence": "scripts/golf/loop_7999_13/lane_harvest/scan_results.json",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    }
+  ],
+  "final_verdict": "NO_SAFE_CANDIDATE"
+}

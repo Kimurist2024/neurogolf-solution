@@ -1,0 +1,75 @@
+{
+  "lane": "C29",
+  "baseline_zip": "scripts/golf/loop_7999_13/submission_7999.13_wave16_candidate_meta.zip",
+  "baseline_zip_sha256": "4014cbafea4862f67ebf5ff24be13149b45b333c95bfa680be7216f001a6bb3a",
+  "winner": {
+    "task": 315,
+    "candidate": "scripts/golf/loop_7999_13/lane_c29/task315_tied_color_factor.onnx",
+    "candidate_sha256": "c18089d1e14b8b4a5bc99f15b916788e6a9e90c08cb985e68cf45c3c1cffd16b",
+    "baseline_member_sha256": "3a5395f8b8f80a542b1716927d2c07b104587de69fba2c796180d1e3de0dcdf8",
+    "baseline_cost": 128,
+    "candidate_cost": 124,
+    "cost_reduction": 4,
+    "projected_gain": 0.031748698314579826,
+    "checker_full": true,
+    "strict_shape_inference": true,
+    "declared_input_shape": [1, 10, 30, 30],
+    "declared_output_shape": [1, 10, 30, 30],
+    "inferred_output_shape": [1, 10, 30, 30],
+    "runtime_intermediate_count": 0,
+    "conv_bias_findings": [],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "foreign_domains": [],
+    "nonfinite_initializer_values": 0,
+    "candidate_einsum_operands": 43,
+    "baseline_einsum_operands": 43,
+    "candidate_einsum_equation_length": 141,
+    "baseline_einsum_equation_length": 142,
+    "new_or_enlarged_giant_einsum": false,
+    "external_validator": {
+      "candidate_known": {"right": 266, "wrong": 0, "errors": 0},
+      "baseline_known": {"right": 266, "wrong": 0, "errors": 0},
+      "candidate_cost": 124,
+      "baseline_cost": 128,
+      "verdict": "ACCEPT_KNOWN_ONLY",
+      "random_cases_requested": 0
+    },
+    "dual_ort": [
+      {
+        "mode": "ORT_DISABLE_ALL",
+        "known": {"right": 266, "wrong": 0, "errors": 0},
+        "fresh": {"right": 5000, "wrong": 0, "errors": 0},
+        "min_positive": 3.138763427734375,
+        "max_nonpositive": 0.0,
+        "nonfinite_values": 0
+      },
+      {
+        "mode": "ORT_ENABLE_ALL",
+        "known": {"right": 266, "wrong": 0, "errors": 0},
+        "fresh": {"right": 5000, "wrong": 0, "errors": 0},
+        "min_positive": 3.138763427734375,
+        "max_nonpositive": 0.0,
+        "nonfinite_values": 0
+      }
+    ],
+    "complete_generator_proof": {
+      "domain": "all 3^9 grids over colors {0,1,2}",
+      "right": 19683,
+      "wrong": 0,
+      "minimum_positive_real_arithmetic": 3.1391309727221315,
+      "maximum_nonpositive_real_arithmetic": -2.6873449372548177
+    },
+    "decision": "ACCEPT_STRICT_GENERATOR_COMPLETE"
+  },
+  "rejected": [
+    {
+      "task": 121,
+      "candidate": "scripts/golf/loop_7999_13/lane_c29/task121_clamped_start_probe.onnx",
+      "candidate_sha256": "caf95e8c8ed7d2117f0c6b5e6b746d987e08d2c881e9fbf21e52a40ab7e75602",
+      "baseline_cost": 125,
+      "candidate_cost": 124,
+      "reason": "shape cloak retained and candidate has representative runtime errors in both ORT modes"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "lane": "A39",
+  "authority": {
+    "path": "submission_base_8000.46.zip",
+    "sha256": "74cb9c4a96dcf9d1d1ca4ad1e0afdb67f5218c0a06ad8e896ad1654b6548f534",
+    "unchanged": true,
+    "score": 8000.46
+  },
+  "decision": "NO_ADOPTABLE_CANDIDATE",
+  "score_gain": 0.0,
+  "scan": {
+    "tasks_scanned": 400,
+    "finding_tasks": 28,
+    "single_output_dead_node_tasks": [
+      39,
+      89,
+      122,
+      183
+    ],
+    "partial_multi_output_count": 46,
+    "candidate_count": 0,
+    "errors": []
+  },
+  "named_dead_nodes": {
+    "task039": {
+      "node": "Equal keep_bg_equal",
+      "exclusion": "CenterCropPad lineage",
+      "pruned_cost": 41,
+      "known_dual": "264/264 runtime errors on both ORT modes",
+      "reason": "dead node is an allocator barrier; Slice buffer-reuse mismatch after pruning"
+    },
+    "task089": {
+      "node": "ReduceMax keep_red_big",
+      "exclusion": "CenterCropPad lineage",
+      "pruned_cost": null,
+      "known_dual": "default ORT session creation fails; historical disabled-mode probe errors on all known cases",
+      "reason": "dead node is an allocator/shape barrier; not an executable candidate"
+    },
+    "task122": {
+      "node": "GreaterOrEqual d_keep",
+      "exclusion": "CenterCropPad lineage",
+      "pruned_cost": 102,
+      "known_dual": "266/266 disabled-mode errors; 266/266 default-mode errors after pruning",
+      "reason": "dead node is an allocator barrier; shape/buffer reuse breaks after pruning"
+    },
+    "task183": {
+      "node": "Min hold_u8",
+      "exclusion": "lookup lineage (ScatterElements)",
+      "pruned_cost": 91,
+      "known_dual": "265/265 runtime errors on both ORT modes",
+      "reason": "dead node is an allocator barrier; Resize buffer-reuse mismatch after pruning"
+    }
+  },
+  "multi_output_analysis": {
+    "task019": {
+      "op": "Split",
+      "unused_output": "ca0",
+      "empty_output_probe": "checker/strict pass, ORT process exits by SIGSEGV (-11)",
+      "decision": "reject as undefined/unsafe runtime behavior"
+    },
+    "task124": {
+      "op": "Split",
+      "unused_output": "r3",
+      "empty_output_probe": "checker/strict pass, ORT process exits by SIGSEGV (-11)",
+      "decision": "reject as undefined/unsafe runtime behavior"
+    },
+    "task080": {
+      "op": "MaxPool",
+      "unused_output": "Values",
+      "empty_output_probe": "checker rejects omission: required Single output",
+      "decision": "no standard indices-only MaxPool form"
+    },
+    "task131": {
+      "op": "TopK",
+      "unused_output": "Values",
+      "empty_output_probe": "checker rejects omission: required Single output",
+      "decision": "also excluded by CenterCropPad and lookup lineage"
+    },
+    "task400": {
+      "op": "MaxPool",
+      "unused_output": "Values",
+      "empty_output_probe": "checker rejects omission: required Single output",
+      "decision": "no standard indices-only MaxPool form"
+    },
+    "replacement_analysis": {
+      "Split_to_Slice": "not cost-beneficial: one singleton tensor is avoided, but Slice needs new int64 starts/ends/axes parameters and no reusable parameter bank exists",
+      "Split_to_Gather": "rejected: adds lookup lineage and parameters",
+      "MaxPool_indices_only": "no schema-safe standard operator replacement preserving the required indices semantics",
+      "TopK_indices_only": "TopK Values is required; alternatives add forbidden lookup/semantic risk"
+    }
+  },
+  "validation": {
+    "known_dual": "all four requested prune candidates rejected by runtime/session gate",
+    "fresh_dual_5000": "not run: no candidate survived safety and known-runtime gates",
+    "external_500": "not run: no candidate survived safety and known-runtime gates",
+    "truthful_shapes": "no submission model changed"
+  },
+  "evidence": [
+    "scan_build_manifest.json",
+    "named_dead_prune_probes.json",
+    "multi_output_omission_probes.json",
+    "split_replacement_anatomy.json",
+    "rejected_named_dead_prunes/",
+    "rejected_multi_output_probes/",
+    "../lane_b18/REPORT.md",
+    "../../../scratch_codex_7991/lane32/REPORT.md"
+  ]
+}

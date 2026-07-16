@@ -1,0 +1,65 @@
+{
+  "lane": "a20",
+  "base_archive": "submission_base_7999.13.zip",
+  "base_archive_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "tasks": {
+    "191": {
+      "baseline_cost": 3444,
+      "history_sha_count": 8,
+      "strictly_cheaper_actual": [
+        {
+          "label": "task191_r07",
+          "sha256": "9cd27f1aa654366ce3e52646840ada2cf0c3cf2ba725f3fec56f964a6246d15b",
+          "cost": 3426,
+          "projected_gain": 0.005240186663556301,
+          "decision": "REJECT",
+          "reasons": ["default_ort_session_error", "runtime_shape_trace_error"]
+        },
+        {
+          "label": "task191_r08",
+          "sha256": "7432cc3f4b517aadc84d9b3ae0b4c0fdbc55005fd3cba17a9e015e9e77f3aa44",
+          "cost": 3430,
+          "projected_gain": 0.004073325387636828,
+          "decision": "REJECT",
+          "reasons": ["default_ort_session_error", "declared_runtime_shape_mismatch"]
+        }
+      ],
+      "other_history": "6/8 variants are not strictly cheaper by actual official-like cost",
+      "fresh5000_candidates": []
+    },
+    "216": {
+      "baseline_cost": 1511,
+      "history_sha_count": 8,
+      "strictly_cheaper_actual": [],
+      "history_actual_costs": [1511, 1511, 1511, 1525, 1543, 1544, 1618, 1534],
+      "existing_rule_rebuild": {
+        "sha256": "aa3f277f034ab4f883335d4af8b6cf6bb647771052d30d0f38453bc446a61b7c",
+        "cost": 9135,
+        "known_disable_all": "266/266",
+        "known_default": "266/266",
+        "decision": "REJECT",
+        "reasons": ["not_strictly_cheaper", "dynamic_crop_declared_runtime_shape_mismatch"]
+      },
+      "fresh5000_candidates": []
+    }
+  },
+  "gates": {
+    "known_all_both_ort_before_fresh": true,
+    "runtime_session_errors_required_zero": true,
+    "full_onnx_checker": true,
+    "strict_shape_data_prop": true,
+    "runtime_declared_shape_trace": true,
+    "standard_domain_only": true,
+    "conv_bias_check": true,
+    "giant_einsum_forbidden": true,
+    "lookup_forbidden": true,
+    "shape_cloak_forbidden": true
+  },
+  "fresh5000": {
+    "ran": false,
+    "reason": "No candidate passed all prerequisite structure, runtime, known, and strict actual-cost gates."
+  },
+  "decision": "NO_WINNER",
+  "projected_gain": 0.0,
+  "source_evidence": ["model_manifest.json", "history_audit.json", "extra_audit.json"]
+}

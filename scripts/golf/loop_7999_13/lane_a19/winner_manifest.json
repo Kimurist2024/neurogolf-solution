@@ -1,0 +1,78 @@
+{
+  "lane": "a19_sound_high_cost_118_173",
+  "baseline": {
+    "zip": "submission_base_7999.13.zip",
+    "zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "score": 7999.13,
+    "costs": {"118": 3914, "173": 3525}
+  },
+  "targets": [118, 173],
+  "history_candidates_audited": 16,
+  "accepted": [],
+  "projected_gain": 0.0,
+  "fresh5000_run": false,
+  "fresh5000_skip_reason": "No candidate survived complete-known, dual-ORT load, shape/value-cloak, Conv-bias, actual/static-agreement, and strictly-cheaper pre-fresh gates.",
+  "task118": {
+    "generator": "inputs/arc-gen-repo/tasks/task_50846271.py",
+    "rule": "Restore cyan cells hidden as gray where one to four radius-2/radius-3 plus crosses were drawn over random gray static.",
+    "information_theoretic_blocker": "The generated input-output relation is not a function: a cross can be entirely gray before drawing, leaving no observable red witness after cyan is hidden back to gray.",
+    "prior_fresh_evidence": {
+      "exact_baseline": {"right": 4393, "wrong": 607, "total": 5000},
+      "observable_reference": {"right": 4852, "wrong": 148, "total": 5000},
+      "cheapest_r01": {"right": 4288, "wrong": 712, "total": 5000},
+      "source": "scripts/golf/loop_7999_13/lane_sound_a2/REPORT.md"
+    },
+    "best_actual_history": {
+      "variant": "r01",
+      "actual_cost": 3911,
+      "inventory_static_cost": 491,
+      "actual_static_agreement": false,
+      "known_disable_all": {"right": 267, "wrong": 0, "errors": 0},
+      "known_default": {"right": 0, "wrong": 0, "errors": 267},
+      "runtime_shape_mismatches": 30,
+      "decision": "reject"
+    },
+    "decision": "No deterministic model can satisfy the mandatory fresh 5000/5000 gate; all cheaper history is also cloaked, wrong, or runtime-failing."
+  },
+  "task173": {
+    "generator": "inputs/arc-gen-repo/tasks/task_72322fa7.py",
+    "rule": "Infer each sprite family's outer/center colors and X/plus/horizontal/vertical type from its full exemplar, then complete center-only and outer-only copies.",
+    "prior_sound_control": {
+      "cost": 53570,
+      "known": {"right": 266, "wrong": 0, "errors": 0},
+      "fresh": {"right": 5000, "wrong": 0, "errors": 0},
+      "source": "scripts/golf/loop_7999_13/lane_sound_a2/REPORT.md"
+    },
+    "best_actual_history": {
+      "variant": "r01",
+      "actual_cost": 2448,
+      "inventory_static_cost": 1458,
+      "actual_static_agreement": false,
+      "known_disable_all": {"right": 266, "wrong": 0, "errors": 0},
+      "known_default": {"right": 266, "wrong": 0, "errors": 0},
+      "declared_output_shape": [1, 1, 1, 1],
+      "true_output_shape": [1, 10, 30, 30],
+      "runtime_shape_trace": "fails with 28x28 versus 30x30 buffer reuse mismatch",
+      "conv_bias_shape_gate": "QLinearConv bias 10 versus cloaked inferred output channel 1",
+      "decision": "reject"
+    },
+    "other_history": {
+      "r02_r03_r04_r06": "ORT cannot load the TopK(11) kernel in the required runtime mode.",
+      "r05": "Actual 3513 is cheaper than 3525 and known-complete, but static 2217 disagrees, output is scalar-cloaked, and runtime shape trace is invalid.",
+      "r07_r08": "Actual costs 3706 and 4116 are not cheaper."
+    },
+    "decision": "The only verified shape-truthful generator-complete control is much more expensive; every cheaper model violates a mandatory gate."
+  },
+  "root_artifacts_modified": false,
+  "root_submission_created": false,
+  "evidence": [
+    "scripts/golf/loop_7999_13/lane_a19/model_manifest.json",
+    "scripts/golf/loop_7999_13/lane_a19/history_audit.json",
+    "scripts/golf/loop_7999_13/lane_sound_a2/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_sound_a2/reference_118.json",
+    "scripts/golf/loop_7999_13/lane_sound_a2/sound_control_manifest.json",
+    "scripts/golf/loop_7999_13/lane_archive_top200/quick_k5.json",
+    "docs/golf/BANNED_STRUCTURES.md",
+    "docs/golf/ERROR_PATTERNS.md"
+  ]
+}

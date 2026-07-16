@@ -1,0 +1,1256 @@
+{
+  "baseline_zip": "scripts/golf/loop_7999_13/submission_7999.13_wave16_candidate_meta.zip",
+  "baseline_zip_sha256": "4014cbafea4862f67ebf5ff24be13149b45b333c95bfa680be7216f001a6bb3a",
+  "tasks": [
+    232,
+    369
+  ],
+  "rules": [
+    {
+      "task": 232,
+      "generator_hash": "97999447",
+      "known_right": 266,
+      "known_wrong": 0,
+      "known_subsets": {
+        "train": {
+          "right": 3,
+          "wrong": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0
+        }
+      },
+      "fresh_right": 5000,
+      "fresh_wrong": 0,
+      "fresh_generation_errors": 0,
+      "classification": "A_row_local_finite_state",
+      "rule": "from the sole colored cell in each occupied row, alternate source color and gray 5 to the right"
+    },
+    {
+      "task": 369,
+      "generator_hash": "e8593010",
+      "known_right": 265,
+      "known_wrong": 0,
+      "known_subsets": {
+        "train": {
+          "right": 3,
+          "wrong": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0
+        },
+        "arc-gen": {
+          "right": 261,
+          "wrong": 0
+        }
+      },
+      "fresh_right": 5000,
+      "fresh_wrong": 0,
+      "fresh_generation_errors": 0,
+      "classification": "B_bounded_local_component",
+      "rule": "recolor each orthogonally connected black component by size: 1->3, 2->2, 3->1"
+    }
+  ],
+  "baselines": [
+    {
+      "task": 232,
+      "path": "scripts/golf/loop_7999_13/lane_b25/baseline_task232.onnx",
+      "sha256": "675073205692bd769bb45a2b4e3f8608ea68af838257974b2bf5f65c0fa552ad",
+      "actual_score": {
+        "memory": 0,
+        "params": 116,
+        "cost": 116,
+        "score": 20.246409808893635,
+        "correct": true
+      },
+      "max_einsum_inputs": 11,
+      "structure": {
+        "checks": {
+          "checker_full": true,
+          "strict_data_prop": true,
+          "canonical_io": true,
+          "standard_domains": true,
+          "no_functions_sparse_nested": true,
+          "no_banned_ops": true,
+          "no_giant_einsum": true,
+          "static_positive_shapes": true,
+          "no_external_initializers": true,
+          "finite_initializers": true,
+          "conv_bias_safe": true
+        },
+        "pass_before_runtime_shape": true,
+        "error": null
+      },
+      "runtime_shape": {
+        "declared_runtime_mismatches": [],
+        "shape_cloak": false,
+        "truthful_one_example_intermediate_bytes": 0
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        },
+        {
+          "mode": "default",
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        }
+      ],
+      "known_perfect": true,
+      "disabled_known_perfect": true
+    },
+    {
+      "task": 369,
+      "path": "scripts/golf/loop_7999_13/lane_b25/baseline_task369.onnx",
+      "sha256": "1630f7d64c2d7b99e107830d7639ff0b99b0eba0f1f33b09d0d411c7918e832e",
+      "actual_score": {
+        "memory": 128,
+        "params": 2,
+        "cost": 130,
+        "score": 20.132465549544417,
+        "correct": true
+      },
+      "max_einsum_inputs": 0,
+      "structure": {
+        "checks": {
+          "checker_full": true,
+          "strict_data_prop": true,
+          "canonical_io": true,
+          "standard_domains": true,
+          "no_functions_sparse_nested": true,
+          "no_banned_ops": true,
+          "no_giant_einsum": true,
+          "static_positive_shapes": true,
+          "no_external_initializers": true,
+          "finite_initializers": true,
+          "conv_bias_safe": true
+        },
+        "pass_before_runtime_shape": true,
+        "error": null
+      },
+      "runtime_shape": {
+        "declared_runtime_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "g",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "bg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "gb_le",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "gb_cast",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "black",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "btmp",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "up_2_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "down_2_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "left_2_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "right_2_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "np_ud_neg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "np_ud",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "np_ul_neg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "np_ul",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "np_ur_neg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "np_ur",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "not_or_lr",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "notV",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "snv",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "sn3",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "np_dr_neg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "np_dr",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "np_lr_neg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "np_lr",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "ndb0",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "ndb1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "notdeg2_black_neg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "deg2_le",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "deg2_core_le",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "du_2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "dd_2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "dd_2_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "dl_2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "dr_2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "dr_2_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "notdu",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "notdl",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "tr0",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "tr1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "tr2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "tr3",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "tr_not",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "tri_bool2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "dom_bool",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "false_bool",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "ch3_bool",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "bg_bool",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "du_2_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "dl_2_f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "black_bool",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "up_2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "down_2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "left_2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "right_2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "c31f",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              29,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "c31ch",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              29,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "sh_b_dr_both0",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "sh_b_dr_v1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              29
+            ]
+          },
+          {
+            "tensor": "sh_b_dr_h1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              31
+            ]
+          },
+          {
+            "tensor": "sh_g_ul_both0",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              31
+            ]
+          },
+          {
+            "tensor": "sh_g_ul_v1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              31
+            ]
+          },
+          {
+            "tensor": "sh_g_ul_h1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              29
+            ]
+          },
+          {
+            "tensor": "sh_core_dr_both0",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "sh_core_dr_v1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              29
+            ]
+          },
+          {
+            "tensor": "sh_core_dr_h1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              31
+            ]
+          },
+          {
+            "tensor": "sh_le_ul_both0",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              31
+            ]
+          },
+          {
+            "tensor": "sh_le_ul_v1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              31
+            ]
+          },
+          {
+            "tensor": "sh_le_ul_h1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              29
+            ]
+          }
+        ],
+        "shape_cloak": true,
+        "truthful_one_example_intermediate_bytes": 244820
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        },
+        {
+          "mode": "default",
+          "right": 0,
+          "wrong": 0,
+          "errors": 1,
+          "session_error": "Fail(\"[ONNXRuntimeError] : 1 : FAIL : Node (safe_name_20) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\")"
+        }
+      ],
+      "known_perfect": false,
+      "disabled_known_perfect": true
+    }
+  ],
+  "history": {
+    "232": {
+      "loose_files_seen": 564,
+      "distinct_hashes": 17,
+      "valid_static_below_baseline": [],
+      "equal_cost_hashes": [
+        {
+          "sha256": "675073205692bd769bb45a2b4e3f8608ea68af838257974b2bf5f65c0fa552ad",
+          "cost": 116,
+          "source": "artifacts/handcrafted/task232.onnx"
+        },
+        {
+          "sha256": "8222c05512afb904d4e4d68842f6b7f9cac89b828c1e17a27420cedb2f58c3cf",
+          "cost": 116,
+          "source": "others/2/7607/task232_margin_scaled.onnx"
+        },
+        {
+          "sha256": "e0ba2d8d051c5ba93249a5675b0cf2c2334a88eb22d38df2def5e6994317ea37",
+          "cost": 116,
+          "source": "others/2/7801/task232_canonical.onnx"
+        },
+        {
+          "sha256": "e53678d678c08c51e89291f53f34fff8df6386696657d22b3c2efcde16ecdef3",
+          "cost": 116,
+          "source": "others/2/1294/task232_improved.onnx"
+        },
+        {
+          "sha256": "e99a9751a3c2ba23d9132e5a748a1c578880a47c94d8a8e0cbd7dbe01295b1c3",
+          "cost": 116,
+          "source": "others/2/7801/submission_task232_score20.2464098/task232.onnx"
+        }
+      ]
+    },
+    "369": {
+      "loose_files_seen": 572,
+      "distinct_hashes": 24,
+      "valid_static_below_baseline": [],
+      "equal_cost_hashes": [
+        {
+          "sha256": "1630f7d64c2d7b99e107830d7639ff0b99b0eba0f1f33b09d0d411c7918e832e",
+          "cost": 130,
+          "source": "others/2/1200/task369_improved.onnx"
+        },
+        {
+          "sha256": "ab135223da6e94d736562eaeae2b6de360ae40b9d056e7f083cc64132558ed40",
+          "cost": 130,
+          "source": "others/7131/task369_cost130_rebuilt.onnx"
+        }
+      ]
+    }
+  },
+  "task232_probe_count": 134,
+  "task232_probe_known_survivors": 0,
+  "task232_rank3_training": {
+    "exhaustive_atomic_rows": 384,
+    "best_wrong_atomic_cells": 1761,
+    "candidate": "scripts/golf/loop_7999_13/lane_b25/task232_rank3_trained.onnx",
+    "decision": "reject_generator_exhaustive_atomic_gate"
+  },
+  "task369_decision": "reject all incumbent/tie families as shape-cloaked (the Wave16 incumbent also has one default-ORT session error); complete loose/archive history has no candidate below 130, and a truthful local-rule graph necessarily exposes nontrivial 30x30 intermediates",
+  "winners": [],
+  "verified_gain": 0.0,
+  "fresh5000_candidate_run": false,
+  "fresh5000_candidate_skip_reason": "No strictly cheaper candidate passed the complete known/generator-exhaustive gate; fresh5000 was run on both readable true rules."
+}

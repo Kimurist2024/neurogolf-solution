@@ -1,0 +1,53 @@
+{
+  "lane": "c15",
+  "baseline": "submission_base_7999.13.zip",
+  "baseline_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "audited_base_count": 7,
+  "audited_probe_count": 20,
+  "harvest_rows_screened": 10,
+  "retained_archive_candidates": 0,
+  "tasks": {
+    "112": {
+      "base_cost": 422,
+      "probe_costs": [354, 498, 15325, 422, 420, null],
+      "decision": "reject_all",
+      "reason": "The only known-correct cheaper probe costs 420, but default ORT cannot create a session, strict shape/data inference fails, and runtime tracing finds 11 false declarations including output [1,1,1,1] versus [1,10,30,30]. The cost-354/498 broadcast probes error on all 266 known cases, and the fully truthful spec control costs 15325."
+    },
+    "148": {
+      "base_cost": 265,
+      "probe_costs": [265, 264, 15402, 7708],
+      "decision": "reject_all",
+      "reason": "The sole cheaper probe costs 264 but is wrong on 5/266 known cases under both ORT modes. Known-complete truthful controls cost 7708 or 15402."
+    },
+    "212": {
+      "base_cost": 240,
+      "probe_costs": [4398],
+      "decision": "reject_all",
+      "reason": "The exact graph is already a memory-zero direct-output Einsum with 240 parameters. The truthful spec control costs 4398; prior exhaustive 123 axis collapses and all coupled rank-3 reductions failed fresh screening."
+    },
+    "301": {
+      "base_cost": 240,
+      "probe_costs": [1991],
+      "decision": "reject_all",
+      "reason": "The truthful spec control costs 1991. Harvest history contains only a cost-floor 1141 lineage and a 51-input giant-Einsum lineage; the only theoretical cost-239 sparse edit fails full shape inference."
+    },
+    "316": {
+      "base_cost": 246,
+      "probe_costs": [],
+      "decision": "reject_all",
+      "reason": "No retained or locally built sub-246 model exists. The historical model has static floor 406, and the only theoretical sparse projection reductions fail full ONNX shape inference before runtime."
+    },
+    "325": {
+      "base_cost": 235,
+      "probe_costs": [249, 249, 249, 2955, 253],
+      "decision": "reject_all",
+      "reason": "Every known-correct probe is more expensive than the exact base; the two cost-249 shift probes are wrong on all 266 known cases. Harvest candidates have static floors 253/295 or a 20-input giant Einsum."
+    },
+    "341": {
+      "base_cost": 260,
+      "probe_costs": [261, 260, 36256],
+      "decision": "reject_all",
+      "reason": "The cost-260 zero-carrier probe is wrong on all 266 known cases. Known-correct alternatives cost 261 and 36256, while history starts at static floors 280 and 1427."
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "lane": "c13",
+  "baseline": "submission_base_7999.13.zip",
+  "baseline_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "candidate_count": 46,
+  "tasks": {
+    "285": {
+      "base_cost": 8717,
+      "candidate_count": 8,
+      "candidate_costs": [8767, 8732, null, 8845, 8862, 8887, 8896, 9036],
+      "decision": "reject_all",
+      "reason": "Every runnable candidate costs more than the exact base; r03 has no supported TopK kernel. Several also fail default ORT or contain extensive declared/runtime shape mismatches."
+    },
+    "365": {
+      "base_cost": 1381,
+      "candidate_count": 3,
+      "candidate_costs": [1199, 1337, 1377],
+      "decision": "reject_all",
+      "reason": "All three cheaper candidates are known-complete but fail prior independent fresh samples. r01 additionally has four shape-cloak findings and previously scored 2559/3000; r03 has two large shape mismatches."
+    },
+    "370": {
+      "base_cost": 1011,
+      "candidate_count": 8,
+      "candidate_costs": [1316, 1322, 1352, 1385, 1376, 1965, 1634, 2018],
+      "decision": "reject_all",
+      "reason": "All retained candidates cost more than the exact base. The prior sound 14-tap rebuild also costs 2687, above the incumbent."
+    },
+    "378": {
+      "base_cost": 525,
+      "candidate_count": 8,
+      "candidate_costs": [543, 554, 546, 548, 529, 531, 594, 614],
+      "decision": "reject_all",
+      "reason": "Every candidate is known-complete under both runtimes but costs more than the exact base."
+    },
+    "382": {
+      "base_cost": 820,
+      "candidate_count": 8,
+      "candidate_costs": [808, 811, 814, 817, 818, 818, 818, 818],
+      "decision": "reject_all",
+      "reason": "r01/r02/r04-r08 are wrong on 12 of 266 known cases and fail all default-ORT cases. r03 is known-complete only with optimizations disabled, fails all default-ORT sessions, and has 23 declared/runtime shape mismatches including output 1x10x1x1 versus actual 1x10x30x30. r08 also has an unverifiable dynamic QLinearConv bias."
+    },
+    "394": {
+      "base_cost": 350,
+      "candidate_count": 8,
+      "candidate_costs": [177, 342, 20141, 348, 348, 351, 352, 355],
+      "decision": "reject_all",
+      "reason": "Every cheaper candidate fails known cases; the only known-complete candidates cost 351 or more (or 20141)."
+    },
+    "398": {
+      "base_cost": 350,
+      "candidate_count": 3,
+      "candidate_costs": [332, 332, 332],
+      "decision": "reject_all",
+      "reason": "All three cheaper candidates are wrong on all 268 known cases."
+    }
+  }
+}

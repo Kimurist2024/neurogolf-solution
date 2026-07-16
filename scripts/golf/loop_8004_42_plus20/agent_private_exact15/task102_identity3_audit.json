@@ -1,0 +1,847 @@
+{
+  "task": 102,
+  "lb_white_lineage": {
+    "archive": "submission_base_8004.50.zip",
+    "archive_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+    "member": "task102.onnx",
+    "member_sha256": "48d974a3aa19e409784595ec9ce076d5168974171abff37183165a918ea5e867",
+    "member_byte_length": 5999
+  },
+  "rewrite": [
+    {
+      "kind": "identity",
+      "index": 3,
+      "input": "k12hw",
+      "output": "n12hw",
+      "removed_initializers": [],
+      "proof": "Identity(x)=x for every tensor value and dtype; all consumers are rewired from the Identity output to the same input tensor."
+    }
+  ],
+  "base_structure": {
+    "checks": {
+      "checker_full": true,
+      "strict_data_prop": true,
+      "canonical_io": true,
+      "standard_domains": true,
+      "no_functions_sparse_nested": true,
+      "no_banned_ops": true,
+      "no_new_giant_einsum": true,
+      "static_positive": true,
+      "no_external_initializers": true,
+      "finite_initializers": true,
+      "conv_bias_ub0": true
+    },
+    "pass": true,
+    "error": null,
+    "cost": {
+      "memory": 105,
+      "params": 112,
+      "cost": 217
+    }
+  },
+  "candidate_structure": {
+    "checks": {
+      "checker_full": false,
+      "strict_data_prop": false,
+      "canonical_io": true,
+      "standard_domains": true,
+      "no_functions_sparse_nested": true,
+      "no_banned_ops": true,
+      "no_new_giant_einsum": true,
+      "static_positive": true,
+      "no_external_initializers": true,
+      "finite_initializers": true,
+      "conv_bias_ub0": true
+    },
+    "pass": false,
+    "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: x5u): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n",
+    "cost": null
+  },
+  "candidate_sha256": "555f18ee4bf11e4c634cd73db16fc5b04487535363a3c453cff6e6bfc4c251d6",
+  "candidate_byte_length": 5945,
+  "incumbent_measured_cost": {
+    "task": 102,
+    "memory": 381,
+    "params": 112,
+    "cost": 493
+  },
+  "candidate_measured_cost": null,
+  "candidate_measured_cost_status": "not_run_unless_mandatory_pre_fresh_gates_pass",
+  "known": {
+    "disable_all": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_42) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    },
+    "default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_20) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    }
+  },
+  "fresh": {},
+  "fresh_run": false,
+  "verdict": "REJECT",
+  "reasons": [
+    "candidate_structural_gate_failed",
+    "no_strict_cost_reduction",
+    "candidate_runtime_shapes_not_truthful",
+    "known_dual_not_raw_exact_and_100pct_correct"
+  ],
+  "static_cost": null,
+  "base_runtime_shapes": {
+    "shape_cloak": true,
+    "mismatch_count": 55,
+    "mismatches": [
+      {
+        "tensor": "x5u_pad29f",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          29,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "x5u_pad31u",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          29,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "x5u_crop1u",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "pre0_b",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "pre0_c",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "pre1_a",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "pre1_b",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "pre1_c",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "pre2_a",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "pre2_b",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "pre2_c",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "pre3_a",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "pre3_b",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "pre3_c",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "pre4_a",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "pre4_b",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "pre4_c",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "pre5_a",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "pre5_b",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "pre5_c",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "pre6_a",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "pre6_b",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "pre6_c",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "pre7_a",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "pre7_b",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "pre7_c",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "pre_final29",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "x5u",
+        "declared": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "runtime": [
+          1,
+          1,
+          12,
+          12
+        ]
+      },
+      {
+        "tensor": "s0",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "s1",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "s2",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "s3",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "s4",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "s5",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "s6",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "s7",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "s8",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "s9",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "s10",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "s11",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "s12",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "s13",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "s14",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "s15",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "s16",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "s17",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "s18",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "s19",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "s20",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          31,
+          31
+        ]
+      },
+      {
+        "tensor": "s21",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      }
+    ]
+  },
+  "candidate_runtime_shapes": {
+    "trace_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (x5u) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+  }
+}

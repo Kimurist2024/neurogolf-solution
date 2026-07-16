@@ -1,0 +1,1794 @@
+{
+  "lane": "agent_task118_rebuild_166",
+  "authority_zip_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "authority_task118_sha256": "a7c763ba3468863d1cebdf97522fc613052ab5d435af51b8d9035d413c096ab8",
+  "true_rule": {
+    "classification": "global bounded set-cover / non-injective inverse",
+    "pseudocode": [
+      "Input contains 0/5 static plus radius-2 or radius-3 crosses; visible cross cells over black are red2, hidden cells over gray appear gray5.",
+      "For radius2 then radius3, enumerate plus supports containing only red2/gray5 and use disjoint exact cover of every red2 cell.",
+      "On the chosen supports, change gray5 to cyan8; leave all other cells unchanged."
+    ]
+  },
+  "noninjective_witness": {
+    "generator_reachable": true,
+    "construction": "10x10 all-gray static, radius2, four identical center attempts; first accepted and remaining three rejected",
+    "center_a": [
+      3,
+      3
+    ],
+    "center_b": [
+      6,
+      6
+    ],
+    "same_input": true,
+    "different_outputs": true,
+    "input_sha256": "678cee05a3a5f51e325b3c41c81973d5088696ff9540124fd4829c455993005e",
+    "output_a_sha256": "1a8cd899843ae4f7feda5a6cf5dc90ccd243208bd6d635bb2195bfc7a4dd6b2e",
+    "output_b_sha256": "6ea3c03194d5a93c3d3c7956c5cb28b27c312c355ffe60eb8b29b1fe7f5b59b9",
+    "positive_probability": "all static gray, selected radius, grid size, and repeated attempted center each have positive generator probability",
+    "conclusion": "no deterministic input-only ONNX can be all-input equivalent"
+  },
+  "sakana_reference": {
+    "known": {
+      "right": 267,
+      "total": 267,
+      "failures": []
+    },
+    "fresh": [
+      {
+        "seed": 166118101,
+        "right": 4876,
+        "total": 5000,
+        "rate": 0.9752
+      },
+      {
+        "seed": 166118102,
+        "right": 4846,
+        "total": 5000,
+        "rate": 0.9692
+      }
+    ]
+  },
+  "models": {
+    "authority": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_task118_rebuild_166/baseline/task118.onnx",
+      "sha256": "a7c763ba3468863d1cebdf97522fc613052ab5d435af51b8d9035d413c096ab8",
+      "file_size": 6932,
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 46,
+        "initializer_count": 30,
+        "value_info_count": 46,
+        "op_histogram": {
+          "Cast": 1,
+          "CastLike": 1,
+          "CenterCropPad": 32,
+          "Gather": 1,
+          "Greater": 2,
+          "MaxPool": 1,
+          "QLinearConv": 3,
+          "Reshape": 1,
+          "Shape": 1,
+          "Split": 1,
+          "Where": 2
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_node_shape_trace": {
+        "traced": 47,
+        "actual_shapes": {
+          "__shape_seed_shape_118_0": [
+            1
+          ],
+          "ish": [
+            4
+          ],
+          "ihid": [
+            1,
+            5,
+            29,
+            29
+          ],
+          "x8": [
+            1,
+            5,
+            29,
+            29
+          ],
+          "shape_seed_x8_28x28": [
+            4
+          ],
+          "x8c_28x28": [
+            1,
+            4,
+            28,
+            28
+          ],
+          "shape_seed_x8_27x27": [
+            4
+          ],
+          "x8c_27x27": [
+            1,
+            4,
+            27,
+            27
+          ],
+          "shape_seed_x8_26x27": [
+            4
+          ],
+          "x8c_26x27": [
+            1,
+            4,
+            26,
+            27
+          ],
+          "shape_seed_x8_25x27": [
+            4
+          ],
+          "x8c_25x27": [
+            1,
+            4,
+            25,
+            27
+          ],
+          "shape_seed_x4tmp_26x24": [
+            4
+          ],
+          "x4tmp": [
+            1,
+            4,
+            26,
+            24
+          ],
+          "shape_seed_x4u_24x23": [
+            4
+          ],
+          "x4u": [
+            1,
+            4,
+            24,
+            23
+          ],
+          "shape_seed_cw4_dyn": [
+            4
+          ],
+          "cw4_dyn": [
+            2,
+            4,
+            7,
+            7
+          ],
+          "centers": [
+            1,
+            2,
+            21,
+            23
+          ],
+          "sums": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "sum2": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "sum3": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "choose3": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "choose3v": [
+            1
+          ],
+          "selidx": [
+            1
+          ],
+          "nmsbsel": [
+            1
+          ],
+          "nms1": [
+            1,
+            1,
+            21,
+            23
+          ],
+          "pw1": [
+            1,
+            1,
+            7,
+            7
+          ],
+          "paint": [
+            1,
+            1,
+            25,
+            27
+          ],
+          "shape_seed_red3_25x27": [
+            4
+          ],
+          "shape_seed_red2_25x27": [
+            4
+          ],
+          "shape_seed_red1_25x27": [
+            4
+          ],
+          "red3": [
+            1,
+            3,
+            25,
+            27
+          ],
+          "red2": [
+            1,
+            2,
+            25,
+            27
+          ],
+          "red1": [
+            1,
+            1,
+            25,
+            27
+          ],
+          "cond_core": [
+            1,
+            1,
+            25,
+            27
+          ],
+          "shape_seed_cond_26x28": [
+            4
+          ],
+          "condp_26x28": [
+            1,
+            1,
+            26,
+            28
+          ],
+          "shape_seed_cond_27x29": [
+            4
+          ],
+          "condp_27x29": [
+            1,
+            1,
+            27,
+            29
+          ],
+          "shape_seed_cond_28x30": [
+            4
+          ],
+          "condp_28x30": [
+            1,
+            1,
+            28,
+            30
+          ],
+          "shape_seed_cond_29x30": [
+            4
+          ],
+          "condp_29x30": [
+            1,
+            1,
+            29,
+            30
+          ],
+          "shape_seed_cond_30x30": [
+            4
+          ],
+          "cond": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 37,
+        "mismatches": [
+          {
+            "name": "ish",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "ihid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              5,
+              29,
+              29
+            ]
+          },
+          {
+            "name": "x8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              5,
+              29,
+              29
+            ]
+          },
+          {
+            "name": "shape_seed_x8_28x28",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "x8c_28x28",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              28,
+              28
+            ]
+          },
+          {
+            "name": "shape_seed_x8_27x27",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "x8c_27x27",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              27,
+              27
+            ]
+          },
+          {
+            "name": "shape_seed_x8_26x27",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "x8c_26x27",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              26,
+              27
+            ]
+          },
+          {
+            "name": "shape_seed_x8_25x27",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "x8c_25x27",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              25,
+              27
+            ]
+          },
+          {
+            "name": "shape_seed_x4tmp_26x24",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "x4tmp",
+            "declared": [
+              1,
+              4,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              26,
+              24
+            ]
+          },
+          {
+            "name": "shape_seed_x4u_24x23",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "x4u",
+            "declared": [
+              1,
+              4,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              24,
+              23
+            ]
+          },
+          {
+            "name": "shape_seed_cw4_dyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "cw4_dyn",
+            "declared": [
+              2,
+              4,
+              1,
+              1
+            ],
+            "actual": [
+              2,
+              4,
+              7,
+              7
+            ]
+          },
+          {
+            "name": "centers",
+            "declared": [
+              1,
+              2,
+              4,
+              7
+            ],
+            "actual": [
+              1,
+              2,
+              21,
+              23
+            ]
+          },
+          {
+            "name": "nms1",
+            "declared": [
+              1,
+              1,
+              4,
+              7
+            ],
+            "actual": [
+              1,
+              1,
+              21,
+              23
+            ]
+          },
+          {
+            "name": "paint",
+            "declared": [
+              1,
+              1,
+              8,
+              11
+            ],
+            "actual": [
+              1,
+              1,
+              25,
+              27
+            ]
+          },
+          {
+            "name": "shape_seed_red3_25x27",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "shape_seed_red2_25x27",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "shape_seed_red1_25x27",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "red3",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              3,
+              25,
+              27
+            ]
+          },
+          {
+            "name": "red2",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              25,
+              27
+            ]
+          },
+          {
+            "name": "red1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              25,
+              27
+            ]
+          },
+          {
+            "name": "cond_core",
+            "declared": [
+              1,
+              1,
+              8,
+              11
+            ],
+            "actual": [
+              1,
+              1,
+              25,
+              27
+            ]
+          },
+          {
+            "name": "shape_seed_cond_26x28",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "condp_26x28",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              26,
+              28
+            ]
+          },
+          {
+            "name": "shape_seed_cond_27x29",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "condp_27x29",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              27,
+              29
+            ]
+          },
+          {
+            "name": "shape_seed_cond_28x30",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "condp_28x30",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              28,
+              30
+            ]
+          },
+          {
+            "name": "shape_seed_cond_29x30",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "condp_29x30",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              30
+            ]
+          },
+          {
+            "name": "shape_seed_cond_30x30",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "cond",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "competition_actual": {
+        "scoring": {
+          "memory": 3031,
+          "params": 634,
+          "cost": 3665,
+          "score": 16.793416385679247,
+          "correct": true
+        },
+        "team_validator": {
+          "task": 118,
+          "source": "authority",
+          "sha256": "a7c763ba3468863d1cebdf97522fc613052ab5d435af51b8d9035d413c096ab8",
+          "serialized_size": 6932,
+          "valid": true,
+          "preflight_ok": true,
+          "known": {
+            "right": 267,
+            "wrong": 0,
+            "skipped": 0,
+            "errors": 0,
+            "total_seen": 267
+          },
+          "memory": 3031,
+          "params": 634,
+          "cost": 3665,
+          "score": 16.793416385679247,
+          "node_count": 46,
+          "initializer_count": 30,
+          "error": "",
+          "warnings": [],
+          "failures": []
+        },
+        "costs_agree": true
+      },
+      "known_four_modes": {
+        "default": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        },
+        "disabled": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        },
+        "minimal": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        },
+        "extended": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        }
+      },
+      "fresh_5000_four_modes": {
+        "seed": 166118001,
+        "count": 5000,
+        "generation_errors": 0,
+        "modes": {
+          "default": {
+            "right": 4319,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 11,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.8638,
+            "pass90": false
+          },
+          "disabled": {
+            "right": 4319,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 11,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.8638,
+            "pass90": false
+          },
+          "minimal": {
+            "right": 4319,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 11,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.8638,
+            "pass90": false
+          },
+          "extended": {
+            "right": 4319,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 11,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.8638,
+            "pass90": false
+          }
+        }
+      },
+      "accepted": false,
+      "reasons": []
+    },
+    "observable_rule": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_task118_rebuild_166/candidates/task118_observable_rule.onnx",
+      "sha256": "80b7f06359c55acf371d10759b3eeabf982d033c3dca959e4e222c348fe1ff79",
+      "file_size": 1382,
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 17,
+        "initializer_count": 11,
+        "value_info_count": 0,
+        "op_histogram": {
+          "Cast": 2,
+          "Conv": 1,
+          "Equal": 1,
+          "Gather": 2,
+          "Greater": 2,
+          "MaxPool": 1,
+          "Pad": 1,
+          "QLinearConv": 2,
+          "ReduceMax": 1,
+          "Reshape": 1,
+          "Split": 1,
+          "Where": 2
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_node_shape_trace": {
+        "traced": 18,
+        "actual_shapes": {
+          "code": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "u": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "centers": [
+            1,
+            2,
+            21,
+            25
+          ],
+          "sums": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "sum2": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "sum3": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "choose3": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "choose3v": [
+            1
+          ],
+          "selidx": [
+            1
+          ],
+          "center1": [
+            1,
+            1,
+            21,
+            25
+          ],
+          "mx1": [
+            1,
+            1,
+            21,
+            25
+          ],
+          "keep1": [
+            1,
+            1,
+            21,
+            25
+          ],
+          "nms1": [
+            1,
+            1,
+            21,
+            25
+          ],
+          "pw1": [
+            1,
+            1,
+            7,
+            7
+          ],
+          "paint": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "cond": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "finalcond30": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 0,
+        "mismatches": [],
+        "nonfinite_values": 0,
+        "truthful": true
+      },
+      "competition_actual": {
+        "scoring": {
+          "memory": 9009,
+          "params": 133,
+          "cost": 9142,
+          "score": 15.87936554110831,
+          "correct": true
+        },
+        "team_validator": {
+          "task": 118,
+          "source": "observable_rule",
+          "sha256": "80b7f06359c55acf371d10759b3eeabf982d033c3dca959e4e222c348fe1ff79",
+          "serialized_size": 1382,
+          "valid": true,
+          "preflight_ok": true,
+          "known": {
+            "right": 267,
+            "wrong": 0,
+            "skipped": 0,
+            "errors": 0,
+            "total_seen": 267
+          },
+          "memory": 9009,
+          "params": 133,
+          "cost": 9142,
+          "score": 15.87936554110831,
+          "node_count": 17,
+          "initializer_count": 11,
+          "error": "",
+          "warnings": [],
+          "failures": []
+        },
+        "costs_agree": true
+      },
+      "known_four_modes": {
+        "default": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        },
+        "disabled": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        },
+        "minimal": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        },
+        "extended": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        }
+      },
+      "fresh_5000_four_modes": {
+        "seed": 166118001,
+        "count": 5000,
+        "generation_errors": 0,
+        "modes": {
+          "default": {
+            "right": 4814,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 33,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.9628,
+            "pass90": true
+          },
+          "disabled": {
+            "right": 4814,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 33,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.9628,
+            "pass90": true
+          },
+          "minimal": {
+            "right": 4814,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 33,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.9628,
+            "pass90": true
+          },
+          "extended": {
+            "right": 4814,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 33,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.9628,
+            "pass90": true
+          }
+        }
+      },
+      "accepted": false,
+      "reasons": [
+        "not_strict_lower_than_3665",
+        "private_zero_guarantee_not_closed_noninjective_generator"
+      ]
+    },
+    "full_roi_control": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_task118_rebuild_166/candidates/task118_full_roi_control.onnx",
+      "sha256": "bbb06e421d5c89d1c4ce244c6fb79345a4e16514620cdf0d3f07a36e17eb8fd7",
+      "file_size": 3673,
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 56,
+        "initializer_count": 23,
+        "value_info_count": 0,
+        "op_histogram": {
+          "And": 11,
+          "Cast": 7,
+          "Conv": 6,
+          "Greater": 8,
+          "GreaterOrEqual": 2,
+          "Less": 1,
+          "Max": 2,
+          "MaxPool": 6,
+          "Not": 2,
+          "Or": 2,
+          "Pad": 3,
+          "ReduceMax": 1,
+          "Slice": 2,
+          "Where": 3
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_node_shape_trace": {
+        "traced": 56,
+        "actual_shapes": {
+          "red_f": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "gray_f": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "red_b": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "gray_b": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "comp_b": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "red_i": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "ok_i": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "okpadA": [
+            1,
+            1,
+            29,
+            32
+          ],
+          "aseA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "aokA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "cokA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "scrA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "qualA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "validA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "scruA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "scoreA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "bmA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "rmA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "cmA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "fmaxA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "ismaxA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "keepA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "keepfA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "csA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "covA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "paintA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "ncovA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "urA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "urfA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "urcA": [],
+          "okpadB": [
+            1,
+            1,
+            31,
+            34
+          ],
+          "aseB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "aokB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "cokB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "scrB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "qualB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "validB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "scruB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "scoreB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "bmB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "rmB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "cmB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "fmaxB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "ismaxB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "keepB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "keepfB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "csB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "covB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "paintB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "usep2": [],
+          "usep3": [],
+          "selA": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "selB": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "paintsel": [
+            1,
+            1,
+            25,
+            28
+          ],
+          "paint30": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 0,
+        "mismatches": [],
+        "nonfinite_values": 0,
+        "truthful": true
+      },
+      "competition_actual": {
+        "scoring": {
+          "memory": 51068,
+          "params": 282,
+          "cost": 51350,
+          "score": 14.153579784643295,
+          "correct": true
+        },
+        "team_validator": {
+          "task": 118,
+          "source": "full_roi_control",
+          "sha256": "bbb06e421d5c89d1c4ce244c6fb79345a4e16514620cdf0d3f07a36e17eb8fd7",
+          "serialized_size": 3673,
+          "valid": true,
+          "preflight_ok": true,
+          "known": {
+            "right": 267,
+            "wrong": 0,
+            "skipped": 0,
+            "errors": 0,
+            "total_seen": 267
+          },
+          "memory": 51068,
+          "params": 282,
+          "cost": 51350,
+          "score": 14.153579784643295,
+          "node_count": 56,
+          "initializer_count": 23,
+          "error": "",
+          "warnings": [],
+          "failures": []
+        },
+        "costs_agree": true
+      },
+      "known_four_modes": {
+        "default": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        },
+        "disabled": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        },
+        "minimal": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        },
+        "extended": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "nonfinite": 0,
+          "near_positive": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "pass": true,
+          "raw_equal_to_disabled": 267,
+          "sign_equal_to_disabled": 267
+        }
+      },
+      "fresh_5000_four_modes": {
+        "seed": 166118001,
+        "count": 5000,
+        "generation_errors": 0,
+        "modes": {
+          "default": {
+            "right": 4833,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 59,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.9666,
+            "pass90": true
+          },
+          "disabled": {
+            "right": 4833,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 59,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.9666,
+            "pass90": true
+          },
+          "minimal": {
+            "right": 4833,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 59,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.9666,
+            "pass90": true
+          },
+          "extended": {
+            "right": 4833,
+            "errors": 0,
+            "nonfinite": 0,
+            "near_positive": 0,
+            "raw_equal_to_disabled": 5000,
+            "sign_equal_to_disabled": 5000,
+            "first_failure": {
+              "case": 59,
+              "error": "threshold_mismatch"
+            },
+            "rate": 0.9666,
+            "pass90": true
+          }
+        }
+      },
+      "accepted": false,
+      "reasons": [
+        "not_strict_lower_than_3665",
+        "private_zero_guarantee_not_closed_noninjective_generator"
+      ]
+    }
+  },
+  "winners": [],
+  "projected_gain": 0.0,
+  "root_before": {
+    "submission": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+  },
+  "architecture_floor": {
+    "observable_rule_decode_f32": 2800,
+    "observable_rule_cast_u8": 700,
+    "subtotal_before_detection": 3500,
+    "authority_cost": 3665,
+    "explanation": "truthful Conv color-code plus required uint8 cast already consumes 3500 activation bytes; parameters and any center/detection tensor force cost above authority"
+  },
+  "root_after": {
+    "submission": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+  },
+  "root_unchanged": true
+}

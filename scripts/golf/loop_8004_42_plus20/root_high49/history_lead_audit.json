@@ -1,0 +1,6336 @@
+{
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00"
+  },
+  "targets": [
+    37,
+    297,
+    14,
+    92,
+    398,
+    218,
+    132,
+    388
+  ],
+  "baseline_rows": [
+    {
+      "task": 37,
+      "sha256": "ed757e114a4471ab5851c6b2a31d0ad5a79b01b7ab6d9c160abd2746c5d873dc",
+      "actual_cost": {
+        "memory": 368,
+        "params": 6,
+        "cost": 374,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "CastLike": 17,
+          "CenterCropPad": 76,
+          "Concat": 1,
+          "ConstantOfShape": 5,
+          "HardSigmoid": 26,
+          "LessOrEqual": 5,
+          "PRelu": 17,
+          "ReduceL1": 1,
+          "ReduceLogSum": 1,
+          "Selu": 4
+        },
+        "node_count": 153,
+        "initializer_count": 5,
+        "max_node_inputs": 2,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 368,
+          "params": 6,
+          "cost": 374
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_colors' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,30,30} != {1,9,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 297,
+      "sha256": "cdba3d03bf43853742508f284bf98ca5341fdb2ab50042ec895afb0069296537",
+      "actual_cost": {
+        "memory": 320,
+        "params": 51,
+        "cost": 371,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 5,
+          "Concat": 14,
+          "Conv": 1,
+          "Mul": 1,
+          "QLinearConv": 1,
+          "QLinearMatMul": 1,
+          "Sign": 1,
+          "Split": 1,
+          "Where": 18
+        },
+        "node_count": 43,
+        "initializer_count": 9,
+        "max_node_inputs": 13,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 320,
+          "params": 51,
+          "cost": 371
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 14,
+      "sha256": "ec765b010bbb71a84ab9b8090f8f59d508ec811c8144fa1d6ff1ff5e9a07d3a0",
+      "actual_cost": {
+        "memory": 155,
+        "params": 48,
+        "cost": 203,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 5,
+          "ArgMax": 1,
+          "BatchNormalization": 3,
+          "Cast": 1,
+          "CastLike": 14,
+          "Ceil": 2,
+          "Concat": 2,
+          "Div": 4,
+          "Einsum": 4,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 2,
+          "ReduceL1": 2,
+          "ReduceMax": 1,
+          "ReduceMean": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sqrt": 2,
+          "Sub": 5
+        },
+        "node_count": 56,
+        "initializer_count": 7,
+        "max_node_inputs": 5,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 146,
+          "params": 48,
+          "cost": 194
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 15,
+          "mismatches": [
+            {
+              "tensor": "selector_f",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "masked_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "masked_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_h",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "counts",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "selector_b",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "mask_h",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "mask_crop_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "mask_crop_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "labels_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "zero_f_full",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 92,
+      "sha256": "9b523eaebebbe65965fc0910575decccf661aaab3d850a789529bbcc00027047",
+      "actual_cost": {
+        "memory": 301,
+        "params": 65,
+        "cost": 366,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "CastLike": 18,
+          "CenterCropPad": 2,
+          "Div": 1,
+          "Einsum": 3,
+          "GreaterOrEqual": 2,
+          "LessOrEqual": 4,
+          "MaxPool": 1,
+          "Mod": 2,
+          "Shape": 1,
+          "Sub": 2,
+          "Where": 4
+        },
+        "node_count": 40,
+        "initializer_count": 5,
+        "max_node_inputs": 10,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 76,
+          "params": 65,
+          "cost": 141
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_col_le_f32' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,1,1} != {1,10,30,1}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 398,
+      "sha256": "5a9ff2fb8fd5efed49a3dd1790973b2386bbd636a2eb33e02fc663c93198d25a",
+      "actual_cost": {
+        "memory": 144,
+        "params": 203,
+        "cost": 347,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Concat": 1,
+          "Div": 1,
+          "Einsum": 2,
+          "Resize": 1
+        },
+        "node_count": 5,
+        "initializer_count": 11,
+        "max_node_inputs": 69,
+        "giant_einsum": [
+          {
+            "index": 4,
+            "inputs": 69
+          }
+        ],
+        "huge_fanin": [
+          {
+            "index": 4,
+            "op": "Einsum",
+            "inputs": 69
+          }
+        ],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 144,
+          "params": 203,
+          "cost": 347
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 218,
+      "sha256": "6740bffa1e0434430c998a6a7b1b05251258071f2b741b362d00c53d86934113",
+      "actual_cost": {
+        "memory": 260,
+        "params": 69,
+        "cost": 329,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 4,
+          "CastLike": 1,
+          "Concat": 1,
+          "Flatten": 1,
+          "Gather": 2,
+          "GroupNormalization": 1,
+          "Mul": 3,
+          "QLinearConv": 4,
+          "TopK": 2,
+          "Where": 2
+        },
+        "node_count": 21,
+        "initializer_count": 11,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 260,
+          "params": 69,
+          "cost": 329
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 2,
+          "mismatches": [
+            {
+              "tensor": "gn",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "qi",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 132,
+      "sha256": "79d66229975dff1e120f1d5b28ffa46212a0a70d17ffc35931e61ab2f85d57bb",
+      "actual_cost": {
+        "memory": 0,
+        "params": 312,
+        "cost": 312,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 7,
+        "max_node_inputs": 47,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 47
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 312,
+          "cost": 312
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 388,
+      "sha256": "f4450fa21dfce9e893c6b70646d43590ff60fb02b3d6a21856c97438061945b3",
+      "actual_cost": {
+        "memory": 71,
+        "params": 20,
+        "cost": 91,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "ArgMax": 1,
+          "CastLike": 7,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "GroupNormalization": 1,
+          "MaxPool": 1,
+          "ReduceL2": 1,
+          "ReduceMin": 1,
+          "ScatterElements": 1,
+          "Shape": 1,
+          "Slice": 1,
+          "Tile": 1,
+          "Where": 2
+        },
+        "node_count": 20,
+        "initializer_count": 11,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 62,
+          "params": 20,
+          "cost": 82
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 14,
+          "mismatches": [
+            {
+              "tensor": "gn",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "q",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "qb",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "background",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "all_bg",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "stripe",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "tile_ids",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "ids",
+              "declared": [
+                1,
+                1,
+                2,
+                2
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "idx_i8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "ids_hid",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "presence",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "updates_float",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      }
+    }
+  ],
+  "lead_rows": [
+    {
+      "task": 37,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task037_r01_static322.onnx",
+      "sha256": "a30986e473f6a705538e7d870bced37406108b380ced2d11ebc422a61702165c",
+      "reported_static_cost": 322,
+      "baseline_actual_cost": 374,
+      "actual_cost": {
+        "memory": 437662,
+        "params": 6,
+        "cost": 437668,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "And": 16,
+          "Cast": 12,
+          "CastLike": 5,
+          "CenterCropPad": 76,
+          "Concat": 1,
+          "ConstantOfShape": 5,
+          "Equal": 10,
+          "HardSigmoid": 4,
+          "Identity": 4,
+          "LessOrEqual": 3,
+          "Not": 12,
+          "Or": 2,
+          "PRelu": 1,
+          "ReduceL1": 1,
+          "ReduceLogSum": 1
+        },
+        "node_count": 153,
+        "initializer_count": 5,
+        "max_node_inputs": 2,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 316,
+          "params": 6,
+          "cost": 322
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_colors' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,30,30} != {1,9,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_38) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      }
+    },
+    {
+      "task": 37,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task037_r02_static334.onnx",
+      "sha256": "65649bfaa5f8a81bcbac24f6f8be2c61bed4940cc10c7764b4d33225fe1c83d0",
+      "reported_static_cost": 334,
+      "baseline_actual_cost": 374,
+      "actual_cost": {
+        "memory": 328,
+        "params": 6,
+        "cost": 334,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "CastLike": 13,
+          "CenterCropPad": 76,
+          "Concat": 1,
+          "ConstantOfShape": 5,
+          "HardSigmoid": 24,
+          "LessOrEqual": 1,
+          "Max": 4,
+          "Min": 4,
+          "PRelu": 1,
+          "ReduceL1": 1,
+          "ReduceLogSum": 1
+        },
+        "node_count": 131,
+        "initializer_count": 5,
+        "max_node_inputs": 5,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 328,
+          "params": 6,
+          "cost": 334
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_colors' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,30,30} != {1,9,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "runtime",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,9,31,29} != {1,9,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_38) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      }
+    },
+    {
+      "task": 37,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task037_r03_static372.onnx",
+      "sha256": "8446b66c7a2fe45bda3522389c7a4eebf9247697a0840aa7037de23d29966d4e",
+      "reported_static_cost": 372,
+      "baseline_actual_cost": 374,
+      "actual_cost": {
+        "memory": 366,
+        "params": 6,
+        "cost": 372,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "CastLike": 17,
+          "CenterCropPad": 76,
+          "Concat": 1,
+          "ConstantOfShape": 5,
+          "HardSigmoid": 26,
+          "LessOrEqual": 5,
+          "PRelu": 17,
+          "ReduceL1": 1,
+          "ReduceLogSum": 1,
+          "Selu": 4
+        },
+        "node_count": 153,
+        "initializer_count": 5,
+        "max_node_inputs": 2,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 366,
+          "params": 6,
+          "cost": 372
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_colors' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,30,30} != {1,9,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "runtime",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Mul node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,9,29,31} != {1,9,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_16) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      }
+    },
+    {
+      "task": 297,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task297_r01_static361.onnx",
+      "sha256": "5b1b2dbc6f86a3f1658b092b7d2c296f46852489258d7a7bf3d50f08d796365e",
+      "reported_static_cost": 361,
+      "baseline_actual_cost": 371,
+      "actual_cost": {
+        "memory": 320,
+        "params": 41,
+        "cost": 361,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 5,
+          "Concat": 14,
+          "Conv": 1,
+          "Mul": 1,
+          "QLinearConv": 1,
+          "QLinearMatMul": 1,
+          "Sign": 1,
+          "Split": 1,
+          "Where": 18
+        },
+        "node_count": 43,
+        "initializer_count": 9,
+        "max_node_inputs": 13,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 320,
+          "params": 41,
+          "cost": 361
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      }
+    },
+    {
+      "task": 297,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task297_r02_static370.onnx",
+      "sha256": "1cbc4e784f62d44a278999408f527082c4db225a9993a024fd7815deff83643d",
+      "reported_static_cost": 370,
+      "baseline_actual_cost": 371,
+      "actual_cost": {
+        "memory": 320,
+        "params": 50,
+        "cost": 370,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 5,
+          "Concat": 14,
+          "Conv": 1,
+          "Mul": 1,
+          "QLinearConv": 1,
+          "QLinearMatMul": 1,
+          "Sign": 1,
+          "Split": 1,
+          "Where": 18
+        },
+        "node_count": 43,
+        "initializer_count": 8,
+        "max_node_inputs": 13,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 320,
+          "params": 50,
+          "cost": 370
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 265,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 265,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 297,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task297_r03_static370.onnx",
+      "sha256": "2025d79aec6778b904bcb9ee51544fec7493152a517c53fd3f191705dbe6e4be",
+      "reported_static_cost": 370,
+      "baseline_actual_cost": 371,
+      "actual_cost": {
+        "memory": 320,
+        "params": 50,
+        "cost": 370,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 5,
+          "Concat": 14,
+          "Conv": 1,
+          "Mul": 1,
+          "QLinearConv": 1,
+          "QLinearMatMul": 1,
+          "Sign": 1,
+          "Split": 1,
+          "Where": 18
+        },
+        "node_count": 43,
+        "initializer_count": 8,
+        "max_node_inputs": 13,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 320,
+          "params": 50,
+          "cost": 370
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 265,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 265,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 297,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task297_r04_static370.onnx",
+      "sha256": "29edbf959fb570e0bc5ff16dd134967f576eec312e2fae855948eb45f8867305",
+      "reported_static_cost": 370,
+      "baseline_actual_cost": 371,
+      "actual_cost": {
+        "memory": 320,
+        "params": 50,
+        "cost": 370,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 5,
+          "Concat": 14,
+          "Conv": 1,
+          "Mul": 1,
+          "QLinearConv": 1,
+          "QLinearMatMul": 1,
+          "Sign": 1,
+          "Split": 1,
+          "Where": 18
+        },
+        "node_count": 43,
+        "initializer_count": 8,
+        "max_node_inputs": 13,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 320,
+          "params": 50,
+          "cost": 370
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 2,
+          "wrong": 263,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 2,
+          "wrong": 263,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 297,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task297_r05_static370.onnx",
+      "sha256": "47dd1ad216ad49bfc8463b18db47d600f566513a192cb24df1abf9b61900a60f",
+      "reported_static_cost": 370,
+      "baseline_actual_cost": 371,
+      "actual_cost": {
+        "memory": 320,
+        "params": 50,
+        "cost": 370,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 5,
+          "Concat": 14,
+          "Conv": 1,
+          "Mul": 1,
+          "QLinearConv": 1,
+          "QLinearMatMul": 1,
+          "Sign": 1,
+          "Split": 1,
+          "Where": 18
+        },
+        "node_count": 43,
+        "initializer_count": 8,
+        "max_node_inputs": 13,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 320,
+          "params": 50,
+          "cost": 370
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 265,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 265,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 14,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task014_r01_static156.onnx",
+      "sha256": "81f117411bb7238591a16338a81ce8b95b5cf20d5e2dfe0b82bb864ab0784801",
+      "reported_static_cost": 156,
+      "baseline_actual_cost": 203,
+      "actual_cost": {
+        "memory": 1100,
+        "params": 22,
+        "cost": 1122,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 3,
+          "ArgMax": 5,
+          "BatchNormalization": 1,
+          "Cast": 1,
+          "CastLike": 13,
+          "Concat": 2,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "ReduceL1": 2,
+          "ReduceMax": 3,
+          "ReduceMean": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sub": 1
+        },
+        "node_count": 39,
+        "initializer_count": 8,
+        "max_node_inputs": 5,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 134,
+          "params": 22,
+          "cost": 156
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 16,
+          "mismatches": [
+            {
+              "tensor": "selector_f",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "masked_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "masked_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "row_occ",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "col_occ",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "mask_crop_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "mask_crop_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "labels_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "zero_f_full",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_h",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "counts",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "selector_b",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      }
+    },
+    {
+      "task": 14,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task014_r02_static160.onnx",
+      "sha256": "37fb1d30d39c3b36f30aedc194636c8a8552d5b03e7ce3d800235e9ee1315261",
+      "reported_static_cost": 160,
+      "baseline_actual_cost": 203,
+      "actual_cost": {
+        "memory": 1122,
+        "params": 22,
+        "cost": 1144,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 4,
+          "ArgMax": 5,
+          "Cast": 1,
+          "CastLike": 13,
+          "Concat": 2,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 1,
+          "ReduceMax": 3,
+          "ReduceMean": 1,
+          "ReduceSum": 2,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sub": 1
+        },
+        "node_count": 40,
+        "initializer_count": 8,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 138,
+          "params": 22,
+          "cost": 160
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 16,
+          "mismatches": [
+            {
+              "tensor": "selector_f",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "masked_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "masked_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "row_occ",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "col_occ",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "mask_crop_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "mask_crop_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "labels_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "zero_f_full",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_h",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "counts",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "selector_b",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      }
+    },
+    {
+      "task": 14,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task014_r03_static160.onnx",
+      "sha256": "7219214bd69a08e104a414016708449abd89de5d39a4e073daf90fac08a70fcf",
+      "reported_static_cost": 160,
+      "baseline_actual_cost": 203,
+      "actual_cost": {
+        "memory": 1104,
+        "params": 22,
+        "cost": 1126,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 4,
+          "ArgMax": 5,
+          "Cast": 1,
+          "CastLike": 13,
+          "Concat": 2,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 1,
+          "ReduceL1": 2,
+          "ReduceMax": 3,
+          "ReduceMean": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Sub": 1
+        },
+        "node_count": 40,
+        "initializer_count": 8,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 138,
+          "params": 22,
+          "cost": 160
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 16,
+          "mismatches": [
+            {
+              "tensor": "selector_f",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "masked_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "masked_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "row_occ",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "col_occ",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "mask_crop_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "mask_crop_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "labels_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "zero_f_full",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_h",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "counts",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "selector_b",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      }
+    },
+    {
+      "task": 14,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task014_r04_static170.onnx",
+      "sha256": "9db11baeddba26d2dd1d61386c770037559ebf486d6c1e0e8b9299903025962e",
+      "reported_static_cost": 170,
+      "baseline_actual_cost": 203,
+      "actual_cost": {
+        "memory": 1131,
+        "params": 23,
+        "cost": 1154,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 4,
+          "ArgMax": 5,
+          "CastLike": 14,
+          "CenterCropPad": 1,
+          "Concat": 2,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 1,
+          "ReduceMax": 3,
+          "ReduceMean": 1,
+          "ReduceSum": 2,
+          "ScatterElements": 1,
+          "Shape": 1,
+          "Slice": 1,
+          "Sub": 1
+        },
+        "node_count": 42,
+        "initializer_count": 9,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 147,
+          "params": 23,
+          "cost": 170
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 17,
+          "mismatches": [
+            {
+              "tensor": "selector_hid",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "selector_f",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "masked_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "masked_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "row_occ",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "col_occ",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "mask_crop_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "mask_crop_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "labels_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "zero_f_full",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_h",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "counts",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "selector_b",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 14,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task014_r05_static192.onnx",
+      "sha256": "891df92a85641597201209128cfe0f17162859e1681b47fbf4d417c44e68cd32",
+      "reported_static_cost": 192,
+      "baseline_actual_cost": 203,
+      "actual_cost": {
+        "memory": 181,
+        "params": 20,
+        "cost": 201,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Add": 5,
+          "ArgMax": 1,
+          "BatchNormalization": 3,
+          "Cast": 2,
+          "CastLike": 14,
+          "Ceil": 2,
+          "Concat": 2,
+          "Div": 4,
+          "Einsum": 4,
+          "Equal": 1,
+          "GroupNormalization": 4,
+          "Mul": 2,
+          "Range": 1,
+          "ReduceL1": 2,
+          "ReduceMax": 2,
+          "ReduceMean": 1,
+          "ScatterElements": 1,
+          "Shape": 1,
+          "Slice": 1,
+          "Sqrt": 2,
+          "Sub": 5
+        },
+        "node_count": 60,
+        "initializer_count": 8,
+        "max_node_inputs": 5,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 172,
+          "params": 20,
+          "cost": 192
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 17,
+          "mismatches": [
+            {
+              "tensor": "selector_f",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "masked_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "masked_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fg_h",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "counts",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "selector_b",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "mask_h",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "mask_crop_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "mask_crop_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "labels_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "zero_f_full",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "coord_i64",
+              "declared": [
+                1
+              ],
+              "runtime": [
+                30
+              ]
+            },
+            {
+              "tensor": "coord_h",
+              "declared": [
+                1
+              ],
+              "runtime": [
+                30
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "runtime",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Range node. Name:'safe_name_23' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1} != {30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          }
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      }
+    },
+    {
+      "task": 92,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task092_r01_static186.onnx",
+      "sha256": "3290daeb273bc1c40dc6e1233e7229bb3a46165459c3e13ba8c3b8438a68fbe4",
+      "reported_static_cost": 186,
+      "baseline_actual_cost": 366,
+      "actual_cost": {
+        "memory": 318,
+        "params": 75,
+        "cost": 393,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "CastLike": 17,
+          "CenterCropPad": 5,
+          "Div": 1,
+          "Einsum": 3,
+          "Equal": 1,
+          "GreaterOrEqual": 2,
+          "LessOrEqual": 2,
+          "MaxPool": 1,
+          "Mod": 2,
+          "Shape": 2,
+          "Sub": 2,
+          "Where": 4
+        },
+        "node_count": 42,
+        "initializer_count": 6,
+        "max_node_inputs": 10,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 111,
+          "params": 75,
+          "cost": 186
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_col_le_f32' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,1,1} != {1,10,30,1}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 265,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "runtime",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_safe_name_32' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,10,1,1}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          }
+        }
+      }
+    },
+    {
+      "task": 92,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task092_r02_static197.onnx",
+      "sha256": "547349c0f95f7b93126f9f9eaf974436da0937509580e815dfbe75359de9d7b7",
+      "reported_static_cost": 197,
+      "baseline_actual_cost": 366,
+      "actual_cost": {
+        "memory": 318,
+        "params": 86,
+        "cost": 404,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "CastLike": 17,
+          "CenterCropPad": 5,
+          "Div": 1,
+          "Einsum": 3,
+          "Equal": 1,
+          "GreaterOrEqual": 2,
+          "LessOrEqual": 2,
+          "MaxPool": 1,
+          "Mod": 2,
+          "Shape": 2,
+          "Sub": 2,
+          "Where": 4
+        },
+        "node_count": 42,
+        "initializer_count": 6,
+        "max_node_inputs": 10,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 111,
+          "params": 86,
+          "cost": 197
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_col_le_f32' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,1,1} != {1,10,30,1}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 265,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "runtime",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_safe_name_32' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,10,1,1}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          }
+        }
+      }
+    },
+    {
+      "task": 92,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task092_r03_static198.onnx",
+      "sha256": "5b9a976753009c85353d801e4a437f343d5d27cc60a277aada42bb94c6ea5e95",
+      "reported_static_cost": 198,
+      "baseline_actual_cost": 366,
+      "actual_cost": {
+        "memory": 318,
+        "params": 87,
+        "cost": 405,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "CastLike": 17,
+          "CenterCropPad": 5,
+          "Div": 1,
+          "Einsum": 3,
+          "Equal": 1,
+          "GreaterOrEqual": 2,
+          "LessOrEqual": 2,
+          "MaxPool": 1,
+          "Mod": 2,
+          "Shape": 2,
+          "Sub": 2,
+          "Where": 4
+        },
+        "node_count": 42,
+        "initializer_count": 7,
+        "max_node_inputs": 10,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 111,
+          "params": 87,
+          "cost": 198
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_col_le_f32' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,1,1} != {1,10,30,1}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 265,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "runtime",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_safe_name_33' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,10,1,1}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          }
+        }
+      }
+    },
+    {
+      "task": 92,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task092_r04_static211.onnx",
+      "sha256": "0d6dbd218268e141e36b0bb32cb9b712d60f8e866f775f68654966ba471c1891",
+      "reported_static_cost": 211,
+      "baseline_actual_cost": 366,
+      "actual_cost": {
+        "memory": 319,
+        "params": 99,
+        "cost": 418,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "CastLike": 17,
+          "CenterCropPad": 6,
+          "Div": 1,
+          "Einsum": 3,
+          "Greater": 1,
+          "GreaterOrEqual": 2,
+          "LessOrEqual": 2,
+          "MaxPool": 1,
+          "Mod": 2,
+          "Shape": 2,
+          "Sub": 2,
+          "Where": 4
+        },
+        "node_count": 43,
+        "initializer_count": 7,
+        "max_node_inputs": 10,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 112,
+          "params": 99,
+          "cost": 211
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_col_le_f32' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,1,1} != {1,10,30,1}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 0,
+          "wrong": 265,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 92,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task092_r05_static211.onnx",
+      "sha256": "c000f1a63972002f913bb226bdf6f2d0ce90f56e74c4a4ac9710d7881fe9807f",
+      "reported_static_cost": 211,
+      "baseline_actual_cost": 366,
+      "actual_cost": {
+        "memory": 319,
+        "params": 99,
+        "cost": 418,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "CastLike": 17,
+          "CenterCropPad": 6,
+          "Div": 1,
+          "Einsum": 3,
+          "Equal": 1,
+          "GreaterOrEqual": 2,
+          "LessOrEqual": 2,
+          "MaxPool": 1,
+          "Mod": 2,
+          "Shape": 2,
+          "Sub": 2,
+          "Where": 4
+        },
+        "node_count": 43,
+        "initializer_count": 7,
+        "max_node_inputs": 10,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 112,
+          "params": 99,
+          "cost": 211
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_col_le_f32' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,1,1} != {1,10,30,1}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 0,
+          "wrong": 265,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 398,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task398_r01_static332.onnx",
+      "sha256": "053ce3508b065b6c3dc86f7188ee8d7cf02d49c03d21fce9cf8931c2b0b67eb3",
+      "reported_static_cost": 332,
+      "baseline_actual_cost": 347,
+      "actual_cost": {
+        "memory": 140,
+        "params": 192,
+        "cost": 332,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Concat": 1,
+          "Div": 1,
+          "Einsum": 2,
+          "Resize": 1
+        },
+        "node_count": 5,
+        "initializer_count": 12,
+        "max_node_inputs": 69,
+        "giant_einsum": [
+          {
+            "index": 4,
+            "inputs": 69
+          }
+        ],
+        "huge_fanin": [
+          {
+            "index": 4,
+            "op": "Einsum",
+            "inputs": 69
+          }
+        ],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 140,
+          "params": 192,
+          "cost": 332
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 268,
+          "errors": 0,
+          "skipped": 0,
+          "total": 268,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 268,
+          "errors": 0,
+          "skipped": 0,
+          "total": 268,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 398,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task398_r02_static332.onnx",
+      "sha256": "78547497a6f12384e9bfe7373f0af071be6162ca34e8b50395cd469a3648da2b",
+      "reported_static_cost": 332,
+      "baseline_actual_cost": 347,
+      "actual_cost": {
+        "memory": 140,
+        "params": 192,
+        "cost": 332,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Concat": 1,
+          "Div": 1,
+          "Einsum": 2,
+          "Resize": 1
+        },
+        "node_count": 5,
+        "initializer_count": 12,
+        "max_node_inputs": 69,
+        "giant_einsum": [
+          {
+            "index": 4,
+            "inputs": 69
+          }
+        ],
+        "huge_fanin": [
+          {
+            "index": 4,
+            "op": "Einsum",
+            "inputs": 69
+          }
+        ],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 140,
+          "params": 192,
+          "cost": 332
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 268,
+          "errors": 0,
+          "skipped": 0,
+          "total": 268,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 268,
+          "errors": 0,
+          "skipped": 0,
+          "total": 268,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 398,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task398_r03_static332.onnx",
+      "sha256": "7864c3d2ad1f7ff6c47cef73a70b02bc47f15cc0cf5e16f30c2a2b9525bf883a",
+      "reported_static_cost": 332,
+      "baseline_actual_cost": 347,
+      "actual_cost": {
+        "memory": 140,
+        "params": 192,
+        "cost": 332,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Concat": 1,
+          "Div": 1,
+          "Einsum": 2,
+          "Resize": 1
+        },
+        "node_count": 5,
+        "initializer_count": 12,
+        "max_node_inputs": 69,
+        "giant_einsum": [
+          {
+            "index": 4,
+            "inputs": 69
+          }
+        ],
+        "huge_fanin": [
+          {
+            "index": 4,
+            "op": "Einsum",
+            "inputs": 69
+          }
+        ],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 140,
+          "params": 192,
+          "cost": 332
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 268,
+          "errors": 0,
+          "skipped": 0,
+          "total": 268,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 268,
+          "errors": 0,
+          "skipped": 0,
+          "total": 268,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 218,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task218_r01_static294.onnx",
+      "sha256": "8ac96550bc4df079ada6b75360cd2c206bca789dd90e30eb8c64fb1193fdf367",
+      "reported_static_cost": 294,
+      "baseline_actual_cost": 329,
+      "actual_cost": {
+        "memory": null,
+        "params": null,
+        "cost": null,
+        "error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name 'safe_name_14'"
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 6,
+          "CastLike": 1,
+          "Concat": 1,
+          "Flatten": 1,
+          "Gather": 2,
+          "GroupNormalization": 1,
+          "Mul": 3,
+          "QLinearConv": 4,
+          "TopK": 2
+        },
+        "node_count": 21,
+        "initializer_count": 8,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 240,
+          "params": 54,
+          "cost": 294
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name ''"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name 'safe_name_14'"
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name 'safe_name_14'"
+        }
+      }
+    },
+    {
+      "task": 218,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task218_r02_static309.onnx",
+      "sha256": "14d90c797bcc93929bd61cca4ca8ef871a7c0e50614698f2e667a8205ebfd83e",
+      "reported_static_cost": 309,
+      "baseline_actual_cost": 329,
+      "actual_cost": {
+        "memory": null,
+        "params": null,
+        "cost": null,
+        "error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for Where(16) node with name 'safe_name_16'"
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 2,
+          "CastLike": 1,
+          "Concat": 1,
+          "Flatten": 1,
+          "Gather": 2,
+          "GroupNormalization": 1,
+          "Mul": 3,
+          "QLinearConv": 4,
+          "Sign": 2,
+          "TopK": 2,
+          "Where": 2
+        },
+        "node_count": 21,
+        "initializer_count": 11,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 240,
+          "params": 69,
+          "cost": 309
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for Where(16) node with name ''"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for Where(16) node with name 'safe_name_16'"
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for Where(16) node with name 'safe_name_16'"
+        }
+      }
+    },
+    {
+      "task": 218,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task218_r03_static314.onnx",
+      "sha256": "afba131830dc327f21aee0fa0fa92dcbdfb13799fcc7233dcf5d2fdbfe641028",
+      "reported_static_cost": 314,
+      "baseline_actual_cost": 329,
+      "actual_cost": {
+        "memory": 260,
+        "params": 54,
+        "cost": 314,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 6,
+          "CastLike": 1,
+          "Concat": 1,
+          "Flatten": 1,
+          "Gather": 2,
+          "GroupNormalization": 1,
+          "Mul": 3,
+          "QLinearConv": 4,
+          "TopK": 2
+        },
+        "node_count": 21,
+        "initializer_count": 8,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 260,
+          "params": 54,
+          "cost": 314
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 2,
+          "mismatches": [
+            {
+              "tensor": "gn",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "qi",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 218,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task218_r04_static315.onnx",
+      "sha256": "84c192f128ab49a285d30a3b24e488a8da992e51d0f5645dbdc39b7ba1ce9b54",
+      "reported_static_cost": 315,
+      "baseline_actual_cost": 329,
+      "actual_cost": {
+        "memory": null,
+        "params": null,
+        "cost": null,
+        "error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name 'safe_name_17'"
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 6,
+          "CastLike": 1,
+          "Concat": 1,
+          "Flatten": 1,
+          "Gather": 2,
+          "GroupNormalization": 1,
+          "Mul": 3,
+          "QLinearConv": 4,
+          "TopK": 2,
+          "Where": 2
+        },
+        "node_count": 23,
+        "initializer_count": 11,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 246,
+          "params": 69,
+          "cost": 315
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name ''"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name 'safe_name_17'"
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name 'safe_name_17'"
+        }
+      }
+    },
+    {
+      "task": 218,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task218_r05_static322.onnx",
+      "sha256": "cf6a61dd0bfc4a93647bdefbd8f3e252dd6f94e92445d58dd15dd1f90fbafde5",
+      "reported_static_cost": 322,
+      "baseline_actual_cost": 329,
+      "actual_cost": {
+        "memory": null,
+        "params": null,
+        "cost": null,
+        "error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name 'safe_name_17'"
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Cast": 4,
+          "CastLike": 1,
+          "Concat": 1,
+          "Flatten": 1,
+          "Gather": 2,
+          "GroupNormalization": 1,
+          "Mul": 5,
+          "QLinearConv": 4,
+          "Sign": 2,
+          "TopK": 2
+        },
+        "node_count": 23,
+        "initializer_count": 10,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 254,
+          "params": 68,
+          "cost": 322
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name ''"
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name 'safe_name_17'"
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 266,
+          "total": 266,
+          "session_error": "NotImplemented: [ONNXRuntimeError] : 9 : NOT_IMPLEMENTED : Could not find an implementation for TopK(11) node with name 'safe_name_17'"
+        }
+      }
+    },
+    {
+      "task": 132,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task132_r01_static282.onnx",
+      "sha256": "7d8a8f0674960fcbb46b211fcde2458ea8ad6d4185f55c25ed85dcc9d798f067",
+      "reported_static_cost": 282,
+      "baseline_actual_cost": 312,
+      "actual_cost": {
+        "memory": 0,
+        "params": 282,
+        "cost": 282,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 9,
+        "max_node_inputs": 51,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 51
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 282,
+          "cost": 282
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 267,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 267,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 132,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task132_r02_static282.onnx",
+      "sha256": "9d36dbcd6110c3e2f6590c147664edf89d5e7e61654db06718b6c59f7d7ac8c3",
+      "reported_static_cost": 282,
+      "baseline_actual_cost": 312,
+      "actual_cost": {
+        "memory": 0,
+        "params": 282,
+        "cost": 282,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 9,
+        "max_node_inputs": 51,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 51
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 282,
+          "cost": 282
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 267,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 267,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 132,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task132_r03_static282.onnx",
+      "sha256": "ccf8c759aa45c9ec7b1de7144b674aac20888321d98620c6ba060847dc2116e9",
+      "reported_static_cost": 282,
+      "baseline_actual_cost": 312,
+      "actual_cost": {
+        "memory": 0,
+        "params": 282,
+        "cost": 282,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 9,
+        "max_node_inputs": 51,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 51
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 282,
+          "cost": 282
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 267,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 267,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 132,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task132_r04_static282.onnx",
+      "sha256": "e30f59a313f7e111886b972da338a1e7669b7dc7862f976db418a22633cb9dd7",
+      "reported_static_cost": 282,
+      "baseline_actual_cost": 312,
+      "actual_cost": {
+        "memory": 0,
+        "params": 282,
+        "cost": 282,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 9,
+        "max_node_inputs": 51,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 51
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 282,
+          "cost": 282
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 267,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 267,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 132,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task132_r05_static287.onnx",
+      "sha256": "81f4372189999ecc22973a6177fcc76d4c439f7815cd2747e31c6026085142b8",
+      "reported_static_cost": 287,
+      "baseline_actual_cost": 312,
+      "actual_cost": {
+        "memory": 0,
+        "params": 287,
+        "cost": 287,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "initializer_count": 9,
+        "max_node_inputs": 51,
+        "giant_einsum": [
+          {
+            "index": 0,
+            "inputs": 51
+          }
+        ],
+        "huge_fanin": [],
+        "lookup_or_scatter": [],
+        "declared_cost": {
+          "memory": 0,
+          "params": 287,
+          "cost": 287
+        },
+        "runtime_shapes": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 267,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 44,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 267,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 44,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 388,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task388_r01_static81.onnx",
+      "sha256": "f81dde58c06dee9f28b1cb692bd8f6e2c9300e8e6fc8b8f16de842b6a337d91f",
+      "reported_static_cost": 81,
+      "baseline_actual_cost": 91,
+      "actual_cost": {
+        "memory": 9071,
+        "params": 18,
+        "cost": 9089,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "ArgMax": 1,
+          "Cast": 2,
+          "CastLike": 5,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "GroupNormalization": 2,
+          "MaxPool": 1,
+          "ReduceL2": 1,
+          "ReduceMin": 1,
+          "ScatterElements": 1,
+          "Shape": 1,
+          "Slice": 1,
+          "Tile": 1,
+          "Where": 2
+        },
+        "node_count": 21,
+        "initializer_count": 9,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 63,
+          "params": 18,
+          "cost": 81
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 15,
+          "mismatches": [
+            {
+              "tensor": "gn",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "q",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "qb",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "background",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "all_bg",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "stripe",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "tile_ids",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "ids",
+              "declared": [
+                1,
+                1,
+                2,
+                2
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "idx_i8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "zero_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "zero_data",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "ids_hid",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "presence",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      }
+    },
+    {
+      "task": 388,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task388_r02_static82.onnx",
+      "sha256": "8824414f066e19b00153fca659576224076593a55b22d3e74885da9286057109",
+      "reported_static_cost": 82,
+      "baseline_actual_cost": 91,
+      "actual_cost": {
+        "memory": 9071,
+        "params": 19,
+        "cost": 9090,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "ArgMax": 1,
+          "CastLike": 6,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "Equal": 1,
+          "GroupNormalization": 2,
+          "MaxPool": 1,
+          "ReduceL2": 1,
+          "ReduceMin": 1,
+          "ScatterElements": 1,
+          "Shape": 1,
+          "Slice": 1,
+          "Tile": 1,
+          "Where": 2
+        },
+        "node_count": 21,
+        "initializer_count": 10,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 63,
+          "params": 19,
+          "cost": 82
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 15,
+          "mismatches": [
+            {
+              "tensor": "gn",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "q",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "qb",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "background",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "all_bg",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "stripe",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "tile_ids",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "ids",
+              "declared": [
+                1,
+                1,
+                2,
+                2
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "idx_i8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "zero_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "zero_data",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "ids_hid",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "presence",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        },
+        "default": {
+          "right": 0,
+          "wrong": 266,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "kind": "wrong"
+          }
+        }
+      }
+    },
+    {
+      "task": 388,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task388_r03_static82.onnx",
+      "sha256": "ed38bcc705c383b548468eb7c5d871198ada43d0f30b54c354736c6cad65fc6a",
+      "reported_static_cost": 82,
+      "baseline_actual_cost": 91,
+      "actual_cost": {
+        "memory": 71,
+        "params": 20,
+        "cost": 91,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "ArgMax": 1,
+          "CastLike": 7,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "GroupNormalization": 1,
+          "MaxPool": 1,
+          "ReduceL2": 1,
+          "ReduceMin": 1,
+          "ScatterElements": 1,
+          "Shape": 1,
+          "Slice": 1,
+          "Tile": 1,
+          "Where": 2
+        },
+        "node_count": 20,
+        "initializer_count": 11,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 62,
+          "params": 20,
+          "cost": 82
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 14,
+          "mismatches": [
+            {
+              "tensor": "gn",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "q",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "qb",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "presence",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "background",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "all_bg",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "stripe",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "tile_ids",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "ids",
+              "declared": [
+                1,
+                1,
+                2,
+                2
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "ids_hid",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "idx_i8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "updates_float",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      }
+    },
+    {
+      "task": 388,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task388_r04_static83.onnx",
+      "sha256": "46f4e00962c16cba67c2d186afe16f4c2195a25c6a147fe0e4c8fc114b1dcc7f",
+      "reported_static_cost": 83,
+      "baseline_actual_cost": 91,
+      "actual_cost": {
+        "memory": 72,
+        "params": 20,
+        "cost": 92,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "ArgMax": 1,
+          "CastLike": 7,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "GroupNormalization": 2,
+          "MaxPool": 1,
+          "ReduceL2": 1,
+          "ReduceMin": 1,
+          "ScatterElements": 1,
+          "Shape": 1,
+          "Slice": 1,
+          "Tile": 1,
+          "Where": 2
+        },
+        "node_count": 21,
+        "initializer_count": 11,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 63,
+          "params": 20,
+          "cost": 83
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 15,
+          "mismatches": [
+            {
+              "tensor": "gn",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "q",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "qb",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "background",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "all_bg",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "stripe",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "tile_ids",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "ids",
+              "declared": [
+                1,
+                1,
+                2,
+                2
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "idx_i8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "zero_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "zero_data",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "ids_hid",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "presence",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      }
+    },
+    {
+      "task": 388,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task388_r05_static85.onnx",
+      "sha256": "640f24509f5383b25f06b2a6a96df255224b034e1ad9d3cf27c658125f70c56f",
+      "reported_static_cost": 85,
+      "baseline_actual_cost": 91,
+      "actual_cost": {
+        "memory": 72,
+        "params": 22,
+        "cost": 94,
+        "error": null
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "ops": {
+          "ArgMax": 1,
+          "CastLike": 7,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "GroupNormalization": 2,
+          "ReduceL2": 1,
+          "ReduceMax": 1,
+          "ReduceMin": 1,
+          "ScatterElements": 1,
+          "Shape": 1,
+          "Slice": 1,
+          "Tile": 1,
+          "Where": 2
+        },
+        "node_count": 21,
+        "initializer_count": 12,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "huge_fanin": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 63,
+          "params": 22,
+          "cost": 85
+        },
+        "runtime_shapes": {
+          "shape_cloak": true,
+          "mismatch_count": 15,
+          "mismatches": [
+            {
+              "tensor": "gn",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "q",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "qb",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "presence",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10
+              ]
+            },
+            {
+              "tensor": "background",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "all_bg",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "stripe",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                1,
+                3
+              ]
+            },
+            {
+              "tensor": "tile_ids",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "ids",
+              "declared": [
+                1,
+                1,
+                2,
+                2
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "idx_i8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "indices",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "zero_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "zero_data",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "ids_hid",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                6,
+                6
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      },
+      "known_dual": {
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      }
+    }
+  ]
+}

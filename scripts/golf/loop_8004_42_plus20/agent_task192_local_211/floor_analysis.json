@@ -1,0 +1,67 @@
+{
+  "exact_argmax_profile": {
+    "memory": 208,
+    "params": 935,
+    "cost": 1143
+  },
+  "policy_pass_through_profile": {
+    "memory": 200,
+    "params": 934,
+    "cost": 1134
+  },
+  "exact_initializer_elements": {
+    "adj": 900,
+    "center_basis": 20,
+    "neighbor_map": 6,
+    "route_out": 6,
+    "onehot_values": 2,
+    "depth": 1
+  },
+  "adjacency": {
+    "shape": [
+      30,
+      30
+    ],
+    "elements": 900,
+    "nonzero": 88,
+    "matrix_rank": 30,
+    "two_factor_inner_rank_min": 30,
+    "two_dense_factor_param_floor": 1800
+  },
+  "measured_class_floor": {
+    "shared_three_row_basis_argmax_onehot": 1143,
+    "gap_above_current_1138": 5,
+    "remaining_neighbor_map": {
+      "shape": [
+        2,
+        3
+      ],
+      "elements": 6,
+      "rank": 2
+    },
+    "remaining_route_map": {
+      "shape": [
+        2,
+        3
+      ],
+      "elements": 6,
+      "rank": 2
+    },
+    "materializing_either_dynamic_pair_bytes": 80,
+    "saving_from_removing_its_map_elements": 6,
+    "net_regression_per_materialized_pair": 74
+  },
+  "replacement_floors": {
+    "materialized_float30x30_relation_memory": 3600,
+    "exact_candidate_floor_if_adj_replaced_by_one_float30x30_output": 3843,
+    "conv_or_float_slice_pad_single_channel_output_memory": 3600,
+    "packed_exact_two_15bit_halves": {
+      "float_pack_30x2_bytes": 240,
+      "int32_cast_30x2_bytes": 240,
+      "horizontal_vertical_intersection_three_int32_outputs_bytes": 720,
+      "subtotal_before_decode": 1200,
+      "greater_than_dense_adj_param_saving": true
+    }
+  },
+  "conclusion": "No exact ArgMax+OneHot candidate below 1138 was found. The measured exact shared-basis floor is 1143. The strict-lower 1134 winner preserves the already admitted POLICY90 HardSigmoid selector raw-bitwise and is not a new approximation."
+}

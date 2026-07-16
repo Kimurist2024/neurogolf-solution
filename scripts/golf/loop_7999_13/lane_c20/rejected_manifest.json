@@ -1,0 +1,85 @@
+{
+  "lane": "c20",
+  "baseline_archive": "submission_base_7999.13.zip",
+  "rejected": [
+    {
+      "task": 133,
+      "candidate": "scripts/golf/scratch_codex/task133/safe_spec_clean.onnx",
+      "sha256": "82e7791033393050188e8c85c9e6f1eeda29aec7bdc1285df3030e2311c1678e",
+      "baseline_cost": 4403,
+      "candidate_cost": 5337,
+      "known_disable_all": "267/267",
+      "known_default": "267/267",
+      "runtime_shape_mismatches": 6,
+      "reason": "934 cost units more expensive and retains runtime/static shape contradictions"
+    },
+    {
+      "task": 133,
+      "candidate": "scripts/golf/scratch_codex/task133/agent_clean_rank.onnx",
+      "sha256": "867f1f1c7d4e8ea09f5d01de4fcce619640d364827c73c3c515ba0bcd4ad1731",
+      "baseline_cost": 4403,
+      "candidate_cost": 5570,
+      "known_disable_all": "267/267",
+      "known_default": "267/267",
+      "runtime_shape_mismatches": 0,
+      "fresh_disable_all": "3000/3000, errors=0",
+      "fresh_both_modes_sample": "100/100 each, errors=0",
+      "reason": "fully shape-consistent and generator-correct, but 1167 cost units more expensive"
+    },
+    {
+      "task": 349,
+      "candidate": "scripts/golf/loop_7999_13/lane_archive_all400/task349_r01_static3547.onnx",
+      "sha256": "acbd1cd90ff0a8fd3e79e0a8ca37680b2de2f363e9b4353017a4a4088df305e4",
+      "baseline_cost": 3964,
+      "candidate_cost": null,
+      "known_disable_all": "SESSION_ERROR",
+      "known_default": "SESSION_ERROR",
+      "reason": "int8 TopK has no ORT 1.24 CPU implementation"
+    },
+    {
+      "task": 349,
+      "candidate": "scripts/golf/loop_7999_13/lane_archive_all400/task349_r02_static3698.onnx",
+      "sha256": "18f7edee574b29019d2c49dee2bff73e208c7eb3a4698b8a3c60f04686c260b2",
+      "baseline_cost": 3964,
+      "candidate_cost": 3698,
+      "known_disable_all": "190/267",
+      "known_default": "190/267",
+      "reason": "77 stored mismatches in each ORT mode"
+    },
+    {
+      "task": 349,
+      "candidate": "scripts/golf/loop_7999_13/lane_archive_all400/task349_r03_static3710.onnx",
+      "sha256": "49c1e6068d4f0027b56afacf7c7ce25853b9b51df9547c51339e902e1eb56eda",
+      "baseline_cost": 3964,
+      "candidate_cost": 3710,
+      "known_disable_all": "199/267",
+      "known_default": "199/267",
+      "reason": "68 stored mismatches in each ORT mode"
+    },
+    {
+      "task": 349,
+      "candidate": "scripts/golf/loop_7999_13/lane_b8/candidates/task349_radius_tables_len9_top_relation.onnx",
+      "sha256": "462db4a37505681023ae186541c797b850290e8bd475b762eec1f7d150950f26",
+      "baseline_cost": 3964,
+      "candidate_cost": 3954,
+      "known_disable_all": "267/267",
+      "known_default": "267/267",
+      "runtime_shape_mismatches": 0,
+      "fresh_counterexample": "12 differing one-hot entries in each ORT mode at seed 349101, sequential valid case 421",
+      "reason": "cheaper but preserves the incumbent's false-positive fixture patch"
+    },
+    {
+      "task": 349,
+      "candidate": "scripts/golf/scratch_codex/task349/agent_alt_exact_opt.onnx",
+      "sha256": "0081517bce378c999b77c9a872c35a8724bcecbc91da74eed116c5d48716be17",
+      "baseline_cost": 3964,
+      "candidate_cost": 4572,
+      "known_disable_all": "267/267",
+      "known_default": "267/267",
+      "runtime_shape_mismatches": 0,
+      "fresh_disable_all": "3001/3001 including six-component seed 4064, errors=0",
+      "counterexample_check_both_modes": "exact on the incumbent failure case",
+      "reason": "clean exact-union rewrite, but 608 cost units more expensive"
+    }
+  ]
+}

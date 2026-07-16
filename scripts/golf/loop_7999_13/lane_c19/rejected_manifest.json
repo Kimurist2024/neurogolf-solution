@@ -1,0 +1,70 @@
+{
+  "lane": "c19",
+  "baseline_archive": "submission_base_7999.13.zip",
+  "rejected": [
+    {
+      "task": 18,
+      "candidate": "scripts/golf/scratch_codex/task018/k18_fused_signature.onnx",
+      "sha256": "fbbe0a843836a2ab531b7e05bb9b370c4b40364507861b77a0aa34a824c9d16d",
+      "baseline_cost": 4818,
+      "candidate_cost": 4733,
+      "stored_disable_all": "266/266",
+      "default_ort": "SESSION_ERROR",
+      "strict_shape_data_prop": false,
+      "runtime_shape_mismatches": 57,
+      "fresh": "2/30 wrong in retained independent report",
+      "reason": "cheaper but fails default ORT, strict/runtime-shape, and fresh-zero gates"
+    },
+    {
+      "task": 18,
+      "candidate": "scripts/golf/scratch_codex/task018/alt_agent/compact_signature_direct.onnx",
+      "sha256": "3bfd5b620221c6ad3a0ea43ce6c4dc50419f99b44f8a7a31c3035d3f019b0214",
+      "baseline_cost": 4818,
+      "candidate_cost": 4791,
+      "stored_disable_all": "266/266",
+      "default_ort": "SESSION_ERROR",
+      "strict_shape_data_prop": false,
+      "runtime_shape_mismatches": 59,
+      "fresh": "67/1000 wrong, runtime errors 0; also 2/30 wrong",
+      "reason": "cheaper but fails default ORT, strict/runtime-shape, and fresh-zero gates"
+    },
+    {
+      "task": 18,
+      "candidate": "scripts/golf/scratch_codex/task018/tile2x3_k22_allmode_clean.onnx",
+      "sha256": "efc964b3627445dd60e7df6c6a3ea1837866014cc05d1d712b5c5e4633b3da8e",
+      "baseline_cost": 4818,
+      "candidate_cost": 10857,
+      "stored_disable_all": "266/266",
+      "stored_default": "266/266",
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": 0,
+      "fresh": "14/1000 wrong, runtime errors 0 in retained independent report",
+      "reason": "shape-clean but more expensive and not generator-complete"
+    },
+    {
+      "task": 145,
+      "candidate": "others/2/1203/task145_improved_v3.onnx",
+      "sha256": "43ca463ec73068a7d575018f4792a1ea662edbe5456b8b16040efd1646109bee",
+      "baseline_cost": 5132,
+      "candidate_cost": 5147,
+      "stored_disable_all": "256/267",
+      "stored_default": "0/267 with 267 runtime errors",
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": 64,
+      "reason": "not cheaper, stored-wrong, default-ORT-failing, and shape-inconsistent"
+    },
+    {
+      "task": 145,
+      "candidate": "scripts/golf/scratch_codex/task145/task145_honest_numeric.onnx",
+      "sha256": "b07e2bd98775e78ec9c8f408a5e1d17efa024d0818ce99f981f5893894007730",
+      "baseline_cost": 5132,
+      "candidate_cost": 10175,
+      "stored_disable_all": "267/267",
+      "stored_default": "267/267",
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": 0,
+      "fresh": "3000/3000 exact in retained independent report",
+      "reason": "fully sound but 5043 cost units more expensive than exact-archive incumbent"
+    }
+  ]
+}

@@ -1,0 +1,1918 @@
+{
+  "authority": "submission.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "tasks": {
+    "2": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high002_012_107_160/current/task002.onnx",
+      "sha256": "20f024826fc233dd1a90e6e10052627cc6ea2847d337a7210c5173b84a6a6eb8",
+      "serialized_bytes": 4621,
+      "official_profile": {
+        "memory": 360,
+        "params": 926,
+        "cost": 1286,
+        "score": 17.840708095202437,
+        "correct": true
+      },
+      "declared_shape_cost_profile": {
+        "memory": 360,
+        "params": 926,
+        "cost": 1286
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 3,
+        "initializer_count": 4,
+        "value_info_count": 2,
+        "op_histogram": {
+          "Einsum": 2,
+          "Pow": 1
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 3,
+        "actual_shapes": {
+          "rc": [
+            1,
+            30
+          ],
+          "Feat": [
+            2,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 0,
+        "mismatches": [],
+        "nonfinite_values": 0,
+        "truthful": true
+      },
+      "inventory": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "rc",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "A"
+            ],
+            "outputs": [
+              "rc"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "Feat",
+            "op": "Pow",
+            "inputs": [
+              "rc",
+              "E"
+            ],
+            "outputs": [
+              "Feat"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "output",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "S",
+              "Feat",
+              "Feat",
+              "P",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "A",
+              "input",
+              "S"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "A",
+            "dtype": "FLOAT",
+            "shape": [
+              30,
+              30
+            ],
+            "elements": 900
+          },
+          {
+            "name": "S",
+            "dtype": "FLOAT",
+            "shape": [
+              2,
+              10
+            ],
+            "elements": 20
+          },
+          {
+            "name": "P",
+            "dtype": "FLOAT",
+            "shape": [
+              2,
+              2
+            ],
+            "elements": 4
+          },
+          {
+            "name": "E",
+            "dtype": "FLOAT",
+            "shape": [
+              2,
+              1
+            ],
+            "elements": 2
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "total": 268,
+          "candidate_right": 268,
+          "baseline_right": 268,
+          "raw_equal": 268,
+          "threshold_equal": 268,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "total": 268,
+          "candidate_right": 268,
+          "baseline_right": 268,
+          "raw_equal": 268,
+          "threshold_equal": 268,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "default_threads1": {
+          "total": 268,
+          "candidate_right": 268,
+          "baseline_right": 268,
+          "raw_equal": 268,
+          "threshold_equal": 268,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "default_threads4": {
+          "total": 268,
+          "candidate_right": 268,
+          "baseline_right": 268,
+          "raw_equal": 268,
+          "threshold_equal": 268,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        }
+      }
+    },
+    "12": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high002_012_107_160/current/task012.onnx",
+      "sha256": "478a310e10fcf0a3e82df943fd6ab43671c47059f8e6eb675bf0004bef576500",
+      "serialized_bytes": 3042,
+      "official_profile": {
+        "memory": 0,
+        "params": 710,
+        "cost": 710,
+        "score": 18.43473502996464,
+        "correct": true
+      },
+      "declared_shape_cost_profile": {
+        "memory": 0,
+        "params": 710,
+        "cost": 710
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 1,
+        "initializer_count": 2,
+        "value_info_count": 0,
+        "op_histogram": {
+          "Conv": 1
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 1,
+        "actual_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 0,
+        "mismatches": [],
+        "nonfinite_values": 0,
+        "truthful": true
+      },
+      "inventory": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "w",
+              "b"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "w",
+            "dtype": "FLOAT",
+            "shape": [
+              10,
+              1,
+              7,
+              10
+            ],
+            "elements": 700
+          },
+          {
+            "name": "b",
+            "dtype": "FLOAT",
+            "shape": [
+              10
+            ],
+            "elements": 10
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "total": 265,
+          "candidate_right": 265,
+          "baseline_right": 265,
+          "raw_equal": 265,
+          "threshold_equal": 265,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "total": 265,
+          "candidate_right": 265,
+          "baseline_right": 265,
+          "raw_equal": 265,
+          "threshold_equal": 265,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "default_threads1": {
+          "total": 265,
+          "candidate_right": 265,
+          "baseline_right": 265,
+          "raw_equal": 265,
+          "threshold_equal": 265,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "default_threads4": {
+          "total": 265,
+          "candidate_right": 265,
+          "baseline_right": 265,
+          "raw_equal": 265,
+          "threshold_equal": 265,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        }
+      }
+    },
+    "107": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high002_012_107_160/current/task107.onnx",
+      "sha256": "39e937f3065e013a25795a61b1760c23d6cf683a3411c581205ec22a2ddabdbf",
+      "serialized_bytes": 4972,
+      "official_profile": {
+        "memory": 365,
+        "params": 299,
+        "cost": 664,
+        "score": 18.501717850523566,
+        "correct": true
+      },
+      "declared_shape_cost_profile": {
+        "memory": 365,
+        "params": 299,
+        "cost": 664
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 37,
+        "initializer_count": 27,
+        "value_info_count": 37,
+        "op_histogram": {
+          "Add": 1,
+          "Cast": 9,
+          "CenterCropPad": 7,
+          "Conv": 1,
+          "Div": 1,
+          "Einsum": 1,
+          "Equal": 1,
+          "GatherND": 1,
+          "Less": 2,
+          "Pad": 5,
+          "ReduceSum": 1,
+          "Shape": 2,
+          "Slice": 2,
+          "Split": 1,
+          "Sub": 1,
+          "Unsqueeze": 1
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 38,
+        "actual_shapes": {
+          "sh30": [
+            1
+          ],
+          "g32": [
+            1,
+            1,
+            5,
+            5
+          ],
+          "g": [
+            1,
+            1,
+            5,
+            5
+          ],
+          "cg_u8": [
+            1,
+            2,
+            5,
+            5
+          ],
+          "sh_cg": [
+            1
+          ],
+          "edge_a": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "edge_b": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "edge_eq": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "hid_edge_eq": [
+            1,
+            1,
+            30,
+            1
+          ],
+          "edge_same": [
+            1,
+            1,
+            30,
+            1
+          ],
+          "nsame": [],
+          "nsame_u8": [],
+          "factor_m1": [],
+          "factor": [],
+          "pos_g": [
+            1,
+            2,
+            1
+          ],
+          "pos_zero": [
+            1,
+            2,
+            1
+          ],
+          "pR0_tmp": [
+            1,
+            1,
+            1
+          ],
+          "pC0_tmp": [
+            1,
+            1,
+            1
+          ],
+          "quot": [
+            1,
+            30
+          ],
+          "pR_u8": [
+            1,
+            2,
+            1
+          ],
+          "hid_pR_u8": [
+            1,
+            2,
+            1
+          ],
+          "pR": [
+            1,
+            2,
+            1
+          ],
+          "pC_u8": [
+            1,
+            2,
+            1
+          ],
+          "hid_pC_u8": [
+            1,
+            2,
+            1
+          ],
+          "pC": [
+            1,
+            2,
+            1
+          ],
+          "fm1v": [
+            1
+          ],
+          "ffeat_u8": [
+            2
+          ],
+          "ffeat": [
+            2
+          ],
+          "hid_cg_u8": [
+            1,
+            2,
+            5,
+            5
+          ],
+          "cg": [
+            1,
+            2,
+            5,
+            5
+          ],
+          "qfeat_u8": [
+            2,
+            30
+          ],
+          "hid_qfeat_u8": [
+            2,
+            30
+          ],
+          "qfeat": [
+            2,
+            30
+          ],
+          "qmask_b": [
+            1,
+            30
+          ],
+          "hid_qmask_b": [
+            1,
+            30
+          ],
+          "qmask": [
+            1,
+            30
+          ],
+          "remfeat": [
+            2,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 14,
+        "mismatches": [
+          {
+            "name": "hid_edge_eq",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              1
+            ]
+          },
+          {
+            "name": "edge_same",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              1
+            ]
+          },
+          {
+            "name": "hid_pR_u8",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              1
+            ]
+          },
+          {
+            "name": "pR",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              1
+            ]
+          },
+          {
+            "name": "hid_pC_u8",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              1
+            ]
+          },
+          {
+            "name": "pC",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              1
+            ]
+          },
+          {
+            "name": "hid_cg_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              5,
+              5
+            ]
+          },
+          {
+            "name": "cg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              5,
+              5
+            ]
+          },
+          {
+            "name": "hid_qfeat_u8",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              2,
+              30
+            ]
+          },
+          {
+            "name": "qfeat",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              2,
+              30
+            ]
+          },
+          {
+            "name": "hid_qmask_b",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              30
+            ]
+          },
+          {
+            "name": "qmask",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              30
+            ]
+          },
+          {
+            "name": "remfeat",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              2,
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 904,
+        "truthful": false
+      },
+      "inventory": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "sh30",
+            "op": "Shape",
+            "inputs": [
+              "coord"
+            ],
+            "outputs": [
+              "sh30"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "g32",
+            "op": "Conv",
+            "inputs": [
+              "input",
+              "color_w"
+            ],
+            "outputs": [
+              "g32"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "g",
+            "op": "Cast",
+            "inputs": [
+              "g32"
+            ],
+            "outputs": [
+              "g"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "cg_u8",
+            "op": "Pad",
+            "inputs": [
+              "g",
+              "pad_tr_ax",
+              "one_u8",
+              "axes1"
+            ],
+            "outputs": [
+              "cg_u8"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "sh_cg",
+            "op": "Shape",
+            "inputs": [
+              "cg_u8"
+            ],
+            "outputs": [
+              "sh_cg"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "edge_a",
+            "op": "Slice",
+            "inputs": [
+              "g",
+              "ea_starts",
+              "ea_ends",
+              "edge_axes"
+            ],
+            "outputs": [
+              "edge_a"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "edge_b",
+            "op": "Slice",
+            "inputs": [
+              "g",
+              "eb_starts",
+              "eb_ends",
+              "edge_axes"
+            ],
+            "outputs": [
+              "edge_b"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "edge_eq",
+            "op": "Equal",
+            "inputs": [
+              "edge_a",
+              "edge_b"
+            ],
+            "outputs": [
+              "edge_eq"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "hid_edge_eq",
+            "op": "CenterCropPad",
+            "inputs": [
+              "edge_eq",
+              "sh30"
+            ],
+            "outputs": [
+              "hid_edge_eq"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "edge_same",
+            "op": "Cast",
+            "inputs": [
+              "hid_edge_eq"
+            ],
+            "outputs": [
+              "edge_same"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "nsame",
+            "op": "ReduceSum",
+            "inputs": [
+              "edge_same"
+            ],
+            "outputs": [
+              "nsame"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "nsame_u8",
+            "op": "Cast",
+            "inputs": [
+              "nsame"
+            ],
+            "outputs": [
+              "nsame_u8"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "factor_m1",
+            "op": "Sub",
+            "inputs": [
+              "five_u8",
+              "nsame_u8"
+            ],
+            "outputs": [
+              "factor_m1"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "factor",
+            "op": "Add",
+            "inputs": [
+              "factor_m1",
+              "one_u8"
+            ],
+            "outputs": [
+              "factor"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "pos_g",
+            "op": "GatherND",
+            "inputs": [
+              "g",
+              "pos_idx"
+            ],
+            "outputs": [
+              "pos_g"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "pos_zero",
+            "op": "Less",
+            "inputs": [
+              "pos_g",
+              "one_u8"
+            ],
+            "outputs": [
+              "pos_zero"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "p_split",
+            "op": "Split",
+            "inputs": [
+              "pos_zero"
+            ],
+            "outputs": [
+              "pR0_tmp",
+              "pC0_tmp"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "quot",
+            "op": "Div",
+            "inputs": [
+              "coord",
+              "factor"
+            ],
+            "outputs": [
+              "quot"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "pR_u8",
+            "op": "Pad",
+            "inputs": [
+              "pR0_tmp",
+              "pad_tr_ax",
+              "true_bool",
+              "axes1"
+            ],
+            "outputs": [
+              "pR_u8"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "hid_pR_u8",
+            "op": "CenterCropPad",
+            "inputs": [
+              "pR_u8",
+              "sh_cg"
+            ],
+            "outputs": [
+              "hid_pR_u8"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "pR",
+            "op": "Cast",
+            "inputs": [
+              "hid_pR_u8"
+            ],
+            "outputs": [
+              "pR"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "pC_u8",
+            "op": "Pad",
+            "inputs": [
+              "pC0_tmp",
+              "pad_tr_ax",
+              "true_bool",
+              "axes1"
+            ],
+            "outputs": [
+              "pC_u8"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "hid_pC_u8",
+            "op": "CenterCropPad",
+            "inputs": [
+              "pC_u8",
+              "sh_cg"
+            ],
+            "outputs": [
+              "hid_pC_u8"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "pC",
+            "op": "Cast",
+            "inputs": [
+              "hid_pC_u8"
+            ],
+            "outputs": [
+              "pC"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "fm1v",
+            "op": "Unsqueeze",
+            "inputs": [
+              "factor_m1",
+              "axes0"
+            ],
+            "outputs": [
+              "fm1v"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "ffeat_u8",
+            "op": "Pad",
+            "inputs": [
+              "fm1v",
+              "pad_tr_ax",
+              "one_u8",
+              "axes0"
+            ],
+            "outputs": [
+              "ffeat_u8"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "ffeat",
+            "op": "Cast",
+            "inputs": [
+              "ffeat_u8"
+            ],
+            "outputs": [
+              "ffeat"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "hid_cg_u8",
+            "op": "CenterCropPad",
+            "inputs": [
+              "cg_u8",
+              "sh_cg"
+            ],
+            "outputs": [
+              "hid_cg_u8"
+            ]
+          },
+          {
+            "index": 28,
+            "name": "cg",
+            "op": "Cast",
+            "inputs": [
+              "hid_cg_u8"
+            ],
+            "outputs": [
+              "cg"
+            ]
+          },
+          {
+            "index": 29,
+            "name": "qfeat_u8",
+            "op": "Pad",
+            "inputs": [
+              "quot",
+              "pad_tr_ax",
+              "one_u8",
+              "axes0"
+            ],
+            "outputs": [
+              "qfeat_u8"
+            ]
+          },
+          {
+            "index": 30,
+            "name": "hid_qfeat_u8",
+            "op": "CenterCropPad",
+            "inputs": [
+              "qfeat_u8",
+              "sh30"
+            ],
+            "outputs": [
+              "hid_qfeat_u8"
+            ]
+          },
+          {
+            "index": 31,
+            "name": "qfeat",
+            "op": "Cast",
+            "inputs": [
+              "hid_qfeat_u8"
+            ],
+            "outputs": [
+              "qfeat"
+            ]
+          },
+          {
+            "index": 32,
+            "name": "qmask_b",
+            "op": "Less",
+            "inputs": [
+              "quot",
+              "five_u8"
+            ],
+            "outputs": [
+              "qmask_b"
+            ]
+          },
+          {
+            "index": 33,
+            "name": "hid_qmask_b",
+            "op": "CenterCropPad",
+            "inputs": [
+              "qmask_b",
+              "sh30"
+            ],
+            "outputs": [
+              "hid_qmask_b"
+            ]
+          },
+          {
+            "index": 34,
+            "name": "qmask",
+            "op": "Cast",
+            "inputs": [
+              "hid_qmask_b"
+            ],
+            "outputs": [
+              "qmask"
+            ]
+          },
+          {
+            "index": 35,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "coordfeat",
+              "sh30"
+            ],
+            "outputs": [
+              "remfeat"
+            ]
+          },
+          {
+            "index": 36,
+            "name": "output",
+            "op": "Einsum",
+            "inputs": [
+              "cg",
+              "C1",
+              "cfeat",
+              "cg",
+              "C2",
+              "cfeat",
+              "qfeat",
+              "Q0",
+              "qfeat",
+              "Q1",
+              "qfeat",
+              "Q2",
+              "qfeat",
+              "Q3",
+              "qmask",
+              "qfeat",
+              "Q0",
+              "qfeat",
+              "Q1",
+              "qfeat",
+              "Q2",
+              "qfeat",
+              "Q3",
+              "qmask",
+              "Scoef",
+              "ABselA",
+              "Tleft",
+              "Tright",
+              "pR",
+              "qfeat",
+              "qfeat",
+              "remfeat",
+              "ffeat",
+              "ABselB",
+              "Tleft",
+              "Tright",
+              "pC",
+              "qfeat",
+              "qfeat",
+              "remfeat",
+              "ffeat",
+              "Scoef",
+              "ABselA",
+              "Tleft",
+              "Tright",
+              "pR",
+              "qfeat",
+              "qfeat",
+              "remfeat",
+              "ffeat",
+              "ABselB",
+              "Tleft",
+              "Tright",
+              "pC",
+              "qfeat",
+              "qfeat",
+              "remfeat",
+              "ffeat"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "color_w",
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "elements": 10
+          },
+          {
+            "name": "coord",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              30
+            ],
+            "elements": 30
+          },
+          {
+            "name": "one_u8",
+            "dtype": "UINT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "ea_starts",
+            "dtype": "INT64",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "ea_ends",
+            "dtype": "INT64",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "eb_starts",
+            "dtype": "INT64",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "eb_ends",
+            "dtype": "INT64",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "edge_axes",
+            "dtype": "INT64",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "pad_tr_ax",
+            "dtype": "INT64",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "axes0",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "axes1",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "five_u8",
+            "dtype": "UINT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "pos_idx",
+            "dtype": "INT64",
+            "shape": [
+              1,
+              2,
+              1,
+              3
+            ],
+            "elements": 6
+          },
+          {
+            "name": "C1",
+            "dtype": "FLOAT16",
+            "shape": [
+              2,
+              2,
+              2
+            ],
+            "elements": 8
+          },
+          {
+            "name": "C2",
+            "dtype": "FLOAT16",
+            "shape": [
+              2,
+              2,
+              2
+            ],
+            "elements": 8
+          },
+          {
+            "name": "cfeat",
+            "dtype": "FLOAT16",
+            "shape": [
+              2,
+              10
+            ],
+            "elements": 20
+          },
+          {
+            "name": "Q0",
+            "dtype": "FLOAT16",
+            "shape": [
+              5,
+              2
+            ],
+            "elements": 10
+          },
+          {
+            "name": "Q1",
+            "dtype": "FLOAT16",
+            "shape": [
+              5,
+              2
+            ],
+            "elements": 10
+          },
+          {
+            "name": "Q2",
+            "dtype": "FLOAT16",
+            "shape": [
+              5,
+              2
+            ],
+            "elements": 10
+          },
+          {
+            "name": "Q3",
+            "dtype": "FLOAT16",
+            "shape": [
+              5,
+              2
+            ],
+            "elements": 10
+          },
+          {
+            "name": "Scoef",
+            "dtype": "FLOAT16",
+            "shape": [
+              2,
+              2
+            ],
+            "elements": 4
+          },
+          {
+            "name": "ABselA",
+            "dtype": "FLOAT16",
+            "shape": [
+              2,
+              3
+            ],
+            "elements": 6
+          },
+          {
+            "name": "ABselB",
+            "dtype": "FLOAT16",
+            "shape": [
+              2,
+              3
+            ],
+            "elements": 6
+          },
+          {
+            "name": "true_bool",
+            "dtype": "BOOL",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "coordfeat",
+            "dtype": "FLOAT16",
+            "shape": [
+              2,
+              30
+            ],
+            "elements": 60
+          },
+          {
+            "name": "Tleft",
+            "dtype": "FLOAT16",
+            "shape": [
+              3,
+              2,
+              2,
+              2,
+              3
+            ],
+            "elements": 72
+          },
+          {
+            "name": "Tright",
+            "dtype": "FLOAT16",
+            "shape": [
+              3,
+              2,
+              2
+            ],
+            "elements": 12
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 1061773,
+            "baseline": 1061773
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 2123546,
+          "perfect": false
+        },
+        "disable_all_threads4": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 1061773,
+            "baseline": 1061773
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 2123546,
+          "perfect": false
+        },
+        "default_threads1": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 1061773,
+            "baseline": 1061773
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 2123546,
+          "perfect": false
+        },
+        "default_threads4": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 1061773,
+            "baseline": 1061773
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 2123546,
+          "perfect": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "lane": "agent_target_mid12",
+  "baseline_zip": "submission_base_8004.50.zip",
+  "baseline_zip_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+  "policy": {
+    "strictly_cheaper": true,
+    "candidate_known_minimum": "265/265 and 100%",
+    "candidate_fresh_minimum": "5000 cases x at least 2 independent seeds x both ORT modes, 100% for private-lineage tasks",
+    "runtime_errors": 0,
+    "truthful_shapes": true,
+    "lookup_cloak_giant_einsum": "forbidden",
+    "conv_bias_ub": 0
+  },
+  "accepted_candidates": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "tasks": {
+    "330": {
+      "hash": "d2abd087",
+      "rule": "Recolor every separated 4-connected gray component red iff its component size is exactly 6, otherwise blue.",
+      "private_lineage": "No exact private-zero label found, but the baseline has generator-legal counterexamples and is unsafe for private use.",
+      "baseline": {
+        "path": "submission_base_8004.50.zip::task330.onnx",
+        "sha256": "06dcb5216cb441f6d760a28fa4a5b4affa678c9001504dbd8f4f80f3bbd2d5af",
+        "memory": 730,
+        "params": 167,
+        "cost": 897,
+        "known": {
+          "disable_all": {"right": 266, "total": 266, "runtime_errors": 0},
+          "default": {"right": 0, "total": 266, "session_error": true}
+        },
+        "strict_data_prop": true,
+        "truthful_shapes": false,
+        "shape_issue": "GroupNormalization output g is declared [1,1,1,1] although runtime is [1,10,30,30]; output is declared [1,10,22,22] but runs [1,10,30,30].",
+        "conv_bias_ub": 0,
+        "ops": ["GroupNormalization", "CenterCropPad", "QLinearConv", "Mod", "Concat"],
+        "lookup": false,
+        "cloak": true,
+        "giant_einsum": false,
+        "semantic_failure": "Two explicit generator-legal close-component cases fail; the independent exact control passes both."
+      },
+      "best_truthful_control": {
+        "path": "scripts/golf/loop_7999_13/lane_a26/rule_references/task330_truthful_component_rect.onnx",
+        "sha256": "6268e9acdeb8a79af2c1dc2485bc843a54d0b599ec41be1de74faa75ac5c610d",
+        "cost": 5525,
+        "known": {
+          "disable_all": {"right": 266, "total": 266, "runtime_errors": 0},
+          "default": {"right": 266, "total": 266, "runtime_errors": 0}
+        },
+        "strict_data_prop": true,
+        "truthful_shapes": true,
+        "conv_bias_ub": 0,
+        "lookup": false,
+        "cloak": false,
+        "giant_einsum": false,
+        "fresh": "Not promoted to the two-seed gate: cost already exceeds baseline by 4628. Historical independent generator audits include 3000/3000 rule cases and the explicit legal counterexamples."
+      },
+      "candidate_path": null,
+      "candidate_sha256": null,
+      "old_cost": 897,
+      "new_cost": null,
+      "gain": 0.0,
+      "control_score_delta": -1.8179826643271575,
+      "decision": "REJECT_NO_STRICTLY_CHEAPER_SOUND_MODEL"
+    },
+    "280": {
+      "hash": "b527c5c6",
+      "rule": "From each red edge-dot on the two green rectangles, emit the red centerline and green thickness band outward to the grid edge; respect defect direction, flip, and transpose.",
+      "private_lineage": "Processing-risk lineage: cost-828 graph is a cloaked giant-Einsum derivative, default ORT cannot create it, and a prior fresh100 audit found 99/100 rather than 100%.",
+      "baseline": {
+        "path": "submission_base_8004.50.zip::task280.onnx",
+        "sha256": "19d38b7bff083fd7da14262714afa75345594b91e39d978ada0d25a912971793",
+        "memory": 626,
+        "params": 202,
+        "cost": 828,
+        "known": {
+          "disable_all": {"right": 267, "total": 267, "runtime_errors": 0},
+          "default": {"right": 0, "total": 267, "session_error": true}
+        },
+        "strict_data_prop": true,
+        "truthful_shapes": false,
+        "shape_issue": "22 declared/runtime mismatches in the audited lineage.",
+        "conv_bias_ub": 0,
+        "ops": ["Einsum", "CenterCropPad", "ScatterElements", "QLinearConv", "BitShift", "BitwiseAnd"],
+        "lookup": false,
+        "cloak": true,
+        "giant_einsum": true,
+        "max_einsum_inputs": 24
+      },
+      "best_truthful_control": {
+        "path": "scripts/golf/loop_7999_13/lane_b17/candidate_task280_truthful.onnx",
+        "sha256": "7922cea4b2789ed175357f6c5e3855b4b19521ea90bd6dbd2c24abd5f2373b7c",
+        "cost": 2161,
+        "known": {
+          "disable_all": {"right": 267, "total": 267, "runtime_errors": 0},
+          "default": {"right": 267, "total": 267, "runtime_errors": 0}
+        },
+        "fresh": {
+          "seed_171799913_disable_all": {"right": 5000, "total": 5000, "runtime_errors": 0},
+          "seed_171799913_default": {"right": 5000, "total": 5000, "runtime_errors": 0},
+          "second_seed": "Not run because the model already fails strict cost comparison by +1333."
+        },
+        "strict_data_prop": true,
+        "truthful_shapes": true,
+        "conv_bias_ub": 0,
+        "lookup": false,
+        "cloak": false,
+        "giant_einsum": false
+      },
+      "candidate_path": null,
+      "candidate_sha256": null,
+      "old_cost": 828,
+      "new_cost": null,
+      "gain": 0.0,
+      "control_score_delta": -0.9593132021216262,
+      "decision": "REJECT_NO_STRICTLY_CHEAPER_SOUND_MODEL"
+    },
+    "364": {
+      "hash": "e509e548",
+      "rule": "Classify each separated green glyph by topology: H/junction -> red 2, U/two corners -> pink 6, L/one corner -> blue 1.",
+      "private_lineage": "No exact private-zero label found; baseline is nevertheless prohibited because its cost depends on a guaranteed false shape declaration.",
+      "baseline": {
+        "path": "submission_base_8004.50.zip::task364.onnx",
+        "sha256": "2ba1bb84e800b98cdcac9e4d8cb8970d08e532fadf84b64f1b3d88d21ab2a3db",
+        "memory": 683,
+        "params": 2,
+        "cost": 685,
+        "known": {
+          "disable_all": {"right": 266, "total": 266, "runtime_errors": 0},
+          "default": {"right": 266, "total": 266, "runtime_errors": 0}
+        },
+        "strict_data_prop": true,
+        "truthful_shapes": false,
+        "shape_issue": "input_fake is declared [1,1,1,1], but CenterCropPad(input, Shape(input)) guarantees runtime [1,10,30,30].",
+        "conv_bias_ub": 0,
+        "ops": ["CenterCropPad", "CastLike", "HardSigmoid", "GreaterOrEqual", "LessOrEqual"],
+        "lookup": false,
+        "cloak": true,
+        "giant_einsum": false
+      },
+      "best_truthful_control": {
+        "path": "scripts/golf/scratch/task364/cand8.onnx",
+        "sha256": "a9876c1abbb330049d793ec1362b2136be51353326784d27224cf21025db0344",
+        "cost": 46741,
+        "known": {
+          "disable_all": {"right": 266, "total": 266, "runtime_errors": 0},
+          "default": {"right": 266, "total": 266, "runtime_errors": 0}
+        },
+        "fresh": "Historical independent evidence: numpy rule 8000/8000 and ONNX disable-all 2000/2000. A two-seed candidate gate was not run because cost exceeds baseline by 46056.",
+        "strict_data_prop": true,
+        "truthful_shapes": true,
+        "conv_bias_ub": 0,
+        "lookup": false,
+        "cloak": false,
+        "giant_einsum": false,
+        "ops": ["Conv", "MaxPool", "ScatterND", "Gather", "Where", "Equal", "Pad"]
+      },
+      "candidate_path": null,
+      "candidate_sha256": null,
+      "old_cost": 685,
+      "new_cost": null,
+      "gain": 0.0,
+      "control_score_delta": -4.222958164552547,
+      "decision": "REJECT_NO_STRICTLY_CHEAPER_SOUND_MODEL"
+    },
+    "310": {
+      "hash": "c909285e",
+      "rule": "Locate the unique complete square perimeter of side 5..8 in the periodic wire grid and return exactly that square crop.",
+      "private_lineage": "Yes, documented local/private divergence risk: historical local >20 versus real score 14, and an independent fresh5000 audit missed legal cases in both ORT modes.",
+      "baseline": {
+        "path": "submission_base_8004.50.zip::task310.onnx",
+        "sha256": "f7ad4fb86c5aa78aeb9e3ea8239bf0ba52af1249988a5065992a4e8c58861d79",
+        "memory": 202,
+        "params": 364,
+        "cost": 566,
+        "known": {
+          "disable_all": {"right": 266, "total": 266, "runtime_errors": 0},
+          "default": {"right": 266, "total": 266, "runtime_errors": 0}
+        },
+        "fresh_history": {
+          "disable_all_seed": {"right": 4993, "total": 5000, "runtime_errors": 0},
+          "default_seed": {"right": 4998, "total": 5000, "runtime_errors": 0}
+        },
+        "strict_data_prop": true,
+        "truthful_shapes": true,
+        "conv_bias_ub": 0,
+        "ops": ["Einsum", "TfIdfVectorizer", "Cast", "Div", "Sub"],
+        "lookup": true,
+        "cloak": false,
+        "giant_einsum": true,
+        "max_einsum_inputs": 23
+      },
+      "best_exact_control": {
+        "path": "scripts/golf/loop_7999_13/lane_c9/task310_safe_linear_selector.onnx",
+        "sha256": "ad81c541e1164adc0e6a7971ae62a013b79e3bd6a1a3efcbca93b4400084c496",
+        "cost": 633,
+        "known": {
+          "disable_all": {"right": 266, "total": 266, "runtime_errors": 0},
+          "default": {"right": 266, "total": 266, "runtime_errors": 0}
+        },
+        "fresh_history": {
+          "disable_all": {"right": 5000, "total": 5000, "runtime_errors": 0},
+          "default": {"right": 5000, "total": 5000, "runtime_errors": 0}
+        },
+        "strict_data_prop": true,
+        "truthful_shapes": true,
+        "conv_bias_ub": 0,
+        "lookup": true,
+        "cloak": false,
+        "giant_einsum": true,
+        "rejection": "Costs 67 more than baseline and still uses TfIdfVectorizer plus a 23-input Einsum, so it is not an admissible new candidate."
+      },
+      "candidate_path": null,
+      "candidate_sha256": null,
+      "old_cost": 566,
+      "new_cost": null,
+      "gain": 0.0,
+      "control_score_delta": -0.11187634394099327,
+      "decision": "REJECT_PRIVATE_LINEAGE_BELOW_100_PERCENT_AND_NO_ADMISSIBLE_CHEAPER_MODEL"
+    }
+  },
+  "final_decision": "NO_SAFE_STRICT_WINNER",
+  "zip_merge_performed": false,
+  "protected_files_modified": false
+}

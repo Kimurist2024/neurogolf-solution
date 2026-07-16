@@ -1,0 +1,1123 @@
+{
+  "task": 216,
+  "lb_white_lineage": {
+    "archive": "submission_base_8004.50.zip",
+    "archive_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+    "member": "task216.onnx",
+    "member_sha256": "bc62a647f05d5b736e0e2b4443ff2e3d63224e43f6f015993750f7c0e04b4abe",
+    "member_byte_length": 8274
+  },
+  "rewrite": [
+    {
+      "kind": "identity",
+      "index": 11,
+      "input": "sl18_i32",
+      "output": "sl20_dyn",
+      "removed_initializers": [],
+      "proof": "Identity(x)=x for every tensor value and dtype; all consumers are rewired from the Identity output to the same input tensor."
+    }
+  ],
+  "base_structure": {
+    "checks": {
+      "checker_full": true,
+      "strict_data_prop": true,
+      "canonical_io": true,
+      "standard_domains": true,
+      "no_functions_sparse_nested": true,
+      "no_banned_ops": true,
+      "no_new_giant_einsum": true,
+      "static_positive": true,
+      "no_external_initializers": true,
+      "finite_initializers": true,
+      "conv_bias_ub0": true
+    },
+    "pass": true,
+    "error": null,
+    "cost": {
+      "memory": 723,
+      "params": 46,
+      "cost": 769
+    }
+  },
+  "candidate_structure": {
+    "checks": {
+      "checker_full": false,
+      "strict_data_prop": false,
+      "canonical_io": true,
+      "standard_domains": true,
+      "no_functions_sparse_nested": true,
+      "no_banned_ops": true,
+      "no_new_giant_einsum": true,
+      "static_positive": true,
+      "no_external_initializers": true,
+      "finite_initializers": true,
+      "conv_bias_ub0": true
+    },
+    "pass": false,
+    "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Slice, node name: rowu): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (1) vs (17)\n(op_type:CenterCropPad, node name: prev): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (17) vs (1)\n",
+    "cost": null
+  },
+  "candidate_sha256": "82523163ef428751bec9eef0fb523c0eef2aa87a7a9a2172490a3c9dd7c959aa",
+  "candidate_byte_length": 8208,
+  "incumbent_measured_cost": {
+    "task": 216,
+    "memory": 991,
+    "params": 46,
+    "cost": 1037
+  },
+  "candidate_measured_cost": null,
+  "candidate_measured_cost_status": "not_run_unless_mandatory_pre_fresh_gates_pass",
+  "known": {
+    "disable_all": {
+      "total": 266,
+      "base_right": 266,
+      "candidate_right": 266,
+      "base_errors": 0,
+      "candidate_errors": 0,
+      "one_sided_errors": 0,
+      "raw_bitwise_equal": 266,
+      "decoded_equal": 266,
+      "max_abs_raw_difference": 0.0
+    },
+    "default": {
+      "total": 266,
+      "base_right": 266,
+      "candidate_right": 266,
+      "base_errors": 0,
+      "candidate_errors": 0,
+      "one_sided_errors": 0,
+      "raw_bitwise_equal": 266,
+      "decoded_equal": 266,
+      "max_abs_raw_difference": 0.0
+    }
+  },
+  "fresh": {},
+  "fresh_run": false,
+  "verdict": "REJECT",
+  "reasons": [
+    "candidate_structural_gate_failed",
+    "no_strict_cost_reduction",
+    "candidate_runtime_shapes_not_truthful"
+  ],
+  "static_cost": null,
+  "base_runtime_shapes": {
+    "shape_cloak": true,
+    "mismatch_count": 50,
+    "mismatches": [
+      {
+        "tensor": "col30",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          30
+        ]
+      },
+      {
+        "tensor": "ends_pair",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "pair",
+        "declared": [
+          1,
+          2,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          2,
+          5,
+          6
+        ]
+      },
+      {
+        "tensor": "row30",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          30
+        ]
+      },
+      {
+        "tensor": "rowidx",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "rplus",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "rseg",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "rsel",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "starts_pair",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "wbit",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "wf",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "width_u",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "wlog",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "__cl_roi_f_hid",
+        "declared": [
+          4,
+          1
+        ],
+        "runtime": [
+          4,
+          4
+        ]
+      },
+      {
+        "tensor": "roi_f",
+        "declared": [
+          4,
+          1
+        ],
+        "runtime": [
+          4,
+          4
+        ]
+      },
+      {
+        "tensor": "__cl_pads_hid",
+        "declared": [],
+        "runtime": [
+          8
+        ]
+      },
+      {
+        "tensor": "pads",
+        "declared": [],
+        "runtime": [
+          8
+        ]
+      },
+      {
+        "tensor": "__cl_rows_u__cast_uint32_hid",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "rows_u__cast_uint32",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "__ch_h_38",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "cols_i64",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "__cast_move_post_38_12",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "csel",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "cseg",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "cplus",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "hbit",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "hf",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "hlog",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "height_u",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "input_hid",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          7,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "input_f16",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "input_u8",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          7,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "rows_i32_h",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "input_i32",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          7,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "starts_hid",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "ends_hid",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "rowidx8_u8",
+        "declared": [
+          3
+        ],
+        "runtime": [
+          9
+        ]
+      },
+      {
+        "tensor": "prev_a",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          16
+        ]
+      },
+      {
+        "tensor": "prev_b",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          18
+        ]
+      },
+      {
+        "tensor": "prev",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          17
+        ]
+      },
+      {
+        "tensor": "red4_hid",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          4,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "red3_hid",
+        "declared": [
+          1,
+          3,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          3,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "red2_hid",
+        "declared": [
+          1,
+          2,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          2,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "red1_hid",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "rowidx_u8",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "wlg2_pre",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "hlg2_pre",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "width_f",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "height_f",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "corner_vals_hid",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      }
+    ]
+  },
+  "candidate_runtime_shapes": {
+    "shape_cloak": true,
+    "mismatch_count": 50,
+    "mismatches": [
+      {
+        "tensor": "col30",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          30
+        ]
+      },
+      {
+        "tensor": "ends_pair",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "pair",
+        "declared": [
+          1,
+          2,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          2,
+          5,
+          6
+        ]
+      },
+      {
+        "tensor": "row30",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          30
+        ]
+      },
+      {
+        "tensor": "rowidx",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "rplus",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "rseg",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "rsel",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "starts_pair",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "wbit",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "wf",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "width_u",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "wlog",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "__cl_roi_f_hid",
+        "declared": [
+          4,
+          1
+        ],
+        "runtime": [
+          4,
+          4
+        ]
+      },
+      {
+        "tensor": "roi_f",
+        "declared": [
+          4,
+          1
+        ],
+        "runtime": [
+          4,
+          4
+        ]
+      },
+      {
+        "tensor": "__cl_pads_hid",
+        "declared": [],
+        "runtime": [
+          8
+        ]
+      },
+      {
+        "tensor": "pads",
+        "declared": [],
+        "runtime": [
+          8
+        ]
+      },
+      {
+        "tensor": "__cl_rows_u__cast_uint32_hid",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "rows_u__cast_uint32",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "__ch_h_38",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "cols_i64",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "__cast_move_post_38_12",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "csel",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "cseg",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "cplus",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "hbit",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "hf",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "hlog",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "height_u",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "input_hid",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          7,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "input_f16",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "input_u8",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          7,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "rows_i32_h",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "input_i32",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          7,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "starts_hid",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "ends_hid",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "rowidx8_u8",
+        "declared": [
+          3
+        ],
+        "runtime": [
+          9
+        ]
+      },
+      {
+        "tensor": "prev_a",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          16
+        ]
+      },
+      {
+        "tensor": "prev_b",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          18
+        ]
+      },
+      {
+        "tensor": "prev",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          17
+        ]
+      },
+      {
+        "tensor": "red4_hid",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          4,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "red3_hid",
+        "declared": [
+          1,
+          3,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          3,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "red2_hid",
+        "declared": [
+          1,
+          2,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          2,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "red1_hid",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "rowidx_u8",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "wlg2_pre",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "hlg2_pre",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "width_f",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "height_f",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "corner_vals_hid",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      }
+    ]
+  }
+}

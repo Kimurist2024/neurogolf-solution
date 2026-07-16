@@ -1,0 +1,235 @@
+{
+  "lane": "agent_tasks025_117_131_330",
+  "authority_zip": "submission_base_8009.46.zip",
+  "authority_zip_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "all_scores_sha256": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78",
+  "policy": {
+    "strictly_lower_actual_cost": true,
+    "normal_policy90_allowed": true,
+    "private_zero_requires_complete": true,
+    "truthful_all_runtime_shapes": true,
+    "full_checker_and_strict_data_prop": true,
+    "standard_domain_no_lookup_no_cloak": true,
+    "runtime_error_nonfinite_conv_ub0": true
+  },
+  "generator_truth": {
+    "25": {
+      "hash": "1a07d186",
+      "classification": "global line/side projection",
+      "rule": "Preserve each full guide line, erase sparse probes, and project a probe of a matching guide color to the adjacent cell on the same side of that guide; the whole task may be transposed.",
+      "bounds": "width and height 12..30; guide starts 3..6 with spacing 6..9; sparse probes are excluded from guide and adjacent columns and same-color rows are unique."
+    },
+    "117": {
+      "hash": "4c5c2cf0",
+      "classification": "global reflection around a detected center",
+      "rule": "Detect the five-cell X body and reflect the distinct-color leg sprite across both axes around its center.",
+      "bounds": "square size 12..15; sprite dimensions are generator-bounded and the source is diagonally connected; horizontal and vertical flips vary."
+    },
+    "131": {
+      "hash": "56dc2b01",
+      "classification": "global geometry/translation",
+      "rule": "Move the green creature to the cell immediately across the red line and place a full cyan separator immediately outside the moved creature; horizontal flip and transpose vary.",
+      "bounds": "base width 16..18, height 4..5, connected creature size 8..9, with data-dependent creature extent and red-line position."
+    },
+    "330": {
+      "hash": "d2abd087",
+      "classification": "connected-component topology",
+      "rule": "For every separated four-connected gray component, recolor all its cells red iff the component size is exactly six, otherwise blue.",
+      "bounds": "10x10; 3..6 components, mutually separated by one cell; component bounding boxes are 2x4, 3x3, or 4x2 and sizes are 4..8."
+    }
+  },
+  "tasks": {
+    "25": {
+      "authority": {
+        "sha256": "22a44063541ed6c696b535d4059abf5dd4844a0fafef2df6006b6f1e027ea595",
+        "serialized_bytes": 4457,
+        "memory": 396,
+        "params": 78,
+        "cost": 474,
+        "known_four_configs": "266/266 in each, zero errors and nonfinite",
+        "runtime_shape_truth": "fail: trace triggers a 1x10x30x1 versus 1x10x30x30 buffer-shape contradiction"
+      },
+      "truthful_control": {
+        "sha256": "33d06d42c974c8a0aaaa6e36d900a1581f761713a7ee41898707ebad4e8bebe5",
+        "cost": 370205,
+        "known": "266/266",
+        "prior_fresh": "3000/3000",
+        "strict_lower": false
+      },
+      "current_residual_scan": {
+        "variants": 2,
+        "strict_lower": 0,
+        "factor_lower_bounds_all_nonnegative": true
+      },
+      "history_strict_lower": [
+        {
+          "sha256": "0ff9ea73675b4c9566e0edd760a0f46d0475f882f7b66327064c23a8ca854e82",
+          "cost": 472,
+          "known": "0/266 in each of four configs",
+          "nonfinite_values_per_config": 2394000,
+          "reasons": ["25-input Einsum", "not correct", "runtime-shape trace failure"]
+        },
+        {
+          "sha256": "9402de87c604dd69330d0122a24c4c25bbbc0ae66c61bad57fb351eb5103d847",
+          "cost": 472,
+          "known": "0/266 in each of four configs",
+          "nonfinite_values_per_config": 2394000,
+          "reasons": ["25-input Einsum", "not correct", "runtime-shape trace failure"]
+        },
+        {
+          "sha256": "a8b2e0eecb42f3c2c7a6ea6b5878a54127537fa1270b0f165bd8ae20fe533f86",
+          "cost": 472,
+          "known": "0/266 in each of four configs",
+          "nonfinite_values_per_config": 2394000,
+          "reasons": ["25-input Einsum", "not correct", "runtime-shape trace failure"]
+        }
+      ],
+      "policy90_candidate_count": 0,
+      "verdict": "NO_ADMISSIBLE_STRICT_LOWER_CANDIDATE"
+    },
+    "117": {
+      "authority": {
+        "sha256": "042e3ee0976af0c684fb98064800ab0b84e8bf53273a0c4121315ab7a0bfaac2",
+        "serialized_bytes": 6448,
+        "memory": 496,
+        "params": 109,
+        "cost": 605,
+        "known_disable_all": "265/265, zero errors",
+        "known_default": "session creation error at CenterCropPad",
+        "strict_data_prop": false,
+        "runtime_shape_mismatches": 10,
+        "actual_intermediate_bytes": 73571
+      },
+      "truthful_control": {
+        "sha256": "8a57a033316f9c587ee071ece51bef8a0e6841d4dd783afab8ff40d3b29ecb14",
+        "cost": 6762,
+        "known_disable_all": "265/265",
+        "known_default": "265/265",
+        "runtime_shape_mismatches": 0,
+        "strict_lower": false
+      },
+      "current_residual_scan": {
+        "variants": 34,
+        "strict_lower": 0,
+        "factor_lower_bounds_all_nonnegative": true
+      },
+      "history_strict_lower": [],
+      "policy90_candidate_count": 0,
+      "verdict": "NO_ADMISSIBLE_STRICT_LOWER_CANDIDATE"
+    },
+    "131": {
+      "authority": {
+        "sha256": "d72faec0655603b5dc7e6857799988200a08953f724b0d6f58703dbfbed5ebc4",
+        "serialized_bytes": 10360,
+        "memory": 572,
+        "params": 119,
+        "cost": 691,
+        "known_four_configs": "266/266 in each, zero errors and nonfinite",
+        "runtime_shape_mismatches": 18
+      },
+      "truthful_control": {
+        "sha256": "d3f38bb50948b1f069cd8b5d434a21e8476944be4088ab3a8e322ca948c5e54d",
+        "cost": 24927,
+        "known": "266/266",
+        "prior_fresh": "3000/3000 reference",
+        "strict_lower": false
+      },
+      "current_residual_scan": {
+        "variants": 34,
+        "strict_lower": 0,
+        "factor_lower_bounds_all_nonnegative": true,
+        "minimum_valid_cost": 691
+      },
+      "history_strict_lower": [
+        {
+          "sha256": "5ac0fc168a52cb7f4d6fdee9b82aecc6346ba8c8ae0d60b13a72d3f03da5331c",
+          "cost": 627,
+          "known_threshold": "266/266 in each of four configs",
+          "raw_equal_to_authority": "0/266",
+          "runtime_shape_mismatches": 11,
+          "reasons": ["TfIdf lookup", "shape cloak", "raw output mismatch"]
+        },
+        {
+          "sha256": "a13e6337acc30ddc9bc7f3276f3e464cc8144c12d40577bdd625d721ab1db182",
+          "cost": 596,
+          "known_threshold": "266/266 in each of four configs",
+          "raw_equal_to_authority": "0/266",
+          "runtime_shape_mismatches": 11,
+          "reasons": ["TfIdf lookup", "shape cloak", "raw output mismatch"]
+        }
+      ],
+      "policy90_candidate_count": 0,
+      "verdict": "NO_ADMISSIBLE_STRICT_LOWER_CANDIDATE"
+    },
+    "330": {
+      "authority": {
+        "sha256": "af2a81db8b4b16f913ec05c689cb04e2894e288b6f124c2424c7aa438b9bfd0e",
+        "serialized_bytes": 4103,
+        "memory": 730,
+        "params": 166,
+        "cost": 896,
+        "known_disable_all": "266/266, zero errors",
+        "known_default": "session creation error at CenterCropPad",
+        "runtime_shape_mismatches": 38,
+        "actual_intermediate_bytes": 83177
+      },
+      "truthful_control": {
+        "sha256": "6268e9acdeb8a79af2c1dc2485bc843a54d0b599ec41be1de74faa75ac5c610d",
+        "cost": 5525,
+        "known_disable_all": "266/266",
+        "known_default": "266/266",
+        "runtime_shape_mismatches": 0,
+        "strict_lower": false
+      },
+      "current_residual_scan": {
+        "variants": 2,
+        "strict_lower": 0,
+        "factor_lower_bounds_all_nonnegative": true
+      },
+      "manual_constant_fold": {
+        "sha256": "53a38bc9b0678ebb40bbeb210e0038b513fb7b4689160a804ed9d1858c9b7338",
+        "nominal_expected_delta": -42,
+        "result": "checker and strict inference fail; both ORT sessions reject"
+      },
+      "history_strict_lower": [
+        {
+          "sha256": "b4f79322a726b544fe7986a760c2ebcb2c526cb5f7c524f6e1ea2ec6ea32fc10",
+          "cost": 807,
+          "known": "166/266 in disable-all and default",
+          "runtime_shape_mismatches": 2
+        },
+        {
+          "sha256": "1c5afaebb477473d33b00a99155d05b44862487b147e0ac9b78f5b67c93221d6",
+          "cost": 808,
+          "known": "162/266 in disable-all and default",
+          "runtime_shape_mismatches": 2
+        },
+        {
+          "sha256": "7c500ae8eea26ef575be99e6834fce7fc7e2b779f3721da21cddf48843ab8793",
+          "cost": 817,
+          "known": "210/266 in disable-all and default",
+          "runtime_shape_mismatches": 2
+        }
+      ],
+      "policy90_candidate_count": 0,
+      "verdict": "NO_ADMISSIBLE_STRICT_LOWER_CANDIDATE"
+    }
+  },
+  "residual_scan": {
+    "variant_count": 72,
+    "structural_reject_count": 37,
+    "valid_but_not_lower_count": 35,
+    "strict_lower_count": 0,
+    "all_initializer_factor_lower_bounds_nonnegative": true
+  },
+  "promising_candidate_count": 0,
+  "candidate_four_config_runs": 0,
+  "fresh_seed_sets_run": 0,
+  "fresh_skip_reason": "No candidate passed strict-lower, structural, policy, truthful-shape, and known/POLICY90 pre-fresh gates.",
+  "winners": [],
+  "winner_count": 0,
+  "projected_gain": 0.0,
+  "promotion_performed": false,
+  "protected_artifacts_modified_by_lane": false,
+  "verdict": "NO_ADMISSIBLE_STRICT_LOWER_OR_POLICY90_CANDIDATE"
+}

@@ -1,0 +1,48 @@
+{
+  "task": 391,
+  "generator_hash": "f8b3ba0a",
+  "rule": "Count nonzero rendered colors, remove the strictly most frequent background, and emit the remaining three colors by descending frequency.",
+  "static_proof": {
+    "logical_dimensions": {
+      "width": [
+        3,
+        5
+      ],
+      "height": [
+        6,
+        7
+      ]
+    },
+    "minority_logical_counts": "three values sampled without replacement from {1,2,3,4}",
+    "minority_rendered_counts": "three distinct values from {2,4,6,8}",
+    "minimum_background_logical_count": 9,
+    "maximum_minority_logical_count": 4,
+    "background_is_strictly_largest": true,
+    "tie_warning_resolution": "The public generate(width, colors) override can accept tied arbitrary colors, but default/private generation cannot tie because counts are sampled without replacement."
+  },
+  "known": {
+    "right": 267,
+    "wrong": 0,
+    "first_wrong": null
+  },
+  "fresh": {
+    "seed": 391800046,
+    "requested": 5000,
+    "right": 5000,
+    "wrong": 0,
+    "generation_errors": 0,
+    "first_wrong": null,
+    "fact_failures": {},
+    "minority_rendered_count_sets": {
+      "[2, 4, 8]": 1262,
+      "[4, 6, 8]": 1256,
+      "[2, 4, 6]": 1222,
+      "[2, 6, 8]": 1260
+    },
+    "background_rendered_count_range": [
+      18,
+      58
+    ]
+  },
+  "pass": true
+}

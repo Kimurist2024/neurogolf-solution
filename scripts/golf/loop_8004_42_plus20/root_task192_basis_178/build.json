@@ -1,0 +1,28 @@
+{
+  "source": "others/71407/task192.onnx",
+  "source_sha256": "51a7d65491f300b91243ef8b522c00d2b699eb07615a5d64c5694de33e4d0490",
+  "source_profile": {
+    "memory": 248,
+    "params": 947,
+    "cost": 1195
+  },
+  "candidate": "scripts/golf/loop_8004_42_plus20/root_task192_basis_178/candidates/task192_shared_basis_hardmax.onnx",
+  "candidate_sha256": "86d9aa5040263ebaaec4dab9e6ecf34668d45e9ea39f77820fe93c63c4069472",
+  "candidate_profile": {
+    "memory": 200,
+    "params": 938,
+    "cost": 1138
+  },
+  "proof": {
+    "basis_rows": [
+      "nonzero",
+      "background",
+      "selected"
+    ],
+    "center_map": "rows recover [inside, nonzero]",
+    "neighbor_map": "rows recover [inside, selected]",
+    "route_out": "rows recover [background, -9*background+selected]",
+    "hardmax": "for hist shape [1,10], axis=1 equals ArgMax(first tie)+OneHot([0,1])",
+    "final": "B*background + P*(-9*background+selected), identical to accepted polynomial"
+  }
+}

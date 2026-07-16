@@ -1,0 +1,112 @@
+{
+  "task": 251,
+  "decision": "REJECT_NO_RUNTIME_SAFE_STRICT_LOWER_CANDIDATE",
+  "winner": null,
+  "verified_gain": 0.0,
+  "authority": {
+    "label": "LB8009.46",
+    "path": "scripts/golf/loop_7999_13/lane_c25/base/task251.onnx",
+    "sha256": "57f557717f6c9b582b0051519e722721bc5c904fd310252bcd4030f2df8d5c63",
+    "cost": 755
+  },
+  "archive_sources": [
+    {
+      "path": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task251_r03_static406.onnx",
+      "sha256": "df0ef741f4ff332de2eda62527ec8a3897a5232f68487ac3e8fde3a3930cd4a9",
+      "reported_static_cost": 406,
+      "official_like_cost": 582,
+      "memory": 363,
+      "params": 219,
+      "known_disable_all": "266/266, errors=0 (retained archive evidence)",
+      "default_session": "FAIL: CenterCropPad shape length 1 does not match axes length 3",
+      "declared_runtime_shape_mismatches": 58,
+      "truthful_intermediate_bytes": 295713
+    },
+    {
+      "path": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task251_r04_static477.onnx",
+      "sha256": "88ab0383bb85e7f8925f6a7c8557c4c80710d04c21257728a0e128fc5adb6769",
+      "reported_static_cost": 477,
+      "official_like_cost": 709,
+      "memory": 450,
+      "params": 259,
+      "known_disable_all": "266/266, errors=0 (retained archive evidence)",
+      "default_session": "FAIL: CenterCropPad shape length 1 does not match axes length 2",
+      "hard_truthful_floor": {
+        "tensor": "ch30a",
+        "dtype": "float32",
+        "shape": [1, 30, 30, 30],
+        "bytes": 108000,
+        "reason": "The legal axes=[1], target=[30] CenterCropPad is shared by r03/r04 and is not an arity defect."
+      }
+    }
+  ],
+  "failing_center_crop_pad_shape_inputs": {
+    "r03": {
+      "count": 52,
+      "groups": [
+        {"shape_input": "__p251_hw", "scalar": 30, "axes": [1, 2, 3], "nodes": 1, "repaired_vector": [30, 30, 30]},
+        {"shape_input": "__p251_hw", "scalar": 30, "axes": [2, 3], "nodes": 16, "repaired_vector": [30, 30]},
+        {"shape_input": "__p251_hw12", "scalar": 12, "axes": [2, 3], "nodes": 1, "repaired_vector": [12, 12]},
+        {"shape_input": "__p251_hw28", "scalar": 28, "axes": [1, 2, 3], "nodes": 2, "repaired_vector": [28, 28, 28]},
+        {"shape_input": "__p251_hw28", "scalar": 28, "axes": [2, 3], "nodes": 14, "repaired_vector": [28, 28]},
+        {"shape_input": "__p251_hw29", "scalar": 29, "axes": [1, 2, 3], "nodes": 2, "repaired_vector": [29, 29, 29]},
+        {"shape_input": "__p251_hw29", "scalar": 29, "axes": [2, 3], "nodes": 16, "repaired_vector": [29, 29]}
+      ]
+    },
+    "r04": {
+      "count": 52,
+      "groups": [
+        {"shape_input": "__p251_hw", "scalar": 30, "axes": [2, 3], "nodes": 17, "required_vector": [30, 30]},
+        {"shape_input": "__p251_hw12", "scalar": 12, "axes": [2, 3], "nodes": 1, "required_vector": [12, 12]},
+        {"shape_input": "__p251_hw28", "scalar": 28, "axes": [2, 3], "nodes": 16, "required_vector": [28, 28]},
+        {"shape_input": "__p251_hw29", "scalar": 29, "axes": [2, 3], "nodes": 18, "required_vector": [29, 29]}
+      ],
+      "repair_not_emitted": "r03 truthful repair already proves the family exceeds the cost ceiling; r04 has the same 108000-byte first-intermediate hard floor."
+    }
+  },
+  "diagnostic_arity_only_artifact": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_task251_runtime_repair/task251_r03_arity_repaired_cloaked.onnx",
+    "sha256": "fe3c34402ea8a97ad9e1d367eb667b455a7861606b8b1565bee66820e08fa09b",
+    "bytes": 7901,
+    "disable_all_train0": "PASS, exact gold",
+    "default_train0": "PASS, exact gold",
+    "checker_full": false,
+    "strict_data_prop": false,
+    "costable": false,
+    "rejection": "It intentionally retains false [1,1,1,1] value_info and is a shape cloak, not a candidate."
+  },
+  "truthful_repair_artifact": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_task251_runtime_repair/task251_r03_arity_repaired_truthful.onnx",
+    "sha256": "fad302b70f5e9b9243ee922dfbbbd5e86ed8cae39e8c854f065d15f8576a7c50",
+    "bytes": 7959,
+    "checker_full": true,
+    "strict_data_prop": true,
+    "static_positive_shapes": true,
+    "standard_domains": true,
+    "no_banned_ops_functions_nested_graphs_sparse_external": true,
+    "finite_initializers": true,
+    "conv_family_ub_findings": [],
+    "declared_runtime_shape_mismatches": 0,
+    "shape_cloak": false,
+    "disable_all_train0": "PASS, exact gold",
+    "default_train0": "PASS, exact gold",
+    "memory": 295713,
+    "params": 236,
+    "cost": 295949,
+    "authority_cost_delta": 295194,
+    "authority_score_delta": -5.971224671914991,
+    "rejection": "cost 295949 is not below 755"
+  },
+  "admission_gates": {
+    "strict_lower_than_755": false,
+    "complete_known_four_configs": "SKIPPED_AFTER_COST_GATE",
+    "fresh_two_disjoint_seeds_four_configs": "SKIPPED_AFTER_COST_GATE",
+    "nonfinite_margin_shape_mismatch_runtime_error_full_gate": "NOT_APPLICABLE_WITHOUT_A_STRICT_LOWER_CANDIDATE",
+    "private_zero_pass_through": "NOT_APPLICABLE; no candidate is promoted"
+  },
+  "immutability": {
+    "root_or_stage_write": false,
+    "try_candidate_invoked": false,
+    "kimi_invoked": false
+  }
+}

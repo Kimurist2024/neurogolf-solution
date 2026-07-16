@@ -1,0 +1,1470 @@
+{
+  "base_task324": {
+    "label": "base_task324",
+    "task": 324,
+    "path": "scripts/golf/loop_8004_42_plus20/agent_target_mid17/baseline/task324.onnx",
+    "sha256": "894be3a6ae4d93ce52a5bb0ec8b03fe3443de74b746cff7529dc4989cd73ac08",
+    "file_bytes": 3889,
+    "nodes": 22,
+    "initializers": 13,
+    "params": 212,
+    "op_histogram": {
+      "Einsum": 6,
+      "Where": 3,
+      "CenterCropPad": 2,
+      "Shape": 1,
+      "Cast": 1,
+      "ConstantOfShape": 1,
+      "TopK": 1,
+      "Equal": 1,
+      "CastLike": 1,
+      "Greater": 1,
+      "Mul": 1,
+      "Sub": 1,
+      "Concat": 1,
+      "Relu": 1
+    },
+    "max_node_inputs": 65,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 4,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 23,
+      "declared_tensors": 11,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "output",
+          "declared": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "__f16hid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "graph_input_cast_0",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "active_oh_hid",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            10,
+            4
+          ]
+        },
+        {
+          "tensor": "active_oh",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            10,
+            4
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 12,
+      "single_example_intermediate_bytes": 54338
+    },
+    "official_like_score": {
+      "memory": 227,
+      "params": 212,
+      "cost": 439,
+      "score": 18.91550058692483,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_18) Op (TopK) [ShapeInferenceError] Axis has less than the requested k elements."
+    }
+  },
+  "base_task338": {
+    "label": "base_task338",
+    "task": 338,
+    "path": "scripts/golf/loop_8004_42_plus20/agent_target_mid17/baseline/task338.onnx",
+    "sha256": "edcac049616e90e42b848d1a719b3af7a4a078b5d1180a3cdf0ecf60e340a01d",
+    "file_bytes": 17788,
+    "nodes": 188,
+    "initializers": 2,
+    "params": 2,
+    "op_histogram": {
+      "CenterCropPad": 97,
+      "PRelu": 38,
+      "HardSigmoid": 37,
+      "Selu": 7,
+      "ConstantOfShape": 6,
+      "CastLike": 1,
+      "ReduceL1": 1,
+      "Concat": 1
+    },
+    "max_node_inputs": 10,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_D3_pb' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,29,30} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+    },
+    "official_like_score": {
+      "memory": 424,
+      "params": 2,
+      "cost": 426,
+      "score": 18.94556065373063,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 2,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (output) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=30 Declared=1 Dimension=2"
+    }
+  },
+  "base_task268": {
+    "label": "base_task268",
+    "task": 268,
+    "path": "scripts/golf/loop_8004_42_plus20/agent_target_mid17/baseline/task268.onnx",
+    "sha256": "f77d0468fcf6d78549a2c9bff8e09140829047864fdad1e82e8e81e413567e52",
+    "file_bytes": 1476612,
+    "nodes": 46,
+    "initializers": 5,
+    "params": 47,
+    "op_histogram": {
+      "CenterCropPad": 31,
+      "Cast": 3,
+      "ConstantOfShape": 3,
+      "TfIdfVectorizer": 2,
+      "BitwiseAnd": 2,
+      "Einsum": 1,
+      "Shape": 1,
+      "Concat": 1,
+      "CastLike": 1,
+      "Where": 1
+    },
+    "max_node_inputs": 5,
+    "lookup_red_flags": {
+      "tfidf": 2,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 46,
+      "declared_tensors": 46,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "_tokens",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "_csp_0_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp_0_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp_0_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp_1_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp_1_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp_1_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp_2_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp_2_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp_2_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp_3_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp_3_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp_3_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp_4_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp_4_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp_4_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp_5_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp_5_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp_5_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp_6_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp_6_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp_6_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp_7_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp_7_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp_7_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp_8_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp_8_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp_8_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp_9_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp_9_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp_9_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_cond30_bool",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 28380
+    },
+    "official_like_score": {
+      "memory": 375,
+      "params": 47,
+      "cost": 422,
+      "score": 18.95499468596399,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_19) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    }
+  },
+  "base_task184": {
+    "label": "base_task184",
+    "task": 184,
+    "path": "scripts/golf/loop_8004_42_plus20/agent_target_mid17/baseline/task184.onnx",
+    "sha256": "156fe12922d290876f63c210f9cec8252e308e1af0512e309cb2fc6fad8928fc",
+    "file_bytes": 2423,
+    "nodes": 26,
+    "initializers": 6,
+    "params": 32,
+    "op_histogram": {
+      "Cast": 6,
+      "ArgMin": 4,
+      "CenterCropPad": 2,
+      "Einsum": 2,
+      "Equal": 2,
+      "Where": 2,
+      "Shape": 1,
+      "CastLike": 1,
+      "Shrink": 1,
+      "Concat": 1,
+      "DequantizeLinear": 1,
+      "Gather": 1,
+      "GridSample": 1,
+      "Conv": 1
+    },
+    "max_node_inputs": 5,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 26,
+      "declared_tensors": 26,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "hid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "input16",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "rowhid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            23,
+            23
+          ]
+        },
+        {
+          "tensor": "br",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "bc",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "samp",
+          "declared": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "actual": [
+            1,
+            10,
+            3,
+            3
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 64961
+    },
+    "official_like_score": {
+      "memory": 389,
+      "params": 32,
+      "cost": 421,
+      "score": 18.957367166317617,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 165,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 169,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_10) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    }
+  },
+  "history_task338_cost424": {
+    "label": "history_task338_cost424",
+    "task": 338,
+    "path": "scripts/golf/loop_7999_13/lane_archive_top200/task338_r02_static424.onnx",
+    "sha256": "6bcaf5acfeb0461fc3708c5892d189a72be1e6765d7572938acc1a5b2d520b02",
+    "file_bytes": 17788,
+    "nodes": 188,
+    "initializers": 2,
+    "params": 2,
+    "op_histogram": {
+      "CenterCropPad": 97,
+      "PRelu": 38,
+      "HardSigmoid": 37,
+      "Selu": 7,
+      "ConstantOfShape": 6,
+      "CastLike": 1,
+      "ReduceL1": 1,
+      "Concat": 1
+    },
+    "max_node_inputs": 10,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_red_down_pb' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,29,30} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+    },
+    "official_like_score": {
+      "memory": 422,
+      "params": 2,
+      "cost": 424,
+      "score": 18.95026654476804,
+      "correct": false
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 3
+      },
+      "test": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 2
+      },
+      "arc-gen": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 262
+      },
+      "total": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 267
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (output) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=30 Declared=1 Dimension=2"
+    }
+  },
+  "history_task268_cost327": {
+    "label": "history_task268_cost327",
+    "task": 268,
+    "path": "scripts/golf/loop_7999_13/lane_archive_top200/task268_r01_static327.onnx",
+    "sha256": "22ea97ffce8b14fbf923a89a0cda2233d83469201732ed3f4e914e5b2b1ced69",
+    "file_bytes": 426559,
+    "nodes": 45,
+    "initializers": 4,
+    "params": 42,
+    "op_histogram": {
+      "CenterCropPad": 31,
+      "ConstantOfShape": 3,
+      "Cast": 3,
+      "TfIdfVectorizer": 2,
+      "Einsum": 1,
+      "Shape": 1,
+      "Unsqueeze": 1,
+      "BitwiseAnd": 1,
+      "CastLike": 1,
+      "Where": 1
+    },
+    "max_node_inputs": 5,
+    "lookup_red_flags": {
+      "tfidf": 2,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 45,
+      "declared_tensors": 45,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "_tokens",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "_csp0_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp1_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp2_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp3_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp4_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp5_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp6_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp7_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp8_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp9_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp10_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp11_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp12_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp13_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp14_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp15_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp16_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp17_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp18_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp19_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp20_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp21_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp22_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp23_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp24_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp25_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp26_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_csp27_31",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            31,
+            31
+          ]
+        },
+        {
+          "tensor": "_csp28_29",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "_csp29_30",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "_cond30_bool",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            30,
+            30
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 28290
+    },
+    "official_like_score": {
+      "memory": 285,
+      "params": 42,
+      "cost": 327,
+      "score": 19.210039829102747,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_17) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    }
+  },
+  "history_task184_cost422": {
+    "label": "history_task184_cost422",
+    "task": 184,
+    "path": "scripts/golf/loop_7999_13/lane_c27/candidates/task184_sound422_r06.onnx",
+    "sha256": "7efcba6624c7db34880aca58afa5a142ea72615de22c115d627432dde2126e5b",
+    "file_bytes": 2421,
+    "nodes": 26,
+    "initializers": 7,
+    "params": 33,
+    "op_histogram": {
+      "Cast": 6,
+      "ArgMin": 4,
+      "CenterCropPad": 2,
+      "Einsum": 2,
+      "Equal": 2,
+      "Where": 2,
+      "Shape": 1,
+      "CastLike": 1,
+      "Add": 1,
+      "Concat": 1,
+      "DequantizeLinear": 1,
+      "Gather": 1,
+      "GridSample": 1,
+      "Conv": 1
+    },
+    "max_node_inputs": 5,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 26,
+      "declared_tensors": 26,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "hid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "input16",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "rowhid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            23,
+            23
+          ]
+        },
+        {
+          "tensor": "br",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "bc",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "samp",
+          "declared": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "actual": [
+            1,
+            10,
+            3,
+            3
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 64961
+    },
+    "official_like_score": {
+      "memory": 389,
+      "params": 33,
+      "cost": 422,
+      "score": 18.95499468596399,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 165,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 169,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_11) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    }
+  }
+}

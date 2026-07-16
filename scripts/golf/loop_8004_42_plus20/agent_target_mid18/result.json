@@ -1,0 +1,120 @@
+{
+  "complete": true,
+  "lane": "agent_target_mid18",
+  "decision": "NO_SAFE_STRICT_CHEAPER_CANDIDATE",
+  "accepted": [],
+  "cost_delta": 0,
+  "projected_gain": 0.0,
+  "baseline": {
+    "original_zip": "submission_base_8004.50.zip",
+    "original_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+    "final_zip": "submission_base_8005.16.zip",
+    "final_sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "all_eight_member_hashes_identical": true
+  },
+  "policy": {
+    "known_required": 1.0,
+    "fresh_nonprivate_required": 0.9,
+    "fresh_streams": 2,
+    "fresh_cases_per_stream": 5000,
+    "private_catalog_members": [],
+    "candidate_fresh_claimed": false,
+    "candidate_fresh_omission_reason": "No ONNX passed strict-cheaper plus known plus structural pre-gates."
+  },
+  "tasks": {
+    "99": {
+      "hash": "444801d8",
+      "member_sha256": "de18296f07fc021360fa0fec22861b284840aa44d939bfc14be85038dcc5d998",
+      "baseline_cost": 398,
+      "known_dual": "265/265 both",
+      "private_catalog": false,
+      "rule_reference": "known 265/265; fresh 5000/5000 + 5000/5000",
+      "finding": "current has four giant Einsum nodes (max 34 inputs); four cost397 histories score at most 38/265",
+      "decision": "REJECT_NO_ADMISSIBLE_LINEAGE"
+    },
+    "279": {
+      "hash": "b2862040",
+      "member_sha256": "d3bb22792a3e44e09d21971f88642622a32d161f3a7888f9d0e9efe5862d0a9b",
+      "baseline_cost": 397,
+      "known_dual": "266/266 both",
+      "private_catalog": false,
+      "rule_reference": "known 266/266; fresh 5000/5000 + 5000/5000",
+      "finding": "203 runtime shape contradictions; nominal 357/358 histories reprofile at 4092..4603 and fail structural/default gates",
+      "decision": "REJECT_SHAPE_CLOAK"
+    },
+    "345": {
+      "hash": "d9f24cd1",
+      "member_sha256": "36b1e2be6488496ca637996552b505cf9b2742775b663c4210407d61b861d636",
+      "baseline_cost": 389,
+      "known_dual": "264/264 both",
+      "private_catalog": false,
+      "rule_reference": "known 264/264; fresh 5000/5000 + 5000/5000",
+      "finding": "current uses negative Conv pads; legal truthful control ties 389; cost365 history is 153/264",
+      "decision": "REJECT_NO_STRICT_CHEAPER_LEGAL_MODEL"
+    },
+    "239": {
+      "hash": "9af7a82c",
+      "member_sha256": "e15519d37ccaa4f3ad478091a2eb5a6a1fe984bc602a2ffd347f03c250eb68e0",
+      "baseline_cost": 384,
+      "known_dual": "267/267 both",
+      "private_catalog": false,
+      "rule_reference": "known 267/267; fresh 5000/5000 + 5000/5000",
+      "finding": "clean incumbent; cheaper histories fail load or score 24/267 and 2/267; new probe is 0/267 and not cheaper",
+      "decision": "RETAIN_BASELINE_NO_STRICT_CHEAPER"
+    },
+    "75": {
+      "hash": "363442ee",
+      "member_sha256": "ea2280d32f09e571182c0dbae57155a7e2b8a23a88d0a027ae9add3c9770ceb8",
+      "baseline_cost": 345,
+      "known_dual": "265/265 disable-all; default session load failure",
+      "private_catalog": false,
+      "rule_reference": "known 265/265; fresh 5000/5000 + 5000/5000",
+      "finding": "33 runtime shape contradictions and 70696 actual intermediate bytes vs 311 charged; 28-model scan has zero cheaper models",
+      "decision": "REJECT_SHAPE_CLOAK"
+    },
+    "392": {
+      "hash": "f8c80d96",
+      "member_sha256": "e68e69908e85933a9cc1367d8c8653560ed5b45188f0da3729a74e8d92491fb5",
+      "baseline_cost": 345,
+      "known_dual": "266/266 both",
+      "private_catalog": false,
+      "rule_reference": "known 266/266; fresh 5000/5000 + 5000/5000",
+      "finding": "three prohibited TfIdfVectorizer lookup nodes; five cost341 histories are 0/266",
+      "decision": "REJECT_LOOKUP"
+    },
+    "387": {
+      "hash": "f35d900a",
+      "member_sha256": "df39eba7bd5bb4a6fad8c97f0f5e05ae0392a4990e829cc4435ff05220324e28",
+      "baseline_cost": 337,
+      "known_dual": "266/266 both",
+      "private_catalog": false,
+      "rule_reference": "known 266/266; fresh 5000/5000 + 5000/5000",
+      "finding": "16 runtime shape contradictions and 90657 actual intermediate bytes vs 242 charged; apparent cost330 Size fold fails checker and both ORT modes",
+      "decision": "REJECT_SHAPE_CLOAK"
+    },
+    "225": {
+      "hash": "93b581b8",
+      "member_sha256": "c55b5673a1e36b07114e82a629d23b01cefbd7b56289ad314b272d7180ef8a4a",
+      "baseline_cost": 333,
+      "known_dual": "265/265 both",
+      "private_catalog": false,
+      "rule_reference": "known 265/265; fresh 5000/5000 + 5000/5000",
+      "finding": "clean incumbent; both cost306 carrier reductions score 0/265; exhaustive local and optimizer scans find no lower correct graph",
+      "decision": "RETAIN_BASELINE_NO_STRICT_CHEAPER"
+    }
+  },
+  "evidence": [
+    "REPORT.md",
+    "model_audit.json",
+    "reference_audit.json",
+    "audit_models.py",
+    "reference_audit.py",
+    "build_task239_zero_blank.py",
+    "task239_zero_blank.onnx"
+  ],
+  "integration": {
+    "zip_created": false,
+    "root_files_modified": false,
+    "warning": "task239_zero_blank.onnx is rejected evidence and must not be integrated"
+  }
+}

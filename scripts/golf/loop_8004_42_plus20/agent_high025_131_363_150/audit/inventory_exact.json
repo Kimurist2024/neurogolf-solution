@@ -1,0 +1,3886 @@
+{
+  "authority": "submission.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "tasks": {
+    "25": {
+      "sha256": "22a44063541ed6c696b535d4059abf5dd4844a0fafef2df6006b6f1e027ea595",
+      "serialized_bytes": 4457,
+      "official_profile": {
+        "memory": 396,
+        "params": 78,
+        "cost": 474
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 33,
+        "initializer_count": 8,
+        "value_info_count": 1,
+        "op_histogram": {
+          "Attention": 29,
+          "CastLike": 1,
+          "CenterCropPad": 1,
+          "Einsum": 1,
+          "Shape": 1
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "truthful": false,
+        "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Mul node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,30,1} != {1,10,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+      },
+      "graph_inventory": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "",
+            "op": "Shape",
+            "inputs": [
+              "input"
+            ],
+            "outputs": [
+              "shape_1"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "input",
+              "shape_1"
+            ],
+            "outputs": [
+              "xh_2"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "xh_2",
+              "one"
+            ],
+            "outputs": [
+              "X_3"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "X_3",
+              "one",
+              "one"
+            ],
+            "outputs": [
+              "rowXy_6",
+              "",
+              "",
+              "rowXq_7"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXq_7",
+              "odd",
+              "odd"
+            ],
+            "outputs": [
+              "pos_8"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXy_6",
+              "pos_8",
+              "pos_8"
+            ],
+            "outputs": [
+              "posvecy_11",
+              "",
+              "",
+              "posvecq_12"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "pos_8",
+              "outscale",
+              "one"
+            ],
+            "outputs": [
+              "negposy_15",
+              "",
+              "",
+              "negposq_16"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "pos_8",
+              "pos_8",
+              "rowXy_6",
+              "negp2mask"
+            ],
+            "outputs": [
+              "id1y_17",
+              "",
+              "",
+              "idscoreq_22"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXy_6",
+              "rowXy_6",
+              "rowXy_6",
+              "idscoreq_22"
+            ],
+            "outputs": [
+              "identy_23",
+              "",
+              "",
+              "identq_24"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "identq_24",
+              "X_3",
+              "rowXy_6"
+            ],
+            "outputs": [
+              "Xty_29",
+              "",
+              "",
+              "Xtq_30"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "Xtq_30",
+              "one",
+              "one"
+            ],
+            "outputs": [
+              "rowXty_69",
+              "",
+              "",
+              "rowXtq_70"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXtq_70",
+              "sigV",
+              "negsigK",
+              "mask_line"
+            ],
+            "outputs": [
+              "vcolg"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXy_6",
+              "rowXtq_70",
+              "negposq_16"
+            ],
+            "outputs": [
+              "vlocy_35"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXq_7",
+              "vcolg",
+              "rowXy_6"
+            ],
+            "outputs": [
+              "vliney_43",
+              "",
+              "",
+              "vlineq_44"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "X_3",
+              "posvecq_12",
+              "one"
+            ],
+            "outputs": [
+              "vmomenty_45",
+              "",
+              "",
+              "vmomentq_46"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXq_7",
+              "vlocy_35",
+              "one",
+              "vmomentq_46"
+            ],
+            "outputs": [
+              "vsy_49",
+              "",
+              "",
+              "vsrq_52"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "vsrq_52",
+              "negsigK",
+              "sigV",
+              "mask_line"
+            ],
+            "outputs": [
+              "vleftq_58"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXy_6",
+              "negposq_16",
+              "vcolg",
+              "idscoreq_22"
+            ],
+            "outputs": [
+              "vpright_63"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXy_6",
+              "pos_8",
+              "vcolg",
+              "idscoreq_22"
+            ],
+            "outputs": [
+              "vpleft_64"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "vsrq_52",
+              "vpright_63",
+              "rowXy_6",
+              "vlineq_44"
+            ],
+            "outputs": [
+              "vMry_65",
+              "",
+              "",
+              "vMrq_66"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "vleftq_58",
+              "vpleft_64",
+              "rowXy_6",
+              "vMrq_66"
+            ],
+            "outputs": [
+              "vMly_67",
+              "",
+              "",
+              "vMlq_68"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXq_7",
+              "sigV",
+              "negsigK",
+              "mask_line"
+            ],
+            "outputs": [
+              "hcolg"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXy_6",
+              "rowXq_7",
+              "negposq_16"
+            ],
+            "outputs": [
+              "hlocy_75"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXtq_70",
+              "hcolg",
+              "rowXy_6"
+            ],
+            "outputs": [
+              "hliney_83",
+              "",
+              "",
+              "hlineq_84"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "Xtq_30",
+              "posvecq_12",
+              "one"
+            ],
+            "outputs": [
+              "hmomenty_85",
+              "",
+              "",
+              "hmomentq_86"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXtq_70",
+              "hlocy_75",
+              "one",
+              "hmomentq_86"
+            ],
+            "outputs": [
+              "hsy_89",
+              "",
+              "",
+              "hsrq_92"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "hsrq_92",
+              "negsigK",
+              "sigV",
+              "mask_line"
+            ],
+            "outputs": [
+              "hleftq_98"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXy_6",
+              "negposq_16",
+              "hcolg",
+              "idscoreq_22"
+            ],
+            "outputs": [
+              "hpright_103"
+            ]
+          },
+          {
+            "index": 28,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "rowXy_6",
+              "pos_8",
+              "hcolg",
+              "idscoreq_22"
+            ],
+            "outputs": [
+              "hpleft_104"
+            ]
+          },
+          {
+            "index": 29,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "hsrq_92",
+              "hpright_103",
+              "rowXy_6",
+              "hlineq_84"
+            ],
+            "outputs": [
+              "hMry_105",
+              "",
+              "",
+              "hMrq_106"
+            ]
+          },
+          {
+            "index": 30,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "hleftq_98",
+              "hpleft_104",
+              "rowXy_6",
+              "hMrq_106"
+            ],
+            "outputs": [
+              "hMly_107",
+              "",
+              "",
+              "hMlq_108"
+            ]
+          },
+          {
+            "index": 31,
+            "name": "",
+            "op": "Attention",
+            "inputs": [
+              "identq_24",
+              "hMlq_108",
+              "rowXy_6",
+              "vMlq_68"
+            ],
+            "outputs": [
+              "Nsumy_111",
+              "",
+              "",
+              "Nsumq_112"
+            ]
+          },
+          {
+            "index": 32,
+            "name": "",
+            "op": "Einsum",
+            "inputs": [
+              "Nsumq_112",
+              "Nsumq_112",
+              "Nsumq_112",
+              "Nsumq_112",
+              "Nsumq_112",
+              "Nsumq_112",
+              "Nsumq_112",
+              "X_3",
+              "vsgn",
+              "vsgn",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale",
+              "outscale"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "one",
+            "dtype": "DOUBLE",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "odd",
+            "dtype": "DOUBLE",
+            "shape": [
+              1,
+              1,
+              30,
+              1
+            ],
+            "elements": 30
+          },
+          {
+            "name": "sigV",
+            "dtype": "DOUBLE",
+            "shape": [
+              1,
+              1,
+              2,
+              1
+            ],
+            "elements": 2
+          },
+          {
+            "name": "mask_line",
+            "dtype": "DOUBLE",
+            "shape": [
+              1,
+              1,
+              1,
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "negsigK",
+            "dtype": "DOUBLE",
+            "shape": [
+              1,
+              1,
+              2,
+              1
+            ],
+            "elements": 2
+          },
+          {
+            "name": "vsgn",
+            "dtype": "DOUBLE",
+            "shape": [
+              10
+            ],
+            "elements": 10
+          },
+          {
+            "name": "outscale",
+            "dtype": "DOUBLE",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "negp2mask",
+            "dtype": "DOUBLE",
+            "shape": [
+              1,
+              1,
+              1,
+              30
+            ],
+            "elements": 30
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      },
+      "exact_rows": [
+        {
+          "kind": "normalize",
+          "sha256": "3f1ff4caa28a526e1d5a5cf00818dabde7fafa73ee9a99e38fdd7d04c1a2bc54",
+          "actions": {
+            "cleared_value_info": [
+              "xh_2"
+            ]
+          },
+          "structural": {
+            "full_check": false,
+            "strict_data_prop": false,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": false,
+            "finite_initializers": false,
+            "conv_bias_ub0": false,
+            "reasons": [
+              "checker"
+            ],
+            "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Attention, node name: ): [ShapeInferenceError] Inputs 0 (query) shall be 3 or 4 dimensions\n(op_type:Einsum, node name: ): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+          },
+          "strict_lower": false
+        }
+      ]
+    },
+    "131": {
+      "sha256": "d72faec0655603b5dc7e6857799988200a08953f724b0d6f58703dbfbed5ebc4",
+      "serialized_bytes": 10360,
+      "official_profile": {
+        "memory": 572,
+        "params": 119,
+        "cost": 691
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 87,
+        "initializer_count": 21,
+        "value_info_count": 87,
+        "op_histogram": {
+          "Add": 13,
+          "ArgMax": 1,
+          "Cast": 2,
+          "CastLike": 5,
+          "CenterCropPad": 10,
+          "Concat": 5,
+          "Div": 2,
+          "Einsum": 4,
+          "GroupNormalization": 1,
+          "Less": 5,
+          "Log": 2,
+          "Max": 1,
+          "Min": 2,
+          "Mod": 2,
+          "Or": 1,
+          "QuantizeLinear": 2,
+          "ReduceMax": 1,
+          "ReduceSum": 1,
+          "Reshape": 1,
+          "ScatterND": 1,
+          "Shape": 3,
+          "Slice": 1,
+          "Squeeze": 2,
+          "Sub": 4,
+          "TopK": 1,
+          "Unsqueeze": 1,
+          "Where": 13
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 88,
+        "actual_shapes": {
+          "slice_vec_shape": [
+            1
+          ],
+          "probe_input_hid": [
+            1,
+            4,
+            30,
+            30
+          ],
+          "red_row_sum": [
+            1,
+            1
+          ],
+          "red_col_sum": [
+            1,
+            1
+          ],
+          "is_horizontal": [
+            1,
+            1
+          ],
+          "red_move_sum": [
+            1,
+            1
+          ],
+          "red_move_sum_log": [
+            1,
+            1
+          ],
+          "red_move_rev": [
+            1,
+            1
+          ],
+          "red_line_u8": [
+            1,
+            1
+          ],
+          "fifth_row": [
+            1,
+            1
+          ],
+          "fifth_col": [
+            1,
+            1
+          ],
+          "fifth_exists": [
+            1,
+            1
+          ],
+          "g_row_min_sum": [
+            1,
+            1
+          ],
+          "g_col_min_sum": [
+            1,
+            1
+          ],
+          "green_min_sum": [
+            1,
+            1
+          ],
+          "green_min_sum_log": [
+            1,
+            1
+          ],
+          "green_min_q": [
+            1,
+            1
+          ],
+          "green_min_u8": [
+            1,
+            1
+          ],
+          "green_row_min": [
+            1,
+            1
+          ],
+          "green_col_min": [
+            1,
+            1
+          ],
+          "row_start1": [
+            1
+          ],
+          "col_start1": [
+            1
+          ],
+          "row_end1": [
+            1
+          ],
+          "col_end1": [
+            1
+          ],
+          "slice_starts_u8": [
+            4
+          ],
+          "slice_ends_u8": [
+            4
+          ],
+          "slice_starts_hid": [
+            4
+          ],
+          "slice_starts": [
+            4
+          ],
+          "slice_ends_hid": [
+            4
+          ],
+          "slice_ends": [
+            4
+          ],
+          "probe_input_f16": [
+            1,
+            4,
+            30,
+            30
+          ],
+          "patch4d": [
+            1,
+            1,
+            5,
+            5
+          ],
+          "patch_vals": [
+            1,
+            25,
+            1
+          ],
+          "patch_axis_shape": [
+            1
+          ],
+          "patch_vals_hid": [
+            1,
+            25,
+            1
+          ],
+          "patch_vals_f16": [
+            1,
+            25,
+            1
+          ],
+          "green_vals": [
+            1,
+            8,
+            1
+          ],
+          "green_cand": [
+            1,
+            8,
+            1
+          ],
+          "green_cand_u8": [
+            1,
+            8,
+            1
+          ],
+          "max_cand_i64_flat": [
+            1,
+            1
+          ],
+          "max_cand_u8_flat": [
+            1,
+            1
+          ],
+          "max_cand_u8": [
+            1,
+            1,
+            1
+          ],
+          "div5_8": [
+            1,
+            8,
+            1
+          ],
+          "mod5_8": [
+            1,
+            8,
+            1
+          ],
+          "green_rows8": [
+            1,
+            8,
+            1
+          ],
+          "green_cols8": [
+            1,
+            8,
+            1
+          ],
+          "max_div5": [
+            1,
+            1,
+            1
+          ],
+          "max_mod5": [
+            1,
+            1,
+            1
+          ],
+          "max_old_row": [
+            1,
+            1,
+            1
+          ],
+          "max_old_col": [
+            1,
+            1,
+            1
+          ],
+          "green_col_max8": [
+            1,
+            1,
+            1
+          ],
+          "green_col_max": [
+            1,
+            1,
+            1
+          ],
+          "green_max_u8": [
+            1,
+            1,
+            1
+          ],
+          "before_red": [
+            1,
+            1,
+            1
+          ],
+          "green_max_plus_one": [
+            1,
+            1,
+            1
+          ],
+          "green_min_minus_one": [
+            1,
+            1
+          ],
+          "shift_side": [
+            1,
+            1,
+            1
+          ],
+          "shift": [
+            1,
+            1,
+            1
+          ],
+          "cyan_side": [
+            1,
+            1,
+            1
+          ],
+          "cyan_axis": [
+            1,
+            1,
+            1
+          ],
+          "row_shift": [
+            1,
+            1,
+            1
+          ],
+          "col_shift": [
+            1,
+            1,
+            1
+          ],
+          "new_green_rows8": [
+            1,
+            8,
+            1
+          ],
+          "new_green_cols8": [
+            1,
+            8,
+            1
+          ],
+          "max_new_row": [
+            1,
+            1,
+            1
+          ],
+          "max_new_col": [
+            1,
+            1,
+            1
+          ],
+          "short_last": [
+            1,
+            1,
+            1
+          ],
+          "cyan4_rows": [
+            1,
+            4,
+            1
+          ],
+          "cyan4_cols": [
+            1,
+            4,
+            1
+          ],
+          "cyanlast_rows": [
+            1,
+            1,
+            1
+          ],
+          "cyanlast_cols": [
+            1,
+            1,
+            1
+          ],
+          "special_val": [
+            1,
+            1,
+            1
+          ],
+          "special_valid": [
+            1,
+            1,
+            1
+          ],
+          "spec_old_col": [
+            1,
+            1,
+            1
+          ],
+          "spec_new_col": [
+            1,
+            1,
+            1
+          ],
+          "rows72_u": [
+            1,
+            40,
+            1
+          ],
+          "idx_shape3": [
+            1
+          ],
+          "cols72_u": [
+            1,
+            40,
+            1
+          ],
+          "channel_h": [
+            1,
+            40,
+            1
+          ],
+          "rows_h": [
+            1,
+            40,
+            1
+          ],
+          "cols_h": [
+            1,
+            40,
+            1
+          ],
+          "scatter_idx8": [
+            1,
+            40,
+            3
+          ],
+          "scatter_idx5": [
+            1,
+            40,
+            5
+          ],
+          "__cl_scatter_idx_hid": [
+            1,
+            40,
+            4
+          ],
+          "scatter_idx": [
+            1,
+            40,
+            4
+          ],
+          "updates_hid": [
+            1,
+            40
+          ],
+          "gn_data": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 18,
+        "mismatches": [
+          {
+            "name": "probe_input_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "slice_starts_hid",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "slice_starts",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "slice_ends_hid",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "slice_ends",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "probe_input_f16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "patch_vals_hid",
+            "declared": [
+              1,
+              8,
+              1
+            ],
+            "actual": [
+              1,
+              25,
+              1
+            ]
+          },
+          {
+            "name": "patch_vals_f16",
+            "declared": [
+              1,
+              8,
+              1
+            ],
+            "actual": [
+              1,
+              25,
+              1
+            ]
+          },
+          {
+            "name": "channel_h",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              40,
+              1
+            ]
+          },
+          {
+            "name": "rows_h",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              40,
+              1
+            ]
+          },
+          {
+            "name": "cols_h",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              40,
+              1
+            ]
+          },
+          {
+            "name": "scatter_idx8",
+            "declared": [
+              1,
+              1,
+              3
+            ],
+            "actual": [
+              1,
+              40,
+              3
+            ]
+          },
+          {
+            "name": "scatter_idx5",
+            "declared": [
+              1,
+              1,
+              5
+            ],
+            "actual": [
+              1,
+              40,
+              5
+            ]
+          },
+          {
+            "name": "__cl_scatter_idx_hid",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              40,
+              4
+            ]
+          },
+          {
+            "name": "scatter_idx",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              40,
+              4
+            ]
+          },
+          {
+            "name": "updates_hid",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              40
+            ]
+          },
+          {
+            "name": "gn_data",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "graph_inventory": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "",
+            "op": "Shape",
+            "inputs": [
+              "first4_u8"
+            ],
+            "outputs": [
+              "slice_vec_shape"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "input",
+              "slice_vec_shape"
+            ],
+            "outputs": [
+              "probe_input_hid"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "red_row_sum",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "red_channel_mask",
+              "reverse_pow32"
+            ],
+            "outputs": [
+              "red_row_sum"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "red_col_sum",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "red_channel_mask",
+              "reverse_pow32"
+            ],
+            "outputs": [
+              "red_col_sum"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "is_horizontal",
+            "op": "Less",
+            "inputs": [
+              "red_row_sum",
+              "red_col_sum"
+            ],
+            "outputs": [
+              "is_horizontal"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "red_move_sum",
+            "op": "Min",
+            "inputs": [
+              "red_row_sum",
+              "red_col_sum"
+            ],
+            "outputs": [
+              "red_move_sum"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "red_move_sum_log",
+            "op": "Log",
+            "inputs": [
+              "red_move_sum"
+            ],
+            "outputs": [
+              "red_move_sum_log"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "red_move_rev",
+            "op": "QuantizeLinear",
+            "inputs": [
+              "red_move_sum_log",
+              "ln32_f",
+              "quant_zero_u8"
+            ],
+            "outputs": [
+              "red_move_rev"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "red_line_u8",
+            "op": "Sub",
+            "inputs": [
+              "seventeen_u8",
+              "red_move_rev"
+            ],
+            "outputs": [
+              "red_line_u8"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "",
+            "op": "Less",
+            "inputs": [
+              "fifth_threshold",
+              "red_row_sum"
+            ],
+            "outputs": [
+              "fifth_row"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "",
+            "op": "Less",
+            "inputs": [
+              "fifth_threshold",
+              "red_col_sum"
+            ],
+            "outputs": [
+              "fifth_col"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "",
+            "op": "Or",
+            "inputs": [
+              "fifth_row",
+              "fifth_col"
+            ],
+            "outputs": [
+              "fifth_exists"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "g_row_min_sum",
+            "op": "Einsum",
+            "inputs": [
+              "probe_input_hid",
+              "red_channel_mask",
+              "reverse_pow32"
+            ],
+            "outputs": [
+              "g_row_min_sum"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "g_col_min_sum",
+            "op": "Einsum",
+            "inputs": [
+              "probe_input_hid",
+              "red_channel_mask",
+              "reverse_pow32"
+            ],
+            "outputs": [
+              "g_col_min_sum"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "green_min_sum",
+            "op": "Min",
+            "inputs": [
+              "g_row_min_sum",
+              "g_col_min_sum"
+            ],
+            "outputs": [
+              "green_min_sum"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "green_min_sum_log",
+            "op": "Log",
+            "inputs": [
+              "green_min_sum"
+            ],
+            "outputs": [
+              "green_min_sum_log"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "green_min_q",
+            "op": "QuantizeLinear",
+            "inputs": [
+              "green_min_sum_log",
+              "ln32_f",
+              "quant_zero_u8"
+            ],
+            "outputs": [
+              "green_min_q"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "green_min_u8",
+            "op": "Sub",
+            "inputs": [
+              "seventeen_u8",
+              "green_min_q"
+            ],
+            "outputs": [
+              "green_min_u8"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "green_row_min",
+            "op": "Where",
+            "inputs": [
+              "is_horizontal",
+              "green_min_u8",
+              "quant_zero_u8"
+            ],
+            "outputs": [
+              "green_row_min"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "green_col_min",
+            "op": "Where",
+            "inputs": [
+              "is_horizontal",
+              "quant_zero_u8",
+              "green_min_u8"
+            ],
+            "outputs": [
+              "green_col_min"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "row_start1",
+            "op": "Squeeze",
+            "inputs": [
+              "green_row_min",
+              "idx0_i64"
+            ],
+            "outputs": [
+              "row_start1"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "col_start1",
+            "op": "Squeeze",
+            "inputs": [
+              "green_col_min",
+              "idx0_i64"
+            ],
+            "outputs": [
+              "col_start1"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "row_end1",
+            "op": "Add",
+            "inputs": [
+              "row_start1",
+              "five_i"
+            ],
+            "outputs": [
+              "row_end1"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "col_end1",
+            "op": "Add",
+            "inputs": [
+              "col_start1",
+              "five_i"
+            ],
+            "outputs": [
+              "col_end1"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "slice_starts_u8",
+            "op": "Concat",
+            "inputs": [
+              "quant_zero_u8",
+              "quant_zero_u8",
+              "row_start1",
+              "col_start1"
+            ],
+            "outputs": [
+              "slice_starts_u8"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "slice_ends_u8",
+            "op": "Concat",
+            "inputs": [
+              "one_u8",
+              "one_u8",
+              "row_end1",
+              "col_end1"
+            ],
+            "outputs": [
+              "slice_ends_u8"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "slice_starts_hid",
+            "op": "CenterCropPad",
+            "inputs": [
+              "slice_starts_u8",
+              "slice_vec_shape"
+            ],
+            "outputs": [
+              "slice_starts_hid"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "slice_starts",
+            "op": "CastLike",
+            "inputs": [
+              "slice_starts_hid",
+              "int32_template"
+            ],
+            "outputs": [
+              "slice_starts"
+            ]
+          },
+          {
+            "index": 28,
+            "name": "slice_ends_hid",
+            "op": "CenterCropPad",
+            "inputs": [
+              "slice_ends_u8",
+              "slice_vec_shape"
+            ],
+            "outputs": [
+              "slice_ends_hid"
+            ]
+          },
+          {
+            "index": 29,
+            "name": "slice_ends",
+            "op": "CastLike",
+            "inputs": [
+              "slice_ends_hid",
+              "int32_template"
+            ],
+            "outputs": [
+              "slice_ends"
+            ]
+          },
+          {
+            "index": 30,
+            "name": "probe_input_f16",
+            "op": "CastLike",
+            "inputs": [
+              "probe_input_hid",
+              "quant_zero_u8"
+            ],
+            "outputs": [
+              "probe_input_f16"
+            ]
+          },
+          {
+            "index": 31,
+            "name": "patch4d",
+            "op": "Slice",
+            "inputs": [
+              "probe_input_f16",
+              "slice_starts",
+              "slice_ends"
+            ],
+            "outputs": [
+              "patch4d"
+            ]
+          },
+          {
+            "index": 32,
+            "name": "patch_vals",
+            "op": "Reshape",
+            "inputs": [
+              "patch4d",
+              "patch_shape_1251"
+            ],
+            "outputs": [
+              "patch_vals"
+            ]
+          },
+          {
+            "index": 33,
+            "name": "patch_axis_shape",
+            "op": "Shape",
+            "inputs": [
+              "patch_vals"
+            ],
+            "outputs": [
+              "patch_axis_shape"
+            ]
+          },
+          {
+            "index": 34,
+            "name": "patch_vals_hid",
+            "op": "CenterCropPad",
+            "inputs": [
+              "patch_vals",
+              "patch_axis_shape"
+            ],
+            "outputs": [
+              "patch_vals_hid"
+            ]
+          },
+          {
+            "index": 35,
+            "name": "",
+            "op": "CastLike",
+            "inputs": [
+              "patch_vals_hid",
+              "probe_f16_template"
+            ],
+            "outputs": [
+              "patch_vals_f16"
+            ]
+          },
+          {
+            "index": 36,
+            "name": "topk_green",
+            "op": "TopK",
+            "inputs": [
+              "patch_vals_f16",
+              "k10"
+            ],
+            "outputs": [
+              "green_vals",
+              "green_cand"
+            ]
+          },
+          {
+            "index": 37,
+            "name": "green_cand_u8",
+            "op": "Cast",
+            "inputs": [
+              "green_cand"
+            ],
+            "outputs": [
+              "green_cand_u8"
+            ]
+          },
+          {
+            "index": 38,
+            "name": "max_cand_i64_flat",
+            "op": "ArgMax",
+            "inputs": [
+              "patch_vals"
+            ],
+            "outputs": [
+              "max_cand_i64_flat"
+            ]
+          },
+          {
+            "index": 39,
+            "name": "max_cand_u8_flat",
+            "op": "Cast",
+            "inputs": [
+              "max_cand_i64_flat"
+            ],
+            "outputs": [
+              "max_cand_u8_flat"
+            ]
+          },
+          {
+            "index": 40,
+            "name": "max_cand_u8",
+            "op": "Unsqueeze",
+            "inputs": [
+              "max_cand_u8_flat",
+              "idx0_i64"
+            ],
+            "outputs": [
+              "max_cand_u8"
+            ]
+          },
+          {
+            "index": 41,
+            "name": "div5_8",
+            "op": "Div",
+            "inputs": [
+              "green_cand_u8",
+              "five_i"
+            ],
+            "outputs": [
+              "div5_8"
+            ]
+          },
+          {
+            "index": 42,
+            "name": "mod5_8",
+            "op": "Mod",
+            "inputs": [
+              "green_cand_u8",
+              "five_i"
+            ],
+            "outputs": [
+              "mod5_8"
+            ]
+          },
+          {
+            "index": 43,
+            "name": "green_rows8",
+            "op": "Add",
+            "inputs": [
+              "div5_8",
+              "green_row_min"
+            ],
+            "outputs": [
+              "green_rows8"
+            ]
+          },
+          {
+            "index": 44,
+            "name": "green_cols8",
+            "op": "Add",
+            "inputs": [
+              "mod5_8",
+              "green_col_min"
+            ],
+            "outputs": [
+              "green_cols8"
+            ]
+          },
+          {
+            "index": 45,
+            "name": "max_div5",
+            "op": "Div",
+            "inputs": [
+              "max_cand_u8",
+              "five_i"
+            ],
+            "outputs": [
+              "max_div5"
+            ]
+          },
+          {
+            "index": 46,
+            "name": "max_mod5",
+            "op": "Mod",
+            "inputs": [
+              "max_cand_u8",
+              "five_i"
+            ],
+            "outputs": [
+              "max_mod5"
+            ]
+          },
+          {
+            "index": 47,
+            "name": "max_old_row",
+            "op": "Add",
+            "inputs": [
+              "max_div5",
+              "green_row_min"
+            ],
+            "outputs": [
+              "max_old_row"
+            ]
+          },
+          {
+            "index": 48,
+            "name": "max_old_col",
+            "op": "Add",
+            "inputs": [
+              "max_mod5",
+              "green_col_min"
+            ],
+            "outputs": [
+              "max_old_col"
+            ]
+          },
+          {
+            "index": 49,
+            "name": "green_col_max8",
+            "op": "ReduceMax",
+            "inputs": [
+              "green_cols8"
+            ],
+            "outputs": [
+              "green_col_max8"
+            ]
+          },
+          {
+            "index": 50,
+            "name": "green_col_max",
+            "op": "Max",
+            "inputs": [
+              "green_col_max8",
+              "max_old_col"
+            ],
+            "outputs": [
+              "green_col_max"
+            ]
+          },
+          {
+            "index": 51,
+            "name": "green_max_u8",
+            "op": "Where",
+            "inputs": [
+              "is_horizontal",
+              "max_old_row",
+              "green_col_max"
+            ],
+            "outputs": [
+              "green_max_u8"
+            ]
+          },
+          {
+            "index": 52,
+            "name": "before_red",
+            "op": "Less",
+            "inputs": [
+              "green_max_u8",
+              "red_line_u8"
+            ],
+            "outputs": [
+              "before_red"
+            ]
+          },
+          {
+            "index": 53,
+            "name": "green_max_plus_one",
+            "op": "Add",
+            "inputs": [
+              "green_max_u8",
+              "one_u8"
+            ],
+            "outputs": [
+              "green_max_plus_one"
+            ]
+          },
+          {
+            "index": 54,
+            "name": "green_min_minus_one",
+            "op": "Sub",
+            "inputs": [
+              "green_min_u8",
+              "one_u8"
+            ],
+            "outputs": [
+              "green_min_minus_one"
+            ]
+          },
+          {
+            "index": 55,
+            "name": "shift_side",
+            "op": "Where",
+            "inputs": [
+              "before_red",
+              "green_max_plus_one",
+              "green_min_minus_one"
+            ],
+            "outputs": [
+              "shift_side"
+            ]
+          },
+          {
+            "index": 56,
+            "name": "shift",
+            "op": "Sub",
+            "inputs": [
+              "red_line_u8",
+              "shift_side"
+            ],
+            "outputs": [
+              "shift"
+            ]
+          },
+          {
+            "index": 57,
+            "name": "cyan_side",
+            "op": "Where",
+            "inputs": [
+              "before_red",
+              "green_min_minus_one",
+              "green_max_plus_one"
+            ],
+            "outputs": [
+              "cyan_side"
+            ]
+          },
+          {
+            "index": 58,
+            "name": "cyan_axis",
+            "op": "Add",
+            "inputs": [
+              "cyan_side",
+              "shift"
+            ],
+            "outputs": [
+              "cyan_axis"
+            ]
+          },
+          {
+            "index": 59,
+            "name": "row_shift",
+            "op": "Where",
+            "inputs": [
+              "is_horizontal",
+              "shift",
+              "quant_zero_u8"
+            ],
+            "outputs": [
+              "row_shift"
+            ]
+          },
+          {
+            "index": 60,
+            "name": "col_shift",
+            "op": "Where",
+            "inputs": [
+              "is_horizontal",
+              "quant_zero_u8",
+              "shift"
+            ],
+            "outputs": [
+              "col_shift"
+            ]
+          },
+          {
+            "index": 61,
+            "name": "new_green_rows8",
+            "op": "Add",
+            "inputs": [
+              "green_rows8",
+              "row_shift"
+            ],
+            "outputs": [
+              "new_green_rows8"
+            ]
+          },
+          {
+            "index": 62,
+            "name": "new_green_cols8",
+            "op": "Add",
+            "inputs": [
+              "green_cols8",
+              "col_shift"
+            ],
+            "outputs": [
+              "new_green_cols8"
+            ]
+          },
+          {
+            "index": 63,
+            "name": "max_new_row",
+            "op": "Add",
+            "inputs": [
+              "max_old_row",
+              "row_shift"
+            ],
+            "outputs": [
+              "max_new_row"
+            ]
+          },
+          {
+            "index": 64,
+            "name": "max_new_col",
+            "op": "Add",
+            "inputs": [
+              "max_old_col",
+              "col_shift"
+            ],
+            "outputs": [
+              "max_new_col"
+            ]
+          },
+          {
+            "index": 65,
+            "name": "short_last",
+            "op": "Where",
+            "inputs": [
+              "fifth_exists",
+              "four_i",
+              "quant_zero_u8"
+            ],
+            "outputs": [
+              "short_last"
+            ]
+          },
+          {
+            "index": 66,
+            "name": "cyan4_rows",
+            "op": "Where",
+            "inputs": [
+              "is_horizontal",
+              "cyan_axis",
+              "first4_u8"
+            ],
+            "outputs": [
+              "cyan4_rows"
+            ]
+          },
+          {
+            "index": 67,
+            "name": "cyan4_cols",
+            "op": "Where",
+            "inputs": [
+              "is_horizontal",
+              "first4_u8",
+              "cyan_axis"
+            ],
+            "outputs": [
+              "cyan4_cols"
+            ]
+          },
+          {
+            "index": 68,
+            "name": "cyanlast_rows",
+            "op": "Where",
+            "inputs": [
+              "is_horizontal",
+              "cyan_axis",
+              "short_last"
+            ],
+            "outputs": [
+              "cyanlast_rows"
+            ]
+          },
+          {
+            "index": 69,
+            "name": "cyanlast_cols",
+            "op": "Where",
+            "inputs": [
+              "is_horizontal",
+              "short_last",
+              "cyan_axis"
+            ],
+            "outputs": [
+              "cyanlast_cols"
+            ]
+          },
+          {
+            "index": 70,
+            "name": "",
+            "op": "ReduceSum",
+            "inputs": [
+              "patch_vals_f16"
+            ],
+            "outputs": [
+              "special_val"
+            ]
+          },
+          {
+            "index": 71,
+            "name": "",
+            "op": "Less",
+            "inputs": [
+              "probe_f16_template",
+              "special_val"
+            ],
+            "outputs": [
+              "special_valid"
+            ]
+          },
+          {
+            "index": 72,
+            "name": "spec_old_col",
+            "op": "Where",
+            "inputs": [
+              "special_valid",
+              "three_11_u8",
+              "max_old_col"
+            ],
+            "outputs": [
+              "spec_old_col"
+            ]
+          },
+          {
+            "index": 73,
+            "name": "spec_new_col",
+            "op": "Add",
+            "inputs": [
+              "spec_old_col",
+              "col_shift"
+            ],
+            "outputs": [
+              "spec_new_col"
+            ]
+          },
+          {
+            "index": 74,
+            "name": "rows72_u",
+            "op": "Concat",
+            "inputs": [
+              "max_new_row",
+              "cyanlast_rows",
+              "max_new_row",
+              "green_rows8",
+              "max_old_row",
+              "new_green_rows8",
+              "max_new_row",
+              "max_new_row",
+              "cyan4_rows",
+              "cyanlast_rows",
+              "max_old_row",
+              "new_green_rows8",
+              "cyan4_rows"
+            ],
+            "outputs": [
+              "rows72_u"
+            ]
+          },
+          {
+            "index": 75,
+            "name": "",
+            "op": "Shape",
+            "inputs": [
+              "rows72_u"
+            ],
+            "outputs": [
+              "idx_shape3"
+            ]
+          },
+          {
+            "index": 76,
+            "name": "cols72_u",
+            "op": "Concat",
+            "inputs": [
+              "spec_new_col",
+              "cyanlast_cols",
+              "max_new_col",
+              "green_cols8",
+              "max_old_col",
+              "new_green_cols8",
+              "max_new_col",
+              "spec_new_col",
+              "cyan4_cols",
+              "cyanlast_cols",
+              "spec_old_col",
+              "new_green_cols8",
+              "cyan4_cols"
+            ],
+            "outputs": [
+              "cols72_u"
+            ]
+          },
+          {
+            "index": 77,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "channel_col",
+              "idx_shape3"
+            ],
+            "outputs": [
+              "channel_h"
+            ]
+          },
+          {
+            "index": 78,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "rows72_u",
+              "idx_shape3"
+            ],
+            "outputs": [
+              "rows_h"
+            ]
+          },
+          {
+            "index": 79,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "cols72_u",
+              "idx_shape3"
+            ],
+            "outputs": [
+              "cols_h"
+            ]
+          },
+          {
+            "index": 80,
+            "name": "scatter_idx8",
+            "op": "Concat",
+            "inputs": [
+              "channel_h",
+              "rows_h",
+              "cols_h"
+            ],
+            "outputs": [
+              "scatter_idx8"
+            ]
+          },
+          {
+            "index": 81,
+            "name": "",
+            "op": "CenterCropPad",
+            "inputs": [
+              "scatter_idx8",
+              "shape5_i64"
+            ],
+            "outputs": [
+              "scatter_idx5"
+            ]
+          },
+          {
+            "index": 82,
+            "name": "__cl_scatter_idx_hid",
+            "op": "CenterCropPad",
+            "inputs": [
+              "scatter_idx5",
+              "slice_vec_shape"
+            ],
+            "outputs": [
+              "__cl_scatter_idx_hid"
+            ]
+          },
+          {
+            "index": 83,
+            "name": "scatter_idx",
+            "op": "CastLike",
+            "inputs": [
+              "__cl_scatter_idx_hid",
+              "k10"
+            ],
+            "outputs": [
+              "scatter_idx"
+            ]
+          },
+          {
+            "index": 84,
+            "name": "updates_hid",
+            "op": "CenterCropPad",
+            "inputs": [
+              "updates_core",
+              "idx_shape3"
+            ],
+            "outputs": [
+              "updates_hid"
+            ]
+          },
+          {
+            "index": 85,
+            "name": "zero_green_normalize",
+            "op": "GroupNormalization",
+            "inputs": [
+              "input",
+              "gn_scale",
+              "gn_bias"
+            ],
+            "outputs": [
+              "gn_data"
+            ]
+          },
+          {
+            "index": 86,
+            "name": "output",
+            "op": "ScatterND",
+            "inputs": [
+              "gn_data",
+              "scatter_idx",
+              "updates_hid"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "red_channel_mask",
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              10
+            ],
+            "elements": 10
+          },
+          {
+            "name": "reverse_pow32",
+            "dtype": "FLOAT",
+            "shape": [
+              30
+            ],
+            "elements": 30
+          },
+          {
+            "name": "ln32_f",
+            "dtype": "FLOAT",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "fifth_threshold",
+            "dtype": "FLOAT",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "quant_zero_u8",
+            "dtype": "UINT8",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "seventeen_u8",
+            "dtype": "UINT8",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "one_u8",
+            "dtype": "UINT8",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "four_i",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "five_i",
+            "dtype": "UINT8",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "k10",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "channel_col",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              15,
+              1
+            ],
+            "elements": 15
+          },
+          {
+            "name": "idx0_i64",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "first4_u8",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              4,
+              1
+            ],
+            "elements": 4
+          },
+          {
+            "name": "int32_template",
+            "dtype": "INT32",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "three_11_u8",
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "patch_shape_1251",
+            "dtype": "INT64",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "shape5_i64",
+            "dtype": "INT64",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "probe_f16_template",
+            "dtype": "FLOAT16",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "updates_core",
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              33
+            ],
+            "elements": 33
+          },
+          {
+            "name": "gn_scale",
+            "dtype": "FLOAT",
+            "shape": [
+              10
+            ],
+            "elements": 10
+          },
+          {
+            "name": "gn_bias",
+            "dtype": "FLOAT",
+            "shape": [],
+            "elements": 1
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      },
+      "exact_rows": [
+        {
+          "kind": "fold",
+          "sha256": "7e2bbb2943e70e6f896d26f970389b6c87b5c6d51e56142f44d1095780082460",
+          "actions": {
+            "constant_folds": [
+              {
+                "op": "Shape",
+                "output": "slice_vec_shape",
+                "shape": [
+                  1
+                ],
+                "dtype": "int64",
+                "proof": "all_inputs_constant_numpy_equivalent"
+              }
+            ]
+          },
+          "structural": {
+            "full_check": false,
+            "strict_data_prop": false,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": false,
+            "finite_initializers": false,
+            "conv_bias_ub0": false,
+            "reasons": [
+              "checker"
+            ],
+            "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (4) vs (1)\n(op_type:CenterCropPad, node name: slice_starts_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (4) vs (1)\n(op_type:CenterCropPad, node name: slice_ends_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (4) vs (1)\n(op_type:CenterCropPad, node name: __cl_scatter_idx_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (4) vs (1)\n"
+          },
+          "strict_lower": false
+        },
+        {
+          "kind": "normalize",
+          "sha256": "ba832c15f4907e871cfc418a88b5dd8c858129e514d47d8d88de80d2d261112b",
+          "actions": {
+            "cleared_value_info": [
+              "slice_vec_shape",
+              "probe_input_hid",
+              "red_row_sum",
+              "red_col_sum",
+              "is_horizontal",
+              "red_move_sum",
+              "red_move_sum_log",
+              "red_move_rev",
+              "red_line_u8",
+              "fifth_row",
+              "fifth_col",
+              "fifth_exists",
+              "g_row_min_sum",
+              "g_col_min_sum",
+              "green_min_sum",
+              "green_min_sum_log",
+              "green_min_q",
+              "green_min_u8",
+              "green_row_min",
+              "green_col_min",
+              "row_start1",
+              "col_start1",
+              "row_end1",
+              "col_end1",
+              "slice_starts_u8",
+              "slice_ends_u8",
+              "slice_starts_hid",
+              "slice_starts",
+              "slice_ends_hid",
+              "slice_ends",
+              "probe_input_f16",
+              "patch4d",
+              "patch_vals",
+              "green_vals",
+              "green_cand",
+              "green_cand_u8",
+              "max_cand_i64_flat",
+              "max_cand_u8_flat",
+              "max_cand_u8",
+              "div5_8",
+              "mod5_8",
+              "green_rows8",
+              "green_cols8",
+              "max_div5",
+              "max_mod5",
+              "max_old_row",
+              "max_old_col",
+              "green_col_max8",
+              "green_col_max",
+              "green_max_u8",
+              "before_red",
+              "green_max_plus_one",
+              "green_min_minus_one",
+              "shift_side",
+              "shift",
+              "cyan_side",
+              "cyan_axis",
+              "row_shift",
+              "col_shift",
+              "new_green_rows8",
+              "new_green_cols8",
+              "max_new_row",
+              "max_new_col",
+              "short_last",
+              "cyan4_rows",
+              "cyan4_cols",
+              "cyanlast_rows",
+              "cyanlast_cols",
+              "special_val",
+              "special_valid",
+              "spec_old_col",
+              "spec_new_col",
+              "rows72_u",
+              "idx_shape3",
+              "cols72_u",
+              "channel_h",
+              "rows_h",
+              "cols_h",
+              "scatter_idx8",
+              "scatter_idx5",
+              "__cl_scatter_idx_hid",
+              "scatter_idx",
+              "updates_hid",
+              "patch_vals_f16",
+              "patch_axis_shape",
+              "patch_vals_hid",
+              "gn_data"
+            ]
+          },
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": false,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": false,
+            "finite_initializers": false,
+            "conv_bias_ub0": false,
+            "reasons": [
+              "strict_data_prop"
+            ],
+            "strict_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:ScatterND, node name: output): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+          },
+          "strict_lower": false
+        },
+        {
+          "kind": "normalized_combined",
+          "sha256": "49b576405140486a3286180f491ad1c9da268247e31e53961847ca6cf8096287",
+          "actions": {
+            "dead_nodes": [],
+            "unused_initializers": [],
+            "dead_value_info": [],
+            "deduplicated_initializers": [],
+            "removed_optional_outputs": [],
+            "bypassed_noops": [],
+            "common_subexpressions": [],
+            "constant_folds": [
+              {
+                "op": "Shape",
+                "output": "slice_vec_shape",
+                "shape": [
+                  1
+                ],
+                "dtype": "int64",
+                "proof": "all_inputs_constant_numpy_equivalent"
+              }
+            ],
+            "second_noops": [],
+            "second_cse": [],
+            "final_dead_nodes": [],
+            "final_unused_initializers": [],
+            "cleared_value_info": [
+              "slice_vec_shape",
+              "probe_input_hid",
+              "red_row_sum",
+              "red_col_sum",
+              "is_horizontal",
+              "red_move_sum",
+              "red_move_sum_log",
+              "red_move_rev",
+              "red_line_u8",
+              "fifth_row",
+              "fifth_col",
+              "fifth_exists",
+              "g_row_min_sum",
+              "g_col_min_sum",
+              "green_min_sum",
+              "green_min_sum_log",
+              "green_min_q",
+              "green_min_u8",
+              "green_row_min",
+              "green_col_min",
+              "row_start1",
+              "col_start1",
+              "row_end1",
+              "col_end1",
+              "slice_starts_u8",
+              "slice_ends_u8",
+              "slice_starts_hid",
+              "slice_starts",
+              "slice_ends_hid",
+              "slice_ends",
+              "probe_input_f16",
+              "patch4d",
+              "patch_vals",
+              "green_vals",
+              "green_cand",
+              "green_cand_u8",
+              "max_cand_i64_flat",
+              "max_cand_u8_flat",
+              "max_cand_u8",
+              "div5_8",
+              "mod5_8",
+              "green_rows8",
+              "green_cols8",
+              "max_div5",
+              "max_mod5",
+              "max_old_row",
+              "max_old_col",
+              "green_col_max8",
+              "green_col_max",
+              "green_max_u8",
+              "before_red",
+              "green_max_plus_one",
+              "green_min_minus_one",
+              "shift_side",
+              "shift",
+              "cyan_side",
+              "cyan_axis",
+              "row_shift",
+              "col_shift",
+              "new_green_rows8",
+              "new_green_cols8",
+              "max_new_row",
+              "max_new_col",
+              "short_last",
+              "cyan4_rows",
+              "cyan4_cols",
+              "cyanlast_rows",
+              "cyanlast_cols",
+              "special_val",
+              "special_valid",
+              "spec_old_col",
+              "spec_new_col",
+              "rows72_u",
+              "idx_shape3",
+              "cols72_u",
+              "channel_h",
+              "rows_h",
+              "cols_h",
+              "scatter_idx8",
+              "scatter_idx5",
+              "__cl_scatter_idx_hid",
+              "scatter_idx",
+              "updates_hid",
+              "patch_vals_f16",
+              "patch_axis_shape",
+              "patch_vals_hid",
+              "gn_data"
+            ]
+          },
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": false,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": false,
+            "finite_initializers": false,
+            "conv_bias_ub0": false,
+            "reasons": [
+              "strict_data_prop"
+            ],
+            "strict_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:ScatterND, node name: output): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+          },
+          "strict_lower": false
+        }
+      ]
+    },
+    "363": {
+      "sha256": "5daecf63ed4badce69970a3632afd52bf972b67d6f4dfaa3b41dbb93943d05e8",
+      "serialized_bytes": 4696,
+      "official_profile": {
+        "memory": 430,
+        "params": 82,
+        "cost": 512
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 31,
+        "initializer_count": 18,
+        "value_info_count": 30,
+        "op_histogram": {
+          "Add": 1,
+          "And": 1,
+          "Cast": 1,
+          "CastLike": 3,
+          "CenterCropPad": 1,
+          "Concat": 2,
+          "Einsum": 3,
+          "Equal": 3,
+          "GroupNormalization": 2,
+          "Log": 2,
+          "QLinearConv": 2,
+          "QuantizeLinear": 2,
+          "Resize": 1,
+          "ScatterElements": 2,
+          "Shape": 1,
+          "Slice": 2,
+          "Where": 2
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 31,
+        "actual_shapes": {
+          "safe_name_22": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "safe_name_23": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "safe_name_24": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "safe_name_25": [
+            1
+          ],
+          "safe_name_26": [
+            1
+          ],
+          "safe_name_27": [
+            1
+          ],
+          "safe_name_28": [
+            1
+          ],
+          "safe_name_29": [
+            1
+          ],
+          "safe_name_30": [
+            1
+          ],
+          "safe_name_31": [
+            3
+          ],
+          "safe_name_32": [
+            3
+          ],
+          "safe_name_33": [
+            3
+          ],
+          "safe_name_34": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "safe_name_36": [
+            1
+          ],
+          "safe_name_37": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "safe_name_38": [
+            1
+          ],
+          "safe_name_39": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "safe_name_40": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "safe_name_41": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "safe_name_42": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "safe_name_43": [
+            1,
+            1,
+            1,
+            4
+          ],
+          "safe_name_44": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "safe_name_45": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "safe_name_46": [
+            1,
+            1,
+            4,
+            4
+          ],
+          "safe_name_47": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "data_hid": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "data_u8_hid": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "shape3": [
+            1
+          ],
+          "idx_u8_hid": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "idx_hid": [
+            1,
+            1,
+            10,
+            10
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 7,
+        "mismatches": [
+          {
+            "name": "safe_name_22",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "safe_name_23",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "data_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "data_u8_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "idx_u8_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "idx_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "graph_inventory": {
+        "nodes": [
+          {
+            "index": 0,
+            "name": "safe_name_22",
+            "op": "GroupNormalization",
+            "inputs": [
+              "input",
+              "neg_two_f",
+              "safe_name_0"
+            ],
+            "outputs": [
+              "safe_name_22"
+            ]
+          },
+          {
+            "index": 1,
+            "name": "safe_name_23",
+            "op": "CastLike",
+            "inputs": [
+              "safe_name_22",
+              "safe_name_1"
+            ],
+            "outputs": [
+              "safe_name_23"
+            ]
+          },
+          {
+            "index": 2,
+            "name": "safe_name_24",
+            "op": "Resize",
+            "inputs": [
+              "safe_name_23",
+              "safe_name_15",
+              "",
+              "safe_name_16"
+            ],
+            "outputs": [
+              "safe_name_24"
+            ]
+          },
+          {
+            "index": 3,
+            "name": "safe_name_25",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "safe_name_14",
+              "safe_name_17"
+            ],
+            "outputs": [
+              "safe_name_25"
+            ]
+          },
+          {
+            "index": 4,
+            "name": "safe_name_26",
+            "op": "Log",
+            "inputs": [
+              "safe_name_25"
+            ],
+            "outputs": [
+              "safe_name_26"
+            ]
+          },
+          {
+            "index": 5,
+            "name": "safe_name_27",
+            "op": "QuantizeLinear",
+            "inputs": [
+              "safe_name_26",
+              "neg_two_f",
+              "safe_name_1"
+            ],
+            "outputs": [
+              "safe_name_27"
+            ]
+          },
+          {
+            "index": 6,
+            "name": "safe_name_28",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "safe_name_14",
+              "safe_name_17"
+            ],
+            "outputs": [
+              "safe_name_28"
+            ]
+          },
+          {
+            "index": 7,
+            "name": "safe_name_29",
+            "op": "Log",
+            "inputs": [
+              "safe_name_28"
+            ],
+            "outputs": [
+              "safe_name_29"
+            ]
+          },
+          {
+            "index": 8,
+            "name": "safe_name_30",
+            "op": "QuantizeLinear",
+            "inputs": [
+              "safe_name_29",
+              "neg_two_f",
+              "safe_name_1"
+            ],
+            "outputs": [
+              "safe_name_30"
+            ]
+          },
+          {
+            "index": 9,
+            "name": "safe_name_31",
+            "op": "Concat",
+            "inputs": [
+              "safe_name_8",
+              "safe_name_27",
+              "safe_name_30"
+            ],
+            "outputs": [
+              "safe_name_31"
+            ]
+          },
+          {
+            "index": 10,
+            "name": "safe_name_32",
+            "op": "Cast",
+            "inputs": [
+              "safe_name_31"
+            ],
+            "outputs": [
+              "safe_name_32"
+            ]
+          },
+          {
+            "index": 11,
+            "name": "safe_name_33",
+            "op": "Add",
+            "inputs": [
+              "safe_name_32",
+              "safe_name_6"
+            ],
+            "outputs": [
+              "safe_name_33"
+            ]
+          },
+          {
+            "index": 12,
+            "name": "safe_name_34",
+            "op": "Slice",
+            "inputs": [
+              "safe_name_23",
+              "safe_name_32",
+              "safe_name_33",
+              "safe_name_5"
+            ],
+            "outputs": [
+              "safe_name_34"
+            ]
+          },
+          {
+            "index": 13,
+            "name": "safe_name_36",
+            "op": "Einsum",
+            "inputs": [
+              "input",
+              "safe_name_14"
+            ],
+            "outputs": [
+              "safe_name_36"
+            ]
+          },
+          {
+            "index": 14,
+            "name": "safe_name_37",
+            "op": "Equal",
+            "inputs": [
+              "safe_name_28",
+              "safe_name_19"
+            ],
+            "outputs": [
+              "safe_name_37"
+            ]
+          },
+          {
+            "index": 15,
+            "name": "safe_name_38",
+            "op": "Equal",
+            "inputs": [
+              "safe_name_30",
+              "safe_name_3"
+            ],
+            "outputs": [
+              "safe_name_38"
+            ]
+          },
+          {
+            "index": 16,
+            "name": "safe_name_39",
+            "op": "Equal",
+            "inputs": [
+              "safe_name_25",
+              "safe_name_20"
+            ],
+            "outputs": [
+              "safe_name_39"
+            ]
+          },
+          {
+            "index": 17,
+            "name": "safe_name_40",
+            "op": "And",
+            "inputs": [
+              "safe_name_38",
+              "safe_name_39"
+            ],
+            "outputs": [
+              "safe_name_40"
+            ]
+          },
+          {
+            "index": 18,
+            "name": "safe_name_41",
+            "op": "Where",
+            "inputs": [
+              "safe_name_37",
+              "safe_name_8",
+              "safe_name_3"
+            ],
+            "outputs": [
+              "safe_name_41"
+            ]
+          },
+          {
+            "index": 19,
+            "name": "safe_name_42",
+            "op": "Where",
+            "inputs": [
+              "safe_name_40",
+              "safe_name_8",
+              "safe_name_3"
+            ],
+            "outputs": [
+              "safe_name_42"
+            ]
+          },
+          {
+            "index": 20,
+            "name": "safe_name_43",
+            "op": "Concat",
+            "inputs": [
+              "safe_name_42",
+              "safe_name_41",
+              "safe_name_42",
+              "safe_name_41"
+            ],
+            "outputs": [
+              "safe_name_43"
+            ]
+          },
+          {
+            "index": 21,
+            "name": "safe_name_44",
+            "op": "ScatterElements",
+            "inputs": [
+              "safe_name_34",
+              "safe_name_21",
+              "safe_name_43"
+            ],
+            "outputs": [
+              "safe_name_44"
+            ]
+          },
+          {
+            "index": 22,
+            "name": "safe_name_45",
+            "op": "QLinearConv",
+            "inputs": [
+              "safe_name_24",
+              "neg_two_f",
+              "safe_name_1",
+              "safe_name_44",
+              "safe_name_0",
+              "safe_name_3",
+              "safe_name_36",
+              "safe_name_1"
+            ],
+            "outputs": [
+              "safe_name_45"
+            ]
+          },
+          {
+            "index": 23,
+            "name": "safe_name_46",
+            "op": "Slice",
+            "inputs": [
+              "safe_name_34",
+              "safe_name_12",
+              "safe_name_10",
+              "safe_name_11",
+              "safe_name_12"
+            ],
+            "outputs": [
+              "safe_name_46"
+            ]
+          },
+          {
+            "index": 24,
+            "name": "safe_name_47",
+            "op": "QLinearConv",
+            "inputs": [
+              "safe_name_45",
+              "neg_two_f",
+              "safe_name_1",
+              "safe_name_46",
+              "safe_name_0",
+              "safe_name_3",
+              "safe_name_0",
+              "safe_name_1"
+            ],
+            "outputs": [
+              "safe_name_47"
+            ]
+          },
+          {
+            "index": 25,
+            "name": "data_hid",
+            "op": "GroupNormalization",
+            "inputs": [
+              "input",
+              "safe_name_0",
+              "data_gn_bias"
+            ],
+            "outputs": [
+              "data_hid"
+            ]
+          },
+          {
+            "index": 26,
+            "name": "data_u8_hid",
+            "op": "CastLike",
+            "inputs": [
+              "data_hid",
+              "safe_name_1"
+            ],
+            "outputs": [
+              "data_u8_hid"
+            ]
+          },
+          {
+            "index": 27,
+            "name": "shape3",
+            "op": "Shape",
+            "inputs": [
+              "safe_name_24"
+            ],
+            "outputs": [
+              "shape3"
+            ]
+          },
+          {
+            "index": 28,
+            "name": "idx_u8_hid",
+            "op": "CenterCropPad",
+            "inputs": [
+              "safe_name_47",
+              "shape3"
+            ],
+            "outputs": [
+              "idx_u8_hid"
+            ]
+          },
+          {
+            "index": 29,
+            "name": "idx_hid",
+            "op": "CastLike",
+            "inputs": [
+              "idx_u8_hid",
+              "safe_name_5"
+            ],
+            "outputs": [
+              "idx_hid"
+            ]
+          },
+          {
+            "index": 30,
+            "name": "output",
+            "op": "ScatterElements",
+            "inputs": [
+              "data_u8_hid",
+              "idx_hid",
+              "safe_name_24"
+            ],
+            "outputs": [
+              "output"
+            ]
+          }
+        ],
+        "initializers": [
+          {
+            "name": "safe_name_0",
+            "dtype": "FLOAT",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "safe_name_1",
+            "dtype": "UINT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "safe_name_3",
+            "dtype": "UINT8",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "safe_name_5",
+            "dtype": "INT32",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "safe_name_6",
+            "dtype": "INT32",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "safe_name_8",
+            "dtype": "UINT8",
+            "shape": [
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "safe_name_10",
+            "dtype": "INT32",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "safe_name_11",
+            "dtype": "INT32",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "safe_name_12",
+            "dtype": "INT32",
+            "shape": [
+              2
+            ],
+            "elements": 2
+          },
+          {
+            "name": "safe_name_14",
+            "dtype": "FLOAT",
+            "shape": [
+              10
+            ],
+            "elements": 10
+          },
+          {
+            "name": "safe_name_15",
+            "dtype": "FLOAT",
+            "shape": [
+              6
+            ],
+            "elements": 6
+          },
+          {
+            "name": "safe_name_16",
+            "dtype": "INT64",
+            "shape": [
+              3
+            ],
+            "elements": 3
+          },
+          {
+            "name": "safe_name_17",
+            "dtype": "FLOAT",
+            "shape": [
+              30
+            ],
+            "elements": 30
+          },
+          {
+            "name": "safe_name_19",
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "safe_name_20",
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "elements": 1
+          },
+          {
+            "name": "safe_name_21",
+            "dtype": "INT64",
+            "shape": [
+              1,
+              1,
+              1,
+              4
+            ],
+            "elements": 4
+          },
+          {
+            "name": "neg_two_f",
+            "dtype": "FLOAT",
+            "shape": [],
+            "elements": 1
+          },
+          {
+            "name": "data_gn_bias",
+            "dtype": "FLOAT",
+            "shape": [
+              10
+            ],
+            "elements": 10
+          }
+        ],
+        "dead_node_indices": [],
+        "unused_initializers": [],
+        "initializer_alias_groups": [],
+        "duplicate_node_groups": [],
+        "unused_optional_outputs": []
+      },
+      "exact_rows": [
+        {
+          "kind": "normalize",
+          "sha256": "a09aa7634891f6e333ad336dec07a807b0f97cbe635d12877cdbf998f69822d4",
+          "actions": {
+            "cleared_value_info": [
+              "safe_name_22",
+              "safe_name_23",
+              "safe_name_24",
+              "safe_name_25",
+              "safe_name_26",
+              "safe_name_27",
+              "safe_name_28",
+              "safe_name_29",
+              "safe_name_30",
+              "safe_name_31",
+              "safe_name_32",
+              "safe_name_33",
+              "safe_name_34",
+              "safe_name_36",
+              "safe_name_37",
+              "safe_name_38",
+              "safe_name_39",
+              "safe_name_40",
+              "safe_name_41",
+              "safe_name_42",
+              "safe_name_43",
+              "safe_name_44",
+              "safe_name_45",
+              "safe_name_46",
+              "safe_name_47",
+              "data_hid",
+              "shape3",
+              "idx_u8_hid",
+              "idx_hid",
+              "data_u8_hid"
+            ]
+          },
+          "structural": {
+            "full_check": true,
+            "strict_data_prop": true,
+            "all_node_outputs_static_positive": false,
+            "standard_domains": true,
+            "finite_initializers": true,
+            "conv_bias_ub0": true,
+            "reasons": [
+              "nonstatic"
+            ],
+            "node_count": 31,
+            "initializer_count": 18,
+            "value_info_count": 0,
+            "op_histogram": {
+              "Add": 1,
+              "And": 1,
+              "Cast": 1,
+              "CastLike": 3,
+              "CenterCropPad": 1,
+              "Concat": 2,
+              "Einsum": 3,
+              "Equal": 3,
+              "GroupNormalization": 2,
+              "Log": 2,
+              "QLinearConv": 2,
+              "QuantizeLinear": 2,
+              "Resize": 1,
+              "ScatterElements": 2,
+              "Shape": 1,
+              "Slice": 2,
+              "Where": 2
+            },
+            "nested_graph_count": 0,
+            "function_count": 0,
+            "sparse_initializer_count": 0,
+            "nonstatic_node_outputs": [
+              "data_hid",
+              "safe_name_22",
+              "shape3"
+            ],
+            "declared_output_shapes": {
+              "output": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "conv_bias_findings": [],
+            "pass": false
+          },
+          "strict_lower": false
+        }
+      ]
+    }
+  },
+  "strict_lower": []
+}

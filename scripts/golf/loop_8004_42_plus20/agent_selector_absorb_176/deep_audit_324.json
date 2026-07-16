@@ -1,0 +1,571 @@
+{
+  "accepted": false,
+  "candidate": {
+    "competition": {
+      "correct": true,
+      "cost": 437,
+      "memory": 227,
+      "params": 210,
+      "score": 18.92006680490441
+    },
+    "path": "scripts/golf/loop_8004_42_plus20/agent_selector_absorb_176/candidates/task324_onehot_synth.onnx",
+    "profile": {
+      "cost": 437,
+      "memory": 227,
+      "params": 210
+    },
+    "projected_gain": 0.004566217979581184,
+    "sha256": "28d0954f17899c74e6e3468ad72d5de102fbd79ffce3d521dafc17571ba8de55"
+  },
+  "decision": "REJECT_INHERITED_UB_SHAPE_CLOAK_DEFAULT_FAILURE_NONFINITE",
+  "formal_all_input_proof": {
+    "new_initializer_names": [],
+    "only_changed_nodes": [
+      10,
+      11,
+      21
+    ],
+    "paired_selector_identity": {
+      "derived": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "expected": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "pass": true,
+    "remaining_onehot_refs": 0,
+    "removed_initializer": "onehot_values",
+    "semantic_statement": "Every removed e[x]=[0,1] factor is replaced by an exact contraction of unchanged seedsel/bgsel/Emap tensors. The paired final-node factors use e[A]*delta[A,h], which equals e[A]*e[h]. Therefore the tensor polynomial is identical for every input.",
+    "single_selector_identity": {
+      "derived": [
+        0.0,
+        1.0
+      ],
+      "expected": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  "fresh10000": {
+    "default_mode": "NOT_RUN_SESSION_CONSTRUCTION_FAILS_FOR_AUTHORITY_AND_CANDIDATE",
+    "generator": "inputs/arc-gen-repo/tasks/task_d07ae81c.py",
+    "mode": "ORT_DISABLE_ALL_threads1",
+    "perfect": false,
+    "runs": [
+      {
+        "candidate_right": 5000,
+        "first_failure": null,
+        "generated": 5000,
+        "generation_errors": 1,
+        "max_nonpositive": 0.0,
+        "min_positive": 1.65234375,
+        "nonfinite": 1814613,
+        "perfect": false,
+        "raw_equal": 5000,
+        "runtime_errors": 0,
+        "seed": 17632401,
+        "source_right": 5000,
+        "threshold_equal": 5000
+      },
+      {
+        "candidate_right": 5000,
+        "first_failure": null,
+        "generated": 5000,
+        "generation_errors": 1,
+        "max_nonpositive": 0.0,
+        "min_positive": 1.51171875,
+        "nonfinite": 1821540,
+        "perfect": false,
+        "raw_equal": 5000,
+        "runtime_errors": 0,
+        "seed": 17632402,
+        "source_right": 5000,
+        "threshold_equal": 5000
+      }
+    ],
+    "total": 10000
+  },
+  "known4_pass": false,
+  "known_four_configs": {
+    "default_threads1": {
+      "candidate_right": 0,
+      "first_failure": null,
+      "max_nonpositive": null,
+      "min_positive": null,
+      "nonfinite": 0,
+      "perfect": false,
+      "raw_equal": 0,
+      "runtime_errors": 0,
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_18) Op (TopK) [ShapeInferenceError] Axis has less than the requested k elements.",
+      "source_right": 0,
+      "threshold_equal": 0,
+      "total": 266
+    },
+    "default_threads4": {
+      "candidate_right": 0,
+      "first_failure": null,
+      "max_nonpositive": null,
+      "min_positive": null,
+      "nonfinite": 0,
+      "perfect": false,
+      "raw_equal": 0,
+      "runtime_errors": 0,
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_18) Op (TopK) [ShapeInferenceError] Axis has less than the requested k elements.",
+      "source_right": 0,
+      "threshold_equal": 0,
+      "total": 266
+    },
+    "disable_all_threads1": {
+      "candidate_right": 266,
+      "first_failure": null,
+      "max_nonpositive": 0.0,
+      "min_positive": 3.75,
+      "nonfinite": 95932,
+      "perfect": false,
+      "raw_equal": 266,
+      "runtime_errors": 0,
+      "source_right": 266,
+      "threshold_equal": 266,
+      "total": 266
+    },
+    "disable_all_threads4": {
+      "candidate_right": 266,
+      "first_failure": null,
+      "max_nonpositive": 0.0,
+      "min_positive": 3.75,
+      "nonfinite": 95932,
+      "perfect": false,
+      "raw_equal": 266,
+      "runtime_errors": 0,
+      "source_right": 266,
+      "threshold_equal": 266,
+      "total": 266
+    }
+  },
+  "nonfinite_pass": false,
+  "reasons": [
+    "authority_and_candidate_default_ORT_TopK_shape_failure",
+    "declared_runtime_shape_mismatch_inherited_from_authority",
+    "authority_and_candidate_emit_nonfinite_values_despite_threshold_correctness"
+  ],
+  "runtime_shape_trace": {
+    "candidate": {
+      "actual_shapes": {
+        "__f16hid": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "__f16sh": [
+          1
+        ],
+        "active_idx": [
+          4
+        ],
+        "active_oh": [
+          10,
+          4
+        ],
+        "active_oh_hid": [
+          10,
+          4
+        ],
+        "active_oh_raw": [
+          10,
+          4
+        ],
+        "active_vals": [
+          4
+        ],
+        "assocdiff": [
+          2
+        ],
+        "association": [
+          2
+        ],
+        "counts": [
+          10
+        ],
+        "graph_input_cast_0": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "is_two": [
+          1,
+          2
+        ],
+        "output": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "q0u": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "q1u": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "q2u": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "qterm4": [
+          1,
+          2,
+          4,
+          2
+        ],
+        "root_diff": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "seed_count": [
+          2
+        ],
+        "sig_sqsum": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "sig_sum": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "sum_sq": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "top4_dyn": [
+          1
+        ]
+      },
+      "mismatch_count": 6,
+      "mismatches": [
+        {
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "name": "__f16hid"
+        },
+        {
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "name": "graph_input_cast_0"
+        },
+        {
+          "actual": [
+            10
+          ],
+          "declared": [
+            1
+          ],
+          "name": "counts"
+        },
+        {
+          "actual": [
+            10,
+            4
+          ],
+          "declared": [
+            1,
+            1
+          ],
+          "name": "active_oh_hid"
+        },
+        {
+          "actual": [
+            10,
+            4
+          ],
+          "declared": [
+            1,
+            1
+          ],
+          "name": "active_oh"
+        },
+        {
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "declared": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "name": "output"
+        }
+      ],
+      "nonfinite": 392,
+      "traced": 23,
+      "truthful": false
+    },
+    "source": {
+      "actual_shapes": {
+        "__f16hid": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "__f16sh": [
+          1
+        ],
+        "active_idx": [
+          4
+        ],
+        "active_oh": [
+          10,
+          4
+        ],
+        "active_oh_hid": [
+          10,
+          4
+        ],
+        "active_oh_raw": [
+          10,
+          4
+        ],
+        "active_vals": [
+          4
+        ],
+        "assocdiff": [
+          2
+        ],
+        "association": [
+          2
+        ],
+        "counts": [
+          10
+        ],
+        "graph_input_cast_0": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "is_two": [
+          1,
+          2
+        ],
+        "output": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "q0u": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "q1u": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "q2u": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "qterm4": [
+          1,
+          2,
+          4,
+          2
+        ],
+        "root_diff": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "seed_count": [
+          2
+        ],
+        "sig_sqsum": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "sig_sum": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "sum_sq": [
+          1,
+          2,
+          1,
+          2
+        ],
+        "top4_dyn": [
+          1
+        ]
+      },
+      "mismatch_count": 6,
+      "mismatches": [
+        {
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "name": "__f16hid"
+        },
+        {
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "name": "graph_input_cast_0"
+        },
+        {
+          "actual": [
+            10
+          ],
+          "declared": [
+            1
+          ],
+          "name": "counts"
+        },
+        {
+          "actual": [
+            10,
+            4
+          ],
+          "declared": [
+            1,
+            1
+          ],
+          "name": "active_oh_hid"
+        },
+        {
+          "actual": [
+            10,
+            4
+          ],
+          "declared": [
+            1,
+            1
+          ],
+          "name": "active_oh"
+        },
+        {
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "declared": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "name": "output"
+        }
+      ],
+      "nonfinite": 392,
+      "traced": 23,
+      "truthful": false
+    }
+  },
+  "source": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_selector_absorb_176/base/task324.onnx",
+    "profile": {
+      "cost": 439,
+      "memory": 227,
+      "params": 212
+    },
+    "sha256": "894be3a6ae4d93ce52a5bb0ec8b03fe3443de74b746cff7529dc4989cd73ac08"
+  },
+  "structural_ub_no_lookup": {
+    "lookup_free": true,
+    "lookup_ops": [],
+    "max_einsum_inputs": 69,
+    "pass": true,
+    "reasons": []
+  },
+  "task": 324,
+  "truthful_pass": false
+}

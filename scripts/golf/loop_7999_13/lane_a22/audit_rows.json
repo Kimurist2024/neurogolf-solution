@@ -1,0 +1,3185 @@
+{
+  "rows": [
+    {
+      "task": 101,
+      "label": "task101_base",
+      "path": "scripts/golf/loop_7999_13/lane_a22/baseline/task101.onnx",
+      "sha256": "4f0de084b752a247766872e8dba29416f9198021d53e1a834a690d722a5a65b9",
+      "inventory_static_cost": 5712,
+      "baseline_actual_cost": 5712,
+      "sources": [
+        "submission_base_7999.13.zip"
+      ],
+      "nodes": 61,
+      "params": 91,
+      "value_info": 0,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "ConvTranspose": 1,
+        "Cast": 7,
+        "BitwiseAnd": 3,
+        "MaxPool": 6,
+        "ArgMax": 3,
+        "ScatterElements": 3,
+        "QLinearConv": 12,
+        "Mul": 2,
+        "Max": 2,
+        "Gather": 2,
+        "Greater": 1,
+        "Equal": 1,
+        "And": 2,
+        "Xor": 1,
+        "Not": 1,
+        "Concat": 1,
+        "Slice": 1,
+        "Resize": 4,
+        "ConvInteger": 2,
+        "Neg": 2,
+        "GatherND": 1,
+        "ScatterND": 1,
+        "Pad": 1,
+        "Where": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "dynamic_or_external_conv_bias:cand1_raw",
+      "recomputed_static_floor": null,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 5621
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 5621,
+        "params": 91,
+        "cost": 5712,
+        "score": 16.34967549598058,
+        "correct": true
+      },
+      "actual_static_agreement": true,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "fixture_signature_lookup"
+      ],
+      "fixture_signature_lookup_names": [
+        "probe_idx",
+        "t101_11_patch_red",
+        "t101_12_patch_near",
+        "t101_13_patch_seed",
+        "t101_54_wide_probe"
+      ],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 158,
+      "label": "task158_base",
+      "path": "scripts/golf/loop_7999_13/lane_a22/baseline/task158.onnx",
+      "sha256": "24eb1f1d238ea5087b1372d3fb322865c181026fb4997379cc58fab35c39381b",
+      "inventory_static_cost": 7815,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "submission_base_7999.13.zip"
+      ],
+      "nodes": 112,
+      "params": 332,
+      "value_info": 92,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Shape": 3,
+        "CenterCropPad": 25,
+        "CastLike": 8,
+        "ReduceSum": 1,
+        "Einsum": 4,
+        "GreaterOrEqual": 1,
+        "Add": 6,
+        "Mul": 3,
+        "Sub": 5,
+        "Where": 4,
+        "ArgMin": 1,
+        "Cast": 9,
+        "Equal": 2,
+        "Squeeze": 1,
+        "Less": 1,
+        "And": 1,
+        "Xor": 1,
+        "Unsqueeze": 1,
+        "ArgMax": 1,
+        "Gather": 3,
+        "Div": 2,
+        "Reshape": 2,
+        "Concat": 5,
+        "Slice": 9,
+        "ReduceMax": 2,
+        "QLinearConv": 8,
+        "Resize": 2,
+        "Max": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 1835,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 50,
+        "first_mismatches": [
+          {
+            "tensor": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "row2_sum",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "col2_sum",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "ge3",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "sum2",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "term1",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "rsq__cast3_t",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "compact0",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "csq__cast4_t",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "compact",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "fill_scores",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "ge1",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 82494
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 7483,
+        "params": 332,
+        "cost": 7815,
+        "score": 16.036199757144423,
+        "correct": true
+      },
+      "actual_static_agreement": true,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "shape_value_cloak_free"
+      ],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 101,
+      "label": "task101_r01",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task101_r01.onnx",
+      "sha256": "102e98414caafa01b0a13a8a61e944fca601e1531e9ba46f01876c3af3ad0408",
+      "inventory_static_cost": 5672,
+      "baseline_actual_cost": 5712,
+      "sources": [
+        "others/2/7904/task101_cost5672.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task101_r01_static5672.onnx"
+      ],
+      "nodes": 53,
+      "params": 101,
+      "value_info": 0,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "ConvTranspose": 1,
+        "Cast": 3,
+        "BitwiseAnd": 2,
+        "MaxPool": 4,
+        "ArgMax": 4,
+        "ScatterElements": 5,
+        "QLinearConv": 14,
+        "Clip": 1,
+        "GatherElements": 2,
+        "Add": 1,
+        "Where": 2,
+        "Slice": 1,
+        "Resize": 4,
+        "ConvInteger": 2,
+        "Neg": 2,
+        "GatherND": 1,
+        "ScatterND": 1,
+        "Max": 1,
+        "Greater": 1,
+        "Pad": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "dynamic_or_external_conv_bias:cand1_raw",
+      "recomputed_static_floor": null,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 5571
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 5571,
+        "params": 101,
+        "cost": 5672,
+        "score": 16.356702931788035,
+        "correct": true
+      },
+      "actual_static_agreement": true,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "fixture_signature_lookup"
+      ],
+      "fixture_signature_lookup_names": [
+        "probe_idx",
+        "wide_probe"
+      ],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 101,
+      "label": "task101_r02",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task101_r02.onnx",
+      "sha256": "5e92873465dee071a3e8b6c7873a0b434960f32b02f596b368adaeb4948889a4",
+      "inventory_static_cost": 5688,
+      "baseline_actual_cost": 5712,
+      "sources": [
+        "artifacts/handcrafted/task101.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task101_r02_static5688.onnx"
+      ],
+      "nodes": 54,
+      "params": 101,
+      "value_info": 53,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "ConvTranspose": 1,
+        "Cast": 3,
+        "BitwiseAnd": 2,
+        "MaxPool": 4,
+        "ArgMax": 4,
+        "ScatterElements": 5,
+        "QLinearConv": 14,
+        "Clip": 1,
+        "GatherElements": 2,
+        "Add": 1,
+        "Where": 2,
+        "BitShift": 1,
+        "Slice": 1,
+        "Resize": 4,
+        "ConvInteger": 2,
+        "Neg": 2,
+        "GatherND": 1,
+        "ScatterND": 1,
+        "Max": 1,
+        "Greater": 1,
+        "Pad": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "dynamic_or_external_conv_bias:cand1_raw",
+      "recomputed_static_floor": null,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 5587
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 5587,
+        "params": 101,
+        "cost": 5688,
+        "score": 16.353886028516925,
+        "correct": true
+      },
+      "actual_static_agreement": true,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "fixture_signature_lookup"
+      ],
+      "fixture_signature_lookup_names": [
+        "probe_idx",
+        "wide_probe"
+      ],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 101,
+      "label": "task101_r03",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task101_r03.onnx",
+      "sha256": "1747db5768ce604bbd683b1b1c9aefcd0e323ffd2d5dc5d1194e690c2e2590f0",
+      "inventory_static_cost": 5703,
+      "baseline_actual_cost": 5712,
+      "sources": [
+        "artifacts/quarantine/task101_7617_cost5703_private0_decoded.onnx",
+        "others/2/7617/task101_further_improved.onnx"
+      ],
+      "nodes": 60,
+      "params": 118,
+      "value_info": 0,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "ConvTranspose": 1,
+        "Cast": 3,
+        "BitwiseAnd": 3,
+        "MaxPool": 8,
+        "ArgMax": 4,
+        "ScatterElements": 4,
+        "QLinearConv": 13,
+        "Mul": 2,
+        "Max": 3,
+        "BitShift": 1,
+        "Slice": 1,
+        "Resize": 4,
+        "ConvInteger": 3,
+        "Neg": 3,
+        "GatherND": 1,
+        "ScatterND": 1,
+        "Greater": 1,
+        "And": 1,
+        "Concat": 1,
+        "Pad": 1,
+        "Where": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "dynamic_or_external_conv_bias:cand1_raw",
+      "recomputed_static_floor": null,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 5585
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 5585,
+        "params": 118,
+        "cost": 5703,
+        "score": 16.35125236884346,
+        "correct": true
+      },
+      "actual_static_agreement": true,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "fixture_signature_lookup",
+        "unsafe_source_lineage"
+      ],
+      "fixture_signature_lookup_names": [
+        "probe_idx",
+        "wide_probe"
+      ],
+      "unsafe_source_lineage": [
+        "artifacts/quarantine/task101_7617_cost5703_private0_decoded.onnx"
+      ]
+    },
+    {
+      "task": 158,
+      "label": "task158_r01",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task158_r01.onnx",
+      "sha256": "3728e9954be01aad9964be91da89b78680447760a55c12a3594dc881271dd4f8",
+      "inventory_static_cost": 1844,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "others/2/1203/task158_improved.onnx"
+      ],
+      "nodes": 112,
+      "params": 332,
+      "value_info": 92,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Shape": 3,
+        "CenterCropPad": 25,
+        "CastLike": 8,
+        "ReduceSum": 1,
+        "Einsum": 4,
+        "GreaterOrEqual": 1,
+        "Add": 6,
+        "Mul": 3,
+        "Sub": 5,
+        "Where": 4,
+        "ArgMin": 1,
+        "Cast": 9,
+        "Equal": 2,
+        "Squeeze": 1,
+        "Less": 1,
+        "And": 1,
+        "Xor": 1,
+        "Unsqueeze": 1,
+        "ArgMax": 1,
+        "Gather": 3,
+        "Div": 2,
+        "Reshape": 2,
+        "Concat": 5,
+        "Slice": 9,
+        "ReduceMax": 2,
+        "QLinearConv": 8,
+        "Resize": 2,
+        "Max": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 1844,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 50,
+        "first_mismatches": [
+          {
+            "tensor": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "row2_sum",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "col2_sum",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "ge3",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "sum2",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "term1",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "rsq__cast3_t",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "compact0",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "csq__cast4_t",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "compact",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "fill_scores",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "ge1",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 82517
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 7506,
+        "params": 332,
+        "cost": 7838,
+        "score": 16.033261021240424,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 158,
+      "label": "task158_r02",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task158_r02.onnx",
+      "sha256": "f1d5a69f9a974381844aaf954716a77c41b9f43fed0de7ef28aaaa810e818001",
+      "inventory_static_cost": 1860,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "others/7907/7120/task158_further.onnx",
+        "others/2/1201/7120/task158_further.onnx",
+        "others/2/1203/71202/7974-2/task158.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task158_r01_static1860.onnx"
+      ],
+      "nodes": 110,
+      "params": 332,
+      "value_info": 90,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Shape": 3,
+        "CenterCropPad": 23,
+        "CastLike": 8,
+        "ReduceSum": 1,
+        "Einsum": 4,
+        "GreaterOrEqual": 1,
+        "Add": 6,
+        "Mul": 3,
+        "Sub": 5,
+        "Where": 4,
+        "ArgMin": 1,
+        "Cast": 9,
+        "Equal": 2,
+        "Squeeze": 1,
+        "Less": 1,
+        "And": 1,
+        "Xor": 1,
+        "Unsqueeze": 1,
+        "ArgMax": 1,
+        "Gather": 3,
+        "Div": 2,
+        "Reshape": 2,
+        "Concat": 5,
+        "Slice": 9,
+        "ReduceMax": 2,
+        "QLinearConv": 8,
+        "Resize": 2,
+        "Max": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 1860,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 48,
+        "first_mismatches": [
+          {
+            "tensor": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "row2_sum",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "col2_sum",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "ge3",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "sum2",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "term1",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "rsq__cast3_t",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "compact0",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "csq__cast4_t",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "compact",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "fill_scores",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "ge1",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 81367
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 7554,
+        "params": 332,
+        "cost": 7886,
+        "score": 16.027155685562427,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 158,
+      "label": "task158_r03",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task158_r03.onnx",
+      "sha256": "894d18da9f14eb8ee9276f84c2ec3f483b2156e70b51dffc4d160c8645b4396e",
+      "inventory_static_cost": 2095,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "others/7906/task158_cost_reduced_v2.onnx",
+        "others/7907/task158_cost_reduced_v2.onnx"
+      ],
+      "nodes": 109,
+      "params": 372,
+      "value_info": 100,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Shape": 3,
+        "CenterCropPad": 23,
+        "CastLike": 8,
+        "ReduceSum": 1,
+        "Einsum": 4,
+        "GreaterOrEqual": 1,
+        "Add": 5,
+        "Mul": 3,
+        "Sub": 6,
+        "Where": 4,
+        "ArgMin": 1,
+        "Cast": 9,
+        "Equal": 2,
+        "Squeeze": 1,
+        "Less": 1,
+        "And": 1,
+        "Xor": 1,
+        "Unsqueeze": 1,
+        "ArgMax": 1,
+        "Gather": 3,
+        "Div": 2,
+        "Reshape": 2,
+        "Concat": 5,
+        "Slice": 9,
+        "ReduceMax": 2,
+        "QLinearConv": 7,
+        "Resize": 2,
+        "Max": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 2095,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 55,
+        "first_mismatches": [
+          {
+            "tensor": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "row2_sum",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "col2_sum",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "ge3",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "sum2",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "term1",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "rsq__cast3_t",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "compact0",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "csq__cast4_t",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "compact",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "fill_scores",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "ge1",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 83615
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 266
+      },
+      "official_like_score": {
+        "memory": 9652,
+        "params": 372,
+        "cost": 10024,
+        "score": 15.787262503424095,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 158,
+      "label": "task158_r04",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task158_r04.onnx",
+      "sha256": "3e23492c46f9a75603f7e9d783584f73798e89d548fe07e8be925841bc92803d",
+      "inventory_static_cost": 2671,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "others/2/7904/task158_cost8778.onnx",
+        "others/2/7906/task100_p7_samecost_submission/task158.onnx",
+        "others/2/1203/submission (60)/task158.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task158_r02_static2671.onnx"
+      ],
+      "nodes": 104,
+      "params": 330,
+      "value_info": 83,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Shape": 4,
+        "CenterCropPad": 14,
+        "CastLike": 8,
+        "ReduceSum": 1,
+        "Einsum": 4,
+        "ArgMax": 2,
+        "Equal": 4,
+        "GreaterOrEqual": 1,
+        "Add": 6,
+        "Mul": 3,
+        "Sub": 5,
+        "Where": 4,
+        "ArgMin": 1,
+        "Cast": 9,
+        "Unsqueeze": 2,
+        "And": 1,
+        "Gather": 3,
+        "Div": 2,
+        "Reshape": 2,
+        "Concat": 5,
+        "Slice": 9,
+        "ReduceMax": 2,
+        "QLinearConv": 8,
+        "Resize": 2,
+        "Max": 1,
+        "Pad": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 2671,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 41,
+        "first_mismatches": [
+          {
+            "tensor": "counts",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "row2_sum",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "col2_sum",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "bg_mask_small",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "ge3",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "sum2",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "term1",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "rsq__cast3_t",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "compact0",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "csq__cast4_t",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "compact",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "tensor": "fill_scores",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 77697
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 8448,
+        "params": 330,
+        "cost": 8778,
+        "score": 15.919996129751821,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 158,
+      "label": "task158_r05",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task158_r05.onnx",
+      "sha256": "8394fd2d22e6ee034ef254177ba8f2ce89cf9f453921c86f2d4b9303f79c0b6e",
+      "inventory_static_cost": 2989,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "others/2/7906/task158_cost8772.onnx"
+      ],
+      "nodes": 101,
+      "params": 290,
+      "value_info": 80,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Shape": 3,
+        "CenterCropPad": 12,
+        "CastLike": 8,
+        "ReduceSum": 1,
+        "Einsum": 4,
+        "ArgMax": 2,
+        "Equal": 4,
+        "GreaterOrEqual": 1,
+        "Add": 6,
+        "Mul": 3,
+        "Sub": 5,
+        "Where": 4,
+        "ArgMin": 1,
+        "Cast": 9,
+        "Unsqueeze": 2,
+        "And": 1,
+        "Gather": 3,
+        "Div": 2,
+        "Reshape": 2,
+        "Concat": 5,
+        "Slice": 9,
+        "ReduceMax": 2,
+        "QLinearConv": 8,
+        "Resize": 2,
+        "Max": 1,
+        "Pad": 1
+      },
+      "max_einsum_inputs": 3,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 2989,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 21,
+        "first_mismatches": [
+          {
+            "tensor": "__qcc_ihid",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "__qcc_x8",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "__qcc_qfull",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              25,
+              24
+            ]
+          },
+          {
+            "tensor": "code_u8",
+            "declared": [
+              1,
+              1,
+              9,
+              10
+            ],
+            "actual": [
+              1,
+              1,
+              25,
+              24
+            ]
+          },
+          {
+            "tensor": "input16",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "x8_wide",
+            "declared": [
+              1,
+              1,
+              5,
+              6
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "roi_pad_dyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "__qcc_fdyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              2
+            ]
+          },
+          {
+            "tensor": "__qcc_edyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              2
+            ]
+          },
+          {
+            "tensor": "fill_patch_starts_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "fill_patch_ends_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "low_patch_starts_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 77515
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 266
+      },
+      "official_like_score": {
+        "memory": 8482,
+        "params": 290,
+        "cost": 8772,
+        "score": 15.920679890462221,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 158,
+      "label": "task158_r06",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task158_r06.onnx",
+      "sha256": "ef68e039714b6d398bb30bf56de67d0d82f8040b34273d69bb75f03989a73928",
+      "inventory_static_cost": 3011,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "others/2/7904/task158_improved.onnx",
+        "others/2/7903/task158_improved.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task158_r03_static3011.onnx"
+      ],
+      "nodes": 101,
+      "params": 330,
+      "value_info": 80,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Shape": 3,
+        "CenterCropPad": 12,
+        "CastLike": 8,
+        "ReduceSum": 1,
+        "Einsum": 4,
+        "ArgMax": 2,
+        "Equal": 4,
+        "GreaterOrEqual": 1,
+        "Add": 6,
+        "Mul": 3,
+        "Sub": 5,
+        "Where": 4,
+        "ArgMin": 1,
+        "Cast": 9,
+        "Unsqueeze": 2,
+        "And": 1,
+        "Gather": 3,
+        "Div": 2,
+        "Reshape": 2,
+        "Concat": 5,
+        "Slice": 9,
+        "ReduceMax": 2,
+        "QLinearConv": 8,
+        "Resize": 2,
+        "Max": 1,
+        "Pad": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 3011,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 21,
+        "first_mismatches": [
+          {
+            "tensor": "__qcc_ihid",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "__qcc_x8",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "__qcc_qfull",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              24
+            ]
+          },
+          {
+            "tensor": "code_u8",
+            "declared": [
+              1,
+              1,
+              9,
+              10
+            ],
+            "actual": [
+              1,
+              1,
+              25,
+              24
+            ]
+          },
+          {
+            "tensor": "input16",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "x8_wide",
+            "declared": [
+              1,
+              1,
+              1,
+              6
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "roi_pad_dyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "__qcc_fdyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              2
+            ]
+          },
+          {
+            "tensor": "__qcc_edyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              2
+            ]
+          },
+          {
+            "tensor": "fill_patch_starts_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "fill_patch_ends_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "low_patch_starts_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 77617
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 266
+      },
+      "official_like_score": {
+        "memory": 8560,
+        "params": 330,
+        "cost": 8890,
+        "score": 15.90731767149205,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 158,
+      "label": "task158_r07",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task158_r07.onnx",
+      "sha256": "29160cbd5627c67e10bd7e1c28bc0cbd8c3fd191aac3815e7a38e7c75d285017",
+      "inventory_static_cost": 3032,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "others/2/7802/task158_improved.onnx"
+      ],
+      "nodes": 101,
+      "params": 297,
+      "value_info": 80,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Shape": 3,
+        "CenterCropPad": 12,
+        "CastLike": 8,
+        "ReduceSum": 1,
+        "Einsum": 4,
+        "ArgMax": 2,
+        "Equal": 4,
+        "GreaterOrEqual": 1,
+        "Add": 6,
+        "Mul": 3,
+        "Sub": 5,
+        "Where": 4,
+        "ArgMin": 1,
+        "Cast": 9,
+        "Unsqueeze": 2,
+        "And": 1,
+        "Gather": 3,
+        "Div": 2,
+        "Reshape": 2,
+        "Concat": 5,
+        "Slice": 9,
+        "ReduceMax": 2,
+        "QLinearConv": 8,
+        "Resize": 2,
+        "Max": 1,
+        "Pad": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 3032,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 21,
+        "first_mismatches": [
+          {
+            "tensor": "__qcc_ihid",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "__qcc_x8",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "__qcc_qfull",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              24
+            ]
+          },
+          {
+            "tensor": "code_u8",
+            "declared": [
+              1,
+              1,
+              9,
+              10
+            ],
+            "actual": [
+              1,
+              1,
+              25,
+              24
+            ]
+          },
+          {
+            "tensor": "input16",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "x8_wide",
+            "declared": [
+              1,
+              10,
+              1,
+              6
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "roi_pad_dyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "__qcc_fdyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              2
+            ]
+          },
+          {
+            "tensor": "__qcc_edyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              2
+            ]
+          },
+          {
+            "tensor": "fill_patch_starts_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "fill_patch_ends_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "low_patch_starts_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 77617
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 266
+      },
+      "official_like_score": {
+        "memory": 8614,
+        "params": 297,
+        "cost": 8911,
+        "score": 15.90495825238728,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 158,
+      "label": "task158_r08",
+      "path": "scripts/golf/loop_7999_13/lane_a22/candidates/task158_r08.onnx",
+      "sha256": "1231c0d9f13d271c6bbfcf2416fa860da4160d9c5672d9c20bfbd424c34e4582",
+      "inventory_static_cost": 3065,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "others/2/7901/task158_round2_VALID_NO_COST_REDUCTION_same_as_previous.onnx",
+        "others/2/7902/task158_round2_VALID_NO_COST_REDUCTION_same_as_previous.onnx"
+      ],
+      "nodes": 101,
+      "params": 330,
+      "value_info": 80,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Shape": 3,
+        "CenterCropPad": 12,
+        "CastLike": 8,
+        "ReduceSum": 1,
+        "Einsum": 4,
+        "ArgMax": 2,
+        "Equal": 4,
+        "GreaterOrEqual": 1,
+        "Add": 6,
+        "Mul": 3,
+        "Sub": 5,
+        "Where": 4,
+        "ArgMin": 1,
+        "Cast": 9,
+        "Unsqueeze": 2,
+        "And": 1,
+        "Gather": 3,
+        "Div": 2,
+        "Reshape": 2,
+        "Concat": 5,
+        "Slice": 9,
+        "ReduceMax": 2,
+        "QLinearConv": 8,
+        "Resize": 2,
+        "Max": 1,
+        "Pad": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 3065,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 21,
+        "first_mismatches": [
+          {
+            "tensor": "__qcc_ihid",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "__qcc_x8",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "__qcc_qfull",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              24
+            ]
+          },
+          {
+            "tensor": "code_u8",
+            "declared": [
+              1,
+              1,
+              9,
+              10
+            ],
+            "actual": [
+              1,
+              1,
+              25,
+              24
+            ]
+          },
+          {
+            "tensor": "input16",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "x8_wide",
+            "declared": [
+              1,
+              10,
+              1,
+              6
+            ],
+            "actual": [
+              1,
+              10,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "roi_pad_dyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "__qcc_fdyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              2
+            ]
+          },
+          {
+            "tensor": "__qcc_edyn",
+            "declared": [
+              1
+            ],
+            "actual": [
+              2
+            ]
+          },
+          {
+            "tensor": "fill_patch_starts_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "fill_patch_ends_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "tensor": "low_patch_starts_obf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 77617
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 266
+      },
+      "official_like_score": {
+        "memory": 8614,
+        "params": 330,
+        "cost": 8944,
+        "score": 15.90126180460512,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 101,
+      "label": "task101_spec_greedy",
+      "path": "scripts/golf/loop_7999_13/lane_a22/sound/task101_spec_greedy.onnx",
+      "sha256": "4acfe4e61fe79fe02e92fcbfbce4dfca0a7317542d23a09b4ba7bdcf7278291e",
+      "inventory_static_cost": null,
+      "baseline_actual_cost": 5712,
+      "sources": [
+        "scripts/golf/scratch_codex_7994/task101_sound/sound_7264.onnx"
+      ],
+      "nodes": 172,
+      "params": 149,
+      "value_info": 185,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "ConvTranspose": 1,
+        "Cast": 14,
+        "BitwiseAnd": 5,
+        "MaxPool": 7,
+        "ArgMax": 6,
+        "ScatterElements": 7,
+        "QLinearConv": 8,
+        "BitShift": 2,
+        "Max": 1,
+        "Reshape": 3,
+        "Greater": 6,
+        "Where": 10,
+        "Div": 2,
+        "Mod": 3,
+        "Sub": 7,
+        "Add": 18,
+        "Mul": 9,
+        "GatherElements": 2,
+        "And": 16,
+        "Not": 6,
+        "TopK": 2,
+        "Equal": 15,
+        "Or": 11,
+        "Split": 3,
+        "Concat": 3,
+        "GatherND": 1,
+        "Slice": 1,
+        "Resize": 2,
+        "Pad": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 7264,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 7115
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 7115,
+        "params": 149,
+        "cost": 7264,
+        "score": 16.10931407971887,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "fixture_signature_lookup",
+        "not_strictly_cheaper_actual"
+      ],
+      "fixture_signature_lookup_names": [
+        "wide_probe_idx",
+        "wide_origin_idx",
+        "wide_safe_idx"
+      ],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 101,
+      "label": "task101_spec_topk",
+      "path": "scripts/golf/loop_7999_13/lane_a22/sound/task101_spec_topk.onnx",
+      "sha256": "e34fef080e9e41963f95ade3d48479a239a043721eb27aebbaf733fc49508260",
+      "inventory_static_cost": null,
+      "baseline_actual_cost": 5712,
+      "sources": [
+        "scripts/golf/scratch_codex/task101/topk_parity_rebuild.onnx"
+      ],
+      "nodes": 290,
+      "params": 164,
+      "value_info": 312,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "ConvTranspose": 1,
+        "Cast": 18,
+        "BitwiseAnd": 5,
+        "MaxPool": 7,
+        "ArgMax": 6,
+        "ScatterElements": 7,
+        "QLinearConv": 7,
+        "BitShift": 2,
+        "Max": 1,
+        "Reshape": 3,
+        "Greater": 6,
+        "Where": 34,
+        "Div": 2,
+        "Mod": 3,
+        "Sub": 7,
+        "Add": 28,
+        "Mul": 13,
+        "GatherElements": 2,
+        "And": 34,
+        "Not": 10,
+        "TopK": 2,
+        "Equal": 53,
+        "Or": 25,
+        "Split": 3,
+        "Concat": 4,
+        "GatherND": 1,
+        "Slice": 1,
+        "Resize": 2,
+        "Pad": 3
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 8284,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 8120
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 8120,
+        "params": 164,
+        "cost": 8284,
+        "score": 15.977918777484525,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "fixture_signature_lookup",
+        "not_strictly_cheaper_actual"
+      ],
+      "fixture_signature_lookup_names": [
+        "wide_probe_idx",
+        "wide_origin_idx",
+        "wide_safe_idx"
+      ],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 158,
+      "label": "task158_spec_anchor13",
+      "path": "scripts/golf/loop_7999_13/lane_a22/sound/task158_spec_anchor13.onnx",
+      "sha256": "24e58dbce2a09e42e4d5929d9970f77451e396ce7fea71ea0952dbb4165ab7c0",
+      "inventory_static_cost": null,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "scripts/golf/scratch_codex/task158/incumbent_agent_anchor13.onnx"
+      ],
+      "nodes": 175,
+      "params": 921,
+      "value_info": 178,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "ReduceSum": 1,
+        "Einsum": 7,
+        "ArgMax": 3,
+        "Greater": 6,
+        "Equal": 7,
+        "Xor": 9,
+        "Where": 16,
+        "TopK": 4,
+        "GatherElements": 21,
+        "Add": 9,
+        "Mul": 9,
+        "Sub": 8,
+        "ArgMin": 2,
+        "Cast": 19,
+        "ReduceMax": 1,
+        "Gather": 6,
+        "Div": 4,
+        "Round": 2,
+        "Conv": 1,
+        "Flatten": 2,
+        "GreaterOrEqual": 4,
+        "Floor": 1,
+        "Mod": 3,
+        "Or": 2,
+        "And": 5,
+        "Unsqueeze": 5,
+        "Abs": 2,
+        "Min": 3,
+        "Less": 1,
+        "Sum": 1,
+        "Reshape": 2,
+        "BitwiseAnd": 1,
+        "BitShift": 3,
+        "Concat": 2,
+        "BitwiseOr": 1,
+        "ScatterElements": 1,
+        "QLinearConv": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 7657,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 6736
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 6736,
+        "params": 921,
+        "cost": 7657,
+        "score": 16.056624458886876,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": true,
+      "pre_fresh_reasons": [],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    },
+    {
+      "task": 158,
+      "label": "task158_spec_exact_tail",
+      "path": "scripts/golf/loop_7999_13/lane_a22/sound/task158_spec_exact_tail.onnx",
+      "sha256": "2751d1e97fb3a8216dbcb5d031853cb3caa940224484ff68f3b387d7689a37e7",
+      "inventory_static_cost": null,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "scripts/golf/scratch_codex/task158/worker_safe_exact_tail.onnx"
+      ],
+      "nodes": 175,
+      "params": 921,
+      "value_info": 178,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "ReduceSum": 1,
+        "Einsum": 7,
+        "ArgMax": 3,
+        "Greater": 6,
+        "Equal": 7,
+        "Xor": 9,
+        "Where": 16,
+        "TopK": 4,
+        "GatherElements": 21,
+        "Add": 9,
+        "Mul": 9,
+        "Sub": 8,
+        "ArgMin": 2,
+        "Cast": 19,
+        "ReduceMax": 1,
+        "Gather": 6,
+        "Div": 4,
+        "Round": 2,
+        "Conv": 1,
+        "Flatten": 2,
+        "GreaterOrEqual": 4,
+        "Floor": 1,
+        "Mod": 3,
+        "Or": 2,
+        "And": 5,
+        "Unsqueeze": 5,
+        "Abs": 2,
+        "Min": 3,
+        "Less": 1,
+        "Sum": 1,
+        "Reshape": 2,
+        "BitwiseAnd": 1,
+        "BitShift": 3,
+        "Concat": 2,
+        "BitwiseOr": 1,
+        "ScatterElements": 1,
+        "QLinearConv": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 7873,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 6952
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 6952,
+        "params": 921,
+        "cost": 7873,
+        "score": 16.028805536815533,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "not_strictly_cheaper_actual"
+      ],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    }
+  ],
+  "pending": [
+    {
+      "task": 158,
+      "label": "task158_spec_anchor13",
+      "path": "scripts/golf/loop_7999_13/lane_a22/sound/task158_spec_anchor13.onnx",
+      "sha256": "24e58dbce2a09e42e4d5929d9970f77451e396ce7fea71ea0952dbb4165ab7c0",
+      "inventory_static_cost": null,
+      "baseline_actual_cost": 7815,
+      "sources": [
+        "scripts/golf/scratch_codex/task158/incumbent_agent_anchor13.onnx"
+      ],
+      "nodes": 175,
+      "params": 921,
+      "value_info": 178,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "ReduceSum": 1,
+        "Einsum": 7,
+        "ArgMax": 3,
+        "Greater": 6,
+        "Equal": 7,
+        "Xor": 9,
+        "Where": 16,
+        "TopK": 4,
+        "GatherElements": 21,
+        "Add": 9,
+        "Mul": 9,
+        "Sub": 8,
+        "ArgMin": 2,
+        "Cast": 19,
+        "ReduceMax": 1,
+        "Gather": 6,
+        "Div": 4,
+        "Round": 2,
+        "Conv": 1,
+        "Flatten": 2,
+        "GreaterOrEqual": 4,
+        "Floor": 1,
+        "Mod": 3,
+        "Or": 2,
+        "And": 5,
+        "Unsqueeze": 5,
+        "Abs": 2,
+        "Min": 3,
+        "Less": 1,
+        "Sum": 1,
+        "Reshape": 2,
+        "BitwiseAnd": 1,
+        "BitShift": 3,
+        "Concat": 2,
+        "BitwiseOr": 1,
+        "ScatterElements": 1,
+        "QLinearConv": 1
+      },
+      "max_einsum_inputs": 2,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 7657,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 6736
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 6736,
+        "params": 921,
+        "cost": 7657,
+        "score": 16.056624458886876,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": true,
+      "pre_fresh_reasons": [],
+      "fixture_signature_lookup_names": [],
+      "unsafe_source_lineage": []
+    }
+  ],
+  "complete": true
+}

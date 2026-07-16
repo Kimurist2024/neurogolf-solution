@@ -1,0 +1,46 @@
+{
+  "lane": "a21",
+  "base_archive": "submission_base_7999.13.zip",
+  "base_archive_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "exact_costs": {"285": 8717, "286": 7561},
+  "history": {
+    "task285": {
+      "sha_count": 8,
+      "actual_costs": [8767, 8732, null, 8845, 8862, 8887, 8896, 9036],
+      "strictly_cheaper_count": 0,
+      "notes": "r03 is unsupported TopK(11); the others are cost regressions and all retain fixture/heuristic or shape-cloak defects."
+    },
+    "task286": {
+      "sha_count": 4,
+      "actual_costs": [7122, 7263, 7304, 7497],
+      "possible_gains": [0.05981487172054756, 0.04021048995210208, 0.03458131328346781, 0.008500516055207186],
+      "accepted_count": 0,
+      "common_rejection": "Every candidate contains a public-fixture rcorr/ex_rcorr signature correction lookup and a finite-depth flood; r01 and r02 also have decisive 5000-case failure evidence."
+    }
+  },
+  "sound_rebuilds": {
+    "task285": {
+      "label": "task285_spec_bitboard",
+      "sha256": "1f1bd10f2f2b5480468e73cdab2330f7f8447d5ddb294178601d364d0bbd2b15",
+      "actual_cost": 14699,
+      "known_disable_all": "265/265",
+      "known_default": "265/265",
+      "runtime_shape_mismatches": 0,
+      "decision": "REJECT_COST"
+    },
+    "task286_best": {
+      "label": "task286_spec_fullrow",
+      "sha256": "a70c361b2583d65dbdecfec89707c9a94f8c35102159510bf1c006e99fcd334f",
+      "actual_cost": 54552,
+      "known_disable_all": "265/265",
+      "known_default": "265/265",
+      "runtime_shape_mismatches": 0,
+      "decision": "REJECT_COST"
+    },
+    "task286_other_costs": [432364, 4042393]
+  },
+  "fresh5000": {"ran": false, "eligible_candidates": []},
+  "decision": "NO_WINNER",
+  "projected_gain": 0.0,
+  "evidence": ["model_manifest.json", "audit_rows.json", "rule_reference_evidence.json", "fresh_evidence.json"]
+}

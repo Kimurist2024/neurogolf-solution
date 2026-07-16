@@ -1,7 +1,8 @@
 """STRICT merge gate for a defect-fix candidate net.
 
 Adopts a fix ONLY if it independently passes ALL of:
-  1. High-K FRESH generator audit (default 5000 instances) -> ZERO failures.
+  1. High-K FRESH generator audit (default requires 100%; configurable with
+     ``--min-fresh-rate`` when the user explicitly authorizes a lower rate).
   2. Dual-path visible-gold correctness (scripts/lib AND official neurogolf_utils).
   3. Margin stability.
 
@@ -13,6 +14,11 @@ from __future__ import annotations
 import argparse, json, sys, random, tempfile, importlib
 from pathlib import Path
 import onnx, onnxruntime
+
+# Old harvested models can emit one warning per inference for stale shape
+# annotations. Keep the gate output machine-readable without changing runtime
+# behavior or validation semantics.
+onnxruntime.set_default_logger_severity(3)
 
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "scripts"))
@@ -88,7 +94,7 @@ def official_gold(path: Path, task: int) -> bool:
         return False
 
 
-def verify_one(task: int, path: Path, k: int) -> dict:
+def verify_one(task: int, path: Path, k: int, min_fresh_rate: float) -> dict:
     if not path.exists():
         return {"task": task, "decision": "REJECT", "reason": "missing_file"}
     model = onnx.load(str(path))
@@ -98,7 +104,8 @@ def verify_one(task: int, path: Path, k: int) -> dict:
     off_gold = official_gold(path, task)
     stable, mm = scoring.model_margin_stable(model, task)
     ftotal, ffail = fresh_audit(model, task, k)
-    fresh_ok = ffail == 0 and ftotal > 0
+    fresh_rate = (ftotal - ffail) / ftotal if ftotal > 0 and ffail >= 0 else None
+    fresh_ok = fresh_rate is not None and fresh_rate >= min_fresh_rate
     adopt = bool(lib_gold and off_gold and stable and fresh_ok)
     return {
         "task": task,
@@ -106,7 +113,8 @@ def verify_one(task: int, path: Path, k: int) -> dict:
         "cost": lib["cost"] if lib else None,
         "lib_gold": lib_gold, "official_gold": off_gold,
         "margin_stable": bool(stable), "margin_min": mm,
-        "fresh_total": ftotal, "fresh_fails": ffail, "fresh_ok": fresh_ok,
+        "fresh_total": ftotal, "fresh_fails": ffail, "fresh_rate": fresh_rate,
+        "min_fresh_rate": min_fresh_rate, "fresh_ok": fresh_ok,
         "path": str(path),
     }
 
@@ -117,7 +125,15 @@ def main() -> int:
     ap.add_argument("--onnx", type=Path)
     ap.add_argument("--batch", help="task=path,task=path,...")
     ap.add_argument("--k", type=int, default=100)
+    ap.add_argument(
+        "--min-fresh-rate",
+        type=float,
+        default=1.0,
+        help="minimum accepted fresh accuracy in [0,1] (default: 1.0)",
+    )
     a = ap.parse_args()
+    if not 0.0 <= a.min_fresh_rate <= 1.0:
+        ap.error("--min-fresh-rate must be between 0 and 1")
     jobs = []
     if a.batch:
         for item in a.batch.split(","):
@@ -128,14 +144,15 @@ def main() -> int:
     else:
         print("need --task/--onnx or --batch", file=sys.stderr)
         return 2
-    verdicts = [verify_one(t, p, a.k) for t, p in jobs]
+    verdicts = [verify_one(t, p, a.k, a.min_fresh_rate) for t, p in jobs]
     print(json.dumps(verdicts, indent=2))
     ad = [v for v in verdicts if v["decision"] == "ADOPT"]
     print(f"\nADOPT={len(ad)}/{len(verdicts)}", file=sys.stderr)
     for v in verdicts:
         print(f"  task{v['task']:03d}: {v['decision']} "
-              f"fresh={v.get('fresh_fails')}/{v.get('fresh_total')} "
-              f"lib={v.get('lib_gold')} off={v.get('official_gold')} "
+            f"fresh={v.get('fresh_fails')}/{v.get('fresh_total')} "
+            f"rate={v.get('fresh_rate')} threshold={v.get('min_fresh_rate')} "
+            f"lib={v.get('lib_gold')} off={v.get('official_gold')} "
               f"margin={v.get('margin_min')} cost={v.get('cost')}", file=sys.stderr)
     return 0
 

@@ -1,0 +1,142 @@
+{
+  "authority_sha256": "49cc513b28ccc5edca65c2cf886b79337a098400785a928599719d4bcfade7d7",
+  "equation": "bkxy,bkxD,Da,ma,ya,bkEy,Eg,mg,xg,bkrc,bkrF,Fp,np,cp,bkHc,Hq,nq,rq,nm,kn,ok->borc",
+  "initializer_shapes": {
+    "V": [
+      30,
+      8
+    ],
+    "U": [
+      2,
+      8
+    ],
+    "A": [
+      2,
+      2
+    ],
+    "S": [
+      10,
+      2
+    ],
+    "P": [
+      10,
+      10
+    ]
+  },
+  "initializer_dense_params": {
+    "V": 240,
+    "U": 16,
+    "A": 4,
+    "S": 20,
+    "P": 100
+  },
+  "total_dense_params": 380,
+  "initializer_nonzeros": {
+    "V": 128,
+    "U": 16,
+    "A": 4,
+    "S": 19,
+    "P": 19
+  },
+  "exact_ranks": {
+    "V_full_30x8": 8,
+    "V_active_rows_0_15": 8,
+    "U": 2,
+    "A": 2,
+    "S": 2,
+    "P": 10
+  },
+  "all_U_entries_nonzero": true,
+  "all_A_entries_nonzero": true,
+  "V_zero_tail": {
+    "first_zero_row": 16,
+    "zero_rows": 14,
+    "zero_elements": 112,
+    "dense_Einsum_contract": "D/E/F/H are tied to the static input spatial dimension 30, so a dense V with shape [16,8] is not a legal replacement.",
+    "standard_dense_pad_cost": {
+      "V16_params": 128,
+      "Pad_output_memory_float32_30x8": 960,
+      "combined_before_other_initializers": 1088,
+      "authority_V_params": 240
+    }
+  },
+  "rank_conclusion": "V is exact full column rank 8 on the only active rows and every U coefficient is nonzero. Any rank-7 V/U deletion changes the real polynomial; the runtime audit supplies explicit counterexamples.",
+  "P_projection": {
+    "formula": "out0=10*(s0-sum(s1..s9)); out_o=10*s_o for o>0",
+    "rank": 10,
+    "conclusion": "P is full rank 10. Direct deletion is not a pass-through; the known audit disproves the required background-sign equivalence on every one of 266 cases."
+  },
+  "generator": {
+    "hash": "91714a58",
+    "size": 16,
+    "allowed_dimension_pairs": [
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        3
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        8,
+        2
+      ]
+    ],
+    "allowed_pair_count": 14,
+    "row_col_interior": true
+  },
+  "examined_dense_floor": {
+    "V": 240,
+    "U": 16,
+    "A": 4,
+    "S": 20,
+    "P": 100,
+    "sum": 380,
+    "scope": "current one-node dense-Einsum factorization under exact real pass-through, excluding malformed/sparse/extra-activation tricks"
+  }
+}

@@ -1,0 +1,880 @@
+{
+  "paths": {
+    "active_parent": "others/71407/task192.onnx",
+    "active_candidate": "scripts/golf/loop_8004_42_plus20/agent_task192_local_211/candidates/task192_policy90_center_direct.onnx",
+    "exact_parent": "others/71407/FALLBACK_EXACT_DO_NOT_AUTO_MERGE/task192_exact1149.onnx.fallback",
+    "exact_candidate": "scripts/golf/loop_8004_42_plus20/agent_task192_local_211/candidates/task192_center_direct_argmax.onnx"
+  },
+  "sha256": {
+    "active_parent": "e6515b2ddf32c2eb80581aa3267e24683d2aa53d9445483b2a2a0752f94072d5",
+    "active_candidate": "1200fe8473c045ec89abaaf1860d1d0758316523855c9ff13d4c3fc092412047",
+    "exact_parent": "19fbdce89a5c89f5ff376b2fbbdb630ead5535d5ed5ebe7d9914a4de89e5023c",
+    "exact_candidate": "5c5eaefa81acce481dbc93855dbcc2f9ef821e055f8c982eadcd07f63c764a9d"
+  },
+  "profiles": {
+    "active_parent": {
+      "memory": 200,
+      "params": 938,
+      "cost": 1138
+    },
+    "active_candidate": {
+      "memory": 200,
+      "params": 934,
+      "cost": 1134
+    },
+    "exact_parent": {
+      "memory": 208,
+      "params": 941,
+      "cost": 1149
+    },
+    "exact_candidate": {
+      "memory": 208,
+      "params": 935,
+      "cost": 1143
+    }
+  },
+  "structures": {
+    "active_parent": {
+      "sha256": "e6515b2ddf32c2eb80581aa3267e24683d2aa53d9445483b2a2a0752f94072d5",
+      "nodes": 4,
+      "initializers": 6,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "standard_domain_only": true,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nested_graphs": 0,
+      "static_declared_shapes": true,
+      "banned_ops": [],
+      "hardmax_count": 0,
+      "conv_family_count": 0,
+      "conv_bias_ub_count": 0,
+      "unused_initializers": [],
+      "nonfinite_initializers": 0,
+      "full_check": true,
+      "strict": true,
+      "strict_data_prop": true,
+      "pass": true
+    },
+    "active_candidate": {
+      "sha256": "1200fe8473c045ec89abaaf1860d1d0758316523855c9ff13d4c3fc092412047",
+      "nodes": 4,
+      "initializers": 5,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "standard_domain_only": true,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nested_graphs": 0,
+      "static_declared_shapes": true,
+      "banned_ops": [],
+      "hardmax_count": 0,
+      "conv_family_count": 0,
+      "conv_bias_ub_count": 0,
+      "unused_initializers": [],
+      "nonfinite_initializers": 0,
+      "full_check": true,
+      "strict": true,
+      "strict_data_prop": true,
+      "pass": true
+    },
+    "exact_parent": {
+      "sha256": "19fbdce89a5c89f5ff376b2fbbdb630ead5535d5ed5ebe7d9914a4de89e5023c",
+      "nodes": 5,
+      "initializers": 8,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "standard_domain_only": true,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nested_graphs": 0,
+      "static_declared_shapes": true,
+      "banned_ops": [],
+      "hardmax_count": 0,
+      "conv_family_count": 0,
+      "conv_bias_ub_count": 0,
+      "unused_initializers": [],
+      "nonfinite_initializers": 0,
+      "full_check": true,
+      "strict": true,
+      "strict_data_prop": true,
+      "pass": true
+    },
+    "exact_candidate": {
+      "sha256": "5c5eaefa81acce481dbc93855dbcc2f9ef821e055f8c982eadcd07f63c764a9d",
+      "nodes": 5,
+      "initializers": 6,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "standard_domain_only": true,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nested_graphs": 0,
+      "static_declared_shapes": true,
+      "banned_ops": [],
+      "hardmax_count": 0,
+      "conv_family_count": 0,
+      "conv_bias_ub_count": 0,
+      "unused_initializers": [],
+      "nonfinite_initializers": 0,
+      "full_check": true,
+      "strict": true,
+      "strict_data_prop": true,
+      "pass": true
+    }
+  },
+  "active_algebraic_proof": {
+    "initializer_identities": true,
+    "selected_vectors_enumerated": 1024,
+    "cell_states_per_vector": 11,
+    "factor_cell_checks": 33792,
+    "mismatches": [],
+    "mismatch_count": 0,
+    "hard_sigmoid_alpha_beta_unchanged": true,
+    "adjacency_proto_byte_identical": true,
+    "symbolic_identity": {
+      "center": "[nonzero+background, nonzero] = [inside, nonzero]",
+      "neighbor": "[nonzero+background, selected] = [inside, selected]",
+      "route": "[background, -9*background+selected] = [inside-nonzero, -9*inside+9*nonzero+selected]",
+      "histogram": "input dot nonzero = (input dot [inside,nonzero]) dot [0,1]"
+    },
+    "all_input_argument": "Every legal input cell is zero-hot or one-hot. Histograms are exact float32 integers <=900; HardSigmoid therefore emits a binary (possibly multi-hot) selected vector. Every changed factor is identical for all 1024 such vectors and all 11 legal cell states. Adjacency and the final polynomial are unchanged. Nonzero terms per output stay small integer-valued, so no float32 rounding is introduced by the refactor.",
+    "pass": true
+  },
+  "exact_algebraic_proof": {
+    "same_basis_identity_as_active": true,
+    "hist_identity": "old [1,10] input\u00b7nonzero and new [10] input\u00b7center_basis\u00b7[0,1] have identical ten entries",
+    "argmax_axis_change": "axis1 on [1,10] and axis0 on [10], both first-index tie break, both output [1]",
+    "selector_and_depth_identical": true,
+    "argmax_onehot_route_present": true,
+    "adjacency_proto_byte_identical": true,
+    "pass": true
+  },
+  "runtime_shape_truth": {
+    "active_candidate": {
+      "traced_outputs": 4,
+      "shape_mismatches": [],
+      "shape_mismatch_count": 0,
+      "nonfinite_values": 0,
+      "truthful": true
+    },
+    "exact_candidate": {
+      "traced_outputs": 5,
+      "shape_mismatches": [],
+      "shape_mismatch_count": 0,
+      "nonfinite_values": 0,
+      "truthful": true
+    }
+  },
+  "known_count": 265,
+  "known_four_configs": {
+    "disable_all_threads1": {
+      "active": {
+        "total": 265,
+        "valid": 265,
+        "raw_equal": 265,
+        "sign_equal": 265,
+        "right": {
+          "parent": 265,
+          "candidate": 265
+        },
+        "errors": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "nonfinite": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "first_difference": null,
+        "errors_total": 0,
+        "nonfinite_total": 0,
+        "accuracy": {
+          "parent": 1.0,
+          "candidate": 1.0
+        },
+        "pass_through": true
+      },
+      "exact": {
+        "total": 265,
+        "valid": 265,
+        "raw_equal": 265,
+        "sign_equal": 265,
+        "right": {
+          "parent": 265,
+          "candidate": 265
+        },
+        "errors": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "nonfinite": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "first_difference": null,
+        "errors_total": 0,
+        "nonfinite_total": 0,
+        "accuracy": {
+          "parent": 1.0,
+          "candidate": 1.0
+        },
+        "pass_through": true
+      }
+    },
+    "disable_all_threads4": {
+      "active": {
+        "total": 265,
+        "valid": 265,
+        "raw_equal": 265,
+        "sign_equal": 265,
+        "right": {
+          "parent": 265,
+          "candidate": 265
+        },
+        "errors": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "nonfinite": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "first_difference": null,
+        "errors_total": 0,
+        "nonfinite_total": 0,
+        "accuracy": {
+          "parent": 1.0,
+          "candidate": 1.0
+        },
+        "pass_through": true
+      },
+      "exact": {
+        "total": 265,
+        "valid": 265,
+        "raw_equal": 265,
+        "sign_equal": 265,
+        "right": {
+          "parent": 265,
+          "candidate": 265
+        },
+        "errors": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "nonfinite": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "first_difference": null,
+        "errors_total": 0,
+        "nonfinite_total": 0,
+        "accuracy": {
+          "parent": 1.0,
+          "candidate": 1.0
+        },
+        "pass_through": true
+      }
+    },
+    "default_threads1": {
+      "active": {
+        "total": 265,
+        "valid": 265,
+        "raw_equal": 265,
+        "sign_equal": 265,
+        "right": {
+          "parent": 265,
+          "candidate": 265
+        },
+        "errors": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "nonfinite": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "first_difference": null,
+        "errors_total": 0,
+        "nonfinite_total": 0,
+        "accuracy": {
+          "parent": 1.0,
+          "candidate": 1.0
+        },
+        "pass_through": true
+      },
+      "exact": {
+        "total": 265,
+        "valid": 265,
+        "raw_equal": 265,
+        "sign_equal": 265,
+        "right": {
+          "parent": 265,
+          "candidate": 265
+        },
+        "errors": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "nonfinite": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "first_difference": null,
+        "errors_total": 0,
+        "nonfinite_total": 0,
+        "accuracy": {
+          "parent": 1.0,
+          "candidate": 1.0
+        },
+        "pass_through": true
+      }
+    },
+    "default_threads4": {
+      "active": {
+        "total": 265,
+        "valid": 265,
+        "raw_equal": 265,
+        "sign_equal": 265,
+        "right": {
+          "parent": 265,
+          "candidate": 265
+        },
+        "errors": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "nonfinite": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "first_difference": null,
+        "errors_total": 0,
+        "nonfinite_total": 0,
+        "accuracy": {
+          "parent": 1.0,
+          "candidate": 1.0
+        },
+        "pass_through": true
+      },
+      "exact": {
+        "total": 265,
+        "valid": 265,
+        "raw_equal": 265,
+        "sign_equal": 265,
+        "right": {
+          "parent": 265,
+          "candidate": 265
+        },
+        "errors": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "nonfinite": {
+          "parent": 0,
+          "candidate": 0
+        },
+        "first_difference": null,
+        "errors_total": 0,
+        "nonfinite_total": 0,
+        "accuracy": {
+          "parent": 1.0,
+          "candidate": 1.0
+        },
+        "pass_through": true
+      }
+    }
+  },
+  "fresh": [
+    {
+      "seed": 21419207,
+      "count": 1500,
+      "configs": {
+        "disable_all_threads1": {
+          "active": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          },
+          "exact": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          }
+        },
+        "disable_all_threads4": {
+          "active": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          },
+          "exact": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          }
+        },
+        "default_threads1": {
+          "active": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          },
+          "exact": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          }
+        },
+        "default_threads4": {
+          "active": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          },
+          "exact": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          }
+        }
+      }
+    },
+    {
+      "seed": 21419231,
+      "count": 1500,
+      "configs": {
+        "disable_all_threads1": {
+          "active": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1499,
+              "candidate": 1499
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 0.9993333333333333,
+              "candidate": 0.9993333333333333
+            },
+            "pass_through": true
+          },
+          "exact": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          }
+        },
+        "disable_all_threads4": {
+          "active": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1499,
+              "candidate": 1499
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 0.9993333333333333,
+              "candidate": 0.9993333333333333
+            },
+            "pass_through": true
+          },
+          "exact": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          }
+        },
+        "default_threads1": {
+          "active": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1499,
+              "candidate": 1499
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 0.9993333333333333,
+              "candidate": 0.9993333333333333
+            },
+            "pass_through": true
+          },
+          "exact": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          }
+        },
+        "default_threads4": {
+          "active": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1499,
+              "candidate": 1499
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 0.9993333333333333,
+              "candidate": 0.9993333333333333
+            },
+            "pass_through": true
+          },
+          "exact": {
+            "total": 1500,
+            "valid": 1500,
+            "raw_equal": 1500,
+            "sign_equal": 1500,
+            "right": {
+              "parent": 1500,
+              "candidate": 1500
+            },
+            "errors": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "nonfinite": {
+              "parent": 0,
+              "candidate": 0
+            },
+            "first_difference": null,
+            "errors_total": 0,
+            "nonfinite_total": 0,
+            "accuracy": {
+              "parent": 1.0,
+              "candidate": 1.0
+            },
+            "pass_through": true
+          }
+        }
+      }
+    }
+  ],
+  "active_summary": {
+    "decision": "PASS_POLICY90_INHERITED_RAW_PASS_THROUGH",
+    "cost_delta": 4,
+    "all_raw_pass_through": true,
+    "minimum_fresh_accuracy": 0.9993333333333333,
+    "errors_total": 0,
+    "nonfinite_total": 0,
+    "pass": true
+  },
+  "exact_summary": {
+    "decision": "PASS_EXACT_FALLBACK_REPLACEMENT",
+    "cost_delta": 6,
+    "all_raw_pass_through": true,
+    "minimum_fresh_accuracy": 1.0,
+    "errors_total": 0,
+    "nonfinite_total": 0,
+    "pass": true
+  },
+  "root_guards_before": {
+    "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "submission_base_8009.46.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+  },
+  "root_guards_after": {
+    "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "submission_base_8009.46.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+  },
+  "root_guards_unchanged": true,
+  "pass": true
+}

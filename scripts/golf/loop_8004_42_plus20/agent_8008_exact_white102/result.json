@@ -1,0 +1,125 @@
+{
+  "status": "NO_STRICT_EXACT_WINNER",
+  "authority_zip": "submission_base_8008.14.zip",
+  "authority_zip_sha256": "50b3215030cf506f692af50e41203d805256a250bd29882cc777749767a350c6",
+  "predecessor_zip": "others/71403/lb_verified_8006.61/submission.zip",
+  "predecessor_zip_sha256": "9085e2f795c0a73d44d27d712ad8fbaad67a3f37b1d8363a0f33305fbafa4118",
+  "baseline_lb_score": 8008.14,
+  "target_count": 37,
+  "targets": [
+    13,
+    14,
+    19,
+    35,
+    37,
+    44,
+    46,
+    62,
+    66,
+    69,
+    89,
+    96,
+    107,
+    117,
+    125,
+    138,
+    156,
+    157,
+    165,
+    168,
+    170,
+    182,
+    191,
+    209,
+    245,
+    268,
+    270,
+    284,
+    308,
+    310,
+    338,
+    354,
+    361,
+    363,
+    365,
+    370,
+    378
+  ],
+  "transform_families": [
+    "dead-node and unused-initializer removal",
+    "dead value_info removal and metadata normalization",
+    "initializer deduplication",
+    "Identity and exact no-op bypass",
+    "identical pure-node CSE",
+    "schema-optional trailing output removal",
+    "all-constant numpy-equivalent folding",
+    "adjacent Add/Mul constant absorption"
+  ],
+  "candidate_count": 69,
+  "classification_counts": {
+    "REJECT_NOT_STRICTLY_LOWER": 29,
+    "REJECT_STRUCTURE_SCHEMA_UB": 40
+  },
+  "mechanical_action_totals": {
+    "dead_nodes": 3,
+    "unused_initializers": 0,
+    "deduplicated_initializers": 0,
+    "removed_optional_outputs": 0,
+    "bypassed_noops": 8,
+    "common_subexpressions": 3,
+    "constant_folds": 154,
+    "factor_absorptions": 0
+  },
+  "deep_profile_count": 13,
+  "deep_profile_admitted_count": 0,
+  "fixed_winner_count": 0,
+  "lb_probe_required_count": 0,
+  "projected_fixed_gain": 0.0,
+  "notable_rejections": [
+    {
+      "task": 89,
+      "transform": "remove dead ReduceMax",
+      "profile_cost": 1171,
+      "authority_cost": 1340,
+      "correct": false,
+      "reason": "ORT allocator shape-alias mismatch after dead-node removal"
+    },
+    {
+      "task": 165,
+      "transform": "CSE duplicate CastLike plus dead value_info cleanup",
+      "profile_cost": 546,
+      "authority_cost": 587,
+      "correct": false,
+      "reason": "ORT allocator mismatch; 88 declared/actual shape mismatches"
+    },
+    {
+      "task": 182,
+      "transform": "Identity bypass",
+      "profile_cost": null,
+      "authority_cost": 949,
+      "correct": false,
+      "reason": "CenterCropPad shape inference prevents model loading"
+    },
+    {
+      "task": 191,
+      "transform": "Identity bypass",
+      "profile_cost": null,
+      "authority_cost": 3436,
+      "correct": false,
+      "reason": "CenterCropPad shape inference prevents model loading"
+    },
+    {
+      "task": 209,
+      "transform": "neutral Add bypass",
+      "profile_cost": null,
+      "authority_cost": 2087,
+      "correct": false,
+      "reason": "Concat rank mismatch prevents model loading"
+    }
+  ],
+  "audit_files": [
+    "audit/mechanical_scan.json",
+    "audit/deep_verification.json"
+  ],
+  "root_or_others_modified_by_lane": false
+}

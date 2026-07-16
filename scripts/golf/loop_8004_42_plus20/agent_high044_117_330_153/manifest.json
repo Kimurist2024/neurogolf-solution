@@ -1,0 +1,112 @@
+{
+  "lane": "agent_high044_117_330_153",
+  "authority_zip": "submission_base_8009.46.zip",
+  "authority_zip_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "targets": [
+    44,
+    117,
+    330
+  ],
+  "policy": {
+    "strictly_lower_actual_cost": true,
+    "full_checker": true,
+    "strict_shape_data_prop": true,
+    "truthful_runtime_shapes": true,
+    "standard_domain_no_banned_nested_function_sparse": true,
+    "conv_bias_ub0": true,
+    "known_all_dual_ort": true,
+    "fresh_dual_ort": "required only after every earlier gate passes",
+    "sparse_search": "excluded by parent instruction"
+  },
+  "tasks": {
+    "44": {
+      "generator_hash": "228f6490",
+      "authority_member_sha256": "12b6414193b8716e15c4129f02bf7a8cddf31159f609427824345239de080492",
+      "authority_cost": 1076,
+      "authority_known_dual_ort": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "authority_runtime_shape_mismatches": 2,
+      "authority_actual_intermediate_bytes": 45872,
+      "authority_terminal_failure": "gn and u are declared [1,1,1,1] but execute as [1,10,30,30].",
+      "generator_rule": "Match each black creature inside a gray container with its translated external colored creature, erase external copies, and paint the corresponding interior holes.",
+      "generator_soundness_limit": "The generator is non-injective: legal byte-identical inputs with different outputs occur at documented seeds 1503 and 1506, so no deterministic total inverse is generator-entailed.",
+      "mechanical_semantic_candidates": 0,
+      "factor_audit": "All 43 nodes and 23 initializers are live; no duplicate full initializer, CSE, no-op, optional-output, attribute-input, or exact absorb reduction.",
+      "best_rule_control": {
+        "path": "scripts/golf/loop_7999_13/lane_a23/rule_references/task044_rule_autocorr.onnx",
+        "cost": 1702,
+        "known_dual_ort": "266/266 in both modes",
+        "runtime_shape_mismatches": 2,
+        "decision": "reject: +626 cost, giant Einsum, false shape declarations, and non-injective fresh ambiguity"
+      },
+      "strict_lower_candidates": [],
+      "decision": "NO_ADMISSIBLE_STRICT_LOWER_CANDIDATE"
+    },
+    "117": {
+      "generator_hash": "4c5c2cf0",
+      "authority_member_sha256": "042e3ee0976af0c684fb98064800ab0b84e8bf53273a0c4121315ab7a0bfaac2",
+      "authority_cost": 605,
+      "authority_known_disable_all": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0
+      },
+      "authority_known_default": "session error at CenterCropPad",
+      "authority_strict_shape_data_prop": false,
+      "authority_runtime_shape_mismatches": 10,
+      "authority_actual_intermediate_bytes": 73571,
+      "generator_rule": "Reflect the distinct-color leg sprite across both axes around the five-cell X center.",
+      "mechanical_semantic_candidates": 1,
+      "mechanical_result": "Folding Shape(slice_axes_chw) exposes the hidden true vector shape and makes CenterCropPad fail checker/strict inference; it is unscorable.",
+      "factor_audit": "All 67 nodes and 18 initializers are live; no duplicate full initializer, CSE, no-op, optional-output, or exact absorb reduction. Dtype-only narrowing cannot reduce parameter cost.",
+      "best_truthful_control": {
+        "path": "scripts/golf/loop_7999_13/lane_a25/rule_references/task117_truthful_copy_hist.onnx",
+        "sha256": "8a57a033316f9c587ee071ece51bef8a0e6841d4dd783afab8ff40d3b29ecb14",
+        "cost": 6762,
+        "known_dual_ort": "265/265 in both modes",
+        "runtime_shape_mismatches": 0,
+        "conv_bias_findings": [],
+        "decision": "reject: 6157 cost above authority"
+      },
+      "strict_lower_candidates": [],
+      "decision": "NO_ADMISSIBLE_STRICT_LOWER_CANDIDATE"
+    },
+    "330": {
+      "generator_hash": "d2abd087",
+      "authority_member_sha256": "af2a81db8b4b16f913ec05c689cb04e2894e288b6f124c2424c7aa438b9bfd0e",
+      "authority_cost": 896,
+      "authority_known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "authority_known_default": "session error at CenterCropPad",
+      "authority_runtime_shape_mismatches": 38,
+      "authority_actual_intermediate_bytes": 83177,
+      "generator_rule": "Recolor every separated four-connected gray component red iff its component size is exactly six, otherwise blue.",
+      "mechanical_semantic_candidates": 0,
+      "manual_constant_fold": "Six ConstantOfShape([1]) nodes are formally foldable, but exposing their values makes full/strict shape inference and both ORT sessions reject the hidden CenterCropPad chain; the model is unscorable.",
+      "factor_audit": "All 44 nodes and 9 initializers are live; no duplicate full initializer, CSE, no-op, optional-output, or exact absorb reduction. ConstantOfShape scalar values are already attributes.",
+      "historical_lower_frontier": "cost 807/808/817 pair-frame models score only 166/266, 162/266, and 210/266 known respectively and retain shape contradictions.",
+      "best_truthful_control": {
+        "path": "scripts/golf/loop_7999_13/lane_a26/rule_references/task330_truthful_component_rect.onnx",
+        "sha256": "6268e9acdeb8a79af2c1dc2485bc843a54d0b599ec41be1de74faa75ac5c610d",
+        "cost": 5525,
+        "known_dual_ort": "266/266 in both modes",
+        "runtime_shape_mismatches": 0,
+        "conv_bias_ub0": true,
+        "decision": "reject: 4629 cost above authority"
+      },
+      "strict_lower_candidates": [],
+      "decision": "NO_ADMISSIBLE_STRICT_LOWER_CANDIDATE"
+    }
+  },
+  "strict_lower_finalist_count": 0,
+  "fresh_runs": 0,
+  "fresh_skip_reason": "No candidate passed actual strict-lower plus checker, strict/truthful shape, dual-ORT known, and UB0 gates.",
+  "projected_gain": 0.0,
+  "protected_artifacts_modified_by_lane": []
+}

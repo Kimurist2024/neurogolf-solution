@@ -1,0 +1,128 @@
+{
+  "baseline": {
+    "leaderboard_score": 8003.4,
+    "zip": "submission_base_8003.40.zip",
+    "task109_sha256": "afa9dd95632729064fae4f731c78c4bcbcbd5382499c81b467625e9b20ded2f5",
+    "task109_truthful_cost": 406
+  },
+  "candidate": {
+    "task": 109,
+    "path": "scripts/golf/loop_8003_40/agent_archive_resume/candidates/task109.onnx",
+    "source_archive_path": "others/3/7907/task109_improved(1).onnx",
+    "sha256": "2e7be8671e2e8abe9d3f2f77f0b068f54a70a584ce477affb28fee6372bd25ef",
+    "truthful_cost": 405,
+    "cost_reduction": 1,
+    "projected_gain": 0.0024660924951934683,
+    "nodes": 17,
+    "initializers": 7,
+    "ops": [
+      "ArgMax",
+      "Cast",
+      "CastLike",
+      "CenterCropPad",
+      "ConvInteger",
+      "Gather",
+      "GroupNormalization",
+      "Min",
+      "ReduceL1",
+      "ReduceMax",
+      "ScatterND",
+      "Shape",
+      "Slice",
+      "Sub"
+    ]
+  },
+  "semantic_identity": {
+    "computational_payload_identical_after_clearing_value_info": true,
+    "value_info_differences": [
+      {
+        "name": "state_rows_pad",
+        "baseline": [
+          1,
+          1,
+          1,
+          2
+        ],
+        "candidate": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "interpretation": "No node, attribute, initializer, graph I/O, opset, function, or metadata change; no new lookup behavior is introduced."
+  },
+  "known": {
+    "right": 266,
+    "wrong": 0,
+    "skipped": 0,
+    "errors": 0,
+    "total_seen": 266
+  },
+  "fresh5000": {
+    "task": 109,
+    "path": "scripts/golf/loop_8003_40/agent_archive_resume/candidates/task109.onnx",
+    "disable_all": {
+      "right": 5000,
+      "wrong": 0,
+      "runtime_or_output_failures": 0,
+      "perfect": true
+    },
+    "default": {
+      "right": 5000,
+      "wrong": 0,
+      "runtime_or_output_failures": 0,
+      "perfect": true
+    },
+    "generated": 5000,
+    "generation_errors": 0,
+    "perfect": true
+  },
+  "external500": {
+    "requested": 500,
+    "executable": 45,
+    "raw_equal": 45,
+    "threshold_equal": 45,
+    "mismatches": 0,
+    "skipped_both_failed": 455,
+    "skipped_one_failed": 0,
+    "max_abs_difference": 0.0,
+    "first_mismatch": null
+  },
+  "conv_bias_failures": [],
+  "nested_graphs": [],
+  "gates": {
+    "candidate_sha_matches": true,
+    "baseline_sha_matches": true,
+    "checker_full": true,
+    "strict_shape_inference_data_prop": true,
+    "computational_payload_identical_after_clearing_value_info": true,
+    "only_value_info_changed": true,
+    "conv_family_bias_ub_count": 0,
+    "functions_count": 0,
+    "nested_graph_count": 0,
+    "known_complete": true,
+    "fresh_disable_all_rate": 1.0,
+    "fresh_default_rate": 1.0,
+    "fresh_generation_errors": 0,
+    "fresh_candidate_runtime_or_output_failures": 0,
+    "external_threshold_mismatches": 0,
+    "external_asymmetric_errors": 0,
+    "external_raw_equal_on_all_executable": true,
+    "truthful_cost_strictly_lower": true
+  },
+  "verdict": "ACCEPT_STRICT_ISOLATED_CANDIDATE",
+  "merge_performed": false,
+  "protected_files_changed": false,
+  "archive_rescreen_summary": {
+    "static_candidates_scanned": 423,
+    "payload_identical_records": 4,
+    "only_truthful_cost_reducing_payload_identical_task": 109,
+    "same_cost_payload_identical_tasks_not_adopted": [
+      20,
+      228
+    ],
+    "task254": "REJECT: 33-input giant Einsum is disallowed and external500 had 412 threshold mismatches despite fresh5000 generator accuracy."
+  }
+}

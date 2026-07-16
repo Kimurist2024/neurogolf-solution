@@ -1,0 +1,37 @@
+# task184.onnx
+
+## Initializers
+W: float16 (10, 1, 1, 1) [[[[-2.0]]], [[[8.0]]], [[[8.0]]], [[[8.0]]], [[[8.0]]], [[[8.0]]], [[[8.0]]], [[[8.0]]], [[[8.0]]], [[[8.0]]]]
+S: float16 (1,) [0.0689697265625]
+Z_i8: int8 (1,) [9]
+C0_i8: int8 (1,) [-4]
+Cbig_u8: uint8 (1,) [39]
+gidx: int64 (1, 3, 3, 2) [[[[0, 0], [1, 0], [2, 0]], [[0, 3], [1, 3], [2, 3]], [[0, 4], [1, 4], [2, 4]]]]
+
+## Nodes
+00 Shape ['input'] -> ['sh0'] {'end': 1, 'start': 0}
+01 CenterCropPad ['input', 'sh0'] -> ['hid'] {'axes': [0]}
+02 CastLike ['hid', 'W'] -> ['input16'] {}
+03 Shrink ['sh0'] -> ['sh24'] {'bias': -22.0, 'lambd': 0.0}
+04 CenterCropPad ['input16', 'sh24'] -> ['rowhid'] {'axes': [2, 3]}
+05 Einsum ['rowhid', 'W'] -> ['br'] {'equation': 'bchw,cxuv->xh'}
+06 Einsum ['rowhid', 'W'] -> ['bc'] {'equation': 'bchw,cxuv->xw'}
+07 ArgMin ['br'] -> ['rf_i'] {'axis': 1, 'keepdims': 0, 'select_last_index': 0}
+08 ArgMin ['br'] -> ['rl_i'] {'axis': 1, 'keepdims': 0, 'select_last_index': 1}
+09 Equal ['rf_i', 'rl_i'] -> ['rsame'] {}
+10 Cast ['rf_i'] -> ['rf_i8'] {'to': 3}
+11 Cast ['rl_i'] -> ['rl_u8'] {'to': 2}
+12 Where ['rsame', 'Cbig_u8', 'rl_u8'] -> ['r3_u8'] {}
+13 Cast ['r3_u8'] -> ['r3_i8'] {'to': 3}
+14 ArgMin ['bc'] -> ['cf_i'] {'axis': 1, 'keepdims': 0, 'select_last_index': 0}
+15 ArgMin ['bc'] -> ['cl_i'] {'axis': 1, 'keepdims': 0, 'select_last_index': 1}
+16 Equal ['cf_i', 'cl_i'] -> ['csame'] {}
+17 Cast ['cf_i'] -> ['cf_i8'] {'to': 3}
+18 Cast ['cl_i'] -> ['cl_u8'] {'to': 2}
+19 Where ['csame', 'Cbig_u8', 'cl_u8'] -> ['c3_u8'] {}
+20 Cast ['c3_u8'] -> ['c3_i8'] {'to': 3}
+21 Concat ['C0_i8', 'cf_i8', 'c3_i8', 'rf_i8', 'r3_i8'] -> ['idxvec'] {'axis': 0}
+22 DequantizeLinear ['idxvec', 'S', 'Z_i8'] -> ['coord6'] {}
+23 Gather ['coord6', 'gidx'] -> ['grid'] {'axis': 0}
+24 GridSample ['input16', 'grid'] -> ['samp'] {'align_corners': 1, 'mode': 'linear', 'padding_mode': 'zeros'}
+25 Conv ['samp', 'W'] -> ['output'] {'group': 10, 'kernel_shape': [1, 1], 'pads': [0, 0, 27, 27]}

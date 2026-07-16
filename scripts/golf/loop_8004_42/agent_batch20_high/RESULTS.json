@@ -1,0 +1,160 @@
+{
+  "lane": "batch20_high",
+  "baseline_zip": "scripts/golf/loop_8004_42/submission_8004.42_fixed_rebase_meta.zip",
+  "selection_file": "scripts/golf/loop_8004_42/agent_batch20_high/TASKS.txt",
+  "selection_count": 10,
+  "selection_range": "task201-400",
+  "selection_policy": "ten highest-cost eligible non-fixed tasks in the 150-500 band, frozen before candidate exploration",
+  "fixed_tasks_unchanged": [13, 15, 20, 31, 68, 71, 79, 88, 105, 109, 132, 158, 174, 183, 189, 206, 221, 240, 243, 259, 300, 302, 344, 349, 358, 379, 398],
+  "additional_exclusions": [205],
+  "gates": {
+    "complete_known": "100%",
+    "fresh": ">=95%",
+    "candidate_runtime_errors": 0,
+    "strict_shape_data_propagation": "PASS",
+    "conv_bias_ub": 0,
+    "cost": "strictly lower",
+    "forbidden": [
+      "lookup",
+      "private-zero",
+      "shape cloak",
+      "new or modified giant floating Einsum"
+    ]
+  },
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "results": [
+    {
+      "task": 374,
+      "baseline_cost": 481,
+      "baseline_known_disable_all": "267/267, errors 0",
+      "baseline_known_default": "267/267, errors 0",
+      "baseline_strict_shape_data_prop": "PASS",
+      "baseline_runtime_shape_mismatches": 9,
+      "best_lead": "CastLike-to-Cast removes one parameter statically",
+      "lead_actual_cost": 876,
+      "decision": "REJECT_NO_CHEAPER_TRUTHFUL_MODEL",
+      "reason": "The rewrite exposes the real 10x10 carrier and is costlier; exhaustive history found no actual model below 481."
+    },
+    {
+      "task": 250,
+      "baseline_cost": 468,
+      "baseline_known_disable_all": "265/265, errors 0",
+      "baseline_known_default": "265/265, errors 0",
+      "baseline_strict_shape_data_prop": "PASS",
+      "baseline_runtime_shape_mismatches": 0,
+      "best_lead": "ConvInteger rewrite",
+      "lead_actual_cost": 467,
+      "decision": "REJECT_KNOWN_WRONG",
+      "reason": "0/265 known-correct; prior cost-452 and cost-466 leads are runtime/type-invalid."
+    },
+    {
+      "task": 324,
+      "baseline_cost": 439,
+      "baseline_known_disable_all": "266/266, errors 0",
+      "baseline_known_default": "session error: TopK requested k exceeds inferred axis",
+      "baseline_strict_shape_data_prop": "PASS",
+      "baseline_runtime_shape_mismatches": 5,
+      "best_lead": "No lead below the current synthesized-quarter incumbent",
+      "decision": "REJECT_NO_NEW_SAFE_LEAD",
+      "reason": "Current 439 is already the exact parameter shave; further retained rewrites do not reduce cost, and a new candidate may not inherit the runtime-shape/default-ORT defect."
+    },
+    {
+      "task": 308,
+      "baseline_cost": 434,
+      "baseline_known_disable_all": "266/266, errors 0",
+      "baseline_known_default": "session error: TopK requested k exceeds inferred axis",
+      "baseline_strict_shape_data_prop": "PASS",
+      "baseline_runtime_shape_mismatches": 26,
+      "best_lead": "CastLike anchor alias",
+      "lead_actual_cost": 434,
+      "decision": "REJECT_NOT_CHEAPER",
+      "reason": "The alias is an exact tie; rank-shape reuse fails ORT session construction."
+    },
+    {
+      "task": 275,
+      "baseline_cost": 428,
+      "baseline_known_disable_all": "266/266, errors 0",
+      "baseline_known_default": "266/266, errors 0",
+      "baseline_strict_shape_data_prop": "PASS",
+      "baseline_runtime_shape_mismatches": 0,
+      "best_lead": "No lower exact factor after the shared-gate-router winner",
+      "decision": "REJECT_NO_NEW_SAFE_LEAD",
+      "reason": "Current model is already the 432->428 exact rewrite and contains an inherited 41-input floating Einsum; changing that contraction is forbidden."
+    },
+    {
+      "task": 338,
+      "baseline_cost": 426,
+      "baseline_known_disable_all": "267/267, errors 0",
+      "baseline_known_default": "session error: declared/inferred output dimensions conflict",
+      "baseline_strict_shape_data_prop": "PASS",
+      "baseline_runtime_shape_trace": "runtime error: Cast buffer shape 1x1x29x30 versus 1x1x30x30",
+      "best_lead": "Boolean fusion / CastLike-anchor removal",
+      "decision": "REJECT_RUNTIME_OR_COST",
+      "reason": "Boolean fusion has deterministic runtime shape failure; anchor removal measures 18423 rather than 425."
+    },
+    {
+      "task": 333,
+      "baseline_cost": 423,
+      "baseline_known": "265/265, errors 0 (prior exact audit for identical SHA)",
+      "baseline_strict_shape_data_prop": "PASS",
+      "baseline_structure": "single 36-input floating Einsum",
+      "best_lead": "sign/gauge absorption",
+      "lead_actual_cost": 421,
+      "lead_known": "265/265; raw-bitwise 2000/2000; errors 0",
+      "decision": "REJECT_GIANT_FLOATING_EINSUM_CHANGE",
+      "reason": "The only reduction changes the platform-sensitive contraction from 36 to 35 inputs, explicitly forbidden by this lane."
+    },
+    {
+      "task": 268,
+      "baseline_cost": 422,
+      "baseline_known_disable_all": "266/266, errors 0",
+      "baseline_known_default": "session error: CenterCropPad shape/axes mismatch",
+      "baseline_strict_shape_data_prop": "PASS",
+      "baseline_runtime_shape_mismatches": 32,
+      "baseline_lookup_ops": ["TfIdfVectorizer", "CenterCropPad"],
+      "best_lead": "historical cost-327 rebuild",
+      "lead_actual_cost": 327,
+      "lead_fresh": "2219/5000 (44.38%)",
+      "decision": "REJECT_FRESH_AND_LOOKUP",
+      "reason": "Far below the 95% fresh gate and lookup-based; no truthful rule rebuild can beat the artificial 422 floor."
+    },
+    {
+      "task": 377,
+      "baseline_cost": 409,
+      "baseline_known_disable_all": "266/266, errors 0",
+      "baseline_known_default": "0 correct, 266 runtime errors",
+      "baseline_strict_shape_data_prop": "PASS",
+      "baseline_runtime_shape_trace": "runtime error: Cast buffer shape 1x5x1 versus 1x5x10",
+      "best_lead": "diff5 scalar-witness reuse",
+      "lead_actual_cost": 408,
+      "lead_known_disable_all": "266/266, errors 0",
+      "decision": "REJECT_DEFAULT_RUNTIME_AND_SHAPE_CLOAK",
+      "reason": "The one-parameter shave inherits the false-shape allocation and fails every default-ORT case."
+    },
+    {
+      "task": 279,
+      "baseline_cost": 397,
+      "baseline_known_disable_all": "266/266, errors 0",
+      "baseline_known_default": "266/266, errors 0",
+      "baseline_strict_shape_data_prop": "PASS",
+      "baseline_runtime_shape_mismatches": 203,
+      "baseline_lookup_or_cloak_ops": ["CenterCropPad"],
+      "best_lead": "No further dead-node/dedup/no-op reduction after the current DCE winner",
+      "decision": "REJECT_NO_NEW_SAFE_LEAD",
+      "reason": "The global exact scan found no additional reduction; a new candidate cannot preserve or extend 203 false runtime-shape declarations."
+    }
+  ],
+  "evidence": [
+    "scripts/golf/loop_8004_42/agent_batch20_high/CURRENT_AUDIT.json",
+    "scripts/golf/loop_8003_40/agent_exact_resume/FINAL_REPORT.json",
+    "scripts/golf/loop_7999_13/lane_a28/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_a29/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_a5/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_b5/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_b21/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_c27/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_exact/validation/task279.json"
+  ]
+}

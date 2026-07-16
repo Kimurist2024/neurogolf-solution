@@ -1,0 +1,432 @@
+{
+  "lane": "agent_new_low41",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "previous_path": "submission_base_8004.50.zip",
+    "previous_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "policy": {
+    "nonprivate": "strictly cheaper, known100 dual, two independent fresh seeds each >=90%, runtime0, checker full, strict/data_prop, truthful shapes, standard domains, no lookup/cloak/giant, Conv-bias UB0",
+    "private_risk": "same gates but known/fresh must be 100% dual and the model must be demonstrably SOUND",
+    "fail_closed": "known/fresh are not run if price or structural gates fail"
+  },
+  "targets_requested": [
+    380,
+    242,
+    298,
+    26,
+    261,
+    351,
+    274,
+    317
+  ],
+  "targets_completed": 8,
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_integration": false,
+  "rows": [
+    {
+      "task": 380,
+      "rule_summary": "Rotate the fixed 3x3 grid 90 degrees clockwise.",
+      "true_rule_known": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "total": 267,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task380.onnx",
+      "baseline_sha256": "85aed1d6cbca3fb409fa8b42ec94b5c7d27d7eb3f3e41d84c426d09993776406",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 60,
+        "cost": 60
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 9,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "truthful cost-60 output-only 9-input Einsum incumbent; best different history floor 99",
+      "reason": "No below-60 graph exists in the 13,591-graph archive or 1,134-graph focused harvest. Exact Wave2 found no alias, dead-code, no-op, producer, optional-output, or annotation rewrite. The initializer has shape 30x2; removing its zero rows breaks the Einsum dimension contract and materializing a pad/crop adds a counted intermediate.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 242,
+      "rule_summary": "For each input row containing zero, reverse the prefix ending at its zero and keep its first three cells; discard rows without zero.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task242.onnx",
+      "baseline_sha256": "8f5d70652386d057a26923286307ebb2e4e9666ceec76c3edab182240394b860",
+      "baseline_cost": {
+        "memory": 44,
+        "params": 14,
+        "cost": 58
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "CastLike": 2,
+          "CenterCropPad": 3,
+          "Concat": 1,
+          "Div": 1,
+          "Einsum": 2,
+          "HannWindow": 1,
+          "ReduceMax": 1,
+          "Resize": 1
+        },
+        "node_count": 12,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 7,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-58 tie and cost-64/422 alternates",
+      "reason": "No strict decrease exists in the complete history. The incumbent itself has seven declared/runtime shape contradictions, so it is not a safe structure from which to derive a candidate.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 298,
+      "rule_summary": "Use row 2 as a three-color cyclic lookup: each input color selects the predecessor of its position in row 2.",
+      "true_rule_known": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "total": 267,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task298.onnx",
+      "baseline_sha256": "2cc8c498ec577b9867c557cb8152f8e44b085cfe4d1b1c6b67256d0046fd42db",
+      "baseline_cost": {
+        "memory": 12,
+        "params": 46,
+        "cost": 58
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "CenterCropPad": 1,
+          "Einsum": 1,
+          "Shape": 1
+        },
+        "node_count": 3,
+        "max_node_inputs": 6,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 1,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "best different history floor 59 versus incumbent 58",
+      "reason": "All different harvested graphs cost at least 59. The incumbent has a runtime shape cloak, and the exact rewrite pass emits no candidate.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 26,
+      "rule_summary": "For every fixed 5x7 row, remove the center value and emit the first three values transformed by 8 >> (value + center).",
+      "true_rule_known": {
+        "right": 268,
+        "wrong": 0,
+        "errors": 0,
+        "total": 268,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task026.onnx",
+      "baseline_sha256": "a737925d8bdd1e7e68d4fd97084ccfb0383bb767f5a59e45350c34bf8b6bd130",
+      "baseline_cost": {
+        "memory": 35,
+        "params": 22,
+        "cost": 57
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "QLinearConv": 2
+        },
+        "node_count": 5,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 1,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "best different history floor 58 versus incumbent 57",
+      "reason": "All different harvested graphs cost at least 58. The QLinearConv/ConvInteger incumbent relies on a declared/runtime shape contradiction, and no safe exact rewrite exists.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 261,
+      "rule_summary": "Move the last row to the front and reduce every color modulo 6.",
+      "true_rule_known": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "total": 265,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task261.onnx",
+      "baseline_sha256": "85040139b9f0d0f0b447c8274ad9062cbcc1980926eb2be848ade271eae94402",
+      "baseline_cost": {
+        "memory": 56,
+        "params": 1,
+        "cost": 57
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Cast": 1,
+          "CenterCropPad": 5,
+          "Concat": 1,
+          "ConstantOfShape": 4,
+          "PRelu": 1,
+          "ReduceL1": 2,
+          "ReduceLogSum": 1,
+          "Selu": 1
+        },
+        "node_count": 16,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 8,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "best different history floor 59 versus incumbent 57",
+      "reason": "All different harvested graphs cost at least 59. The incumbent has eight runtime shape contradictions and an allocator-sensitive CenterCropPad chain.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 351,
+      "rule_summary": "Flatten the 16x16 grid; locate color 3, then read five reversed length-5 rows at stride 16 immediately before it.",
+      "true_rule_known": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "total": 265,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task351.onnx",
+      "baseline_sha256": "2cb037718acea27f5628c97a3bc63e7c3d781b61e2b8b10f125ce883c2ebf26b",
+      "baseline_cost": {
+        "memory": 50,
+        "params": 7,
+        "cost": 57
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "CastLike": 2,
+          "CenterCropPad": 5,
+          "Concat": 1,
+          "Div": 1,
+          "Einsum": 2,
+          "HannWindow": 1,
+          "HardSigmoid": 1,
+          "ReduceMax": 1,
+          "Resize": 1
+        },
+        "node_count": 15,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 10,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-57 revalidated tie; other history floors 75 and 995",
+      "reason": "Only a tie exists. The incumbent has ten runtime shape contradictions; no truthful strictly-cheaper graph appears in history or exact rewrites.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 274,
+      "rule_summary": "Count input columns containing color 5; encode that count as a fixed 3x3 color-8 indicator pattern.",
+      "true_rule_known": {
+        "right": 269,
+        "wrong": 0,
+        "errors": 0,
+        "total": 269,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task274.onnx",
+      "baseline_sha256": "ba8e9be49b577067acf8d87338a8368ef17e67eebda593007a7e78887018a97b",
+      "baseline_cost": {
+        "memory": 16,
+        "params": 39,
+        "cost": 55
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Add": 4,
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GatherND": 5,
+          "GroupNormalization": 1,
+          "ReduceMax": 1
+        },
+        "node_count": 13,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter": [
+          "GatherND",
+          "GatherND",
+          "GatherND",
+          "GatherND",
+          "GatherND"
+        ],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 2,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "best different history floor 64 versus incumbent 55",
+      "reason": "The incumbent uses five GatherND nodes and two runtime shape contradictions. No below-55 graph exists, and the private-risk safety gate forbids lookup/cloak lineage.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 317,
+      "rule_summary": "On the fixed 9x9 grid, replicate each 3x3 source cell into a 3x3 block and output whether its color exceeds 4.",
+      "true_rule_known": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "total": 265,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task317.onnx",
+      "baseline_sha256": "cd6071022e7724233aa3ead5b77f3dc72aab0ece5eb99d1b50dd6815b7ff1c55",
+      "baseline_cost": {
+        "memory": 37,
+        "params": 18,
+        "cost": 55
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "ops": {
+          "Bernoulli": 1,
+          "GroupNormalization": 1,
+          "Resize": 2
+        },
+        "node_count": 4,
+        "max_node_inputs": 4,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 2,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-55 rebuilt tie; other history floor 146",
+      "reason": "Only a tie exists. The incumbent uses nondeterministic Bernoulli plus two runtime shape contradictions, so it cannot seed a safe lower candidate.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_CANDIDATE",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    }
+  ],
+  "final_verdict": "NO_SAFE_CANDIDATE"
+}

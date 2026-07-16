@@ -1,0 +1,68 @@
+{
+  "lane": "a5_exact_local_rebuild",
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "score": 7999.13
+  },
+  "targets": [8, 25, 62, 160, 184, 226, 338],
+  "accepted": [],
+  "projected_gain": 0.0,
+  "reason": "No candidate was both strictly cheaper and error-free on the mandatory known gate. Fresh/domain validation was therefore not run on rejected candidates.",
+  "baseline_recheck": {
+    "task008": {"cost": 431, "memory": 331, "params": 100, "known_correct": true, "runtime_errors": 0},
+    "task025": {"cost": 474, "memory": 396, "params": 78, "known_correct": true, "runtime_errors": 0},
+    "task062": {"cost": 465, "memory": 372, "params": 93, "known_correct": true, "runtime_errors": 0},
+    "task160": {"cost": 404, "memory": 313, "params": 91, "known_correct": true, "runtime_errors": 0},
+    "task184": {"cost": 421, "memory": 389, "params": 32, "known_correct": true, "runtime_errors": 0},
+    "task226": {"cost": 399, "memory": 346, "params": 53, "known_correct": true, "runtime_errors": 0},
+    "task338": {"cost": 426, "memory": 424, "params": 2, "known_correct": true, "runtime_errors": 0}
+  },
+  "rejected": [
+    {
+      "task": 8,
+      "candidate": "scripts/golf/loop_7999_13/lane_a5/candidates/task008_cast_i32_attr.onnx",
+      "sha256": "79b3ced1e3778048f8df7b78acdf459f9f1081c26c80991575e062a862daba7e",
+      "known_correct": true,
+      "runtime_errors": 0,
+      "candidate_cost": 454,
+      "baseline_cost": 431,
+      "reason": "Cast attributes remove one parameter but expose 24 additional profiled bytes; not cheaper."
+    },
+    {
+      "task": 25,
+      "candidate": "scripts/golf/loop_7999_13/lane_a5/candidates/task025_drop_sigv.onnx",
+      "sha256": "0ff9ea73675b4c9566e0edd760a0f46d0475f882f7b66327064c23a8ca854e82",
+      "known_correct": false,
+      "runtime_errors": 0,
+      "reason": "Negative Attention scale compensation produces NaNs and an all-off decoded output."
+    },
+    {
+      "task": 25,
+      "candidate": "scripts/golf/loop_7999_13/lane_a5/candidates/task025_drop_negsigk.onnx",
+      "sha256": "9402de87c604dd69330d0122a24c4c25bbbc0ae66c61bad57fb351eb5103d847",
+      "known_correct": false,
+      "runtime_errors": 0,
+      "reason": "The reciprocal proportional rewrite also requires a negative Attention scale; ORT emits NaNs."
+    },
+    {
+      "task": 338,
+      "candidate": "scripts/golf/loop_7999_13/lane_a5/candidates/task338_boolean_fusion.onnx",
+      "sha256": "ee41c3fb940e62cb8f751030ad012ee946d2d863de3fb898b35f2096b042120f",
+      "known_correct": false,
+      "runtime_errors": 1,
+      "reason": "Boolean Min/Max identities are exact, but changing the graph schedule invalidates the incumbent shape-cloak buffer plan; ORT raises a Slice shape-reuse RuntimeException."
+    },
+    {
+      "task": 338,
+      "candidate": "scripts/golf/loop_7999_13/lane_a5/candidates/task338_cast_attr.onnx",
+      "sha256": "6965437481749066526d450543b2a9660d3fb13a5564fee899792deec5fb2f3f",
+      "known_correct": true,
+      "runtime_errors": 0,
+      "candidate_cost": 18423,
+      "baseline_cost": 426,
+      "reason": "Removing the float16 CastLike anchor exposes the full 18,000-byte cast tensor to the profiler."
+    }
+  ],
+  "root_artifacts_modified": false
+}

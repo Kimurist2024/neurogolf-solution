@@ -1,0 +1,100 @@
+# task034.onnx
+
+## I/O
+name: "input"
+type {
+  tensor_type {
+    elem_type: 1
+    shape {
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 10
+      }
+      dim {
+        dim_value: 30
+      }
+      dim {
+        dim_value: 30
+      }
+    }
+  }
+}
+name: "output"
+type {
+  tensor_type {
+    elem_type: 6
+    shape {
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 10
+      }
+      dim {
+        dim_value: 30
+      }
+      dim {
+        dim_value: 30
+      }
+    }
+  }
+}
+
+## Initializers
+coord: dtype=float32 shape=(30,) value=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0]
+redsel: dtype=float32 shape=(10,) value=[0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+color_values: dtype=float32 shape=(10,) value=[0.0, 1.0, 0.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+shift_template: dtype=uint8 shape=(14, 14) value=[[8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32], [8, 8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32, 32], [0, 8, 8, 8, 0, 0, 0, 0, 0, 0, 32, 32, 32, 0], [0, 0, 8, 8, 8, 0, 0, 0, 0, 32, 32, 32, 0, 0], [0, 0, 0, 8, 8, 8, 0, 0, 32, 32, 32, 0, 0, 0], [0, 0, 0, 0, 8, 8, 8, 32, 32, 32, 0, 0, 0, 0], [0, 0, 0, 0, 0, 8, 120, 120, 32, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 16, 120, 120, 64, 0, 0, 0, 0, 0], [0, 0, 0, 0, 16, 16, 16, 64, 64, 64, 0, 0, 0, 0], [0, 0, 0, 16, 16, 16, 0, 0, 64, 64, 64, 0, 0, 0], [0, 0, 16, 16, 16, 0, 0, 0, 0, 64, 64, 64, 0, 0], [0, 16, 16, 16, 0, 0, 0, 0, 0, 0, 64, 64, 64, 0], [16, 16, 16, 0, 0, 0, 0, 0, 0, 0, 0, 64, 64, 64], [16, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 64]]
+six: dtype=uint8 shape=(1,) value=[6]
+four: dtype=uint8 shape=(1,) value=[4]
+seven: dtype=uint8 shape=(1, 1, 1, 1) value=[[[[3]]]]
+nine_i32: dtype=int32 shape=(1,) value=[9]
+wbase: dtype=uint8 shape=(10, 1, 1, 1) value=[[[[0]]], [[[6]]], [[[6]]], [[[6]]], [[[6]]], [[[6]]], [[[6]]], [[[6]]], [[[6]]], [[[6]]]]
+one: dtype=uint8 shape=(1, 1, 1, 1) value=[[[[1]]]]
+
+## Nodes
+00 Einsum ['input', 'redsel'] -> ['k_f'] attrs={'equation': 'ncyx,c->n'}
+01 Einsum ['input', 'redsel', 'coord'] -> ['rred_f'] attrs={'equation': 'ncyx,c,y->n'}
+02 Einsum ['input', 'redsel', 'coord'] -> ['cred_f'] attrs={'equation': 'ncyx,c,x->n'}
+03 Einsum ['input', 'redsel', 'coord', 'coord'] -> ['cross_f'] attrs={'equation': 'ncyx,c,y,x->n'}
+04 Einsum ['input', 'color_values'] -> ['csum_f'] attrs={'equation': 'ncyx,c->n'}
+05 Einsum ['input', 'color_values', 'coord'] -> ['crow_f'] attrs={'equation': 'ncyx,c,y->n'}
+06 Einsum ['input', 'color_values', 'coord'] -> ['ccol_f'] attrs={'equation': 'ncyx,c,x->n'}
+07 Cast ['k_f'] -> ['k'] attrs={'to': 2}
+08 Cast ['rred_f'] -> ['rred'] attrs={'to': 2}
+09 Cast ['cred_f'] -> ['cred'] attrs={'to': 2}
+10 Cast ['cross_f'] -> ['cross'] attrs={'to': 2}
+11 Cast ['csum_f'] -> ['csum'] attrs={'to': 2}
+12 Cast ['crow_f'] -> ['crow'] attrs={'to': 2}
+13 Cast ['ccol_f'] -> ['ccol'] attrs={'to': 2}
+14 Sub ['four', 'k'] -> ['color_count'] attrs={}
+15 Div ['csum', 'color_count'] -> ['q'] attrs={}
+16 Div ['crow', 'q'] -> ['nr_row_sum'] attrs={}
+17 Div ['ccol', 'q'] -> ['nr_col_sum'] attrs={}
+18 Add ['rred', 'nr_row_sum'] -> ['all_row_sum'] attrs={}
+19 Add ['cred', 'nr_col_sum'] -> ['all_col_sum'] attrs={}
+20 Div ['all_row_sum', 'four'] -> ['r'] attrs={}
+21 Div ['all_col_sum', 'four'] -> ['c'] attrs={}
+22 Sub ['r', 'one'] -> ['r1'] attrs={}
+23 Mul ['k', 'r1'] -> ['kr1'] attrs={}
+24 Sub ['rred', 'kr1'] -> ['kA'] attrs={}
+25 Mul ['c', 'rred'] -> ['crred'] attrs={}
+26 Sub ['cross', 'crred'] -> ['ct0'] attrs={}
+27 Add ['ct0', 'r1'] -> ['numer'] attrs={}
+28 Div ['numer', 'r'] -> ['BC'] attrs={}
+29 Mul ['BC', 'seven'] -> ['BC7'] attrs={}
+30 Add ['kA', 'BC7'] -> ['mask'] attrs={}
+31 BitShift ['mask', 'seven'] -> ['code_u8'] attrs={'direction': 'LEFT'}
+32 Sub ['six', 'r'] -> ['sy'] attrs={}
+33 Sub ['six', 'c'] -> ['sx'] attrs={}
+34 Concat ['sy', 'sx'] -> ['starts'] attrs={'axis': 0}
+35 Cast ['starts'] -> ['starts_i32'] attrs={'to': 6}
+36 Add ['starts_i32', 'nine_i32'] -> ['ends_i32'] attrs={}
+37 Slice ['shift_template', 'starts_i32', 'ends_i32'] -> ['shift9'] attrs={}
+38 BitwiseAnd ['code_u8', 'shift9'] -> ['paint_code'] attrs={}
+39 Mul ['q', 'one'] -> ['q_u8_4d'] attrs={}
+40 Cast ['q_u8_4d'] -> ['q_i32_4d'] attrs={'to': 6}
+41 ScatterElements ['wbase', 'q_i32_4d', 'code_u8'] -> ['wmask_new'] attrs={'axis': 0}
+42 ConvInteger ['paint_code', 'wmask_new', 'six', 'six'] -> ['output'] attrs={'pads': [0, 0, 21, 21]}

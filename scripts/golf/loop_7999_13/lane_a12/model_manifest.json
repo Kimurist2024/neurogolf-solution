@@ -1,0 +1,4573 @@
+{
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "models": [
+    {
+      "task": 198,
+      "kind": "exact_baseline",
+      "path": "scripts/golf/loop_7999_13/lane_a12/baseline/task198.onnx",
+      "sha256": "4e37cca3fc86cd4781a9b1f55c080f13962273e803c4c45d6dda99f74ba95283",
+      "bytes": 3227,
+      "nodes": 3,
+      "ops": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "params": 637,
+      "value_info": 0,
+      "max_einsum_inputs": 24,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rC",
+          "dtype": "float32",
+          "shape": [
+            30,
+            4
+          ],
+          "elements": 120,
+          "unique": 2
+        },
+        {
+          "name": "rP",
+          "dtype": "float32",
+          "shape": [
+            3,
+            4,
+            2
+          ],
+          "elements": 24,
+          "unique": 3
+        },
+        {
+          "name": "kernel",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "elements": 16,
+          "unique": 6
+        },
+        {
+          "name": "code4",
+          "dtype": "float32",
+          "shape": [
+            10,
+            4
+          ],
+          "elements": 40,
+          "unique": 22
+        },
+        {
+          "name": "P4diag",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "src4",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "Bdiag",
+          "dtype": "float32",
+          "shape": [
+            30,
+            13
+          ],
+          "elements": 390,
+          "unique": 390
+        },
+        {
+          "name": "Pdiag",
+          "dtype": "float32",
+          "shape": [
+            3,
+            13
+          ],
+          "elements": 39,
+          "unique": 39
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 200,
+      "kind": "exact_baseline",
+      "path": "scripts/golf/loop_7999_13/lane_a12/baseline/task200.onnx",
+      "sha256": "8c91d1a61ac9bdd4cb5e812b5f0db57e0bf49c1cf2fd256724960118430df8f3",
+      "bytes": 1164,
+      "nodes": 9,
+      "ops": {
+        "Einsum": 3,
+        "Div": 1,
+        "Cast": 2,
+        "OneHot": 1,
+        "Conv": 1,
+        "ScatterElements": 1
+      },
+      "params": 146,
+      "value_info": 0,
+      "max_einsum_inputs": 5,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "depth",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "oh_values",
+          "dtype": "float16",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "conv_bias",
+          "dtype": "float16",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "W_kernel",
+          "dtype": "float16",
+          "shape": [
+            2,
+            1,
+            10
+          ],
+          "elements": 20,
+          "unique": 4
+        },
+        {
+          "name": "Br",
+          "dtype": "float16",
+          "shape": [
+            2,
+            30
+          ],
+          "elements": 60,
+          "unique": 3
+        },
+        {
+          "name": "Bbase",
+          "dtype": "float16",
+          "shape": [
+            2,
+            10
+          ],
+          "elements": 20,
+          "unique": 3
+        },
+        {
+          "name": "color_w",
+          "dtype": "float32",
+          "shape": [
+            10,
+            1
+          ],
+          "elements": 10,
+          "unique": 10
+        },
+        {
+          "name": "width_w",
+          "dtype": "float32",
+          "shape": [
+            30,
+            1
+          ],
+          "elements": 30,
+          "unique": 30
+        },
+        {
+          "name": "update",
+          "dtype": "float16",
+          "shape": [
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 201,
+      "kind": "exact_baseline",
+      "path": "scripts/golf/loop_7999_13/lane_a12/baseline/task201.onnx",
+      "sha256": "bf3fee21c1539a1084b64fffb236b7ec79915d9316d83ff50704bd7a3e3b9560",
+      "bytes": 759090,
+      "nodes": 108,
+      "ops": {
+        "GroupNormalization": 1,
+        "CastLike": 4,
+        "Einsum": 4,
+        "Log": 4,
+        "QuantizeLinear": 4,
+        "Cast": 14,
+        "Pow": 2,
+        "Sub": 9,
+        "Add": 10,
+        "Equal": 2,
+        "BitShift": 9,
+        "Concat": 7,
+        "Slice": 1,
+        "Mod": 6,
+        "Where": 4,
+        "Mul": 4,
+        "Gather": 2,
+        "TfIdfVectorizer": 1,
+        "ReduceSum": 1,
+        "BitwiseAnd": 3,
+        "Split": 3,
+        "BitwiseOr": 5,
+        "Div": 1,
+        "Min": 2,
+        "ScatterElements": 3,
+        "Squeeze": 1,
+        "ConvInteger": 1
+      },
+      "params": 170,
+      "value_info": 112,
+      "max_einsum_inputs": 8,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "pow2",
+          "dtype": "float16",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 14
+        },
+        {
+          "name": "yellow",
+          "dtype": "float16",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "unique": 2
+        },
+        {
+          "name": "ln2",
+          "dtype": "float16",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "two_f16",
+          "dtype": "float16",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u30",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u8_1",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "slice_axes_hw",
+          "dtype": "int32",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "lane_shifts",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "elements": 4,
+          "unique": 4
+        },
+        {
+          "name": "u8_31",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "wbase3",
+          "dtype": "int8",
+          "shape": [
+            10,
+            3,
+            1,
+            1
+          ],
+          "elements": 30,
+          "unique": 3
+        },
+        {
+          "name": "wupdates3",
+          "dtype": "int8",
+          "shape": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "elements": 2,
+          "unique": 1
+        },
+        {
+          "name": "u8_11",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u8_0_4",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u8_5",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u8_32",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "colpowi",
+          "dtype": "int32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 6
+        },
+        {
+          "name": "color_idx",
+          "dtype": "int32",
+          "shape": [
+            10,
+            1
+          ],
+          "elements": 10,
+          "unique": 10
+        },
+        {
+          "name": "sidetable",
+          "dtype": "uint32",
+          "shape": [
+            16
+          ],
+          "elements": 16,
+          "unique": 16
+        },
+        {
+          "name": "u8_2",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u8_0",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "gn_scale201",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "mask_table",
+          "dtype": "uint8",
+          "shape": [
+            3,
+            1,
+            1,
+            8
+          ],
+          "elements": 24,
+          "unique": 8
+        }
+      ],
+      "opset": [
+        [
+          "",
+          21
+        ]
+      ]
+    },
+    {
+      "task": 219,
+      "kind": "exact_baseline",
+      "path": "scripts/golf/loop_7999_13/lane_a12/baseline/task219.onnx",
+      "sha256": "7a2ead58107803948d316fb8e00c4fd3ff601769309f9ad99661976f1a51bd67",
+      "bytes": 7584,
+      "nodes": 113,
+      "ops": {
+        "Einsum": 1,
+        "Cast": 4,
+        "Slice": 7,
+        "Gather": 14,
+        "Equal": 11,
+        "Where": 6,
+        "Greater": 2,
+        "Not": 1,
+        "And": 9,
+        "Mul": 13,
+        "BitwiseAnd": 10,
+        "Div": 6,
+        "Add": 8,
+        "Unsqueeze": 8,
+        "ReduceMax": 1,
+        "QLinearMatMul": 1,
+        "ArgMax": 1,
+        "Concat": 3,
+        "QLinearConv": 1,
+        "ScatterElements": 1,
+        "BitwiseOr": 1,
+        "BitwiseNot": 1,
+        "Pad": 3
+      },
+      "params": 226,
+      "value_info": 0,
+      "max_einsum_inputs": 3,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "slice_en",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "sq013",
+          "dtype": "int64",
+          "shape": [
+            3
+          ],
+          "elements": 3,
+          "unique": 3
+        },
+        {
+          "name": "g0",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "g2",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "seed_axes",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "zchan",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            30,
+            1
+          ],
+          "elements": 30,
+          "unique": 1
+        },
+        {
+          "name": "pow30",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            30
+          ],
+          "elements": 30,
+          "unique": 9
+        },
+        {
+          "name": "rowc",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "unique": 2
+        },
+        {
+          "name": "powf",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 11
+        },
+        {
+          "name": "en16",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "cp_axis0",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "pad_pads",
+          "dtype": "int64",
+          "shape": [
+            8
+          ],
+          "elements": 8,
+          "unique": 2
+        },
+        {
+          "name": "pad_zero",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "q_a_scale",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "amask8",
+          "dtype": "uint8",
+          "shape": [
+            7
+          ],
+          "elements": 7,
+          "unique": 2
+        },
+        {
+          "name": "bmask8",
+          "dtype": "uint8",
+          "shape": [
+            7
+          ],
+          "elements": 7,
+          "unique": 6
+        },
+        {
+          "name": "bshift8",
+          "dtype": "uint8",
+          "shape": [
+            7
+          ],
+          "elements": 7,
+          "unique": 3
+        },
+        {
+          "name": "cmaskv8",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            1
+          ],
+          "elements": 7,
+          "unique": 5
+        },
+        {
+          "name": "cshiftv8",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            1
+          ],
+          "elements": 7,
+          "unique": 5
+        },
+        {
+          "name": "cpaint8",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            2,
+            1
+          ],
+          "elements": 14,
+          "unique": 5
+        },
+        {
+          "name": "en14",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "tr_idx",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "tr_vals",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "st3",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "st4",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "st5",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "en9",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "ones2",
+          "dtype": "uint8",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 1
+        },
+        {
+          "name": "te_r1_val",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "te9_val",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "arep",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            2,
+            1
+          ],
+          "elements": 14,
+          "unique": 3
+        },
+        {
+          "name": "bmul",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            2,
+            1
+          ],
+          "elements": 14,
+          "unique": 3
+        },
+        {
+          "name": "axes12",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "st2",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "en10",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "b_f2_val",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "patch_idx4",
+          "dtype": "int64",
+          "shape": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "elements": 4,
+          "unique": 4
+        },
+        {
+          "name": "patch_vals4",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "st1_i64",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "k31_u8",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "k997_u16",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "fix_mul_121",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "fix_best1",
+          "dtype": "int64",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          21
+        ]
+      ]
+    },
+    {
+      "task": 302,
+      "kind": "exact_baseline",
+      "path": "scripts/golf/loop_7999_13/lane_a12/baseline/task302.onnx",
+      "sha256": "4628e7bb5e8ed99353e5b74ee211596fe8adf645297c5db24933f9d62fd1c7bd",
+      "bytes": 7026,
+      "nodes": 81,
+      "ops": {
+        "ConstantOfShape": 3,
+        "CenterCropPad": 26,
+        "CastLike": 9,
+        "ReduceL1": 1,
+        "HardSigmoid": 11,
+        "GreaterOrEqual": 6,
+        "Selu": 5,
+        "PRelu": 14,
+        "Cast": 5,
+        "Concat": 1
+      },
+      "params": 2,
+      "value_info": 80,
+      "max_einsum_inputs": 0,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        1,
+        1
+      ],
+      "initializers": [
+        {
+          "name": "s1",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "h",
+          "dtype": "float16",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          18
+        ]
+      ]
+    },
+    {
+      "task": 343,
+      "kind": "exact_baseline",
+      "path": "scripts/golf/loop_7999_13/lane_a12/baseline/task343.onnx",
+      "sha256": "7d64c3eda1167f322d8981531e433e7195e54d48e16e29c771b52a379af17ab1",
+      "bytes": 765,
+      "nodes": 10,
+      "ops": {
+        "Conv": 3,
+        "Greater": 1,
+        "Equal": 1,
+        "And": 1,
+        "Squeeze": 1,
+        "Where": 1,
+        "Mod": 1,
+        "Gather": 1
+      },
+      "params": 33,
+      "value_info": 0,
+      "max_einsum_inputs": 0,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "coord",
+          "dtype": "int32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 16
+        },
+        {
+          "name": "p6",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "p8",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "thr",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          11
+        ]
+      ]
+    },
+    {
+      "task": 198,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task198_r01_static554.onnx",
+      "sha256": "fba9c56b94eceb31067d2c07c7cb69be2e53c5a342304755d776c62d754277c2",
+      "bytes": 2774,
+      "nodes": 3,
+      "ops": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "params": 530,
+      "value_info": 0,
+      "max_einsum_inputs": 24,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rC",
+          "dtype": "float32",
+          "shape": [
+            30,
+            4
+          ],
+          "elements": 120,
+          "unique": 2
+        },
+        {
+          "name": "code4",
+          "dtype": "float32",
+          "shape": [
+            10,
+            4
+          ],
+          "elements": 40,
+          "unique": 22
+        },
+        {
+          "name": "P4diag",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "src4",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "rP",
+          "dtype": "float32",
+          "shape": [
+            3,
+            4,
+            2
+          ],
+          "elements": 24,
+          "unique": 4
+        },
+        {
+          "name": "Bdiag",
+          "dtype": "float32",
+          "shape": [
+            30,
+            10
+          ],
+          "elements": 300,
+          "unique": 300
+        },
+        {
+          "name": "Pdiag",
+          "dtype": "float32",
+          "shape": [
+            3,
+            10
+          ],
+          "elements": 30,
+          "unique": 30
+        },
+        {
+          "name": "kernelT",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2
+          ],
+          "elements": 8,
+          "unique": 7
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 198,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task198_r02_static558.onnx",
+      "sha256": "a6372862272280259f36365cb5d2421c54abd124f200c104bdfd6c89f2193f15",
+      "bytes": 2866,
+      "nodes": 3,
+      "ops": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "params": 534,
+      "value_info": 0,
+      "max_einsum_inputs": 26,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rC",
+          "dtype": "float32",
+          "shape": [
+            30,
+            4
+          ],
+          "elements": 120,
+          "unique": 2
+        },
+        {
+          "name": "rP",
+          "dtype": "float32",
+          "shape": [
+            3,
+            4,
+            2
+          ],
+          "elements": 24,
+          "unique": 3
+        },
+        {
+          "name": "code4",
+          "dtype": "float32",
+          "shape": [
+            10,
+            4
+          ],
+          "elements": 40,
+          "unique": 22
+        },
+        {
+          "name": "P4diag",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "src4",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "Bdiag",
+          "dtype": "float32",
+          "shape": [
+            30,
+            10
+          ],
+          "elements": 300,
+          "unique": 300
+        },
+        {
+          "name": "Pdiag",
+          "dtype": "float32",
+          "shape": [
+            3,
+            10
+          ],
+          "elements": 30,
+          "unique": 30
+        },
+        {
+          "name": "kernelT",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2
+          ],
+          "elements": 8,
+          "unique": 7
+        },
+        {
+          "name": "selT",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2
+          ],
+          "elements": 4,
+          "unique": 2
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 198,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task198_r03_static562.onnx",
+      "sha256": "5a3a82c897a1ebbaffc078f00ccb2a5f2777f9e73b2690064894a41f3fb4600b",
+      "bytes": 2830,
+      "nodes": 3,
+      "ops": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "params": 538,
+      "value_info": 0,
+      "max_einsum_inputs": 24,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rC",
+          "dtype": "float32",
+          "shape": [
+            30,
+            4
+          ],
+          "elements": 120,
+          "unique": 2
+        },
+        {
+          "name": "rP",
+          "dtype": "float32",
+          "shape": [
+            3,
+            4,
+            2
+          ],
+          "elements": 24,
+          "unique": 3
+        },
+        {
+          "name": "kernel",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "elements": 16,
+          "unique": 7
+        },
+        {
+          "name": "code4",
+          "dtype": "float32",
+          "shape": [
+            10,
+            4
+          ],
+          "elements": 40,
+          "unique": 22
+        },
+        {
+          "name": "P4diag",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "src4",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "Bdiag",
+          "dtype": "float32",
+          "shape": [
+            30,
+            10
+          ],
+          "elements": 300,
+          "unique": 300
+        },
+        {
+          "name": "Pdiag",
+          "dtype": "float32",
+          "shape": [
+            3,
+            10
+          ],
+          "elements": 30,
+          "unique": 30
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 198,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task198_r04_static578.onnx",
+      "sha256": "c9d8aab3e9c169446b0f744470c3468190fb484a91ad439be3bcdad68e62387d",
+      "bytes": 2932,
+      "nodes": 3,
+      "ops": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "params": 554,
+      "value_info": 0,
+      "max_einsum_inputs": 24,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rC",
+          "dtype": "float32",
+          "shape": [
+            30,
+            4
+          ],
+          "elements": 120,
+          "unique": 2
+        },
+        {
+          "name": "rP",
+          "dtype": "float32",
+          "shape": [
+            3,
+            4,
+            2
+          ],
+          "elements": 24,
+          "unique": 3
+        },
+        {
+          "name": "kernel_det",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "elements": 16,
+          "unique": 7
+        },
+        {
+          "name": "code4",
+          "dtype": "float32",
+          "shape": [
+            10,
+            4
+          ],
+          "elements": 40,
+          "unique": 22
+        },
+        {
+          "name": "P4diag",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "src4",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "Bdiag",
+          "dtype": "float32",
+          "shape": [
+            30,
+            10
+          ],
+          "elements": 300,
+          "unique": 300
+        },
+        {
+          "name": "Pdiag",
+          "dtype": "float32",
+          "shape": [
+            3,
+            10
+          ],
+          "elements": 30,
+          "unique": 30
+        },
+        {
+          "name": "kernel_out",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "elements": 16,
+          "unique": 16
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 198,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task198_r05_static589.onnx",
+      "sha256": "bdc0180ad1a9090e19375a77c7b99f6d6f94c6aececb03b4ca2474758eedf649",
+      "bytes": 2951,
+      "nodes": 3,
+      "ops": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "params": 565,
+      "value_info": 0,
+      "max_einsum_inputs": 24,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rC",
+          "dtype": "float32",
+          "shape": [
+            30,
+            4
+          ],
+          "elements": 120,
+          "unique": 2
+        },
+        {
+          "name": "rP",
+          "dtype": "float32",
+          "shape": [
+            3,
+            4,
+            2
+          ],
+          "elements": 24,
+          "unique": 3
+        },
+        {
+          "name": "Kfac",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2
+          ],
+          "elements": 8,
+          "unique": 6
+        },
+        {
+          "name": "code4",
+          "dtype": "float32",
+          "shape": [
+            10,
+            4
+          ],
+          "elements": 40,
+          "unique": 22
+        },
+        {
+          "name": "P4diag",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "src4",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "Bdiag",
+          "dtype": "float32",
+          "shape": [
+            30,
+            11
+          ],
+          "elements": 330,
+          "unique": 330
+        },
+        {
+          "name": "Pdiag",
+          "dtype": "float32",
+          "shape": [
+            3,
+            11
+          ],
+          "elements": 33,
+          "unique": 33
+        },
+        {
+          "name": "Psum",
+          "dtype": "float32",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 198,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task198_r06_static589.onnx",
+      "sha256": "efde3000fca5e969f530910c7bb8c2783236b62b2ee5f2a17270ffc37c180b1b",
+      "bytes": 2941,
+      "nodes": 3,
+      "ops": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "params": 565,
+      "value_info": 0,
+      "max_einsum_inputs": 24,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rC",
+          "dtype": "float32",
+          "shape": [
+            30,
+            4
+          ],
+          "elements": 120,
+          "unique": 2
+        },
+        {
+          "name": "rP",
+          "dtype": "float32",
+          "shape": [
+            3,
+            4,
+            2
+          ],
+          "elements": 24,
+          "unique": 3
+        },
+        {
+          "name": "code4",
+          "dtype": "float32",
+          "shape": [
+            10,
+            4
+          ],
+          "elements": 40,
+          "unique": 22
+        },
+        {
+          "name": "P4diag",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "src4",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "Bdiag",
+          "dtype": "float32",
+          "shape": [
+            30,
+            11
+          ],
+          "elements": 330,
+          "unique": 330
+        },
+        {
+          "name": "Pdiag",
+          "dtype": "float32",
+          "shape": [
+            3,
+            11
+          ],
+          "elements": 33,
+          "unique": 33
+        },
+        {
+          "name": "KG",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2
+          ],
+          "elements": 8,
+          "unique": 8
+        },
+        {
+          "name": "Wt",
+          "dtype": "float32",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 198,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task198_r07_static595.onnx",
+      "sha256": "40c01ce0f9f86bc9720cf535996fcd7dda8b7e6528dc1bce3d90ff5c9e690c5c",
+      "bytes": 2963,
+      "nodes": 3,
+      "ops": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "params": 571,
+      "value_info": 0,
+      "max_einsum_inputs": 24,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rC",
+          "dtype": "float32",
+          "shape": [
+            30,
+            4
+          ],
+          "elements": 120,
+          "unique": 2
+        },
+        {
+          "name": "rP",
+          "dtype": "float32",
+          "shape": [
+            3,
+            4,
+            2
+          ],
+          "elements": 24,
+          "unique": 3
+        },
+        {
+          "name": "kernel",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "elements": 16,
+          "unique": 6
+        },
+        {
+          "name": "code4",
+          "dtype": "float32",
+          "shape": [
+            10,
+            4
+          ],
+          "elements": 40,
+          "unique": 22
+        },
+        {
+          "name": "P4diag",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "src4",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "Bdiag",
+          "dtype": "float32",
+          "shape": [
+            30,
+            11
+          ],
+          "elements": 330,
+          "unique": 330
+        },
+        {
+          "name": "Pdiag",
+          "dtype": "float32",
+          "shape": [
+            3,
+            11
+          ],
+          "elements": 33,
+          "unique": 33
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 198,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task198_r08_static595.onnx",
+      "sha256": "4b6fe501d1979b0cf8784da71cbc4f497700d3af11491640cc5a3957cb5876ef",
+      "bytes": 2963,
+      "nodes": 3,
+      "ops": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "params": 571,
+      "value_info": 0,
+      "max_einsum_inputs": 24,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rC",
+          "dtype": "float32",
+          "shape": [
+            30,
+            4
+          ],
+          "elements": 120,
+          "unique": 2
+        },
+        {
+          "name": "rP",
+          "dtype": "float32",
+          "shape": [
+            3,
+            4,
+            2
+          ],
+          "elements": 24,
+          "unique": 3
+        },
+        {
+          "name": "kernel",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "elements": 16,
+          "unique": 7
+        },
+        {
+          "name": "code4",
+          "dtype": "float32",
+          "shape": [
+            10,
+            4
+          ],
+          "elements": 40,
+          "unique": 22
+        },
+        {
+          "name": "P4diag",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "src4",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "Bdiag",
+          "dtype": "float32",
+          "shape": [
+            30,
+            11
+          ],
+          "elements": 330,
+          "unique": 330
+        },
+        {
+          "name": "Pdiag",
+          "dtype": "float32",
+          "shape": [
+            3,
+            11
+          ],
+          "elements": 33,
+          "unique": 33
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 200,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task200_r01_static344.onnx",
+      "sha256": "53802c560fa42475a19be10c782043bd89fcc6453dddf9d5bb56fb35241576bb",
+      "bytes": 1141,
+      "nodes": 9,
+      "ops": {
+        "Einsum": 3,
+        "Div": 1,
+        "Cast": 2,
+        "OneHot": 1,
+        "Conv": 1,
+        "ScatterElements": 1
+      },
+      "params": 144,
+      "value_info": 0,
+      "max_einsum_inputs": 5,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "depth",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "conv_bias",
+          "dtype": "float16",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "W_kernel",
+          "dtype": "float16",
+          "shape": [
+            2,
+            1,
+            10
+          ],
+          "elements": 20,
+          "unique": 4
+        },
+        {
+          "name": "Br",
+          "dtype": "float16",
+          "shape": [
+            2,
+            30
+          ],
+          "elements": 60,
+          "unique": 3
+        },
+        {
+          "name": "Bbase",
+          "dtype": "float16",
+          "shape": [
+            2,
+            10
+          ],
+          "elements": 20,
+          "unique": 3
+        },
+        {
+          "name": "color_w",
+          "dtype": "float32",
+          "shape": [
+            10,
+            1
+          ],
+          "elements": 10,
+          "unique": 10
+        },
+        {
+          "name": "width_w",
+          "dtype": "float32",
+          "shape": [
+            30,
+            1
+          ],
+          "elements": 30,
+          "unique": 30
+        },
+        {
+          "name": "update",
+          "dtype": "float16",
+          "shape": [
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 200,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task200_r02_static345.onnx",
+      "sha256": "a54e5330e112fd7cb26cd0f3da03ff582cec7d424c27c4f4b65e1fd04d8575bb",
+      "bytes": 1162,
+      "nodes": 9,
+      "ops": {
+        "Einsum": 3,
+        "Div": 1,
+        "Cast": 2,
+        "OneHot": 1,
+        "Conv": 1,
+        "ScatterElements": 1
+      },
+      "params": 145,
+      "value_info": 0,
+      "max_einsum_inputs": 5,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "depth",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "oh_values",
+          "dtype": "float16",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "conv_bias",
+          "dtype": "float16",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "W_kernel",
+          "dtype": "float16",
+          "shape": [
+            2,
+            1,
+            10
+          ],
+          "elements": 20,
+          "unique": 4
+        },
+        {
+          "name": "Br",
+          "dtype": "float16",
+          "shape": [
+            2,
+            30
+          ],
+          "elements": 60,
+          "unique": 4
+        },
+        {
+          "name": "Bbase",
+          "dtype": "float16",
+          "shape": [
+            2,
+            10
+          ],
+          "elements": 20,
+          "unique": 3
+        },
+        {
+          "name": "color_w",
+          "dtype": "float32",
+          "shape": [
+            10,
+            1
+          ],
+          "elements": 10,
+          "unique": 10
+        },
+        {
+          "name": "width_w",
+          "dtype": "float32",
+          "shape": [
+            30,
+            1
+          ],
+          "elements": 30,
+          "unique": 30
+        },
+        {
+          "name": "update",
+          "dtype": "float16",
+          "shape": [
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 200,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task200_r03_static345.onnx",
+      "sha256": "b9036595a17fbda8c08f195465f8e65d4cfa8bf62a6102db70d41759d8c87432",
+      "bytes": 1162,
+      "nodes": 9,
+      "ops": {
+        "Einsum": 3,
+        "Div": 1,
+        "Cast": 2,
+        "OneHot": 1,
+        "Conv": 1,
+        "ScatterElements": 1
+      },
+      "params": 145,
+      "value_info": 0,
+      "max_einsum_inputs": 5,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "depth",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "oh_values",
+          "dtype": "float16",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "conv_bias",
+          "dtype": "float16",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "W_kernel",
+          "dtype": "float16",
+          "shape": [
+            2,
+            1,
+            10
+          ],
+          "elements": 20,
+          "unique": 4
+        },
+        {
+          "name": "Br",
+          "dtype": "float16",
+          "shape": [
+            2,
+            30
+          ],
+          "elements": 60,
+          "unique": 3
+        },
+        {
+          "name": "Bbase",
+          "dtype": "float16",
+          "shape": [
+            2,
+            10
+          ],
+          "elements": 20,
+          "unique": 3
+        },
+        {
+          "name": "color_w",
+          "dtype": "float32",
+          "shape": [
+            10,
+            1
+          ],
+          "elements": 10,
+          "unique": 10
+        },
+        {
+          "name": "width_w",
+          "dtype": "float32",
+          "shape": [
+            30,
+            1
+          ],
+          "elements": 30,
+          "unique": 30
+        },
+        {
+          "name": "update",
+          "dtype": "float16",
+          "shape": [
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 201,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task201_r01_static543.onnx",
+      "sha256": "f12740f2f99504502a5f3851703b37c557de0f4310bdcf85ee4261a41be89725",
+      "bytes": 1056619,
+      "nodes": 73,
+      "ops": {
+        "GroupNormalization": 1,
+        "CastLike": 1,
+        "Einsum": 1,
+        "Add": 10,
+        "TfIdfVectorizer": 18,
+        "Cast": 19,
+        "Min": 3,
+        "Sub": 5,
+        "Mul": 7,
+        "BitShift": 1,
+        "Concat": 2,
+        "Reshape": 1,
+        "Unsqueeze": 1,
+        "BitwiseAnd": 1,
+        "ScatterElements": 1,
+        "ConvInteger": 1
+      },
+      "params": 104,
+      "value_info": 72,
+      "max_einsum_inputs": 3,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "gn_scale201",
+          "dtype": "float32",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "hash_c",
+          "dtype": "int32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "unique": 9
+        },
+        {
+          "name": "hash_w",
+          "dtype": "int32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 27
+        },
+        {
+          "name": "offs16",
+          "dtype": "int32",
+          "shape": [
+            15
+          ],
+          "elements": 15,
+          "unique": 15
+        },
+        {
+          "name": "row_shape",
+          "dtype": "int64",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "bit8",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            8
+          ],
+          "elements": 8,
+          "unique": 8
+        },
+        {
+          "name": "wbase3",
+          "dtype": "int8",
+          "shape": [
+            10,
+            3,
+            1,
+            1
+          ],
+          "elements": 30,
+          "unique": 3
+        },
+        {
+          "name": "wupdates3",
+          "dtype": "int8",
+          "shape": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "elements": 2,
+          "unique": 1
+        },
+        {
+          "name": "lq00",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "axes_023",
+          "dtype": "int64",
+          "shape": [
+            3
+          ],
+          "elements": 3,
+          "unique": 3
+        }
+      ],
+      "opset": [
+        [
+          "",
+          21
+        ]
+      ]
+    },
+    {
+      "task": 201,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task201_r02_static674.onnx",
+      "sha256": "c6f4b30551d34a410852b085efdff5f28b9bdd36319e05f97e1f477117dad588",
+      "bytes": 639779,
+      "nodes": 113,
+      "ops": {
+        "GroupNormalization": 1,
+        "CastLike": 1,
+        "Einsum": 1,
+        "Add": 22,
+        "Constant": 8,
+        "TfIdfVectorizer": 36,
+        "QuantizeLinear": 36,
+        "Concat": 2,
+        "Reshape": 2,
+        "Cast": 1,
+        "BitwiseAnd": 1,
+        "ScatterElements": 1,
+        "ConvInteger": 1
+      },
+      "params": 137,
+      "value_info": 112,
+      "max_einsum_inputs": 4,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "gn_scale201",
+          "dtype": "float32",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "hash_c",
+          "dtype": "int32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "unique": 10
+        },
+        {
+          "name": "hash_r",
+          "dtype": "int32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 22
+        },
+        {
+          "name": "hash_w",
+          "dtype": "int32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 22
+        },
+        {
+          "name": "offs16",
+          "dtype": "int32",
+          "shape": [
+            16
+          ],
+          "elements": 16,
+          "unique": 16
+        },
+        {
+          "name": "scale1",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "zp_u8",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "row_shape",
+          "dtype": "int64",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "cidx_shape",
+          "dtype": "int64",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "unique": 2
+        },
+        {
+          "name": "bit8",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            8
+          ],
+          "elements": 8,
+          "unique": 8
+        },
+        {
+          "name": "wbase3",
+          "dtype": "int8",
+          "shape": [
+            10,
+            3,
+            1,
+            1
+          ],
+          "elements": 30,
+          "unique": 3
+        },
+        {
+          "name": "wupdates3",
+          "dtype": "int8",
+          "shape": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "elements": 2,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          21
+        ]
+      ]
+    },
+    {
+      "task": 201,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task201_r03_static785.onnx",
+      "sha256": "27fe7c06e77de1a9315885b3d270ebd37d74fa7acb0a7cf6ea759d49f67ff8a1",
+      "bytes": 673121,
+      "nodes": 108,
+      "ops": {
+        "GroupNormalization": 1,
+        "CastLike": 4,
+        "Einsum": 4,
+        "Log": 4,
+        "QuantizeLinear": 4,
+        "Cast": 14,
+        "Pow": 2,
+        "Sub": 9,
+        "Add": 10,
+        "Equal": 2,
+        "BitShift": 9,
+        "Concat": 7,
+        "Slice": 1,
+        "Mod": 6,
+        "Where": 4,
+        "Mul": 4,
+        "Gather": 2,
+        "TfIdfVectorizer": 1,
+        "ReduceSum": 1,
+        "BitwiseAnd": 3,
+        "Split": 3,
+        "BitwiseOr": 5,
+        "Div": 1,
+        "Min": 2,
+        "ScatterElements": 3,
+        "Squeeze": 1,
+        "ConvInteger": 1
+      },
+      "params": 170,
+      "value_info": 112,
+      "max_einsum_inputs": 8,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "pow2",
+          "dtype": "float16",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 14
+        },
+        {
+          "name": "yellow",
+          "dtype": "float16",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "unique": 2
+        },
+        {
+          "name": "ln2",
+          "dtype": "float16",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "two_f16",
+          "dtype": "float16",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u30",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u8_1",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "slice_axes_hw",
+          "dtype": "int32",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "lane_shifts",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "elements": 4,
+          "unique": 4
+        },
+        {
+          "name": "u8_31",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "wbase3",
+          "dtype": "int8",
+          "shape": [
+            10,
+            3,
+            1,
+            1
+          ],
+          "elements": 30,
+          "unique": 3
+        },
+        {
+          "name": "wupdates3",
+          "dtype": "int8",
+          "shape": [
+            1,
+            2,
+            1,
+            1
+          ],
+          "elements": 2,
+          "unique": 1
+        },
+        {
+          "name": "u8_11",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u8_0_4",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u8_5",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u8_32",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "colpowi",
+          "dtype": "int32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 6
+        },
+        {
+          "name": "color_idx",
+          "dtype": "int32",
+          "shape": [
+            10,
+            1
+          ],
+          "elements": 10,
+          "unique": 10
+        },
+        {
+          "name": "sidetable",
+          "dtype": "uint32",
+          "shape": [
+            16
+          ],
+          "elements": 16,
+          "unique": 16
+        },
+        {
+          "name": "u8_2",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "u8_0",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "gn_scale201",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "mask_table",
+          "dtype": "uint8",
+          "shape": [
+            3,
+            1,
+            1,
+            8
+          ],
+          "elements": 24,
+          "unique": 8
+        }
+      ],
+      "opset": [
+        [
+          "",
+          21
+        ]
+      ]
+    },
+    {
+      "task": 219,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task219_r01_static1081.onnx",
+      "sha256": "6fffa0b87f151603b0def28aa6ef29a4b46c1334a8a21a54d27eea16741ff186",
+      "bytes": 743638,
+      "nodes": 91,
+      "ops": {
+        "Einsum": 1,
+        "Cast": 13,
+        "Slice": 1,
+        "TfIdfVectorizer": 55,
+        "Sum": 11,
+        "Concat": 2,
+        "Unsqueeze": 2,
+        "BitwiseOr": 1,
+        "BitwiseNot": 1,
+        "Pad": 3,
+        "BitwiseAnd": 1
+      },
+      "params": 116,
+      "value_info": 0,
+      "max_einsum_inputs": 3,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rowc",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "unique": 2
+        },
+        {
+          "name": "powf",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 11
+        },
+        {
+          "name": "st0",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "en15",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "ax0",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "unsq_axes",
+          "dtype": "int64",
+          "shape": [
+            3
+          ],
+          "elements": 3,
+          "unique": 3
+        },
+        {
+          "name": "pad_pads",
+          "dtype": "int64",
+          "shape": [
+            8
+          ],
+          "elements": 8,
+          "unique": 2
+        },
+        {
+          "name": "zero8",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "zchan",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            30,
+            1
+          ],
+          "elements": 30,
+          "unique": 1
+        },
+        {
+          "name": "pow30",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            30
+          ],
+          "elements": 30,
+          "unique": 9
+        },
+        {
+          "name": "zero8_1",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          21
+        ]
+      ]
+    },
+    {
+      "task": 219,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task219_r02_static1103.onnx",
+      "sha256": "8a5431580aa6e50b8b719294b67d5c508f9fea2e7b02a740731cd3fa5856a7ea",
+      "bytes": 148728,
+      "nodes": 21,
+      "ops": {
+        "Einsum": 2,
+        "Cast": 3,
+        "Add": 1,
+        "TfIdfVectorizer": 5,
+        "Sum": 1,
+        "Unsqueeze": 2,
+        "Pad": 2,
+        "BitwiseOr": 1,
+        "Slice": 1,
+        "BitwiseNot": 1,
+        "Concat": 1,
+        "BitwiseAnd": 1
+      },
+      "params": 165,
+      "value_info": 20,
+      "max_einsum_inputs": 3,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "C",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "unique": 2
+        },
+        {
+          "name": "powf",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 11
+        },
+        {
+          "name": "R16",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 16
+        },
+        {
+          "name": "rows",
+          "dtype": "int32",
+          "shape": [
+            11
+          ],
+          "elements": 11,
+          "unique": 11
+        },
+        {
+          "name": "pow30",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            30
+          ],
+          "elements": 30,
+          "unique": 9
+        },
+        {
+          "name": "zchan",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            30,
+            1
+          ],
+          "elements": 30,
+          "unique": 1
+        },
+        {
+          "name": "axes013",
+          "dtype": "int64",
+          "shape": [
+            3
+          ],
+          "elements": 3,
+          "unique": 3
+        },
+        {
+          "name": "pads_blue",
+          "dtype": "int64",
+          "shape": [
+            8
+          ],
+          "elements": 8,
+          "unique": 3
+        },
+        {
+          "name": "pads_bg",
+          "dtype": "int64",
+          "shape": [
+            8
+          ],
+          "elements": 8,
+          "unique": 2
+        },
+        {
+          "name": "zero_u8",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "sl_start",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "sl_end",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "sl_axes",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "sl_steps",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          21
+        ]
+      ]
+    },
+    {
+      "task": 219,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task219_r03_static1174.onnx",
+      "sha256": "192ab4e910ce562d387ec5ff1d11c35d5fa9d965d176e20a264d1dd712edc303",
+      "bytes": 1389291,
+      "nodes": 92,
+      "ops": {
+        "Einsum": 1,
+        "Cast": 3,
+        "Slice": 1,
+        "TfIdfVectorizer": 66,
+        "Sum": 11,
+        "Concat": 2,
+        "Unsqueeze": 2,
+        "BitwiseOr": 1,
+        "BitwiseNot": 1,
+        "Pad": 3,
+        "BitwiseAnd": 1
+      },
+      "params": 116,
+      "value_info": 0,
+      "max_einsum_inputs": 3,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "rowc",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "unique": 2
+        },
+        {
+          "name": "powf",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 11
+        },
+        {
+          "name": "st0",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "en15",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "ax0",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "zero_f1",
+          "dtype": "float32",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "unsq_axes",
+          "dtype": "int64",
+          "shape": [
+            3
+          ],
+          "elements": 3,
+          "unique": 3
+        },
+        {
+          "name": "pad_pads",
+          "dtype": "int64",
+          "shape": [
+            8
+          ],
+          "elements": 8,
+          "unique": 2
+        },
+        {
+          "name": "zero8",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "zchan",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            30,
+            1
+          ],
+          "elements": 30,
+          "unique": 1
+        },
+        {
+          "name": "pow30",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            30
+          ],
+          "elements": 30,
+          "unique": 9
+        }
+      ],
+      "opset": [
+        [
+          "",
+          21
+        ]
+      ]
+    },
+    {
+      "task": 219,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task219_r04_static1191.onnx",
+      "sha256": "edce39967e0565741d854597382b8e46a0155354afdf18d0d5f9a5aa6a02207f",
+      "bytes": 6406,
+      "nodes": 101,
+      "ops": {
+        "Einsum": 1,
+        "Cast": 4,
+        "Slice": 9,
+        "Equal": 10,
+        "Where": 6,
+        "Split": 1,
+        "Greater": 2,
+        "Not": 1,
+        "And": 8,
+        "BitwiseAnd": 10,
+        "Div": 6,
+        "Mul": 12,
+        "Add": 8,
+        "ReduceMax": 3,
+        "Gather": 8,
+        "QLinearMatMul": 1,
+        "ScatterElements": 2,
+        "ArgMax": 1,
+        "Concat": 3,
+        "Unsqueeze": 2,
+        "QLinearConv": 1,
+        "BitwiseOr": 1,
+        "BitwiseNot": 1
+      },
+      "params": 172,
+      "value_info": 0,
+      "max_einsum_inputs": 3,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        9,
+        15,
+        10
+      ],
+      "initializers": [
+        {
+          "name": "slice_en",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "sq013",
+          "dtype": "int64",
+          "shape": [
+            3
+          ],
+          "elements": 3,
+          "unique": 3
+        },
+        {
+          "name": "seed_axes",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "rowc",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "unique": 2
+        },
+        {
+          "name": "powf",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 11
+        },
+        {
+          "name": "en16",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "cp_axis0",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "pad_zero",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "q_a_scale",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "amask8",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            1,
+            1
+          ],
+          "elements": 7,
+          "unique": 2
+        },
+        {
+          "name": "bmask8",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            1,
+            1
+          ],
+          "elements": 7,
+          "unique": 6
+        },
+        {
+          "name": "bshift8",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            1,
+            1
+          ],
+          "elements": 7,
+          "unique": 3
+        },
+        {
+          "name": "cshiftv8",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 7,
+          "unique": 5
+        },
+        {
+          "name": "cpaint8",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            1,
+            2,
+            1,
+            1
+          ],
+          "elements": 14,
+          "unique": 5
+        },
+        {
+          "name": "en14",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "tr_idx",
+          "dtype": "int64",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "tr_vals",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "st3",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "st4",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "st5",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "en9",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "ones2",
+          "dtype": "uint8",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 1
+        },
+        {
+          "name": "te_r1_val",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "te9_val",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "arep",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            2,
+            1
+          ],
+          "elements": 14,
+          "unique": 3
+        },
+        {
+          "name": "bmul",
+          "dtype": "uint8",
+          "shape": [
+            7,
+            2,
+            1
+          ],
+          "elements": 14,
+          "unique": 3
+        },
+        {
+          "name": "st2",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "en10",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "b_f2_val",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "patch_idx4",
+          "dtype": "int64",
+          "shape": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "elements": 4,
+          "unique": 4
+        },
+        {
+          "name": "patch_vals4",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "elements": 4,
+          "unique": 3
+        },
+        {
+          "name": "st1_i64",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "k31_u8",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "k997_u16",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "sel_cands",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "te9_idx4",
+          "dtype": "int64",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "zchan15",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            15,
+            1
+          ],
+          "elements": 15,
+          "unique": 1
+        },
+        {
+          "name": "pow10",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            10
+          ],
+          "elements": 10,
+          "unique": 8
+        }
+      ],
+      "opset": [
+        [
+          "",
+          21
+        ]
+      ]
+    },
+    {
+      "task": 219,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task219_r05_static1467.onnx",
+      "sha256": "9cc12a6acd21e847e4ffc6625078c31d98b03cf2228626426396c1f0eec73881",
+      "bytes": 10952,
+      "nodes": 127,
+      "ops": {
+        "Einsum": 1,
+        "Cast": 5,
+        "Slice": 8,
+        "Gather": 19,
+        "Equal": 12,
+        "Where": 5,
+        "Greater": 2,
+        "Not": 1,
+        "And": 10,
+        "Mul": 14,
+        "BitwiseAnd": 10,
+        "Div": 6,
+        "Add": 9,
+        "Unsqueeze": 9,
+        "ReduceMax": 2,
+        "QLinearMatMul": 2,
+        "ScatterElements": 2,
+        "ArgMax": 1,
+        "Concat": 3,
+        "QLinearConv": 1,
+        "BitwiseOr": 1,
+        "BitwiseNot": 1,
+        "Pad": 3
+      },
+      "params": 218,
+      "value_info": 126,
+      "max_einsum_inputs": 3,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "slice_en",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "sq013",
+          "dtype": "int64",
+          "shape": [
+            3
+          ],
+          "elements": 3,
+          "unique": 3
+        },
+        {
+          "name": "g0",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "g1",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "g2",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "seed_axes",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "zchan",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            30,
+            1
+          ],
+          "elements": 30,
+          "unique": 1
+        },
+        {
+          "name": "pow30",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            30
+          ],
+          "elements": 30,
+          "unique": 9
+        },
+        {
+          "name": "rowc",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "unique": 2
+        },
+        {
+          "name": "powf",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 11
+        },
+        {
+          "name": "en16",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "cp_axis0",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "pad_pads",
+          "dtype": "int64",
+          "shape": [
+            8
+          ],
+          "elements": 8,
+          "unique": 2
+        },
+        {
+          "name": "pad_zero",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "q_a_scale",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "amask8",
+          "dtype": "uint8",
+          "shape": [
+            6
+          ],
+          "elements": 6,
+          "unique": 2
+        },
+        {
+          "name": "bmask8",
+          "dtype": "uint8",
+          "shape": [
+            6
+          ],
+          "elements": 6,
+          "unique": 6
+        },
+        {
+          "name": "bshift8",
+          "dtype": "uint8",
+          "shape": [
+            6
+          ],
+          "elements": 6,
+          "unique": 3
+        },
+        {
+          "name": "cmaskv8",
+          "dtype": "uint8",
+          "shape": [
+            6,
+            1
+          ],
+          "elements": 6,
+          "unique": 5
+        },
+        {
+          "name": "cshiftv8",
+          "dtype": "uint8",
+          "shape": [
+            6,
+            1
+          ],
+          "elements": 6,
+          "unique": 5
+        },
+        {
+          "name": "cpaint8",
+          "dtype": "uint8",
+          "shape": [
+            6,
+            2,
+            1
+          ],
+          "elements": 12,
+          "unique": 5
+        },
+        {
+          "name": "en14",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "tr_idx",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "tr_vals",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "st3",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "st4",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "st5",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "en9",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "ones2",
+          "dtype": "uint8",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 1
+        },
+        {
+          "name": "te_r1_val",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "te9_val",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "arep",
+          "dtype": "uint8",
+          "shape": [
+            6,
+            2,
+            1
+          ],
+          "elements": 12,
+          "unique": 3
+        },
+        {
+          "name": "bmul",
+          "dtype": "uint8",
+          "shape": [
+            6,
+            2,
+            1
+          ],
+          "elements": 12,
+          "unique": 3
+        },
+        {
+          "name": "axes12",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "unique": 2
+        },
+        {
+          "name": "st2",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "en10",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "b_f2_val",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "patch_idx4",
+          "dtype": "int64",
+          "shape": [
+            1,
+            1,
+            5,
+            1
+          ],
+          "elements": 5,
+          "unique": 5
+        },
+        {
+          "name": "patch_vals4",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            5,
+            1
+          ],
+          "elements": 5,
+          "unique": 4
+        },
+        {
+          "name": "st1_i64",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "k31_u8",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "k997_u16",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "sel_cands",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "v171_rm2",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          21
+        ]
+      ]
+    },
+    {
+      "task": 302,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task302_r01_static159.onnx",
+      "sha256": "96a90773b15f53dd647d158dbb5e485dbc7cb9adbad43ccf4883cb07a26034af",
+      "bytes": 7049,
+      "nodes": 81,
+      "ops": {
+        "ConstantOfShape": 3,
+        "CenterCropPad": 26,
+        "Cast": 14,
+        "ReduceL1": 1,
+        "HardSigmoid": 11,
+        "GreaterOrEqual": 6,
+        "Selu": 5,
+        "PRelu": 14,
+        "Concat": 1
+      },
+      "params": 1,
+      "value_info": 80,
+      "max_einsum_inputs": 0,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        1,
+        1
+      ],
+      "initializers": [
+        {
+          "name": "s1",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          18
+        ]
+      ]
+    },
+    {
+      "task": 302,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task302_r02_static159.onnx",
+      "sha256": "d560fbf7278c7c1054d16e948247cae231a74a360c2b73541a097ce75934fa60",
+      "bytes": 7026,
+      "nodes": 81,
+      "ops": {
+        "ConstantOfShape": 3,
+        "CenterCropPad": 26,
+        "CastLike": 9,
+        "ReduceL1": 1,
+        "HardSigmoid": 11,
+        "GreaterOrEqual": 6,
+        "Selu": 5,
+        "PRelu": 14,
+        "Cast": 5,
+        "Concat": 1
+      },
+      "params": 2,
+      "value_info": 80,
+      "max_einsum_inputs": 0,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        1,
+        1
+      ],
+      "initializers": [
+        {
+          "name": "s1",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "h",
+          "dtype": "float16",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          18
+        ]
+      ]
+    },
+    {
+      "task": 343,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task343_r01_static172.onnx",
+      "sha256": "6ada3c411cf90b4bcb42ff69e47eee35ed1c1b7d8b842c96c5c02c0eb06bec9e",
+      "bytes": 1106,
+      "nodes": 10,
+      "ops": {
+        "Conv": 3,
+        "Equal": 1,
+        "GreaterOrEqual": 1,
+        "And": 1,
+        "Squeeze": 1,
+        "Where": 1,
+        "Mod": 1,
+        "Gather": 1
+      },
+      "params": 32,
+      "value_info": 9,
+      "max_einsum_inputs": 0,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "coord",
+          "dtype": "int32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 16
+        },
+        {
+          "name": "p6",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "p8",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          12
+        ]
+      ]
+    },
+    {
+      "task": 343,
+      "kind": "retained_candidate",
+      "path": "scripts/golf/loop_7999_13/lane_archive_top200/task343_r02_static172.onnx",
+      "sha256": "c1047d40b875d37a7a9e28a52a47e2c569f5156924691118082aaca4ed5198e6",
+      "bytes": 728,
+      "nodes": 10,
+      "ops": {
+        "Conv": 3,
+        "Greater": 2,
+        "Or": 1,
+        "Squeeze": 1,
+        "Where": 1,
+        "Mod": 1,
+        "Gather": 1
+      },
+      "params": 32,
+      "value_info": 0,
+      "max_einsum_inputs": 0,
+      "input_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "initializers": [
+        {
+          "name": "coord",
+          "dtype": "int32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "unique": 16
+        },
+        {
+          "name": "p6",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        },
+        {
+          "name": "p8",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "unique": 1
+        }
+      ],
+      "opset": [
+        [
+          "",
+          11
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "task": 328,
+  "authority": {
+    "zip": "submission_base_8009.46.zip",
+    "zip_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "member_sha256": "08ba1aa525d67f290c13e7b79aef339aeb5912bf0d1b0b379ff6ab8792cf576a",
+    "memory": 200,
+    "params": 358,
+    "cost": 558,
+    "score": 18.67564103761869
+  },
+  "winner": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_task328_exact_175/candidates/task328_exact553_split_p0.onnx",
+    "sha256": "cc2718047fec6d65bf1e6336fc3aac21c4fc8838774f5e0407c570fbec39fd5b",
+    "memory": 200,
+    "params": 353,
+    "cost": 553,
+    "score": 18.684641998477666,
+    "cost_reduction": 5,
+    "projected_gain": 0.009000960858976123,
+    "classification": "SAFE_PRIVATE_ZERO",
+    "normal_margin_gate": false,
+    "authorized_exception": "private-zero-derived candidates are allowed when complete passage is guaranteed"
+  },
+  "algebraic_rewrites": [
+    {
+      "removed_initializer": "e[4]",
+      "identity": "e[a] = sum_t J[t,a,a]",
+      "parameter_reduction": 4
+    },
+    {
+      "removed_initializer": "one[1]",
+      "identity": "replace z[0]=1 by ninvB=-1/3 and multiply CoreB[:,:,0] by -3; float32 product equals exactly 1",
+      "parameter_reduction": 1
+    }
+  ],
+  "finite_support_proof": {
+    "generator": "inputs/arc-gen-repo/tasks/task_d22278a0.py",
+    "full_states": 71136,
+    "geometry_color_orbit_representatives": 143,
+    "orbit_formula": "13 sizes * (C(4,2)+C(4,3)+C(4,4))",
+    "color_permutation_equivariance": true,
+    "disable_all_t1": "143/143",
+    "disable_all_t4": "143/143",
+    "default_t1": "143/143",
+    "default_t4": "143/143",
+    "wrong": 0,
+    "runtime_errors": 0,
+    "nonfinite_values": 0,
+    "false_positive_values": 0
+  },
+  "known_four": {
+    "disable_all_t1": "267/267",
+    "disable_all_t4": "267/267",
+    "default_t1": "267/267",
+    "default_t4": "267/267"
+  },
+  "fresh_mapping": [
+    {
+      "seed": 328175101,
+      "requested": 10000,
+      "mapped_to_verified_support": 10000,
+      "distinct_orbits_seen": 143,
+      "invalid": 0
+    },
+    {
+      "seed": 328175102,
+      "requested": 10000,
+      "mapped_to_verified_support": 10000,
+      "distinct_orbits_seen": 143,
+      "invalid": 0
+    }
+  ],
+  "margin_disclosure": {
+    "strict_margin": false,
+    "minimum_positive": 2.7771885962947234e-19,
+    "near_positive_values_per_143_orbits": 1182,
+    "maximum_absolute_value": 1.4418116801831403e34,
+    "reason_exception_is_safe_for_target": "Every legal generator state is covered by the 143 four-runtime representatives under a proved nonzero-color permutation equivariance. The claim is scoped to the official ORT CPU execution profile, not arbitrary runtimes."
+  },
+  "structure": {
+    "full_checker": true,
+    "strict_data_prop": true,
+    "truthful_runtime_shapes": true,
+    "nonstatic_tensors": [],
+    "standard_domains": true,
+    "banned_ops": [],
+    "nested_graphs": [],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "finite_initializers": true,
+    "conv_bias_findings": [],
+    "lookup_ops": {},
+    "max_einsum_inputs": 58
+  },
+  "stable_coefficient_search": {
+    "raw_feature_rows": 1287000,
+    "unique_feature_vectors": 66869,
+    "conflicting_label_vectors": 7,
+    "zero_positive_vectors": 1,
+    "unit_margin_linear_program_feasible": false,
+    "conclusion": "The inherited topology cannot be converted into a normal-margin CoefAB classifier without changing the representation."
+  },
+  "factor_shave_search": {
+    "core_b_exact_six_term_cp_params": 78,
+    "core_b_current_params": 80,
+    "core_b_factor_blocked_by_einsum_letter_budget": true,
+    "e_coreb_direct_absorption_delta": 5,
+    "frow_ssel_fusion_delta": 8,
+    "tfeat_sign_split_delta": 16
+  },
+  "evidence_sha256": {
+    "final_audit.json": "64eaa1840097dddb18ed8f367e3c1b788a8984b60a48b5e39770a5276926cff5",
+    "stable_coef_search.json": "446e87e5376caa26ac4db0bd4dc205021527a650157ab585a0950f096523cd0e",
+    "factor_shave_analysis.json": "96ba94e6be11543216e48973f8bb1c59bdba052b22edd86743f8ab01654cc3e7",
+    "candidate_screen.json": "31ce948dd0d516ff7e76d8a5ca19ccfe10a45ffaf29893d6e84a23bb91bb4ee4"
+  },
+  "root_files_written_by_lane": false,
+  "verdict": "ACCEPT_SAFE_PRIVATE_ZERO"
+}

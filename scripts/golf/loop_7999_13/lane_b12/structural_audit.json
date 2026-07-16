@@ -1,0 +1,3485 @@
+{
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "tasks": {
+    "254": {
+      "task": 254,
+      "generator_hash": "a61f2674",
+      "lineage": {
+        "task": 254,
+        "baseline_cost": 76,
+        "static_cost": 42,
+        "static_gain": 0.5930637220029595,
+        "sha256": "814ece451a8f8eda8e9221d58e2f4fb3359fa396dfe971f6ad97693f453b15f8",
+        "path": "scripts/golf/loop_7999_13/lane_archive_all400/task254_r01_static42.onnx",
+        "sources": [
+          "others/2/7805/task254_improved_cost42.onnx"
+        ],
+        "source_count": 1
+      },
+      "baseline_structure": {
+        "path": "scripts/golf/loop_7999_13/lane_b12/baseline/task254.onnx",
+        "sha256": "f3473850a0a2bbe525434cab0647292c816ec3f3f39399a169799897eb211936",
+        "file_bytes": 1348,
+        "checker_full": true,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "custom_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_attributes": [],
+        "banned_or_sequence_ops": [],
+        "dynamic_or_nonpositive_tensors": [],
+        "conv_bias_findings": [],
+        "giant_einsum_nodes": [
+          {
+            "node_index": 0,
+            "inputs": 13
+          },
+          {
+            "node_index": 1,
+            "inputs": 28
+          },
+          {
+            "node_index": 2,
+            "inputs": 49
+          }
+        ],
+        "lookup_ops": [],
+        "nonfinite_initializers": [],
+        "op_histogram": {
+          "Einsum": 3
+        },
+        "node_count": 3,
+        "value_info_count": 2,
+        "static_cost": {
+          "memory": 16,
+          "params": 60,
+          "cost": 76
+        },
+        "initializers": [
+          {
+            "name": "V",
+            "dtype": "float32",
+            "shape": [
+              2,
+              10
+            ],
+            "elements": 20,
+            "sha256": "15d86ac55abf2184bef8350858ac0bdbd9f72085ac4066df665172814c344f20",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              0.0,
+              1.0,
+              -1.0,
+              0.0,
+              0.0,
+              0.1111111119389534,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.1111111119389534,
+              0.1111111119389534,
+              0.1111111119389534,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "SE",
+            "dtype": "float32",
+            "shape": [
+              2,
+              2,
+              2
+            ],
+            "elements": 8,
+            "sha256": "1af9e578b6b2475ac98a83cb130923b8de98acf2587c077eee885ee2233101ca",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "name": "SF8",
+            "dtype": "float32",
+            "shape": [
+              2,
+              2,
+              2
+            ],
+            "elements": 8,
+            "sha256": "113bf581b2144715a9fe6b2d5dd3a94cebed34c468f2a0bc3d8a44ddfb4cd6d3",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              1.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "name": "T",
+            "dtype": "float32",
+            "shape": [
+              2,
+              2,
+              2
+            ],
+            "elements": 8,
+            "sha256": "f06a1d0584f850fa0a0d882be9b79437afc4b28e4a6affd75672729d6de7aac3",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              0.0,
+              -1.0,
+              9.0,
+              0.0,
+              9.0,
+              0.0,
+              0.2666666805744171,
+              1.0
+            ]
+          },
+          {
+            "name": "W",
+            "dtype": "float32",
+            "shape": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "elements": 16,
+            "sha256": "4b65664da70b768ecc705bea1f09e5a6d6bd80ab63cf42ce9df81be0ce892c0f",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              146766.6875,
+              0.0,
+              0.0,
+              -11802073.0,
+              16077.017578125,
+              0.0,
+              -161138.1875,
+              149312.875,
+              49.49861145019531,
+              0.0,
+              367.73626708984375,
+              -683.0013427734375,
+              -6384144.0,
+              0.0,
+              0.0,
+              513422368.0
+            ]
+          }
+        ],
+        "nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "SE",
+              "SE",
+              "SE",
+              "SE",
+              "T"
+            ],
+            "outputs": [
+              "GH"
+            ],
+            "attributes": {
+              "equation": "aimc,Ai,ajnc,Bj,akoc,Ck,alpc,Dl,egA,egB,egC,egD,ggX->X"
+            },
+            "input_multiplicity": {
+              "input": 4,
+              "V": 4,
+              "SE": 4,
+              "T": 1
+            }
+          },
+          {
+            "index": 1,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "SE",
+              "SF8",
+              "SF8",
+              "SF8",
+              "SF8",
+              "SF8",
+              "SF8",
+              "SF8",
+              "SF8",
+              "T"
+            ],
+            "outputs": [
+              "GL"
+            ],
+            "attributes": {
+              "equation": "airc,Di,ajsc,Ej,aktc,Fk,aluc,Gl,amvc,Hm,anwc,In,aoxc,Jo,apyc,Kp,aqzc,Lq,fhD,fhE,fhF,fhG,fhH,fhI,fhJ,fhK,fhL,hhY->Y"
+            },
+            "input_multiplicity": {
+              "input": 9,
+              "V": 9,
+              "SE": 1,
+              "SF8": 8,
+              "T": 1
+            }
+          },
+          {
+            "index": 2,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "V",
+              "T",
+              "input",
+              "V",
+              "SE",
+              "input",
+              "V",
+              "SE",
+              "input",
+              "V",
+              "SE",
+              "input",
+              "V",
+              "SE",
+              "GH",
+              "input",
+              "V",
+              "SE",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "GL",
+              "T",
+              "V",
+              "W",
+              "V",
+              "V"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "aicd,ji,efj,akod,Ak,egA,alpd,Bl,egB,amqd,Cm,egC,anrd,Dn,egD,g,asLd,Es,fhE,atMd,Ft,fhF,auNd,Gu,fhG,avOd,Iv,fhI,awQd,Jw,fhJ,axRd,Vx,fhV,aySd,Wy,fhW,azTd,Zz,fhZ,aKUd,HK,fhH,h,PPP,Pb,efXY,Xb,Yb->abcd"
+            },
+            "input_multiplicity": {
+              "input": 14,
+              "V": 17,
+              "T": 2,
+              "SE": 5,
+              "GH": 1,
+              "SF8": 8,
+              "GL": 1,
+              "W": 1
+            }
+          }
+        ]
+      },
+      "candidate_structure": {
+        "path": "scripts/golf/loop_7999_13/lane_b12/candidates/task254_r01_static42.onnx",
+        "sha256": "814ece451a8f8eda8e9221d58e2f4fb3359fa396dfe971f6ad97693f453b15f8",
+        "file_bytes": 652,
+        "checker_full": true,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "custom_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_attributes": [],
+        "banned_or_sequence_ops": [],
+        "dynamic_or_nonpositive_tensors": [],
+        "conv_bias_findings": [],
+        "giant_einsum_nodes": [
+          {
+            "node_index": 0,
+            "inputs": 33
+          }
+        ],
+        "lookup_ops": [],
+        "nonfinite_initializers": [],
+        "op_histogram": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "value_info_count": 0,
+        "static_cost": {
+          "memory": 0,
+          "params": 42,
+          "cost": 42
+        },
+        "initializers": [
+          {
+            "name": "V",
+            "dtype": "float32",
+            "shape": [
+              2,
+              10
+            ],
+            "elements": 20,
+            "sha256": "87bfc314d54add13f5c8a0e9f4d5ad764d0b22b69f77196a02204a119709da0d",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              0.0,
+              1.0,
+              -1.0,
+              -0.1111111119389534,
+              0.0,
+              0.1111111119389534,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.1111111119389534,
+              0.1111111119389534,
+              0.1111111119389534,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Ccoef",
+            "dtype": "float32",
+            "shape": [
+              2
+            ],
+            "elements": 2,
+            "sha256": "18acb90aedb380a1cc305918cabfe7bae645c76da2e941cc6d082a3754d10d64",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              1.0,
+              -1458.0
+            ]
+          },
+          {
+            "name": "S0",
+            "dtype": "float32",
+            "shape": [
+              2,
+              2
+            ],
+            "elements": 4,
+            "sha256": "66aa5265fb25a9151e9b998b2153e6a19358611fed4e7bdc7b0885ef36ca04de",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              1.0,
+              1.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "name": "S1",
+            "dtype": "float32",
+            "shape": [
+              2,
+              2
+            ],
+            "elements": 4,
+            "sha256": "02bd5a9e6eed0a25fee9c844f40c8215598fe2811a15a1aaccae99e197ea0841",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              1.0,
+              1.0,
+              0.0,
+              1.0
+            ]
+          },
+          {
+            "name": "A",
+            "dtype": "float32",
+            "shape": [
+              2,
+              2
+            ],
+            "elements": 4,
+            "sha256": "8598184f3fc484b0c7ef761321089179f8d690a4a4011fad6c9e70e9ff1e6228",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -10.19946002960205,
+              -7.273904323577881,
+              2.8773410320281982,
+              17.010103225708008
+            ]
+          },
+          {
+            "name": "B",
+            "dtype": "float32",
+            "shape": [
+              2,
+              2,
+              2
+            ],
+            "elements": 8,
+            "sha256": "cc1f96e32ebfecbf6d6a4f56e974ed1bbfc2fbf2c3e04f55d09a459b4bfb06ab",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -3.6239447593688965,
+              31.143877029418945,
+              -0.5865983963012695,
+              20.144168853759766,
+              2.5593435764312744,
+              -14.350164413452148,
+              -5.334202289581299,
+              43.34586715698242
+            ]
+          }
+        ],
+        "nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "V",
+              "input",
+              "V",
+              "Ccoef",
+              "S0",
+              "S0",
+              "S1",
+              "S1",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "Ccoef",
+              "S0",
+              "S0",
+              "S1",
+              "S1",
+              "input",
+              "V",
+              "Ccoef",
+              "S0",
+              "S0",
+              "S1",
+              "S1",
+              "V",
+              "V",
+              "A",
+              "B",
+              "V",
+              "V"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "akmn,Ak,almd,Bl,g,gA,gA,gB,ge,aopu,Co,aqrd,Dq,atru,Et,h,hC,hD,hE,hf,aicd,ji,s,se,sf,sj,sj,PZ,Pb,eX,efY,Xb,Yb->abcd"
+            },
+            "input_multiplicity": {
+              "input": 6,
+              "V": 10,
+              "Ccoef": 3,
+              "S0": 6,
+              "S1": 6,
+              "A": 1,
+              "B": 1
+            }
+          }
+        ]
+      },
+      "baseline_actual_profile": {
+        "memory": 16,
+        "params": 60,
+        "cost": 76,
+        "score": 20.66926665971367,
+        "correct": true
+      },
+      "candidate_actual_profile": {
+        "memory": 0,
+        "params": 42,
+        "cost": 42,
+        "score": 21.26233038171663,
+        "correct": true
+      },
+      "candidate_margin": {
+        "stable": true,
+        "minimum": 0.5942012667655945
+      },
+      "baseline_runtime_shapes": {
+        "all_node_outputs": [
+          {
+            "name": "GH",
+            "graph_output": false,
+            "declared_shape": [
+              2
+            ],
+            "inferred_shape": [
+              2
+            ],
+            "actual_shape": [
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 8,
+            "finite": true,
+            "nonfinite_elements": 0
+          },
+          {
+            "name": "GL",
+            "graph_output": false,
+            "declared_shape": [
+              2
+            ],
+            "inferred_shape": [
+              2
+            ],
+            "actual_shape": [
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 8,
+            "finite": true,
+            "nonfinite_elements": 0
+          },
+          {
+            "name": "output",
+            "graph_output": true,
+            "declared_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "inferred_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "actual_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "dtype": "float32",
+            "bytes": 36000,
+            "finite": true,
+            "nonfinite_elements": 0
+          }
+        ],
+        "shape_mismatches": []
+      },
+      "candidate_runtime_shapes": {
+        "all_node_outputs": [
+          {
+            "name": "output",
+            "graph_output": true,
+            "declared_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "inferred_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "actual_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "dtype": "float32",
+            "bytes": 36000,
+            "finite": true,
+            "nonfinite_elements": 0
+          }
+        ],
+        "shape_mismatches": []
+      },
+      "known_disable_all": {
+        "train": {
+          "right": 2,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0
+        },
+        "raw_numeric": {
+          "nonfinite_cases": 0,
+          "nonfinite_elements": 0,
+          "minimum_positive_finite": 1.640961766242981,
+          "maximum_absolute_finite": 507.6723327636719
+        }
+      },
+      "known_default": {
+        "train": {
+          "right": 2,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0
+        },
+        "raw_numeric": {
+          "nonfinite_cases": 0,
+          "nonfinite_elements": 0,
+          "minimum_positive_finite": 1.640961766242981,
+          "maximum_absolute_finite": 507.6723327636719
+        }
+      },
+      "graph_diff": {
+        "node_count": {
+          "baseline": 3,
+          "candidate": 1
+        },
+        "initializer_names_removed": [
+          "SE",
+          "SF8",
+          "T",
+          "W"
+        ],
+        "initializer_names_added": [
+          "A",
+          "B",
+          "Ccoef",
+          "S0",
+          "S1"
+        ],
+        "shared_initializer_changes": {
+          "V": {
+            "baseline": {
+              "name": "V",
+              "dtype": "float32",
+              "shape": [
+                2,
+                10
+              ],
+              "elements": 20,
+              "sha256": "15d86ac55abf2184bef8350858ac0bdbd9f72085ac4066df665172814c344f20",
+              "finite": true,
+              "nonfinite_elements": 0,
+              "preview": [
+                0.0,
+                1.0,
+                -1.0,
+                0.0,
+                0.0,
+                0.1111111119389534,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.1111111119389534,
+                0.1111111119389534,
+                0.1111111119389534,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "candidate": {
+              "name": "V",
+              "dtype": "float32",
+              "shape": [
+                2,
+                10
+              ],
+              "elements": 20,
+              "sha256": "87bfc314d54add13f5c8a0e9f4d5ad764d0b22b69f77196a02204a119709da0d",
+              "finite": true,
+              "nonfinite_elements": 0,
+              "preview": [
+                0.0,
+                1.0,
+                -1.0,
+                -0.1111111119389534,
+                0.0,
+                0.1111111119389534,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.1111111119389534,
+                0.1111111119389534,
+                0.1111111119389534,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "baseline_nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "SE",
+              "SE",
+              "SE",
+              "SE",
+              "T"
+            ],
+            "outputs": [
+              "GH"
+            ],
+            "attributes": {
+              "equation": "aimc,Ai,ajnc,Bj,akoc,Ck,alpc,Dl,egA,egB,egC,egD,ggX->X"
+            },
+            "input_multiplicity": {
+              "input": 4,
+              "V": 4,
+              "SE": 4,
+              "T": 1
+            }
+          },
+          {
+            "index": 1,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "SE",
+              "SF8",
+              "SF8",
+              "SF8",
+              "SF8",
+              "SF8",
+              "SF8",
+              "SF8",
+              "SF8",
+              "T"
+            ],
+            "outputs": [
+              "GL"
+            ],
+            "attributes": {
+              "equation": "airc,Di,ajsc,Ej,aktc,Fk,aluc,Gl,amvc,Hm,anwc,In,aoxc,Jo,apyc,Kp,aqzc,Lq,fhD,fhE,fhF,fhG,fhH,fhI,fhJ,fhK,fhL,hhY->Y"
+            },
+            "input_multiplicity": {
+              "input": 9,
+              "V": 9,
+              "SE": 1,
+              "SF8": 8,
+              "T": 1
+            }
+          },
+          {
+            "index": 2,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "V",
+              "T",
+              "input",
+              "V",
+              "SE",
+              "input",
+              "V",
+              "SE",
+              "input",
+              "V",
+              "SE",
+              "input",
+              "V",
+              "SE",
+              "GH",
+              "input",
+              "V",
+              "SE",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "input",
+              "V",
+              "SF8",
+              "GL",
+              "T",
+              "V",
+              "W",
+              "V",
+              "V"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "aicd,ji,efj,akod,Ak,egA,alpd,Bl,egB,amqd,Cm,egC,anrd,Dn,egD,g,asLd,Es,fhE,atMd,Ft,fhF,auNd,Gu,fhG,avOd,Iv,fhI,awQd,Jw,fhJ,axRd,Vx,fhV,aySd,Wy,fhW,azTd,Zz,fhZ,aKUd,HK,fhH,h,PPP,Pb,efXY,Xb,Yb->abcd"
+            },
+            "input_multiplicity": {
+              "input": 14,
+              "V": 17,
+              "T": 2,
+              "SE": 5,
+              "GH": 1,
+              "SF8": 8,
+              "GL": 1,
+              "W": 1
+            }
+          }
+        ],
+        "candidate_nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "V",
+              "input",
+              "V",
+              "Ccoef",
+              "S0",
+              "S0",
+              "S1",
+              "S1",
+              "input",
+              "V",
+              "input",
+              "V",
+              "input",
+              "V",
+              "Ccoef",
+              "S0",
+              "S0",
+              "S1",
+              "S1",
+              "input",
+              "V",
+              "Ccoef",
+              "S0",
+              "S0",
+              "S1",
+              "S1",
+              "V",
+              "V",
+              "A",
+              "B",
+              "V",
+              "V"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "akmn,Ak,almd,Bl,g,gA,gA,gB,ge,aopu,Co,aqrd,Dq,atru,Et,h,hC,hD,hE,hf,aicd,ji,s,se,sf,sj,sj,PZ,Pb,eX,efY,Xb,Yb->abcd"
+            },
+            "input_multiplicity": {
+              "input": 6,
+              "V": 10,
+              "Ccoef": 3,
+              "S0": 6,
+              "S1": 6,
+              "A": 1,
+              "B": 1
+            }
+          }
+        ]
+      }
+    },
+    "267": {
+      "task": 267,
+      "generator_hash": "aabf363d",
+      "lineage": {
+        "task": 267,
+        "baseline_cost": 60,
+        "static_cost": 30,
+        "static_gain": 0.6931471805599472,
+        "sha256": "09cc9c0f495a7fb852f67db0fbd2266c7232c7b8a76ad6be7da940783b6c8661",
+        "path": "scripts/golf/loop_7999_13/lane_archive_all400/task267_r01_static30.onnx",
+        "sources": [
+          "others/2/7907/task267_improved.onnx"
+        ],
+        "source_count": 1
+      },
+      "baseline_structure": {
+        "path": "scripts/golf/loop_7999_13/lane_b12/baseline/task267.onnx",
+        "sha256": "cba1649faabef75df8a041c1737731d47d09d1be7239705055a3d9b26dc6b6ed",
+        "file_bytes": 456,
+        "checker_full": true,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "custom_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_attributes": [],
+        "banned_or_sequence_ops": [],
+        "dynamic_or_nonpositive_tensors": [],
+        "conv_bias_findings": [],
+        "giant_einsum_nodes": [],
+        "lookup_ops": [],
+        "nonfinite_initializers": [],
+        "op_histogram": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "value_info_count": 0,
+        "static_cost": {
+          "memory": 0,
+          "params": 60,
+          "cost": 60
+        },
+        "initializers": [
+          {
+            "name": "ru",
+            "dtype": "float32",
+            "shape": [
+              30
+            ],
+            "elements": 30,
+            "sha256": "574b3c9282beec83626f78337a9473037f4daac805f5919a011162eb6b253b1c",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "rv",
+            "dtype": "float32",
+            "shape": [
+              30
+            ],
+            "elements": 30,
+            "sha256": "03e9dadfd441cb3e340ec7e69a3a915649d2d350006089b3194130a195dd76ea",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -4.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              -1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "ru",
+              "input",
+              "rv",
+              "input"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "borc,r,bdst,s,bdhw->bohw"
+            },
+            "input_multiplicity": {
+              "input": 3,
+              "ru": 1,
+              "rv": 1
+            }
+          }
+        ]
+      },
+      "candidate_structure": {
+        "path": "scripts/golf/loop_7999_13/lane_b12/candidates/task267_r01_static30.onnx",
+        "sha256": "09cc9c0f495a7fb852f67db0fbd2266c7232c7b8a76ad6be7da940783b6c8661",
+        "file_bytes": 609,
+        "checker_full": true,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "custom_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_attributes": [],
+        "banned_or_sequence_ops": [],
+        "dynamic_or_nonpositive_tensors": [],
+        "conv_bias_findings": [],
+        "giant_einsum_nodes": [
+          {
+            "node_index": 0,
+            "inputs": 37
+          }
+        ],
+        "lookup_ops": [],
+        "nonfinite_initializers": [],
+        "op_histogram": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "value_info_count": 0,
+        "static_cost": {
+          "memory": 0,
+          "params": 30,
+          "cost": 30
+        },
+        "initializers": [
+          {
+            "name": "u",
+            "dtype": "float32",
+            "shape": [
+              30
+            ],
+            "elements": 30,
+            "sha256": "aa3e913f60bd1229e0fdae9ffbcefbd75ddc7c697aae15aab6a5aa9d230bc4fb",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -3.0,
+              9.999999747378752e-05,
+              9.999999747378752e-05,
+              9.999999747378752e-05,
+              9.999999747378752e-05,
+              9.999999747378752e-05,
+              1.5,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "boac,a,boef,e,bogi,g,bojk,j,bolm,l,bonp,n,boqr,q,bouv,u,boxy,x,bozA,z,boBC,B,boDE,D,boFG,F,boHI,H,boJK,J,boLM,L,boNO,N,bdst,t,bdhw->bohw"
+            },
+            "input_multiplicity": {
+              "input": 19,
+              "u": 18
+            }
+          }
+        ]
+      },
+      "baseline_actual_profile": {
+        "memory": 0,
+        "params": 60,
+        "cost": 60,
+        "score": 20.9056554377779,
+        "correct": true
+      },
+      "candidate_actual_profile": {
+        "memory": 0,
+        "params": 30,
+        "cost": 30,
+        "score": 21.598802618337846,
+        "correct": true
+      },
+      "candidate_margin": {
+        "stable": true,
+        "minimum": 1.1823134422302246
+      },
+      "baseline_runtime_shapes": {
+        "all_node_outputs": [
+          {
+            "name": "output",
+            "graph_output": true,
+            "declared_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "inferred_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "actual_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "dtype": "float32",
+            "bytes": 36000,
+            "finite": true,
+            "nonfinite_elements": 0
+          }
+        ],
+        "shape_mismatches": []
+      },
+      "candidate_runtime_shapes": {
+        "all_node_outputs": [
+          {
+            "name": "output",
+            "graph_output": true,
+            "declared_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "inferred_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "actual_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "dtype": "float32",
+            "bytes": 36000,
+            "finite": true,
+            "nonfinite_elements": 0
+          }
+        ],
+        "shape_mismatches": []
+      },
+      "known_disable_all": {
+        "train": {
+          "right": 2,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 261,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 264,
+          "wrong": 0,
+          "errors": 0
+        },
+        "raw_numeric": {
+          "nonfinite_cases": 0,
+          "nonfinite_elements": 0,
+          "minimum_positive_finite": 1.1823134422302246,
+          "maximum_absolute_finite": 1.6588083438628635e+19
+        }
+      },
+      "known_default": {
+        "train": {
+          "right": 2,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 261,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 264,
+          "wrong": 0,
+          "errors": 0
+        },
+        "raw_numeric": {
+          "nonfinite_cases": 0,
+          "nonfinite_elements": 0,
+          "minimum_positive_finite": 1.1823134422302246,
+          "maximum_absolute_finite": 1.6588083438628635e+19
+        }
+      },
+      "graph_diff": {
+        "node_count": {
+          "baseline": 1,
+          "candidate": 1
+        },
+        "initializer_names_removed": [
+          "ru",
+          "rv"
+        ],
+        "initializer_names_added": [
+          "u"
+        ],
+        "shared_initializer_changes": {},
+        "baseline_nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "ru",
+              "input",
+              "rv",
+              "input"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "borc,r,bdst,s,bdhw->bohw"
+            },
+            "input_multiplicity": {
+              "input": 3,
+              "ru": 1,
+              "rv": 1
+            }
+          }
+        ],
+        "candidate_nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input",
+              "u",
+              "input"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "boac,a,boef,e,bogi,g,bojk,j,bolm,l,bonp,n,boqr,q,bouv,u,boxy,x,bozA,z,boBC,B,boDE,D,boFG,F,boHI,H,boJK,J,boLM,L,boNO,N,bdst,t,bdhw->bohw"
+            },
+            "input_multiplicity": {
+              "input": 19,
+              "u": 18
+            }
+          }
+        ]
+      }
+    },
+    "322": {
+      "task": 322,
+      "generator_hash": "d037b0a7",
+      "lineage": {
+        "task": 322,
+        "baseline_cost": 20,
+        "static_cost": 19,
+        "static_gain": 0.05129329438754837,
+        "sha256": "2bc5ee06086bf3ac44433652d4134ae137c68b79367e1829e564667a46f19cc4",
+        "path": "scripts/golf/loop_7999_13/lane_archive_all400/task322_r01_static19.onnx",
+        "sources": [
+          "others/2/1203/71202/task322_rebuilt_cost19.onnx",
+          "scripts/golf/scratch_codex_plus10/pool_actual/task322.onnx"
+        ],
+        "source_count": 2
+      },
+      "baseline_structure": {
+        "path": "scripts/golf/loop_7999_13/lane_b12/baseline/task322.onnx",
+        "sha256": "8d4ca3f8bd349a9937c56ccfa33babdfc51f63d829bf786763184eea5339dc97",
+        "file_bytes": 300,
+        "checker_full": true,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "custom_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_attributes": [],
+        "banned_or_sequence_ops": [],
+        "dynamic_or_nonpositive_tensors": [],
+        "conv_bias_findings": [],
+        "giant_einsum_nodes": [],
+        "lookup_ops": [],
+        "nonfinite_initializers": [
+          "X"
+        ],
+        "op_histogram": {
+          "ConvTranspose": 1
+        },
+        "node_count": 1,
+        "value_info_count": 0,
+        "static_cost": {
+          "memory": 0,
+          "params": 20,
+          "cost": 20
+        },
+        "initializers": [
+          {
+            "name": "X",
+            "dtype": "float32",
+            "shape": [
+              1,
+              1,
+              10,
+              1
+            ],
+            "elements": 10,
+            "sha256": "ca33251a9228adcee5114c05d4c3c6d41e628ff527f874fc9697e985868d09f2",
+            "finite": false,
+            "nonfinite_elements": 3,
+            "preview": [
+              1.0,
+              0.0,
+              2.0,
+              1.0,
+              3.0,
+              1.0,
+              1.0,
+              "NaN",
+              "NaN",
+              "NaN"
+            ]
+          },
+          {
+            "name": "B",
+            "dtype": "float32",
+            "shape": [
+              10
+            ],
+            "elements": 10,
+            "sha256": "0eea683fb1e0f3784249283a1f0435d11522bd9f2ddfbc20d5b5cd3ac005ed28",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -2.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "nodes": [
+          {
+            "index": 0,
+            "op": "ConvTranspose",
+            "domain": "",
+            "inputs": [
+              "X",
+              "input",
+              "B"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "dilations": [
+                3,
+                1
+              ],
+              "pads": [
+                4,
+                0,
+                63,
+                0
+              ],
+              "strides": [
+                1,
+                1
+              ]
+            },
+            "input_multiplicity": {
+              "X": 1,
+              "input": 1,
+              "B": 1
+            }
+          }
+        ]
+      },
+      "candidate_structure": {
+        "path": "scripts/golf/loop_7999_13/lane_b12/candidates/task322_r01_static19.onnx",
+        "sha256": "2bc5ee06086bf3ac44433652d4134ae137c68b79367e1829e564667a46f19cc4",
+        "file_bytes": 294,
+        "checker_full": true,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "custom_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_attributes": [],
+        "banned_or_sequence_ops": [],
+        "dynamic_or_nonpositive_tensors": [],
+        "conv_bias_findings": [
+          [
+            "ConvTranspose",
+            "B",
+            9,
+            10
+          ]
+        ],
+        "giant_einsum_nodes": [],
+        "lookup_ops": [],
+        "nonfinite_initializers": [
+          "X"
+        ],
+        "op_histogram": {
+          "ConvTranspose": 1
+        },
+        "node_count": 1,
+        "value_info_count": 0,
+        "static_cost": {
+          "memory": 0,
+          "params": 19,
+          "cost": 19
+        },
+        "initializers": [
+          {
+            "name": "X",
+            "dtype": "float32",
+            "shape": [
+              1,
+              1,
+              10,
+              1
+            ],
+            "elements": 10,
+            "sha256": "ca33251a9228adcee5114c05d4c3c6d41e628ff527f874fc9697e985868d09f2",
+            "finite": false,
+            "nonfinite_elements": 3,
+            "preview": [
+              1.0,
+              0.0,
+              2.0,
+              1.0,
+              3.0,
+              1.0,
+              1.0,
+              "NaN",
+              "NaN",
+              "NaN"
+            ]
+          },
+          {
+            "name": "B",
+            "dtype": "float32",
+            "shape": [
+              9
+            ],
+            "elements": 9,
+            "sha256": "81d31f1b00c1ec7dbe4eaa65c0074233bcbb3c6330a6a365546ddf8d499e0c34",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -2.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "nodes": [
+          {
+            "index": 0,
+            "op": "ConvTranspose",
+            "domain": "",
+            "inputs": [
+              "X",
+              "input",
+              "B"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "dilations": [
+                3,
+                1
+              ],
+              "pads": [
+                4,
+                0,
+                63,
+                0
+              ],
+              "strides": [
+                1,
+                1
+              ]
+            },
+            "input_multiplicity": {
+              "X": 1,
+              "input": 1,
+              "B": 1
+            }
+          }
+        ]
+      },
+      "baseline_actual_profile": {
+        "memory": 0,
+        "params": 20,
+        "cost": 20,
+        "score": 22.00426772644601,
+        "correct": true
+      },
+      "candidate_actual_profile": {
+        "memory": 0,
+        "params": 19,
+        "cost": 19,
+        "score": 22.055561020833558,
+        "correct": true
+      },
+      "candidate_margin": {
+        "stable": true,
+        "minimum": 1.0
+      },
+      "baseline_runtime_shapes": {
+        "all_node_outputs": [
+          {
+            "name": "output",
+            "graph_output": true,
+            "declared_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "inferred_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "actual_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "dtype": "float32",
+            "bytes": 36000,
+            "finite": false,
+            "nonfinite_elements": 8100
+          }
+        ],
+        "shape_mismatches": []
+      },
+      "candidate_runtime_shapes": {
+        "all_node_outputs": [
+          {
+            "name": "output",
+            "graph_output": true,
+            "declared_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "inferred_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "actual_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "dtype": "float32",
+            "bytes": 36000,
+            "finite": false,
+            "nonfinite_elements": 8100
+          }
+        ],
+        "shape_mismatches": []
+      },
+      "known_disable_all": {
+        "train": {
+          "right": 3,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0
+        },
+        "raw_numeric": {
+          "nonfinite_cases": 266,
+          "nonfinite_elements": 2154600,
+          "minimum_positive_finite": 1.0,
+          "maximum_absolute_finite": 3.0
+        }
+      },
+      "known_default": {
+        "train": {
+          "right": 3,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0
+        },
+        "raw_numeric": {
+          "nonfinite_cases": 266,
+          "nonfinite_elements": 2154600,
+          "minimum_positive_finite": 1.0,
+          "maximum_absolute_finite": 3.0
+        }
+      },
+      "graph_diff": {
+        "node_count": {
+          "baseline": 1,
+          "candidate": 1
+        },
+        "initializer_names_removed": [],
+        "initializer_names_added": [],
+        "shared_initializer_changes": {
+          "B": {
+            "baseline": {
+              "name": "B",
+              "dtype": "float32",
+              "shape": [
+                10
+              ],
+              "elements": 10,
+              "sha256": "0eea683fb1e0f3784249283a1f0435d11522bd9f2ddfbc20d5b5cd3ac005ed28",
+              "finite": true,
+              "nonfinite_elements": 0,
+              "preview": [
+                -2.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "candidate": {
+              "name": "B",
+              "dtype": "float32",
+              "shape": [
+                9
+              ],
+              "elements": 9,
+              "sha256": "81d31f1b00c1ec7dbe4eaa65c0074233bcbb3c6330a6a365546ddf8d499e0c34",
+              "finite": true,
+              "nonfinite_elements": 0,
+              "preview": [
+                -2.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "baseline_nodes": [
+          {
+            "index": 0,
+            "op": "ConvTranspose",
+            "domain": "",
+            "inputs": [
+              "X",
+              "input",
+              "B"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "dilations": [
+                3,
+                1
+              ],
+              "pads": [
+                4,
+                0,
+                63,
+                0
+              ],
+              "strides": [
+                1,
+                1
+              ]
+            },
+            "input_multiplicity": {
+              "X": 1,
+              "input": 1,
+              "B": 1
+            }
+          }
+        ],
+        "candidate_nodes": [
+          {
+            "index": 0,
+            "op": "ConvTranspose",
+            "domain": "",
+            "inputs": [
+              "X",
+              "input",
+              "B"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "dilations": [
+                3,
+                1
+              ],
+              "pads": [
+                4,
+                0,
+                63,
+                0
+              ],
+              "strides": [
+                1,
+                1
+              ]
+            },
+            "input_multiplicity": {
+              "X": 1,
+              "input": 1,
+              "B": 1
+            }
+          }
+        ]
+      }
+    },
+    "323": {
+      "task": 323,
+      "generator_hash": "d06dbe63",
+      "lineage": {
+        "task": 323,
+        "baseline_cost": 106,
+        "static_cost": 104,
+        "static_gain": 0.019048194970697097,
+        "sha256": "efa9eff393dadf750634489d0425487514de6012be75046fa44906540cb954b7",
+        "path": "scripts/golf/loop_7999_13/lane_archive_all400/task323_r01_static104.onnx",
+        "sources": [
+          "submission_candidate_cost100_300.zip::task323.onnx"
+        ],
+        "source_count": 1
+      },
+      "baseline_structure": {
+        "path": "scripts/golf/loop_7999_13/lane_b12/baseline/task323.onnx",
+        "sha256": "e0d5df28783f06fed30dca879128daaadd9c7167d38bf39ab6d0ed3b0d25338d",
+        "file_bytes": 1097,
+        "checker_full": true,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "custom_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_attributes": [],
+        "banned_or_sequence_ops": [],
+        "dynamic_or_nonpositive_tensors": [],
+        "conv_bias_findings": [],
+        "giant_einsum_nodes": [
+          {
+            "node_index": 1,
+            "inputs": 62
+          }
+        ],
+        "lookup_ops": [],
+        "nonfinite_initializers": [],
+        "op_histogram": {
+          "Einsum": 2
+        },
+        "node_count": 2,
+        "value_info_count": 1,
+        "static_cost": {
+          "memory": 8,
+          "params": 98,
+          "cost": 106
+        },
+        "initializers": [
+          {
+            "name": "C",
+            "dtype": "float32",
+            "shape": [
+              2,
+              10
+            ],
+            "elements": 20,
+            "sha256": "0ebf6afe85d35cd2f854d53592e358ca8e191dcc2d88ec3e0f8348707a1ba7df",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -1.0,
+              0.0,
+              0.0,
+              0.49121034145355225,
+              0.0,
+              8.697036743164062,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -2.0
+            ]
+          },
+          {
+            "name": "B",
+            "dtype": "float32",
+            "shape": [
+              2,
+              30
+            ],
+            "elements": 60,
+            "sha256": "6da8bd7f422a46895ef2d9bc8f3c2f9d466da91282d03f802cb157016547db04",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              -4178.4814453125,
+              8.167778287315741e-05,
+              8.167755004251376e-05
+            ]
+          },
+          {
+            "name": "H",
+            "dtype": "float32",
+            "shape": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "elements": 16,
+            "sha256": "1d1beebe12d7d90039e59f5d650f3578f5d9ac347d898cfa2a63b0f717e16f61",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -0.2644897997379303,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -2.940000534057617,
+              0.41999995708465576,
+              0.35999998450279236,
+              0.0,
+              0.3085714280605316,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "V0",
+            "dtype": "float32",
+            "shape": [
+              2
+            ],
+            "elements": 2,
+            "sha256": "94d07c74169e1f17c43efb0388073d14be95e9fbc52729b14c42912a6e40789b",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -8.697036743164062,
+              1.0
+            ]
+          }
+        ],
+        "nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "C",
+              "V0",
+              "B",
+              "B",
+              "H"
+            ],
+            "outputs": [
+              "D"
+            ],
+            "attributes": {
+              "equation": "nyij,uy,u,bi,cj,mbcd->nm"
+            },
+            "input_multiplicity": {
+              "input": 1,
+              "C": 1,
+              "V0": 1,
+              "B": 2,
+              "H": 1
+            }
+          },
+          {
+            "index": 1,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "C",
+              "C",
+              "V0",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "V0",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "B",
+              "B",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "C",
+              "C",
+              "C",
+              "B",
+              "H",
+              "H",
+              "H",
+              "V0",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "B",
+              "H",
+              "V0",
+              "V0"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "nxrc,ax,ak,a,nb,dr,ec,fbde,ng,hr,ic,fghi,f,nj,lr,mc,ojlm,np,qr,sc,opqs,oW,nt,vr,wc,ytvw,nz,Ar,Bc,yzAB,yQ,yQ,yQ,nC,Dr,Ec,FCDE,nG,Hr,Ic,FGHI,FR,FR,FR,FS,TFUV,TFUV,TFUV,F,nJ,Kr,Lc,MJKL,nN,Or,Pc,MNOP,MX,MX,uMZZ,M,M->nkrc"
+            },
+            "input_multiplicity": {
+              "input": 1,
+              "C": 5,
+              "V0": 5,
+              "D": 10,
+              "B": 27,
+              "H": 14
+            }
+          }
+        ]
+      },
+      "candidate_structure": {
+        "path": "scripts/golf/loop_7999_13/lane_b12/candidates/task323_r01_static104.onnx",
+        "sha256": "efa9eff393dadf750634489d0425487514de6012be75046fa44906540cb954b7",
+        "file_bytes": 1040,
+        "checker_full": true,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "custom_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_attributes": [],
+        "banned_or_sequence_ops": [],
+        "dynamic_or_nonpositive_tensors": [],
+        "conv_bias_findings": [],
+        "giant_einsum_nodes": [
+          {
+            "node_index": 1,
+            "inputs": 56
+          }
+        ],
+        "lookup_ops": [],
+        "nonfinite_initializers": [],
+        "op_histogram": {
+          "Einsum": 2
+        },
+        "node_count": 2,
+        "value_info_count": 1,
+        "static_cost": {
+          "memory": 8,
+          "params": 96,
+          "cost": 104
+        },
+        "initializers": [
+          {
+            "name": "B",
+            "dtype": "float32",
+            "shape": [
+              2,
+              30
+            ],
+            "elements": 60,
+            "sha256": "6da8bd7f422a46895ef2d9bc8f3c2f9d466da91282d03f802cb157016547db04",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              -4178.4814453125,
+              8.167778287315741e-05,
+              8.167755004251376e-05
+            ]
+          },
+          {
+            "name": "H",
+            "dtype": "float32",
+            "shape": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "elements": 16,
+            "sha256": "1d1beebe12d7d90039e59f5d650f3578f5d9ac347d898cfa2a63b0f717e16f61",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -0.2644897997379303,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -2.940000534057617,
+              0.41999995708465576,
+              0.35999998450279236,
+              0.0,
+              0.3085714280605316,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "C",
+            "dtype": "float32",
+            "shape": [
+              2,
+              10
+            ],
+            "elements": 20,
+            "sha256": "f84626ddf00af6e31e9e8a980ea559d4af566800b557ddce31abc80ade6771de",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -8.697036743164062,
+              -0.14995010197162628,
+              -0.14995010197162628,
+              -0.6375998258590698,
+              0.0,
+              8.697036743164062,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              1.0,
+              -1.304121494293213,
+              -1.304121494293213,
+              -5.545228958129883,
+              0.0,
+              -1.0000003576278687
+            ]
+          }
+        ],
+        "nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "C",
+              "C",
+              "B",
+              "B",
+              "H"
+            ],
+            "outputs": [
+              "D"
+            ],
+            "attributes": {
+              "equation": "nyij,uy,uz,bi,cj,mbcd->nm"
+            },
+            "input_multiplicity": {
+              "input": 1,
+              "C": 2,
+              "B": 2,
+              "H": 1
+            }
+          },
+          {
+            "index": 1,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "C",
+              "C",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "C",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "B",
+              "B",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "C",
+              "C",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "B",
+              "H",
+              "C",
+              "C"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "nxrc,ax,ak,nb,dr,ec,fbde,ng,hr,ic,fghi,fx,nj,lr,mc,ojlm,np,qr,sc,opqs,oW,nt,vr,wc,ytvw,nz,Ar,Bc,yzAB,yQ,yQ,yQ,nC,Dr,Ec,FCDE,nG,Hr,Ic,FGHI,FS,FY,FY,nJ,Kr,Lc,MJKL,nN,Or,Pc,MNOP,MX,MX,uMZZ,Mx,Mx->nkrc"
+            },
+            "input_multiplicity": {
+              "input": 1,
+              "C": 7,
+              "D": 10,
+              "B": 27,
+              "H": 11
+            }
+          }
+        ]
+      },
+      "baseline_actual_profile": {
+        "memory": 8,
+        "params": 98,
+        "cost": 106,
+        "score": 20.336560905887932,
+        "correct": true
+      },
+      "candidate_actual_profile": {
+        "memory": 8,
+        "params": 96,
+        "cost": 104,
+        "score": 20.35560910085863,
+        "correct": true
+      },
+      "candidate_margin": {
+        "stable": true,
+        "minimum": 6.002750746494239e+17
+      },
+      "baseline_runtime_shapes": {
+        "all_node_outputs": [
+          {
+            "name": "D",
+            "graph_output": false,
+            "declared_shape": [
+              1,
+              2
+            ],
+            "inferred_shape": [
+              1,
+              2
+            ],
+            "actual_shape": [
+              1,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 8,
+            "finite": true,
+            "nonfinite_elements": 0
+          },
+          {
+            "name": "output",
+            "graph_output": true,
+            "declared_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "inferred_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "actual_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "dtype": "float32",
+            "bytes": 36000,
+            "finite": true,
+            "nonfinite_elements": 0
+          }
+        ],
+        "shape_mismatches": []
+      },
+      "candidate_runtime_shapes": {
+        "all_node_outputs": [
+          {
+            "name": "D",
+            "graph_output": false,
+            "declared_shape": [
+              1,
+              2
+            ],
+            "inferred_shape": [
+              1,
+              2
+            ],
+            "actual_shape": [
+              1,
+              2
+            ],
+            "dtype": "float32",
+            "bytes": 8,
+            "finite": true,
+            "nonfinite_elements": 0
+          },
+          {
+            "name": "output",
+            "graph_output": true,
+            "declared_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "inferred_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "actual_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "dtype": "float32",
+            "bytes": 36000,
+            "finite": true,
+            "nonfinite_elements": 0
+          }
+        ],
+        "shape_mismatches": []
+      },
+      "known_disable_all": {
+        "train": {
+          "right": 2,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 169,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 172,
+          "wrong": 0,
+          "errors": 0
+        },
+        "raw_numeric": {
+          "nonfinite_cases": 0,
+          "nonfinite_elements": 0,
+          "minimum_positive_finite": 1.479088993451948e+25,
+          "maximum_absolute_finite": 6.237532218840826e+34
+        }
+      },
+      "known_default": {
+        "train": {
+          "right": 2,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 169,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 172,
+          "wrong": 0,
+          "errors": 0
+        },
+        "raw_numeric": {
+          "nonfinite_cases": 0,
+          "nonfinite_elements": 0,
+          "minimum_positive_finite": 1.479088993451948e+25,
+          "maximum_absolute_finite": 6.237532218840826e+34
+        }
+      },
+      "graph_diff": {
+        "node_count": {
+          "baseline": 2,
+          "candidate": 2
+        },
+        "initializer_names_removed": [
+          "V0"
+        ],
+        "initializer_names_added": [],
+        "shared_initializer_changes": {
+          "C": {
+            "baseline": {
+              "name": "C",
+              "dtype": "float32",
+              "shape": [
+                2,
+                10
+              ],
+              "elements": 20,
+              "sha256": "0ebf6afe85d35cd2f854d53592e358ca8e191dcc2d88ec3e0f8348707a1ba7df",
+              "finite": true,
+              "nonfinite_elements": 0,
+              "preview": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                -1.0,
+                0.0,
+                0.0,
+                0.49121034145355225,
+                0.0,
+                8.697036743164062,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                -2.0
+              ]
+            },
+            "candidate": {
+              "name": "C",
+              "dtype": "float32",
+              "shape": [
+                2,
+                10
+              ],
+              "elements": 20,
+              "sha256": "f84626ddf00af6e31e9e8a980ea559d4af566800b557ddce31abc80ade6771de",
+              "finite": true,
+              "nonfinite_elements": 0,
+              "preview": [
+                -8.697036743164062,
+                -0.14995010197162628,
+                -0.14995010197162628,
+                -0.6375998258590698,
+                0.0,
+                8.697036743164062,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                1.0,
+                -1.304121494293213,
+                -1.304121494293213,
+                -5.545228958129883,
+                0.0,
+                -1.0000003576278687
+              ]
+            }
+          }
+        },
+        "baseline_nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "C",
+              "V0",
+              "B",
+              "B",
+              "H"
+            ],
+            "outputs": [
+              "D"
+            ],
+            "attributes": {
+              "equation": "nyij,uy,u,bi,cj,mbcd->nm"
+            },
+            "input_multiplicity": {
+              "input": 1,
+              "C": 1,
+              "V0": 1,
+              "B": 2,
+              "H": 1
+            }
+          },
+          {
+            "index": 1,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "C",
+              "C",
+              "V0",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "V0",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "B",
+              "B",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "C",
+              "C",
+              "C",
+              "B",
+              "H",
+              "H",
+              "H",
+              "V0",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "B",
+              "H",
+              "V0",
+              "V0"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "nxrc,ax,ak,a,nb,dr,ec,fbde,ng,hr,ic,fghi,f,nj,lr,mc,ojlm,np,qr,sc,opqs,oW,nt,vr,wc,ytvw,nz,Ar,Bc,yzAB,yQ,yQ,yQ,nC,Dr,Ec,FCDE,nG,Hr,Ic,FGHI,FR,FR,FR,FS,TFUV,TFUV,TFUV,F,nJ,Kr,Lc,MJKL,nN,Or,Pc,MNOP,MX,MX,uMZZ,M,M->nkrc"
+            },
+            "input_multiplicity": {
+              "input": 1,
+              "C": 5,
+              "V0": 5,
+              "D": 10,
+              "B": 27,
+              "H": 14
+            }
+          }
+        ],
+        "candidate_nodes": [
+          {
+            "index": 0,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "C",
+              "C",
+              "B",
+              "B",
+              "H"
+            ],
+            "outputs": [
+              "D"
+            ],
+            "attributes": {
+              "equation": "nyij,uy,uz,bi,cj,mbcd->nm"
+            },
+            "input_multiplicity": {
+              "input": 1,
+              "C": 2,
+              "B": 2,
+              "H": 1
+            }
+          },
+          {
+            "index": 1,
+            "op": "Einsum",
+            "domain": "",
+            "inputs": [
+              "input",
+              "C",
+              "C",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "C",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "B",
+              "B",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "C",
+              "C",
+              "D",
+              "B",
+              "B",
+              "H",
+              "D",
+              "B",
+              "B",
+              "H",
+              "B",
+              "B",
+              "H",
+              "C",
+              "C"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "equation": "nxrc,ax,ak,nb,dr,ec,fbde,ng,hr,ic,fghi,fx,nj,lr,mc,ojlm,np,qr,sc,opqs,oW,nt,vr,wc,ytvw,nz,Ar,Bc,yzAB,yQ,yQ,yQ,nC,Dr,Ec,FCDE,nG,Hr,Ic,FGHI,FS,FY,FY,nJ,Kr,Lc,MJKL,nN,Or,Pc,MNOP,MX,MX,uMZZ,Mx,Mx->nkrc"
+            },
+            "input_multiplicity": {
+              "input": 1,
+              "C": 7,
+              "D": 10,
+              "B": 27,
+              "H": 11
+            }
+          }
+        ]
+      }
+    },
+    "372": {
+      "task": 372,
+      "generator_hash": "e98196ab",
+      "lineage": {
+        "task": 372,
+        "baseline_cost": 13,
+        "static_cost": 12,
+        "static_gain": 0.08004270767353461,
+        "sha256": "362fc9f744a73fe1f792c000bb1e5e22f297db14fb7970f21b29a9cf91f88fb6",
+        "path": "scripts/golf/loop_7999_13/lane_archive_all400/task372_r01_static12.onnx",
+        "sources": [
+          "others/2/1203/71202/task372_improved.onnx",
+          "scripts/golf/scratch_codex_plus10/pool_actual/task372.onnx"
+        ],
+        "source_count": 2
+      },
+      "baseline_structure": {
+        "path": "scripts/golf/loop_7999_13/lane_b12/baseline/task372.onnx",
+        "sha256": "dbb94d9944991862aae4f338df79613358bcf65de9c4ac59afc77025f1a37c25",
+        "file_bytes": 250,
+        "checker_full": true,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "custom_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_attributes": [],
+        "banned_or_sequence_ops": [],
+        "dynamic_or_nonpositive_tensors": [],
+        "conv_bias_findings": [],
+        "giant_einsum_nodes": [],
+        "lookup_ops": [],
+        "nonfinite_initializers": [
+          "X"
+        ],
+        "op_histogram": {
+          "ConvTranspose": 1
+        },
+        "node_count": 1,
+        "value_info_count": 0,
+        "static_cost": {
+          "memory": 0,
+          "params": 13,
+          "cost": 13
+        },
+        "initializers": [
+          {
+            "name": "X",
+            "dtype": "float32",
+            "shape": [
+              1,
+              1,
+              3,
+              1
+            ],
+            "elements": 3,
+            "sha256": "405244944c5199cdbca6313966e9026e01e8fb0b49b13afcfba833ad474e42d9",
+            "finite": false,
+            "nonfinite_elements": 1,
+            "preview": [
+              10.0,
+              10.0,
+              "NaN"
+            ]
+          },
+          {
+            "name": "B",
+            "dtype": "float32",
+            "shape": [
+              10
+            ],
+            "elements": 10,
+            "sha256": "8aafedee8e72ef4ef474a6a74973af5dedbf79599cc8b3b09838e2876c132bdd",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -15.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -1000.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "nodes": [
+          {
+            "index": 0,
+            "op": "ConvTranspose",
+            "domain": "",
+            "inputs": [
+              "X",
+              "input",
+              "B"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "pads": [
+                6,
+                0,
+                6,
+                0
+              ],
+              "strides": [
+                6,
+                1
+              ]
+            },
+            "input_multiplicity": {
+              "X": 1,
+              "input": 1,
+              "B": 1
+            }
+          }
+        ]
+      },
+      "candidate_structure": {
+        "path": "scripts/golf/loop_7999_13/lane_b12/candidates/task372_r01_static12.onnx",
+        "sha256": "362fc9f744a73fe1f792c000bb1e5e22f297db14fb7970f21b29a9cf91f88fb6",
+        "file_bytes": 246,
+        "checker_full": true,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "custom_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_attributes": [],
+        "banned_or_sequence_ops": [],
+        "dynamic_or_nonpositive_tensors": [],
+        "conv_bias_findings": [
+          [
+            "ConvTranspose",
+            "B",
+            9,
+            10
+          ]
+        ],
+        "giant_einsum_nodes": [],
+        "lookup_ops": [],
+        "nonfinite_initializers": [
+          "X"
+        ],
+        "op_histogram": {
+          "ConvTranspose": 1
+        },
+        "node_count": 1,
+        "value_info_count": 0,
+        "static_cost": {
+          "memory": 0,
+          "params": 12,
+          "cost": 12
+        },
+        "initializers": [
+          {
+            "name": "X",
+            "dtype": "float32",
+            "shape": [
+              1,
+              1,
+              3,
+              1
+            ],
+            "elements": 3,
+            "sha256": "405244944c5199cdbca6313966e9026e01e8fb0b49b13afcfba833ad474e42d9",
+            "finite": false,
+            "nonfinite_elements": 1,
+            "preview": [
+              10.0,
+              10.0,
+              "NaN"
+            ]
+          },
+          {
+            "name": "B",
+            "dtype": "float32",
+            "shape": [
+              9
+            ],
+            "elements": 9,
+            "sha256": "c0107eeb04765a2e4bc93788f0d03aa540bbed5d592f58ffc1793eff5d1b1989",
+            "finite": true,
+            "nonfinite_elements": 0,
+            "preview": [
+              -15.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -1000.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "nodes": [
+          {
+            "index": 0,
+            "op": "ConvTranspose",
+            "domain": "",
+            "inputs": [
+              "X",
+              "input",
+              "B"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "pads": [
+                6,
+                0,
+                6,
+                0
+              ],
+              "strides": [
+                6,
+                1
+              ]
+            },
+            "input_multiplicity": {
+              "X": 1,
+              "input": 1,
+              "B": 1
+            }
+          }
+        ]
+      },
+      "baseline_actual_profile": {
+        "memory": 0,
+        "params": 13,
+        "cost": 13,
+        "score": 22.435050642538464,
+        "correct": true
+      },
+      "candidate_actual_profile": {
+        "memory": 0,
+        "params": 12,
+        "cost": 12,
+        "score": 22.515093350212,
+        "correct": true
+      },
+      "candidate_margin": {
+        "stable": true,
+        "minimum": 5.0
+      },
+      "baseline_runtime_shapes": {
+        "all_node_outputs": [
+          {
+            "name": "output",
+            "graph_output": true,
+            "declared_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "inferred_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "actual_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "dtype": "float32",
+            "bytes": 36000,
+            "finite": false,
+            "nonfinite_elements": 7200
+          }
+        ],
+        "shape_mismatches": []
+      },
+      "candidate_runtime_shapes": {
+        "all_node_outputs": [
+          {
+            "name": "output",
+            "graph_output": true,
+            "declared_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "inferred_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "actual_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "dtype": "float32",
+            "bytes": 36000,
+            "finite": false,
+            "nonfinite_elements": 7200
+          }
+        ],
+        "shape_mismatches": []
+      },
+      "known_disable_all": {
+        "train": {
+          "right": 3,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0
+        },
+        "raw_numeric": {
+          "nonfinite_cases": 266,
+          "nonfinite_elements": 1915200,
+          "minimum_positive_finite": 5.0,
+          "maximum_absolute_finite": 1000.0
+        }
+      },
+      "known_default": {
+        "train": {
+          "right": 3,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0
+        },
+        "raw_numeric": {
+          "nonfinite_cases": 266,
+          "nonfinite_elements": 1915200,
+          "minimum_positive_finite": 5.0,
+          "maximum_absolute_finite": 1000.0
+        }
+      },
+      "graph_diff": {
+        "node_count": {
+          "baseline": 1,
+          "candidate": 1
+        },
+        "initializer_names_removed": [],
+        "initializer_names_added": [],
+        "shared_initializer_changes": {
+          "B": {
+            "baseline": {
+              "name": "B",
+              "dtype": "float32",
+              "shape": [
+                10
+              ],
+              "elements": 10,
+              "sha256": "8aafedee8e72ef4ef474a6a74973af5dedbf79599cc8b3b09838e2876c132bdd",
+              "finite": true,
+              "nonfinite_elements": 0,
+              "preview": [
+                -15.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                -1000.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "candidate": {
+              "name": "B",
+              "dtype": "float32",
+              "shape": [
+                9
+              ],
+              "elements": 9,
+              "sha256": "c0107eeb04765a2e4bc93788f0d03aa540bbed5d592f58ffc1793eff5d1b1989",
+              "finite": true,
+              "nonfinite_elements": 0,
+              "preview": [
+                -15.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                -1000.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "baseline_nodes": [
+          {
+            "index": 0,
+            "op": "ConvTranspose",
+            "domain": "",
+            "inputs": [
+              "X",
+              "input",
+              "B"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "pads": [
+                6,
+                0,
+                6,
+                0
+              ],
+              "strides": [
+                6,
+                1
+              ]
+            },
+            "input_multiplicity": {
+              "X": 1,
+              "input": 1,
+              "B": 1
+            }
+          }
+        ],
+        "candidate_nodes": [
+          {
+            "index": 0,
+            "op": "ConvTranspose",
+            "domain": "",
+            "inputs": [
+              "X",
+              "input",
+              "B"
+            ],
+            "outputs": [
+              "output"
+            ],
+            "attributes": {
+              "pads": [
+                6,
+                0,
+                6,
+                0
+              ],
+              "strides": [
+                6,
+                1
+              ]
+            },
+            "input_multiplicity": {
+              "X": 1,
+              "input": 1,
+              "B": 1
+            }
+          }
+        ]
+      }
+    }
+  }
+}

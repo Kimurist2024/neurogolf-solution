@@ -1,0 +1,262 @@
+{
+  "lane": "agent_new_low32",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "previous_path": "submission_base_8004.50.zip",
+    "previous_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "policy": {
+    "nonprivate": "strictly cheaper, known100 dual, two independent fresh seeds each >=90%, runtime0, strict/data_prop, truthful shapes, standard domains, no lookup/cloak/giant, Conv-bias UB0",
+    "private_risk": "same gates but known/fresh must be 100% dual and the model must be demonstrably SOUND",
+    "fail_closed": "known/fresh are not run if price or structural gates fail"
+  },
+  "targets_requested": [
+    221,
+    136,
+    278,
+    230,
+    327,
+    391,
+    97,
+    27
+  ],
+  "targets_completed": 8,
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_integration": false,
+  "rows": [
+    {
+      "task": 221,
+      "rule_summary": "Count zeros in the 3x3 input, derive the output size and tile counts from that value, then tile the input into the top-left region and zero-fill the rest.",
+      "baseline_member": "task221.onnx",
+      "baseline_sha256": "c6be9a9a7b2bd5bbc4789626feb40b3257ddac4b95b98fa5c22dea9961d1dd1a",
+      "baseline_cost": {
+        "memory": 96,
+        "params": 48,
+        "cost": 144
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 26,
+        "giant_einsum": [],
+        "lookup_or_scatter": []
+      },
+      "best_probe": "cost142 inherited shape-cloak edit",
+      "reason": "Fails ORT_DISABLE_ALL on the complete known set through buffer-shape mismatch; correct controls cost at least 151. Latest cost144 graph is already one point below the older audited base and exact Wave2 found no further rewrite.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 136,
+      "rule_summary": "Extend the color-1 and color-2 2x2 objects on their prescribed opposite diagonals until the grid boundary.",
+      "baseline_member": "task136.onnx",
+      "baseline_sha256": "aaf051184a9f0bcac2dfa609d9577d5bbf2a750cac8adff6bb576dec00016555",
+      "baseline_cost": {
+        "memory": 14,
+        "params": 121,
+        "cost": 135
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 2,
+        "giant_einsum": [
+          {
+            "node_index": 4,
+            "inputs": 58
+          }
+        ],
+        "lookup_or_scatter": []
+      },
+      "best_probe": "cost135 tie",
+      "reason": "Historical alternate only ties and retains a 58-input giant Einsum plus false runtime shapes; conventional controls start at cost1194.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 278,
+      "rule_summary": "For each of three rotations, detect the specified local 2-pattern and paint its 3-valued neighborhood, then rotate back.",
+      "baseline_member": "task278.onnx",
+      "baseline_sha256": "0befa248b0782043f3ce40c10a28037bda88aae1d03f5a6286388e205e1ab667",
+      "baseline_cost": {
+        "memory": 133,
+        "params": 2,
+        "cost": 135
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 66,
+        "giant_einsum": [],
+        "lookup_or_scatter": []
+      },
+      "best_probe": "cost135 tie Min/Max rewrite",
+      "reason": "The tie rewrite fails every known case under ORT_DISABLE_ALL from incompatible hidden allocations. All conventional archived controls exceed current cost135.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 230,
+      "rule_summary": "For every 2x2 block of color 5, paint colors 1/2 above and 3/4 below at the corresponding corners.",
+      "baseline_member": "task230.onnx",
+      "baseline_sha256": "dc6a29e41419b3b3119e8b87c9816d874a4e15247493cc0edd3fbbe71c22e814",
+      "baseline_cost": {
+        "memory": 52,
+        "params": 56,
+        "cost": 108
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": null,
+        "giant_einsum": [],
+        "lookup_or_scatter": []
+      },
+      "best_probe": "cost108 tie / cost900 truthful direct Conv",
+      "reason": "The cost108 family has a dynamic/external Conv bias, so Conv-bias UB0 cannot be proved; the exact Wave2 structural gate rejects it. The truthful direct Conv is much larger.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 327,
+      "rule_summary": "Convolve the 3x3 colored seed with a down-right diagonal ray to produce a 6x6 output.",
+      "baseline_member": "task327.onnx",
+      "baseline_sha256": "5aaf9d4a19b52d470dd638194baae8a8308515ba8f5367d94049c7d1d5489f60",
+      "baseline_cost": {
+        "memory": 79,
+        "params": 27,
+        "cost": 106
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 5,
+        "giant_einsum": [],
+        "lookup_or_scatter": [
+          "ScatterElements"
+        ]
+      },
+      "best_probe": "cost106 archive tie; proposed cost46 one-node ConvTranspose",
+      "reason": "Archive minimum ties current cost106. The complete-placement cost46 architecture is infeasible because an identical local patch with the same bias kind requires opposite labels; no ONNX candidate can be emitted.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 391,
+      "rule_summary": "Count nonzero colors, remove the strict majority background color, and emit the remaining three colors in descending frequency.",
+      "baseline_member": "task391.onnx",
+      "baseline_sha256": "fd28c74c70b48687f6c9c798c44929b98350e30e0bf7b6d6cc629a41f83c1c45",
+      "baseline_cost": {
+        "memory": 67,
+        "params": 37,
+        "cost": 104
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "giant_einsum": [],
+        "lookup_or_scatter": [
+          "TfIdfVectorizer"
+        ]
+      },
+      "best_probe": "cost85/87/88 lookup models",
+      "reason": "Every below-104 model uses three TfIdfVectorizer lookup tables and belongs to the documented private-zero replacement lineage. The smallest table-free truthful TopK engine costs139, already above the current104 floor.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 97,
+      "rule_summary": "Remove colored cells that have no same-color neighbor in their 3x3 neighborhood.",
+      "baseline_member": "task097.onnx",
+      "baseline_sha256": "f412458620483cf5e98b82bc6f894f1d3796eb6feb788ee83c281586ffe260eb",
+      "baseline_cost": {
+        "memory": 88,
+        "params": 12,
+        "cost": 100
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 32,
+        "giant_einsum": [],
+        "lookup_or_scatter": []
+      },
+      "best_probe": "cost100 depthwise/local controls",
+      "reason": "All valid archived implementations tie cost100 or cost910; no strict cost decrease exists. Latest exact Wave2 found no exact rewrite.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 27,
+      "rule_summary": "Preserve the input and paint the rule-selected region with color 2 using the generator's row/column phase relation.",
+      "baseline_member": "task027.onnx",
+      "baseline_sha256": "3aa4e529f040557addfdc568d69e76a3f75606e04942eec60a616740369e49b7",
+      "baseline_cost": {
+        "memory": 8,
+        "params": 88,
+        "cost": 96
+      },
+      "unchanged_from_8004_50": true,
+      "structure_observation": {
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "giant_einsum": [
+          {
+            "node_index": 1,
+            "inputs": 55
+          }
+        ],
+        "lookup_or_scatter": []
+      },
+      "best_probe": "cost96 alternate giant-Einsum tie",
+      "reason": "The only low archived alternate ties cost96 and retains a 55-input giant Einsum; the truthful conventional implementation costs962 or more. No strict decrease exists.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "known_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    }
+  ],
+  "final_verdict": "NO_SAFE_CANDIDATE"
+}

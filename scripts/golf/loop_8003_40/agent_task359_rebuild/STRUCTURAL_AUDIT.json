@@ -1,0 +1,59 @@
+{
+  "task": 359,
+  "baseline": {
+    "zip": "submission_base_8003.40.zip",
+    "model": "scripts/golf/loop_8003_40/base_models/task359.onnx",
+    "sha256": "0ac154453af9835deab6d1a8e9e217648b24dc3ec00f2f8e0c9b322a1ac5c0c4",
+    "cost": 24,
+    "params": 24,
+    "counted_intermediate_memory": 0,
+    "nodes": 1,
+    "operator": "Einsum",
+    "einsum_operands": 20,
+    "conv_bias_ub": 0
+  },
+  "semantic_findings": {
+    "raw_rule": "mode(row[r] concatenated with column[c]), with Python first-occurrence tie-breaking",
+    "raw_known": "266/266",
+    "numpy_vs_raw_fresh": "5000/5000",
+    "raw_vs_generator_fresh": "4996/5000",
+    "raw_generator_mismatch_cause": "The raw solver is only an approximation to stripe restoration. One audited mismatch is non-tied (raw color count 10 versus generator color count 9); three are first-occurrence ties selecting another stripe color. This is not a tie-break implementation error.",
+    "generator_rule": "Build row-mode and column-mode reconstructions, compare their total agreement with the noisy input, and select the higher-agreement orientation.",
+    "generator_rule_known": "266/266",
+    "generator_rule_fresh": "5000/5000",
+    "generator_errors": 0
+  },
+  "sound_onnx_floor": {
+    "required_stages": [
+      "row and column per-color histograms",
+      "per-line color argmax with deterministic tie handling",
+      "row-versus-column reconstruction agreement",
+      "data-dependent orientation selection",
+      "one-hot output construction"
+    ],
+    "smallest_natural_histogram": {
+      "shape": [1, 10, 30],
+      "elements": 300,
+      "float32_bytes": 1200,
+      "float16_bytes_if_available": 600
+    },
+    "comparison_to_incumbent": "Even one counted line histogram is at least 25x the entire cost-24 incumbent. Both orientations and selection require additional tensors.",
+    "single_node_direct_output": "No allowed standard ONNX operator simultaneously performs global per-color row/column counts, data-dependent mode/orientation selection, and full one-hot emission. The only observed cost-24 construction uses the expressly forbidden 20-input giant Einsum polynomial.",
+    "excluded_shortcuts": [
+      "giant Einsum",
+      "Hardmax",
+      "TfIdfVectorizer",
+      "lookup table",
+      "shape cloak",
+      "undefined behavior"
+    ]
+  },
+  "decision": {
+    "verdict": "NO_CANDIDATE_STRUCTURAL_FLOOR",
+    "candidate_emitted": false,
+    "fresh_dual_ort_run": false,
+    "reason_fresh_dual_ort_not_run": "No sound candidate can truthfully cost less than 24, so no ONNX model reached the candidate gate.",
+    "merged": false,
+    "root_files_modified": []
+  }
+}

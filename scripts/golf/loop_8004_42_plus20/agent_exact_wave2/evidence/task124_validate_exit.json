@@ -1,0 +1,17 @@
+{
+  "task": 124,
+  "baseline": "scripts/golf/loop_8004_42_plus20/agent_exact_wave2/base/task124.onnx",
+  "candidate": "scripts/golf/loop_8004_42_plus20/agent_exact_wave2/candidates/task124_optional_005_3.onnx",
+  "command": "ngolf_validator.py validate-task --task 124 --random-cases 2000 --seed 80045124",
+  "exit_code": 139,
+  "signal": "SIGSEGV",
+  "candidate_static_cost_reduction": 1,
+  "runtime_gate": "FAIL",
+  "observed_messages": [
+    "ORT shape merge warning: source {1,10,30,30}, target {1,1,1,1}",
+    "ORT allocator buffer-reuse shape mismatch: {1,10,30,30} != {1,1,1,1}",
+    "ORT allocator buffer-reuse shape mismatch: {1,10,1,1} != {1,1,1,1}"
+  ],
+  "verdict": "REJECT_DO_NOT_MERGE",
+  "reason": "Omitting the unused Split output changes allocator/liveness behavior and crashes the validation process."
+}

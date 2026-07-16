@@ -1,0 +1,115 @@
+{
+  "lane": "b3",
+  "aggregate_baseline_score": 7999.13,
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "authority": "exact archive members"
+  },
+  "accepted": [],
+  "projected_gain": 0.0,
+  "rejected": [
+    {
+      "task": 208,
+      "candidate": "scripts/golf/loop_7999_13/lane_vi_single/task208_single_vi1.onnx",
+      "candidate_sha256": "e6a184ac3284c68576576313e1dafe39f80b56734bd092249ef7de33e2f3d2a1",
+      "baseline_cost": 1422,
+      "candidate_cost": 1392,
+      "nominal_gain": 0.021322769468821244,
+      "known": {
+        "right": 0,
+        "total": 266,
+        "errors": 266
+      },
+      "fresh": {
+        "requested": 3000,
+        "correct": 0,
+        "wrong": 0,
+        "errors": 3000
+      },
+      "independent_differential": {
+        "requested": 3000,
+        "executable": 0,
+        "one_sided_failed": 3000,
+        "candidate_failed_only": 3000
+      },
+      "structural": {
+        "checker": true,
+        "strict_shape_data_prop": true,
+        "bad_static_shapes": 0,
+        "banned_ops": 0,
+        "sequence_ops": 0,
+        "nested_graph_attributes": 0,
+        "functions": 0,
+        "sparse_initializers": 0,
+        "conv_bias_findings": 0,
+        "executable_graph_identical_after_clearing_value_info": true
+      },
+      "reason": "The cand_bottom value_info shave causes an ORT_DISABLE_ALL Slice allocator mismatch ({1} != {16}) on every tested input. The exact baseline also fails generator case 6 and task208 is explicitly documented as private-zero."
+    },
+    {
+      "task": 89,
+      "candidate": "scripts/golf/loop_7999_13/lane_vi_single/task089_single_vi1.onnx",
+      "candidate_sha256": "36d0bb3602d0ff1a2f5333e4bc429cc0149a2d5c98407b8eb290afb1853cd630",
+      "baseline_cost": 1361,
+      "candidate_cost": 1184,
+      "nominal_gain": 0.13932118720751419,
+      "known": {
+        "right": 0,
+        "total": 267,
+        "errors": 267
+      },
+      "independent_differential": {
+        "requested": 3000,
+        "executable": 0,
+        "one_sided_failed": 3000,
+        "candidate_failed_only": 3000
+      },
+      "reason": "The grn_crop3 value_info shave causes a QLinearConv allocator mismatch ({1,1,1,1} != {1,1,13,13}). The exact baseline itself fails generator case 272."
+    },
+    {
+      "task": 196,
+      "exact_baseline_cost": 1210,
+      "fresh_before_first_failure": 6,
+      "first_failure_case": 7,
+      "known_sound_rebuild_cost": 5573,
+      "reason": "The compact baseline is not generator-sound; the fully spec-derived packed-bitset rebuild is not strictly cheaper."
+    },
+    {
+      "task": 255,
+      "exact_baseline_cost": 1336,
+      "fresh_before_first_failure": 63,
+      "first_failure_case": 64,
+      "reason": "The generator is not a deterministic function of the visible input; the repository ambiguity proof constructs equal inputs with different legal outputs."
+    },
+    {
+      "task": 340,
+      "exact_baseline_cost": 1173,
+      "fresh": {
+        "correct": 3000,
+        "requested": 3000,
+        "errors": 0
+      },
+      "reason": "Sound structural-floor baseline. It has no graph.value_info entries, the single-dimension shave search found no winner, and prior exact rebuild/search families remain at or above cost 1173."
+    },
+    {
+      "task": 365,
+      "exact_baseline_cost": 1381,
+      "fresh": {
+        "correct": 3000,
+        "requested": 3000,
+        "errors": 0
+      },
+      "reason": "The single-dimension shave search found no winner. The only known lower-cost graph (1199) differs on 441/3000 random cases and is unsafe."
+    },
+    {
+      "task": 370,
+      "exact_baseline_cost": 1011,
+      "fresh_before_first_failure": 1882,
+      "first_failure_case": 1883,
+      "known_sound_rebuild_cost": 2687,
+      "reason": "The compact baseline misses a rare boundary copy; the spec-derived sound 14-tap rebuild is not strictly cheaper."
+    }
+  ],
+  "root_artifacts_modified": false
+}

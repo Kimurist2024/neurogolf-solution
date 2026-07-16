@@ -1,0 +1,170 @@
+{
+  "authority": {
+    "label": "LB 8009.46",
+    "path": "submission.zip",
+    "sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores_sha256": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+  },
+  "policy": {
+    "strict_lower_required": true,
+    "normal_policy90_min_rate": 0.9,
+    "candidate_checker_full_required": true,
+    "candidate_strict_data_prop_required": true,
+    "candidate_truthful_runtime_shapes_required": true,
+    "candidate_standard_domain_required": true,
+    "candidate_lookup_cloak_forbidden": true,
+    "candidate_nonfinite_forbidden": true,
+    "candidate_conv_bias_ub_forbidden": true
+  },
+  "tasks": {
+    "80": {
+      "authority_sha256": "761ed9c5c4d9c9aab1284f8ebfb0be11afb9d5103e72727495d39be186d12daf",
+      "authority_bytes": 4136,
+      "authority_memory": 2837,
+      "authority_params": 213,
+      "authority_cost": 3050,
+      "authority_score": 16.977103130398543,
+      "authority_reprofile_match": true,
+      "authority_checker_full": true,
+      "authority_strict_data_prop": true,
+      "authority_runtime_shape": "truthful",
+      "authority_lookup_ops": [],
+      "history_evidence": {
+        "models": 77,
+        "source_aliases": 929,
+        "best_non_authority_known_candidate_cost": 3053,
+        "current_exact_scan_strict_lower": 0
+      },
+      "manual_attempts": [
+        {
+          "attempt": "fold Cast(wcol) into a constant",
+          "result": "memory 2837->2827 and params 213->223; cost remains 3050",
+          "verdict": "REJECT_NOT_STRICT_LOWER"
+        },
+        {
+          "attempt": "delete one size-family renderer branch",
+          "result": "scorer-valid generated sizes are 5,6,7,9,10; omitting any full size family has about 80% conditional support, below POLICY90",
+          "verdict": "STOP_NO_MODEL"
+        }
+      ],
+      "candidate": null,
+      "gain": 0.0,
+      "verdict": "NO_STRICT_LOWER_SAFE_OR_POLICY90_CANDIDATE"
+    },
+    "165": {
+      "authority_sha256": "d6d40c11204c80f595910e7620858eb04db5c43b316033b0bf5b2cb1c9262adf",
+      "authority_bytes": 14220,
+      "authority_memory": 517,
+      "authority_params": 70,
+      "authority_cost": 587,
+      "authority_score": 18.6249751801719,
+      "authority_reprofile_match": true,
+      "authority_checker_full": true,
+      "authority_strict_data_prop": true,
+      "authority_runtime_shape": "89 previously witnessed declared/runtime mismatches; declared output 1x10x1x1, runtime 1x10x30x30",
+      "authority_default_ort": "session construction failure",
+      "authority_lookup_ops": [],
+      "history_evidence": {
+        "unique_non_authority": 93,
+        "lower_bound_retained_for_actual_audit": 9,
+        "admissible_strict_lower": 0
+      },
+      "manual_attempts": [
+        {
+          "attempt": "CSE the duplicate CastLike(__sp_hid,seventeen_u8)",
+          "candidate_sha256": "455c05527d915d588eb63962a5247ac3049290f4804dfd24fabff404b4e6c8ae",
+          "nominal_cost": 547,
+          "result": "265/265 competition executions error after allocator behavior changes; shape cloak remains",
+          "verdict": "REJECT_KNOWN_RUNTIME_AND_CLOAK"
+        }
+      ],
+      "candidate": null,
+      "gain": 0.0,
+      "verdict": "NO_TRUTHFUL_STRICT_LOWER_CANDIDATE"
+    },
+    "268": {
+      "authority_sha256": "4c8ec91a517e5c3ba63c816f489aee1782a6de7ba75f49f3b638c7923e189a12",
+      "authority_bytes": 1476925,
+      "authority_memory": 373,
+      "authority_params": 47,
+      "authority_cost": 420,
+      "authority_score": 18.959745288722587,
+      "authority_reprofile_match": true,
+      "authority_checker_full": true,
+      "authority_strict_data_prop": true,
+      "authority_runtime_shape": "39 previously witnessed declared/runtime mismatches",
+      "authority_default_ort": "session construction failure",
+      "authority_lookup_ops": [
+        "TfIdfVectorizer",
+        "TfIdfVectorizer"
+      ],
+      "history_evidence": {
+        "unique_models_in_broad_inventory": 54,
+        "admissible_strict_lower": 0,
+        "known_complete_cost327_fresh": "2219/5000 (44.38%)"
+      },
+      "manual_attempts": [
+        {
+          "attempt": "replace dtype-only CastLike with Cast(BOOL)",
+          "result": "params 47->46 but truthful runtime allocation is exposed; cost 420->1318 and cloak remains",
+          "verdict": "REJECT_NOT_STRICT_LOWER"
+        },
+        {
+          "attempt": "truthful generator-rule control",
+          "cost": 18665,
+          "verdict": "REJECT_NOT_STRICT_LOWER"
+        }
+      ],
+      "candidate": null,
+      "gain": 0.0,
+      "verdict": "NO_STANDARD_NO_LOOKUP_TRUTHFUL_STRICT_LOWER_CANDIDATE"
+    },
+    "308": {
+      "authority_sha256": "fc845e9edee06830a880be6f385f2601d1d0ff7f017cb54b64b36cb84da7785d",
+      "authority_bytes": 4301,
+      "authority_memory": 376,
+      "authority_params": 57,
+      "authority_cost": 433,
+      "authority_score": 18.92926227199751,
+      "authority_reprofile_match": true,
+      "authority_checker_full": true,
+      "authority_strict_data_prop": true,
+      "authority_runtime_shape": "26 previously witnessed declared/runtime mismatches; declared output 1x1x1x1, runtime 1x10x30x30",
+      "authority_default_ort": "TopK session construction failure",
+      "authority_lookup_ops": [],
+      "history_evidence": {
+        "broad_wave_unique_models_all_targets": 434,
+        "nearest_other_known_correct_cost_at_cost446_authority": 470,
+        "strict_lower_against_cost434_authority": 0,
+        "admissible_strict_lower_against_current_cost433": 0
+      },
+      "manual_attempts": [
+        {
+          "attempt": "reuse CastLike dtype anchor",
+          "result": "memory/params/cost unchanged",
+          "verdict": "REJECT_NOT_STRICT_LOWER"
+        },
+        {
+          "attempt": "reuse earlier Shape for TopK / bypass fixed shape copy",
+          "result": "TopK requests more elements than the inferred axis contains; candidate is not costable",
+          "verdict": "REJECT_CHECKER_OR_RUNTIME"
+        },
+        {
+          "attempt": "truthful-shape repair",
+          "result": "single-example actual intermediate memory previously measured at 63546 bytes versus nominal 376; cannot be strict-lower",
+          "verdict": "STOP_STRUCTURAL_COST_FAILURE"
+        }
+      ],
+      "candidate": null,
+      "gain": 0.0,
+      "verdict": "NO_TRUTHFUL_STRICT_LOWER_CANDIDATE"
+    }
+  },
+  "fresh": {
+    "large_fresh_run": false,
+    "reason": "No candidate passed the strict-lower, checker, strict-data-prop, truthful-shape, standard/no-lookup pre-gates. Fresh cannot rescue a terminal structural or cost failure."
+  },
+  "winners": [],
+  "projected_gain": 0.0,
+  "final_verdict": "NO_CANDIDATE"
+}

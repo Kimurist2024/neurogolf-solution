@@ -1,0 +1,183 @@
+{
+  "lane": "agent_target_mid13",
+  "baseline_zip": {
+    "path": "submission_base_8004.50.zip",
+    "sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "tasks": [237, 238, 354, 378],
+  "status": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+  "accepted_candidates": [],
+  "projected_gain": 0.0,
+  "task_results": {
+    "237": {
+      "rule": "Each nonzero row seed paints from its column through the right edge; its color also carries down the rightmost in-grid column until overwritten by a later seed.",
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_target_mid13/baseline/task237.onnx",
+        "sha256": "d8ef7011cb912b1752d471535b55110c0d3474d517388d73e92e950abda58ff4",
+        "memory": 413,
+        "params": 116,
+        "cost": 529,
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_exact": true,
+        "known_disable_all": {"right": 266, "wrong": 0, "errors": 0},
+        "known_default": {"right": 266, "wrong": 0, "errors": 0},
+        "fresh_2seed": {
+          "seeds": [8004237, 8104237],
+          "requested_per_seed": 5000,
+          "disable_all": "5000/5000 for each seed, zero runtime/shape errors",
+          "default": "5000/5000 for each seed, zero runtime/shape errors",
+          "min_positive": 1.0,
+          "max_off_value": 0.0,
+          "small_positive_cells": 0
+        }
+      },
+      "nearest_sound_control": {
+        "path": "scripts/golf/loop_7999_13/lane_c23/candidates/task237_rebuild_542.onnx",
+        "sha256": "435d2ba6247251cbe08019a9d11386099c305f8755c7b6d9e9e760a9d7dc868c",
+        "memory": 407,
+        "params": 135,
+        "cost": 542,
+        "delta_vs_baseline": 13,
+        "known_both_modes": "266/266, zero errors",
+        "runtime_shape_exact": true
+      },
+      "new_attempts": [
+        {
+          "label": "dense_width9_pack",
+          "sha256": "36fbbbec8e16b1612cf2f1acb09356ada6d1f179dbe0a8096036a0505e93bb9c",
+          "retained_path": null,
+          "memory": 407,
+          "params": 125,
+          "cost": 532,
+          "verdict": "REJECT_NOT_CHEAPER"
+        },
+        {
+          "label": "sparse_width9_pack",
+          "sha256": "082c6fa8b3330334d6d58a4858b8c5968ad3c26a3aa7afa9e2d94bf5fc753f4f",
+          "retained_path": null,
+          "theoretical_memory": 407,
+          "theoretical_params": 116,
+          "theoretical_cost": 523,
+          "verdict": "REJECT_STRUCTURE",
+          "reason": "Sparse ConvTranspose weights crash ONNX checker/shape inference (isolated process exit 139)."
+        }
+      ],
+      "candidate": null,
+      "gain": 0
+    },
+    "238": {
+      "rule": "Normalize a four-color hollow frame and a cyan sprite; paint frame/sprite occupied cells by the two diagonal quadrant partition, leaving diagonal cells cyan.",
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_target_mid13/baseline/task238.onnx",
+        "sha256": "02489424605187a9d67031bb25f0befc5f1130230cca411aee008d0f47d723cc",
+        "memory": 418,
+        "params": 144,
+        "cost": 562,
+        "zero_input_rank_cost": 559,
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_exact": false,
+        "runtime_shape_mismatches": 6,
+        "known_disable_all": {"right": 266, "wrong": 0, "errors": 0},
+        "known_default": {"session_error": "CenterCropPad shape/axes mismatch"}
+      },
+      "nearest_sound_control": {
+        "path": "scripts/golf/scratch_claude/task238/cand.onnx",
+        "sha256": "372b3c2ae9790b4c51715b57ed60c738f38f7bd3aa4e3b0d3d26126fcfde60bd",
+        "memory": 7209,
+        "params": 473,
+        "cost": 7682,
+        "delta_vs_baseline": 7120,
+        "known_both_modes": "266/266, zero errors",
+        "runtime_shape_exact": true,
+        "archived_fresh_evidence": "0 mismatches over 10,000+ generator cases"
+      },
+      "candidate": null,
+      "gain": 0,
+      "stop_reason": "The 562-cost lineage is shape-cloaked and fails default ORT setup; the nearest truthful static true-rule graph is 7,120 cost units worse."
+    },
+    "354": {
+      "rule": "Three row-0 colored lights each recolor the one aligned gray rectangle; horizontal propagation is bounded by each rectangle.",
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_target_mid13/baseline/task354.onnx",
+        "sha256": "c86ec60a3cf1241903cd6ebdf11f210f24f9e57216927c5654985d8f2d28efe4",
+        "memory": 461,
+        "params": 76,
+        "cost": 537,
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_exact": false,
+        "runtime_shape_mismatches": 7,
+        "known_disable_all": {"right": 266, "wrong": 0, "errors": 0},
+        "known_default": {"right": 266, "wrong": 0, "errors": 0}
+      },
+      "nearest_sound_control": {
+        "path": "scripts/golf/scratch/task354/task354.onnx",
+        "sha256": "1e4b4314180fb7872f81f0c9d8ef2a425d5e819fcc1bcc2788f86c52c08d2c46",
+        "memory": 6298,
+        "params": 39,
+        "cost": 6337,
+        "delta_vs_baseline": 5800,
+        "known_both_modes": "266/266, zero errors",
+        "runtime_shape_exact": true
+      },
+      "candidate": null,
+      "gain": 0,
+      "stop_reason": "The baseline understates two shape-preserving GroupNormalization outputs and the graph output; a truthful true-rule control is 5,800 cost units worse."
+    },
+    "378": {
+      "rule": "Identify the solid inner body rectangle and paint four outward diagonals beginning three cells beyond its four corners, clipped to the true square grid.",
+      "baseline": {
+        "path": "scripts/golf/loop_8004_42_plus20/agent_target_mid13/baseline/task378.onnx",
+        "sha256": "3e66557d91ea20496174cb741299b4b0cf6944c74dd714fd71f0a6fa032fc416",
+        "memory": 468,
+        "params": 57,
+        "cost": 525,
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_exact": false,
+        "runtime_shape_trace_error": "Buffer-reuse shape conflict: {1,10,1,1} versus {1,10,30,30}",
+        "known_disable_all": {"right": 267, "wrong": 0, "errors": 0},
+        "known_default": {"right": 267, "wrong": 0, "errors": 0}
+      },
+      "nearest_sound_control": {
+        "path": "scripts/golf/loop_7999_13/lane_c23/candidates/task378_sound_k12_scaled.onnx",
+        "sha256": "2fa9656d07b3be88e8b769c79f1bc2ee7652a54b784c97a8a8f4fee89c00acd0",
+        "memory": 1540,
+        "params": 111,
+        "cost": 1651,
+        "delta_vs_baseline": 1126,
+        "known_both_modes": "267/267, zero errors",
+        "runtime_shape_exact": true,
+        "archived_reference_fresh": "5000/5000 plus 13712/13712 bounded geometry cases"
+      },
+      "candidate": null,
+      "gain": 0,
+      "stop_reason": "All sub-525 archived lineages use shape cloaking; the cheapest shape-truthful true-rule control costs 1,651."
+    }
+  },
+  "policy_checks": {
+    "accepted_models_use_lookup": false,
+    "accepted_models_use_shape_cloak": false,
+    "accepted_models_use_giant_einsum": false,
+    "accepted_models_use_nonstandard_domain": false,
+    "accepted_models_have_conv_bias_ub": false,
+    "note": "The accepted set is empty. Baselines 238/354/378 are explicitly rejected for runtime-shape mismatch despite ordinary known-example success."
+  },
+  "private_status": {
+    "237": "not listed in docs/golf/private_zero_tasks.md",
+    "238": "not listed in docs/golf/private_zero_tasks.md",
+    "354": "not listed as private-zero; documented as previously white-probed in isolated tail ordering",
+    "378": "not listed in docs/golf/private_zero_tasks.md"
+  },
+  "protected_current_hashes": {
+    "submission.zip": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "best_score.json": "63b472d7cfc20b872371b72a0bfd90d25494a4aec32a0a6aac0833b899f34ebb",
+    "all_scores.csv": "05c1b9810e79ee896aabb24f15aa5cd1f72479f1d12ce8d78b550459e5ade7b1",
+    "a.csv": "16570b4c751641aaab1cd0216778e6d903d56729ee04844625f1eca4d28bf156",
+    "artifacts_handcrafted_aggregate": "39f5ceb7cca52e61ad05418ff8a2b9d275026daa9a203df8a5f636ce9133d49c"
+  },
+  "writes_confined_to": "scripts/golf/loop_8004_42_plus20/agent_target_mid13/",
+  "zip_integration_performed": false
+}

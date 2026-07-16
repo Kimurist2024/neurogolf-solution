@@ -1,0 +1,1438 @@
+{
+  "scan": "root_tile_expand_onehot_scan_261",
+  "authority": {
+    "path": "submission.zip",
+    "sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "onnx_member_count": 400
+  },
+  "census": {
+    "Expand": 1,
+    "OneHot": 4,
+    "Tile": 4
+  },
+  "occurrence_count": 9,
+  "target_tasks": [
+    66,
+    133,
+    200,
+    233,
+    247,
+    300,
+    388
+  ],
+  "rows": {
+    "66": {
+      "task": 66,
+      "authority_member": "task066.onnx",
+      "sha256": "bb8cebc8d71d275f4ec3f542d6aefea238b6c36d1cec77c0f2c1d533bf04ab4e",
+      "node_count": 77,
+      "initializer_count": 19,
+      "known_official_profile": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "output_shape_errors": 0,
+        "total": 266,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "memory": 346,
+        "params": 216,
+        "cost": 562
+      },
+      "structural": {
+        "checker_full": true,
+        "checker_error": null,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_ops": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "Add": 2,
+          "And": 1,
+          "BitShift": 7,
+          "BitwiseAnd": 6,
+          "Cast": 15,
+          "Concat": 5,
+          "Div": 1,
+          "Einsum": 7,
+          "Equal": 2,
+          "Greater": 4,
+          "LessOrEqual": 1,
+          "Log": 1,
+          "Max": 1,
+          "Min": 1,
+          "OneHot": 1,
+          "Or": 4,
+          "Split": 2,
+          "Sub": 8,
+          "Where": 8
+        },
+        "runtime_shape_mismatch_count": 0,
+        "runtime_shapes_truthful": true,
+        "runtime_shape_mismatches": []
+      },
+      "special_nodes": [
+        {
+          "task": 66,
+          "node_index": 21,
+          "op": "OneHot",
+          "inputs": [
+            "cOut64",
+            "oh_depth",
+            "z1"
+          ],
+          "outputs": [
+            "cOutOH"
+          ],
+          "family": "OneHot",
+          "depth": 30,
+          "axis": -1,
+          "normalized_axis": 1,
+          "indices_inferred_shape": [
+            1
+          ],
+          "indices_dtype": "INT32",
+          "runtime_output_shapes": [
+            [
+              1,
+              30
+            ]
+          ],
+          "output_elements": 30,
+          "output_value_dtype": "float32",
+          "output_value_bytes": 4,
+          "values": [
+            0.0,
+            1.0
+          ],
+          "consumers": [
+            {
+              "node_index": 26,
+              "op": "Einsum",
+              "input_index": 5
+            },
+            {
+              "node_index": 27,
+              "op": "Einsum",
+              "input_index": 5
+            }
+          ],
+          "numeric_output_required": true,
+          "existing_exact_range_basis": [],
+          "existing_identity_basis": [],
+          "unique_removable_depth_values_params": 1,
+          "equal_to_range_optimistic_memory_delta": 30,
+          "equal_to_range_optimistic_param_delta": 29,
+          "equal_to_range_optimistic_cost_delta": 59,
+          "strict_lower_possible": false,
+          "rewrite": null,
+          "reason": "All consumers require the numeric OneHot tensor. Equal-to-range therefore retains an equally-sized numeric Cast/Where output and adds a bool selector. No exact range or identity basis initializer is already live.",
+          "downstream_absorption": "The selector is shared by two Einsums. Replacing it with selected row/column profiles requires at least two 30-float intermediates versus one shared 30-float selector."
+        }
+      ]
+    },
+    "133": {
+      "task": 133,
+      "authority_member": "task133.onnx",
+      "sha256": "6c5dc3a593b0900e16966b9d4c40af509a34c1dd1f0264c31cd30eaf9b4570e5",
+      "node_count": 231,
+      "initializer_count": 38,
+      "known_official_profile": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "output_shape_errors": 0,
+        "total": 267,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "memory": 4176,
+        "params": 217,
+        "cost": 4393
+      },
+      "structural": {
+        "checker_full": true,
+        "checker_error": null,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_ops": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "Add": 19,
+          "ArgMax": 1,
+          "ArgMin": 1,
+          "Cast": 28,
+          "CastLike": 13,
+          "CenterCropPad": 13,
+          "Concat": 19,
+          "Div": 4,
+          "Einsum": 3,
+          "Equal": 7,
+          "Expand": 1,
+          "Gather": 13,
+          "GatherElements": 9,
+          "GatherND": 1,
+          "LessOrEqual": 2,
+          "Max": 2,
+          "Mul": 21,
+          "Pad": 12,
+          "QLinearMatMul": 4,
+          "ReduceMax": 4,
+          "ReduceSum": 6,
+          "Round": 1,
+          "ScatterElements": 1,
+          "Shape": 1,
+          "Slice": 2,
+          "Split": 5,
+          "Sqrt": 1,
+          "Squeeze": 6,
+          "Sub": 22,
+          "TopK": 1,
+          "Unsqueeze": 6,
+          "Where": 2
+        },
+        "runtime_shape_mismatch_count": 4,
+        "runtime_shapes_truthful": false,
+        "runtime_shape_mismatches": [
+          {
+            "value": "cand_hit_i8",
+            "declared_or_inferred": [
+              1,
+              4,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                1,
+                4,
+                2,
+                1
+              ]
+            ]
+          },
+          {
+            "value": "cand_pc",
+            "declared_or_inferred": [
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                1,
+                4,
+                2
+              ]
+            ]
+          },
+          {
+            "value": "cand_pc_u",
+            "declared_or_inferred": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                1,
+                4,
+                2,
+                1
+              ]
+            ]
+          },
+          {
+            "value": "cand_values",
+            "declared_or_inferred": [
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                1,
+                4,
+                2
+              ]
+            ]
+          }
+        ]
+      },
+      "special_nodes": [
+        {
+          "task": 133,
+          "node_index": 60,
+          "op": "Expand",
+          "inputs": [
+            "pcolor",
+            "expand_1_4_4_1"
+          ],
+          "outputs": [
+            "pcolor_grid"
+          ],
+          "family": "Expand",
+          "shape": {
+            "dtype": "int64",
+            "shape": [
+              4
+            ],
+            "size": 4,
+            "values": [
+              1,
+              4,
+              2,
+              1
+            ],
+            "values_truncated": false
+          },
+          "runtime_input_shapes": [
+            [
+              1,
+              1
+            ]
+          ],
+          "runtime_output_shapes": [
+            [
+              1,
+              4,
+              2,
+              1
+            ]
+          ],
+          "identity": false,
+          "consumers": [
+            {
+              "node_index": 61,
+              "op": "Concat",
+              "input_index": 0
+            }
+          ],
+          "duplicate_shape_initializers": [],
+          "shape_initializer_unique": true,
+          "strict_lower_possible": false,
+          "rewrite": null,
+          "reason": "The sole Concat consumer does not broadcast. The expanded color-coordinate tensor must have the same non-concat dimensions as the row/column tensors. A producer-side broadcast enlarges its input activation/initializer and is not cheaper."
+        }
+      ]
+    },
+    "200": {
+      "task": 200,
+      "authority_member": "task200.onnx",
+      "sha256": "8c91d1a61ac9bdd4cb5e812b5f0db57e0bf49c1cf2fd256724960118430df8f3",
+      "node_count": 9,
+      "initializer_count": 9,
+      "known_official_profile": {
+        "right": 84,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "output_shape_errors": 0,
+        "total": 84,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "memory": 200,
+        "params": 146,
+        "cost": 346
+      },
+      "structural": {
+        "checker_full": true,
+        "checker_error": null,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_ops": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "Cast": 2,
+          "Conv": 1,
+          "Div": 1,
+          "Einsum": 3,
+          "OneHot": 1,
+          "ScatterElements": 1
+        },
+        "runtime_shape_mismatch_count": 0,
+        "runtime_shapes_truthful": true,
+        "runtime_shape_mismatches": []
+      },
+      "special_nodes": [
+        {
+          "task": 200,
+          "node_index": 5,
+          "op": "OneHot",
+          "inputs": [
+            "seed_idx",
+            "depth",
+            "oh_values"
+          ],
+          "outputs": [
+            "seed_h"
+          ],
+          "family": "OneHot",
+          "depth": 10,
+          "axis": 2,
+          "normalized_axis": 2,
+          "indices_inferred_shape": [
+            1,
+            1
+          ],
+          "indices_dtype": "INT32",
+          "runtime_output_shapes": [
+            [
+              1,
+              1,
+              10
+            ]
+          ],
+          "output_elements": 10,
+          "output_value_dtype": "float16",
+          "output_value_bytes": 2,
+          "values": [
+            0.0,
+            1.0
+          ],
+          "consumers": [
+            {
+              "node_index": 6,
+              "op": "Conv",
+              "input_index": 0
+            }
+          ],
+          "numeric_output_required": true,
+          "existing_exact_range_basis": [],
+          "existing_identity_basis": [],
+          "unique_removable_depth_values_params": 3,
+          "equal_to_range_optimistic_memory_delta": 10,
+          "equal_to_range_optimistic_param_delta": 7,
+          "equal_to_range_optimistic_cost_delta": 17,
+          "strict_lower_possible": false,
+          "rewrite": null,
+          "reason": "All consumers require the numeric OneHot tensor. Equal-to-range therefore retains an equally-sized numeric Cast/Where output and adds a bool selector. No exact range or identity basis initializer is already live.",
+          "downstream_absorption": "OneHot feeds a padded Conv. Gathering precomputed responses needs a 10x2x30 table (600 parameters); coordinate/parity construction adds a 30-element arithmetic intermediate."
+        }
+      ]
+    },
+    "233": {
+      "task": 233,
+      "authority_member": "task233.onnx",
+      "sha256": "4263f04fd9a4fd783182ea66cd4164ab6a51f4109eca71e7f591057f3018a89f",
+      "node_count": 188,
+      "initializer_count": 49,
+      "known_official_profile": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "output_shape_errors": 0,
+        "total": 266,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "memory": 6991,
+        "params": 317,
+        "cost": 7308
+      },
+      "structural": {
+        "checker_full": true,
+        "checker_error": null,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_ops": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "Add": 15,
+          "ArgMax": 5,
+          "BitwiseAnd": 1,
+          "Cast": 27,
+          "CastLike": 9,
+          "CenterCropPad": 8,
+          "Concat": 7,
+          "Div": 2,
+          "Einsum": 2,
+          "Equal": 6,
+          "Gather": 17,
+          "GatherND": 2,
+          "Greater": 6,
+          "Less": 2,
+          "MatMul": 1,
+          "MaxPool": 1,
+          "Mod": 4,
+          "Mul": 4,
+          "Or": 2,
+          "Pad": 1,
+          "QLinearConv": 3,
+          "ReduceSum": 1,
+          "Reshape": 6,
+          "ScatterElements": 2,
+          "ScatterND": 1,
+          "Shape": 7,
+          "Sign": 2,
+          "Slice": 6,
+          "Split": 1,
+          "Squeeze": 1,
+          "Sub": 5,
+          "Tile": 3,
+          "TopK": 2,
+          "Unsqueeze": 17,
+          "Where": 9
+        },
+        "runtime_shape_mismatch_count": 11,
+        "runtime_shapes_truthful": false,
+        "runtime_shape_mismatches": [
+          {
+            "value": "direct_low_raw",
+            "declared_or_inferred": [
+              1
+            ],
+            "runtime": [
+              [
+                7
+              ]
+            ]
+          },
+          {
+            "value": "f25_i8",
+            "declared_or_inferred": [
+              1,
+              4,
+              4
+            ],
+            "runtime": [
+              [
+                5,
+                4,
+                4
+              ]
+            ]
+          },
+          {
+            "value": "f26",
+            "declared_or_inferred": [
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                5,
+                4
+              ]
+            ]
+          },
+          {
+            "value": "f60r",
+            "declared_or_inferred": [
+              1
+            ],
+            "runtime": [
+              [
+                30
+              ]
+            ]
+          },
+          {
+            "value": "f62c",
+            "declared_or_inferred": [
+              1
+            ],
+            "runtime": [
+              [
+                30
+              ]
+            ]
+          },
+          {
+            "value": "f84",
+            "declared_or_inferred": [
+              1
+            ],
+            "runtime": [
+              [
+                30
+              ]
+            ]
+          },
+          {
+            "value": "f86",
+            "declared_or_inferred": [
+              1
+            ],
+            "runtime": [
+              [
+                30
+              ]
+            ]
+          },
+          {
+            "value": "qfr_col_profile_i8",
+            "declared_or_inferred": [
+              1
+            ],
+            "runtime": [
+              [
+                30
+              ]
+            ]
+          },
+          {
+            "value": "qfr_cols_clean",
+            "declared_or_inferred": [
+              1
+            ],
+            "runtime": [
+              [
+                30
+              ]
+            ]
+          },
+          {
+            "value": "qfr_row_profile_i8",
+            "declared_or_inferred": [
+              1
+            ],
+            "runtime": [
+              [
+                30
+              ]
+            ]
+          },
+          {
+            "value": "qfr_rows_clean",
+            "declared_or_inferred": [
+              1
+            ],
+            "runtime": [
+              [
+                30
+              ]
+            ]
+          }
+        ]
+      },
+      "special_nodes": [
+        {
+          "task": 233,
+          "node_index": 95,
+          "op": "Tile",
+          "inputs": [
+            "qfr_updates5",
+            "audit_repeats3"
+          ],
+          "outputs": [
+            "qfr_updates15"
+          ],
+          "family": "Tile",
+          "repeats": [
+            3
+          ],
+          "runtime_input_shapes": [
+            [
+              5
+            ]
+          ],
+          "runtime_output_shapes": [
+            [
+              15
+            ]
+          ],
+          "all_repeats_one": false,
+          "singleton_repeat_axes": false,
+          "rewrite": null,
+          "strict_lower_possible": false,
+          "reason": "At least one repeated runtime axis is non-singleton. Expand broadcasts each element and is not equal to Tile's whole-axis repetition; reshape/expand/reshape adds activations."
+        },
+        {
+          "task": 233,
+          "node_index": 96,
+          "op": "Tile",
+          "inputs": [
+            "f47",
+            "audit_repeats3"
+          ],
+          "outputs": [
+            "qfr_rows15"
+          ],
+          "family": "Tile",
+          "repeats": [
+            3
+          ],
+          "runtime_input_shapes": [
+            [
+              5
+            ]
+          ],
+          "runtime_output_shapes": [
+            [
+              15
+            ]
+          ],
+          "all_repeats_one": false,
+          "singleton_repeat_axes": false,
+          "rewrite": null,
+          "strict_lower_possible": false,
+          "reason": "At least one repeated runtime axis is non-singleton. Expand broadcasts each element and is not equal to Tile's whole-axis repetition; reshape/expand/reshape adds activations."
+        },
+        {
+          "task": 233,
+          "node_index": 97,
+          "op": "Tile",
+          "inputs": [
+            "f48",
+            "audit_repeats3"
+          ],
+          "outputs": [
+            "qfr_cols15"
+          ],
+          "family": "Tile",
+          "repeats": [
+            3
+          ],
+          "runtime_input_shapes": [
+            [
+              5
+            ]
+          ],
+          "runtime_output_shapes": [
+            [
+              15
+            ]
+          ],
+          "all_repeats_one": false,
+          "singleton_repeat_axes": false,
+          "rewrite": null,
+          "strict_lower_possible": false,
+          "reason": "At least one repeated runtime axis is non-singleton. Expand broadcasts each element and is not equal to Tile's whole-axis repetition; reshape/expand/reshape adds activations."
+        }
+      ]
+    },
+    "247": {
+      "task": 247,
+      "authority_member": "task247.onnx",
+      "sha256": "62a535f96689b455894f3bd34dffebf78406c2cde6bd72d6ceb1362c19f5e37c",
+      "node_count": 13,
+      "initializer_count": 7,
+      "known_official_profile": {
+        "right": 269,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "output_shape_errors": 0,
+        "total": 269,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "memory": 165,
+        "params": 47,
+        "cost": 212
+      },
+      "structural": {
+        "checker_full": true,
+        "checker_error": null,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_ops": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "Cast": 3,
+          "Concat": 1,
+          "Einsum": 1,
+          "Equal": 1,
+          "OneHot": 1,
+          "Reciprocal": 2,
+          "ReduceMax": 1,
+          "ReduceSum": 1,
+          "RoiAlign": 1,
+          "TopK": 1
+        },
+        "runtime_shape_mismatch_count": 0,
+        "runtime_shapes_truthful": true,
+        "runtime_shape_mismatches": []
+      },
+      "special_nodes": [
+        {
+          "task": 247,
+          "node_index": 5,
+          "op": "OneHot",
+          "inputs": [
+            "top_idx",
+            "depth_f16",
+            "oh_values"
+          ],
+          "outputs": [
+            "color_logits"
+          ],
+          "family": "OneHot",
+          "depth": 10,
+          "axis": 1,
+          "normalized_axis": 1,
+          "indices_inferred_shape": [
+            1,
+            1,
+            3
+          ],
+          "indices_dtype": "INT64",
+          "runtime_output_shapes": [
+            [
+              1,
+              10,
+              1,
+              3
+            ]
+          ],
+          "output_elements": 30,
+          "output_value_dtype": "float16",
+          "output_value_bytes": 2,
+          "values": [
+            -64.0,
+            64.0
+          ],
+          "consumers": [
+            {
+              "node_index": 12,
+              "op": "RoiAlign",
+              "input_index": 0
+            }
+          ],
+          "numeric_output_required": true,
+          "existing_exact_range_basis": [],
+          "existing_identity_basis": [],
+          "unique_removable_depth_values_params": 3,
+          "equal_to_range_optimistic_memory_delta": 30,
+          "equal_to_range_optimistic_param_delta": 9,
+          "equal_to_range_optimistic_cost_delta": 39,
+          "strict_lower_possible": false,
+          "rewrite": null,
+          "reason": "All consumers require the numeric OneHot tensor. Equal-to-range therefore retains an equally-sized numeric Cast/Where output and adds a bool selector. No exact range or identity basis initializer is already live.",
+          "downstream_absorption": "RoiAlign simultaneously selects up to three colors and realizes the variable height/width as the free graph output. Externalizing the selector needs an intermediate color mask and a separate spatial realization, so it cannot undercut the fused path."
+        }
+      ]
+    },
+    "300": {
+      "task": 300,
+      "authority_member": "task300.onnx",
+      "sha256": "59f0709f43159a56f5676a903c44f65c6d5d3aa6f3dcac24e29d9e16b79ab0e6",
+      "node_count": 27,
+      "initializer_count": 12,
+      "known_official_profile": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "output_shape_errors": 0,
+        "total": 267,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "memory": 120,
+        "params": 55,
+        "cost": 175
+      },
+      "structural": {
+        "checker_full": true,
+        "checker_error": null,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_ops": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "Add": 1,
+          "Cast": 2,
+          "CastLike": 3,
+          "Concat": 1,
+          "ConvInteger": 1,
+          "Div": 1,
+          "Einsum": 3,
+          "GroupNormalization": 1,
+          "Log": 1,
+          "MaxPool": 2,
+          "Min": 1,
+          "Mod": 1,
+          "OneHot": 1,
+          "QuantizeLinear": 2,
+          "ReduceMin": 1,
+          "Reshape": 1,
+          "ScatterND": 1,
+          "Sign": 1,
+          "Slice": 1,
+          "Sub": 1
+        },
+        "runtime_shape_mismatch_count": 3,
+        "runtime_shapes_truthful": false,
+        "runtime_shape_mismatches": [
+          {
+            "value": "dyn_w",
+            "declared_or_inferred": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                10,
+                1,
+                1,
+                1
+              ]
+            ]
+          },
+          {
+            "value": "output",
+            "declared_or_inferred": [
+              1,
+              1,
+              30,
+              30
+            ],
+            "runtime": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          },
+          {
+            "value": "selector_f",
+            "declared_or_inferred": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                10,
+                1,
+                1,
+                1
+              ]
+            ]
+          }
+        ]
+      },
+      "special_nodes": [
+        {
+          "task": 300,
+          "node_index": 8,
+          "op": "OneHot",
+          "inputs": [
+            "winner_i64_3d",
+            "oh_depth",
+            "oh_values"
+          ],
+          "outputs": [
+            "selector_f"
+          ],
+          "family": "OneHot",
+          "depth": 10,
+          "axis": 0,
+          "normalized_axis": 0,
+          "indices_inferred_shape": [
+            1,
+            1,
+            1
+          ],
+          "indices_dtype": "FLOAT16",
+          "runtime_output_shapes": [
+            [
+              10,
+              1,
+              1,
+              1
+            ]
+          ],
+          "output_elements": 10,
+          "output_value_dtype": "float16",
+          "output_value_bytes": 2,
+          "values": [
+            0.0,
+            1.0
+          ],
+          "consumers": [
+            {
+              "node_index": 9,
+              "op": "Einsum",
+              "input_index": 1
+            },
+            {
+              "node_index": 24,
+              "op": "CastLike",
+              "input_index": 0
+            }
+          ],
+          "numeric_output_required": true,
+          "existing_exact_range_basis": [],
+          "existing_identity_basis": [],
+          "unique_removable_depth_values_params": 3,
+          "equal_to_range_optimistic_memory_delta": 10,
+          "equal_to_range_optimistic_param_delta": 7,
+          "equal_to_range_optimistic_cost_delta": 17,
+          "strict_lower_possible": false,
+          "rewrite": null,
+          "reason": "All consumers require the numeric OneHot tensor. Equal-to-range therefore retains an equally-sized numeric Cast/Where output and adds a bool selector. No exact range or identity basis initializer is already live.",
+          "downstream_absorption": "The selector is a numeric factor of an Einsum and is also cast to dynamic weights. No identity/range basis exists; Equal must be cast back to float16 for the Einsum."
+        }
+      ]
+    },
+    "388": {
+      "task": 388,
+      "authority_member": "task388.onnx",
+      "sha256": "f27fa5f4f0bcade23d02fed2a74e3c2b826b11140bd03d29f47e0c59c382a8e1",
+      "node_count": 19,
+      "initializer_count": 12,
+      "known_official_profile": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "nonfinite": 0,
+        "output_shape_errors": 0,
+        "total": 266,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "memory": 283,
+        "params": 22,
+        "cost": 305
+      },
+      "structural": {
+        "checker_full": true,
+        "checker_error": null,
+        "strict_shape_inference_data_prop": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graph_ops": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "ArgMax": 1,
+          "CastLike": 7,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "GroupNormalization": 1,
+          "ReduceL2": 1,
+          "ReduceMax": 1,
+          "ReduceMin": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Tile": 1,
+          "Where": 2
+        },
+        "runtime_shape_mismatch_count": 7,
+        "runtime_shapes_truthful": false,
+        "runtime_shape_mismatches": [
+          {
+            "value": "all_bg",
+            "declared_or_inferred": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                1,
+                1,
+                1,
+                2
+              ],
+              [
+                1,
+                1,
+                1,
+                3
+              ],
+              [
+                1,
+                1,
+                1,
+                4
+              ],
+              [
+                1,
+                1,
+                1,
+                5
+              ],
+              [
+                1,
+                1,
+                1,
+                6
+              ]
+            ]
+          },
+          {
+            "value": "background",
+            "declared_or_inferred": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                1,
+                1,
+                2,
+                2
+              ],
+              [
+                1,
+                1,
+                3,
+                3
+              ],
+              [
+                1,
+                1,
+                4,
+                4
+              ],
+              [
+                1,
+                1,
+                5,
+                5
+              ],
+              [
+                1,
+                1,
+                6,
+                6
+              ]
+            ]
+          },
+          {
+            "value": "ids",
+            "declared_or_inferred": [
+              1,
+              1,
+              2,
+              2
+            ],
+            "runtime": [
+              [
+                1,
+                1,
+                4,
+                4
+              ],
+              [
+                1,
+                1,
+                6,
+                6
+              ],
+              [
+                1,
+                1,
+                8,
+                8
+              ],
+              [
+                1,
+                1,
+                10,
+                10
+              ],
+              [
+                1,
+                1,
+                12,
+                12
+              ]
+            ]
+          },
+          {
+            "value": "output",
+            "declared_or_inferred": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          },
+          {
+            "value": "presence",
+            "declared_or_inferred": [
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                1,
+                10
+              ]
+            ]
+          },
+          {
+            "value": "stripe",
+            "declared_or_inferred": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                1,
+                1,
+                1,
+                2
+              ],
+              [
+                1,
+                1,
+                1,
+                3
+              ],
+              [
+                1,
+                1,
+                1,
+                4
+              ],
+              [
+                1,
+                1,
+                1,
+                5
+              ],
+              [
+                1,
+                1,
+                1,
+                6
+              ]
+            ]
+          },
+          {
+            "value": "tile_ids",
+            "declared_or_inferred": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              [
+                1,
+                1,
+                2,
+                2
+              ],
+              [
+                1,
+                1,
+                3,
+                3
+              ],
+              [
+                1,
+                1,
+                4,
+                4
+              ],
+              [
+                1,
+                1,
+                5,
+                5
+              ],
+              [
+                1,
+                1,
+                6,
+                6
+              ]
+            ]
+          }
+        ]
+      },
+      "special_nodes": [
+        {
+          "task": 388,
+          "node_index": 13,
+          "op": "Tile",
+          "inputs": [
+            "tile_ids",
+            "repeats"
+          ],
+          "outputs": [
+            "ids"
+          ],
+          "family": "Tile",
+          "repeats": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "runtime_input_shapes": [
+            [
+              1,
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              1,
+              3,
+              3
+            ],
+            [
+              1,
+              1,
+              4,
+              4
+            ],
+            [
+              1,
+              1,
+              5,
+              5
+            ],
+            [
+              1,
+              1,
+              6,
+              6
+            ]
+          ],
+          "runtime_output_shapes": [
+            [
+              1,
+              1,
+              4,
+              4
+            ],
+            [
+              1,
+              1,
+              6,
+              6
+            ],
+            [
+              1,
+              1,
+              8,
+              8
+            ],
+            [
+              1,
+              1,
+              10,
+              10
+            ],
+            [
+              1,
+              1,
+              12,
+              12
+            ]
+          ],
+          "all_repeats_one": false,
+          "singleton_repeat_axes": false,
+          "rewrite": null,
+          "strict_lower_possible": false,
+          "reason": "At least one repeated runtime axis is non-singleton. Expand broadcasts each element and is not equal to Tile's whole-axis repetition; reshape/expand/reshape adds activations."
+        }
+      ]
+    }
+  },
+  "rewrite_summary": {
+    "tile_all_repeats_one": 0,
+    "tile_singleton_repeat_axes": 0,
+    "expand_identity_or_shared_shape": 0,
+    "onehot_equal_lower_bound_negative": 0
+  },
+  "lower_survivors": [],
+  "winner": null,
+  "candidate_files": [],
+  "survivor_gate": {
+    "known_four_configs_raw": false,
+    "fresh_two_seeds_x1000": false,
+    "skip_reason": "No algebraically exact rewrite has a negative official cost delta before candidate creation."
+  },
+  "policy": {
+    "approximation": false,
+    "lookup": false,
+    "new_shape_cloak": false,
+    "root_or_other_paths_modified": false
+  }
+}

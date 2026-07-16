@@ -1,0 +1,1809 @@
+{
+  "base_zip": "submission_base_7999.13.zip",
+  "base_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "models": {
+    "5": {
+      "task": 5,
+      "path": "scripts/golf/loop_7999_13/lane_b14/baseline/task005.onnx",
+      "sha256": "77eb35fdcf2dbbacaa1c63d2dfef4f3b50ecbfbc8178da3bc2e7883ee8275c57",
+      "file_bytes": 2046,
+      "node_count": 21,
+      "value_info_count": 0,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 16
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "name": "",
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "qW",
+            "singf",
+            "singf"
+          ],
+          "outputs": [
+            "score"
+          ],
+          "input_count": 4
+        },
+        {
+          "index": 1,
+          "name": "cweight",
+          "op": "Hardmax",
+          "inputs": [
+            "score"
+          ],
+          "outputs": [
+            "cweight"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 2,
+          "name": "",
+          "op": "ConvTranspose",
+          "inputs": [
+            "input",
+            "cweight"
+          ],
+          "outputs": [
+            "M32"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 3,
+          "name": "",
+          "op": "Cast",
+          "inputs": [
+            "M32"
+          ],
+          "outputs": [
+            "M"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 4,
+          "name": "",
+          "op": "ReduceMax",
+          "inputs": [
+            "M"
+          ],
+          "outputs": [
+            "rowmask"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 5,
+          "name": "",
+          "op": "QLinearMatMul",
+          "inputs": [
+            "rowmask",
+            "singf",
+            "xz",
+            "posW",
+            "singf",
+            "xz",
+            "singf",
+            "xz"
+          ],
+          "outputs": [
+            "rf"
+          ],
+          "input_count": 8
+        },
+        {
+          "index": 6,
+          "name": "",
+          "op": "ReduceMax",
+          "inputs": [
+            "M"
+          ],
+          "outputs": [
+            "colmask"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 7,
+          "name": "",
+          "op": "QLinearMatMul",
+          "inputs": [
+            "colmask",
+            "singf",
+            "xz",
+            "posW",
+            "singf",
+            "xz",
+            "singf",
+            "xz"
+          ],
+          "outputs": [
+            "cf"
+          ],
+          "input_count": 8
+        },
+        {
+          "index": 8,
+          "name": "x2",
+          "op": "Add",
+          "inputs": [
+            "cf",
+            "dx2c"
+          ],
+          "outputs": [
+            "x2"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 9,
+          "name": "y2",
+          "op": "Add",
+          "inputs": [
+            "rf",
+            "dx2c"
+          ],
+          "outputs": [
+            "y2"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 10,
+          "name": "roi4_u8",
+          "op": "Concat",
+          "inputs": [
+            "cf",
+            "rf",
+            "x2",
+            "y2"
+          ],
+          "outputs": [
+            "roi4_u8"
+          ],
+          "input_count": 4
+        },
+        {
+          "index": 11,
+          "name": "roi4",
+          "op": "Cast",
+          "inputs": [
+            "roi4_u8"
+          ],
+          "outputs": [
+            "roi4"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 12,
+          "name": "D32",
+          "op": "RoiAlign",
+          "inputs": [
+            "input",
+            "roi4",
+            "bidx"
+          ],
+          "outputs": [
+            "D32"
+          ],
+          "input_count": 3
+        },
+        {
+          "index": 13,
+          "name": "",
+          "op": "Conv",
+          "inputs": [
+            "D32",
+            "qW"
+          ],
+          "outputs": [
+            "Dcolor32"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 14,
+          "name": "",
+          "op": "Cast",
+          "inputs": [
+            "Dcolor32"
+          ],
+          "outputs": [
+            "Dcolor"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 15,
+          "name": "",
+          "op": "Flatten",
+          "inputs": [
+            "Dcolor"
+          ],
+          "outputs": [
+            "Dflat9"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 16,
+          "name": "",
+          "op": "Concat",
+          "inputs": [
+            "M",
+            "seed"
+          ],
+          "outputs": [
+            "Xq"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 17,
+          "name": "Dflat11",
+          "op": "Concat",
+          "inputs": [
+            "Dflat9",
+            "zero_f",
+            "dx2c"
+          ],
+          "outputs": [
+            "Dflat11"
+          ],
+          "input_count": 3
+        },
+        {
+          "index": 18,
+          "name": "",
+          "op": "Gather",
+          "inputs": [
+            "Dflat11",
+            "route"
+          ],
+          "outputs": [
+            "W"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 19,
+          "name": "",
+          "op": "QLinearConv",
+          "inputs": [
+            "Xq",
+            "singf",
+            "xz",
+            "W",
+            "singf",
+            "xz",
+            "singf",
+            "xz"
+          ],
+          "outputs": [
+            "codes"
+          ],
+          "input_count": 8
+        },
+        {
+          "index": 20,
+          "name": "",
+          "op": "Equal",
+          "inputs": [
+            "codes",
+            "classes"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "input_count": 2
+        }
+      ],
+      "equations": [
+        "nqhw,aqbc,s,t->qnst"
+      ],
+      "initializers": [
+        {
+          "name": "singf",
+          "dtype": "float32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "qW",
+          "dtype": "float32",
+          "shape": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "elements": 10
+        },
+        {
+          "name": "xz",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "seed",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            9,
+            9
+          ],
+          "elements": 81
+        },
+        {
+          "name": "route",
+          "dtype": "int32",
+          "shape": [
+            2,
+            7,
+            7
+          ],
+          "elements": 98
+        },
+        {
+          "name": "classes",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "elements": 10
+        },
+        {
+          "name": "zero_f",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "posW",
+          "dtype": "uint8",
+          "shape": [
+            9,
+            1
+          ],
+          "elements": 9
+        },
+        {
+          "name": "dx2c",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "bidx",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        }
+      ],
+      "value_info": [],
+      "inferred_value_info": [
+        {
+          "name": "score",
+          "dtype": 1,
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "cweight",
+          "dtype": 1,
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "M32",
+          "dtype": 1,
+          "shape": [
+            1,
+            1,
+            9,
+            9
+          ]
+        },
+        {
+          "name": "M",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            9,
+            9
+          ]
+        },
+        {
+          "name": "rowmask",
+          "dtype": 2,
+          "shape": [
+            1,
+            9
+          ]
+        },
+        {
+          "name": "rf",
+          "dtype": 2,
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "colmask",
+          "dtype": 2,
+          "shape": [
+            1,
+            9
+          ]
+        },
+        {
+          "name": "cf",
+          "dtype": 2,
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "x2",
+          "dtype": 2,
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "y2",
+          "dtype": 2,
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "roi4_u8",
+          "dtype": 2,
+          "shape": [
+            1,
+            4
+          ]
+        },
+        {
+          "name": "roi4",
+          "dtype": 1,
+          "shape": [
+            1,
+            4
+          ]
+        },
+        {
+          "name": "D32",
+          "dtype": 1,
+          "shape": [
+            1,
+            10,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "Dcolor32",
+          "dtype": 1,
+          "shape": [
+            1,
+            1,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "Dcolor",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "Dflat9",
+          "dtype": 2,
+          "shape": [
+            1,
+            9
+          ]
+        },
+        {
+          "name": "Xq",
+          "dtype": 2,
+          "shape": [
+            1,
+            2,
+            9,
+            9
+          ]
+        },
+        {
+          "name": "Dflat11",
+          "dtype": 2,
+          "shape": [
+            1,
+            11
+          ]
+        },
+        {
+          "name": "W",
+          "dtype": 2,
+          "shape": [
+            1,
+            2,
+            7,
+            7
+          ]
+        },
+        {
+          "name": "codes",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            30,
+            30
+          ]
+        }
+      ]
+    },
+    "80": {
+      "task": 80,
+      "path": "scripts/golf/loop_7999_13/lane_b14/baseline/task080.onnx",
+      "sha256": "1e4d062972baa11072061b05f70bc2b4658b1413dd61940b7aabf3e86e75c400",
+      "file_bytes": 4211,
+      "node_count": 47,
+      "value_info_count": 4,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "name": "cf3",
+          "op": "Conv",
+          "inputs": [
+            "input",
+            "wcol"
+          ],
+          "outputs": [
+            "cf3"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 1,
+          "name": "cells2",
+          "op": "Cast",
+          "inputs": [
+            "cf3"
+          ],
+          "outputs": [
+            "cells2"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 2,
+          "name": "Lall",
+          "op": "Conv",
+          "inputs": [
+            "input",
+            "wcol"
+          ],
+          "outputs": [
+            "Lall"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 3,
+          "name": "Lall_u8",
+          "op": "Cast",
+          "inputs": [
+            "Lall"
+          ],
+          "outputs": [
+            "Lall_u8"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 4,
+          "name": "r1row",
+          "op": "MaxPool",
+          "inputs": [
+            "cells2"
+          ],
+          "outputs": [
+            "r1row"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 5,
+          "name": "is_sp4_4d",
+          "op": "Equal",
+          "inputs": [
+            "r1row",
+            "Lall_u8"
+          ],
+          "outputs": [
+            "is_sp4_4d"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 6,
+          "name": "sp4_u8_4d",
+          "op": "Cast",
+          "inputs": [
+            "is_sp4_4d"
+          ],
+          "outputs": [
+            "sp4_u8_4d"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 7,
+          "name": "last_cell",
+          "op": "MaxPool",
+          "inputs": [
+            "cells2"
+          ],
+          "outputs": [
+            "last_cell"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 8,
+          "name": "is_size10_4d",
+          "op": "Greater",
+          "inputs": [
+            "last_cell",
+            "sp4_u8_4d"
+          ],
+          "outputs": [
+            "is_size10_4d"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 9,
+          "name": "r3row",
+          "op": "MaxPool",
+          "inputs": [
+            "cells2"
+          ],
+          "outputs": [
+            "r3row"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 10,
+          "name": "is_sp5_4d",
+          "op": "Equal",
+          "inputs": [
+            "r3row",
+            "Lall_u8"
+          ],
+          "outputs": [
+            "is_sp5_4d"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 11,
+          "name": "cell_case_4d",
+          "op": "Where",
+          "inputs": [
+            "is_sp5_4d",
+            "c2",
+            "sp4_u8_4d"
+          ],
+          "outputs": [
+            "cell_case_4d"
+          ],
+          "input_count": 3
+        },
+        {
+          "index": 12,
+          "name": "cell_case_u8",
+          "op": "Squeeze",
+          "inputs": [
+            "cell_case_4d"
+          ],
+          "outputs": [
+            "cell_case_u8"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 13,
+          "name": "cell_case_i",
+          "op": "Cast",
+          "inputs": [
+            "cell_case_u8"
+          ],
+          "outputs": [
+            "cell_case_i"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 14,
+          "name": "idxCell",
+          "op": "Gather",
+          "inputs": [
+            "idx_cell_table",
+            "cell_case_i"
+          ],
+          "outputs": [
+            "idxCell"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 15,
+          "name": "cell_r",
+          "op": "Gather",
+          "inputs": [
+            "cells2",
+            "idxCell"
+          ],
+          "outputs": [
+            "cell_r"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 16,
+          "name": "cells",
+          "op": "Gather",
+          "inputs": [
+            "cell_r",
+            "idxCell"
+          ],
+          "outputs": [
+            "cells"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 17,
+          "name": "plus_cnt",
+          "op": "QLinearConv",
+          "inputs": [
+            "cells",
+            "qs",
+            "c2",
+            "kplus",
+            "qs",
+            "c2",
+            "qs",
+            "c2"
+          ],
+          "outputs": [
+            "plus_cnt"
+          ],
+          "input_count": 8
+        },
+        {
+          "index": 18,
+          "name": "max_all_val",
+          "op": "MaxPool",
+          "inputs": [
+            "plus_cnt"
+          ],
+          "outputs": [
+            "max_all_val",
+            "idx_all"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 19,
+          "name": "max4_val",
+          "op": "MaxPool",
+          "inputs": [
+            "plus_cnt"
+          ],
+          "outputs": [
+            "max4_val",
+            "idx4"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 20,
+          "name": "idx_all_u8",
+          "op": "Cast",
+          "inputs": [
+            "idx_all"
+          ],
+          "outputs": [
+            "idx_all_u8"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 21,
+          "name": "idx4_u8",
+          "op": "Cast",
+          "inputs": [
+            "idx4"
+          ],
+          "outputs": [
+            "idx4_u8"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 22,
+          "name": "idx_chosen_u8",
+          "op": "Where",
+          "inputs": [
+            "is_sp5_4d",
+            "idx4_u8",
+            "idx_all_u8"
+          ],
+          "outputs": [
+            "idx_chosen_u8"
+          ],
+          "input_count": 3
+        },
+        {
+          "index": 23,
+          "name": "idx_flat_u8",
+          "op": "Reshape",
+          "inputs": [
+            "idx_chosen_u8",
+            "shape_one"
+          ],
+          "outputs": [
+            "idx_flat_u8"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 24,
+          "name": "row_idx_u8",
+          "op": "BitShift",
+          "inputs": [
+            "idx_flat_u8",
+            "c3"
+          ],
+          "outputs": [
+            "row_idx_u8"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 25,
+          "name": "col_idx_u8",
+          "op": "Mod",
+          "inputs": [
+            "idx_flat_u8",
+            "eight_u8"
+          ],
+          "outputs": [
+            "col_idx_u8"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 26,
+          "name": "starts_u8",
+          "op": "Concat",
+          "inputs": [
+            "row_idx_u8",
+            "col_idx_u8"
+          ],
+          "outputs": [
+            "starts_u8"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 27,
+          "name": "starts",
+          "op": "Cast",
+          "inputs": [
+            "starts_u8"
+          ],
+          "outputs": [
+            "starts"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 28,
+          "name": "ends",
+          "op": "Add",
+          "inputs": [
+            "starts",
+            "three_i32_vec"
+          ],
+          "outputs": [
+            "ends"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 29,
+          "name": "Kdyn2",
+          "op": "Slice",
+          "inputs": [
+            "cells",
+            "starts",
+            "ends",
+            "axes23"
+          ],
+          "outputs": [
+            "Kdyn2"
+          ],
+          "input_count": 4
+        },
+        {
+          "index": 30,
+          "name": "C",
+          "op": "MaxPool",
+          "inputs": [
+            "Kdyn2"
+          ],
+          "outputs": [
+            "C"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 31,
+          "name": "cenb",
+          "op": "Equal",
+          "inputs": [
+            "cells",
+            "C"
+          ],
+          "outputs": [
+            "cenb"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 32,
+          "name": "cen_u8",
+          "op": "Where",
+          "inputs": [
+            "cenb",
+            "c3",
+            "c2"
+          ],
+          "outputs": [
+            "cen_u8"
+          ],
+          "input_count": 3
+        },
+        {
+          "index": 33,
+          "name": "out_cells",
+          "op": "QLinearConv",
+          "inputs": [
+            "cen_u8",
+            "qs",
+            "c2",
+            "Kdyn2",
+            "qs",
+            "c2",
+            "qs",
+            "c2"
+          ],
+          "outputs": [
+            "out_cells"
+          ],
+          "input_count": 8
+        },
+        {
+          "index": 34,
+          "name": "case_p2_4d",
+          "op": "Cast",
+          "inputs": [
+            "is_size10_4d"
+          ],
+          "outputs": [
+            "case_p2_4d"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 35,
+          "name": "case_p5_4d",
+          "op": "Add",
+          "inputs": [
+            "c3",
+            "case_p2_4d"
+          ],
+          "outputs": [
+            "case_p5_4d"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 36,
+          "name": "case_b_4d",
+          "op": "Where",
+          "inputs": [
+            "is_sp5_4d",
+            "case_p5_4d",
+            "case_p2_4d"
+          ],
+          "outputs": [
+            "case_b_4d"
+          ],
+          "input_count": 3
+        },
+        {
+          "index": 37,
+          "name": "case_4d",
+          "op": "Where",
+          "inputs": [
+            "is_sp4_4d",
+            "c2",
+            "case_b_4d"
+          ],
+          "outputs": [
+            "case_4d"
+          ],
+          "input_count": 3
+        },
+        {
+          "index": 38,
+          "name": "case_u8",
+          "op": "Squeeze",
+          "inputs": [
+            "case_4d"
+          ],
+          "outputs": [
+            "case_u8"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 39,
+          "name": "case_i",
+          "op": "Cast",
+          "inputs": [
+            "case_u8"
+          ],
+          "outputs": [
+            "case_i"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 40,
+          "name": "idxSel",
+          "op": "Gather",
+          "inputs": [
+            "idx_table",
+            "case_i"
+          ],
+          "outputs": [
+            "idxSel"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 41,
+          "name": "grid11",
+          "op": "Pad",
+          "inputs": [
+            "out_cells",
+            "pad_hw",
+            "Lall_u8",
+            "pad_axes23"
+          ],
+          "outputs": [
+            "grid11"
+          ],
+          "input_count": 4
+        },
+        {
+          "index": 42,
+          "name": "table",
+          "op": "Pad",
+          "inputs": [
+            "grid11",
+            "pad_hw",
+            "",
+            "pad_axes23"
+          ],
+          "outputs": [
+            "table"
+          ],
+          "input_count": 4
+        },
+        {
+          "index": 43,
+          "name": "g1",
+          "op": "Gather",
+          "inputs": [
+            "table",
+            "idxSel"
+          ],
+          "outputs": [
+            "g1"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 44,
+          "name": "res",
+          "op": "Gather",
+          "inputs": [
+            "g1",
+            "idxSel"
+          ],
+          "outputs": [
+            "res"
+          ],
+          "input_count": 2
+        },
+        {
+          "index": 45,
+          "name": "kvec_u8",
+          "op": "Cast",
+          "inputs": [
+            "wcol"
+          ],
+          "outputs": [
+            "kvec_u8"
+          ],
+          "input_count": 1
+        },
+        {
+          "index": 46,
+          "name": "output",
+          "op": "Equal",
+          "inputs": [
+            "res",
+            "kvec_u8"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "input_count": 2
+        }
+      ],
+      "equations": [],
+      "initializers": [
+        {
+          "name": "qs",
+          "dtype": "float32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "kplus",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "elements": 9
+        },
+        {
+          "name": "wcol",
+          "dtype": "float32",
+          "shape": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "elements": 10
+        },
+        {
+          "name": "idx_table",
+          "dtype": "int32",
+          "shape": [
+            5,
+            30
+          ],
+          "elements": 150
+        },
+        {
+          "name": "c2",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "c3",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "idx_cell_table",
+          "dtype": "int32",
+          "shape": [
+            3,
+            10
+          ],
+          "elements": 30
+        },
+        {
+          "name": "eight_u8",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "axes23",
+          "dtype": "int32",
+          "shape": [
+            2
+          ],
+          "elements": 2
+        },
+        {
+          "name": "pad_hw",
+          "dtype": "int64",
+          "shape": [
+            4
+          ],
+          "elements": 4
+        },
+        {
+          "name": "pad_axes23",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2
+        },
+        {
+          "name": "shape_one",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "three_i32_vec",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1
+        }
+      ],
+      "value_info": [
+        {
+          "name": "starts",
+          "dtype": 6,
+          "shape": [
+            2
+          ]
+        },
+        {
+          "name": "ends",
+          "dtype": 6,
+          "shape": [
+            2
+          ]
+        },
+        {
+          "name": "Kdyn2",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "C",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "inferred_value_info": [
+        {
+          "name": "starts",
+          "dtype": 6,
+          "shape": [
+            2
+          ]
+        },
+        {
+          "name": "ends",
+          "dtype": 6,
+          "shape": [
+            2
+          ]
+        },
+        {
+          "name": "Kdyn2",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "C",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "cf3",
+          "dtype": 1,
+          "shape": [
+            1,
+            1,
+            10,
+            10
+          ]
+        },
+        {
+          "name": "cells2",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            10,
+            10
+          ]
+        },
+        {
+          "name": "Lall",
+          "dtype": 1,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "Lall_u8",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "r1row",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "is_sp4_4d",
+          "dtype": 9,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "sp4_u8_4d",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "last_cell",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "is_size10_4d",
+          "dtype": 9,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "r3row",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "is_sp5_4d",
+          "dtype": 9,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "cell_case_4d",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "cell_case_u8",
+          "dtype": 2,
+          "shape": []
+        },
+        {
+          "name": "cell_case_i",
+          "dtype": 6,
+          "shape": []
+        },
+        {
+          "name": "idxCell",
+          "dtype": 6,
+          "shape": [
+            10
+          ]
+        },
+        {
+          "name": "cell_r",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            10,
+            10
+          ]
+        },
+        {
+          "name": "cells",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            10,
+            10
+          ]
+        },
+        {
+          "name": "plus_cnt",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            8,
+            8
+          ]
+        },
+        {
+          "name": "max_all_val",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "idx_all",
+          "dtype": 7,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "max4_val",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "idx4",
+          "dtype": 7,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "idx_all_u8",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "idx4_u8",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "idx_chosen_u8",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "idx_flat_u8",
+          "dtype": 2,
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "row_idx_u8",
+          "dtype": 2,
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "col_idx_u8",
+          "dtype": 2,
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "starts_u8",
+          "dtype": 2,
+          "shape": [
+            2
+          ]
+        },
+        {
+          "name": "cenb",
+          "dtype": 9,
+          "shape": [
+            1,
+            1,
+            10,
+            10
+          ]
+        },
+        {
+          "name": "cen_u8",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            10,
+            10
+          ]
+        },
+        {
+          "name": "out_cells",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            10,
+            10
+          ]
+        },
+        {
+          "name": "case_p2_4d",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "case_p5_4d",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "case_b_4d",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "case_4d",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "case_u8",
+          "dtype": 2,
+          "shape": []
+        },
+        {
+          "name": "case_i",
+          "dtype": 6,
+          "shape": []
+        },
+        {
+          "name": "idxSel",
+          "dtype": 6,
+          "shape": [
+            30
+          ]
+        },
+        {
+          "name": "grid11",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            11,
+            11
+          ]
+        },
+        {
+          "name": "table",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            12,
+            12
+          ]
+        },
+        {
+          "name": "g1",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            30,
+            12
+          ]
+        },
+        {
+          "name": "res",
+          "dtype": 2,
+          "shape": [
+            1,
+            1,
+            30,
+            30
+          ]
+        },
+        {
+          "name": "kvec_u8",
+          "dtype": 2,
+          "shape": [
+            1,
+            10,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  }
+}

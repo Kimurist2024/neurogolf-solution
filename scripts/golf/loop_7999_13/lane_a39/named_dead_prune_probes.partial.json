@@ -1,0 +1,183 @@
+{
+  "probes": [
+    {
+      "task": 39,
+      "source_exclusions": [
+        "CenterCropPad_lineage"
+      ],
+      "probe": "scripts/golf/loop_7999_13/lane_a39/rejected_named_dead_prunes/task039_dead_pruned.onnx",
+      "probe_sha256": "9a4104dcdba70b40055d06fd87cdd83eca555e9d4c090b67b17b78c411ed77dd",
+      "changes": {
+        "dead_nodes": [
+          {
+            "index": 8,
+            "op": "Equal",
+            "name": "keep_bg_equal",
+            "inputs": [
+              "bg_r",
+              "bg_c"
+            ],
+            "outputs": [
+              "keep_bg_equal"
+            ]
+          }
+        ],
+        "dead_initializers": []
+      },
+      "runtime_child_returncode": 0,
+      "runtime_child_stdout": "{\"known_dual\": [{\"mode\": \"disable_all\", \"right\": 0, \"wrong\": 0, \"errors\": 264}, {\"mode\": \"default\", \"right\": 0, \"wrong\": 0, \"errors\": 264}], \"memory\": 34, \"parameters\": 7, \"cost\": 41}\n",
+      "runtime_child_stderr": "2026-07-14 09:05:58.263 python[35998:23790324] 2026-07-14 09:05:58.262401 [E:onnxruntime:, sequential_executor.cc:572 ExecuteKernel] Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,10,16,16}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n",
+      "runtime_and_cost": {
+        "known_dual": [
+          {
+            "mode": "disable_all",
+            "right": 0,
+            "wrong": 0,
+            "errors": 264
+          },
+          {
+            "mode": "default",
+            "right": 0,
+            "wrong": 0,
+            "errors": 264
+          }
+        ],
+        "memory": 34,
+        "parameters": 7,
+        "cost": 41
+      }
+    },
+    {
+      "task": 89,
+      "source_exclusions": [
+        "CenterCropPad_lineage"
+      ],
+      "probe": "scripts/golf/loop_7999_13/lane_a39/rejected_named_dead_prunes/task089_dead_pruned.onnx",
+      "probe_sha256": "33db6c4a4422d8b070388418c755f6f30fcebd775436692ed5854feecc2bc85e",
+      "changes": {
+        "dead_nodes": [
+          {
+            "index": 88,
+            "op": "ReduceMax",
+            "name": "keep_red_big",
+            "inputs": [
+              "decode_big"
+            ],
+            "outputs": [
+              "keep_red_big"
+            ]
+          }
+        ],
+        "dead_initializers": []
+      },
+      "runtime_child_returncode": 1,
+      "runtime_child_stdout": "",
+      "runtime_child_stderr": "Traceback (most recent call last):\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_7999_13/lane_a39/probe_model_child.py\", line 66, in <module>\n    main()\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_7999_13/lane_a39/probe_model_child.py\", line 47, in main\n    runner = session(model, disabled)\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_7999_13/lane_a39/probe_model_child.py\", line 35, in session\n    return ort.InferenceSession(sanitized.SerializeToString(), options)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/.venv/lib/python3.12/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py\", line 504, in __init__\n    self._create_inference_session(providers, provider_options, disabled_optimizers)\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/.venv/lib/python3.12/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py\", line 610, in _create_inference_session\n    sess.initialize_session(providers, provider_options, disabled_optimizers)\nonnxruntime.capi.onnxruntime_pybind11_state.Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_63) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n"
+    },
+    {
+      "task": 122,
+      "source_exclusions": [
+        "CenterCropPad_lineage"
+      ],
+      "probe": "scripts/golf/loop_7999_13/lane_a39/rejected_named_dead_prunes/task122_dead_pruned.onnx",
+      "probe_sha256": "cca17ba00fd1de73655948b42357e9f08742898f197bc1cf9a18135274a267e9",
+      "changes": {
+        "dead_nodes": [
+          {
+            "index": 51,
+            "op": "GreaterOrEqual",
+            "name": "d_keep",
+            "inputs": [
+              "negRd2",
+              "red_h_pos"
+            ],
+            "outputs": [
+              "d_keep"
+            ]
+          }
+        ],
+        "dead_initializers": []
+      },
+      "runtime_child_returncode": 0,
+      "runtime_child_stdout": "{\"known_dual\": [{\"mode\": \"disable_all\", \"right\": 0, \"wrong\": 0, \"errors\": 266}, {\"mode\": \"default\", \"right\": 266, \"wrong\": 0, \"errors\": 0}], \"memory\": 100, \"parameters\": 2, \"cost\": 102}\n",
+      "runtime_child_stderr": "2026-07-14 09:06:00.922 python[36008:23790360] 2026-07-14 09:06:00.916343 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_7' source:{-1,-1,-1,-1} target:{1}. Falling back to lenient merge.\n2026-07-14 09:06:00.923 python[36008:23790360] 2026-07-14 09:06:00.923207 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_10' source:{-1,-1,-1,-1} target:{1}. Falling back to lenient merge.\n2026-07-14 09:06:00.923 python[36008:23790360] 2026-07-14 09:06:00.923657 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_13' source:{-1,-1,-1,-1} target:{1}. Falling back to lenient merge.\n2026-07-14 09:06:00.926 python[36008:23790360] 2026-07-14 09:06:00.925954 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_25' source:{-1,-1,-1,-1} target:{1}. Falling back to lenient merge.\n2026-07-14 09:06:00.927 python[36008:23790360] 2026-07-14 09:06:00.927160 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_27' source:{-1,-1,-1,-1} target:{1}. Falling back to lenient merge.\n2026-07-14 09:06:00.927 python[36008:23790360] 2026-07-14 09:06:00.927527 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_29' source:{-1,-1,-1,-1} target:{1}. Falling back to lenient merge.\n2026-07-14 09:06:00.928 python[36008:23790360] 2026-07-14 09:06:00.928336 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_32' source:{-1,-1,-1,-1} target:{1}. Falling back to lenient merge.\n2026-07-14 09:06:00.931 python[36008:23790360] 2026-07-14 09:06:00.930373 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_39' source:{-1,-1,-1,-1} target:{1}. Falling back to lenient merge.\n2026-07-14 09:06:00.932 python[36008:23790360] 2026-07-14 09:06:00.932220 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_41' source:{-1,-1,-1,-1} target:{1}. Falling back to lenient merge.\n2026-07-14 09:06:00.933 python[36008:23790360] 2026-07-14 09:06:00.932679 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_43' source:{-1,-1,-1,-1} target:{1}. Falling back to lenient merge.\n2026-07-14 09:06:00.983 python[36008:23790360] 2026-07-14 09:06:00.982528 [W:onnxruntime:, execution_frame.cc:655 AllocateMLValueTensorPreAllocateBuffer] Shape mismatch attempting to re-use buffer. {1,31,30,30} != {1,30,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 09:06:00.984 python[36008:23790360] 2026-07-14 09:06:00.983900 [W:onnxruntime:, execution_frame.cc:655 AllocateMLValueTensorPreAllocateBuffer] Shape mismatch attempting to re-use buffer. {1,31,30,30} != {1,30,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 09:06:00.985 python[36008:23790360] 2026-07-14 09:06:00.984908 [W:onnxruntime:, execution_frame.cc:655 AllocateMLValueTensorPreAllocateBuffer] Shape mismatch attempting to re-use buffer. {1,1,31,30} != {1,1,29,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 09:06:00.986 python[36008:23790360] 2026-07-14 09:06:00.985821 [W:onnxruntime:, execution_frame.cc:655 AllocateMLValueTensorPreAllocateBuffer] Shape mismatch attempting to re-use buffer. {1,1,31,30} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 09:06:00.987 python[36008:23790360] 2026-07-14 09:06:00.986393 [W:onnxruntime:, execution_frame.cc:655 AllocateMLValueTensorPreAllocateBuffer] Shape mismatch attempting to re-use buffer. {1,30,30,30} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 09:06:00.987 python[36008:23790360] 2026-07-14 09:06:00.987261 [W:onnxruntime:, execution_frame.cc:655 AllocateMLValueTensorPreAllocateBuffer] Shape mismatch attempting to re-use buffer. {1,1,31,30} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 09:06:00.988 python[36008:23790360] 2026-07-14 09:06:00.987575 [W:onnxruntime:, execution_frame.cc:655 AllocateMLValueTensorPreAllocateBuffer] Shape mismatch attempting to re-use buffer. {1,30,30,30} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 09:06:00.989 python[36008:23790360] 2026-07-14 09:06:00.989648 [W:onnxruntime:, execution_frame.cc:655 AllocateMLValueTensorPreAllocateBuffer] Shape mismatch attempting to re-use buffer. {1,30,30,30} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 09:06:00.990 python[36008:23790360] 2026-07-14 09:06:00.990113 [E:onnxruntime:, sequential_executor.cc:572 ExecuteKernel] Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,31,30} != {1,30,30,31}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n",
+      "runtime_and_cost": {
+        "known_dual": [
+          {
+            "mode": "disable_all",
+            "right": 0,
+            "wrong": 0,
+            "errors": 266
+          },
+          {
+            "mode": "default",
+            "right": 266,
+            "wrong": 0,
+            "errors": 0
+          }
+        ],
+        "memory": 100,
+        "parameters": 2,
+        "cost": 102
+      }
+    },
+    {
+      "task": 183,
+      "source_exclusions": [
+        "lookup_lineage:ScatterElements"
+      ],
+      "probe": "scripts/golf/loop_7999_13/lane_a39/rejected_named_dead_prunes/task183_dead_pruned.onnx",
+      "probe_sha256": "5a6260203dfc8cabb2f389e20d393cbfd3db8a02927b2b7134854d8f5645488a",
+      "changes": {
+        "dead_nodes": [
+          {
+            "index": 27,
+            "op": "Min",
+            "name": "hold_u8",
+            "inputs": [
+              "tl_u8",
+              "tr5_u8",
+              "tr7_u8",
+              "tr9_u8",
+              "tr_u8",
+              "bl5_u8",
+              "bl7_u8",
+              "bl9_u8",
+              "bl_u8",
+              "br5_u8",
+              "br7_u8",
+              "br9_u8",
+              "br_u8"
+            ],
+            "outputs": [
+              "hold_u8"
+            ]
+          }
+        ],
+        "dead_initializers": []
+      },
+      "runtime_child_returncode": 0,
+      "runtime_child_stdout": "{\"known_dual\": [{\"mode\": \"disable_all\", \"right\": 0, \"wrong\": 0, \"errors\": 265}, {\"mode\": \"default\", \"right\": 0, \"wrong\": 0, \"errors\": 265}], \"memory\": 62, \"parameters\": 29, \"cost\": 91}\n",
+      "runtime_child_stderr": "2026-07-14 09:06:02.087 python[36020:23790393] 2026-07-14 09:06:02.085585 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_10' source:{1,10,30,30} target:{1,1,1,1}. Falling back to lenient merge.\n2026-07-14 09:06:02.088 python[36020:23790393] 2026-07-14 09:06:02.088012 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_35' source:{1,2} target:{1,1}. Falling back to lenient merge.\n2026-07-14 09:06:02.088 python[36020:23790393] 2026-07-14 09:06:02.088747 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_32' source:{1,4} target:{1,1}. Falling back to lenient merge.\n2026-07-14 09:06:02.090 python[36020:23790393] 2026-07-14 09:06:02.090827 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_11' source:{1,10,30,30} target:{1,1,1,1}. Falling back to lenient merge.\n2026-07-14 09:06:02.091 python[36020:23790393] 2026-07-14 09:06:02.091541 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_33' source:{1,4} target:{1,1}. Falling back to lenient merge.\n2026-07-14 09:06:02.094 python[36020:23790393] 2026-07-14 09:06:02.094276 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_12' source:{1,10,30,30} target:{1,1,1,1}. Falling back to lenient merge.\n2026-07-14 09:06:02.094 python[36020:23790393] 2026-07-14 09:06:02.094523 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_34' source:{1,4} target:{1,1}. Falling back to lenient merge.\n2026-07-14 09:06:02.095 python[36020:23790393] 2026-07-14 09:06:02.095054 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_37' source:{1,1,6,6} target:{1,1,1,1}. Falling back to lenient merge.\n2026-07-14 09:06:02.096 python[36020:23790393] 2026-07-14 09:06:02.096423 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'InsertedPrecisionFreeCast_safe_name_41' source:{1,1,6,6} target:{1,1,1,1}. Falling back to lenient merge.\n2026-07-14 09:06:02.096 python[36020:23790393] 2026-07-14 09:06:02.096661 [W:onnxruntime:, graph.cc:122 MergeShapeInfo] Error merging shape info for output. 'safe_name_38' source:{1,10,30,30} target:{1,1,1,1}. Falling back to lenient merge.\n2026-07-14 09:06:02.100 python[36020:23790393] 2026-07-14 09:06:02.100026 [E:onnxruntime:, sequential_executor.cc:572 ExecuteKernel] Non-zero status code returned while running Resize node. Name:'safe_name_36' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,1,1} != {1,1,6,6}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n",
+      "runtime_and_cost": {
+        "known_dual": [
+          {
+            "mode": "disable_all",
+            "right": 0,
+            "wrong": 0,
+            "errors": 265
+          },
+          {
+            "mode": "default",
+            "right": 0,
+            "wrong": 0,
+            "errors": 265
+          }
+        ],
+        "memory": 62,
+        "parameters": 29,
+        "cost": 91
+      }
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "status": "NO_SAFE_IMPROVEMENT",
+  "strict_survivor_count": 0,
+  "promotion": null,
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "assignment_cost_correction": {
+    "task089": {
+      "assigned": 1361,
+      "exact_zip_recomputed": 1361
+    },
+    "task255": {
+      "assigned": 1162,
+      "exact_zip_recomputed": 1336
+    }
+  },
+  "task089": {
+    "baseline": {
+      "sha256": "8084c194af3721712a2d0340a9779ac0cd60a1b333ce9fe02b49afd20118ca48",
+      "score": {
+        "memory": 1320,
+        "params": 41,
+        "cost": 1361,
+        "score": 17.784024997348535,
+        "correct": true
+      },
+      "structure_pass": true,
+      "shape_cloak": true,
+      "shape_mismatch_count": 50,
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        },
+        {
+          "mode": "default",
+          "right": 0,
+          "wrong": 0,
+          "errors": 1,
+          "error": "Fail(\"[ONNXRuntimeError] : 1 : FAIL : Node (safe_name_63) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\")"
+        }
+      ],
+      "fresh5000_dual": [
+        {
+          "task": 89,
+          "mode": "disabled",
+          "right": 4977,
+          "wrong": 23,
+          "errors": 0,
+          "first_failure": {
+            "index": 18
+          },
+          "margin_min_positive": 1.0,
+          "margin_mid_count": 0,
+          "pass": false
+        },
+        {
+          "task": 89,
+          "mode": "default",
+          "right": 0,
+          "wrong": 0,
+          "errors": 5000,
+          "first_failure": {
+            "phase": "session",
+            "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_63) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+          },
+          "margin_min_positive": null,
+          "margin_mid_count": 0,
+          "pass": false
+        }
+      ]
+    },
+    "wave12_exact_shave": {
+      "path": "scripts/golf/loop_7999_13/wave12_exact_shave/task089.onnx",
+      "sha256": "33db6c4a4422d8b070388418c755f6f30fcebd775436692ed5854feecc2bc85e",
+      "score": {
+        "memory": 1143,
+        "params": 41,
+        "cost": 1184,
+        "score": 17.92334618455605,
+        "correct": false
+      },
+      "graph_change": {
+        "removed_node_index": 88,
+        "op": "ReduceMax",
+        "inputs": [
+          "decode_big"
+        ],
+        "outputs": [
+          "keep_red_big"
+        ]
+      },
+      "structure_pass": true,
+      "shape_cloak": true,
+      "shape_mismatch_count": 50,
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 0,
+          "wrong": 0,
+          "errors": 267,
+          "first_failure": {
+            "subset": "train",
+            "index": 0,
+            "error": "RuntimeException(\"[ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,2,2} != {1,1,13,13}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\\n\")"
+          }
+        },
+        {
+          "mode": "default",
+          "right": 0,
+          "wrong": 0,
+          "errors": 1,
+          "error": "Fail(\"[ONNXRuntimeError] : 1 : FAIL : Node (safe_name_63) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\")"
+        }
+      ],
+      "differential": {
+        "base": "scripts/golf/loop_7999_13/lane_b18/baseline/task089.onnx",
+        "candidate": "scripts/golf/loop_7999_13/wave12_exact_shave/task089.onnx",
+        "count": 5000,
+        "seed": 181799913,
+        "rows": [
+          {
+            "mode": "disabled",
+            "sanitized": false,
+            "total": 267,
+            "base_session_error": null,
+            "candidate_session_error": null,
+            "base_errors": 0,
+            "candidate_errors": 267,
+            "bitwise_equal": 0,
+            "bitwise_different": 0,
+            "base_gold_right": 267,
+            "candidate_gold_right": 0,
+            "first_failure": {
+              "label": "train[0]",
+              "side": "candidate",
+              "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,2,2} != {1,1,13,13}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+            },
+            "pass": false,
+            "set": "known"
+          },
+          {
+            "mode": "default",
+            "sanitized": false,
+            "total": 267,
+            "base_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node () Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+            "candidate_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node () Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+            "base_errors": 267,
+            "candidate_errors": 267,
+            "bitwise_equal": 0,
+            "bitwise_different": 0,
+            "base_gold_right": 0,
+            "candidate_gold_right": 0,
+            "first_failure": null,
+            "pass": false,
+            "set": "known"
+          },
+          {
+            "mode": "disabled",
+            "sanitized": true,
+            "total": 267,
+            "base_session_error": null,
+            "candidate_session_error": null,
+            "base_errors": 0,
+            "candidate_errors": 267,
+            "bitwise_equal": 0,
+            "bitwise_different": 0,
+            "base_gold_right": 267,
+            "candidate_gold_right": 0,
+            "first_failure": {
+              "label": "train[0]",
+              "side": "candidate",
+              "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,2,2} != {1,1,13,13}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+            },
+            "pass": false,
+            "set": "known"
+          },
+          {
+            "mode": "default",
+            "sanitized": true,
+            "total": 267,
+            "base_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_63) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+            "candidate_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_63) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+            "base_errors": 267,
+            "candidate_errors": 267,
+            "bitwise_equal": 0,
+            "bitwise_different": 0,
+            "base_gold_right": 0,
+            "candidate_gold_right": 0,
+            "first_failure": null,
+            "pass": false,
+            "set": "known"
+          },
+          {
+            "mode": "disabled",
+            "sanitized": false,
+            "total": 5000,
+            "base_session_error": null,
+            "candidate_session_error": null,
+            "base_errors": 0,
+            "candidate_errors": 5000,
+            "bitwise_equal": 0,
+            "bitwise_different": 0,
+            "base_gold_right": 4991,
+            "candidate_gold_right": 0,
+            "first_failure": {
+              "label": "fresh[0]",
+              "side": "candidate",
+              "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,2,2} != {1,1,13,13}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+            },
+            "pass": false,
+            "set": "fresh5000"
+          },
+          {
+            "mode": "default",
+            "sanitized": false,
+            "total": 5000,
+            "base_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node () Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+            "candidate_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node () Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+            "base_errors": 5000,
+            "candidate_errors": 5000,
+            "bitwise_equal": 0,
+            "bitwise_different": 0,
+            "base_gold_right": 0,
+            "candidate_gold_right": 0,
+            "first_failure": null,
+            "pass": false,
+            "set": "fresh5000"
+          },
+          {
+            "mode": "disabled",
+            "sanitized": true,
+            "total": 5000,
+            "base_session_error": null,
+            "candidate_session_error": null,
+            "base_errors": 0,
+            "candidate_errors": 5000,
+            "bitwise_equal": 0,
+            "bitwise_different": 0,
+            "base_gold_right": 4991,
+            "candidate_gold_right": 0,
+            "first_failure": {
+              "label": "fresh[0]",
+              "side": "candidate",
+              "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,2,2} != {1,1,13,13}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+            },
+            "pass": false,
+            "set": "fresh5000"
+          },
+          {
+            "mode": "default",
+            "sanitized": true,
+            "total": 5000,
+            "base_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_63) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+            "candidate_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_63) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+            "base_errors": 5000,
+            "candidate_errors": 5000,
+            "bitwise_equal": 0,
+            "bitwise_different": 0,
+            "base_gold_right": 0,
+            "candidate_gold_right": 0,
+            "first_failure": null,
+            "pass": false,
+            "set": "fresh5000"
+          }
+        ],
+        "dual_ort_bitwise_pass": false
+      },
+      "decision": "REJECT",
+      "reasons": [
+        "disabled ORT: runtime error on all 267 known examples",
+        "disabled ORT: runtime error on all 5000 fresh examples",
+        "default ORT: both baseline and candidate fail session creation",
+        "50 declared/runtime shape mismatches",
+        "local try_candidate validator fails gold inference"
+      ]
+    },
+    "truthful_controls": [
+      {
+        "path": "scripts/golf/scratch/task089/cand_u8.onnx",
+        "score": {
+          "memory": 20312,
+          "params": 50,
+          "cost": 20362,
+          "score": 15.078574302332859,
+          "correct": true
+        },
+        "shape_cloak": false,
+        "known_dual": [
+          {
+            "mode": "disabled",
+            "right": 267,
+            "wrong": 0,
+            "errors": 0,
+            "first_failure": null
+          },
+          {
+            "mode": "default",
+            "right": 267,
+            "wrong": 0,
+            "errors": 0,
+            "first_failure": null
+          }
+        ]
+      },
+      {
+        "path": "scripts/golf/scratch_codex/task089/candidate_rebuild_v11.onnx",
+        "score": {
+          "memory": 4024,
+          "params": 118,
+          "cost": 4142,
+          "score": 16.671065958044473,
+          "correct": true
+        },
+        "shape_cloak": false,
+        "known_dual": [
+          {
+            "mode": "disabled",
+            "right": 267,
+            "wrong": 0,
+            "errors": 0,
+            "first_failure": null
+          },
+          {
+            "mode": "default",
+            "right": 267,
+            "wrong": 0,
+            "errors": 0,
+            "first_failure": null
+          }
+        ]
+      }
+    ]
+  },
+  "task255": {
+    "baseline": {
+      "sha256": "4d3ebe16cc552dcf23a23ccf06e12030026d35b5fb75836a6b774aa779441bbd",
+      "score": {
+        "memory": 1137,
+        "params": 199,
+        "cost": 1336,
+        "score": 17.80256464590341,
+        "correct": true
+      },
+      "structure_pass": true,
+      "shape_cloak": true,
+      "shape_mismatch_count": 16,
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        },
+        {
+          "mode": "default",
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        }
+      ],
+      "fresh5000_dual": [
+        {
+          "task": 255,
+          "mode": "disabled",
+          "right": 4723,
+          "wrong": 277,
+          "errors": 0,
+          "first_failure": {
+            "index": 5
+          },
+          "margin_min_positive": 1190.8865966796875,
+          "margin_mid_count": 0,
+          "pass": false
+        },
+        {
+          "task": 255,
+          "mode": "default",
+          "right": 4723,
+          "wrong": 277,
+          "errors": 0,
+          "first_failure": {
+            "index": 5
+          },
+          "margin_min_positive": 1190.8865966796875,
+          "margin_mid_count": 0,
+          "pass": false
+        }
+      ]
+    },
+    "generator_ambiguity_proof": {
+      "same_input": true,
+      "same_output": false,
+      "output_diff_cells": 15,
+      "source": "scripts/golf/scratch_codex/task255/ambiguity_proof.py"
+    },
+    "decision": "REJECT_ALL",
+    "reasons": [
+      "generator is non-functional: two valid configs have identical input and different output",
+      "baseline fresh accuracy is 4723/5000 = 94.46% in both ORT modes",
+      "no deterministic input-only ONNX can be exact on every generated instance"
+    ]
+  },
+  "external_validator": {
+    "status": "NOT_RUN",
+    "reason": "No candidate passed the mandatory local/dual-ORT/runtime-shape pre-gate",
+    "requested_path": "/Users/kimura2003/Downloads/neurogolf_team_validator_v1",
+    "requested_path_present": false
+  },
+  "root_submission_modified": false,
+  "eligible_for_fresh5000_from_strict_pregate": []
+}

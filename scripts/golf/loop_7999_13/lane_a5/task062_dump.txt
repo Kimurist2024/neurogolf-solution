@@ -1,0 +1,80 @@
+# task062.onnx
+
+## Initializers
+red_sel_f: float16 (10,) [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+obj_val_f: float16 (10, 1, 1, 1) [[[[0.0]]], [[[1.0]]], [[[0.0]]], [[[0.0]]], [[[4.0]]], [[[5.0]]], [[[6.0]]], [[[7.0]]], [[[8.0]]], [[[9.0]]]]
+coord_f: float16 (30,) [-2.0, 0.357177734375, 1.595703125, 2.453125, 3.5, 4.546875, 5.40625, 6.64453125, 7.27734375, -2.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0]
+one_u8_v1: uint8 (1,) [1]
+two_u8_v1: uint8 (1,) [2]
+base_w_u8: uint8 (10, 1, 1, 1) [[[[2]]], [[[2]]], [[[2]]], [[[3]]], [[[2]]], [[[2]]], [[[2]]], [[[2]]], [[[2]]], [[[2]]]]
+obj_w_u8: uint8 (1,) [0]
+pad_axes2: int64 (2,) [2, 3]
+slice_axes3_i32: int32 (3,) [1, 2, 3]
+slice_size3_i32: int32 (3,) [1, 3, 3]
+four_i8: int8 (1,) [4]
+two_w_1x1: uint8 (1, 1, 1, 1) [[[[1]]]]
+gn_s: float32 () 0.30000001192092896
+idx_table_i32: int32 (3, 6) [[0, 1, 2, 3, 3, 3], [2, 1, 0, 0, 1, 2], [0, 1, 2, 2, 1, 0]]
+qscale_f: float32 () 4.0
+
+## Nodes
+00 GroupNormalization ['input', 'gn_s', 'gn_s'] -> ['gn'] {'epsilon': 9.999999747378752e-06, 'num_groups': 10}
+01 CastLike ['gn', 'obj_w_u8'] -> ['q'] {}
+02 CastLike ['q', 'red_sel_f'] -> ['qf'] {}
+03 Einsum ['qf', 'obj_val_f'] -> ['obj_sum'] {'equation': 'bixy,ipqr->'}
+04 Einsum ['qf', 'obj_val_f', 'coord_f'] -> ['obj_sr'] {'equation': 'bixy,ipqr,x->'}
+05 Einsum ['qf', 'obj_val_f', 'coord_f'] -> ['obj_sc'] {'equation': 'bixy,ipqr,y->'}
+06 Einsum ['qf', 'red_sel_f'] -> ['red_n'] {'equation': 'bixy,i->'}
+07 Einsum ['qf', 'red_sel_f', 'coord_f'] -> ['red_sr'] {'equation': 'bixy,i,x->'}
+08 Einsum ['qf', 'red_sel_f', 'coord_f'] -> ['red_sc'] {'equation': 'bixy,i,y->'}
+09 QuantizeLinear ['red_sc', 'red_n'] -> ['axis_col_u8'] {}
+10 QuantizeLinear ['obj_sc', 'obj_sum'] -> ['obj_mean_c_q_u8'] {}
+11 QuantizeLinear ['red_sr', 'red_n'] -> ['axis_row_u8'] {}
+12 QuantizeLinear ['obj_sr', 'obj_sum'] -> ['obj_mean_r_q_u8'] {}
+13 Max ['axis_row_u8', 'obj_mean_r_q_u8'] -> ['row_max_u8'] {}
+14 Min ['axis_row_u8', 'obj_mean_r_q_u8'] -> ['row_min_u8'] {}
+15 Sub ['row_max_u8', 'row_min_u8'] -> ['row_diff_u8'] {}
+16 Max ['axis_col_u8', 'obj_mean_c_q_u8'] -> ['col_max_u8'] {}
+17 Min ['axis_col_u8', 'obj_mean_c_q_u8'] -> ['col_min_u8'] {}
+18 Sub ['col_max_u8', 'col_min_u8'] -> ['col_diff_u8'] {}
+19 Mod ['obj_mean_r_q_u8', 'two_u8_v1'] -> ['red_sr_mod2'] {'fmod': 0}
+20 Add ['col_diff_u8', 'red_sr_mod2'] -> ['col_adj_u8'] {}
+21 Less ['row_diff_u8', 'col_adj_u8'] -> ['sel_h'] {}
+22 Where ['sel_h', 'axis_col_u8', 'axis_row_u8'] -> ['axis_active_u8'] {}
+23 Where ['sel_h', 'obj_mean_c_q_u8', 'obj_mean_r_q_u8'] -> ['obj_active_q_u8'] {}
+24 Less ['axis_active_u8', 'obj_active_q_u8'] -> ['side_active'] {}
+25 Where ['side_active', 'one_u8_v1', 'two_u8_v1'] -> ['active_sub_u8'] {}
+26 Sub ['axis_active_u8', 'active_sub_u8'] -> ['active_start_u8'] {}
+27 Add ['axis_active_u8', 'two_u8_v1'] -> ['axis_plus2_u8'] {}
+28 Where ['side_active', 'axis_plus2_u8', 'active_start_u8'] -> ['vis_start_active_u8'] {}
+29 Where ['sel_h', 'obj_mean_r_q_u8', 'vis_start_active_u8'] -> ['start_row3_u8'] {}
+30 Where ['sel_h', 'vis_start_active_u8', 'obj_mean_c_q_u8'] -> ['start_col3_u8'] {}
+31 Concat ['obj_w_u8', 'start_row3_u8', 'start_col3_u8'] -> ['slice_starts_u8'] {'axis': 0}
+32 Cast ['slice_starts_u8'] -> ['slice_starts_i32'] {'to': 6}
+33 Add ['slice_starts_i32', 'slice_size3_i32'] -> ['slice_ends_i32'] {}
+34 Slice ['q', 'slice_starts_i32', 'slice_ends_i32', 'slice_axes3_i32'] -> ['code3'] {}
+35 Einsum ['qf', 'obj_val_f', 'obj_val_f'] -> ['obj_sum2'] {'equation': 'bixy,ipqr,ipqr->bpqr'}
+36 QuantizeLinear ['obj_sum2', 'obj_sum'] -> ['obj_color4_u8'] {}
+37 Cast ['obj_color4_u8'] -> ['obj_color_i32'] {'to': 6}
+38 QLinearConv ['code3', 'qscale_f', 'one_u8_v1', 'two_w_1x1', 'qscale_f', 'obj_w_u8', 'qscale_f', 'two_u8_v1'] -> ['code4'] {'pads': [0, 0, 1, 1]}
+39 Where ['sel_h', 'obj_w_u8', 'active_sub_u8'] -> ['row_tab_u8'] {}
+40 Where ['sel_h', 'active_sub_u8', 'obj_w_u8'] -> ['col_tab_u8'] {}
+41 Squeeze ['row_tab_u8'] -> ['row_tab_u8_s'] {}
+42 Squeeze ['col_tab_u8'] -> ['col_tab_u8_s'] {}
+43 Cast ['row_tab_u8_s'] -> ['row_tab_i32'] {'to': 6}
+44 Cast ['col_tab_u8_s'] -> ['col_tab_i32'] {'to': 6}
+45 Gather ['idx_table_i32', 'row_tab_i32'] -> ['row_idx'] {'axis': 0}
+46 Gather ['idx_table_i32', 'col_tab_i32'] -> ['col_idx'] {'axis': 0}
+47 Gather ['code4', 'row_idx'] -> ['tmp_code'] {'axis': 2}
+48 Gather ['tmp_code', 'col_idx'] -> ['code_grid6'] {'axis': 3}
+49 Where ['sel_h', 'obj_mean_r_q_u8', 'active_start_u8'] -> ['start_row6_u8'] {}
+50 Where ['sel_h', 'active_start_u8', 'obj_mean_c_q_u8'] -> ['start_col6_u8'] {}
+51 Cast ['start_row6_u8'] -> ['start_row6_i8'] {'to': 3}
+52 Cast ['start_col6_u8'] -> ['start_col6_i8'] {'to': 3}
+53 Sub ['four_i8', 'start_row6_i8'] -> ['bottom_i8'] {}
+54 Sub ['four_i8', 'start_col6_i8'] -> ['right_i8'] {}
+55 Concat ['start_row6_i8', 'start_col6_i8', 'bottom_i8', 'right_i8'] -> ['pad_pads_i8'] {'axis': 0}
+56 Cast ['pad_pads_i8'] -> ['pad_pads_i64'] {'to': 7}
+57 Pad ['code_grid6', 'pad_pads_i64', 'two_u8_v1', 'pad_axes2'] -> ['code_grid10'] {'mode': 'constant'}
+58 ScatterElements ['base_w_u8', 'obj_color_i32', 'two_w_1x1'] -> ['w_dyn'] {'axis': 0}
+59 ConvInteger ['code_grid10', 'w_dyn', 'one_u8_v1', 'two_u8_v1'] -> ['output'] {'pads': [0, 0, 20, 20]}
