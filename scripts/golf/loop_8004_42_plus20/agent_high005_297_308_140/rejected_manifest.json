@@ -1,0 +1,54 @@
+{
+  "task005": [
+    {
+      "authority_member_sha256": "77eb35fdcf2dbbacaa1c63d2dfef4f3b50ecbfbc8178da3bc2e7883ee8275c57",
+      "base_cost": 2325,
+      "reason": "No strictly-lower exact/no-regression rewrite survived. The same immutable member was previously scanned across 113 deduplicated models / 970 raw sources and all 48 installed optimizer passes; the lowest non-base static floor was a 2325 tie."
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_rebuild_high2/candidates/task005_sound_2389.onnx",
+      "sha256": "c66d2514ebd35e6a912de0a48cb16f510b52b43acc7def7e4adc396378a82527",
+      "cost": 2389,
+      "reason": "Known/fresh-sound control, but 64 cost above the 2325 authority member and still contains a Hardmax selector; not a score improvement and not lookup-free."
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_rebuild_high2/candidates/task005_clean_2545.onnx",
+      "sha256": "b27d1a66891b9b6efb26c629590ac12a1186af427b8fdd329d2743c77abec7e9",
+      "cost": 2545,
+      "reason": "Clean true-rule control without Hardmax/giant lookup, but 220 cost above authority."
+    }
+  ],
+  "task297": [
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high005_297_308_140/candidates/task297_shared_c_scale.onnx",
+      "sha256": "e5b5bb4f9a083b5a88968a89da9c6cbd536272de84d1415250b9f9df9f58143f",
+      "base_cost": 371,
+      "candidate_cost": 370,
+      "known_dual_ort": {
+        "right": 1,
+        "wrong": 264,
+        "errors": 0
+      },
+      "reason": "Rejected before fresh validation. Sharing c_scale appears equivalent over real arithmetic, but Mul is uint8 and the rescaled coefficients overflow modulo 256. Known gold confirms the semantic failure in both ORT modes."
+    },
+    {
+      "path": "scripts/golf/loop_7999_13/lane_a10/task297_trim_zero_kernel.onnx",
+      "sha256": "5b1b2dbc6f86a3f1658b092b7d2c296f46852489258d7a7bf3d50f08d796365e",
+      "candidate_cost": 361,
+      "reason": "Historical lower model requires negative Conv padding [0,0,0,-24], which violates the ONNX Conv schema and is inadmissible. Schema-compliant Slice/Split alternatives cost 484/511."
+    }
+  ],
+  "task308": [
+    {
+      "authority_member_sha256": "fc845e9edee06830a880be6f385f2601d1d0ff7f017cb54b64b36cb84da7785d",
+      "base_cost": 433,
+      "reason": "Authority is not an admissible parent for exact regolf: default ORT fails TopK session creation and runtime tracing exposes 26 declared/actual shape mismatches (truthful intermediate bytes 63546 versus scored memory 376). Shape-cloak preservation is prohibited."
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high005_297_308_140/candidates/task308_bypass_constant_shape_copy.onnx",
+      "sha256": "80189811df615bd533d3d1add4c45fab4026213ab8cd7b39c7e23b96c7f20e8b",
+      "candidate_cost": null,
+      "reason": "The local constant-vector identity is exact, but the resulting graph fails full/strict inference and both ORT session modes at TopK. It cannot be costed or admitted."
+    }
+  ]
+}

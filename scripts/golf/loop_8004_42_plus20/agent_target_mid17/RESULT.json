@@ -1,0 +1,122 @@
+{
+  "lane": "plus20_target_mid17",
+  "tasks": [324, 338, 268, 184],
+  "requested_baseline": {
+    "path": "submission_base_8004.50.zip",
+    "sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "latest_rebase": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "compatible": true,
+    "reason": "All four target member SHA-256 values are unchanged from submission_base_8004.50.zip."
+  },
+  "gates": {
+    "complete_known": "100%",
+    "fresh": "5000 x 2 independent seeds",
+    "private_lineage_fresh": "100% required",
+    "dual_ort_errors": 0,
+    "strict_shape_data_prop": true,
+    "truthful_declared_runtime_shapes": true,
+    "standard_domain_only": true,
+    "unsafe_conv_bias": 0,
+    "strict_cost_decrease": true,
+    "forbidden": ["lookup", "shape cloak", "giant floating Einsum"]
+  },
+  "reference_validation": {
+    "seeds": [8004421701, 8004421702],
+    "task324": {"known": "266/266", "fresh": ["5000/5000", "5000/5000"]},
+    "task338": {"known": "267/267", "fresh": ["5000/5000", "5000/5000"]},
+    "task268": {"known": "266/266", "fresh": ["5000/5000", "5000/5000"]},
+    "task184": {
+      "known_raw_rule": "266/266",
+      "known_30x30_compatible": "169/169",
+      "fresh": ["5000/5000", "5000/5000"],
+      "fresh_30x30_compatible": ["3153/5000", "3170/5000"]
+    }
+  },
+  "results": [
+    {
+      "task": 324,
+      "generator": "d07ae81c",
+      "baseline_sha256": "894be3a6ae4d93ce52a5bb0ec8b03fe3443de74b746cff7529dc4989cd73ac08",
+      "baseline_cost": 439,
+      "baseline_known_disable_all": "266/266, errors 0",
+      "baseline_default": "session error at TopK",
+      "baseline_runtime_shape_mismatches": 5,
+      "baseline_giant_einsum_nodes": 4,
+      "baseline_max_node_inputs": 65,
+      "baseline_true_intermediate_bytes_one_case": 54338,
+      "best_admissible_rule_control_cost": 16550,
+      "control_dual_known": "266/266 in each ORT mode, errors 0",
+      "control_runtime_shape_mismatches": 0,
+      "decision": "REJECT_NO_CHEAPER_ADMISSIBLE_MODEL"
+    },
+    {
+      "task": 338,
+      "generator": "d5d6de2d",
+      "baseline_sha256": "edcac049616e90e42b848d1a719b3af7a4a078b5d1180a3cdf0ecf60e340a01d",
+      "baseline_cost": 426,
+      "baseline_known_disable_all": "267/267, errors 0",
+      "baseline_default": "session error: declared output 1x10x1x1 conflicts with inferred 1x10x30x30",
+      "baseline_runtime_shape_trace": "allocator error: 1x1x29x30 versus 1x1x30x30",
+      "cheaper_history_cost424": "0 right, 0 wrong, 267 runtime errors",
+      "giant_einsum_control_cost": 740,
+      "giant_einsum_control_inputs": 29,
+      "best_admissible_rule_control_cost": 37101,
+      "control_dual_known": "267/267 in each ORT mode, errors 0",
+      "control_runtime_shape_mismatches": 0,
+      "decision": "REJECT_NO_CHEAPER_ADMISSIBLE_MODEL"
+    },
+    {
+      "task": 268,
+      "generator": "aba27056",
+      "baseline_sha256": "f77d0468fcf6d78549a2c9bff8e09140829047864fdad1e82e8e81e413567e52",
+      "baseline_cost": 422,
+      "baseline_known_disable_all": "266/266, errors 0",
+      "baseline_default": "session error at CenterCropPad shape/axes",
+      "baseline_runtime_shape_mismatches": 32,
+      "baseline_lookup_ops": {"TfIdfVectorizer": 2, "CenterCropPad": 31},
+      "baseline_true_intermediate_bytes_one_case": 28380,
+      "cheaper_history": {
+        "cost": 327,
+        "known_disable_all": "266/266, errors 0",
+        "default": "session error",
+        "runtime_shape_mismatches": 32,
+        "lookup": true,
+        "fresh_seed_8004421701": "2187/5000 (43.74%)",
+        "fresh_seed_8004421702": "2141/5000 (42.82%)"
+      },
+      "best_admissible_rule_control_cost": 18665,
+      "control_dual_known": "266/266 in each ORT mode, errors 0",
+      "control_runtime_shape_mismatches": 0,
+      "decision": "REJECT_FRESH_LOOKUP_SHAPE_AND_DEFAULT_ORT"
+    },
+    {
+      "task": 184,
+      "generator": "780d0b14",
+      "baseline_sha256": "156fe12922d290876f63c210f9cec8252e308e1af0512e309cb2fc6fad8928fc",
+      "baseline_cost": 421,
+      "baseline_known_disable_all": "169/169 compatible examples, errors 0",
+      "baseline_default": "session error at CenterCropPad shape/axes",
+      "baseline_runtime_shape_mismatches": 6,
+      "baseline_true_intermediate_bytes_one_case": 64961,
+      "closest_history_cost": 422,
+      "best_admissible_rule_control_cost": 1996,
+      "control_dual_known": "169/169 compatible examples in each ORT mode, errors 0",
+      "control_runtime_shape_mismatches": 0,
+      "decision": "REJECT_NO_STRICT_COST_DECREASE"
+    }
+  ],
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_built": false,
+  "shared_artifacts_modified": false,
+  "evidence": [
+    "scripts/golf/loop_8004_42_plus20/agent_target_mid17/STRUCTURAL_AUDIT.json",
+    "scripts/golf/loop_8004_42_plus20/agent_target_mid17/CONTROL_AUDIT.json",
+    "scripts/golf/loop_8004_42_plus20/agent_target_mid17/REFERENCE_AUDIT.json",
+    "scripts/golf/loop_8004_42_plus20/agent_target_mid17/CANDIDATE_FRESH.json"
+  ]
+}

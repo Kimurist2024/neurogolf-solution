@@ -1,0 +1,63 @@
+{
+  "authority": "submission_base_8009.46.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "current": {
+    "178": {"sha256": "8e63512bb0f2f742fe1e9b1efc8751a82db1808c98c2636f6a37f98eada57823", "memory": 206, "params": 56, "cost": 262},
+    "228": {"sha256": "13946c8d5a52886212f495b13fa6c128a091e77b84e10e27b442ed87f9694a45", "memory": 241, "params": 50, "cost": 291},
+    "234": {"sha256": "c66bb8c3e92a3a2ef5844872cb36d54076ba697f8ee6e777ceef6c2dd0997c8a", "memory": 229, "params": 132, "cost": 361},
+    "264": {"sha256": "44163ea87aca5993f076612fd1f8d1c21a232521964666c3644e7dc3817b9160", "memory": 321, "params": 23, "cost": 344},
+    "325": {"sha256": "5e8e919a23dd9f6e8ba0f82ff08ebef634b1b1975e466ce80bf03ed5288ef3b1", "memory": 165, "params": 57, "cost": 222},
+    "344": {"sha256": "05bedf3ca834aadfc973c00fc91cafdb4d0ae1aaab374115d924e2e33fb1bf6c", "memory": 0, "params": 137, "cost": 137},
+    "357": {"sha256": "3c2e8d92b0c893c6836c64119074a2e38e7b975cf7bf8ef09654953b054e6d6c", "memory": 196, "params": 61, "cost": 257},
+    "387": {"sha256": "21a0c07d0101a7c538210dc44553f807d1bddcf755746ceaabad20c69561c160", "memory": 234, "params": 95, "cost": 329},
+    "388": {"sha256": "f27fa5f4f0bcade23d02fed2a74e3c2b826b11140bd03d29f47e0c59c382a8e1", "memory": 63, "params": 22, "cost": 85},
+    "392": {"sha256": "96ed4658476f09cb77f09848081bb5830b96b6ea65c8a5a3278f28f9036e32f9", "memory": 272, "params": 57, "cost": 329},
+    "397": {"sha256": "2361956a9b6d1391aff9d8bc4af26d5112877e0e2946b365d04e461899f4d7e1", "memory": 249, "params": 89, "cost": 338},
+    "398": {"sha256": "339e0b25b3f45862f51b98c239755e597aca040b951acec5065b380a753d2513", "memory": 144, "params": 202, "cost": 346}
+  },
+  "scan": {
+    "transformation_families": [
+      "dead/unreachable and unused initializer removal",
+      "value-identical initializer aliasing",
+      "Identity and exact no-op Cast/CastLike/Reshape/Transpose/Concat/arithmetic removal",
+      "deterministic common-subexpression elimination",
+      "unused optional output omission",
+      "uniform constant scalar-broadcast reduction",
+      "29 conservative onnxoptimizer passes individually and combined",
+      "onnxsim constant-fold and simplification"
+    ],
+    "unique_variants": 15,
+    "strict_lower_candidates": 2
+  },
+  "rejected_strict_lower": [
+    {
+      "task": 264,
+      "label": "alias_initializers",
+      "sha256": "52802ff9cf366a2528eb282e26722e9b53a8aab22d86dbd29095a1add21aaf8e",
+      "cost": 343,
+      "reason": "default ORT session construction fails and runtime shape trace has 44 mismatches"
+    },
+    {
+      "task": 264,
+      "label": "opt_eliminate_duplicate_initializer",
+      "sha256": "42b1438c91f40309e69ea6e44c9c1a8aaeb7f3ffba29d7ea30e21475d2b7d5a3",
+      "cost": 343,
+      "reason": "default ORT session construction fails and runtime shape trace has 44 mismatches"
+    }
+  ],
+  "fresh": {
+    "status": "not_run",
+    "reason": "no strict-lower candidate passed mandatory dual-ORT known and truthful-shape gates"
+  },
+  "winners": [],
+  "winner_count": 0,
+  "promotion_performed": false,
+  "protected_payload_modified": false,
+  "verdict": "NO_SAFE_EXACT_CANDIDATE",
+  "artifacts": {
+    "inventory": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/inventory.json",
+    "candidate_scan": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/candidate_scan.json",
+    "audit": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/audit.json",
+    "winner_manifest": "scripts/golf/loop_8004_42_plus20/agent_8009_exact_B_116/winner_manifest.json"
+  }
+}

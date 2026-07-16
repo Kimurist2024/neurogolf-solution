@@ -1,0 +1,1072 @@
+{
+  "cost_rule": "initializer parameter cost is element-count, independent of dtype byte width",
+  "tasks": {
+    "196": {
+      "initializer_count": 13,
+      "parameter_elements": 161,
+      "aliases": [],
+      "castlike_only": [
+        "bool_zero"
+      ],
+      "unused": [],
+      "initializers": [
+        {
+          "name": "q_scale",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 34,
+              "op": "QLinearConv",
+              "input_index": 1
+            },
+            {
+              "node_index": 34,
+              "op": "QLinearConv",
+              "input_index": 4
+            },
+            {
+              "node_index": 34,
+              "op": "QLinearConv",
+              "input_index": 6
+            },
+            {
+              "node_index": 35,
+              "op": "QLinearConv",
+              "input_index": 1
+            },
+            {
+              "node_index": 35,
+              "op": "QLinearConv",
+              "input_index": 4
+            },
+            {
+              "node_index": 35,
+              "op": "QLinearConv",
+              "input_index": 6
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "zero_u8",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 5,
+              "op": "CastLike",
+              "input_index": 1
+            },
+            {
+              "node_index": 34,
+              "op": "QLinearConv",
+              "input_index": 2
+            },
+            {
+              "node_index": 34,
+              "op": "QLinearConv",
+              "input_index": 7
+            },
+            {
+              "node_index": 35,
+              "op": "QLinearConv",
+              "input_index": 2
+            },
+            {
+              "node_index": 35,
+              "op": "QLinearConv",
+              "input_index": 7
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "zero_i8",
+          "dtype": "int8",
+          "shape": [],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 34,
+              "op": "QLinearConv",
+              "input_index": 5
+            },
+            {
+              "node_index": 35,
+              "op": "QLinearConv",
+              "input_index": 5
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "bool_zero",
+          "dtype": "bool",
+          "shape": [],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 36,
+              "op": "CastLike",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": true
+        },
+        {
+          "name": "h_w",
+          "dtype": "int8",
+          "shape": [
+            3,
+            1,
+            5,
+            5
+          ],
+          "elements": 75,
+          "uses": [
+            {
+              "node_index": 34,
+              "op": "QLinearConv",
+              "input_index": 3
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "mask_w",
+          "dtype": "int8",
+          "shape": [
+            1,
+            3,
+            5,
+            5
+          ],
+          "elements": 75,
+          "uses": [
+            {
+              "node_index": 35,
+              "op": "QLinearConv",
+              "input_index": 3
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "c1",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 1,
+              "op": "Sub",
+              "input_index": 1
+            },
+            {
+              "node_index": 12,
+              "op": "CenterCropPad",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "c2",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 2,
+              "op": "Sub",
+              "input_index": 1
+            },
+            {
+              "node_index": 3,
+              "op": "Div",
+              "input_index": 1
+            },
+            {
+              "node_index": 11,
+              "op": "CenterCropPad",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "c3",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 10,
+              "op": "CenterCropPad",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "c4",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 9,
+              "op": "CenterCropPad",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "c5",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 8,
+              "op": "CenterCropPad",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "c6",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 7,
+              "op": "CenterCropPad",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "c7",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 6,
+              "op": "CenterCropPad",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        }
+      ]
+    },
+    "340": {
+      "initializer_count": 12,
+      "parameter_elements": 159,
+      "aliases": [],
+      "castlike_only": [],
+      "unused": [],
+      "initializers": [
+        {
+          "name": "e1f",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "uses": [
+            {
+              "node_index": 0,
+              "op": "Einsum",
+              "input_index": 1
+            },
+            {
+              "node_index": 1,
+              "op": "Einsum",
+              "input_index": 1
+            },
+            {
+              "node_index": 8,
+              "op": "Einsum",
+              "input_index": 1
+            },
+            {
+              "node_index": 9,
+              "op": "Einsum",
+              "input_index": 2
+            },
+            {
+              "node_index": 14,
+              "op": "Einsum",
+              "input_index": 1
+            },
+            {
+              "node_index": 15,
+              "op": "Einsum",
+              "input_index": 1
+            },
+            {
+              "node_index": 20,
+              "op": "Einsum",
+              "input_index": 2
+            },
+            {
+              "node_index": 25,
+              "op": "Einsum",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "colorf",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "uses": [
+            {
+              "node_index": 8,
+              "op": "Einsum",
+              "input_index": 2
+            },
+            {
+              "node_index": 9,
+              "op": "Einsum",
+              "input_index": 3
+            },
+            {
+              "node_index": 14,
+              "op": "Einsum",
+              "input_index": 2
+            },
+            {
+              "node_index": 15,
+              "op": "Einsum",
+              "input_index": 3
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "nzf",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "uses": [
+            {
+              "node_index": 20,
+              "op": "Einsum",
+              "input_index": 4
+            },
+            {
+              "node_index": 25,
+              "op": "Einsum",
+              "input_index": 4
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "one1b",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 4,
+              "op": "Sub",
+              "input_index": 1
+            },
+            {
+              "node_index": 5,
+              "op": "Sub",
+              "input_index": 1
+            },
+            {
+              "node_index": 6,
+              "op": "Sub",
+              "input_index": 1
+            },
+            {
+              "node_index": 7,
+              "op": "Sub",
+              "input_index": 1
+            },
+            {
+              "node_index": 22,
+              "op": "Concat",
+              "input_index": 1
+            },
+            {
+              "node_index": 27,
+              "op": "Concat",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "oneMM",
+          "dtype": "float32",
+          "shape": [
+            1,
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 8,
+              "op": "Einsum",
+              "input_index": 3
+            },
+            {
+              "node_index": 9,
+              "op": "Einsum",
+              "input_index": 4
+            },
+            {
+              "node_index": 10,
+              "op": "Gemm",
+              "input_index": 1
+            },
+            {
+              "node_index": 14,
+              "op": "Einsum",
+              "input_index": 3
+            },
+            {
+              "node_index": 15,
+              "op": "Einsum",
+              "input_index": 4
+            },
+            {
+              "node_index": 16,
+              "op": "Gemm",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "ACTable",
+          "dtype": "int8",
+          "shape": [
+            6,
+            9,
+            1
+          ],
+          "elements": 54,
+          "uses": [
+            {
+              "node_index": 34,
+              "op": "Gather",
+              "input_index": 0
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "inv_baseI",
+          "dtype": "int32",
+          "shape": [
+            1,
+            10
+          ],
+          "elements": 10,
+          "uses": [
+            {
+              "node_index": 33,
+              "op": "ScatterElements",
+              "input_index": 0
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "role_idsI",
+          "dtype": "int32",
+          "shape": [
+            1,
+            4
+          ],
+          "elements": 4,
+          "uses": [
+            {
+              "node_index": 33,
+              "op": "ScatterElements",
+              "input_index": 2
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "rowUpd",
+          "dtype": "int8",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "uses": [
+            {
+              "node_index": 29,
+              "op": "ScatterElements",
+              "input_index": 2
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "colUpd",
+          "dtype": "int8",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "uses": [
+            {
+              "node_index": 24,
+              "op": "ScatterElements",
+              "input_index": 2
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "zero1b",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 22,
+              "op": "Concat",
+              "input_index": 0
+            },
+            {
+              "node_index": 27,
+              "op": "Concat",
+              "input_index": 0
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "sharedw",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "uses": [
+            {
+              "node_index": 9,
+              "op": "Einsum",
+              "input_index": 1
+            },
+            {
+              "node_index": 15,
+              "op": "Einsum",
+              "input_index": 2
+            },
+            {
+              "node_index": 20,
+              "op": "Einsum",
+              "input_index": 1
+            },
+            {
+              "node_index": 25,
+              "op": "Einsum",
+              "input_index": 2
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        }
+      ]
+    },
+    "354": {
+      "initializer_count": 13,
+      "parameter_elements": 75,
+      "aliases": [],
+      "castlike_only": [],
+      "unused": [],
+      "initializers": [
+        {
+          "name": "code",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "elements": 10,
+          "uses": [
+            {
+              "node_index": 3,
+              "op": "QLinearConv",
+              "input_index": 0
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "band",
+          "dtype": "bool",
+          "shape": [
+            1,
+            1,
+            3,
+            10
+          ],
+          "elements": 30,
+          "uses": [
+            {
+              "node_index": 5,
+              "op": "Where",
+              "input_index": 0
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "s1",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 0,
+              "op": "GroupNormalization",
+              "input_index": 1
+            },
+            {
+              "node_index": 0,
+              "op": "GroupNormalization",
+              "input_index": 2
+            },
+            {
+              "node_index": 3,
+              "op": "QLinearConv",
+              "input_index": 1
+            },
+            {
+              "node_index": 3,
+              "op": "QLinearConv",
+              "input_index": 4
+            },
+            {
+              "node_index": 3,
+              "op": "QLinearConv",
+              "input_index": 6
+            },
+            {
+              "node_index": 4,
+              "op": "QLinearConv",
+              "input_index": 1
+            },
+            {
+              "node_index": 4,
+              "op": "QLinearConv",
+              "input_index": 4
+            },
+            {
+              "node_index": 4,
+              "op": "QLinearConv",
+              "input_index": 6
+            },
+            {
+              "node_index": 7,
+              "op": "QLinearMatMul",
+              "input_index": 1
+            },
+            {
+              "node_index": 7,
+              "op": "QLinearMatMul",
+              "input_index": 4
+            },
+            {
+              "node_index": 7,
+              "op": "QLinearMatMul",
+              "input_index": 6
+            },
+            {
+              "node_index": 9,
+              "op": "QLinearMatMul",
+              "input_index": 4
+            },
+            {
+              "node_index": 9,
+              "op": "QLinearMatMul",
+              "input_index": 6
+            },
+            {
+              "node_index": 11,
+              "op": "QLinearConv",
+              "input_index": 4
+            },
+            {
+              "node_index": 11,
+              "op": "QLinearConv",
+              "input_index": 6
+            },
+            {
+              "node_index": 12,
+              "op": "QLinearConv",
+              "input_index": 4
+            },
+            {
+              "node_index": 12,
+              "op": "QLinearConv",
+              "input_index": 6
+            },
+            {
+              "node_index": 14,
+              "op": "QLinearMatMul",
+              "input_index": 1
+            },
+            {
+              "node_index": 14,
+              "op": "QLinearMatMul",
+              "input_index": 4
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "s255",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 9,
+              "op": "QLinearMatMul",
+              "input_index": 1
+            },
+            {
+              "node_index": 11,
+              "op": "QLinearConv",
+              "input_index": 1
+            },
+            {
+              "node_index": 12,
+              "op": "QLinearConv",
+              "input_index": 1
+            },
+            {
+              "node_index": 14,
+              "op": "QLinearMatMul",
+              "input_index": 6
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "z0",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 1,
+              "op": "CastLike",
+              "input_index": 1
+            },
+            {
+              "node_index": 3,
+              "op": "QLinearConv",
+              "input_index": 2
+            },
+            {
+              "node_index": 3,
+              "op": "QLinearConv",
+              "input_index": 5
+            },
+            {
+              "node_index": 3,
+              "op": "QLinearConv",
+              "input_index": 7
+            },
+            {
+              "node_index": 4,
+              "op": "QLinearConv",
+              "input_index": 2
+            },
+            {
+              "node_index": 4,
+              "op": "QLinearConv",
+              "input_index": 5
+            },
+            {
+              "node_index": 4,
+              "op": "QLinearConv",
+              "input_index": 7
+            },
+            {
+              "node_index": 7,
+              "op": "QLinearMatMul",
+              "input_index": 2
+            },
+            {
+              "node_index": 9,
+              "op": "QLinearMatMul",
+              "input_index": 5
+            },
+            {
+              "node_index": 9,
+              "op": "QLinearMatMul",
+              "input_index": 7
+            },
+            {
+              "node_index": 11,
+              "op": "QLinearConv",
+              "input_index": 5
+            },
+            {
+              "node_index": 11,
+              "op": "QLinearConv",
+              "input_index": 7
+            },
+            {
+              "node_index": 12,
+              "op": "QLinearConv",
+              "input_index": 5
+            },
+            {
+              "node_index": 12,
+              "op": "QLinearConv",
+              "input_index": 7
+            },
+            {
+              "node_index": 14,
+              "op": "QLinearMatMul",
+              "input_index": 5
+            },
+            {
+              "node_index": 14,
+              "op": "QLinearMatMul",
+              "input_index": 7
+            },
+            {
+              "node_index": 19,
+              "op": "CastLike",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "z127",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 5,
+              "op": "Where",
+              "input_index": 2
+            },
+            {
+              "node_index": 7,
+              "op": "QLinearMatMul",
+              "input_index": 5
+            },
+            {
+              "node_index": 7,
+              "op": "QLinearMatMul",
+              "input_index": 7
+            },
+            {
+              "node_index": 9,
+              "op": "QLinearMatMul",
+              "input_index": 2
+            },
+            {
+              "node_index": 11,
+              "op": "QLinearConv",
+              "input_index": 2
+            },
+            {
+              "node_index": 12,
+              "op": "QLinearConv",
+              "input_index": 2
+            },
+            {
+              "node_index": 14,
+              "op": "QLinearMatMul",
+              "input_index": 2
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "w_right",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            5
+          ],
+          "elements": 5,
+          "uses": [
+            {
+              "node_index": 11,
+              "op": "QLinearConv",
+              "input_index": 3
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "w_left",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            5
+          ],
+          "elements": 5,
+          "uses": [
+            {
+              "node_index": 12,
+              "op": "QLinearConv",
+              "input_index": 3
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "gray_roi",
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "elements": 6,
+          "uses": [
+            {
+              "node_index": 2,
+              "op": "Resize",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "gray_sizes",
+          "dtype": "int64",
+          "shape": [
+            3
+          ],
+          "elements": 3,
+          "uses": [
+            {
+              "node_index": 2,
+              "op": "Resize",
+              "input_index": 3
+            },
+            {
+              "node_index": 15,
+              "op": "CastLike",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "scale_clear",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "uses": [
+            {
+              "node_index": 18,
+              "op": "GroupNormalization",
+              "input_index": 1
+            },
+            {
+              "node_index": 18,
+              "op": "GroupNormalization",
+              "input_index": 2
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "target12_i32",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 15,
+              "op": "CastLike",
+              "input_index": 0
+            },
+            {
+              "node_index": 17,
+              "op": "CastLike",
+              "input_index": 1
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        },
+        {
+          "name": "one",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "uses": [
+            {
+              "node_index": 4,
+              "op": "QLinearConv",
+              "input_index": 0
+            }
+          ],
+          "removable_by_castlike_to_cast": false
+        }
+      ]
+    }
+  }
+}

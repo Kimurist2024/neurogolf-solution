@@ -1,0 +1,115 @@
+{
+  "worker": 1,
+  "pid": 38580,
+  "tasks": [
+    64,
+    124,
+    159,
+    398
+  ],
+  "baseline_failures": [
+    {
+      "task": 124,
+      "canonical_io": "contract:output:2:(1, 1, 30, 30)"
+    },
+    {
+      "task": 159,
+      "canonical_io": "contract:output:10:(1, 10, 1, 1)"
+    }
+  ],
+  "rows": [
+    {
+      "task": 64,
+      "label": "opt_extract_constant_to_initializer",
+      "authority_sha256": "56a992e221f00d83d0fe13f9ffc26b4e3c460b98fece13f8d12ad40b08895669",
+      "candidate_sha256": "d702df7eec4403152f281fb2a734cb978cebdc562be8d7c9abaaa8092955e0d4",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "extract_constant_to_initializer"
+        ]
+      },
+      "authority_static": {
+        "memory": 119,
+        "params": 152,
+        "cost": 271
+      },
+      "candidate_static": {
+        "memory": 119,
+        "params": 152,
+        "cost": 271
+      },
+      "authority_official_cost": 271,
+      "status": "not_static_lower"
+    },
+    {
+      "task": 64,
+      "label": "opt_eliminate_shape_op",
+      "authority_sha256": "56a992e221f00d83d0fe13f9ffc26b4e3c460b98fece13f8d12ad40b08895669",
+      "candidate_sha256": "977a9b68d8772b077556418fe89303011340bcb52e0cfa08ed865098da03fc95",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "eliminate_shape_op"
+        ]
+      },
+      "authority_static": {
+        "memory": 119,
+        "params": 152,
+        "cost": 271
+      },
+      "candidate_static": {
+        "memory": null,
+        "params": null,
+        "cost": null
+      },
+      "authority_official_cost": 271,
+      "status": "structural_reject",
+      "structural": {
+        "checker": false,
+        "strict_shape_data_prop": false,
+        "static_positive": false,
+        "banned_ops": [],
+        "nested_graphs": [],
+        "conv_bias_ub": [],
+        "errors": [
+          "checker_or_inference:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (10) vs (1)\n"
+        ],
+        "cost": null
+      }
+    },
+    {
+      "task": 398,
+      "label": "opt_extract_constant_to_initializer",
+      "authority_sha256": "76070a3b172fa2f34ddf297932dfd563c4caeffd0e13ac1f9a3f009e30182241",
+      "candidate_sha256": "e923e871f9dd1585e5fbdc3fe0b16d3702f00e509988761d2f33b8d6ba1499e4",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "extract_constant_to_initializer"
+        ]
+      },
+      "authority_static": {
+        "memory": 33,
+        "params": 191,
+        "cost": 224
+      },
+      "candidate_static": {
+        "memory": 33,
+        "params": 191,
+        "cost": 224
+      },
+      "authority_official_cost": 253,
+      "status": "not_static_lower"
+    }
+  ],
+  "summary": {
+    "tasks": 4,
+    "baseline_failures": 2,
+    "variants": 3,
+    "finalists_known_exact": 0
+  }
+}

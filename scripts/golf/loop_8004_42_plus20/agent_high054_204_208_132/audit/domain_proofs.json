@@ -1,0 +1,148 @@
+{
+  "float16": {
+    "domain": "all 65536 IEEE-754 binary16 bit patterns including NaNs",
+    "div_x_by_2_vs_mul_x_by_half_bit_differences": 0,
+    "ort_div_vs_mul_bit_differences": {
+      "disable_all": 0,
+      "default": 0
+    },
+    "decision_div_to_mul": "equivalent_but_no_cost_reduction_so_not_emitted",
+    "staged_x_mul_ln2_div2_vs_reassociated_x_mul_ln2half_bit_differences": 1286,
+    "reassociation_counterexamples": [
+      {
+        "input_bits": "0x0002",
+        "staged_bits": "0x0000",
+        "reassociated_bits": "0x0001"
+      },
+      {
+        "input_bits": "0x0004",
+        "staged_bits": "0x0002",
+        "reassociated_bits": "0x0001"
+      },
+      {
+        "input_bits": "0x0008",
+        "staged_bits": "0x0002",
+        "reassociated_bits": "0x0003"
+      },
+      {
+        "input_bits": "0x000a",
+        "staged_bits": "0x0004",
+        "reassociated_bits": "0x0003"
+      },
+      {
+        "input_bits": "0x000e",
+        "staged_bits": "0x0004",
+        "reassociated_bits": "0x0005"
+      },
+      {
+        "input_bits": "0x0010",
+        "staged_bits": "0x0006",
+        "reassociated_bits": "0x0005"
+      },
+      {
+        "input_bits": "0x0014",
+        "staged_bits": "0x0006",
+        "reassociated_bits": "0x0007"
+      },
+      {
+        "input_bits": "0x0016",
+        "staged_bits": "0x0008",
+        "reassociated_bits": "0x0007"
+      }
+    ],
+    "decision_reassociation": "reject_not_bitwise_exact_on_full_float16_domain"
+  },
+  "boolean": {
+    "task054_flip_truth_table": [
+      {
+        "xpose": false,
+        "high_r": false,
+        "high_c": false,
+        "original": false,
+        "mux": false
+      },
+      {
+        "xpose": false,
+        "high_r": false,
+        "high_c": true,
+        "original": false,
+        "mux": false
+      },
+      {
+        "xpose": false,
+        "high_r": true,
+        "high_c": false,
+        "original": true,
+        "mux": true
+      },
+      {
+        "xpose": false,
+        "high_r": true,
+        "high_c": true,
+        "original": true,
+        "mux": true
+      },
+      {
+        "xpose": true,
+        "high_r": false,
+        "high_c": false,
+        "original": false,
+        "mux": false
+      },
+      {
+        "xpose": true,
+        "high_r": false,
+        "high_c": true,
+        "original": true,
+        "mux": true
+      },
+      {
+        "xpose": true,
+        "high_r": true,
+        "high_c": false,
+        "original": false,
+        "mux": false
+      },
+      {
+        "xpose": true,
+        "high_r": true,
+        "high_c": true,
+        "original": true,
+        "mux": true
+      }
+    ],
+    "task054_flip_equal": true,
+    "task054_box_select_truth_table": [
+      {
+        "Db": false,
+        "original_2D_minus_1": -1,
+        "select": -1
+      },
+      {
+        "Db": true,
+        "original_2D_minus_1": 1,
+        "select": 1
+      }
+    ],
+    "task054_box_select_equal": true,
+    "runtime_decision": "both rewrites rejected because this ORT build has no Where kernel for the required bool/int8 output types"
+  },
+  "uint8_polynomial": {
+    "domain": "all 256^3 uint8 triples (r,h,shift)",
+    "mismatches": 0,
+    "arithmetic": "Z/256Z followed by projection to low four bits (Z/16Z)",
+    "runtime_decision": "identity proved, but candidate rejected because ORT has no uint8 Einsum kernel"
+  },
+  "task204_integer_prefix": {
+    "candidate": "replace four Mul/Xor stages by multiplication by 16777215",
+    "legal_boundary_mask": "0x00000005",
+    "interval": [
+      0,
+      2
+    ],
+    "chained_result_mod_2pow32": "0x03000003",
+    "factored_result_mod_2pow32": "0x04fffffb",
+    "equal": false,
+    "decision": "reject: XOR is not integer addition when shifted copies overlap; signed int32 intermediates also cross 2^31, so associativity cannot be assumed"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "baseline": {
+    "zip": "submission_base_8004.50.zip",
+    "score": 8004.5
+  },
+  "policy": {
+    "known_complete": true,
+    "fresh_minimum": 0.9,
+    "independent_fresh_seeds": 2,
+    "dual_ort": true,
+    "runtime_errors": 0,
+    "strict_shape_data_prop": true,
+    "runtime_shapes_truthful": true,
+    "conv_bias_ub": 0,
+    "no_lookup_private_or_giant_contraction": true,
+    "private_zero_exception": "only with decoded-rule agreement and 100% multi-seed fresh guarantee"
+  },
+  "results": [
+    {
+      "task": 96,
+      "baseline_cost": 1198,
+      "historical_cost1111_sha256": "cf777f93e1519da7d6d9c0bad06086264227fde2eadc4141bf9783c58536054c",
+      "historical_cost1128_sha256": "d026067708b4017d81ad095fc7da1725350d45cffde2bb8e8d4d409711d6f31e",
+      "diagnostic_repair": "candidates/task096_default_safe.onnx",
+      "diagnostic_repair_sha256": "72e481ee479364938a7c2c98a928e81ea64bd22dde73308c139bb80cb23e0414",
+      "diagnostic_repair_cost": 2000,
+      "diagnostic_repair_gain": -0.5124936808666878,
+      "known_dual": "266/266 in both modes, errors 0",
+      "bias": "B2 is length 10 for 10 runtime output channels; safe after truthful declarations",
+      "decision": "REJECT_NOT_CHEAPER",
+      "reason": "The alleged length-1 bias is a reversed inference artifact: the cost-1111 model already has a length-10 bias but falsely declares/infer its runtime 10-channel output as one channel and has ten runtime-shape contradictions. The alternate cost-1128 model can be made dual-ORT and bias-defined, but truthful re-scoring costs 2000, above 1198."
+    },
+    {
+      "task": 205,
+      "baseline_cost": 1042,
+      "candidate_cost": 937,
+      "candidate_sha256": "bbfa8f5b79d2e8345a39a41f327ac1c2c851f3c7f388dd595c72ef951e1b3050",
+      "optimistic_gain": 0.10621394007489005,
+      "known_dual": "266/266 in both modes, errors 0",
+      "fresh": [
+        {"seed": 90702051, "right": 4908, "total": 5000, "rate": 0.9816, "errors_each_mode": 0},
+        {"seed": 90702052, "right": 4913, "total": 5000, "rate": 0.9826, "errors_each_mode": 0}
+      ],
+      "structure": {
+        "strict_shape_data_prop": true,
+        "runtime_shape_mismatches": 0,
+        "conv_bias_findings": 0,
+        "max_einsum_inputs": 13,
+        "hardmax_nodes": 1,
+        "private_zero_catalog_task": true
+      },
+      "decision": "REJECT_POLICY",
+      "reason": "Although it clears 90%, it contains the excluded Hardmax/13-input floating contraction family and is not a private-zero guaranteed candidate (fresh is below 100%)."
+    },
+    {
+      "task": 328,
+      "baseline_cost": 558,
+      "candidate_cost": 554,
+      "candidate_sha256": "4d0fc5264833fbf46609fde690ad8635e208a2cec381e749b5707ef828866cb2",
+      "optimistic_gain": 0.007194275634027231,
+      "known_dual": "267/267 in both modes, errors 0",
+      "fresh_existing": {
+        "right": 16,
+        "total": 16,
+        "errors_each_mode": 0,
+        "near_margin_cases_each_mode": 4,
+        "minimum_positive": 7.316870026530253e-11
+      },
+      "structure": {
+        "strict_shape_data_prop": true,
+        "runtime_shape_mismatches": 0,
+        "conv_bias_findings": 0,
+        "max_einsum_inputs": 58
+      },
+      "decision": "REJECT_GIANT_AND_MARGIN",
+      "reason": "Threshold outputs were identical and correct in the retained dual-ORT probe, but a 58-input Einsum violates the no-giant-contraction gate and raw positive values in (0,0.25) violate the margin gate. A larger run was stopped once those terminal failures were confirmed."
+    },
+    {
+      "task": 343,
+      "baseline_cost": 173,
+      "candidate_cost": 172,
+      "candidate_sha256": "6ada3c411cf90b4bcb42ff69e47eee35ed1c1b7d8b842c96c5c02c0eb06bec9e",
+      "optimistic_gain": 0.005797117684325915,
+      "known_dual": "266/266 in both modes, errors 0",
+      "fresh": [
+        {"seed": 90703431, "right": 4965, "total": 5000, "rate": 0.993, "errors_each_mode": 0},
+        {"seed": 90703432, "right": 4968, "total": 5000, "rate": 0.9936, "errors_each_mode": 0}
+      ],
+      "structure": {
+        "strict_shape_data_prop": true,
+        "runtime_shape_mismatches": 0,
+        "conv_bias_findings": 0,
+        "lookup_or_giant": false
+      },
+      "private_zero_lineage": [
+        "artifacts/quarantine/task343_7607_cost172_private0_decoded.onnx",
+        "artifacts/quarantine/task343_7616rej_cost172_private0_decoded.onnx"
+      ],
+      "decision": "REJECT_PRIVATE_ZERO_NOT_GUARANTEED",
+      "reason": "The exact SHA is present in the private-zero quarantine lineage, and both independent fresh seeds have ordinary semantic failures. It therefore cannot meet the user's pass-guarantee exception."
+    }
+  ],
+  "accepted": [],
+  "aggregate_projected_gain": 0.0,
+  "protected_files_modified": false
+}

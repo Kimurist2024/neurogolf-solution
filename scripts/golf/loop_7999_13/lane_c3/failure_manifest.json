@@ -1,0 +1,132 @@
+{
+  "lane": "c3",
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_score": 7999.13,
+  "tasks": [36, 44, 90, 125, 205, 319, 361],
+  "decision": "NO_STRICT_WINNER",
+  "projected_score_gain": 0.0,
+  "pool_scan": {
+    "raw_references": 6579,
+    "unique_models": 758,
+    "status_counts": {
+      "base_identical": 7,
+      "scored": 66,
+      "static_cost_floor_reject": 619,
+      "static_reject": 63,
+      "unscorable": 3
+    },
+    "source": "scan_results.json"
+  },
+  "optimizer_sweep": {
+    "passes_per_task": 46,
+    "tasks": 7,
+    "strictly_cheaper_visible_correct": 0,
+    "source": "optimizer_sweep.json"
+  },
+  "base_fresh_3000": {
+    "36": {"cost": 325, "wrong": 14, "right": 2986},
+    "44": {"cost": 1087, "wrong": 62, "right": 2938},
+    "90": {"cost": 1050, "wrong": 54, "right": 2946},
+    "125": {"cost": 1050, "wrong": 1, "right": 2999},
+    "205": {"cost": 1042, "wrong": 51, "right": 2949},
+    "319": {"cost": 1023, "wrong": 79, "right": 2921},
+    "361": {"cost": 968, "wrong": 0, "right": 3000}
+  },
+  "failures": [
+    {
+      "task": 36,
+      "base_cost": 325,
+      "base_fresh": {"right": 2986, "wrong": 14, "total": 3000},
+      "best_sound_model": "scripts/golf/scratch_codex/task036/rebuild_v5.onnx",
+      "best_sound_sha256": "eeb5e060047e7823f36f4ba26eccda54d7c735ddcd5e2341555ec66a13290081",
+      "best_sound_cost": 446,
+      "best_sound_fresh": {"right": 3000, "wrong": 0, "total": 3000},
+      "gate_reached": "strict_cost",
+      "reason": "The exact crop rule is generator-safe but costs 121 more than the 7999.13 payload. The cost-325 payload is an approximate selector and fails 14 fresh cases. No harvested or optimizer candidate is cheaper than 325."
+    },
+    {
+      "task": 44,
+      "base_cost": 1087,
+      "base_fresh": {"right": 2938, "wrong": 62, "total": 3000},
+      "gate_reached": "generator_rule",
+      "reason": "The generator is non-injective: valid latent parameterizations can produce byte-identical inputs with different outputs. The base and all compact visible fits are therefore not certifiable at fresh 100%, and no cheaper visible-correct candidate was harvested."
+    },
+    {
+      "task": 90,
+      "base_cost": 1050,
+      "base_fresh": {"right": 2946, "wrong": 54, "total": 3000},
+      "cheaper_candidates": [
+        {"cost": 986, "sha256": "2daaf4a8eb951f64010a3ec9beef08aad08c518f6f5f96c6f09132eb49303891", "fresh_wrong": 188},
+        {"cost": 1004, "sha256": "ac23a9b5cde3a7a35f3412a8be2672173ab91e4ea3d866e459a6a32d5b1e4474", "fresh_wrong": 122},
+        {"cost": 1016, "sha256": "ffd937da7ffd1ae3285547caa1e453eed05e8134ac591d56b1ed0a74f95daca0", "fresh_wrong": 116},
+        {"cost": 1029, "sha256": "4d2e9887b3dd4a34c31e4b26f008751f8ea685cdd0477aca46da3bf9ca21a71b", "fresh_wrong": 83},
+        {"cost": 1036, "sha256": "1f17c9be59f44a7e9e726e33856a8a6a5f66f83604c47fbe2355a234355be6e6", "fresh_wrong": 82}
+      ],
+      "exact_rule_model": "scripts/golf/scratch_codex/task090/candidate_gru_rule.onnx",
+      "exact_rule_cost": 1339,
+      "gate_reached": "fresh_3000",
+      "reason": "Every cheaper visible-correct run-length heuristic fails fresh. The analytic exact GRU is above baseline and also has declared/runtime shape inconsistencies, so it cannot pass the requested strict structure gate."
+    },
+    {
+      "task": 125,
+      "base_cost": 1050,
+      "base_fresh": {"right": 2999, "wrong": 1, "total": 3000},
+      "nearby_model": "scripts/golf/loop_7999_13/lane_c3/candidates/task125_cost1051.onnx",
+      "nearby_cost": 1051,
+      "nearby_fresh": {"right": 2928, "wrong": 72, "total": 3000},
+      "best_sound_model": "scripts/golf/scratch_codex/task125/task125_pool14.onnx",
+      "best_sound_sha256": "8c817e25acb6e8e0561d86adbfbcf796319c25f2421ce0cbe06957330eb43bc8",
+      "best_sound_cost": 1167,
+      "best_sound_fresh": {"right": 3000, "wrong": 0, "total": 3000},
+      "gate_reached": "strict_cost",
+      "reason": "The sound directional-pool rule is 117 cost above baseline. The cost-1051 neighbor is not a repair and fails 72 fresh cases. No harvested or optimizer graph is both safe and below 1050."
+    },
+    {
+      "task": 205,
+      "base_cost": 1042,
+      "base_fresh": {"right": 2949, "wrong": 51, "total": 3000},
+      "candidate": "scripts/golf/loop_7999_13/lane_c3/candidates/task205.onnx",
+      "candidate_sha256": "43c963c46bda5b444fb830b5495b4d71fb9dcf958e108954cdb9ef1064d9f9a8",
+      "candidate_cost": 1038,
+      "candidate_fresh": {"right": 2949, "wrong": 51, "total": 3000},
+      "exact_rule_model": "scripts/golf/scratch_codex/task205/candidate_border_scan_v2.onnx",
+      "exact_rule_cost": 484639,
+      "gate_reached": "fresh_3000",
+      "reason": "The four-cost shave preserves the incumbent's 51 fresh failures. The exact perimeter/marker reconstruction is structurally valid but orders of magnitude above the current cost."
+    },
+    {
+      "task": 319,
+      "base_cost": 1023,
+      "base_fresh": {"right": 2921, "wrong": 79, "total": 3000},
+      "gate_reached": "generator_rule",
+      "reason": "The repository contains a constructive proof of generator non-injectivity (same input, different legal outputs). No deterministic ONNX can meet the required domain fresh 100%, and no cheaper visible-correct candidate was harvested."
+    },
+    {
+      "task": 361,
+      "base_cost": 968,
+      "base_fresh": {"right": 3000, "wrong": 0, "total": 3000},
+      "attempts": [
+        {
+          "name": "fold_sp10_concat_to_initializer",
+          "result": "REJECT",
+          "reason": "strict checker exposed the true CenterCropPad shape and rejected the existing declaration"
+        },
+        {
+          "name": "CastLike_idx_ref_to_Cast_INT32",
+          "path": "scripts/golf/loop_7999_13/lane_c3/candidates/task361_cast_idx_i32.onnx",
+          "sha256": "5958705470f88eaf01092f04f0899d800817777e3036055d43313838712f61e9",
+          "fresh": {"right": 3000, "wrong": 0, "total": 3000},
+          "cost": 1363,
+          "result": "REJECT_NOT_CHEAPER"
+        }
+      ],
+      "gate_reached": "strict_cost_and_structure",
+      "reason": "The only base with fresh 3000/3000 has no sound shave below 968. Constant folding invalidates strict shape checking, while the typed Cast preserves correctness but exposes a larger runtime tensor and raises cost by 395."
+    }
+  ],
+  "random_differential": {
+    "status": "not_applicable",
+    "reason": "No candidate simultaneously passed strict cheaper and domain fresh 3000/3000; the independent random differential is a later adoption gate and cannot rescue an earlier failure."
+  },
+  "root_mutations_by_lane": []
+}

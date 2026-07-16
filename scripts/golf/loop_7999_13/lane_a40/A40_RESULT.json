@@ -1,0 +1,460 @@
+{
+  "lane": "A40",
+  "task": 396,
+  "authority": {
+    "zip": "submission_base_8000.46.zip",
+    "zip_sha256": "74cb9c4a96dcf9d1d1ca4ad1e0afdb67f5218c0a06ad8e896ad1654b6548f534",
+    "task396_sha256": "ce0bd7c49e11cbde341756993a71618c5c0bf8e086de6caf56ad93e8588e1d94",
+    "task396_cost": 1019,
+    "unchanged": true
+  },
+  "rule": {
+    "classification": "global object selection plus data-dependent crop",
+    "summary": "Find the uniquely widest/tallest hollow rectangle, crop it, and paint every nonzero crop cell with the other nonzero color.",
+    "reference_visible": "all 266 exact",
+    "reference_fresh": {
+      "right": 5000,
+      "wrong": 0,
+      "seed": 404039600
+    }
+  },
+  "decision": "NO_ADOPTABLE_CANDIDATE",
+  "score_gain": 0.0,
+  "reason": "No candidate is simultaneously cost < 1019, generator-SOUND, known exact, fresh exact, truthful-shape, and free of forbidden lookup/cloak/UB lineage.",
+  "candidate_table": [
+    {
+      "model": "authority",
+      "cost": 1019,
+      "known": "266/266",
+      "fresh": "4954/5000 dual",
+      "decision": "retain LB-white authority; not generator-SOUND"
+    },
+    {
+      "model": "rule_k2",
+      "cost": 875,
+      "known": "fail",
+      "fresh": "not eligible",
+      "decision": "reject"
+    },
+    {
+      "model": "rule_k3",
+      "cost": 939,
+      "known": "fail",
+      "fresh": "not eligible",
+      "decision": "reject"
+    },
+    {
+      "model": "rule_k4",
+      "cost": 1003,
+      "known": "fail",
+      "fresh": "not eligible",
+      "decision": "reject"
+    },
+    {
+      "model": "rule_k4_occupancy",
+      "cost": 1014,
+      "known": "266/266",
+      "fresh": "9906/10000",
+      "decision": "reject: row-reduction heuristic"
+    },
+    {
+      "model": "rule_k5",
+      "cost": 1067,
+      "known": "fail",
+      "fresh": "not eligible",
+      "decision": "reject"
+    },
+    {
+      "model": "rule_k6",
+      "cost": 1131,
+      "known": "fail",
+      "fresh": "not eligible",
+      "decision": "reject"
+    },
+    {
+      "model": "rule_k7",
+      "cost": 1195,
+      "known": "266/266",
+      "fresh": "1000/1000 historical",
+      "decision": "reject: over cost"
+    },
+    {
+      "model": "corner_micro",
+      "cost": 1245,
+      "known": "266/266",
+      "fresh": "5000/5000 dual (also historical 10000/10000)",
+      "decision": "reject: over cost and lookup-like operator lineage"
+    },
+    {
+      "model": "spec_runs",
+      "cost": 16457,
+      "known": "266/266",
+      "fresh": "1000/1000 historical",
+      "decision": "reject: over cost and lookup operators"
+    }
+  ],
+  "cheap_row_score_study": {
+    "cases": 20000,
+    "seed": 404039600,
+    "failures_requiring_both_true_border_rows_in_top4": {
+      "laplace": 169,
+      "absdiff": 1625,
+      "peak": 282,
+      "minedge": 1619,
+      "count": 338
+    },
+    "conclusion": "No tested one-linear-row-score replacement can soundly replace the exact corner/run stage."
+  },
+  "control_fresh_evidence": {
+    "count": 5000,
+    "seed": 171799913,
+    "rows": [
+      {
+        "label": "exact_7999_13",
+        "path": "scripts/golf/loop_7999_13/lane_b17/baseline/task396.onnx",
+        "mode": "disabled",
+        "right": 4954,
+        "wrong": 46,
+        "errors": 0,
+        "first_failure": {
+          "index": 59
+        },
+        "pass": false
+      },
+      {
+        "label": "exact_7999_13",
+        "path": "scripts/golf/loop_7999_13/lane_b17/baseline/task396.onnx",
+        "mode": "default",
+        "right": 4954,
+        "wrong": 46,
+        "errors": 0,
+        "first_failure": {
+          "index": 59
+        },
+        "pass": false
+      },
+      {
+        "label": "sound_control_1245",
+        "path": "scripts/golf/scratch_codex/task396/agent_corner_micro.onnx",
+        "mode": "disabled",
+        "right": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "first_failure": null,
+        "pass": true
+      },
+      {
+        "label": "sound_control_1245",
+        "path": "scripts/golf/scratch_codex/task396/agent_corner_micro.onnx",
+        "mode": "default",
+        "right": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "first_failure": null,
+        "pass": true
+      }
+    ]
+  },
+  "structural": {
+    "rule_k2": {
+      "path": "scripts/golf/scratch_codex/task396/cand_rule_k2.onnx",
+      "sha256": "29c5f9f911b7a04dbdfac79132073ede2a4314a09f9051abe1048a52e4856438",
+      "nodes": 63,
+      "ops": [
+        "Add",
+        "ArgMin",
+        "BitShift",
+        "BitwiseAnd",
+        "Cast",
+        "Concat",
+        "ConvInteger",
+        "Div",
+        "Einsum",
+        "Equal",
+        "GatherElements",
+        "Hardmax",
+        "LessOrEqual",
+        "ReduceMax",
+        "Reshape",
+        "ScatterElements",
+        "Slice",
+        "Sub",
+        "TopK",
+        "Where"
+      ],
+      "sparse_initializers": 0,
+      "functions": 0
+    },
+    "rule_k3": {
+      "path": "scripts/golf/scratch_codex/task396/cand_rule_k3.onnx",
+      "sha256": "5b0ec68465354a8de82cf419c105f5ecc4022d9b4af77bedeb3be7f34ca76736",
+      "nodes": 63,
+      "ops": [
+        "Add",
+        "ArgMin",
+        "BitShift",
+        "BitwiseAnd",
+        "Cast",
+        "Concat",
+        "ConvInteger",
+        "Div",
+        "Einsum",
+        "Equal",
+        "GatherElements",
+        "Hardmax",
+        "LessOrEqual",
+        "ReduceMax",
+        "Reshape",
+        "ScatterElements",
+        "Slice",
+        "Sub",
+        "TopK",
+        "Where"
+      ],
+      "sparse_initializers": 0,
+      "functions": 0
+    },
+    "rule_k4": {
+      "path": "scripts/golf/scratch_codex/task396/cand_rule_k4.onnx",
+      "sha256": "a8ff5f137cf4095123c9a4811320f571256ac7f705fa1142b28329aad1f5b72e",
+      "nodes": 63,
+      "ops": [
+        "Add",
+        "ArgMin",
+        "BitShift",
+        "BitwiseAnd",
+        "Cast",
+        "Concat",
+        "ConvInteger",
+        "Div",
+        "Einsum",
+        "Equal",
+        "GatherElements",
+        "Hardmax",
+        "LessOrEqual",
+        "ReduceMax",
+        "Reshape",
+        "ScatterElements",
+        "Slice",
+        "Sub",
+        "TopK",
+        "Where"
+      ],
+      "sparse_initializers": 0,
+      "functions": 0
+    },
+    "rule_k4_occupancy": {
+      "path": "scripts/golf/scratch_codex/task396/cand_rule_k4_occupancy.onnx",
+      "sha256": "60a16bc916be3fc38cc9312a3c01fcc1bd60343aa0731e9c33bc46f223a311a4",
+      "nodes": 63,
+      "ops": [
+        "Add",
+        "ArgMax",
+        "ArgMin",
+        "BitShift",
+        "BitwiseAnd",
+        "Cast",
+        "Concat",
+        "ConvInteger",
+        "Div",
+        "Einsum",
+        "Equal",
+        "GatherElements",
+        "Hardmax",
+        "LessOrEqual",
+        "ReduceMax",
+        "Reshape",
+        "ScatterElements",
+        "Slice",
+        "Sub",
+        "TopK",
+        "Where"
+      ],
+      "sparse_initializers": 0,
+      "functions": 0
+    },
+    "rule_k5": {
+      "path": "scripts/golf/scratch_codex/task396/cand_rule_k5.onnx",
+      "sha256": "bff347f50826903cbc4ec473e5ee23653b46ec546feb586a7d3c14c21dfd0fb7",
+      "nodes": 63,
+      "ops": [
+        "Add",
+        "ArgMin",
+        "BitShift",
+        "BitwiseAnd",
+        "Cast",
+        "Concat",
+        "ConvInteger",
+        "Div",
+        "Einsum",
+        "Equal",
+        "GatherElements",
+        "Hardmax",
+        "LessOrEqual",
+        "ReduceMax",
+        "Reshape",
+        "ScatterElements",
+        "Slice",
+        "Sub",
+        "TopK",
+        "Where"
+      ],
+      "sparse_initializers": 0,
+      "functions": 0
+    },
+    "rule_k6": {
+      "path": "scripts/golf/scratch_codex/task396/cand_rule_k6.onnx",
+      "sha256": "9410d4c5eede68f9b06aa6204dfe341bb6a61c10fc7789b1cbbb839a96ea1efe",
+      "nodes": 63,
+      "ops": [
+        "Add",
+        "ArgMin",
+        "BitShift",
+        "BitwiseAnd",
+        "Cast",
+        "Concat",
+        "ConvInteger",
+        "Div",
+        "Einsum",
+        "Equal",
+        "GatherElements",
+        "Hardmax",
+        "LessOrEqual",
+        "ReduceMax",
+        "Reshape",
+        "ScatterElements",
+        "Slice",
+        "Sub",
+        "TopK",
+        "Where"
+      ],
+      "sparse_initializers": 0,
+      "functions": 0
+    },
+    "rule_k7": {
+      "path": "scripts/golf/scratch_codex/task396/cand_rule_k7.onnx",
+      "sha256": "66b76a4279ac4e94164f972393876ff61b3cc42fb8eb3c73f19ae7f2763e1414",
+      "nodes": 63,
+      "ops": [
+        "Add",
+        "ArgMin",
+        "BitShift",
+        "BitwiseAnd",
+        "Cast",
+        "Concat",
+        "ConvInteger",
+        "Div",
+        "Einsum",
+        "Equal",
+        "GatherElements",
+        "Hardmax",
+        "LessOrEqual",
+        "ReduceMax",
+        "Reshape",
+        "ScatterElements",
+        "Slice",
+        "Sub",
+        "TopK",
+        "Where"
+      ],
+      "sparse_initializers": 0,
+      "functions": 0
+    },
+    "rule_k8": {
+      "path": "scripts/golf/scratch_codex/task396/cand_rule_k8.onnx",
+      "sha256": "5993090330d25c5d481b00bc1db048ba97f92a21571283a7a6409ff50fbf4ae3",
+      "nodes": 63,
+      "ops": [
+        "Add",
+        "ArgMin",
+        "BitShift",
+        "BitwiseAnd",
+        "Cast",
+        "Concat",
+        "ConvInteger",
+        "Div",
+        "Einsum",
+        "Equal",
+        "GatherElements",
+        "Hardmax",
+        "LessOrEqual",
+        "ReduceMax",
+        "Reshape",
+        "ScatterElements",
+        "Slice",
+        "Sub",
+        "TopK",
+        "Where"
+      ],
+      "sparse_initializers": 0,
+      "functions": 0
+    },
+    "corner_micro": {
+      "path": "scripts/golf/scratch_codex/task396/agent_corner_micro.onnx",
+      "sha256": "f1bddd36f0c0b943fe84d500bb629159b3639997bf7ea4b2e39eb2aa2bc9da2b",
+      "nodes": 74,
+      "ops": [
+        "Add",
+        "ArgMin",
+        "BitShift",
+        "BitwiseAnd",
+        "Cast",
+        "Concat",
+        "ConvInteger",
+        "Div",
+        "Einsum",
+        "Equal",
+        "GatherElements",
+        "Hardmax",
+        "Less",
+        "ReduceMax",
+        "Reshape",
+        "ScatterElements",
+        "Slice",
+        "Sub",
+        "TopK",
+        "Where"
+      ],
+      "sparse_initializers": 0,
+      "functions": 0
+    },
+    "spec_runs": {
+      "path": "scripts/golf/scratch_codex/task396/cand_spec_runs.onnx",
+      "sha256": "aef7278cbd67b3d9a31d1e82caccf97f20863b559aa47a88d64aec6d690a5f05",
+      "nodes": 85,
+      "ops": [
+        "Add",
+        "And",
+        "ArgMax",
+        "Cast",
+        "Concat",
+        "Conv",
+        "Div",
+        "Equal",
+        "Gather",
+        "GatherND",
+        "Greater",
+        "GreaterOrEqual",
+        "Less",
+        "Min",
+        "Mod",
+        "Mul",
+        "Pad",
+        "ReduceMax",
+        "Reshape",
+        "Slice",
+        "Where",
+        "Xor"
+      ],
+      "sparse_initializers": 0,
+      "functions": 0
+    }
+  },
+  "evidence": [
+    "row_score_study.json",
+    "analyze_row_scores.py",
+    "../../lane_b17/task396_control_fresh5000.json",
+    "../../../scratch_codex/task396/REPORT.md",
+    "../../../scratch_codex/task396/FAILURE_LOG.md"
+  ]
+}

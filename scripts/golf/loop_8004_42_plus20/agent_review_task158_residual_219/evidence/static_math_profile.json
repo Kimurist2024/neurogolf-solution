@@ -1,0 +1,244 @@
+{
+  "task": 158,
+  "hashes": {
+    "parent": "127984c6807d84559bbf74fd58e3b09a66459d142cef65a8635647e64f5e59fd",
+    "candidate": "e7101699bfc022fa794e15d7f374a8febe3e2680b8388c67b9a81cdc9962ced0"
+  },
+  "paths": {
+    "parent": "others/71407/task158.onnx",
+    "candidate": "scripts/golf/loop_8004_42_plus20/agent_task158_residual_215/candidates/task158_exact_anchor_role_bits.onnx"
+  },
+  "structure": {
+    "parent": {
+      "checks": {
+        "full_check": true,
+        "strict_shape": true,
+        "strict_shape_data_prop": true,
+        "canonical_io": true,
+        "standard_domains": true,
+        "no_functions": true,
+        "no_sparse_initializers": true,
+        "no_external_data": true,
+        "no_nested_graphs": true,
+        "no_banned_or_sequence_ops": true,
+        "all_inferred_shapes_static_positive": true,
+        "finite_initializers": true,
+        "conv_family_bias_ub0": true,
+        "no_hardmax_or_tfidf": true
+      },
+      "errors": [],
+      "pass": true,
+      "nodes": 165,
+      "initializers": 36,
+      "params_static": 863,
+      "ops": {
+        "Abs": 2,
+        "Add": 4,
+        "And": 5,
+        "ArgMax": 3,
+        "ArgMin": 2,
+        "BitShift": 2,
+        "BitwiseAnd": 1,
+        "Cast": 19,
+        "Concat": 2,
+        "Conv": 1,
+        "Div": 4,
+        "Einsum": 9,
+        "Equal": 7,
+        "Flatten": 2,
+        "Floor": 1,
+        "Gather": 6,
+        "GatherElements": 14,
+        "Greater": 5,
+        "GreaterOrEqual": 5,
+        "Less": 1,
+        "Min": 3,
+        "Mod": 3,
+        "Mul": 5,
+        "Or": 2,
+        "QLinearConv": 1,
+        "ReduceMax": 1,
+        "ReduceSum": 1,
+        "Reshape": 2,
+        "Round": 2,
+        "ScatterElements": 1,
+        "Sub": 8,
+        "Sum": 6,
+        "TopK": 4,
+        "Unsqueeze": 5,
+        "Where": 17,
+        "Xor": 9
+      },
+      "conv_bias_issues": [],
+      "max_initializer_elements": 650
+    },
+    "candidate": {
+      "checks": {
+        "full_check": true,
+        "strict_shape": true,
+        "strict_shape_data_prop": true,
+        "canonical_io": true,
+        "standard_domains": true,
+        "no_functions": true,
+        "no_sparse_initializers": true,
+        "no_external_data": true,
+        "no_nested_graphs": true,
+        "no_banned_or_sequence_ops": true,
+        "all_inferred_shapes_static_positive": true,
+        "finite_initializers": true,
+        "conv_family_bias_ub0": true,
+        "no_hardmax_or_tfidf": true
+      },
+      "errors": [],
+      "pass": true,
+      "nodes": 163,
+      "initializers": 33,
+      "params_static": 860,
+      "ops": {
+        "Abs": 2,
+        "Add": 4,
+        "And": 5,
+        "ArgMax": 3,
+        "ArgMin": 2,
+        "BitShift": 2,
+        "BitwiseAnd": 2,
+        "Cast": 19,
+        "Concat": 2,
+        "Conv": 1,
+        "Div": 4,
+        "Einsum": 9,
+        "Equal": 7,
+        "Flatten": 2,
+        "Floor": 1,
+        "Gather": 6,
+        "GatherElements": 14,
+        "Greater": 7,
+        "GreaterOrEqual": 3,
+        "Less": 1,
+        "Min": 3,
+        "Mod": 3,
+        "Mul": 5,
+        "Or": 2,
+        "QLinearConv": 1,
+        "ReduceMax": 1,
+        "ReduceSum": 1,
+        "Reshape": 2,
+        "Round": 2,
+        "ScatterElements": 1,
+        "Sub": 8,
+        "Sum": 6,
+        "TopK": 4,
+        "Unsqueeze": 5,
+        "Where": 14,
+        "Xor": 9
+      },
+      "conv_bias_issues": [],
+      "max_initializer_elements": 650
+    }
+  },
+  "graph_delta": {
+    "removed_node_outputs": [
+      "more_role_low",
+      "more_role_mid",
+      "more_role_u8",
+      "role_threshold"
+    ],
+    "added_node_outputs": [
+      "anchor_low_bits",
+      "anchor_score_u8"
+    ],
+    "changed_common_node_outputs": [
+      "anchor_high",
+      "low_mask",
+      "phase_ge_0"
+    ],
+    "removed_initializers": [
+      "more_role_1",
+      "more_role_2",
+      "more_role_3",
+      "phase_cut_0"
+    ],
+    "added_initializers": [
+      "anchor_low_bit_mask"
+    ],
+    "common_initializers_bitwise_equal": true,
+    "exact_rewrite_whitelist": true
+  },
+  "runtime_shape_truth": {
+    "parent": {
+      "traced_outputs": 169,
+      "declared_actual_mismatches": [],
+      "nonfinite_values": 0,
+      "pass": true
+    },
+    "candidate": {
+      "traced_outputs": 167,
+      "declared_actual_mismatches": [],
+      "nonfinite_values": 0,
+      "pass": true
+    }
+  },
+  "official_profile": {
+    "parent": {
+      "memory": 6662,
+      "params": 863,
+      "cost": 7525,
+      "score": 16.074013910382924,
+      "correct": true
+    },
+    "candidate": {
+      "memory": 6638,
+      "params": 860,
+      "cost": 7498,
+      "score": 16.077608402704143,
+      "correct": true
+    }
+  },
+  "support_proof_summary": {
+    "positive_support": [
+      2,
+      4,
+      8,
+      10,
+      16,
+      20,
+      24,
+      26,
+      48,
+      52,
+      72,
+      106,
+      144,
+      212
+    ],
+    "topk_support": [
+      0,
+      2,
+      4,
+      8,
+      10,
+      16,
+      20,
+      24,
+      26,
+      48,
+      52,
+      72,
+      106,
+      144,
+      212
+    ],
+    "topk_affected_window_upper_bound": 72,
+    "topk_exact_zero_window_lower_bound": 97,
+    "topk_negative_exclusion": true,
+    "all_role_and_phase_classifications_equal": true,
+    "pass": true
+  },
+  "gain": {
+    "cost_before": 7525,
+    "cost_after": 7498,
+    "cost_reduction": 27,
+    "score_gain": 0.003594492321219123
+  },
+  "pass": true
+}

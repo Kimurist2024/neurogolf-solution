@@ -1,0 +1,1953 @@
+{
+  "lane": "agent_tasks109_184_368_374",
+  "policy": {
+    "normal_fresh_min_accuracy": 0.9,
+    "known_requirement": "complete known in disable/default ORT x threads 1/4",
+    "fresh_requirement": "two disjoint seeds; runtime errors/nonfinite/output-shape mismatch forbidden",
+    "private_zero_requirement": "complete pass-through guarantee (not applicable to these normal candidates)",
+    "forbidden": [
+      "lookup",
+      "shape cloak",
+      "runtime error",
+      "nonfinite",
+      "shape mismatch",
+      "UB"
+    ]
+  },
+  "authority_archive": "submission.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "protected_hashes_before": {
+    "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "submission_base_8009.46.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+  },
+  "protected_hashes_after": {
+    "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "submission_base_8009.46.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78"
+  },
+  "authority": {
+    "109": {
+      "task": 109,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/authority/task109.onnx",
+      "sha256": "2e7be8671e2e8abe9d3f2f77f0b068f54a70a584ce477affb28fee6372bd25ef",
+      "serialized_bytes": 1826,
+      "official_profile": {
+        "memory": 362,
+        "params": 43,
+        "cost": 405,
+        "score": 18.99611293289346,
+        "correct": true
+      },
+      "structural": {
+        "pass": true,
+        "hard_failures": [],
+        "policy_markers": [],
+        "op_histogram": {
+          "GroupNormalization": 1,
+          "CastLike": 1,
+          "Slice": 1,
+          "Shape": 1,
+          "CenterCropPad": 2,
+          "Cast": 2,
+          "ReduceL1": 1,
+          "ArgMax": 1,
+          "ReduceMax": 1,
+          "Sub": 1,
+          "Min": 1,
+          "Gather": 2,
+          "ScatterND": 1,
+          "ConvInteger": 1
+        },
+        "negative_conv_pads": [],
+        "nonstatic_shapes": [],
+        "nonfinite_initializers": [],
+        "giant_initializers": [],
+        "conv_bias_ub0": true,
+        "conv_bias_findings": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 17,
+        "declared_tensors": 17,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              19,
+              30
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "counts_avg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              1,
+              1
+            ]
+          },
+          {
+            "tensor": "gn",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "qin",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "gn_f16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "state6",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              6,
+              6
+            ]
+          },
+          {
+            "tensor": "state7",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              6
+            ]
+          },
+          {
+            "tensor": "state_rows",
+            "declared": [
+              1,
+              1,
+              12,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              6
+            ]
+          },
+          {
+            "tensor": "state_rows_pad",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              12
+            ]
+          },
+          {
+            "tensor": "state",
+            "declared": [
+              1,
+              1,
+              1,
+              12
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              12
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 63587
+      },
+      "truthful_all_traced_shapes": false,
+      "known_four": {
+        "disable_all_threads1": {
+          "total": 266,
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 11.0,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "disable_all_threads4": {
+          "total": 266,
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 11.0,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "default_threads1": {
+          "total": 266,
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 11.0,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "default_threads4": {
+          "total": 266,
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 11.0,
+          "first_failure": null,
+          "accuracy": 1.0
+        }
+      },
+      "known_complete": true
+    },
+    "184": {
+      "task": 184,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/authority/task184.onnx",
+      "sha256": "156fe12922d290876f63c210f9cec8252e308e1af0512e309cb2fc6fad8928fc",
+      "serialized_bytes": 2423,
+      "official_profile": {
+        "memory": 389,
+        "params": 32,
+        "cost": 421,
+        "score": 18.957367166317617,
+        "correct": true
+      },
+      "structural": {
+        "pass": true,
+        "hard_failures": [],
+        "policy_markers": [],
+        "op_histogram": {
+          "Shape": 1,
+          "CenterCropPad": 2,
+          "CastLike": 1,
+          "Shrink": 1,
+          "Einsum": 2,
+          "ArgMin": 4,
+          "Equal": 2,
+          "Cast": 6,
+          "Where": 2,
+          "Concat": 1,
+          "DequantizeLinear": 1,
+          "Gather": 1,
+          "GridSample": 1,
+          "Conv": 1
+        },
+        "negative_conv_pads": [],
+        "nonstatic_shapes": [],
+        "nonfinite_initializers": [],
+        "giant_initializers": [],
+        "conv_bias_ub0": true,
+        "conv_bias_findings": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 26,
+        "declared_tensors": 26,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "rowhid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              23,
+              23
+            ]
+          },
+          {
+            "tensor": "br",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              23
+            ]
+          },
+          {
+            "tensor": "bc",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              23
+            ]
+          },
+          {
+            "tensor": "samp",
+            "declared": [
+              1,
+              1,
+              3,
+              3
+            ],
+            "actual": [
+              1,
+              10,
+              3,
+              3
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 64961
+      },
+      "truthful_all_traced_shapes": false,
+      "known_four": {
+        "disable_all_threads1": {
+          "total": 169,
+          "right": 169,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 2.0,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "disable_all_threads4": {
+          "total": 169,
+          "right": 169,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 2.0,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "default_threads1": {
+          "total": 169,
+          "right": 0,
+          "wrong": 0,
+          "errors": 169,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": null,
+          "first_failure": {
+            "kind": "session",
+            "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_10) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+          },
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_10) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        },
+        "default_threads4": {
+          "total": 169,
+          "right": 0,
+          "wrong": 0,
+          "errors": 169,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": null,
+          "first_failure": {
+            "kind": "session",
+            "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_10) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+          },
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_10) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      },
+      "known_complete": false
+    },
+    "368": {
+      "task": 368,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/authority/task368.onnx",
+      "sha256": "0d950f5053aa62e7a3208be01514ad061b85580875e0e93aa7ee941cbacaa811",
+      "serialized_bytes": 1606,
+      "official_profile": {
+        "memory": 481,
+        "params": 40,
+        "cost": 521,
+        "score": 18.744249958246634,
+        "correct": true
+      },
+      "structural": {
+        "pass": true,
+        "hard_failures": [],
+        "policy_markers": [],
+        "op_histogram": {
+          "GroupNormalization": 1,
+          "CastLike": 1,
+          "QLinearConv": 6,
+          "Mul": 1
+        },
+        "negative_conv_pads": [],
+        "nonstatic_shapes": [],
+        "nonfinite_initializers": [],
+        "giant_initializers": [],
+        "conv_bias_ub0": true,
+        "conv_bias_findings": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 9,
+        "declared_tensors": 9,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "gn",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "qi",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 45476
+      },
+      "truthful_all_traced_shapes": false,
+      "known_four": {
+        "disable_all_threads1": {
+          "total": 265,
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "disable_all_threads4": {
+          "total": 265,
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "default_threads1": {
+          "total": 265,
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "default_threads4": {
+          "total": 265,
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 1.0,
+          "first_failure": null,
+          "accuracy": 1.0
+        }
+      },
+      "known_complete": true
+    },
+    "374": {
+      "task": 374,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/authority/task374.onnx",
+      "sha256": "93fb94260388ab83bc35043c0ee11ae08b1bf3e8fa962a3b47b08ba73794d24a",
+      "serialized_bytes": 3298,
+      "official_profile": {
+        "memory": 451,
+        "params": 30,
+        "cost": 481,
+        "score": 18.824132729894238,
+        "correct": true
+      },
+      "structural": {
+        "pass": true,
+        "hard_failures": [],
+        "policy_markers": [],
+        "op_histogram": {
+          "Shape": 1,
+          "GroupNormalization": 1,
+          "CastLike": 4,
+          "Resize": 1,
+          "QLinearConv": 3,
+          "CenterCropPad": 3,
+          "QLinearMatMul": 2,
+          "Sub": 2,
+          "ReduceMax": 2,
+          "Max": 1,
+          "Equal": 2,
+          "Div": 1,
+          "LessOrEqual": 2,
+          "Where": 5,
+          "ScatterElements": 1
+        },
+        "negative_conv_pads": [],
+        "nonstatic_shapes": [],
+        "nonfinite_initializers": [],
+        "giant_initializers": [],
+        "conv_bias_ub0": true,
+        "conv_bias_findings": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 31,
+        "declared_tensors": 31,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "__sp_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "__sp_low",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "hmask_fake",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "hcond",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "color_fake",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "grid_idx",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "occ_fake",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "grid_upd",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 46634
+      },
+      "truthful_all_traced_shapes": false,
+      "known_four": {
+        "disable_all_threads1": {
+          "total": 267,
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 0.49657636880874634,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "disable_all_threads4": {
+          "total": 267,
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 0.49657636880874634,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "default_threads1": {
+          "total": 267,
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 0.49657636880874634,
+          "first_failure": null,
+          "accuracy": 1.0
+        },
+        "default_threads4": {
+          "total": 267,
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": 0.49657636880874634,
+          "first_failure": null,
+          "accuracy": 1.0
+        }
+      },
+      "known_complete": true
+    }
+  },
+  "candidates": [
+    {
+      "task": 109,
+      "label": "task109_constant_shape_fold",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/candidates/task109_constant_shape_fold.onnx",
+      "sha256": "de3943bb2cf025343807e3f09f74bd64369dff2420dfc6885e30502474cffbf2",
+      "serialized_bytes": 1817,
+      "theorem": "Replace Shape(constant int8[12]) with the exact int64 initializer [12].",
+      "authority_cost": 405,
+      "official_profile": {
+        "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: safe_name_11): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (12) vs (1)\n(op_type:CenterCropPad, node name: safe_name_20): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (12) vs (1)\n"
+      },
+      "score_gain": null,
+      "strictly_lower": false,
+      "structural": {
+        "pass": false,
+        "hard_failures": [
+          "checker_or_strict_shape:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (12) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (12) vs (1)\n"
+        ],
+        "policy_markers": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 16,
+        "declared_tensors": 17,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              19,
+              30
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "counts_avg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              1,
+              1
+            ]
+          },
+          {
+            "tensor": "gn",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "qin",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "gn_f16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "state6",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              6,
+              6
+            ]
+          },
+          {
+            "tensor": "state7",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              6
+            ]
+          },
+          {
+            "tensor": "state_rows",
+            "declared": [
+              1,
+              1,
+              12,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              6
+            ]
+          },
+          {
+            "tensor": "state_rows_pad",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              12
+            ]
+          },
+          {
+            "tensor": "state",
+            "declared": [
+              1,
+              1,
+              1,
+              12
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              12
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 63579
+      },
+      "truthful_all_traced_shapes": false,
+      "policy_markers": [
+        "argmax_gather_scatter_lookup_chain"
+      ],
+      "known_four": "NOT_RUN_COST_GATE_FAILED",
+      "known_complete": false,
+      "fresh_eligible": false,
+      "fresh_two_seed": {
+        "status": "NOT_RUN_PRE_FRESH_GATE_FAILED",
+        "failed": [
+          "cost_not_strictly_lower",
+          "full_checker_or_strict_data_prop",
+          "runtime_shape_cloak_or_trace_error",
+          "forbidden_lookup_or_giant"
+        ]
+      },
+      "fresh_min_accuracy": null,
+      "accepted": false
+    },
+    {
+      "task": 109,
+      "label": "task109_history_global_lppool",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/candidates/task109_history_global_lppool.onnx",
+      "sha256": "f35d159228663ed68f4cb70249221a244d17799dc4c1caefc66136e20ad7d70c",
+      "serialized_bytes": 1810,
+      "theorem": "Retained global-pool parameter shave; screened because 8009.46 corrected the cost gate to 405.",
+      "authority_cost": 405,
+      "official_profile": {
+        "memory": 381,
+        "params": 41,
+        "cost": 422,
+        "score": 18.95499468596399,
+        "correct": true
+      },
+      "score_gain": -0.041118246929471525,
+      "strictly_lower": false,
+      "structural": {
+        "pass": true,
+        "hard_failures": [],
+        "policy_markers": [],
+        "op_histogram": {
+          "GroupNormalization": 1,
+          "CastLike": 1,
+          "Slice": 1,
+          "Shape": 1,
+          "CenterCropPad": 2,
+          "Cast": 2,
+          "GlobalLpPool": 1,
+          "ArgMax": 1,
+          "ReduceMax": 1,
+          "Sub": 1,
+          "Min": 1,
+          "Gather": 2,
+          "ScatterND": 1,
+          "ConvInteger": 1
+        },
+        "negative_conv_pads": [],
+        "nonstatic_shapes": [],
+        "nonfinite_initializers": [],
+        "giant_initializers": [],
+        "conv_bias_ub0": true,
+        "conv_bias_findings": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 17,
+        "declared_tensors": 17,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              19,
+              30
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "counts_avg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              1,
+              1
+            ]
+          },
+          {
+            "tensor": "gn",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "qin",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "gn_f16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "state6",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              6,
+              6
+            ]
+          },
+          {
+            "tensor": "state7",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              6
+            ]
+          },
+          {
+            "tensor": "state_rows",
+            "declared": [
+              1,
+              1,
+              12,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              6
+            ]
+          },
+          {
+            "tensor": "state_rows_pad",
+            "declared": [
+              1,
+              1,
+              1,
+              2
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              12
+            ]
+          },
+          {
+            "tensor": "state",
+            "declared": [
+              1,
+              1,
+              1,
+              12
+            ],
+            "actual": [
+              1,
+              1,
+              12,
+              12
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 63587
+      },
+      "truthful_all_traced_shapes": false,
+      "policy_markers": [
+        "argmax_gather_scatter_lookup_chain"
+      ],
+      "known_four": "NOT_RUN_COST_GATE_FAILED",
+      "known_complete": false,
+      "fresh_eligible": false,
+      "fresh_two_seed": {
+        "status": "NOT_RUN_PRE_FRESH_GATE_FAILED",
+        "failed": [
+          "cost_not_strictly_lower",
+          "runtime_shape_cloak_or_trace_error",
+          "forbidden_lookup_or_giant"
+        ]
+      },
+      "fresh_min_accuracy": null,
+      "accepted": false
+    },
+    {
+      "task": 184,
+      "label": "task184_batch_identity_bypass",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/candidates/task184_batch_identity_bypass.onnx",
+      "sha256": "cd261e74325432c0b4b752649557a21f54882516c71db8a70d794b46fa3d4196",
+      "serialized_bytes": 2342,
+      "theorem": "Bypass the exact batch-axis CenterCropPad identity before CastLike.",
+      "authority_cost": 421,
+      "official_profile": {
+        "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CastLike, node name: safe_name_7): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n"
+      },
+      "score_gain": null,
+      "strictly_lower": false,
+      "structural": {
+        "pass": false,
+        "hard_failures": [
+          "checker_or_strict_shape:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:CastLike, node name: input16): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n"
+        ],
+        "policy_markers": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 25,
+        "declared_tensors": 25,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "input16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "rowhid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              23,
+              23
+            ]
+          },
+          {
+            "tensor": "br",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              23
+            ]
+          },
+          {
+            "tensor": "bc",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              23
+            ]
+          },
+          {
+            "tensor": "samp",
+            "declared": [
+              1,
+              1,
+              3,
+              3
+            ],
+            "actual": [
+              1,
+              10,
+              3,
+              3
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 28961
+      },
+      "truthful_all_traced_shapes": false,
+      "policy_markers": [],
+      "known_four": "NOT_RUN_COST_GATE_FAILED",
+      "known_complete": false,
+      "fresh_eligible": false,
+      "fresh_two_seed": {
+        "status": "NOT_RUN_PRE_FRESH_GATE_FAILED",
+        "failed": [
+          "cost_not_strictly_lower",
+          "full_checker_or_strict_data_prop",
+          "runtime_shape_cloak_or_trace_error"
+        ]
+      },
+      "fresh_min_accuracy": null,
+      "accepted": false
+    },
+    {
+      "task": 184,
+      "label": "task184_history_ground_u8",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/candidates/task184_history_ground_u8.onnx",
+      "sha256": "d6010bf00f1fd62966a0d78c9c3798ac4a37b9ceb99e28b334d37cd3ac427f79",
+      "serialized_bytes": 2284,
+      "theorem": "Only repository history model previously measured below authority (420 versus 421).",
+      "authority_cost": 421,
+      "official_profile": {
+        "memory": 387,
+        "params": 33,
+        "cost": 420,
+        "score": 18.959745288722587,
+        "correct": false
+      },
+      "score_gain": 0.002378122404969929,
+      "strictly_lower": true,
+      "structural": {
+        "pass": true,
+        "hard_failures": [],
+        "policy_markers": [],
+        "op_histogram": {
+          "Shape": 1,
+          "CenterCropPad": 2,
+          "CastLike": 1,
+          "Add": 1,
+          "Einsum": 2,
+          "ArgMin": 4,
+          "Equal": 2,
+          "Cast": 4,
+          "Where": 2,
+          "Concat": 1,
+          "DequantizeLinear": 1,
+          "Gather": 1,
+          "GridSample": 1,
+          "Conv": 1
+        },
+        "negative_conv_pads": [],
+        "nonstatic_shapes": [],
+        "nonfinite_initializers": [],
+        "giant_initializers": [],
+        "conv_bias_ub0": true,
+        "conv_bias_findings": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 24,
+        "declared_tensors": 24,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "rowhid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              23,
+              23
+            ]
+          },
+          {
+            "tensor": "br",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              23
+            ]
+          },
+          {
+            "tensor": "bc",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              23
+            ]
+          },
+          {
+            "tensor": "samp",
+            "declared": [
+              1,
+              1,
+              3,
+              3
+            ],
+            "actual": [
+              1,
+              10,
+              3,
+              3
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 64959
+      },
+      "truthful_all_traced_shapes": false,
+      "policy_markers": [],
+      "known_four": {
+        "disable_all_threads1": {
+          "total": 169,
+          "right": 7,
+          "wrong": 162,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 24,
+          "min_positive": 0.0384521484375,
+          "first_failure": {
+            "kind": "wrong",
+            "split": "train",
+            "index": 0,
+            "different_cells": 4
+          },
+          "accuracy": 0.04142011834319527
+        },
+        "disable_all_threads4": {
+          "total": 169,
+          "right": 7,
+          "wrong": 162,
+          "errors": 0,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 24,
+          "min_positive": 0.0384521484375,
+          "first_failure": {
+            "kind": "wrong",
+            "split": "train",
+            "index": 0,
+            "different_cells": 4
+          },
+          "accuracy": 0.04142011834319527
+        },
+        "default_threads1": {
+          "total": 169,
+          "right": 0,
+          "wrong": 0,
+          "errors": 169,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": null,
+          "first_failure": {
+            "kind": "session",
+            "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_11) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+          },
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_11) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        },
+        "default_threads4": {
+          "total": 169,
+          "right": 0,
+          "wrong": 0,
+          "errors": 169,
+          "nonfinite_cases": 0,
+          "output_shape_mismatches": 0,
+          "near_positive_values": 0,
+          "min_positive": null,
+          "first_failure": {
+            "kind": "session",
+            "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_11) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+          },
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_11) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      },
+      "known_complete": false,
+      "fresh_eligible": false,
+      "fresh_two_seed": {
+        "status": "NOT_RUN_PRE_FRESH_GATE_FAILED",
+        "failed": [
+          "runtime_shape_cloak_or_trace_error",
+          "complete_known_four_config"
+        ]
+      },
+      "fresh_min_accuracy": null,
+      "accepted": false
+    },
+    {
+      "task": 368,
+      "label": "task368_cast_attribute",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/candidates/task368_cast_attribute.onnx",
+      "sha256": "af7d8318545c6aa3023ebf28e9867127f163e21ae107d64ba6ff92457a05fad1",
+      "serialized_bytes": 1604,
+      "theorem": "Exact CastLike(gn, uint8-zero) to Cast(to=UINT8) attributeization.",
+      "authority_cost": 521,
+      "official_profile": {
+        "memory": 9480,
+        "params": 40,
+        "cost": 9520,
+        "score": 15.838849872214588,
+        "correct": true
+      },
+      "score_gain": -2.9054000860320457,
+      "strictly_lower": false,
+      "structural": {
+        "pass": true,
+        "hard_failures": [],
+        "policy_markers": [],
+        "op_histogram": {
+          "GroupNormalization": 1,
+          "Cast": 1,
+          "QLinearConv": 6,
+          "Mul": 1
+        },
+        "negative_conv_pads": [],
+        "nonstatic_shapes": [],
+        "nonfinite_initializers": [],
+        "giant_initializers": [],
+        "conv_bias_ub0": true,
+        "conv_bias_findings": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 9,
+        "declared_tensors": 9,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "gn",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "qi",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 45476
+      },
+      "truthful_all_traced_shapes": false,
+      "policy_markers": [],
+      "known_four": "NOT_RUN_COST_GATE_FAILED",
+      "known_complete": false,
+      "fresh_eligible": false,
+      "fresh_two_seed": {
+        "status": "NOT_RUN_PRE_FRESH_GATE_FAILED",
+        "failed": [
+          "cost_not_strictly_lower",
+          "runtime_shape_cloak_or_trace_error"
+        ]
+      },
+      "fresh_min_accuracy": null,
+      "accepted": false
+    },
+    {
+      "task": 374,
+      "label": "task374_batch_identity_bypasses",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/candidates/task374_batch_identity_bypasses.onnx",
+      "sha256": "9854cc294b89920af7c44ae7717e8252e474f0d67bd48ece27798f8c249e9098",
+      "serialized_bytes": 2924,
+      "theorem": "Bypass all three exact batch-axis CenterCropPad identities and remove their dead Shape producer.",
+      "authority_cost": 481,
+      "official_profile": {
+        "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CastLike, node name: safe_name_23): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CastLike, node name: safe_name_35): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CastLike, node name: safe_name_36): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n"
+      },
+      "score_gain": null,
+      "strictly_lower": false,
+      "structural": {
+        "pass": false,
+        "hard_failures": [
+          "checker_or_strict_shape:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:CastLike, node name: hcond): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CastLike): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CastLike): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n"
+        ],
+        "policy_markers": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 27,
+        "declared_tensors": 27,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "__sp_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "__sp_low",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "hcond",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "grid_idx",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "grid_upd",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 46326
+      },
+      "truthful_all_traced_shapes": false,
+      "policy_markers": [],
+      "known_four": "NOT_RUN_COST_GATE_FAILED",
+      "known_complete": false,
+      "fresh_eligible": false,
+      "fresh_two_seed": {
+        "status": "NOT_RUN_PRE_FRESH_GATE_FAILED",
+        "failed": [
+          "cost_not_strictly_lower",
+          "full_checker_or_strict_data_prop",
+          "runtime_shape_cloak_or_trace_error"
+        ]
+      },
+      "fresh_min_accuracy": null,
+      "accepted": false
+    },
+    {
+      "task": 374,
+      "label": "task374_cast_i32_attribute",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks109_184_368_374/candidates/task374_cast_i32_attribute.onnx",
+      "sha256": "b82ae4b99fbac6853d995f64f5f30aefd12b14fa2a2f29404a3f7f66d6b5faa1",
+      "serialized_bytes": 3275,
+      "theorem": "Exact CastLike(color_fake, int32 dummy) to Cast(to=INT32), deleting one parameter.",
+      "authority_cost": 481,
+      "official_profile": {
+        "memory": 847,
+        "params": 29,
+        "cost": 876,
+        "score": 18.22463390906361,
+        "correct": true
+      },
+      "score_gain": -0.5994988208306289,
+      "strictly_lower": false,
+      "structural": {
+        "pass": true,
+        "hard_failures": [],
+        "policy_markers": [],
+        "op_histogram": {
+          "Shape": 1,
+          "GroupNormalization": 1,
+          "CastLike": 3,
+          "Resize": 1,
+          "QLinearConv": 3,
+          "CenterCropPad": 3,
+          "QLinearMatMul": 2,
+          "Sub": 2,
+          "ReduceMax": 2,
+          "Max": 1,
+          "Equal": 2,
+          "Div": 1,
+          "LessOrEqual": 2,
+          "Where": 5,
+          "Cast": 1,
+          "ScatterElements": 1
+        },
+        "negative_conv_pads": [],
+        "nonstatic_shapes": [],
+        "nonfinite_initializers": [],
+        "giant_initializers": [],
+        "conv_bias_ub0": true,
+        "conv_bias_findings": []
+      },
+      "runtime_shape_trace": {
+        "runtime_tensors": 31,
+        "declared_tensors": 31,
+        "declared_actual_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "__sp_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "__sp_low",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "hmask_fake",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "hcond",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "color_fake",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "grid_idx",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "occ_fake",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "grid_upd",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          }
+        ],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 46634
+      },
+      "truthful_all_traced_shapes": false,
+      "policy_markers": [],
+      "known_four": "NOT_RUN_COST_GATE_FAILED",
+      "known_complete": false,
+      "fresh_eligible": false,
+      "fresh_two_seed": {
+        "status": "NOT_RUN_PRE_FRESH_GATE_FAILED",
+        "failed": [
+          "cost_not_strictly_lower",
+          "runtime_shape_cloak_or_trace_error"
+        ]
+      },
+      "fresh_min_accuracy": null,
+      "accepted": false
+    }
+  ],
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0,
+  "verdict": "NO_PROMOTION"
+}

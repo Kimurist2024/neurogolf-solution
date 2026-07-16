@@ -1,0 +1,17 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 21]
+>
+task277_fresh_improved (float[1,10,30,30] input) => (uint8[1,10,30,30] output) 
+   <uint8 z = ..., float q =  {0.19}, uint8 one = ..., uint8[10,2,1,1] qw_nb = ..., uint8[1,1,4,5] sw_direct = ..., uint8 wzp127 = ..., float[6] roi =  {0,0,0.888889,0.310345,0.310345,0.888889}, int64[3] sizes =  {10,10,1}, float[1,1,1,1] g, uint8[1,1,1,1] u, uint8[1,1,10,10] cy, uint8[1,1,9,8] seed, uint8[1,1,10,10] p0, uint8[1,1,1,1] m, uint8[1,1,10,10] d2, uint8[1,2,10,10] feat>
+{
+   [gn] g = GroupNormalization <epsilon: float = 1e-05, num_groups: int = 1> (input, q, q)
+   [castlike] u = CastLike (g, z)
+   [resize] cy = Resize <axes: ints = [2, 3, 1], coordinate_transformation_mode: string = "tf_crop_and_resize", extrapolation_value: float = 0, mode: string = "nearest", nearest_mode: string = "round_prefer_floor"> (u, roi, "", sizes)
+   [seedconv] seed = QLinearConv <pads: ints = [1, 1, 1, 1]> (cy, q, z, sw_direct, q, wzp127, q, z)
+   [pool0] p0 = MaxPool <kernel_shape: ints = [4, 4], pads: ints = [2, 2, 2, 3]> (seed)
+   [glob] m = MaxPool <kernel_shape: ints = [10, 10]> (p0)
+   [sub] d2 = Sub (p0, m)
+   [feat] feat = Concat <axis: int = 1> (cy, d2)
+   [final] output = QLinearConv <pads: ints = [0, 0, 20, 20]> (feat, q, one, qw_nb, q, wzp127, q, z)
+}

@@ -1,0 +1,6571 @@
+{
+  "lane": "agent_high037_089_279_124",
+  "authority": {
+    "path": "submission.zip",
+    "captured_archive_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "observed_archive_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "archive_matches_capture": true,
+    "member_hashes_match": true
+  },
+  "references": {
+    "seeds": [
+      124000000,
+      124100000
+    ],
+    "fresh_per_seed": 1500,
+    "tasks": {
+      "37": {
+        "hash": "1f876c06",
+        "known": {
+          "right": 266,
+          "total": 266
+        },
+        "fresh": [
+          {
+            "seed": 124000037,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          },
+          {
+            "seed": 124100037,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          }
+        ],
+        "pass": true
+      },
+      "89": {
+        "hash": "3e980e27",
+        "known": {
+          "right": 267,
+          "total": 267
+        },
+        "fresh": [
+          {
+            "seed": 124000089,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          },
+          {
+            "seed": 124100089,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          }
+        ],
+        "pass": true
+      },
+      "279": {
+        "hash": "b2862040",
+        "known": {
+          "right": 266,
+          "total": 266
+        },
+        "fresh": [
+          {
+            "seed": 124000279,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          },
+          {
+            "seed": 124100279,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          }
+        ],
+        "pass": true
+      }
+    }
+  },
+  "baselines": {
+    "37": {
+      "task": 37,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/baseline/task037.onnx",
+      "sha256": "df9298f3b9e851bd815be5f53b8de142cbf944297477d73fc27ddc343d49c90b",
+      "file_bytes": 14263,
+      "cost": {
+        "memory": 314,
+        "params": 6,
+        "cost": 320
+      },
+      "structure": {
+        "nodes": 149,
+        "initializers": 5,
+        "params": 6,
+        "ops": {
+          "CenterCropPad": 75,
+          "HardSigmoid": 24,
+          "PRelu": 17,
+          "CastLike": 17,
+          "LessOrEqual": 5,
+          "ConstantOfShape": 4,
+          "Selu": 4,
+          "ReduceLogSum": 1,
+          "ReduceL1": 1,
+          "Concat": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          2,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape": true
+      },
+      "full_audit": {
+        "label": "baseline_task037",
+        "task": 37,
+        "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/baseline/task037.onnx",
+        "sha256": "df9298f3b9e851bd815be5f53b8de142cbf944297477d73fc27ddc343d49c90b",
+        "file_bytes": 14263,
+        "nodes": 149,
+        "initializers": 5,
+        "params": 6,
+        "op_histogram": {
+          "CenterCropPad": 75,
+          "HardSigmoid": 24,
+          "PRelu": 17,
+          "CastLike": 17,
+          "LessOrEqual": 5,
+          "ConstantOfShape": 4,
+          "Selu": 4,
+          "ReduceLogSum": 1,
+          "ReduceL1": 1,
+          "Concat": 1
+        },
+        "max_node_inputs": 2,
+        "lookup_red_flags": {
+          "tfidf": 0,
+          "hardmax": 0,
+          "giant_einsum_nodes": 0,
+          "params_over_10000": false
+        },
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "nested_graph_attributes": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "conv_bias_findings": [],
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_trace": {
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_mp4' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,9,31,29} != {1,9,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        },
+        "official_like_score": {
+          "memory": 314,
+          "params": 6,
+          "cost": 320,
+          "score": 19.231679004206228,
+          "correct": true
+        },
+        "known_disable_all": {
+          "train": {
+            "right": 3,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 266,
+            "wrong": 0,
+            "errors": 0
+          }
+        },
+        "known_default": {
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_15) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      }
+    },
+    "89": {
+      "task": 89,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/baseline/task089.onnx",
+      "sha256": "89183f12515ceee79eb73d69ce074a6a93145930e5fb9eb426d3a1f7f58e5607",
+      "file_bytes": 9401,
+      "cost": {
+        "memory": 1311,
+        "params": 29,
+        "cost": 1340
+      },
+      "structure": {
+        "nodes": 89,
+        "initializers": 12,
+        "params": 29,
+        "ops": {
+          "CenterCropPad": 47,
+          "Add": 19,
+          "QLinearConv": 8,
+          "ReduceMax": 4,
+          "Sub": 2,
+          "BitwiseAnd": 2,
+          "CastLike": 1,
+          "Slice": 1,
+          "Div": 1,
+          "MaxPool": 1,
+          "Mul": 1,
+          "Max": 1,
+          "Equal": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape": true
+      },
+      "full_audit": {
+        "label": "baseline_task089",
+        "task": 89,
+        "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/baseline/task089.onnx",
+        "sha256": "89183f12515ceee79eb73d69ce074a6a93145930e5fb9eb426d3a1f7f58e5607",
+        "file_bytes": 9401,
+        "nodes": 89,
+        "initializers": 12,
+        "params": 29,
+        "op_histogram": {
+          "CenterCropPad": 47,
+          "Add": 19,
+          "QLinearConv": 8,
+          "ReduceMax": 4,
+          "Sub": 2,
+          "BitwiseAnd": 2,
+          "CastLike": 1,
+          "Slice": 1,
+          "Div": 1,
+          "MaxPool": 1,
+          "Mul": 1,
+          "Max": 1,
+          "Equal": 1
+        },
+        "max_node_inputs": 9,
+        "lookup_red_flags": {
+          "tfidf": 0,
+          "hardmax": 0,
+          "giant_einsum_nodes": 0,
+          "params_over_10000": false
+        },
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "nested_graph_attributes": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "conv_bias_findings": [
+          {
+            "node": "red_lone_direct",
+            "op": "QLinearConv",
+            "bias": "redlone_bias",
+            "bias_is_initializer": true,
+            "bias_shape": [
+              1
+            ],
+            "expected_channels": 1,
+            "safe": true
+          }
+        ],
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_trace": {
+          "runtime_tensors": 89,
+          "declared_tensors": 83,
+          "declared_actual_mismatches": [
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                10,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_hidden",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "decode_big",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                2,
+                2
+              ]
+            },
+            {
+              "tensor": "pad_grid_14",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                14,
+                14
+              ]
+            },
+            {
+              "tensor": "pad_grid_15",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                15,
+                15
+              ]
+            },
+            {
+              "tensor": "pad_grid_16",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                16,
+                16
+              ]
+            },
+            {
+              "tensor": "pad_grid_17",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                17,
+                17
+              ]
+            },
+            {
+              "tensor": "pad_grid_18",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                18,
+                18
+              ]
+            },
+            {
+              "tensor": "pad_grid_19",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                19,
+                19
+              ]
+            },
+            {
+              "tensor": "pad_grid_20",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                20,
+                20
+              ]
+            },
+            {
+              "tensor": "pad_grid_21",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                21,
+                21
+              ]
+            },
+            {
+              "tensor": "pad_grid_22",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                22,
+                22
+              ]
+            },
+            {
+              "tensor": "pad_grid_23",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                23,
+                23
+              ]
+            },
+            {
+              "tensor": "pad_grid_24",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                24,
+                24
+              ]
+            },
+            {
+              "tensor": "pad_grid_25",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                25,
+                25
+              ]
+            },
+            {
+              "tensor": "pad_grid_26",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                26,
+                26
+              ]
+            },
+            {
+              "tensor": "pad_grid_27",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                27,
+                27
+              ]
+            },
+            {
+              "tensor": "pad_grid_28",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                28,
+                28
+              ]
+            },
+            {
+              "tensor": "pad_grid_29",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                29
+              ]
+            },
+            {
+              "tensor": "pad_grid_30",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "red_crop3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "grn_crop3",
+              "declared": [
+                1,
+                1,
+                1,
+                2
+              ],
+              "actual": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "value_hide",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "top_sp0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                29,
+                29
+              ]
+            },
+            {
+              "tensor": "top_sp1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                28,
+                28
+              ]
+            },
+            {
+              "tensor": "top_sp2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                27,
+                27
+              ]
+            },
+            {
+              "tensor": "top_sp3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                26,
+                26
+              ]
+            },
+            {
+              "tensor": "top_sp4",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                25,
+                25
+              ]
+            },
+            {
+              "tensor": "top_sp5",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                24,
+                24
+              ]
+            },
+            {
+              "tensor": "top_sp6",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                23,
+                23
+              ]
+            },
+            {
+              "tensor": "top_sp7",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                22,
+                22
+              ]
+            },
+            {
+              "tensor": "top_sp8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                21,
+                21
+              ]
+            },
+            {
+              "tensor": "top_sp9",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                20,
+                20
+              ]
+            },
+            {
+              "tensor": "top_sp10",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                19,
+                19
+              ]
+            },
+            {
+              "tensor": "top_sp11",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                18,
+                18
+              ]
+            },
+            {
+              "tensor": "top_sp12",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                17,
+                17
+              ]
+            },
+            {
+              "tensor": "top_sp13",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                16,
+                16
+              ]
+            },
+            {
+              "tensor": "top_sp14",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                15,
+                15
+              ]
+            },
+            {
+              "tensor": "top_sp15",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                14,
+                14
+              ]
+            },
+            {
+              "tensor": "top13_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "grn_ch0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                3,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "grn_ch1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                2,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "grn_mark",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "red_ch2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                3,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "red_ch3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                2,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "red_all_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "red_ch0",
+              "declared": [
+                1,
+                5,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                5,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "red_ch1",
+              "declared": [
+                1,
+                4,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                4,
+                13,
+                13
+              ]
+            }
+          ],
+          "undeclared_intermediate_count": 6,
+          "single_example_intermediate_bytes": 137714
+        },
+        "official_like_score": {
+          "memory": 1311,
+          "params": 29,
+          "cost": 1340,
+          "score": 17.79957510705504,
+          "correct": true
+        },
+        "known_disable_all": {
+          "train": {
+            "right": 4,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 267,
+            "wrong": 0,
+            "errors": 0
+          }
+        },
+        "known_default": {
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_59) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      }
+    },
+    "279": {
+      "task": 279,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/baseline/task279.onnx",
+      "sha256": "d3bb22792a3e44e09d21971f88642622a32d161f3a7888f9d0e9efe5862d0a9b",
+      "file_bytes": 18799,
+      "cost": {
+        "memory": 385,
+        "params": 12,
+        "cost": 397
+      },
+      "structure": {
+        "nodes": 207,
+        "initializers": 3,
+        "params": 12,
+        "ops": {
+          "CenterCropPad": 128,
+          "PRelu": 43,
+          "HardSigmoid": 17,
+          "CastLike": 9,
+          "LessOrEqual": 3,
+          "Selu": 2,
+          "Shape": 1,
+          "Sub": 1,
+          "Add": 1,
+          "Cast": 1,
+          "Where": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape": true
+      },
+      "full_audit": {
+        "label": "baseline_task279",
+        "task": 279,
+        "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/baseline/task279.onnx",
+        "sha256": "d3bb22792a3e44e09d21971f88642622a32d161f3a7888f9d0e9efe5862d0a9b",
+        "file_bytes": 18799,
+        "nodes": 207,
+        "initializers": 3,
+        "params": 12,
+        "op_histogram": {
+          "CenterCropPad": 128,
+          "PRelu": 43,
+          "HardSigmoid": 17,
+          "CastLike": 9,
+          "LessOrEqual": 3,
+          "Selu": 2,
+          "Shape": 1,
+          "Sub": 1,
+          "Add": 1,
+          "Cast": 1,
+          "Where": 1
+        },
+        "max_node_inputs": 3,
+        "lookup_red_flags": {
+          "tfidf": 0,
+          "hardmax": 0,
+          "giant_einsum_nodes": 0,
+          "params_over_10000": false
+        },
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "nested_graph_attributes": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "conv_bias_findings": [],
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_trace": {
+          "runtime_tensors": 207,
+          "declared_tensors": 207,
+          "declared_actual_mismatches": [
+            {
+              "tensor": "xc",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "xu8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "chA0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                30,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "chA1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                29,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "chA2",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                31,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "chA3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                30,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "chA4",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                29,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "chA5",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                31,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "chA6",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                30,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "chA7",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                29,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "chA8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                31,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "chA9",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                30,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "blue_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "msU_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "msU_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "msL_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "msL_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "msL_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "blue16posS",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "maskS",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0basefac",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0fL_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p0fL_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p0fL_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0fR_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p0fR_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p0fR_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0fU_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p0fU_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p0fU_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0fD_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p0fD_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p0fD_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0prod0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0prod1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0prod2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0prod3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0slope",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p0rem3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1basefac",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1fL_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p1fL_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p1fL_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1fR_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p1fR_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p1fR_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1fU_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p1fU_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p1fU_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1fD_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p1fD_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p1fD_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1prod0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1prod1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1prod2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1prod3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1slope",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p1rem3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2basefac",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2fL_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p2fL_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p2fL_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2fR_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p2fR_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p2fR_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2fU_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p2fU_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p2fU_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2fD_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p2fD_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p2fD_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2prod0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2prod1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2prod2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2prod3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2slope",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p2rem3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3basefac",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3fL_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p3fL_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p3fL_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3fR_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p3fR_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p3fR_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3fU_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p3fU_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p3fU_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3fD_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p3fD_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p3fD_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3prod0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3prod1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3prod2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3prod3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3slope",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p3rem3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4basefac",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4fL_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p4fL_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p4fL_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4fR_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p4fR_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p4fR_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4fU_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p4fU_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p4fU_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4fD_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p4fD_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p4fD_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4prod0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4prod1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4prod2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4prod3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4slope",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p4rem3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5basefac",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5fL_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p5fL_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p5fL_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5fR_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "p5fR_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "p5fR_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5fU_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p5fU_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p5fU_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5fD_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "p5fD_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "p5fD_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5prod0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5prod1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5prod2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5prod3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5slope",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "p5rem3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6basefac",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6fL_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "c6fL_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "c6fL_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6fR_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "c6fR_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "c6fR_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6fU_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "c6fU_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "c6fU_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6fD_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "c6fD_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "c6fD_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6hprod0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6hprod1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6hslope",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6vprod0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6vprod1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6vslope",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6corner0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6corner1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c6cornerslope",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0absbool",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0bL_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "f0bL_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "f0bL_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0L_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0bR_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "f0bR_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "f0bR_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0R_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0bU_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "f0bU_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "f0bU_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0U_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0Lna",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0a",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0b",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0c",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0keep_absbool",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fdUb_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "fdUb_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "fdUb_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fdUpa",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fda",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "maskmid",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "condS",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "bkD_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "bkD_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "bkD_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "bkR_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "bkR_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "bkR_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f0Self",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fda0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f2L_0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "f2L_1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "f2L_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f2R_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                31
+              ]
+            },
+            {
+              "tensor": "f2R_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "f2R_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f2D_0",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                31,
+                30
+              ]
+            },
+            {
+              "tensor": "f2D_1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                30
+              ]
+            },
+            {
+              "tensor": "f2D_2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f2L_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f2R_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f2D_f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fda_L",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "fda_R",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            }
+          ],
+          "undeclared_intermediate_count": 0,
+          "single_example_intermediate_bytes": 615924
+        },
+        "official_like_score": {
+          "memory": 385,
+          "params": 12,
+          "cost": 397,
+          "score": 19.01606371931281,
+          "correct": true
+        },
+        "known_disable_all": {
+          "train": {
+            "right": 4,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 261,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 266,
+            "wrong": 0,
+            "errors": 0
+          }
+        },
+        "known_default": {
+          "train": {
+            "right": 4,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 261,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 266,
+            "wrong": 0,
+            "errors": 0
+          }
+        }
+      }
+    }
+  },
+  "variant_count": 7,
+  "stage_counts": {
+    "REJECT_NOT_STRICTLY_LOWER": 3,
+    "REJECT_OFFICIAL_NOT_CORRECT_LOWER": 1,
+    "REJECT_CHECKER_OR_STRICT_SHAPE": 3
+  },
+  "winner_count": 0,
+  "winners": [],
+  "rows": [
+    {
+      "task": 37,
+      "kind": "normalize",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/candidates/task037_normalize_6dfae88be57b.onnx",
+      "sha256": "6dfae88be57b8de383dce1e65fdedc8dd8513d83b91a3c2c8210d5bf92b25d23",
+      "authority_sha256": "df9298f3b9e851bd815be5f53b8de142cbf944297477d73fc27ddc343d49c90b",
+      "authority_cost": 320,
+      "actions": {
+        "cleared_value_info": [
+          "s9",
+          "s29",
+          "s30",
+          "s31",
+          "s29_31",
+          "xf",
+          "x",
+          "colors11",
+          "colors",
+          "endpoint_i8",
+          "pp1_0",
+          "pp1_1",
+          "pp1",
+          "pp1_compact",
+          "pp1_half",
+          "pp2_0",
+          "pp2_1",
+          "pp2",
+          "pp2_compact",
+          "pp2_half",
+          "pp3_0",
+          "pp3_1",
+          "pp3",
+          "pp3_half",
+          "pp4_0",
+          "pp4_1",
+          "pp4",
+          "pp4_half",
+          "pp5_0",
+          "pp5_1",
+          "pp5",
+          "pp5_half",
+          "mm1_0",
+          "mm1_1",
+          "mm1",
+          "mm1_compact",
+          "mm1_half",
+          "mm2_0",
+          "mm2_1",
+          "mm2",
+          "mm2_compact",
+          "mm2_half",
+          "mm3_0",
+          "mm3_1",
+          "mm3",
+          "mm3_half",
+          "mm4_0",
+          "mm4_1",
+          "mm4",
+          "mm4_half",
+          "mm5_0",
+          "mm5_1",
+          "mm5",
+          "mm5_half",
+          "pm1_0",
+          "pm1_1",
+          "pm1",
+          "pm1_compact",
+          "pm2_0",
+          "pm2_1",
+          "pm2",
+          "pm2_compact",
+          "pm3_0",
+          "pm3_1",
+          "pm3",
+          "pm3_compact",
+          "pm4_0",
+          "pm4_1",
+          "pm4",
+          "pm4_compact",
+          "pm5_0",
+          "pm5_1",
+          "pm5",
+          "mp1_0",
+          "mp1_1",
+          "mp1",
+          "mp1_compact",
+          "mp2_0",
+          "mp2_1",
+          "mp2",
+          "mp2_compact",
+          "mp3_0",
+          "mp3_1",
+          "mp3",
+          "mp4_0",
+          "mp4_1",
+          "mp4",
+          "mp5_0",
+          "mp5_1",
+          "mp5",
+          "pp1_comp",
+          "pp2_comp",
+          "pp3_comp",
+          "pp4_comp",
+          "pp5_comp",
+          "pp_reach1",
+          "pp_reach2",
+          "pp_reach3",
+          "pp_reach4",
+          "pp_reach5",
+          "mm1_comp",
+          "mm2_comp",
+          "mm3_comp",
+          "mm4_comp",
+          "mm5_comp",
+          "mm_reach1",
+          "mm_reach2",
+          "mm_reach3",
+          "mm_reach4",
+          "mm_reach5",
+          "pm1_comp",
+          "pm2_comp",
+          "pm3_comp",
+          "pm4_comp",
+          "pm5_comp",
+          "pm_reach1",
+          "pm_reach2",
+          "pm_reach3",
+          "pm_reach4",
+          "pm_reach5",
+          "mp1_comp",
+          "mp2_comp",
+          "mp3_comp",
+          "mp4_comp",
+          "mp5_comp",
+          "mp_reach1",
+          "mp_reach2",
+          "mp_reach3",
+          "mp_reach4",
+          "mp_reach5",
+          "main_left_false",
+          "main_flag",
+          "main_pos",
+          "anti_left_false",
+          "anti_flag",
+          "anti_pos",
+          "endpoint_compact",
+          "colored_main_comp",
+          "colored_main_flag",
+          "colored_main",
+          "colored_comp",
+          "colored_flag",
+          "colored",
+          "valid_log",
+          "colored_any",
+          "background_not_flag",
+          "background",
+          "valid_log_compact"
+        ],
+        "semantic_action_count": 0,
+        "metadata_action_count": 148
+      },
+      "equivalence_basis": [],
+      "structure": {
+        "nodes": 149,
+        "initializers": 5,
+        "params": 6,
+        "ops": {
+          "CenterCropPad": 75,
+          "HardSigmoid": 24,
+          "PRelu": 17,
+          "CastLike": 17,
+          "LessOrEqual": 5,
+          "ConstantOfShape": 4,
+          "Selu": 4,
+          "ReduceLogSum": 1,
+          "ReduceL1": 1,
+          "Concat": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          2,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape": true
+      },
+      "cost": {
+        "memory": -1,
+        "params": -1,
+        "cost": -1
+      },
+      "stage": "REJECT_NOT_STRICTLY_LOWER"
+    },
+    {
+      "task": 89,
+      "kind": "cleanup",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/candidates/task089_cleanup_dc8cec0f3a01.onnx",
+      "sha256": "dc8cec0f3a011002c6bcca6b2a19cd4a265f1b2d3a113154cc744d7088e3776e",
+      "authority_sha256": "89183f12515ceee79eb73d69ce074a6a93145930e5fb9eb426d3a1f7f58e5607",
+      "authority_cost": 1340,
+      "actions": {
+        "dead_nodes": [
+          {
+            "op": "ReduceMax",
+            "outputs": [
+              "keep_red_big"
+            ]
+          }
+        ],
+        "unused_initializers": [],
+        "dead_value_info": [
+          "keep_red_big"
+        ],
+        "semantic_action_count": 1,
+        "metadata_action_count": 1
+      },
+      "equivalence_basis": [
+        "dead_nodes"
+      ],
+      "structure": {
+        "nodes": 88,
+        "initializers": 12,
+        "params": 29,
+        "ops": {
+          "CenterCropPad": 47,
+          "Add": 19,
+          "QLinearConv": 8,
+          "ReduceMax": 3,
+          "Sub": 2,
+          "BitwiseAnd": 2,
+          "CastLike": 1,
+          "Slice": 1,
+          "Div": 1,
+          "MaxPool": 1,
+          "Mul": 1,
+          "Max": 1,
+          "Equal": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape": true
+      },
+      "cost": {
+        "memory": 1142,
+        "params": 29,
+        "cost": 1171
+      },
+      "full_audit": {
+        "label": "task089_cleanup",
+        "task": 89,
+        "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/candidates/task089_cleanup_dc8cec0f3a01.onnx",
+        "sha256": "dc8cec0f3a011002c6bcca6b2a19cd4a265f1b2d3a113154cc744d7088e3776e",
+        "file_bytes": 9291,
+        "nodes": 88,
+        "initializers": 12,
+        "params": 29,
+        "op_histogram": {
+          "CenterCropPad": 47,
+          "Add": 19,
+          "QLinearConv": 8,
+          "ReduceMax": 3,
+          "Sub": 2,
+          "BitwiseAnd": 2,
+          "CastLike": 1,
+          "Slice": 1,
+          "Div": 1,
+          "MaxPool": 1,
+          "Mul": 1,
+          "Max": 1,
+          "Equal": 1
+        },
+        "max_node_inputs": 9,
+        "lookup_red_flags": {
+          "tfidf": 0,
+          "hardmax": 0,
+          "giant_einsum_nodes": 0,
+          "params_over_10000": false
+        },
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "nested_graph_attributes": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "conv_bias_findings": [
+          {
+            "node": "red_lone_direct",
+            "op": "QLinearConv",
+            "bias": "redlone_bias",
+            "bias_is_initializer": true,
+            "bias_shape": [
+              1
+            ],
+            "expected_channels": 1,
+            "safe": true
+          }
+        ],
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_trace": {
+          "runtime_tensors": 88,
+          "declared_tensors": 82,
+          "declared_actual_mismatches": [
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                10,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_hidden",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "decode_big",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                2,
+                2
+              ]
+            },
+            {
+              "tensor": "pad_grid_14",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                14,
+                14
+              ]
+            },
+            {
+              "tensor": "pad_grid_15",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                15,
+                15
+              ]
+            },
+            {
+              "tensor": "pad_grid_16",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                16,
+                16
+              ]
+            },
+            {
+              "tensor": "pad_grid_17",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                17,
+                17
+              ]
+            },
+            {
+              "tensor": "pad_grid_18",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                18,
+                18
+              ]
+            },
+            {
+              "tensor": "pad_grid_19",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                19,
+                19
+              ]
+            },
+            {
+              "tensor": "pad_grid_20",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                20,
+                20
+              ]
+            },
+            {
+              "tensor": "pad_grid_21",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                21,
+                21
+              ]
+            },
+            {
+              "tensor": "pad_grid_22",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                22,
+                22
+              ]
+            },
+            {
+              "tensor": "pad_grid_23",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                23,
+                23
+              ]
+            },
+            {
+              "tensor": "pad_grid_24",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                24,
+                24
+              ]
+            },
+            {
+              "tensor": "pad_grid_25",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                25,
+                25
+              ]
+            },
+            {
+              "tensor": "pad_grid_26",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                26,
+                26
+              ]
+            },
+            {
+              "tensor": "pad_grid_27",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                27,
+                27
+              ]
+            },
+            {
+              "tensor": "pad_grid_28",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                28,
+                28
+              ]
+            },
+            {
+              "tensor": "pad_grid_29",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                29,
+                29
+              ]
+            },
+            {
+              "tensor": "pad_grid_30",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "red_crop3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "grn_crop3",
+              "declared": [
+                1,
+                1,
+                1,
+                2
+              ],
+              "actual": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            {
+              "tensor": "value_hide",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "top_sp0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                29,
+                29
+              ]
+            },
+            {
+              "tensor": "top_sp1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                28,
+                28
+              ]
+            },
+            {
+              "tensor": "top_sp2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                27,
+                27
+              ]
+            },
+            {
+              "tensor": "top_sp3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                26,
+                26
+              ]
+            },
+            {
+              "tensor": "top_sp4",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                25,
+                25
+              ]
+            },
+            {
+              "tensor": "top_sp5",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                24,
+                24
+              ]
+            },
+            {
+              "tensor": "top_sp6",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                23,
+                23
+              ]
+            },
+            {
+              "tensor": "top_sp7",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                22,
+                22
+              ]
+            },
+            {
+              "tensor": "top_sp8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                21,
+                21
+              ]
+            },
+            {
+              "tensor": "top_sp9",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                20,
+                20
+              ]
+            },
+            {
+              "tensor": "top_sp10",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                19,
+                19
+              ]
+            },
+            {
+              "tensor": "top_sp11",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                18,
+                18
+              ]
+            },
+            {
+              "tensor": "top_sp12",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                17,
+                17
+              ]
+            },
+            {
+              "tensor": "top_sp13",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                16,
+                16
+              ]
+            },
+            {
+              "tensor": "top_sp14",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                15,
+                15
+              ]
+            },
+            {
+              "tensor": "top_sp15",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                14,
+                14
+              ]
+            },
+            {
+              "tensor": "top13_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "grn_ch0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                3,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "grn_ch1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                2,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "grn_mark",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "red_ch2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                3,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "red_ch3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                2,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "red_all_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "red_ch0",
+              "declared": [
+                1,
+                5,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                5,
+                13,
+                13
+              ]
+            },
+            {
+              "tensor": "red_ch1",
+              "declared": [
+                1,
+                4,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                4,
+                13,
+                13
+              ]
+            }
+          ],
+          "undeclared_intermediate_count": 6,
+          "single_example_intermediate_bytes": 137713
+        },
+        "official_like_score": {
+          "memory": 1142,
+          "params": 29,
+          "cost": 1171,
+          "score": 17.934386636402284,
+          "correct": false
+        },
+        "known_disable_all": {
+          "train": {
+            "right": 0,
+            "wrong": 0,
+            "errors": 4
+          },
+          "test": {
+            "right": 0,
+            "wrong": 0,
+            "errors": 1
+          },
+          "arc-gen": {
+            "right": 0,
+            "wrong": 0,
+            "errors": 262
+          },
+          "total": {
+            "right": 0,
+            "wrong": 0,
+            "errors": 267
+          }
+        },
+        "known_default": {
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_59) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      },
+      "stage": "REJECT_OFFICIAL_NOT_CORRECT_LOWER"
+    },
+    {
+      "task": 89,
+      "kind": "fold",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/candidates/task089_fold_94f62ef4ce43.onnx",
+      "sha256": "94f62ef4ce43fe25df9985d573ea027fd1719e37eb75c0bea431991d7d51d401",
+      "authority_sha256": "89183f12515ceee79eb73d69ce074a6a93145930e5fb9eb426d3a1f7f58e5607",
+      "authority_cost": 1340,
+      "actions": {
+        "constant_folds": [
+          {
+            "op": "Add",
+            "output": "pad_two",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_three_dyn",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_14",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_15",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_16",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_17",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_18",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_19",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_20",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_21",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_22",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_23",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_24",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_25",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_26",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_27",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_28",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_29",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_30",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Sub",
+            "output": "pad_hw13_dyn",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          }
+        ],
+        "semantic_action_count": 20,
+        "metadata_action_count": 0
+      },
+      "equivalence_basis": [
+        "all_inputs_constant_numpy_equivalent"
+      ],
+      "structure": {
+        "nodes": 68,
+        "initializers": 31,
+        "params": 48,
+        "ops": {
+          "CenterCropPad": 47,
+          "QLinearConv": 8,
+          "ReduceMax": 3,
+          "BitwiseAnd": 2,
+          "CastLike": 1,
+          "Sub": 1,
+          "Slice": 1,
+          "Div": 1,
+          "MaxPool": 1,
+          "Mul": 1,
+          "Max": 1,
+          "Equal": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": false,
+        "checker_error": "InferenceError: [ShapeInferenceError] Inferred shape and existing shape differ in rank: (1) vs (0)",
+        "strict_shape": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inferred shape and existing shape differ in rank: (1) vs (0)"
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    },
+    {
+      "task": 89,
+      "kind": "combined",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/candidates/task089_combined_33fd57aea5b2.onnx",
+      "sha256": "33fd57aea5b2202ad15c35f22e80e831da4510abc8d3ae3c0f962193229ab58d",
+      "authority_sha256": "89183f12515ceee79eb73d69ce074a6a93145930e5fb9eb426d3a1f7f58e5607",
+      "authority_cost": 1340,
+      "actions": {
+        "dead_nodes": [
+          {
+            "op": "ReduceMax",
+            "outputs": [
+              "keep_red_big"
+            ]
+          }
+        ],
+        "unused_initializers": [],
+        "dead_value_info": [
+          "keep_red_big"
+        ],
+        "deduplicated_initializers": [],
+        "removed_optional_outputs": [],
+        "bypassed_noops": [],
+        "common_subexpressions": [],
+        "constant_folds": [
+          {
+            "op": "Add",
+            "output": "pad_two",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_three_dyn",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_14",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_15",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_16",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_17",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_18",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_19",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_20",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_21",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_22",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_23",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_24",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_25",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_26",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_27",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_28",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_29",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_30",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Sub",
+            "output": "pad_hw13_dyn",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          }
+        ],
+        "factor_absorptions": [],
+        "second_noops": [],
+        "second_cse": [],
+        "final_dead_nodes": [],
+        "final_unused_initializers": [],
+        "final_dead_value_info": [],
+        "semantic_action_count": 21,
+        "metadata_action_count": 1
+      },
+      "equivalence_basis": [
+        "all_inputs_constant_numpy_equivalent",
+        "dead_nodes"
+      ],
+      "structure": {
+        "nodes": 68,
+        "initializers": 31,
+        "params": 48,
+        "ops": {
+          "CenterCropPad": 47,
+          "QLinearConv": 8,
+          "ReduceMax": 3,
+          "BitwiseAnd": 2,
+          "CastLike": 1,
+          "Sub": 1,
+          "Slice": 1,
+          "Div": 1,
+          "MaxPool": 1,
+          "Mul": 1,
+          "Max": 1,
+          "Equal": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": false,
+        "checker_error": "InferenceError: [ShapeInferenceError] Inferred shape and existing shape differ in rank: (1) vs (0)",
+        "strict_shape": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inferred shape and existing shape differ in rank: (1) vs (0)"
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    },
+    {
+      "task": 89,
+      "kind": "normalize",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/candidates/task089_normalize_6b480d2a9cb6.onnx",
+      "sha256": "6b480d2a9cb6ccd40f5b4e47173e1ae543b5bb707e8b54bed5dd4efb7954fa97",
+      "authority_sha256": "89183f12515ceee79eb73d69ce074a6a93145930e5fb9eb426d3a1f7f58e5607",
+      "authority_cost": 1340,
+      "actions": {
+        "cleared_value_info": [
+          "input_hidden",
+          "input_u8",
+          "decode_big",
+          "pad_hw_14",
+          "pad_grid_14",
+          "pad_hw_15",
+          "pad_grid_15",
+          "pad_hw_16",
+          "pad_grid_16",
+          "pad_hw_17",
+          "pad_grid_17",
+          "pad_hw_18",
+          "pad_grid_18",
+          "pad_hw_19",
+          "pad_grid_19",
+          "pad_hw_20",
+          "pad_grid_20",
+          "pad_hw_21",
+          "pad_grid_21",
+          "pad_hw_22",
+          "pad_grid_22",
+          "pad_hw_23",
+          "pad_grid_23",
+          "pad_hw_24",
+          "pad_grid_24",
+          "pad_hw_25",
+          "pad_grid_25",
+          "pad_hw_26",
+          "pad_grid_26",
+          "pad_hw_27",
+          "pad_grid_27",
+          "pad_hw_28",
+          "pad_grid_28",
+          "pad_hw_29",
+          "pad_grid_29",
+          "pad_hw_30",
+          "pad_grid_30",
+          "grn_Tval_raw",
+          "pad_two",
+          "keep_red_big",
+          "red_color_scalar",
+          "red_filtered_u8",
+          "grn_scalar",
+          "grn_same_u8",
+          "grn_window_mask255",
+          "grn_win_scores",
+          "grn_win_max",
+          "grn_win_sel",
+          "grn_T_u8",
+          "red_crop3",
+          "grn_crop3",
+          "pad_three_dyn",
+          "pad_hw13_dyn",
+          "value_hide",
+          "top_sp0",
+          "top_sp1",
+          "top_sp2",
+          "top_sp3",
+          "top_sp4",
+          "top_sp5",
+          "top_sp6",
+          "top_sp7",
+          "top_sp8",
+          "top_sp9",
+          "top_sp10",
+          "top_sp11",
+          "top_sp12",
+          "top_sp13",
+          "top_sp14",
+          "top_sp15",
+          "top13_u8",
+          "grn_ch0",
+          "grn_ch1",
+          "grn_mark",
+          "red_ch2",
+          "red_ch3",
+          "red_all_u8",
+          "red_Tall_u8",
+          "red_Tlone_u8",
+          "red_Tval_u8",
+          "red_ch0",
+          "red_ch1"
+        ],
+        "semantic_action_count": 0,
+        "metadata_action_count": 82
+      },
+      "equivalence_basis": [],
+      "structure": {
+        "nodes": 89,
+        "initializers": 12,
+        "params": 29,
+        "ops": {
+          "CenterCropPad": 47,
+          "Add": 19,
+          "QLinearConv": 8,
+          "ReduceMax": 4,
+          "Sub": 2,
+          "BitwiseAnd": 2,
+          "CastLike": 1,
+          "Slice": 1,
+          "Div": 1,
+          "MaxPool": 1,
+          "Mul": 1,
+          "Max": 1,
+          "Equal": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape": true
+      },
+      "cost": {
+        "memory": -1,
+        "params": -1,
+        "cost": -1
+      },
+      "stage": "REJECT_NOT_STRICTLY_LOWER"
+    },
+    {
+      "task": 89,
+      "kind": "normalized_combined",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/candidates/task089_normalized_combined_d029c4308ac0.onnx",
+      "sha256": "d029c4308ac0d3317839989267f7ed4ed0b6469472a9913a87afa2deda7c3816",
+      "authority_sha256": "89183f12515ceee79eb73d69ce074a6a93145930e5fb9eb426d3a1f7f58e5607",
+      "authority_cost": 1340,
+      "actions": {
+        "dead_nodes": [
+          {
+            "op": "ReduceMax",
+            "outputs": [
+              "keep_red_big"
+            ]
+          }
+        ],
+        "unused_initializers": [],
+        "dead_value_info": [
+          "keep_red_big"
+        ],
+        "deduplicated_initializers": [],
+        "removed_optional_outputs": [],
+        "bypassed_noops": [],
+        "common_subexpressions": [],
+        "constant_folds": [
+          {
+            "op": "Add",
+            "output": "pad_two",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_three_dyn",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_14",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_15",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_16",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_17",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_18",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_19",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_20",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_21",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_22",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_23",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_24",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_25",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_26",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_27",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_28",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_29",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "pad_hw_30",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Sub",
+            "output": "pad_hw13_dyn",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          }
+        ],
+        "factor_absorptions": [],
+        "second_noops": [],
+        "second_cse": [],
+        "final_dead_nodes": [],
+        "final_unused_initializers": [],
+        "final_dead_value_info": [],
+        "cleared_value_info": [
+          "input_hidden",
+          "input_u8",
+          "decode_big",
+          "pad_hw_14",
+          "pad_grid_14",
+          "pad_hw_15",
+          "pad_grid_15",
+          "pad_hw_16",
+          "pad_grid_16",
+          "pad_hw_17",
+          "pad_grid_17",
+          "pad_hw_18",
+          "pad_grid_18",
+          "pad_hw_19",
+          "pad_grid_19",
+          "pad_hw_20",
+          "pad_grid_20",
+          "pad_hw_21",
+          "pad_grid_21",
+          "pad_hw_22",
+          "pad_grid_22",
+          "pad_hw_23",
+          "pad_grid_23",
+          "pad_hw_24",
+          "pad_grid_24",
+          "pad_hw_25",
+          "pad_grid_25",
+          "pad_hw_26",
+          "pad_grid_26",
+          "pad_hw_27",
+          "pad_grid_27",
+          "pad_hw_28",
+          "pad_grid_28",
+          "pad_hw_29",
+          "pad_grid_29",
+          "pad_hw_30",
+          "pad_grid_30",
+          "grn_Tval_raw",
+          "pad_two",
+          "red_color_scalar",
+          "red_filtered_u8",
+          "grn_scalar",
+          "grn_same_u8",
+          "grn_window_mask255",
+          "grn_win_scores",
+          "grn_win_max",
+          "grn_win_sel",
+          "grn_T_u8",
+          "red_crop3",
+          "grn_crop3",
+          "pad_three_dyn",
+          "pad_hw13_dyn",
+          "value_hide",
+          "top_sp0",
+          "top_sp1",
+          "top_sp2",
+          "top_sp3",
+          "top_sp4",
+          "top_sp5",
+          "top_sp6",
+          "top_sp7",
+          "top_sp8",
+          "top_sp9",
+          "top_sp10",
+          "top_sp11",
+          "top_sp12",
+          "top_sp13",
+          "top_sp14",
+          "top_sp15",
+          "top13_u8",
+          "grn_ch0",
+          "grn_ch1",
+          "grn_mark",
+          "red_ch2",
+          "red_ch3",
+          "red_all_u8",
+          "red_Tall_u8",
+          "red_Tlone_u8",
+          "red_Tval_u8",
+          "red_ch0",
+          "red_ch1"
+        ],
+        "semantic_action_count": 21,
+        "metadata_action_count": 82
+      },
+      "equivalence_basis": [
+        "all_inputs_constant_numpy_equivalent",
+        "dead_nodes"
+      ],
+      "structure": {
+        "nodes": 68,
+        "initializers": 31,
+        "params": 48,
+        "ops": {
+          "CenterCropPad": 47,
+          "QLinearConv": 8,
+          "ReduceMax": 3,
+          "BitwiseAnd": 2,
+          "CastLike": 1,
+          "Sub": 1,
+          "Slice": 1,
+          "Div": 1,
+          "MaxPool": 1,
+          "Mul": 1,
+          "Max": 1,
+          "Equal": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": false,
+        "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:QLinearConv): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv.\n(op_type:CenterCropPad, node name: value_hide): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:QLinearConv, node name: red_lone_direct): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (red_lone_direct).\n(op_type:QLinearConv, node name: red_Tall_u8): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (red_Tall_u8).\n(op_type:QLinearConv, node name: red_Tlone_u8): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (red_Tlone_u8).\n(op_type:Sub, node name: red_Tval_u8): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: red_crop3): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:ReduceMax, node name: red_color_scalar): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:BitwiseAnd, node name: red_filtered_u8): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Slice, node name: n20): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:QLinearConv, node name: n21): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (n21).\n(op_type:CenterCropPad, node name: grn_crop3): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:ReduceMax, node name: grn_scalar): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:BitwiseAnd, node name: grn_same_u8): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:QLinearConv, node name: grn_win_scores): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (grn_win_scores).\n(op_type:ReduceMax, node name: grn_win_max): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Div, node name: grn_win_eq): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:MaxPool, node name: grn_window_mask255): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Mul, node name: grn_T_u8): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:QLinearConv, node name: n30): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (n30).\n(op_type:QLinearConv, node name: n31): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (n31).\n(op_type:Max, node name: n32): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n",
+        "strict_shape": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:QLinearConv): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv.\n(op_type:CenterCropPad, node name: value_hide): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:QLinearConv, node name: red_lone_direct): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (red_lone_direct).\n(op_type:QLinearConv, node name: red_Tall_u8): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (red_Tall_u8).\n(op_type:QLinearConv, node name: red_Tlone_u8): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (red_Tlone_u8).\n(op_type:Sub, node name: red_Tval_u8): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad, node name: red_crop3): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:ReduceMax, node name: red_color_scalar): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:BitwiseAnd, node name: red_filtered_u8): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Slice, node name: n20): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:QLinearConv, node name: n21): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (n21).\n(op_type:CenterCropPad, node name: grn_crop3): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:ReduceMax, node name: grn_scalar): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:BitwiseAnd, node name: grn_same_u8): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:QLinearConv, node name: grn_win_scores): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (grn_win_scores).\n(op_type:ReduceMax, node name: grn_win_max): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Div, node name: grn_win_eq): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:MaxPool, node name: grn_window_mask255): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:Mul, node name: grn_T_u8): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:QLinearConv, node name: n30): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (n30).\n(op_type:QLinearConv, node name: n31): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv (n31).\n(op_type:Max, node name: n32): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n(op_type:CenterCropPad): [TypeInferenceError] Input 0 expected to have type but instead is null\n"
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    },
+    {
+      "task": 279,
+      "kind": "normalize",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high037_089_279_124/candidates/task279_normalize_5a0616c421dc.onnx",
+      "sha256": "5a0616c421dc77f4e35a6021cae90e07ba0231629f828e3e4690bf44e65b2774",
+      "authority_sha256": "d3bb22792a3e44e09d21971f88642622a32d161f3a7888f9d0e9efe5862d0a9b",
+      "authority_cost": 397,
+      "actions": {
+        "cleared_value_info": [
+          "hshape",
+          "n29",
+          "n31",
+          "xc",
+          "xu8",
+          "chA0",
+          "chA1",
+          "chA2",
+          "chA3",
+          "chA4",
+          "chA5",
+          "chA6",
+          "chA7",
+          "chA8",
+          "chA9",
+          "blue_u8",
+          "msU_1",
+          "msU_2",
+          "msL_0",
+          "msL_1",
+          "msL_2",
+          "blue16posS",
+          "maskS",
+          "p0basefac",
+          "p0fL_0",
+          "p0fL_1",
+          "p0fL_2",
+          "p0fR_0",
+          "p0fR_1",
+          "p0fR_2",
+          "p0fU_0",
+          "p0fU_1",
+          "p0fU_2",
+          "p0fD_0",
+          "p0fD_1",
+          "p0fD_2",
+          "p0prod0",
+          "p0prod1",
+          "p0prod2",
+          "p0prod3",
+          "p0slope",
+          "p0rem3",
+          "p1basefac",
+          "p1fL_0",
+          "p1fL_1",
+          "p1fL_2",
+          "p1fR_0",
+          "p1fR_1",
+          "p1fR_2",
+          "p1fU_0",
+          "p1fU_1",
+          "p1fU_2",
+          "p1fD_0",
+          "p1fD_1",
+          "p1fD_2",
+          "p1prod0",
+          "p1prod1",
+          "p1prod2",
+          "p1prod3",
+          "p1slope",
+          "p1rem3",
+          "p2basefac",
+          "p2fL_0",
+          "p2fL_1",
+          "p2fL_2",
+          "p2fR_0",
+          "p2fR_1",
+          "p2fR_2",
+          "p2fU_0",
+          "p2fU_1",
+          "p2fU_2",
+          "p2fD_0",
+          "p2fD_1",
+          "p2fD_2",
+          "p2prod0",
+          "p2prod1",
+          "p2prod2",
+          "p2prod3",
+          "p2slope",
+          "p2rem3",
+          "p3basefac",
+          "p3fL_0",
+          "p3fL_1",
+          "p3fL_2",
+          "p3fR_0",
+          "p3fR_1",
+          "p3fR_2",
+          "p3fU_0",
+          "p3fU_1",
+          "p3fU_2",
+          "p3fD_0",
+          "p3fD_1",
+          "p3fD_2",
+          "p3prod0",
+          "p3prod1",
+          "p3prod2",
+          "p3prod3",
+          "p3slope",
+          "p3rem3",
+          "p4basefac",
+          "p4fL_0",
+          "p4fL_1",
+          "p4fL_2",
+          "p4fR_0",
+          "p4fR_1",
+          "p4fR_2",
+          "p4fU_0",
+          "p4fU_1",
+          "p4fU_2",
+          "p4fD_0",
+          "p4fD_1",
+          "p4fD_2",
+          "p4prod0",
+          "p4prod1",
+          "p4prod2",
+          "p4prod3",
+          "p4slope",
+          "p4rem3",
+          "p5basefac",
+          "p5fL_0",
+          "p5fL_1",
+          "p5fL_2",
+          "p5fR_0",
+          "p5fR_1",
+          "p5fR_2",
+          "p5fU_0",
+          "p5fU_1",
+          "p5fU_2",
+          "p5fD_0",
+          "p5fD_1",
+          "p5fD_2",
+          "p5prod0",
+          "p5prod1",
+          "p5prod2",
+          "p5prod3",
+          "p5slope",
+          "p5rem3",
+          "c6basefac",
+          "c6fL_0",
+          "c6fL_1",
+          "c6fL_2",
+          "c6fR_0",
+          "c6fR_1",
+          "c6fR_2",
+          "c6fU_0",
+          "c6fU_1",
+          "c6fU_2",
+          "c6fD_0",
+          "c6fD_1",
+          "c6fD_2",
+          "c6hprod0",
+          "c6hprod1",
+          "c6hslope",
+          "c6vprod0",
+          "c6vprod1",
+          "c6vslope",
+          "c6corner0",
+          "c6corner1",
+          "c6cornerslope",
+          "f0absbool",
+          "f0bL_0",
+          "f0bL_1",
+          "f0bL_2",
+          "f0L_2",
+          "f0bR_0",
+          "f0bR_1",
+          "f0bR_2",
+          "f0R_2",
+          "f0bU_0",
+          "f0bU_1",
+          "f0bU_2",
+          "f0U_2",
+          "f0Lna",
+          "f0a",
+          "f0b",
+          "f0c",
+          "f0keep_absbool",
+          "fdUb_0",
+          "fdUb_1",
+          "fdUb_2",
+          "fdUpa",
+          "fda",
+          "maskmid",
+          "condS",
+          "bkD_0",
+          "bkD_1",
+          "bkD_2",
+          "bkR_0",
+          "bkR_1",
+          "bkR_2",
+          "f0Self",
+          "fda0",
+          "f2L_0",
+          "f2L_1",
+          "f2L_2",
+          "f2R_0",
+          "f2R_1",
+          "f2R_2",
+          "f2D_0",
+          "f2D_1",
+          "f2D_2",
+          "f2L_f",
+          "f2R_f",
+          "f2D_f",
+          "fda_L",
+          "fda_R"
+        ],
+        "semantic_action_count": 0,
+        "metadata_action_count": 206
+      },
+      "equivalence_basis": [],
+      "structure": {
+        "nodes": 207,
+        "initializers": 3,
+        "params": 12,
+        "ops": {
+          "CenterCropPad": 128,
+          "PRelu": 43,
+          "HardSigmoid": 17,
+          "CastLike": 9,
+          "LessOrEqual": 3,
+          "Selu": 2,
+          "Shape": 1,
+          "Sub": 1,
+          "Add": 1,
+          "Cast": 1,
+          "Where": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape": true
+      },
+      "cost": {
+        "memory": -1,
+        "params": -1,
+        "cost": -1
+      },
+      "stage": "REJECT_NOT_STRICTLY_LOWER"
+    }
+  ]
+}

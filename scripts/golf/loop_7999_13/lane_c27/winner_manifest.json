@@ -1,0 +1,32 @@
+{
+  "lane": "c27",
+  "baseline_zip": "scripts/golf/loop_7999_13/submission_7999.13_wave15_candidate_meta.zip",
+  "tasks": [184, 377],
+  "winners": [],
+  "verified_gain": 0.0,
+  "rejected": [
+    {
+      "task": 184,
+      "candidate": "scripts/golf/loop_7999_13/lane_c27/candidates/task184_r06_shrink421.onnx",
+      "sha256": "aab1858c9ef45ae67c8a21a148079470ae084e9b976786221c6b17fc30949a03",
+      "cost": 421,
+      "known_disable_all": {"right": 169, "wrong": 0, "errors": 0},
+      "known_default": {"session": false},
+      "runtime_shape_mismatches": 6,
+      "reason": "Not strictly cheaper and inherits six false runtime shapes; default ORT cannot construct the session."
+    },
+    {
+      "task": 377,
+      "candidate": "scripts/golf/loop_7999_13/lane_c27/candidates/task377_diff5_witness408.onnx",
+      "sha256": "f10fe98f1f11c40a4e841c5311b62c4fb8efde89c620d4cc088aaccad4b70daf",
+      "cost": 408,
+      "known_disable_all": {"right": 266, "wrong": 0, "errors": 0},
+      "known_default": {"right": 0, "wrong": 0, "errors": 266},
+      "reason": "Cheaper and algebraically exact, but it inherits false static shapes and every default-ORT known run raises a buffer-shape runtime error."
+    }
+  ],
+  "fresh5000_started": false,
+  "fresh5000_reason": "No candidate passed the prerequisite truthful-shape and dual-ORT runtime-error-zero gates.",
+  "evidence": "scripts/golf/loop_7999_13/lane_c27/evidence/model_audit.json",
+  "root_artifacts_modified": false
+}

@@ -1,0 +1,76 @@
+{
+  "lane": "a6_model_specific_exact_recheck",
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "score": 7999.13
+  },
+  "targets": [48, 37, 264, 234, 397, 392, 387],
+  "accepted": [],
+  "projected_gain": 0.0,
+  "reason": "No candidate was both strictly cheaper than the pinned ZIP member and free of known/runtime/structure failures. Fresh/domain-5000 was therefore not run on rejected candidates.",
+  "baseline_recheck": {
+    "task048": {"cost": 379, "memory": 308, "params": 71, "known_correct": true, "runtime_errors": 0},
+    "task037": {"cost": 374, "memory": 368, "params": 6, "known_correct": true, "runtime_errors": 0},
+    "task264": {"cost": 362, "memory": 259, "params": 103, "known_correct": true, "runtime_errors": 0},
+    "task234": {"cost": 368, "memory": 236, "params": 132, "known_correct": true, "runtime_errors": 0},
+    "task397": {"cost": 364, "memory": 284, "params": 80, "known_correct": true, "runtime_errors": 0},
+    "task392": {"cost": 345, "memory": 290, "params": 55, "known_correct": true, "runtime_errors": 0},
+    "task387": {"cost": 337, "memory": 242, "params": 95, "known_correct": true, "runtime_errors": 0}
+  },
+  "rejected": [
+    {
+      "task": 48,
+      "candidate": "scripts/golf/loop_7999_13/lane_a6/candidates/task048_not_sub_and_bool_cast.onnx",
+      "sha256": "8e762cf6b431b4648d9cc6b1f3d66b3154e14b3c8d9971ea68820f1be37e380d",
+      "known_correct": true,
+      "runtime_errors": 0,
+      "candidate_cost": 379,
+      "candidate_memory": 309,
+      "candidate_params": 70,
+      "baseline_cost": 379,
+      "reason": "Removing the zero initializer creates one additional uint8 intermediate; memory +1 exactly cancels params -1."
+    },
+    {
+      "task": 37,
+      "candidate": "scripts/golf/loop_7999_13/lane_a6/candidates/task037_binary_rule_fusion.onnx",
+      "sha256": "65649bfaa5f8a81bcbac24f6f8be2c61bed4940cc10c7764b4d33225fe1c83d0",
+      "known_correct": false,
+      "runtime_errors": 1,
+      "reason": "The Min/Max true-rule fusion is algebraically exact, but node removal changes ORT's shape-cloak reuse schedule and deterministically raises a Slice buffer-shape RuntimeException."
+    },
+    {
+      "task": 37,
+      "candidate": "scripts/golf/loop_7999_13/lane_a6/candidates/task037_bool_rule_pipeline.onnx",
+      "sha256": "a30986e473f6a705538e7d870bced37406108b380ced2d11ebc422a61702165c",
+      "known_correct": true,
+      "runtime_errors": 0,
+      "candidate_cost": 437668,
+      "candidate_memory": 437662,
+      "candidate_params": 6,
+      "baseline_cost": 374,
+      "reason": "The exact bool rewrite exposes full spatial tensors to the ORT profiler instead of the incumbent's f16 PRelu/HardSigmoid cloaks."
+    },
+    {
+      "task": 37,
+      "candidate": "direct_s29_31_initializer_probe",
+      "known_correct": false,
+      "runtime_errors": 0,
+      "reason": "Full ONNX shape inference rejects the direct rank-1 initializer against the incumbent's rank-0 s29_31 cloak and downstream CenterCropPad value-info."
+    },
+    {
+      "task": 392,
+      "candidate": "opset12_unsqueeze_axes_attribute_probe",
+      "known_correct": false,
+      "runtime_errors": 0,
+      "reason": "Opset 12 would remove the three axes parameters, but that schema does not support the model's int8 Sub; full checker rejects it."
+    }
+  ],
+  "fresh_domain_gate": {
+    "run": false,
+    "required_if_known_cheaper": "5000/5000, runtime_errors=0",
+    "reason": "No strictly cheaper candidate survived the known/runtime/structure gate."
+  },
+  "task397_broadcast_candidate_reused": false,
+  "root_artifacts_modified": false
+}

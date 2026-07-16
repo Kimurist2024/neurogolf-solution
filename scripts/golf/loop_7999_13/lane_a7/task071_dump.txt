@@ -1,0 +1,84 @@
+# task071.onnx
+
+## Initializers
+cw: float32 (10,) [0.0, 16.0, 16.0, 16.0, 16.0, 16.0, 16.0, 16.0, 16.0, 16.0]
+affine: float32 (30,) [1.25, 1.125, 1.0, 0.875, 0.75, 0.625, 0.5, 0.375, 0.25, 0.125, 0.0, -0.125, -0.25, -0.375, -0.5, -0.625, -0.75, -0.875, -1.0, -1.125, -1.25, -1.375, -1.5, -1.625, -1.75, -1.875, -2.0, -2.125, -2.25, -2.375]
+offset20: uint8 (1,) [20]
+k: uint8 () 15
+one: uint8 (1,) [1]
+a23: uint8 (2,) [2, 3]
+b45: uint8 (2,) [4, 5]
+c69: uint8 (4,) [6, 7, 8, 9]
+d1011: uint8 (2,) [10, 11]
+e1213: uint8 (2,) [12, 13]
+s1: int64 (1,) [1]
+i32zero: int32 () 0
+
+## Value info
+shape14: INT64 [1]
+padded_tail: UINT8 [1]
+gather_u8: UINT8 [17]
+gather_i32: INT32 [17]
+axis_den: FLOAT [1]
+axis_rev: FLOAT [1]
+axis_code: UINT8 [1]
+axis2: UINT8 [1]
+left_moment: FLOAT [1]
+right_moment: FLOAT [1]
+box_left: BOOL [1]
+clean_bg: UINT8 [1]
+p1: UINT8 [1]
+r1: UINT8 [1]
+p23: UINT8 [2]
+q23: UINT8 [2]
+r23: UINT8 [2]
+p45: UINT8 [2]
+r45: UINT8 [2]
+p69: UINT8 [4]
+lo69: UINT8 [4]
+hi69: UINT8 [4]
+r69: UINT8 [4]
+p1011: UINT8 [2]
+r1011: UINT8 [2]
+clip1213: UINT8 [2]
+p1213: UINT8 [2]
+r1213: UINT8 [2]
+
+## Nodes
+00 Einsum ['input', 'cw', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine'] -> ['axis_den'] {'equation': b'nchw,c,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h->n'}
+01 Einsum ['input', 'cw', 'cw', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine'] -> ['axis_rev'] {'equation': b'nchw,c,c,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,w->n'}
+02 QuantizeLinear ['axis_rev', 'axis_den'] -> ['axis_code'] {}
+03 Sub ['offset20', 'axis_code'] -> ['axis2'] {}
+04 Einsum ['input', 'input', 'input', 'cw', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'cw', 'affine'] -> ['left_moment'] {'equation': b'nchw,ncij,ndpq,c,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,d,q->n'}
+05 Einsum ['input', 'input', 'input', 'cw', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'affine', 'cw'] -> ['right_moment'] {'equation': b'nchw,ncij,ndpq,c,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,j,d->n'}
+06 LessOrEqual ['right_moment', 'left_moment'] -> ['box_left'] {}
+07 Where ['box_left', 'k', 'one'] -> ['clean_bg'] {}
+08 Sub ['axis2', 'one'] -> ['p1'] {}
+09 Min ['p1', 'clean_bg'] -> ['r1'] {}
+10 Sub ['axis2', 'a23'] -> ['p23'] {}
+11 Min ['p23', 'k'] -> ['q23'] {}
+12 Where ['box_left', 'q23', 'a23'] -> ['r23'] {}
+13 Sub ['axis2', 'b45'] -> ['p45'] {}
+14 Where ['box_left', 'p45', 'b45'] -> ['r45'] {}
+15 Sub ['axis2', 'c69'] -> ['p69'] {}
+16 Min ['p69', 'c69'] -> ['lo69'] {}
+17 Max ['p69', 'c69'] -> ['hi69'] {}
+18 Where ['box_left', 'hi69', 'lo69'] -> ['r69'] {}
+19 Sub ['axis2', 'd1011'] -> ['p1011'] {}
+20 Where ['box_left', 'd1011', 'p1011'] -> ['r1011'] {}
+21 Min ['axis2', 'e1213'] -> ['clip1213'] {}
+22 Sub ['axis2', 'clip1213'] -> ['p1213'] {}
+23 Where ['box_left', 'e1213', 'p1213'] -> ['r1213'] {}
+24 ConstantOfShape ['s1'] -> ['shape14'] {'value': dims: 1
+data_type: 7
+name: "v14"
+raw_data: "\016\000\000\000\000\000\000\000"
+}
+25 ConstantOfShape ['shape14'] -> ['padded_tail'] {'value': dims: 1
+data_type: 2
+name: "v16"
+raw_data: "\020"
+}
+26 Concat ['clean_bg', 'r1', 'r23', 'r45', 'r69', 'r1011', 'r1213', 'clean_bg', 'clean_bg', 'padded_tail'] -> ['gather_u8'] {'axis': 0}
+27 CastLike ['gather_u8', 'i32zero'] -> ['gather_i32'] {}
+28 Gather ['input', 'gather_i32'] -> ['output'] {'axis': 3}

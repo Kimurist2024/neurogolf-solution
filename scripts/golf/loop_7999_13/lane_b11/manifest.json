@@ -1,0 +1,750 @@
+{
+  "campaign": "loop_7999_13_lane_b11",
+  "baseline_score": 7999.13,
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "scope_tasks": [
+    264,
+    281,
+    300,
+    358,
+    376,
+    387,
+    392
+  ],
+  "policy": {
+    "strict_improvement_only": true,
+    "known_examples_all_required": true,
+    "fresh_seed": 5000,
+    "fresh_cases_per_ort_mode": 5000,
+    "required_ort_modes": [
+      "ORT_DISABLE_ALL",
+      "default"
+    ],
+    "errors_allowed": 0,
+    "prohibited": [
+      "giant Einsum",
+      "lookup encoding",
+      "metadata-only savings",
+      "shape-value cloak",
+      "undefined behavior",
+      "nonstandard domain",
+      "out-of-spec assumptions"
+    ]
+  },
+  "history_screen": {
+    "unique_models": 300,
+    "source": "every local .onnx associated with the seven tasks, SHA-256 deduplicated"
+  },
+  "adopted_candidates": [],
+  "aggregate_cost_delta": 0,
+  "aggregate_score_delta": 0.0,
+  "fresh5000_runs": [],
+  "fresh5000_omission_reason": "No candidate survived the earlier structural/checker/known-case gates, so no model was eligible for adoption-scale fresh verification.",
+  "tasks": {
+    "264": {
+      "baseline": {
+        "generator_hash": "a8c38be5",
+        "path": "scripts/golf/loop_7999_13/lane_b11/baseline/task264.onnx",
+        "sha256": "d2be90cfe3692f3b10e6add8998eae5f4bb6ec2a66e306ac5f803199fe83046c",
+        "bytes": 6209,
+        "nodes": 73,
+        "initializers": 5,
+        "initializer_elements": 103,
+        "score": {
+          "memory": 259,
+          "params": 103,
+          "cost": 362,
+          "score": 19.10835578817423,
+          "correct": true
+        },
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_expressions": [],
+        "structure": {
+          "checker_full": true,
+          "strict_shape_inference": true,
+          "domains": [
+            ""
+          ],
+          "functions": 0,
+          "sparse_initializers": 0,
+          "inputs": 1,
+          "outputs": 1
+        }
+      },
+      "baseline_op_histogram": {
+        "CenterCropPad": 43,
+        "Einsum": 8,
+        "Cast": 8,
+        "Sub": 8,
+        "ConstantOfShape": 3,
+        "Concat": 1,
+        "Gather": 1,
+        "Equal": 1
+      },
+      "baseline_giant_einsum_nodes": [],
+      "baseline_lookup_nodes": 0,
+      "baseline_runtime_shape_mismatches": 44,
+      "baseline_disable_all_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_default_one_case": {
+        "session": false,
+        "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_46) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "baseline_clean_under_campaign_gate": false,
+      "unique_local_models_screened": 56,
+      "strictly_lower_declared_bound_alternatives": 1,
+      "decision": "reject: exact member is shape-cloaked/default-ORT-invalid; sole cheaper local alternative fails both ORT modes"
+    },
+    "281": {
+      "baseline": {
+        "generator_hash": "b548a754",
+        "path": "scripts/golf/loop_7999_13/lane_b11/baseline/task281.onnx",
+        "sha256": "2e330d4112e13bd8b25fd8475edadc2509fdfa5b71b18fbb4e6cfcb5a47d358c",
+        "bytes": 1223,
+        "nodes": 10,
+        "initializers": 7,
+        "initializer_elements": 119,
+        "score": {
+          "memory": 42,
+          "params": 119,
+          "cost": 161,
+          "score": 19.918595635015535,
+          "correct": true
+        },
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_expressions": [],
+        "structure": {
+          "checker_full": true,
+          "strict_shape_inference": true,
+          "domains": [
+            ""
+          ],
+          "functions": 0,
+          "sparse_initializers": 0,
+          "inputs": 1,
+          "outputs": 1
+        }
+      },
+      "baseline_op_histogram": {
+        "Einsum": 3,
+        "Reciprocal": 2,
+        "Concat": 2,
+        "Shape": 1,
+        "CenterCropPad": 1,
+        "Cast": 1
+      },
+      "baseline_giant_einsum_nodes": [
+        {
+          "node_index": 9,
+          "inputs": 38
+        }
+      ],
+      "baseline_lookup_nodes": 0,
+      "baseline_runtime_shape_mismatches": 2,
+      "baseline_disable_all_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_default_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_clean_under_campaign_gate": false,
+      "unique_local_models_screened": 79,
+      "strictly_lower_declared_bound_alternatives": 0,
+      "decision": "no candidate: no local lower-bound improvement; exact member uses a 38-input giant Einsum and has runtime shape mismatches"
+    },
+    "300": {
+      "baseline": {
+        "generator_hash": "be94b721",
+        "path": "scripts/golf/loop_7999_13/lane_b11/baseline/task300.onnx",
+        "sha256": "42ae67be8b565ba5616ecb15ddc94d22fca62369816489d1c035c61db8271ed8",
+        "bytes": 4065,
+        "nodes": 28,
+        "initializers": 13,
+        "initializer_elements": 56,
+        "score": {
+          "memory": 126,
+          "params": 56,
+          "cost": 182,
+          "score": 19.795993312923205,
+          "correct": true
+        },
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_expressions": [],
+        "structure": {
+          "checker_full": true,
+          "strict_shape_inference": true,
+          "domains": [
+            ""
+          ],
+          "functions": 0,
+          "sparse_initializers": 0,
+          "inputs": 1,
+          "outputs": 1
+        }
+      },
+      "baseline_op_histogram": {
+        "CastLike": 3,
+        "Einsum": 3,
+        "QuantizeLinear": 2,
+        "Cast": 2,
+        "MaxPool": 2,
+        "GroupNormalization": 1,
+        "Reshape": 1,
+        "Identity": 1,
+        "OneHot": 1,
+        "Log": 1,
+        "Div": 1,
+        "Mod": 1,
+        "Concat": 1,
+        "Add": 1,
+        "Slice": 1,
+        "ReduceMin": 1,
+        "Sign": 1,
+        "Min": 1,
+        "Sub": 1,
+        "ScatterElements": 1,
+        "ConvInteger": 1
+      },
+      "baseline_giant_einsum_nodes": [
+        {
+          "node_index": 3,
+          "inputs": 25
+        },
+        {
+          "node_index": 4,
+          "inputs": 26
+        },
+        {
+          "node_index": 10,
+          "inputs": 20
+        }
+      ],
+      "baseline_lookup_nodes": 0,
+      "baseline_runtime_shape_mismatches": 7,
+      "baseline_disable_all_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_default_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_clean_under_campaign_gate": false,
+      "unique_local_models_screened": 28,
+      "strictly_lower_declared_bound_alternatives": 0,
+      "decision": "no candidate: the only sub-cost lower-bound record is the exact incumbent itself; it uses giant Einsum contractions and shape mismatches"
+    },
+    "358": {
+      "baseline": {
+        "generator_hash": "e21d9049",
+        "path": "scripts/golf/loop_7999_13/lane_b11/baseline/task358.onnx",
+        "sha256": "3ea6a4be62e0ee5e50ae94c1e89db81e2eb12f98b97317e28f0fb27ff81105a9",
+        "bytes": 1310,
+        "nodes": 3,
+        "initializers": 10,
+        "initializer_elements": 149,
+        "score": {
+          "memory": 12,
+          "params": 149,
+          "cost": 161,
+          "score": 19.918595635015535,
+          "correct": true
+        },
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_expressions": [],
+        "structure": {
+          "checker_full": true,
+          "strict_shape_inference": true,
+          "domains": [
+            ""
+          ],
+          "functions": 0,
+          "sparse_initializers": 0,
+          "inputs": 1,
+          "outputs": 1
+        }
+      },
+      "baseline_op_histogram": {
+        "Einsum": 2,
+        "Concat": 1
+      },
+      "baseline_giant_einsum_nodes": [
+        {
+          "node_index": 2,
+          "inputs": 44
+        }
+      ],
+      "baseline_lookup_nodes": 0,
+      "baseline_runtime_shape_mismatches": 0,
+      "baseline_disable_all_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_default_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_clean_under_campaign_gate": false,
+      "unique_local_models_screened": 41,
+      "strictly_lower_declared_bound_alternatives": 0,
+      "decision": "no candidate: no lower-bound local alternative; exact member uses a 44-input giant Einsum"
+    },
+    "376": {
+      "baseline": {
+        "generator_hash": "eb281b96",
+        "path": "scripts/golf/loop_7999_13/lane_b11/baseline/task376.onnx",
+        "sha256": "d4983dcf71b72916ac9ac812f6d214702e3bff4b2fb6f1abcef26e779d02b4de",
+        "bytes": 438,
+        "nodes": 4,
+        "initializers": 1,
+        "initializer_elements": 30,
+        "score": {
+          "memory": 128,
+          "params": 30,
+          "cost": 158,
+          "score": 19.937404966973034,
+          "correct": true
+        },
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_expressions": [],
+        "structure": {
+          "checker_full": true,
+          "strict_shape_inference": true,
+          "domains": [
+            ""
+          ],
+          "functions": 0,
+          "sparse_initializers": 0,
+          "inputs": 1,
+          "outputs": 1
+        }
+      },
+      "baseline_op_histogram": {
+        "Einsum": 1,
+        "Cast": 1,
+        "Mod": 1,
+        "Gather": 1
+      },
+      "baseline_giant_einsum_nodes": [],
+      "baseline_lookup_nodes": 0,
+      "baseline_runtime_shape_mismatches": 0,
+      "baseline_disable_all_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_default_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_clean_under_campaign_gate": true,
+      "unique_local_models_screened": 14,
+      "strictly_lower_declared_bound_alternatives": 1,
+      "decision": "no adoption: clean cost-158 incumbent is at the 30-int32 Gather-index architecture floor; sole nominally cheaper variant fails full checker"
+    },
+    "387": {
+      "baseline": {
+        "generator_hash": "f35d900a",
+        "path": "scripts/golf/loop_7999_13/lane_b11/baseline/task387.onnx",
+        "sha256": "df39eba7bd5bb4a6fad8c97f0f5e05ae0392a4990e829cc4435ff05220324e28",
+        "bytes": 4484,
+        "nodes": 78,
+        "initializers": 9,
+        "initializer_elements": 95,
+        "score": {
+          "memory": 242,
+          "params": 95,
+          "cost": 337,
+          "score": 19.179917069647637,
+          "correct": true
+        },
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_expressions": [],
+        "structure": {
+          "checker_full": true,
+          "strict_shape_inference": true,
+          "domains": [
+            ""
+          ],
+          "functions": 0,
+          "sparse_initializers": 0,
+          "inputs": 1,
+          "outputs": 1
+        }
+      },
+      "baseline_op_histogram": {
+        "Sub": 14,
+        "Add": 10,
+        "CastLike": 8,
+        "Einsum": 8,
+        "Cast": 8,
+        "CenterCropPad": 7,
+        "Div": 5,
+        "Mul": 3,
+        "Concat": 3,
+        "Flatten": 3,
+        "ScatterElements": 3,
+        "Sqrt": 2,
+        "BitwiseAnd": 2,
+        "Size": 1,
+        "Mean": 1
+      },
+      "baseline_giant_einsum_nodes": [],
+      "baseline_lookup_nodes": 0,
+      "baseline_runtime_shape_mismatches": 16,
+      "baseline_disable_all_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_default_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_clean_under_campaign_gate": false,
+      "unique_local_models_screened": 57,
+      "strictly_lower_declared_bound_alternatives": 0,
+      "decision": "no candidate: no lower-bound local alternative; exact member has runtime shape-value mismatches"
+    },
+    "392": {
+      "baseline": {
+        "generator_hash": "f8c80d96",
+        "path": "scripts/golf/loop_7999_13/lane_b11/baseline/task392.onnx",
+        "sha256": "e68e69908e85933a9cc1367d8c8653560ed5b45188f0da3729a74e8d92491fb5",
+        "bytes": 624006,
+        "nodes": 11,
+        "initializers": 6,
+        "initializer_elements": 55,
+        "score": {
+          "memory": 290,
+          "params": 55,
+          "cost": 345,
+          "score": 19.15645558296864,
+          "correct": true
+        },
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_expressions": [],
+        "structure": {
+          "checker_full": true,
+          "strict_shape_inference": true,
+          "domains": [
+            ""
+          ],
+          "functions": 0,
+          "sparse_initializers": 0,
+          "inputs": 1,
+          "outputs": 1
+        }
+      },
+      "baseline_op_histogram": {
+        "Cast": 3,
+        "TfIdfVectorizer": 3,
+        "Einsum": 1,
+        "Concat": 1,
+        "Unsqueeze": 1,
+        "Sub": 1,
+        "QLinearConv": 1
+      },
+      "baseline_giant_einsum_nodes": [],
+      "baseline_lookup_nodes": 3,
+      "baseline_runtime_shape_mismatches": 0,
+      "baseline_disable_all_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_default_one_case": {
+        "session": true,
+        "correct": true,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "baseline_clean_under_campaign_gate": false,
+      "unique_local_models_screened": 25,
+      "strictly_lower_declared_bound_alternatives": 5,
+      "decision": "reject: all five distinct lower-bound alternatives use prohibited lookup operators and fail the first known case in both ORT modes"
+    }
+  },
+  "rejection_evidence": {
+    "task264_static358": {
+      "task": 264,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task264_r01_static358.onnx",
+      "sha256": "ea55ca5140f6f17fbac4fbde151284ed63433b57a6c5f6e8c60873fa5355d44d",
+      "giant_einsum": false,
+      "lookup": false,
+      "checker_full": true,
+      "strict_shape_inference": true,
+      "disable_all_train_first": {
+        "session": false,
+        "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,29,30} != {1,10,31,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+      },
+      "default_train_first": {
+        "session": false,
+        "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_46) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "rejection": "ORT_DISABLE_ALL first-known-case failure"
+    },
+    "task376_uint8_gather": {
+      "task": 376,
+      "path": "scripts/golf/scratch_codex/task376/cand_uint8_gather.onnx",
+      "sha256": "c67a400b513afeae8d906fef24631e76196ef596eb2647a8097d06b08190abdc",
+      "giant_einsum": false,
+      "lookup": false,
+      "checker_full": false,
+      "checker_error": "InferenceError: [ShapeInferenceError] (op_type:Gather): indices typestr: Tind, has unsupported type: tensor(uint8)",
+      "strict_shape_inference": true,
+      "disable_all_train_first": {
+        "session": false,
+        "error": "InvalidGraph: [ONNXRuntimeError] : 10 : INVALID_GRAPH : This is an invalid model. Type Error: Type 'tensor(uint8)' of input parameter (safe_name_3) of operator (Gather) in node (output) is invalid."
+      },
+      "default_train_first": {
+        "session": false,
+        "error": "InvalidGraph: [ONNXRuntimeError] : 10 : INVALID_GRAPH : This is an invalid model. Type Error: Type 'tensor(uint8)' of input parameter (safe_name_3) of operator (Gather) in node (output) is invalid."
+      },
+      "rejection": "full checker failure"
+    },
+    "task392_seq7": {
+      "task": 392,
+      "path": "scripts/golf/scratch_codex/task392/task392_seq7.onnx",
+      "sha256": "3937aa5d41bf24f96fd04e288f00d4d68c9c39137b138568ca5a47a13c38c216",
+      "giant_einsum": false,
+      "lookup": true,
+      "checker_full": true,
+      "strict_shape_inference": true,
+      "disable_all_train_first": {
+        "session": true,
+        "correct": false,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "default_train_first": {
+        "session": true,
+        "correct": false,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "rejection": "lookup representation prohibited; also fails first known case"
+    },
+    "task392_drop0": {
+      "task": 392,
+      "path": "scripts/golf/scratch_codex/task392/task392_seq7_drop0.onnx",
+      "sha256": "2af8c9ea2a1e08da1c67e7caca129ea1028e71f4dbc652880ac84c222cade31b",
+      "giant_einsum": false,
+      "lookup": true,
+      "checker_full": true,
+      "strict_shape_inference": true,
+      "disable_all_train_first": {
+        "session": true,
+        "correct": false,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "default_train_first": {
+        "session": true,
+        "correct": false,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "rejection": "lookup representation prohibited; also fails first known case"
+    },
+    "task392_drop2": {
+      "task": 392,
+      "path": "scripts/golf/scratch_codex/task392/task392_seq7_drop2.onnx",
+      "sha256": "21334ecbf6d43101eabb067048a87d84517c66e349627bea3a1fe13eb4533d56",
+      "giant_einsum": false,
+      "lookup": true,
+      "checker_full": true,
+      "strict_shape_inference": true,
+      "disable_all_train_first": {
+        "session": true,
+        "correct": false,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "default_train_first": {
+        "session": true,
+        "correct": false,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "rejection": "lookup representation prohibited; also fails first known case"
+    },
+    "task392_drop5": {
+      "task": 392,
+      "path": "scripts/golf/scratch_codex/task392/task392_seq7_drop5.onnx",
+      "sha256": "3dc4b5aeddf69e85cc47fcf599c58b13cf25c090f8e8a6f3db59ad309edad375",
+      "giant_einsum": false,
+      "lookup": true,
+      "checker_full": true,
+      "strict_shape_inference": true,
+      "disable_all_train_first": {
+        "session": true,
+        "correct": false,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "default_train_first": {
+        "session": true,
+        "correct": false,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "rejection": "lookup representation prohibited; also fails first known case"
+    },
+    "task392_drop6": {
+      "task": 392,
+      "path": "scripts/golf/scratch_codex/task392/task392_seq7_drop6.onnx",
+      "sha256": "42e3746f7cacecf7cc80ceefdd59bcaaabcfe8a7efda64593dbee1e6409ea78d",
+      "giant_einsum": false,
+      "lookup": true,
+      "checker_full": true,
+      "strict_shape_inference": true,
+      "disable_all_train_first": {
+        "session": true,
+        "correct": false,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "default_train_first": {
+        "session": true,
+        "correct": false,
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      "rejection": "lookup representation prohibited; also fails first known case"
+    }
+  },
+  "evidence_files": [
+    "baseline_inventory.json",
+    "exact_graph_audit.json",
+    "baseline_shape_safety.json",
+    "history_scan.json",
+    "candidate_rejections.json"
+  ],
+  "root_submission_mutations": []
+}

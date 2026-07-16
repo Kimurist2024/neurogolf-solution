@@ -1,0 +1,149 @@
+{
+  "task": 205,
+  "decision": "PROMOTE",
+  "decision_basis": "all-valid-one-hot source-level equivalence to the immutable authority, supported by target-runtime raw-bit audits",
+  "candidate": {
+    "path": "scripts/golf/loop_7999_13/lane_a23/candidates/task205_c3_cost1038.onnx",
+    "sha256": "43c963c46bda5b444fb830b5495b4d71fb9dcf958e108954cdb9ef1064d9f9a8",
+    "nodes": 37,
+    "value_info": 36,
+    "official_profile": {
+      "memory": 1027,
+      "params": 11,
+      "cost": 1038,
+      "correct_on_known": true
+    }
+  },
+  "authority": {
+    "path": "scripts/golf/loop_7999_13/lane_a23/baseline/task205.onnx",
+    "member_sha256": "8a6acdc20a366ccbd32cf761285cbb2f1cbcf7d3d2ef8ea71d0fb5a3ed6f1468",
+    "archive_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "official_cost": 1042
+  },
+  "only_semantic_rewrite": {
+    "authority": [
+      "ReduceSum(row_mask[30,1], keepdims=0) -> tall_f",
+      "Mul(tall_f, rowpow_thr) -> colq_scale"
+    ],
+    "candidate": "Einsum(row_mask, rowpow_thr, equation='ri,->') -> colq_scale",
+    "rowpow_thr_float32": 1.9019999504089355,
+    "rowpow_thr_bits_hex": "0x3ff374bc"
+  },
+  "row_mask_domain_proof": {
+    "static_shape": [30, 1],
+    "producer": "Cast(Greater(row_rough_counts, row_thr), to=FLOAT)",
+    "element_support": [0.0, 1.0],
+    "count_support_inclusive": [0, 30],
+    "reason": "Greater produces BOOL and Cast to FLOAT maps every element to exact float32 0 or 1. This is stronger than generator support and covers every finite valid one-hot input, every position/order, and both count boundaries.",
+    "generator_observation_2000": {
+      "seed": 24720501,
+      "valid_cases": 2000,
+      "observed_count_histogram": {
+        "5": 2,
+        "6": 380,
+        "7": 415,
+        "8": 404,
+        "9": 388,
+        "10": 410,
+        "11": 1
+      },
+      "distinct_row_masks": 123,
+      "note": "The heuristic mask is not confined to the latent box-height range 6..10 because random background cells contribute to row_rough_counts."
+    }
+  },
+  "ort_source_order_proof": {
+    "source_tag": "v1.24.1",
+    "runtime_version_tested": "1.24.4",
+    "processor_url": "https://github.com/microsoft/onnxruntime/blob/v1.24.1/onnxruntime/core/providers/cpu/math/einsum_utils/einsum_typed_compute_processor.cc",
+    "relevant_source_lines": [
+      "Run(), 1691-1738: labels last seen in input zero are reduced from the first input before pairwise processing",
+      "PairwiseOperandProcess(), 1329-1337 and 1627-1632: remaining operands are reshaped and passed to MatMul with explicit lro/lo/reduced/ro sizes"
+    ],
+    "equation_specialization": {
+      "first_only_labels": ["r", "i"],
+      "pre_pairwise_operation": "ReduceSum(row_mask over r and i)",
+      "post_reduce_left_shape": [1, 1],
+      "homogenized_scalar_right_shape": [1, 1],
+      "pairwise_matmul_shape_left": [1, 1, 1],
+      "pairwise_matmul_shape_right": [1, 1, 1],
+      "matmul_K": 1
+    },
+    "conclusion": "ORT does not sum 30 separately rounded products. It first sums row_mask, then performs one scalar product."
+  },
+  "bitwise_proof": {
+    "reduce": "Every partial sum consists only of nonnegative integers 0..30. All are exactly representable in float32, so every reduction tree/order produces the exact integer n without rounding.",
+    "multiply": "Both paths then compute one float32 product of exact n and the same normal float32 scalar. The Einsum MatMul has K=1, so there is no multi-term accumulation; adding an initial +0 cannot change the correctly rounded product, including n=0.",
+    "colq_scale": "bitwise equal for all 2^30 binary row_mask tensors, hence for all valid one-hot and generator inputs",
+    "downstream": "All nodes and initializers downstream of colq_scale are unchanged. Equal input and equal colq_scale bits therefore give equal final raw output under the same CPU runtime configuration."
+  },
+  "micrograph_raw_bit_audit": {
+    "layouts_per_count": ["prefix", "suffix", "alternating/dispersed"],
+    "counts_inclusive": [0, 30],
+    "case_inputs": 93,
+    "configs": ["disable_t1", "disable_t4", "default_t1", "default_t4"],
+    "pair_runs": 372,
+    "colq_scale_bit_mismatches": 0,
+    "errors": 0,
+    "nonfinite": 0
+  },
+  "full_model_exposed_audit": {
+    "seed": 24720501,
+    "generator_cases": 2000,
+    "config": "disable_t1",
+    "compared_outputs": ["row_mask", "colq_scale", "final_raw_output"],
+    "row_mask_mismatches": 0,
+    "colq_scale_bit_mismatches": 0,
+    "final_raw_mismatches": 0,
+    "errors": 0,
+    "nonfinite": 0
+  },
+  "retained_static_and_runtime_gates": {
+    "source": "scripts/golf/loop_8004_42_plus20/agent_task205_private_proof_192/model_audit.json",
+    "full_check": true,
+    "strict_shape_inference_data_prop": true,
+    "nonstatic_inferred": [],
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "external_initializers": [],
+    "conv_bias_ub_sites": 0,
+    "declared_actual_shape_mismatches": 0,
+    "truthful_runtime_intermediate_bytes": 1027,
+    "known_exact_candidate": {
+      "disable_all": {"right": 266, "wrong": 0, "errors": 0},
+      "default": {"right": 266, "wrong": 0, "errors": 0}
+    }
+  },
+  "independent_known_four_config_gate": {
+    "source": "scripts/golf/root_reduce_scalar_fusion_scan_248/audit.json",
+    "sibling_sha256": "d0a53168d0a8313810b2f53cd68c0dd968533677f0b96523f4df375096f434b5",
+    "semantic_identity": "same initializers and same ReduceSum+Mul to Einsum rewrite; only topological placement and dummy equation labels differ",
+    "known_cases_per_config": 266,
+    "configs": ["disable_t1", "disable_t4", "enable_t1", "enable_t4"],
+    "raw_equal_authority_each": 266,
+    "shape_equal_authority_each": 266,
+    "authority_errors_total": 0,
+    "candidate_errors_total": 0,
+    "authority_nonfinite_total": 0,
+    "candidate_nonfinite_total": 0
+  },
+  "fresh_gate": {
+    "new_2x10000x4_run_performed": false,
+    "reason": "Parent stopped new large runs. The source-level proof covers the complete binary row_mask support, which is stronger than finite fresh sampling; the retained 2000-case exposed-intermediate run is corroboration, not the proof premise."
+  },
+  "final_gates": {
+    "candidate_hash_exact": true,
+    "cost_1038": true,
+    "full": true,
+    "strict": true,
+    "truthful_shapes": true,
+    "known_four_config_combined_evidence": true,
+    "all_valid_one_hot_equivalence_proved": true,
+    "generator_support_equivalence_proved": true,
+    "runtime_errors": 0,
+    "nonfinite": 0,
+    "undefined_behavior_sites": 0,
+    "promote": true
+  }
+}

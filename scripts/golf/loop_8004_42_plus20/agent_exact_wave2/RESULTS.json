@@ -1,0 +1,60 @@
+{
+  "baseline": "submission_base_8004.50.zip",
+  "baseline_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+  "tasks_scanned": 400,
+  "static_scan": {
+    "baseline_strict_inference_failures": 13,
+    "opportunities": {
+      "initializer_alias": 1,
+      "dead_code": 5,
+      "noop_identity_cast_reshape": 16,
+      "duplicate_producer": 2,
+      "dead_optional_output": 4,
+      "annotation_reduction": 0
+    },
+    "structurally_emitted": 2,
+    "structurally_rejected": 8
+  },
+  "past_failures_not_retried": {
+    "dead_node_allocator_failures": [39, 89, 111, 122, 183],
+    "prior_exact_rejections": [48, 233, 333],
+    "shape_cloak_paths": [285, 289]
+  },
+  "candidate_decisions": [
+    {
+      "task": 124,
+      "rewrite": "omit unused Split secondary output r3",
+      "static_cost_reduction": 1,
+      "known": null,
+      "runtime": "SIGSEGV exit 139 during validator startup/known gate",
+      "fresh": "NOT_RUN_AFTER_RUNTIME_FAILURE",
+      "verdict": "REJECT_DO_NOT_MERGE",
+      "evidence": "scripts/golf/loop_8004_42_plus20/agent_exact_wave2/evidence/task124_validate_exit.json"
+    },
+    {
+      "task": 165,
+      "rewrite": "reuse byte-identical-input/attribute CastLike producer",
+      "static_cost_reduction": 1,
+      "actual_cost": {
+        "baseline": 592,
+        "candidate": 551,
+        "apparent_reduction": 41
+      },
+      "known": {
+        "baseline_right": 265,
+        "baseline_wrong": 0,
+        "baseline_errors": 0,
+        "candidate_right": 0,
+        "candidate_wrong": 265,
+        "candidate_errors": 265
+      },
+      "runtime": "FAIL: Slice allocator buffer-reuse shape mismatch",
+      "fresh": "NOT_RUN_AFTER_KNOWN_FAILURE",
+      "verdict": "REJECT_DO_NOT_MERGE",
+      "evidence": "scripts/golf/loop_8004_42_plus20/agent_exact_wave2/evidence/task165_validate.json"
+    }
+  ],
+  "accepted": [],
+  "accepted_projected_gain": 0.0,
+  "final_verdict": "NO_SAFE_EXACT_CANDIDATE"
+}

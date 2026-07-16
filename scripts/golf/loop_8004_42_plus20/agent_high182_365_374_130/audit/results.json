@@ -1,0 +1,3146 @@
+{
+  "lane": 130,
+  "authority": {
+    "score": 8009.46,
+    "archive": "submission.zip",
+    "sha256_before": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "sha256_after": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "member_sha256": {
+      "182": "625b31492d9135295229c67ca0322000a2ff351e81e627bb882b89dde6bfda97",
+      "365": "85d63fa65d51d5aa065c5966725d092813c21b0e7a92453bf745d096371e3214",
+      "374": "93fb94260388ab83bc35043c0ee11ae08b1bf3e8fa962a3b47b08ba73794d24a"
+    },
+    "costs": {
+      "182": 949,
+      "365": 1355,
+      "374": 481
+    }
+  },
+  "references": {
+    "seeds": [
+      130000000,
+      130100000
+    ],
+    "fresh_per_seed": 1500,
+    "tasks": {
+      "182": {
+        "hash": "776ffc46",
+        "known": {
+          "right": 267,
+          "total": 267
+        },
+        "fresh": [
+          {
+            "seed": 130000182,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          },
+          {
+            "seed": 130100182,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          }
+        ],
+        "pass": true
+      },
+      "365": {
+        "hash": "e50d258f",
+        "known": {
+          "right": 266,
+          "total": 266
+        },
+        "fresh": [
+          {
+            "seed": 130000365,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          },
+          {
+            "seed": 130100365,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          }
+        ],
+        "pass": true
+      },
+      "374": {
+        "hash": "ea32f347",
+        "known": {
+          "right": 267,
+          "total": 267
+        },
+        "fresh": [
+          {
+            "seed": 130000374,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          },
+          {
+            "seed": 130100374,
+            "right": 1500,
+            "total": 1500,
+            "errors": 0,
+            "first_failure": null
+          }
+        ],
+        "pass": true
+      }
+    }
+  },
+  "type_constraints": {
+    "task182_u8_mul_to_selu": {
+      "opset": 18,
+      "target_node": "cnt6",
+      "target_input": "col_count_u8",
+      "target_input_type": "tensor(uint8)",
+      "selu_allowed_types": [
+        "tensor(double)",
+        "tensor(float)",
+        "tensor(float16)"
+      ],
+      "u8_admitted": false,
+      "decision": "reject_type_constraint"
+    }
+  },
+  "baselines": {
+    "182": {
+      "task": 182,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/baseline/task182.onnx",
+      "sha256": "625b31492d9135295229c67ca0322000a2ff351e81e627bb882b89dde6bfda97",
+      "file_bytes": 8410,
+      "cost": {
+        "memory": 893,
+        "params": 56,
+        "cost": 949
+      },
+      "structure": {
+        "nodes": 87,
+        "initializers": 24,
+        "params": 56,
+        "ops": {
+          "CenterCropPad": 38,
+          "Add": 14,
+          "Cast": 7,
+          "CastLike": 4,
+          "Where": 4,
+          "Einsum": 3,
+          "Equal": 3,
+          "Div": 2,
+          "QLinearConv": 2,
+          "Sub": 2,
+          "Identity": 1,
+          "Mul": 1,
+          "Pow": 1,
+          "Neg": 1,
+          "BitwiseAnd": 1,
+          "ReduceMax": 1,
+          "Slice": 1,
+          "Concat": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "duplicate_initializer_groups": []
+      },
+      "full_audit": {
+        "label": "baseline_task182",
+        "task": 182,
+        "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/baseline/task182.onnx",
+        "sha256": "625b31492d9135295229c67ca0322000a2ff351e81e627bb882b89dde6bfda97",
+        "file_bytes": 8410,
+        "nodes": 87,
+        "initializers": 24,
+        "params": 56,
+        "op_histogram": {
+          "CenterCropPad": 38,
+          "Add": 14,
+          "Cast": 7,
+          "CastLike": 4,
+          "Where": 4,
+          "Einsum": 3,
+          "Equal": 3,
+          "Div": 2,
+          "QLinearConv": 2,
+          "Sub": 2,
+          "Identity": 1,
+          "Mul": 1,
+          "Pow": 1,
+          "Neg": 1,
+          "BitwiseAnd": 1,
+          "ReduceMax": 1,
+          "Slice": 1,
+          "Concat": 1
+        },
+        "max_node_inputs": 10,
+        "lookup_red_flags": {
+          "tfidf": 0,
+          "hardmax": 0,
+          "giant_einsum_nodes": 0,
+          "params_over_10000": false
+        },
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "nested_graph_attributes": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "conv_bias_findings": [
+          {
+            "node": "match_u8_raw",
+            "op": "QLinearConv",
+            "bias": "detect_bias_scalar",
+            "bias_is_initializer": false,
+            "bias_shape": null,
+            "expected_channels": null,
+            "safe": false
+          }
+        ],
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_trace": {
+          "runtime_tensors": 87,
+          "declared_tensors": 87,
+          "declared_actual_mismatches": [
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                10,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "det_kernel_big",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "det_kernel_small",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                5,
+                5
+              ]
+            },
+            {
+              "tensor": "sel_pat01_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                5,
+                5
+              ]
+            },
+            {
+              "tensor": "detect_w_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                5,
+                5
+              ]
+            },
+            {
+              "tensor": "input_hid",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "chcrop7",
+              "declared": [
+                1,
+                7,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                7,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "chcrop6",
+              "declared": [
+                1,
+                6,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                6,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "chcrop5",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                5,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "chcrop4",
+              "declared": [
+                1,
+                4,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                4,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "chcrop3",
+              "declared": [
+                1,
+                3,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                3,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "chcrop2",
+              "declared": [
+                1,
+                2,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                2,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "chcrop1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "colpre29",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "colpre28",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                28
+              ]
+            },
+            {
+              "tensor": "spcrop27",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                27,
+                27
+              ]
+            },
+            {
+              "tensor": "spcrop26",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                26,
+                26
+              ]
+            },
+            {
+              "tensor": "spcrop25",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                25,
+                25
+              ]
+            },
+            {
+              "tensor": "spcrop24",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                24,
+                24
+              ]
+            },
+            {
+              "tensor": "spcrop23",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                23,
+                23
+              ]
+            },
+            {
+              "tensor": "spcrop22",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                22,
+                22
+              ]
+            },
+            {
+              "tensor": "spcrop21",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                21,
+                21
+              ]
+            },
+            {
+              "tensor": "spcrop20",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                20,
+                20
+              ]
+            },
+            {
+              "tensor": "spcrop19",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                19,
+                19
+              ]
+            },
+            {
+              "tensor": "match_u8_raw",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                15,
+                15
+              ]
+            },
+            {
+              "tensor": "stamp_w_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                5,
+                5
+              ]
+            },
+            {
+              "tensor": "stamp_u8",
+              "declared": [
+                1,
+                1,
+                8,
+                8
+              ],
+              "actual": [
+                1,
+                1,
+                18,
+                18
+              ]
+            },
+            {
+              "tensor": "cc0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                19,
+                19
+              ]
+            },
+            {
+              "tensor": "cc1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                20,
+                20
+              ]
+            },
+            {
+              "tensor": "cc2",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                21,
+                21
+              ]
+            },
+            {
+              "tensor": "cc3",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                22,
+                22
+              ]
+            },
+            {
+              "tensor": "cc4",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                23,
+                23
+              ]
+            },
+            {
+              "tensor": "cc5",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                24,
+                24
+              ]
+            },
+            {
+              "tensor": "cc6",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                25,
+                25
+              ]
+            },
+            {
+              "tensor": "cc7",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                26,
+                26
+              ]
+            },
+            {
+              "tensor": "cc8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                27,
+                27
+              ]
+            },
+            {
+              "tensor": "cc9",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "stamp_bool",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "c3crop1",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "graypad19",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                19,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "gray_ch",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "gray_right28",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                28
+              ]
+            },
+            {
+              "tensor": "gray_right29",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                29
+              ]
+            },
+            {
+              "tensor": "gray_right30",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_f16",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input5_f16",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                5,
+                30,
+                30
+              ]
+            }
+          ],
+          "undeclared_intermediate_count": 0,
+          "single_example_intermediate_bytes": 154246
+        },
+        "official_like_score": {
+          "memory": 893,
+          "params": 56,
+          "cost": 949,
+          "score": 18.14459120139007,
+          "correct": true
+        },
+        "known_disable_all": {
+          "train": {
+            "right": 4,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 267,
+            "wrong": 0,
+            "errors": 0
+          }
+        },
+        "known_default": {
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_92) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      },
+      "runtime_shape": {
+        "error": null,
+        "count": 47,
+        "single_example_intermediate_bytes": 154246
+      },
+      "dual_ort_known_fresh": {
+        "fresh_per_seed_per_mode": 1500,
+        "base_session_errors": {
+          "default": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_92) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        },
+        "candidate_session_errors": {
+          "default": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_92) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        },
+        "known": {},
+        "fresh": [],
+        "pass": false,
+        "not_run_reason": "both models must load in both ORT modes"
+      }
+    },
+    "365": {
+      "task": 365,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/baseline/task365.onnx",
+      "sha256": "85d63fa65d51d5aa065c5966725d092813c21b0e7a92453bf745d096371e3214",
+      "file_bytes": 9004,
+      "cost": {
+        "memory": 1274,
+        "params": 81,
+        "cost": 1355
+      },
+      "structure": {
+        "nodes": 75,
+        "initializers": 25,
+        "params": 81,
+        "ops": {
+          "Cast": 11,
+          "Add": 8,
+          "Where": 8,
+          "CenterCropPad": 7,
+          "Gather": 6,
+          "GatherElements": 6,
+          "Greater": 6,
+          "Less": 4,
+          "QLinearConv": 3,
+          "Unsqueeze": 2,
+          "Squeeze": 2,
+          "Sub": 2,
+          "ConvTranspose": 1,
+          "Reshape": 1,
+          "Shape": 1,
+          "TopK": 1,
+          "Div": 1,
+          "Mod": 1,
+          "Einsum": 1,
+          "ArgMax": 1,
+          "Concat": 1,
+          "Slice": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "duplicate_initializer_groups": []
+      },
+      "full_audit": {
+        "label": "baseline_task365",
+        "task": 365,
+        "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/baseline/task365.onnx",
+        "sha256": "85d63fa65d51d5aa065c5966725d092813c21b0e7a92453bf745d096371e3214",
+        "file_bytes": 9004,
+        "nodes": 75,
+        "initializers": 25,
+        "params": 81,
+        "op_histogram": {
+          "Cast": 11,
+          "Add": 8,
+          "Where": 8,
+          "CenterCropPad": 7,
+          "Gather": 6,
+          "GatherElements": 6,
+          "Greater": 6,
+          "Less": 4,
+          "QLinearConv": 3,
+          "Unsqueeze": 2,
+          "Squeeze": 2,
+          "Sub": 2,
+          "ConvTranspose": 1,
+          "Reshape": 1,
+          "Shape": 1,
+          "TopK": 1,
+          "Div": 1,
+          "Mod": 1,
+          "Einsum": 1,
+          "ArgMax": 1,
+          "Concat": 1,
+          "Slice": 1
+        },
+        "max_node_inputs": 8,
+        "lookup_red_flags": {
+          "tfidf": 0,
+          "hardmax": 0,
+          "giant_einsum_nodes": 0,
+          "params_over_10000": false
+        },
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "nested_graph_attributes": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "conv_bias_findings": [],
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_trace": {
+          "runtime_tensors": 76,
+          "declared_tensors": 76,
+          "declared_actual_mismatches": [
+            {
+              "tensor": "__hc_tlflat_hid",
+              "declared": [
+                3
+              ],
+              "actual": [
+                64
+              ]
+            },
+            {
+              "tensor": "label_hid_ccp",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                64,
+                64
+              ]
+            },
+            {
+              "tensor": "label_h",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                64,
+                64
+              ]
+            },
+            {
+              "tensor": "top_rows_padded",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                3,
+                64
+              ]
+            },
+            {
+              "tensor": "__eh_row_mask_hid",
+              "declared": [
+                1,
+                1
+              ],
+              "actual": [
+                64,
+                3
+              ]
+            },
+            {
+              "tensor": "row_mask_h",
+              "declared": [
+                1,
+                1
+              ],
+              "actual": [
+                64,
+                3
+              ]
+            },
+            {
+              "tensor": "__eh_col_mask_hid",
+              "declared": [
+                1,
+                1
+              ],
+              "actual": [
+                64,
+                3
+              ]
+            },
+            {
+              "tensor": "col_mask_h",
+              "declared": [
+                1,
+                1
+              ],
+              "actual": [
+                64,
+                3
+              ]
+            },
+            {
+              "tensor": "left_cols_t_padded",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                64,
+                3
+              ]
+            },
+            {
+              "tensor": "label_hid_row",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                64,
+                10
+              ]
+            },
+            {
+              "tensor": "two_counts",
+              "declared": [
+                1
+              ],
+              "actual": [
+                3
+              ]
+            },
+            {
+              "tensor": "tl_flat_fp16",
+              "declared": [
+                3
+              ],
+              "actual": [
+                64
+              ]
+            }
+          ],
+          "undeclared_intermediate_count": 0,
+          "single_example_intermediate_bytes": 15909
+        },
+        "official_like_score": {
+          "memory": 1274,
+          "params": 81,
+          "cost": 1355,
+          "score": 17.788443266686198,
+          "correct": true
+        },
+        "known_disable_all": {
+          "train": {
+            "right": 3,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 266,
+            "wrong": 0,
+            "errors": 0
+          }
+        },
+        "known_default": {
+          "train": {
+            "right": 3,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 266,
+            "wrong": 0,
+            "errors": 0
+          }
+        }
+      },
+      "runtime_shape": {
+        "error": null,
+        "count": 12,
+        "single_example_intermediate_bytes": 15909
+      },
+      "dual_ort_known_fresh": {
+        "fresh_per_seed_per_mode": 1500,
+        "base_session_errors": {},
+        "candidate_session_errors": {},
+        "known": {
+          "disable_all": {
+            "total": 266,
+            "bitwise_equal": 266,
+            "candidate_correct": 266,
+            "errors": 0
+          },
+          "default": {
+            "total": 266,
+            "bitwise_equal": 266,
+            "candidate_correct": 266,
+            "errors": 0
+          }
+        },
+        "fresh": [
+          {
+            "seed": 130200365,
+            "valid": 1500,
+            "modes": {
+              "disable_all": {
+                "bitwise_equal": 1500,
+                "candidate_correct": 1500,
+                "wrong": 0,
+                "errors": 0,
+                "nonfinite": 0,
+                "near_positive": 0,
+                "min_positive": 1.0
+              },
+              "default": {
+                "bitwise_equal": 1500,
+                "candidate_correct": 1500,
+                "wrong": 0,
+                "errors": 0,
+                "nonfinite": 0,
+                "near_positive": 0,
+                "min_positive": 1.0
+              }
+            }
+          },
+          {
+            "seed": 130300365,
+            "valid": 1500,
+            "modes": {
+              "disable_all": {
+                "bitwise_equal": 1500,
+                "candidate_correct": 1500,
+                "wrong": 0,
+                "errors": 0,
+                "nonfinite": 0,
+                "near_positive": 0,
+                "min_positive": 1.0
+              },
+              "default": {
+                "bitwise_equal": 1500,
+                "candidate_correct": 1500,
+                "wrong": 0,
+                "errors": 0,
+                "nonfinite": 0,
+                "near_positive": 0,
+                "min_positive": 1.0
+              }
+            }
+          }
+        ],
+        "pass": true
+      }
+    },
+    "374": {
+      "task": 374,
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/baseline/task374.onnx",
+      "sha256": "93fb94260388ab83bc35043c0ee11ae08b1bf3e8fa962a3b47b08ba73794d24a",
+      "file_bytes": 3298,
+      "cost": {
+        "memory": 451,
+        "params": 30,
+        "cost": 481
+      },
+      "structure": {
+        "nodes": 31,
+        "initializers": 11,
+        "params": 30,
+        "ops": {
+          "Where": 5,
+          "CastLike": 4,
+          "QLinearConv": 3,
+          "CenterCropPad": 3,
+          "QLinearMatMul": 2,
+          "Sub": 2,
+          "ReduceMax": 2,
+          "Equal": 2,
+          "LessOrEqual": 2,
+          "Shape": 1,
+          "GroupNormalization": 1,
+          "Resize": 1,
+          "Max": 1,
+          "Div": 1,
+          "ScatterElements": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "duplicate_initializer_groups": []
+      },
+      "full_audit": {
+        "label": "baseline_task374",
+        "task": 374,
+        "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/baseline/task374.onnx",
+        "sha256": "93fb94260388ab83bc35043c0ee11ae08b1bf3e8fa962a3b47b08ba73794d24a",
+        "file_bytes": 3298,
+        "nodes": 31,
+        "initializers": 11,
+        "params": 30,
+        "op_histogram": {
+          "Where": 5,
+          "CastLike": 4,
+          "QLinearConv": 3,
+          "CenterCropPad": 3,
+          "QLinearMatMul": 2,
+          "Sub": 2,
+          "ReduceMax": 2,
+          "Equal": 2,
+          "LessOrEqual": 2,
+          "Shape": 1,
+          "GroupNormalization": 1,
+          "Resize": 1,
+          "Max": 1,
+          "Div": 1,
+          "ScatterElements": 1
+        },
+        "max_node_inputs": 8,
+        "lookup_red_flags": {
+          "tfidf": 0,
+          "hardmax": 0,
+          "giant_einsum_nodes": 0,
+          "params_over_10000": false
+        },
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "nested_graph_attributes": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "conv_bias_findings": [],
+        "full_check": true,
+        "strict_shape_data_prop": true,
+        "runtime_shape_trace": {
+          "runtime_tensors": 31,
+          "declared_tensors": 31,
+          "declared_actual_mismatches": [
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "__sp_hid",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "__sp_low",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "actual": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "hmask_fake",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "hcond",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "color_fake",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "grid_idx",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "occ_fake",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                10,
+                10
+              ]
+            },
+            {
+              "tensor": "grid_upd",
+              "declared": [
+                1
+              ],
+              "actual": [
+                1,
+                1,
+                10,
+                10
+              ]
+            }
+          ],
+          "undeclared_intermediate_count": 0,
+          "single_example_intermediate_bytes": 46634
+        },
+        "official_like_score": {
+          "memory": 451,
+          "params": 30,
+          "cost": 481,
+          "score": 18.824132729894238,
+          "correct": true
+        },
+        "known_disable_all": {
+          "train": {
+            "right": 4,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 267,
+            "wrong": 0,
+            "errors": 0
+          }
+        },
+        "known_default": {
+          "train": {
+            "right": 4,
+            "wrong": 0,
+            "errors": 0
+          },
+          "test": {
+            "right": 1,
+            "wrong": 0,
+            "errors": 0
+          },
+          "arc-gen": {
+            "right": 262,
+            "wrong": 0,
+            "errors": 0
+          },
+          "total": {
+            "right": 267,
+            "wrong": 0,
+            "errors": 0
+          }
+        }
+      },
+      "runtime_shape": {
+        "error": null,
+        "count": 9,
+        "single_example_intermediate_bytes": 46634
+      },
+      "dual_ort_known_fresh": {
+        "fresh_per_seed_per_mode": 1500,
+        "base_session_errors": {},
+        "candidate_session_errors": {},
+        "known": {
+          "disable_all": {
+            "total": 267,
+            "bitwise_equal": 267,
+            "candidate_correct": 267,
+            "errors": 0
+          },
+          "default": {
+            "total": 267,
+            "bitwise_equal": 267,
+            "candidate_correct": 267,
+            "errors": 0
+          }
+        },
+        "fresh": [
+          {
+            "seed": 130200374,
+            "valid": 1500,
+            "modes": {
+              "disable_all": {
+                "bitwise_equal": 1500,
+                "candidate_correct": 1500,
+                "wrong": 0,
+                "errors": 0,
+                "nonfinite": 0,
+                "near_positive": 0,
+                "min_positive": 0.49657636880874634
+              },
+              "default": {
+                "bitwise_equal": 1500,
+                "candidate_correct": 1500,
+                "wrong": 0,
+                "errors": 0,
+                "nonfinite": 0,
+                "near_positive": 0,
+                "min_positive": 0.49657636880874634
+              }
+            }
+          },
+          {
+            "seed": 130300374,
+            "valid": 1500,
+            "modes": {
+              "disable_all": {
+                "bitwise_equal": 1500,
+                "candidate_correct": 1500,
+                "wrong": 0,
+                "errors": 0,
+                "nonfinite": 0,
+                "near_positive": 0,
+                "min_positive": 0.49657636880874634
+              },
+              "default": {
+                "bitwise_equal": 1500,
+                "candidate_correct": 1500,
+                "wrong": 0,
+                "errors": 0,
+                "nonfinite": 0,
+                "near_positive": 0,
+                "min_positive": 0.49657636880874634
+              }
+            }
+          }
+        ],
+        "pass": true
+      }
+    }
+  },
+  "rows": [
+    {
+      "task": 182,
+      "kind": "noops",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task182_noops_d65c9a6f7547.onnx",
+      "sha256": "d65c9a6f75477d219c9257693bcbcea86119c331cb889352262381bc9ede813e",
+      "authority_sha256": "625b31492d9135295229c67ca0322000a2ff351e81e627bb882b89dde6bfda97",
+      "authority_cost": 949,
+      "actions": {
+        "bypassed_noops": [
+          {
+            "op": "Identity",
+            "output": "sh19",
+            "source": "s19",
+            "proof": "identity"
+          }
+        ],
+        "semantic_action_count": 1,
+        "metadata_action_count": 0
+      },
+      "all_input_exact_proofs": [
+        "identity"
+      ],
+      "theorem_exact": true,
+      "structure": {
+        "nodes": 86,
+        "initializers": 24,
+        "params": 56,
+        "ops": {
+          "CenterCropPad": 38,
+          "Add": 14,
+          "Cast": 7,
+          "CastLike": 4,
+          "Where": 4,
+          "Einsum": 3,
+          "Equal": 3,
+          "Div": 2,
+          "QLinearConv": 2,
+          "Sub": 2,
+          "Mul": 1,
+          "Pow": 1,
+          "Neg": 1,
+          "BitwiseAnd": 1,
+          "ReduceMax": 1,
+          "Slice": 1,
+          "Concat": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": false,
+        "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: graypad19): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (19) vs (1)\n(op_type:CenterCropPad, node name: spcrop19): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc0): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n",
+        "strict_shape_data_prop": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: graypad19): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (19) vs (1)\n(op_type:CenterCropPad, node name: spcrop19): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc0): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n",
+        "duplicate_initializer_groups": []
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    },
+    {
+      "task": 182,
+      "kind": "fold",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task182_fold_69ec9181e927.onnx",
+      "sha256": "69ec9181e92738d9f8b7f2ca1ab203be7234dc507ef27611ed5a5a608589a0c4",
+      "authority_sha256": "625b31492d9135295229c67ca0322000a2ff351e81e627bb882b89dde6bfda97",
+      "authority_cost": 949,
+      "actions": {
+        "constant_folds": [
+          {
+            "op": "Add",
+            "output": "sh5",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Identity",
+            "output": "sh19",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh20",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh21",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh22",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh23",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh24",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh25",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh26",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh27",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh28",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh29",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh30",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          }
+        ],
+        "semantic_action_count": 13,
+        "metadata_action_count": 0
+      },
+      "all_input_exact_proofs": [
+        "all_inputs_constant_numpy_equivalent"
+      ],
+      "theorem_exact": true,
+      "structure": {
+        "nodes": 74,
+        "initializers": 36,
+        "params": 68,
+        "ops": {
+          "CenterCropPad": 38,
+          "Cast": 7,
+          "CastLike": 4,
+          "Where": 4,
+          "Einsum": 3,
+          "Equal": 3,
+          "Add": 2,
+          "Div": 2,
+          "QLinearConv": 2,
+          "Sub": 2,
+          "Mul": 1,
+          "Pow": 1,
+          "Neg": 1,
+          "BitwiseAnd": 1,
+          "ReduceMax": 1,
+          "Slice": 1,
+          "Concat": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": false,
+        "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: input_hid): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: input5_f16): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (5) vs (1)\n(op_type:CenterCropPad, node name: graypad19): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (19) vs (1)\n(op_type:CenterCropPad, node name: gray_right28): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (28) vs (1)\n(op_type:CenterCropPad, node name: gray_right29): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad, node name: gray_right30): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: det_kernel_big): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: det_kernel_small): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: chcrop5): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (5) vs (1)\n(op_type:CenterCropPad, node name: colpre29): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad, node name: colpre28): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (28) vs (1)\n(op_type:CenterCropPad, node name: spcrop27): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop26): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop25): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop24): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop23): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop22): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop21): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop20): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop19): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc0): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc1): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc2): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc3): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc4): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc5): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc6): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc7): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc8): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc9): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n",
+        "strict_shape_data_prop": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: input_hid): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: input5_f16): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (5) vs (1)\n(op_type:CenterCropPad, node name: graypad19): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (19) vs (1)\n(op_type:CenterCropPad, node name: gray_right28): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (28) vs (1)\n(op_type:CenterCropPad, node name: gray_right29): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad, node name: gray_right30): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: det_kernel_big): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: det_kernel_small): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: chcrop5): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (5) vs (1)\n(op_type:CenterCropPad, node name: colpre29): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad, node name: colpre28): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (28) vs (1)\n(op_type:CenterCropPad, node name: spcrop27): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop26): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop25): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop24): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop23): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop22): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop21): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop20): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop19): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc0): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc1): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc2): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc3): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc4): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc5): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc6): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc7): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc8): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc9): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n",
+        "duplicate_initializer_groups": []
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    },
+    {
+      "task": 182,
+      "kind": "combined",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task182_combined_b8f161d740f3.onnx",
+      "sha256": "b8f161d740f3e98f64534851c31eb276a6d8c5afa25cf64f92c130be4a7284c3",
+      "authority_sha256": "625b31492d9135295229c67ca0322000a2ff351e81e627bb882b89dde6bfda97",
+      "authority_cost": 949,
+      "actions": {
+        "dead_nodes": [],
+        "unused_initializers": [],
+        "dead_value_info": [],
+        "deduplicated_initializers": [],
+        "removed_optional_outputs": [],
+        "bypassed_noops": [
+          {
+            "op": "Identity",
+            "output": "sh19",
+            "source": "s19",
+            "proof": "identity"
+          }
+        ],
+        "common_subexpressions": [],
+        "constant_folds": [
+          {
+            "op": "Add",
+            "output": "sh5",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh20",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh21",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh22",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh23",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh24",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh25",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh26",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh27",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh28",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh29",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh30",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          }
+        ],
+        "factor_absorptions": [],
+        "second_noops": [],
+        "second_cse": [],
+        "final_dead_nodes": [],
+        "final_unused_initializers": [],
+        "final_dead_value_info": [
+          "sh19"
+        ],
+        "semantic_action_count": 13,
+        "metadata_action_count": 1
+      },
+      "all_input_exact_proofs": [
+        "all_inputs_constant_numpy_equivalent",
+        "identity"
+      ],
+      "theorem_exact": false,
+      "structure": {
+        "nodes": 74,
+        "initializers": 36,
+        "params": 68,
+        "ops": {
+          "CenterCropPad": 38,
+          "Cast": 7,
+          "CastLike": 4,
+          "Where": 4,
+          "Einsum": 3,
+          "Equal": 3,
+          "Add": 2,
+          "Div": 2,
+          "QLinearConv": 2,
+          "Sub": 2,
+          "Mul": 1,
+          "Pow": 1,
+          "Neg": 1,
+          "BitwiseAnd": 1,
+          "ReduceMax": 1,
+          "Slice": 1,
+          "Concat": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": false,
+        "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: input_hid): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: input5_f16): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (5) vs (1)\n(op_type:CenterCropPad, node name: graypad19): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (19) vs (1)\n(op_type:CenterCropPad, node name: gray_right28): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (28) vs (1)\n(op_type:CenterCropPad, node name: gray_right29): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad, node name: gray_right30): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: det_kernel_big): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: det_kernel_small): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: chcrop5): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (5) vs (1)\n(op_type:CenterCropPad, node name: colpre29): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad, node name: colpre28): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (28) vs (1)\n(op_type:CenterCropPad, node name: spcrop27): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop26): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop25): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop24): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop23): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop22): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop21): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop20): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop19): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc0): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc1): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc2): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc3): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc4): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc5): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc6): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc7): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc8): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc9): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n",
+        "strict_shape_data_prop": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: input_hid): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: input5_f16): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (5) vs (1)\n(op_type:CenterCropPad, node name: graypad19): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (19) vs (1)\n(op_type:CenterCropPad, node name: gray_right28): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (28) vs (1)\n(op_type:CenterCropPad, node name: gray_right29): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad, node name: gray_right30): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: det_kernel_big): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: det_kernel_small): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: chcrop5): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (5) vs (1)\n(op_type:CenterCropPad, node name: colpre29): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (29) vs (1)\n(op_type:CenterCropPad, node name: colpre28): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (28) vs (1)\n(op_type:CenterCropPad, node name: spcrop27): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop26): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop25): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop24): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop23): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop22): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop21): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop20): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: spcrop19): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc0): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc1): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc2): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc3): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc4): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc5): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc6): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc7): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc8): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n(op_type:CenterCropPad, node name: cc9): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n",
+        "duplicate_initializer_groups": []
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    },
+    {
+      "task": 182,
+      "kind": "normalize",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task182_normalize_65ba71e18603.onnx",
+      "sha256": "65ba71e186030a014c31deeb24164830c4df038180ddc10f9b5824c39f5961ab",
+      "authority_sha256": "625b31492d9135295229c67ca0322000a2ff351e81e627bb882b89dde6bfda97",
+      "authority_cost": 949,
+      "actions": {
+        "cleared_value_info": [
+          "sh5",
+          "sh19",
+          "sh20",
+          "sh21",
+          "sh22",
+          "sh23",
+          "sh24",
+          "sh25",
+          "sh26",
+          "sh27",
+          "sh28",
+          "sh29",
+          "sh30",
+          "col_count",
+          "sel_pat_bits",
+          "sel_pat_bool",
+          "det_kernel_big",
+          "det_kernel_small",
+          "sel_pat01_u8",
+          "detect_w_u8",
+          "input_hid",
+          "input_u8",
+          "chcrop7",
+          "chcrop6",
+          "chcrop5",
+          "chcrop4",
+          "chcrop3",
+          "chcrop2",
+          "chcrop1",
+          "colpre29",
+          "colpre28",
+          "spcrop27",
+          "spcrop26",
+          "spcrop25",
+          "spcrop24",
+          "spcrop23",
+          "spcrop22",
+          "spcrop21",
+          "spcrop20",
+          "spcrop19",
+          "match_u8_raw",
+          "stamp_w_u8",
+          "stamp_u8",
+          "cc0",
+          "cc1",
+          "cc2",
+          "cc3",
+          "cc4",
+          "cc5",
+          "cc6",
+          "cc7",
+          "cc8",
+          "cc9",
+          "stamp_bool",
+          "c2_u8_scalar",
+          "zero_1111",
+          "src_color_u8",
+          "c3crop1",
+          "c3_present_u8",
+          "graypad19",
+          "gray_ch",
+          "gray_right28",
+          "gray_right29",
+          "gray_right30",
+          "right_adj",
+          "gray_count",
+          "cnt6",
+          "code_base2",
+          "code_a2",
+          "code_b2",
+          "code",
+          "shape_idx_f",
+          "shape_bit_f",
+          "is35",
+          "is36",
+          "is50",
+          "count_i32",
+          "detect_bias_scalar",
+          "shape_bit_u16",
+          "col_count_u8",
+          "right_adj_u8",
+          "gray_count_u8",
+          "hash_idx_u8",
+          "count_u8",
+          "input_f16",
+          "input5_f16"
+        ],
+        "semantic_action_count": 0,
+        "metadata_action_count": 86
+      },
+      "all_input_exact_proofs": [],
+      "theorem_exact": false,
+      "structure": {
+        "nodes": 87,
+        "initializers": 24,
+        "params": 56,
+        "ops": {
+          "CenterCropPad": 38,
+          "Add": 14,
+          "Cast": 7,
+          "CastLike": 4,
+          "Where": 4,
+          "Einsum": 3,
+          "Equal": 3,
+          "Div": 2,
+          "QLinearConv": 2,
+          "Sub": 2,
+          "Identity": 1,
+          "Mul": 1,
+          "Pow": 1,
+          "Neg": 1,
+          "BitwiseAnd": 1,
+          "ReduceMax": 1,
+          "Slice": 1,
+          "Concat": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "duplicate_initializer_groups": []
+      },
+      "cost": {
+        "memory": -1,
+        "params": -1,
+        "cost": -1
+      },
+      "stage": "REJECT_UNSCORABLE"
+    },
+    {
+      "task": 182,
+      "kind": "normalized_combined",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task182_normalized_combined_46402f01d103.onnx",
+      "sha256": "46402f01d103df3e670793ef71d46fd1adb6a89aa6260b3d83d90a8cec06b02f",
+      "authority_sha256": "625b31492d9135295229c67ca0322000a2ff351e81e627bb882b89dde6bfda97",
+      "authority_cost": 949,
+      "actions": {
+        "dead_nodes": [],
+        "unused_initializers": [],
+        "dead_value_info": [],
+        "deduplicated_initializers": [],
+        "removed_optional_outputs": [],
+        "bypassed_noops": [
+          {
+            "op": "Identity",
+            "output": "sh19",
+            "source": "s19",
+            "proof": "identity"
+          }
+        ],
+        "common_subexpressions": [],
+        "constant_folds": [
+          {
+            "op": "Add",
+            "output": "sh5",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh20",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh21",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh22",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh23",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh24",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh25",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh26",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh27",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh28",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh29",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          },
+          {
+            "op": "Add",
+            "output": "sh30",
+            "shape": [
+              1
+            ],
+            "dtype": "int64",
+            "proof": "all_inputs_constant_numpy_equivalent"
+          }
+        ],
+        "factor_absorptions": [],
+        "second_noops": [],
+        "second_cse": [],
+        "final_dead_nodes": [],
+        "final_unused_initializers": [],
+        "final_dead_value_info": [
+          "sh19"
+        ],
+        "cleared_value_info": [
+          "sh5",
+          "sh20",
+          "sh21",
+          "sh22",
+          "sh23",
+          "sh24",
+          "sh25",
+          "sh26",
+          "sh27",
+          "sh28",
+          "sh29",
+          "sh30",
+          "col_count",
+          "sel_pat_bits",
+          "sel_pat_bool",
+          "det_kernel_big",
+          "det_kernel_small",
+          "sel_pat01_u8",
+          "detect_w_u8",
+          "input_hid",
+          "input_u8",
+          "chcrop7",
+          "chcrop6",
+          "chcrop5",
+          "chcrop4",
+          "chcrop3",
+          "chcrop2",
+          "chcrop1",
+          "colpre29",
+          "colpre28",
+          "spcrop27",
+          "spcrop26",
+          "spcrop25",
+          "spcrop24",
+          "spcrop23",
+          "spcrop22",
+          "spcrop21",
+          "spcrop20",
+          "spcrop19",
+          "match_u8_raw",
+          "stamp_w_u8",
+          "stamp_u8",
+          "cc0",
+          "cc1",
+          "cc2",
+          "cc3",
+          "cc4",
+          "cc5",
+          "cc6",
+          "cc7",
+          "cc8",
+          "cc9",
+          "stamp_bool",
+          "c2_u8_scalar",
+          "zero_1111",
+          "src_color_u8",
+          "c3crop1",
+          "c3_present_u8",
+          "graypad19",
+          "gray_ch",
+          "gray_right28",
+          "gray_right29",
+          "gray_right30",
+          "right_adj",
+          "gray_count",
+          "cnt6",
+          "code_base2",
+          "code_a2",
+          "code_b2",
+          "code",
+          "shape_idx_f",
+          "shape_bit_f",
+          "is35",
+          "is36",
+          "is50",
+          "count_i32",
+          "detect_bias_scalar",
+          "shape_bit_u16",
+          "col_count_u8",
+          "right_adj_u8",
+          "gray_count_u8",
+          "hash_idx_u8",
+          "count_u8",
+          "input_f16",
+          "input5_f16"
+        ],
+        "semantic_action_count": 13,
+        "metadata_action_count": 86
+      },
+      "all_input_exact_proofs": [
+        "all_inputs_constant_numpy_equivalent",
+        "identity"
+      ],
+      "theorem_exact": false,
+      "structure": {
+        "nodes": 74,
+        "initializers": 36,
+        "params": 68,
+        "ops": {
+          "CenterCropPad": 38,
+          "Cast": 7,
+          "CastLike": 4,
+          "Where": 4,
+          "Einsum": 3,
+          "Equal": 3,
+          "Add": 2,
+          "Div": 2,
+          "QLinearConv": 2,
+          "Sub": 2,
+          "Mul": 1,
+          "Pow": 1,
+          "Neg": 1,
+          "BitwiseAnd": 1,
+          "ReduceMax": 1,
+          "Slice": 1,
+          "Concat": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": false,
+        "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: input_hid): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n",
+        "strict_shape_data_prop": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: input_hid): [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).\n",
+        "duplicate_initializer_groups": []
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    },
+    {
+      "task": 365,
+      "kind": "normalize",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task365_normalize_ea4d4ee11b7c.onnx",
+      "sha256": "ea4d4ee11b7c0375e973289d7b9b4d27849851fefe24ff867c021bab08afba55",
+      "authority_sha256": "85d63fa65d51d5aa065c5966725d092813c21b0e7a92453bf745d096371e3214",
+      "authority_cost": 1355,
+      "actions": {
+        "cleared_value_info": [
+          "label10",
+          "tl_indices_2d",
+          "width_e1_b",
+          "width_e2_raw_b",
+          "width_e3_raw_b",
+          "width_43",
+          "width_543",
+          "tl_scores_u8",
+          "tl_flat_u8",
+          "__hc_tlflat_shape",
+          "__hc_tlflat_hid",
+          "label_u8",
+          "top_rows",
+          "left_cols",
+          "width_4d_u8",
+          "width_2d_u8",
+          "height_2d_u8",
+          "label_hid_ccp",
+          "label_h",
+          "top_rows_padded",
+          "row_delta_u8",
+          "row_mask",
+          "col_delta_u8",
+          "col_mask",
+          "__eh_row_mask_hid",
+          "row_mask_h",
+          "__eh_col_mask_hid",
+          "col_mask_h",
+          "tl_rows_4d",
+          "left_cols_t_padded",
+          "height_e1_b",
+          "height_e2_raw_b",
+          "height_e3_raw_b",
+          "height_43",
+          "height_543",
+          "height_4d_alt_u8",
+          "chosen_slot",
+          "selected_height",
+          "selected_width",
+          "label_hid_row",
+          "tl_indices_u8",
+          "sel_rc_u8",
+          "slice_starts_i32",
+          "slice_ends_i32",
+          "label_patch_raw",
+          "label_patch_colmask",
+          "row_keep_col_b",
+          "label_cols",
+          "tl_rows_u8",
+          "tl_cols_u8",
+          "tl_rows",
+          "tl_cols",
+          "tl_cols_4d",
+          "two_counts",
+          "selected_tl_row",
+          "selected_tl_col",
+          "col_keep_b",
+          "sp_feat2_i8",
+          "slice_starts_u8",
+          "tl_flat_fp16",
+          "tl_values_2d",
+          "width_idx30",
+          "width_cell30",
+          "width_idx31",
+          "width_cell31",
+          "width_idx32",
+          "width_cell32",
+          "height_idx30",
+          "height_cell30",
+          "height_idx31",
+          "height_cell31",
+          "height_idx32",
+          "height_cell32",
+          "width_idx30_u8",
+          "height_idx30_u8"
+        ],
+        "semantic_action_count": 0,
+        "metadata_action_count": 75
+      },
+      "all_input_exact_proofs": [],
+      "theorem_exact": false,
+      "structure": {
+        "nodes": 75,
+        "initializers": 25,
+        "params": 81,
+        "ops": {
+          "Cast": 11,
+          "Add": 8,
+          "Where": 8,
+          "CenterCropPad": 7,
+          "Gather": 6,
+          "GatherElements": 6,
+          "Greater": 6,
+          "Less": 4,
+          "QLinearConv": 3,
+          "Unsqueeze": 2,
+          "Squeeze": 2,
+          "Sub": 2,
+          "ConvTranspose": 1,
+          "Reshape": 1,
+          "Shape": 1,
+          "TopK": 1,
+          "Div": 1,
+          "Mod": 1,
+          "Einsum": 1,
+          "ArgMax": 1,
+          "Concat": 1,
+          "Slice": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "duplicate_initializer_groups": []
+      },
+      "cost": {
+        "memory": -1,
+        "params": -1,
+        "cost": -1
+      },
+      "stage": "REJECT_UNSCORABLE"
+    },
+    {
+      "task": 365,
+      "kind": "fixed_shape_fold",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task365_fixed_shape_fold_bc183bf65336.onnx",
+      "sha256": "bc183bf653363480b723d2417209ef6a09e05404401cbf9b4cb5bcbb778debf1",
+      "authority_sha256": "85d63fa65d51d5aa065c5966725d092813c21b0e7a92453bf745d096371e3214",
+      "authority_cost": 1355,
+      "actions": {
+        "fixed_shape_folds": [
+          {
+            "op": "Shape",
+            "input": "tl_flat_u8",
+            "output": "__hc_tlflat_shape",
+            "input_shape": [
+              64
+            ],
+            "start": 0,
+            "end": 1,
+            "constant_value": [
+              64
+            ],
+            "proof": "model_contract_static_shape_all_input_values"
+          }
+        ],
+        "semantic_action_count": 1,
+        "metadata_action_count": 1
+      },
+      "all_input_exact_proofs": [
+        "model_contract_static_shape_all_input_values"
+      ],
+      "theorem_exact": true,
+      "structure": {
+        "nodes": 74,
+        "initializers": 26,
+        "params": 82,
+        "ops": {
+          "Cast": 11,
+          "Add": 8,
+          "Where": 8,
+          "CenterCropPad": 7,
+          "Gather": 6,
+          "GatherElements": 6,
+          "Greater": 6,
+          "Less": 4,
+          "QLinearConv": 3,
+          "Unsqueeze": 2,
+          "Squeeze": 2,
+          "Sub": 2,
+          "ConvTranspose": 1,
+          "Reshape": 1,
+          "TopK": 1,
+          "Div": 1,
+          "Mod": 1,
+          "Einsum": 1,
+          "ArgMax": 1,
+          "Concat": 1,
+          "Slice": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": false,
+        "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: __hc_tlflat_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (64) vs (3)\n(op_type:CenterCropPad, node name: top_rows_padded): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (3) vs (1)\n(op_type:CenterCropPad, node name: left_cols_t_padded): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (64) vs (1)\n(op_type:CenterCropPad, node name: __eh_row_mask_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (64) vs (1)\n(op_type:CenterCropPad, node name: __eh_col_mask_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (64) vs (1)\n(op_type:CenterCropPad, node name: label_hid_row): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (64) vs (1)\n(op_type:CenterCropPad, node name: label_hid_ccp): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (64) vs (1)\n",
+        "strict_shape_data_prop": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: __hc_tlflat_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (64) vs (3)\n(op_type:CenterCropPad, node name: top_rows_padded): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (3) vs (1)\n(op_type:CenterCropPad, node name: left_cols_t_padded): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (64) vs (1)\n(op_type:CenterCropPad, node name: __eh_row_mask_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (64) vs (1)\n(op_type:CenterCropPad, node name: __eh_col_mask_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (64) vs (1)\n(op_type:CenterCropPad, node name: label_hid_row): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (64) vs (1)\n(op_type:CenterCropPad, node name: label_hid_ccp): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (64) vs (1)\n",
+        "duplicate_initializer_groups": [
+          [
+            "reshape64_shape",
+            "__hc_tlflat_shape"
+          ]
+        ]
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    },
+    {
+      "task": 374,
+      "kind": "normalize",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task374_normalize_4d15a89df923.onnx",
+      "sha256": "4d15a89df9232a7b9e58e229f541a4657cfd773d49c7961fcd52ab177ecf671b",
+      "authority_sha256": "93fb94260388ab83bc35043c0ee11ae08b1bf3e8fa962a3b47b08ba73794d24a",
+      "authority_cost": 481,
+      "actions": {
+        "cleared_value_info": [
+          "hmask",
+          "row_counts",
+          "occ_col_counts",
+          "h_col_counts",
+          "col_counts",
+          "rmax",
+          "cmax",
+          "gmax",
+          "rmaxq",
+          "cmaxq",
+          "sumlen",
+          "restsum",
+          "half",
+          "rshort",
+          "cshortq",
+          "rnotlong",
+          "rcolor",
+          "cnotlong",
+          "ccolor",
+          "__sp_shape",
+          "__sp_hid",
+          "__sp_low",
+          "occ",
+          "hmask_fake",
+          "hcond",
+          "color_any",
+          "color_fake",
+          "grid_idx",
+          "occ_fake",
+          "grid_upd"
+        ],
+        "semantic_action_count": 0,
+        "metadata_action_count": 30
+      },
+      "all_input_exact_proofs": [],
+      "theorem_exact": false,
+      "structure": {
+        "nodes": 31,
+        "initializers": 11,
+        "params": 30,
+        "ops": {
+          "Where": 5,
+          "CastLike": 4,
+          "QLinearConv": 3,
+          "CenterCropPad": 3,
+          "QLinearMatMul": 2,
+          "Sub": 2,
+          "ReduceMax": 2,
+          "Equal": 2,
+          "LessOrEqual": 2,
+          "Shape": 1,
+          "GroupNormalization": 1,
+          "Resize": 1,
+          "Max": 1,
+          "Div": 1,
+          "ScatterElements": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CastLike): [TypeInferenceError] Input 1 expected to have type but instead is null\n(op_type:ScatterElements): [TypeInferenceError] Input 0 expected to have type but instead is null\n",
+        "duplicate_initializer_groups": []
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    },
+    {
+      "task": 374,
+      "kind": "fixed_shape_fold",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task374_fixed_shape_fold_4810ce84d508.onnx",
+      "sha256": "4810ce84d5084075804e491d24b5baa3b60a547cdcfbf42eced81ac6410da150",
+      "authority_sha256": "93fb94260388ab83bc35043c0ee11ae08b1bf3e8fa962a3b47b08ba73794d24a",
+      "authority_cost": 481,
+      "actions": {
+        "fixed_shape_folds": [
+          {
+            "op": "Shape",
+            "input": "input",
+            "output": "__sp_shape",
+            "input_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "start": 0,
+            "end": 1,
+            "constant_value": [
+              1
+            ],
+            "proof": "model_contract_static_shape_all_input_values"
+          }
+        ],
+        "semantic_action_count": 1,
+        "metadata_action_count": 1
+      },
+      "all_input_exact_proofs": [
+        "model_contract_static_shape_all_input_values"
+      ],
+      "theorem_exact": true,
+      "structure": {
+        "nodes": 30,
+        "initializers": 12,
+        "params": 31,
+        "ops": {
+          "Where": 5,
+          "CastLike": 4,
+          "QLinearConv": 3,
+          "CenterCropPad": 3,
+          "QLinearMatMul": 2,
+          "Sub": 2,
+          "ReduceMax": 2,
+          "Equal": 2,
+          "LessOrEqual": 2,
+          "GroupNormalization": 1,
+          "Resize": 1,
+          "Max": 1,
+          "Div": 1,
+          "ScatterElements": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": false,
+        "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: hmask_fake): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n",
+        "strict_shape_data_prop": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: hmask_fake): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n",
+        "duplicate_initializer_groups": []
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    },
+    {
+      "task": 374,
+      "kind": "cast_i32_attribute",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task374_cast_i32_attribute_b82ae4b99fba.onnx",
+      "sha256": "b82ae4b99fbac6853d995f64f5f30aefd12b14fa2a2f29404a3f7f66d6b5faa1",
+      "authority_sha256": "93fb94260388ab83bc35043c0ee11ae08b1bf3e8fa962a3b47b08ba73794d24a",
+      "authority_cost": 481,
+      "actions": {
+        "attributeized_casts": [
+          {
+            "output": "grid_idx",
+            "from": "CastLike(color_fake,i32dummy)",
+            "to": "Cast(color_fake,to=INT32)",
+            "removed_initializer": "i32dummy",
+            "proof": "CastLike_second_input_supplies_only_INT32_dtype"
+          }
+        ],
+        "semantic_action_count": 1,
+        "metadata_action_count": 0
+      },
+      "all_input_exact_proofs": [
+        "CastLike_second_input_supplies_only_INT32_dtype"
+      ],
+      "theorem_exact": true,
+      "structure": {
+        "nodes": 31,
+        "initializers": 10,
+        "params": 29,
+        "ops": {
+          "Where": 5,
+          "CastLike": 3,
+          "QLinearConv": 3,
+          "CenterCropPad": 3,
+          "QLinearMatMul": 2,
+          "Sub": 2,
+          "ReduceMax": 2,
+          "Equal": 2,
+          "LessOrEqual": 2,
+          "Shape": 1,
+          "GroupNormalization": 1,
+          "Resize": 1,
+          "Max": 1,
+          "Div": 1,
+          "Cast": 1,
+          "ScatterElements": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "duplicate_initializer_groups": []
+      },
+      "cost": {
+        "memory": 847,
+        "params": 29,
+        "cost": 876
+      },
+      "stage": "REJECT_NOT_STRICTLY_LOWER"
+    },
+    {
+      "task": 374,
+      "kind": "fixed_shape_fold_cast_i32",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high182_365_374_130/candidates/task374_fixed_shape_fold_cast_i32_4e911ca82cc1.onnx",
+      "sha256": "4e911ca82cc1be370053f4c2bdd7f2453109883330c23582a03951fe1a05f7ad",
+      "authority_sha256": "93fb94260388ab83bc35043c0ee11ae08b1bf3e8fa962a3b47b08ba73794d24a",
+      "authority_cost": 481,
+      "actions": {
+        "fixed_shape_folds": [
+          {
+            "op": "Shape",
+            "input": "input",
+            "output": "__sp_shape",
+            "input_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "start": 0,
+            "end": 1,
+            "constant_value": [
+              1
+            ],
+            "proof": "model_contract_static_shape_all_input_values"
+          }
+        ],
+        "attributeized_casts": [
+          {
+            "output": "grid_idx",
+            "from": "CastLike(color_fake,i32dummy)",
+            "to": "Cast(color_fake,to=INT32)",
+            "removed_initializer": "i32dummy",
+            "proof": "CastLike_second_input_supplies_only_INT32_dtype"
+          }
+        ],
+        "semantic_action_count": 2,
+        "metadata_action_count": 1
+      },
+      "all_input_exact_proofs": [
+        "CastLike_second_input_supplies_only_INT32_dtype",
+        "model_contract_static_shape_all_input_values"
+      ],
+      "theorem_exact": true,
+      "structure": {
+        "nodes": 30,
+        "initializers": 11,
+        "params": 30,
+        "ops": {
+          "Where": 5,
+          "CastLike": 3,
+          "QLinearConv": 3,
+          "CenterCropPad": 3,
+          "QLinearMatMul": 2,
+          "Sub": 2,
+          "ReduceMax": 2,
+          "Equal": 2,
+          "LessOrEqual": 2,
+          "GroupNormalization": 1,
+          "Resize": 1,
+          "Max": 1,
+          "Div": 1,
+          "Cast": 1,
+          "ScatterElements": 1
+        },
+        "input_shape": [
+          1,
+          10,
+          30,
+          30
+        ],
+        "output_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "functions": 0,
+        "sparse_initializers": 0,
+        "checker_full": false,
+        "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: hmask_fake): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n",
+        "strict_shape_data_prop": false,
+        "strict_shape_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: hmask_fake): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (4) vs (1)\n",
+        "duplicate_initializer_groups": []
+      },
+      "stage": "REJECT_CHECKER_OR_STRICT_SHAPE"
+    }
+  ],
+  "variant_count": 11,
+  "stage_counts": {
+    "REJECT_CHECKER_OR_STRICT_SHAPE": 8,
+    "REJECT_UNSCORABLE": 2,
+    "REJECT_NOT_STRICTLY_LOWER": 1
+  },
+  "winner_count": 0,
+  "winners": []
+}

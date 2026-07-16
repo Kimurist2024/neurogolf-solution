@@ -1,0 +1,58 @@
+{
+  "lane": "agent_expand20j_95",
+  "authority_zip": "submission.zip",
+  "authority_zip_sha256": "9085e2f795c0a73d44d27d712ad8fbaad67a3f37b1d8363a0f33305fbafa4118",
+  "targets": [239, 222, 37, 226, 297, 14, 234, 92, 397, 264, 394, 398, 200, 75, 392, 387, 225, 218, 36, 132],
+  "incremental_scan": {
+    "delta_unique_sha": 71,
+    "delta_by_task": {"37": 1, "226": 22, "14": 1, "36": 47},
+    "all_other_targets_delta_sha": 0,
+    "official_correct_strict_lower": 2,
+    "known_four_complete": 1,
+    "truthful_official_lower": 0
+  },
+  "terminal_candidates": [
+    {
+      "task": 14,
+      "sha256": "15a7de7d7ad08eeb693bbe82b7527f34c15fb539b8a4b5a079daceac6c1fe7eb",
+      "source": "others/71405/task014_cost360.onnx",
+      "authority_cost": 370,
+      "candidate_cost": 360,
+      "projected_gain": 0.027398974188114347,
+      "known_four": "266/266 in all four configurations",
+      "runtime_shape_mismatches": 17,
+      "decision": "REJECT_SHAPE_CLOAK"
+    },
+    {
+      "task": 37,
+      "sha256": "df9298f3b9e851bd815be5f53b8de142cbf944297477d73fc27ddc343d49c90b",
+      "source": "others/71405/task037_improved_v3.onnx",
+      "authority_cost": 374,
+      "candidate_cost": 320,
+      "projected_gain": 0.15593480162075968,
+      "disable_all_known": "266/266",
+      "default_ort": "session construction fails: CenterCropPad shape axes mismatch",
+      "decision": "REJECT_DEFAULT_ORT_RUNTIME"
+    }
+  ],
+  "task036_cost_reconciliation": {
+    "authority_sha256": "574084f0940c747e0ddba30622b3a66420eb75d43f6fadc9f65a94b2cffaddf3",
+    "competition_profile_cost": 325,
+    "truthful_runtime_diagnostic_cost": 1477,
+    "reason": "The authority itself has declared/runtime shape mismatches. Competition score_and_verify agrees with all_scores at 325; truthful tracing reports 1477 and must not be used as the comparison baseline.",
+    "truthful_histories": [
+      {"sha256": "737fc8388cfe8f40c28548b59f0954e8b3c2f8284cf85a208efc7cdb45525726", "cost": 1051, "fresh": "1000/1000", "decision": "REJECT_COST_REGRESSION"},
+      {"sha256": "fc83bef42ce52ddd5c726323bacca5c4bf59ecaa55ef2aa55b1571243e9b5738", "cost": 1428, "fresh": "1000/1000 current plus 10000/10000 prior", "decision": "REJECT_COST_REGRESSION"},
+      {"sha256": "dd794443fbbdebab76a808b326118f36ac308df1c8038b6b33bdef2d89b90734", "cost": 1390, "fresh": "999/1000", "decision": "REJECT_COST_REGRESSION"}
+    ]
+  },
+  "pivot_task124": {
+    "attempted_allocator_barriers": 2,
+    "both_exit_codes": [139, 139],
+    "decision": "REJECT_RUNTIME_CRASH"
+  },
+  "fixed_winners": 0,
+  "lb_probe_required": 0,
+  "projected_gain": 0.0,
+  "protected_root_artifacts_modified": []
+}

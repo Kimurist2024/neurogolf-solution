@@ -1,0 +1,163 @@
+{
+  "task": 297,
+  "baseline": {
+    "path": "scripts/golf/loop_7999_13/lane_a10/baseline/task297.onnx",
+    "sha256": "cdba3d03bf43853742508f284bf98ca5341fdb2ab50042ec895afb0069296537",
+    "file_bytes": 2242,
+    "checker_full": "pass",
+    "strict_shape_inference": "pass",
+    "standard_domains": true,
+    "custom_domains": [],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "nested_graphs": [],
+    "banned_or_sequence_ops": [],
+    "conv_bias_issues": [],
+    "negative_conv_pads": [],
+    "dynamic_or_nonpositive_tensors": [],
+    "nonfinite_initializers": [],
+    "value_info_count": 0,
+    "node_count": 43,
+    "parameter_elements": 51,
+    "op_histogram": {
+      "Cast": 5,
+      "Concat": 14,
+      "Conv": 1,
+      "Mul": 1,
+      "QLinearConv": 1,
+      "QLinearMatMul": 1,
+      "Sign": 1,
+      "Split": 1,
+      "Where": 18
+    },
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ]
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_7999_13/lane_a10/task297_trim_zero_kernel.onnx",
+    "sha256": "5b1b2dbc6f86a3f1658b092b7d2c296f46852489258d7a7bf3d50f08d796365e",
+    "file_bytes": 2230,
+    "checker_full": "pass",
+    "strict_shape_inference": "pass",
+    "standard_domains": true,
+    "custom_domains": [],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "nested_graphs": [],
+    "banned_or_sequence_ops": [],
+    "conv_bias_issues": [],
+    "negative_conv_pads": [
+      {
+        "output": "color_f",
+        "pads": [
+          0,
+          0,
+          0,
+          -24
+        ]
+      }
+    ],
+    "dynamic_or_nonpositive_tensors": [],
+    "nonfinite_initializers": [],
+    "value_info_count": 0,
+    "node_count": 43,
+    "parameter_elements": 41,
+    "op_histogram": {
+      "Cast": 5,
+      "Concat": 14,
+      "Conv": 1,
+      "Mul": 1,
+      "QLinearConv": 1,
+      "QLinearMatMul": 1,
+      "Sign": 1,
+      "Split": 1,
+      "Where": 18
+    },
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ]
+  },
+  "profile": {
+    "memory": 320,
+    "params": 41,
+    "cost": 361,
+    "score": 19.11112204166712,
+    "correct": true
+  },
+  "known_disable_all": {
+    "train": {
+      "right": 3,
+      "wrong": 0,
+      "errors": 0
+    },
+    "test": {
+      "right": 1,
+      "wrong": 0,
+      "errors": 0
+    },
+    "arc-gen": {
+      "right": 261,
+      "wrong": 0,
+      "errors": 0
+    },
+    "total": {
+      "right": 265,
+      "wrong": 0,
+      "errors": 0
+    }
+  },
+  "known_default_ort": {
+    "train": {
+      "right": 3,
+      "wrong": 0,
+      "errors": 0
+    },
+    "test": {
+      "right": 1,
+      "wrong": 0,
+      "errors": 0
+    },
+    "arc-gen": {
+      "right": 261,
+      "wrong": 0,
+      "errors": 0
+    },
+    "total": {
+      "right": 265,
+      "wrong": 0,
+      "errors": 0
+    }
+  },
+  "fresh_disable_all": {
+    "run": false,
+    "reason": "negative Conv pads fail the structural gate"
+  },
+  "fresh_default_ort": {
+    "run": false,
+    "reason": "negative Conv pads fail the structural gate"
+  },
+  "margin": {
+    "stable": true,
+    "minimum": 1.0
+  },
+  "onnx_schema_caveat": "Conv pads schema requires values >=0; candidate uses -24 end padding and is quarantined unless explicitly accepted as deterministic ORT crop behavior."
+}

@@ -1,0 +1,127 @@
+{
+  "lane": "agent_new_low44",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "authoritative": true
+  },
+  "policy": {
+    "normal": "strictly cheaper actual cost; known100 dual ORT; two fresh independent seeds each >=90%; runtime0; checker full; strict/data_prop; truthful runtime shapes; standard domains; no lookup/cloak/giant; Conv-bias UB0",
+    "private_risk": "decoded true-rule guarantee or exact LB-white lineage, plus known/fresh100 dual and every normal structural/runtime gate",
+    "fail_closed": "fresh runs are not started when no candidate survives strict-cost, structural, truthful-shape, and known100 pre-gates"
+  },
+  "targets_requested": [303, 98, 395, 167, 289, 38, 262, 269],
+  "targets_completed": 8,
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_integration": false,
+  "protected_files_modified": false,
+  "rows": {
+    "303": {
+      "baseline_sha256": "dfe6d9f2300ba8496331af55f988d8ec5dc4e2c473fba425b048247d60a49042",
+      "actual_cost": 39,
+      "known_dual": "265/265 in ORT_DISABLE_ALL and default",
+      "truthful_runtime_shapes": true,
+      "structure": "one output-only 8-input Einsum; 39 parameters and zero counted intermediate memory",
+      "history_strict_lower": 0,
+      "exact_candidates": 0,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE"
+    },
+    "098": {
+      "baseline_sha256": "d4593edb4b8f56dbc19d2533670c572155951af869526121f0b3aca8a533fdde",
+      "actual_cost": 37,
+      "known_dual": "266/266 in ORT_DISABLE_ALL and default",
+      "truthful_runtime_shapes": true,
+      "structure": "one output-only ConvTranspose; 27 kernel plus 10 bias parameters",
+      "history_strict_lower": 0,
+      "exact_candidates": 0,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE"
+    },
+    "395": {
+      "baseline_sha256": "1fcc0253659bf6a6fe2cd5783d515884d5ea419bfd73a836c3f2dab1b2c3886d",
+      "actual_cost": 35,
+      "known_dual": "268/268 in ORT_DISABLE_ALL and default",
+      "truthful_runtime_shapes": false,
+      "runtime_shape_mismatches": 2,
+      "history_strict_lower": 0,
+      "exact_candidates": 0,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE; incumbent shape cloak is not an admissible new lineage"
+    },
+    "167": {
+      "baseline_sha256": "ae201828c20e3943f5130795853a677d29f73e271863dd7a66485a38dfa8effb",
+      "actual_cost": 34,
+      "known_dual": "268/268 in ORT_DISABLE_ALL and default",
+      "truthful_runtime_shapes": true,
+      "structure": "compact four-node generator-rule graph; 20 parameters plus 14 bytes actual memory",
+      "history_strict_lower": 0,
+      "exact_candidates": 0,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE"
+    },
+    "289": {
+      "baseline_sha256": "d6098659b327d3f0c5f1fb8179686fb687d36fa52ced063ed45bb49561ae7408",
+      "actual_cost": 32,
+      "known_disabled": "268/268",
+      "default_runtime": "session creation failure",
+      "truthful_runtime_shapes": false,
+      "runtime_shape_mismatches": 4,
+      "history_strict_lower": 0,
+      "exact_candidate": "Identity removal",
+      "exact_candidate_gate": "full checker and strict/data_prop shape inference fail because CenterCropPad requires a two-element shape",
+      "decision": "REJECT_EXACT_CANDIDATE_AND_NO_SAFE_WINNER"
+    },
+    "038": {
+      "baseline_sha256": "40c66a303cb7e46e2f8f718ccf3d3d6400a1d51525813ed9fe2d302706757c38",
+      "actual_cost": 31,
+      "known_disabled": "266/266",
+      "default_runtime": "266/266 runtime errors",
+      "truthful_runtime_shapes": false,
+      "runtime_shape_mismatches": 4,
+      "history_strict_lower": 0,
+      "exact_candidates": 0,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE; incumbent shape cloak is not an admissible new lineage"
+    },
+    "262": {
+      "baseline_sha256": "9d6f5e4d366a7f566b881f73546b822bb6b9ecb41004b872094b351c6d9cff26",
+      "actual_cost": 31,
+      "known_dual": "11/11 in ORT_DISABLE_ALL and default",
+      "truthful_runtime_shapes": false,
+      "runtime_shape_mismatches": 2,
+      "history_strict_lower": 0,
+      "exact_candidate": "Identity removal",
+      "exact_candidate_gate": "full checker and strict/data_prop inference reject HannWindow output shape 30 versus declared 1",
+      "decision": "REJECT_EXACT_CANDIDATE_AND_NO_SAFE_WINNER"
+    },
+    "269": {
+      "baseline_sha256": "4b76e4e0339b59c00192cf6028ab7828b813794fb3d269d0f9851db2db3a10ac",
+      "actual_cost": 31,
+      "known_disabled": "266/266",
+      "default_runtime": "session creation failure",
+      "truthful_runtime_shapes": false,
+      "runtime_shape_mismatches": 4,
+      "history_strict_lower": 0,
+      "exact_candidate": "Identity removal",
+      "exact_candidate_gate": "full checker and strict/data_prop shape inference fail because CenterCropPad requires a two-element shape",
+      "decision": "REJECT_EXACT_CANDIDATE_AND_NO_SAFE_WINNER"
+    }
+  },
+  "true_rule_audit": {
+    "303": "265/265",
+    "098": "266/266",
+    "395": "268/268",
+    "167": "268/268",
+    "289": "268/268",
+    "038": "266/266",
+    "262": "11/11",
+    "269": "266/266"
+  },
+  "search_summary": {
+    "all400_inventory": "1196 ZIPs, 448568 ZIP members, 233751 loose observations, 13591 unique non-baseline graphs",
+    "archive_strict_lower_candidates": 0,
+    "focused_target_alternatives": 23,
+    "exact_wave2_target_hits": 3,
+    "exact_wave2_survivors": 0,
+    "exact_einsum_all400_target_hits": 0
+  },
+  "final_verdict": "NO_SAFE_CANDIDATE"
+}

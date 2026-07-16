@@ -1,0 +1,283 @@
+{
+  "task": 70,
+  "baseline_structure": {
+    "path": "scripts/golf/loop_7999_13/lane_c18/base/task070.onnx",
+    "sha256": "bc8416f630a579709db5b4171c195bc51ed35e2102d591128848196421a11a43",
+    "file_bytes": 706,
+    "full_checker": "PASS",
+    "strict_shape_data_prop": "PASS",
+    "nodes": 2,
+    "initializers": 5,
+    "parameter_elements": 75,
+    "op_histogram": {
+      "Einsum": 2
+    },
+    "einsums": [
+      {
+        "equation": "bihw,ri,er->e",
+        "operands": [
+          "input",
+          "R",
+          "T"
+        ]
+      },
+      {
+        "equation": "blyw,sl,as,bmyz,tm,dt,bjhx,rj,kr,bihw,qi,qc,e,kq,kade->bchw",
+        "operands": [
+          "input",
+          "R",
+          "U",
+          "input",
+          "R",
+          "T",
+          "input",
+          "R",
+          "T",
+          "input",
+          "R",
+          "R",
+          "H",
+          "C",
+          "D"
+        ]
+      }
+    ],
+    "standard_domains": true,
+    "custom_domains": [],
+    "banned_or_sequence_ops": [],
+    "nested_graphs": [],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "conv_bias_issues": [],
+    "dynamic_or_nonpositive_tensors": [],
+    "nonfinite_initializers": [],
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "value_info_names": [
+      "H"
+    ]
+  },
+  "candidate_structure": {
+    "path": "scripts/golf/loop_7999_13/lane_task070_exact/task070_exact_scalar_fusion.onnx",
+    "sha256": "632f198acf95fb32697679fa357b6c0c979360e3cf5a0a7173a3ff8917562e45",
+    "file_bytes": 651,
+    "full_checker": "PASS",
+    "strict_shape_data_prop": "PASS",
+    "nodes": 1,
+    "initializers": 5,
+    "parameter_elements": 75,
+    "op_histogram": {
+      "Einsum": 1
+    },
+    "einsums": [
+      {
+        "equation": "blyw,sl,as,bmyz,tm,dt,bjhx,rj,kr,bihw,qi,qc,bnuv,on,eo,kq,kade->bchw",
+        "operands": [
+          "input",
+          "R",
+          "U",
+          "input",
+          "R",
+          "T",
+          "input",
+          "R",
+          "T",
+          "input",
+          "R",
+          "R",
+          "input",
+          "R",
+          "T",
+          "C",
+          "D"
+        ]
+      }
+    ],
+    "standard_domains": true,
+    "custom_domains": [],
+    "banned_or_sequence_ops": [],
+    "nested_graphs": [],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "conv_bias_issues": [],
+    "dynamic_or_nonpositive_tensors": [],
+    "nonfinite_initializers": [],
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "value_info_names": []
+  },
+  "baseline_profile": {
+    "memory": 8,
+    "params": 75,
+    "cost": 83,
+    "score": 20.581159392203404,
+    "correct": true
+  },
+  "candidate_profile": {
+    "memory": 0,
+    "params": 75,
+    "cost": 75,
+    "score": 20.68251188646369,
+    "correct": true
+  },
+  "known_disable_all": {
+    "train": {
+      "right": 3,
+      "wrong": 0,
+      "errors": 0
+    },
+    "test": {
+      "right": 1,
+      "wrong": 0,
+      "errors": 0
+    },
+    "arc-gen": {
+      "right": 262,
+      "wrong": 0,
+      "errors": 0
+    },
+    "total": {
+      "right": 266,
+      "wrong": 0,
+      "errors": 0
+    }
+  },
+  "known_default": {
+    "train": {
+      "right": 3,
+      "wrong": 0,
+      "errors": 0
+    },
+    "test": {
+      "right": 1,
+      "wrong": 0,
+      "errors": 0
+    },
+    "arc-gen": {
+      "right": 262,
+      "wrong": 0,
+      "errors": 0
+    },
+    "total": {
+      "right": 266,
+      "wrong": 0,
+      "errors": 0
+    }
+  },
+  "fresh_disable_all": {
+    "mode": "ORT_DISABLE_ALL",
+    "seed": 7999130700,
+    "count": 5000,
+    "baseline": {
+      "right": 4990,
+      "wrong": 10,
+      "errors": 0
+    },
+    "candidate": {
+      "right": 4990,
+      "wrong": 10,
+      "errors": 0
+    },
+    "differential": {
+      "raw_bitwise_equal": 5000,
+      "raw_allclose_rtol1e-5_atol1e-5": 5000,
+      "decoded_equal": 5000,
+      "one_sided_errors": 0,
+      "max_abs_raw_difference": 0.0
+    },
+    "nonfinite_output_cases": {
+      "baseline": 0,
+      "candidate": 0
+    },
+    "first_failure": {
+      "case": 64,
+      "kind": "candidate_wrong",
+      "different_cells": 72
+    },
+    "elapsed_seconds": 29.99117770799785
+  },
+  "fresh_default": {
+    "mode": "ORT_DEFAULT",
+    "seed": 7999130701,
+    "count": 5000,
+    "baseline": {
+      "right": 4996,
+      "wrong": 4,
+      "errors": 0
+    },
+    "candidate": {
+      "right": 4996,
+      "wrong": 4,
+      "errors": 0
+    },
+    "differential": {
+      "raw_bitwise_equal": 5000,
+      "raw_allclose_rtol1e-5_atol1e-5": 5000,
+      "decoded_equal": 5000,
+      "one_sided_errors": 0,
+      "max_abs_raw_difference": 0.0
+    },
+    "nonfinite_output_cases": {
+      "baseline": 0,
+      "candidate": 0
+    },
+    "first_failure": {
+      "case": 209,
+      "kind": "candidate_wrong",
+      "different_cells": 12
+    },
+    "elapsed_seconds": 29.63438450000831
+  },
+  "margin": {
+    "stable": true,
+    "minimum": 1.0
+  },
+  "algebraic_fusion": {
+    "base_producer_equation": "bihw,ri,er->e",
+    "base_terminal_equation": "blyw,sl,as,bmyz,tm,dt,bjhx,rj,kr,bihw,qi,qc,e,kq,kade->bchw",
+    "candidate_equation": "blyw,sl,as,bmyz,tm,dt,bjhx,rj,kr,bihw,qi,qc,bnuv,on,eo,kq,kade->bchw",
+    "candidate_equation_is_exact_inline": true,
+    "candidate_operands_are_exact_inline": true,
+    "initializers_byte_identical": true,
+    "removed_only_intermediate": true,
+    "stale_H_value_info_removed": true,
+    "renaming": {
+      "bihw": "bnuv",
+      "ri": "on",
+      "er": "eo"
+    },
+    "interpretation": "H[e]=sum(input[b,i,h,w]*R[r,i]*T[e,r]); replacing terminal H[e] with the same contracted factors is associativity/distributivity of finite sums.",
+    "lookup_indicators": {
+      "gather_scatter_topk_tfidf_hardmax": 0,
+      "coordinate_or_example_bank_initializers": 0,
+      "parameter_elements": 75,
+      "unique_initializer_names": [
+        "R",
+        "T",
+        "U",
+        "C",
+        "D"
+      ]
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "authority": {
+    "lb": 8009.46,
+    "path": "submission.zip",
+    "sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "byte_identical_base": "submission_base_8009.46.zip"
+  },
+  "scope": [216, 285, 226],
+  "policy": {
+    "require_exact_equivalence_or_sound_true_rule": true,
+    "require_full_and_strict": true,
+    "require_official_actual_strict_lower_cost": true,
+    "require_conv_bias_ub0": true,
+    "require_truthful_runtime_shapes": true,
+    "known_configs": [
+      "disable_all_threads1",
+      "disable_all_threads4",
+      "default_threads1",
+      "default_threads4"
+    ],
+    "require_authority_raw_equivalence_for_local_rewrites": true,
+    "fresh": "two seeds, each >=1500 and >=90%, only after all earlier gates",
+    "reject": ["shape_cloak", "fixture_lookup", "private_zero", "runtime_failure"]
+  },
+  "current": {
+    "216": {
+      "sha256": "9a5f4f10d6e014b3f053ce1dabeb39cbeaf95964ae685aa71514fd695caf0756",
+      "memory": 1453,
+      "params": 46,
+      "cost": 1499,
+      "runtime_shape_mismatches": 53
+    },
+    "285": {
+      "sha256": "366212e29105fde0295030f3ec3bb014bd300f23aa8259ccd79da2eea720b9e2",
+      "memory": 8322,
+      "params": 301,
+      "cost": 8623,
+      "runtime_shape_mismatches": 57
+    },
+    "226": {
+      "sha256": "852b6091385d97df6899e21304bf194440fb5cd3343385693093c24be0cb8203",
+      "memory": 333,
+      "params": 39,
+      "cost": 372,
+      "runtime_shape_mismatches": 0,
+      "inherited_fresh_proof": {
+        "source": "scripts/golf/loop_8004_42_plus20/agent_target_mid19/task226_strict_audit.json",
+        "sha_bound": true,
+        "seeds": {
+          "22650001": "5000/5000 in both ORT modes",
+          "22650002": "5000/5000 in both ORT modes"
+        },
+        "complete_generator_domain": "136/136 in both ORT modes"
+      }
+    }
+  },
+  "mechanical_scan": {
+    "task216": "Identity/constant-fold variants expose real shapes and fail strict inference",
+    "task285": "Identity/constant-fold/no-op Reshape variants expose real shapes and fail strict inference",
+    "task226": "no changed exact or optimizer variant",
+    "initializer_aliases": 0,
+    "unused_initializers": 0,
+    "type_only_castlike_initializers": 0
+  },
+  "archive_revalidation": {
+    "216": {
+      "unique": 19,
+      "minimum_declared_cost": 1037,
+      "minimum_official_actual_cost": 1511,
+      "strict_lower_survivors": 0
+    },
+    "285": {
+      "unique": 13,
+      "minimum_declared_cost": 8717,
+      "strict_lower_survivors": 0
+    },
+    "226": {
+      "unique": 12,
+      "minimum_declared_cost": 375,
+      "strict_lower_survivors": 0
+    }
+  },
+  "rejected": [
+    {
+      "task": 216,
+      "label": "identity_and_fixed_constant_folds",
+      "reason": "full/strict inference exposes real Slice and CenterCropPad shapes"
+    },
+    {
+      "task": 216,
+      "label": "eliminate_deadend_value_info_only",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high216_285_226_136/optimizer_candidates/task216_eliminate_deadend_5c0e9ddf5f49.onnx",
+      "sha256": "5c0e9ddf5f4932f7b87250898e38ae29e02b0a87589b78770ee652973ee6a651",
+      "declared_cost": 1025,
+      "official_actual_cost": 1499,
+      "runtime_shape_mismatches": 53,
+      "authority_raw_equal_known_four": true,
+      "reason": "not official strict-lower and is a value-info/shape-cloak mirage"
+    },
+    {
+      "task": 285,
+      "label": "identity_constant_fold_and_nop_reshape",
+      "reason": "full/strict inference exposes true length-300 and 2-versus-1 shapes"
+    },
+    {
+      "task": 226,
+      "label": "archive_minimum",
+      "cost": 375,
+      "reason": "not strict-lower than current cost 372"
+    }
+  ],
+  "fresh": {
+    "new_candidate_status": "not_run",
+    "reason": "no new candidate passed official strict-lower cost and truthful runtime-shape gates"
+  },
+  "winners": [],
+  "projected_gain": 0,
+  "verdict": "NO_SAFE_CANDIDATE",
+  "root_modified": false
+}

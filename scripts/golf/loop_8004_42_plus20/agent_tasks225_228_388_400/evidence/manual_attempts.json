@@ -1,0 +1,46 @@
+{
+  "winner": null,
+  "authority_profiles": {
+    "225": {"memory": 233, "params": 100, "cost": 333, "correct": true},
+    "228": {"memory": 241, "params": 50, "cost": 291, "correct": true},
+    "388": {"memory": 283, "params": 22, "cost": 305, "correct": true},
+    "400": {"memory": 123, "params": 41, "cost": 164, "correct": true}
+  },
+  "optimizer_scan": {
+    "profiles": 96,
+    "strict_lower": 0,
+    "evidence": "evidence/optimizer_scan.json"
+  },
+  "task388_manual_attempts": [
+    {
+      "label": "q_bool_CastLike_to_Greater_q_8",
+      "path": "candidates/task388_q_gt8.onnx",
+      "sha256": "7fb82a2caf4432003365121335ff473d3311f1e3e661441306c013621a0aca82",
+      "rule_basis": "On complete generator support GroupNormalization->uint8 q is 0 or 248, so bool(q) equals q>8.",
+      "full_checker": true,
+      "strict_data_prop": true,
+      "known_correct": true,
+      "official_profile": {"memory": 9282, "params": 21, "cost": 9303},
+      "decision": "reject_not_lower",
+      "reason": "Greater propagates the truthful 1x10x30x30 shape; the authority CastLike target hides it."
+    },
+    {
+      "label": "idx_i8_CastLike_to_Cast",
+      "path": "candidates/task388_cast_i8.onnx",
+      "sha256": "aca14029d7b152eaeed10994de21f473ff520de99c858353a68a281d0c1e6496",
+      "full_checker": true,
+      "strict_data_prop": true,
+      "known_correct": true,
+      "official_profile": {"memory": 1578, "params": 21, "cost": 1599},
+      "decision": "reject_not_lower",
+      "reason": "Cast exposes the data-dependent runtime shape instead of preserving the CastLike target shape."
+    },
+    {
+      "label": "reduce_uint8_then_Greater",
+      "path": "candidates/task388_reduce_u8_gt8.onnx",
+      "sha256": "e1342e761773bbac64adb430885e45435bd1fc4910fc9fcaffe1afaceda66457",
+      "decision": "reject_invalid",
+      "reason": "The full background mask is also the second Where condition; eliminating its bool conversion leaves an invalid uint8 condition."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "lane": "c14",
+  "required_for_adoption": {
+    "known": "complete under default ORT and ORT_DISABLE_ALL",
+    "fresh_disable_all": "5000/5000, runtime_errors=0",
+    "fresh_default": "5000/5000, runtime_errors=0",
+    "structure": "full checker, strict inference, static standard-domain graph, safe Conv-family bias, zero runtime/static shape contradictions, no host UB"
+  },
+  "new_dual_5000_runs": [],
+  "reason_no_new_runs": "No candidate survived the cheaper, known-complete, and structural truthfulness prerequisites, so no rejected graph was advanced to the final 10000-execution gate.",
+  "prior_decisive_evidence": [
+    {
+      "task": 69,
+      "model": "exact base and equal-cost lineage",
+      "fresh": "99/100",
+      "default_ort": "session creation fails: CenterCropPad shape has one element for two axes",
+      "source": "scripts/golf/loop_7999_13/lane_baseline_fresh100/mid40_k100.json",
+      "decision": "reject"
+    },
+    {
+      "task": 79,
+      "model": "task079_r02",
+      "sha256": "89b595921ca4c3d6fc5e6d6222030be6cdde5bab90379a226c2651da11d3f010",
+      "fresh": "4962/5000",
+      "source": "scripts/golf/loop_7999_13/lane_c11/rejected_manifest.json",
+      "decision": "reject"
+    },
+    {
+      "task": 105,
+      "model": "task105_r01",
+      "sha256": "4c1f75e2464994ca7597b13e6f5c52a10814c76d6159fb8ceaff37ab3220adb7",
+      "disable_all": {"right": 4980, "wrong": 20, "runtime_or_output_failures": 20},
+      "default_ort": {"right": 4980, "wrong": 20, "runtime_or_output_failures": 20},
+      "generation_errors": 0,
+      "source": "scripts/golf/loop_7999_13/lane_archive_top200/task105_dual5000.json",
+      "decision": "reject"
+    },
+    {
+      "task": 109,
+      "model": "exact base / metadata-only cost-405 candidate",
+      "fresh": "base rule 5000/5000",
+      "structural_result": "ten runtime/static shape contradictions; the cost-405 file only changes value_info and therefore inherits them",
+      "source": "scripts/golf/loop_7999_13/lane_c5/REPORT.md and scripts/golf/loop_7999_13/lane_harvest/REPORT.md",
+      "decision": "reject"
+    }
+  ]
+}

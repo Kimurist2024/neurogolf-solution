@@ -1,0 +1,5743 @@
+{
+  "base_task233": {
+    "label": "base_task233",
+    "task": 233,
+    "path": "scripts/golf/loop_7999_13/lane_c17/base/task233.onnx",
+    "sha256": "6eab9a24d088f951bd4891dec6e970a2545c92e654d0dc8dad48cb776676b8c5",
+    "file_bytes": 23077,
+    "nodes": 261,
+    "initializers": 55,
+    "params": 319,
+    "op_histogram": {
+      "Cast": 33,
+      "Gather": 31,
+      "Add": 23,
+      "Unsqueeze": 16,
+      "Greater": 14,
+      "Sub": 13,
+      "Where": 13,
+      "And": 12,
+      "Less": 10,
+      "ArgMax": 9,
+      "CastLike": 8,
+      "Shape": 7,
+      "CenterCropPad": 7,
+      "Concat": 7,
+      "Slice": 6,
+      "Reshape": 6,
+      "Equal": 6,
+      "Or": 5,
+      "Mod": 4,
+      "Mul": 4,
+      "Tile": 3,
+      "QLinearConv": 3,
+      "TopK": 2,
+      "Squeeze": 2,
+      "Div": 2,
+      "Einsum": 2,
+      "ScatterElements": 2,
+      "Sign": 2,
+      "ReduceSum": 1,
+      "MaxPool": 1,
+      "GatherND": 1,
+      "MatMul": 1,
+      "GatherElements": 1,
+      "Split": 1,
+      "BitwiseAnd": 1,
+      "ScatterND": 1,
+      "Pad": 1
+    },
+    "max_node_inputs": 9,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [
+      {
+        "node": "qfr_qfr_q1",
+        "op": "QLinearConv",
+        "bias": "qfr_q1_b",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          3
+        ],
+        "expected_channels": 3,
+        "safe": true
+      },
+      {
+        "node": "qfr_qfr_rank",
+        "op": "QLinearConv",
+        "bias": "slice_prefix00_split",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          1
+        ],
+        "expected_channels": 1,
+        "safe": true
+      },
+      {
+        "node": "qfr_qfr_low",
+        "op": "QLinearConv",
+        "bias": "slice_prefix00_split",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          1
+        ],
+        "expected_channels": 1,
+        "safe": true
+      }
+    ],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 267,
+      "declared_tensors": 137,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "__cloak_float16_hidden",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "__cloak_float16_input",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "f24__cl_hidden",
+          "declared": [
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            1,
+            4
+          ]
+        },
+        {
+          "tensor": "f24",
+          "declared": [
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            1,
+            4
+          ]
+        },
+        {
+          "tensor": "f26",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            4
+          ]
+        },
+        {
+          "tensor": "f25_i8",
+          "declared": [
+            1,
+            4,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "f25",
+          "declared": [
+            1,
+            1,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "f25_i8__cl_hidden",
+          "declared": [
+            1,
+            1,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "__cloak_u8_input",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "rank_cast_cloak_hidden",
+          "declared": [
+            7
+          ],
+          "actual": [
+            289
+          ]
+        },
+        {
+          "tensor": "qfr_rank_f16",
+          "declared": [
+            7
+          ],
+          "actual": [
+            289
+          ]
+        },
+        {
+          "tensor": "f60r",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "f62c",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_row_profile_i8",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_col_profile_i8",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_rows_clean",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_cols_clean",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "f84",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "f86",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "renderer_indices_hidden",
+          "declared": [
+            1,
+            1,
+            2
+          ],
+          "actual": [
+            5,
+            9,
+            2
+          ]
+        },
+        {
+          "tensor": "renderer_indices",
+          "declared": [
+            1,
+            1,
+            2
+          ],
+          "actual": [
+            5,
+            9,
+            2
+          ]
+        },
+        {
+          "tensor": "qfr_row_idx_hidden",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "qfr_row_idx",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "qfr_col_idx_hidden",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "qfr_col_idx",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 130,
+      "single_example_intermediate_bytes": 72869
+    },
+    "official_like_score": {
+      "memory": 7439,
+      "params": 319,
+      "cost": 7758,
+      "score": 16.043520152000088,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 0,
+        "wrong": 1,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 46,
+        "wrong": 214,
+        "errors": 2
+      },
+      "total": {
+        "right": 49,
+        "wrong": 215,
+        "errors": 2
+      }
+    }
+  },
+  "task233_shape_cloak_8992": {
+    "label": "task233_shape_cloak_8992",
+    "task": 233,
+    "path": "scripts/golf/scratch_codex/task233/agent_candidate_shrink/cand_9213_all_extended.onnx",
+    "sha256": "9d9810d4f946aacea2109ec41777cae68648834596203bed1444f1fafe40e7ad",
+    "file_bytes": 25156,
+    "nodes": 254,
+    "initializers": 57,
+    "params": 352,
+    "op_histogram": {
+      "Cast": 34,
+      "Gather": 31,
+      "Add": 24,
+      "Unsqueeze": 14,
+      "Sub": 13,
+      "Greater": 13,
+      "Where": 12,
+      "And": 12,
+      "Less": 10,
+      "ArgMax": 9,
+      "Reshape": 7,
+      "Concat": 6,
+      "Slice": 6,
+      "Equal": 6,
+      "CastLike": 5,
+      "Mul": 5,
+      "Or": 5,
+      "Shape": 4,
+      "CenterCropPad": 4,
+      "Mod": 4,
+      "Tile": 3,
+      "ScatterElements": 3,
+      "QLinearConv": 3,
+      "Flatten": 3,
+      "TopK": 2,
+      "Squeeze": 2,
+      "Div": 2,
+      "Einsum": 2,
+      "Sign": 2,
+      "ReduceSum": 1,
+      "MaxPool": 1,
+      "GatherND": 1,
+      "MatMul": 1,
+      "GatherElements": 1,
+      "Split": 1,
+      "BitwiseAnd": 1,
+      "Pad": 1
+    },
+    "max_node_inputs": 9,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [
+      {
+        "node": "qfr_qfr_q1",
+        "op": "QLinearConv",
+        "bias": "qfr_q1_b",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          3
+        ],
+        "expected_channels": 3,
+        "safe": true
+      },
+      {
+        "node": "qfr_qfr_rank",
+        "op": "QLinearConv",
+        "bias": "slice_prefix00_split",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          1
+        ],
+        "expected_channels": 1,
+        "safe": true
+      },
+      {
+        "node": "qfr_qfr_low",
+        "op": "QLinearConv",
+        "bias": "slice_prefix00_split",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          1
+        ],
+        "expected_channels": 1,
+        "safe": true
+      }
+    ],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 260,
+      "declared_tensors": 260,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "__cloak_float16_hidden",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "__cloak_float16_input",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "f24__cl_hidden",
+          "declared": [
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            1,
+            4
+          ]
+        },
+        {
+          "tensor": "f24",
+          "declared": [
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            1,
+            4
+          ]
+        },
+        {
+          "tensor": "f26",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            4
+          ]
+        },
+        {
+          "tensor": "f25_i8",
+          "declared": [
+            1,
+            4,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "f25",
+          "declared": [
+            1,
+            1,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "f25_i8__cl_hidden",
+          "declared": [
+            1,
+            1,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "__cloak_u8_input",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "rank_cast_cloak_hidden",
+          "declared": [
+            7
+          ],
+          "actual": [
+            289
+          ]
+        },
+        {
+          "tensor": "qfr_rank_f16",
+          "declared": [
+            7
+          ],
+          "actual": [
+            289
+          ]
+        },
+        {
+          "tensor": "f60r",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "f62c",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_row_profile_i8",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_col_profile_i8",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_rows_clean",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_cols_clean",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "f84",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "f86",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 73138
+    },
+    "official_like_score": {
+      "memory": 8640,
+      "params": 352,
+      "cost": 8992,
+      "score": 15.895909427866528,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 0,
+        "wrong": 1,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 46,
+        "wrong": 214,
+        "errors": 2
+      },
+      "total": {
+        "right": 49,
+        "wrong": 215,
+        "errors": 2
+      }
+    }
+  },
+  "task233_shape_cloak_9189": {
+    "label": "task233_shape_cloak_9189",
+    "task": 233,
+    "path": "scripts/golf/scratch_codex/task233/agent_graph_audit/rebased_extended2.onnx",
+    "sha256": "51b1c8692f4ebbe08667154a95ae30c55d53bc3aa194de6194755a2f5cf54032",
+    "file_bytes": 24487,
+    "nodes": 254,
+    "initializers": 56,
+    "params": 348,
+    "op_histogram": {
+      "Cast": 34,
+      "Gather": 32,
+      "Add": 24,
+      "Sub": 13,
+      "Greater": 13,
+      "Unsqueeze": 13,
+      "Where": 12,
+      "And": 12,
+      "Less": 10,
+      "ArgMax": 9,
+      "Reshape": 8,
+      "Concat": 6,
+      "Slice": 6,
+      "Equal": 6,
+      "CastLike": 5,
+      "Mul": 5,
+      "Or": 5,
+      "Shape": 4,
+      "CenterCropPad": 4,
+      "Mod": 4,
+      "Tile": 3,
+      "ScatterElements": 3,
+      "QLinearConv": 3,
+      "Flatten": 3,
+      "Squeeze": 2,
+      "Div": 2,
+      "TopK": 2,
+      "Einsum": 2,
+      "Sign": 2,
+      "ReduceSum": 1,
+      "MaxPool": 1,
+      "GatherND": 1,
+      "MatMul": 1,
+      "Split": 1,
+      "BitwiseAnd": 1,
+      "Pad": 1
+    },
+    "max_node_inputs": 9,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [
+      {
+        "node": "qfr_qfr_q1",
+        "op": "QLinearConv",
+        "bias": "qfr_q1_b",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          3
+        ],
+        "expected_channels": 3,
+        "safe": true
+      },
+      {
+        "node": "qfr_qfr_rank",
+        "op": "QLinearConv",
+        "bias": "slice_prefix00_split",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          1
+        ],
+        "expected_channels": 1,
+        "safe": true
+      },
+      {
+        "node": "qfr_qfr_low",
+        "op": "QLinearConv",
+        "bias": "slice_prefix00_split",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          1
+        ],
+        "expected_channels": 1,
+        "safe": true
+      }
+    ],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 260,
+      "declared_tensors": 260,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "__cloak_float16_hidden",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "__cloak_float16_input",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "f24__cl_hidden",
+          "declared": [
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            1,
+            4
+          ]
+        },
+        {
+          "tensor": "f24",
+          "declared": [
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            1,
+            4
+          ]
+        },
+        {
+          "tensor": "f26",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            4
+          ]
+        },
+        {
+          "tensor": "f25_i8",
+          "declared": [
+            1,
+            4,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "f25",
+          "declared": [
+            1,
+            1,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "f25_i8__cl_hidden",
+          "declared": [
+            1,
+            1,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "__cloak_u8_input",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "rank_cast_cloak_hidden",
+          "declared": [
+            7
+          ],
+          "actual": [
+            289
+          ]
+        },
+        {
+          "tensor": "qfr_rank_f16",
+          "declared": [
+            7
+          ],
+          "actual": [
+            289
+          ]
+        },
+        {
+          "tensor": "f60r",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "f62c",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_row_profile_i8",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_col_profile_i8",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_rows_clean",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "qfr_cols_clean",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "f84",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "f86",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 73339
+    },
+    "official_like_score": {
+      "memory": 8841,
+      "params": 348,
+      "cost": 9189,
+      "score": 15.874237604499115,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 0,
+        "wrong": 1,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 46,
+        "wrong": 214,
+        "errors": 2
+      },
+      "total": {
+        "right": 49,
+        "wrong": 215,
+        "errors": 2
+      }
+    }
+  },
+  "task233_sound_floor_17007": {
+    "label": "task233_sound_floor_17007",
+    "task": 233,
+    "path": "scripts/golf/scratch_codex/task233/graph_floor/packed_qlinear_hline8.onnx",
+    "sha256": "a1ccd59d540573c2c57f52e329d3d890f6c9dc9f4fdd28d21204207502a9876e",
+    "file_bytes": 40149,
+    "nodes": 396,
+    "initializers": 72,
+    "params": 921,
+    "op_histogram": {
+      "Gather": 53,
+      "Unsqueeze": 45,
+      "Cast": 33,
+      "Sub": 33,
+      "And": 33,
+      "Add": 30,
+      "Greater": 21,
+      "Reshape": 15,
+      "Or": 15,
+      "Less": 14,
+      "Concat": 10,
+      "Mul": 10,
+      "Mod": 9,
+      "ArgMax": 9,
+      "Where": 8,
+      "Equal": 8,
+      "Div": 7,
+      "Slice": 6,
+      "ReduceMax": 6,
+      "Not": 5,
+      "CastLike": 4,
+      "Shape": 3,
+      "CenterCropPad": 3,
+      "Squeeze": 2,
+      "TopK": 2,
+      "Conv": 2,
+      "ScatterElements": 2,
+      "QLinearConv": 2,
+      "ReduceSum": 1,
+      "MaxPool": 1,
+      "GatherND": 1,
+      "MatMul": 1,
+      "BitwiseAnd": 1,
+      "Pad": 1
+    },
+    "max_node_inputs": 9,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [
+      {
+        "node": "gpq_gpq_edges",
+        "op": "QLinearConv",
+        "bias": "gpq_edge_b",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          2
+        ],
+        "expected_channels": 2,
+        "safe": true
+      },
+      {
+        "node": "gpq_gpq_crossings",
+        "op": "QLinearConv",
+        "bias": "gpq_boundary_b",
+        "bias_is_initializer": true,
+        "bias_shape": [
+          1
+        ],
+        "expected_channels": 1,
+        "safe": true
+      }
+    ],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 399,
+      "declared_tensors": 100,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "__cloak_float16_hidden",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "__cloak_float16_input",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "f24__cl_hidden",
+          "declared": [
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            1,
+            4
+          ]
+        },
+        {
+          "tensor": "f24",
+          "declared": [
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            1,
+            4
+          ]
+        },
+        {
+          "tensor": "f26",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            5,
+            4
+          ]
+        },
+        {
+          "tensor": "f25_i8",
+          "declared": [
+            1,
+            4,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "f25",
+          "declared": [
+            1,
+            1,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "f25_i8__cl_hidden",
+          "declared": [
+            1,
+            1,
+            4
+          ],
+          "actual": [
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "tensor": "__cloak_u8_input",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 299,
+      "single_example_intermediate_bytes": 79738
+    },
+    "official_like_score": {
+      "memory": 16086,
+      "params": 921,
+      "cost": 17007,
+      "score": 15.258619697007587,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    }
+  },
+  "base_task366": {
+    "label": "base_task366",
+    "task": 366,
+    "path": "scripts/golf/loop_7999_13/lane_c17/base/task366.onnx",
+    "sha256": "072ca4f43fb6fe6e96cf90826d5f9b2dbdbe5016f7db3daa14f265620c1a010a",
+    "file_bytes": 76742,
+    "nodes": 753,
+    "initializers": 39,
+    "params": 365,
+    "op_histogram": {
+      "Cast": 123,
+      "Unsqueeze": 83,
+      "Gather": 63,
+      "Sub": 47,
+      "Add": 37,
+      "BitwiseAnd": 36,
+      "CastLike": 32,
+      "Greater": 31,
+      "And": 27,
+      "Div": 24,
+      "ArgMax": 24,
+      "CenterCropPad": 22,
+      "Mul": 21,
+      "Log": 21,
+      "Round": 21,
+      "Concat": 18,
+      "Equal": 17,
+      "ReduceMax": 16,
+      "BitShift": 15,
+      "Less": 12,
+      "ScatterElements": 12,
+      "GreaterOrEqual": 10,
+      "Einsum": 7,
+      "Not": 5,
+      "Where": 4,
+      "Shape": 4,
+      "Or": 4,
+      "BitwiseOr": 4,
+      "ReduceSum": 2,
+      "TopK": 2,
+      "BitwiseNot": 2,
+      "Clip": 2,
+      "Identity": 1,
+      "Max": 1,
+      "GridSample": 1,
+      "Reshape": 1,
+      "ScatterND": 1
+    },
+    "max_node_inputs": 6,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 755,
+      "declared_tensors": 755,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "safe_name_67",
+          "declared": [
+            4
+          ],
+          "actual": [
+            10
+          ]
+        },
+        {
+          "tensor": "safe_name_68",
+          "declared": [
+            4
+          ],
+          "actual": [
+            10
+          ]
+        },
+        {
+          "tensor": "safe_name_88",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_89",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_90",
+          "declared": [
+            2
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_91",
+          "declared": [
+            2
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_109",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_110",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_128",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_129",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_134",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_135",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_170",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_171",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_172",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_173",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_174",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_175",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_176",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_177",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_192",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_193",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_194",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_211",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_212",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_213",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_228",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_229",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_265",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_266",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_267",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_268",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_269",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_270",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_271",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_272",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_287",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_288",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_289",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_306",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_307",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_308",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_323",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_324",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_350",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_351",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_352",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_353",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_354",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_371",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_372",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_373",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_390",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_391",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_392",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_451",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_452",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_469",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_470",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_488",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_489",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_506",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_507",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_525",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_526",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_544",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_545",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_593",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_594",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_608",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_609",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_625",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_626",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_638",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_639",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_640",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_641",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_673",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_674",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_699",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_700",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_701",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_702",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_744",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_745",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_746",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_747",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_765",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_766",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_767",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_768",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_769",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_773",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_774",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_775",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_776",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_777",
+          "declared": [
+            5
+          ],
+          "actual": [
+            75
+          ]
+        },
+        {
+          "tensor": "safe_name_175_u16_b0",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 9186
+    },
+    "official_like_score": {
+      "memory": 7622,
+      "params": 365,
+      "cost": 7987,
+      "score": 16.01442950108261,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 251,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 255,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 251,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 255,
+        "wrong": 0,
+        "errors": 0
+      }
+    }
+  },
+  "task366_known_only_7646": {
+    "label": "task366_known_only_7646",
+    "task": 366,
+    "path": "others/2/1201/7120/task366_further_improved.onnx",
+    "sha256": "45540ecc35f21f681861dedee1b84a337a9316e8e291c131c87c5b721ee6242a",
+    "file_bytes": 77138,
+    "nodes": 761,
+    "initializers": 39,
+    "params": 365,
+    "op_histogram": {
+      "Cast": 122,
+      "Unsqueeze": 83,
+      "Gather": 63,
+      "Sub": 47,
+      "CastLike": 41,
+      "Add": 37,
+      "BitwiseAnd": 36,
+      "Greater": 31,
+      "And": 27,
+      "Div": 24,
+      "ArgMax": 24,
+      "CenterCropPad": 22,
+      "Mul": 21,
+      "Log": 21,
+      "Round": 21,
+      "Concat": 18,
+      "Equal": 17,
+      "ReduceMax": 16,
+      "BitShift": 15,
+      "Less": 12,
+      "ScatterElements": 12,
+      "GreaterOrEqual": 10,
+      "Einsum": 7,
+      "Not": 5,
+      "Where": 4,
+      "Shape": 4,
+      "Or": 4,
+      "BitwiseOr": 4,
+      "ReduceSum": 2,
+      "TopK": 2,
+      "BitwiseNot": 2,
+      "Clip": 2,
+      "Identity": 1,
+      "Max": 1,
+      "GridSample": 1,
+      "Reshape": 1,
+      "ScatterND": 1
+    },
+    "max_node_inputs": 6,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 763,
+      "declared_tensors": 755,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "safe_name_69",
+          "declared": [
+            2
+          ],
+          "actual": [
+            10
+          ]
+        },
+        {
+          "tensor": "safe_name_70",
+          "declared": [
+            2
+          ],
+          "actual": [
+            10
+          ]
+        },
+        {
+          "tensor": "safe_name_90",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_91",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_92",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_93",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_111",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_112",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_131",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_132",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_137",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_138",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_173",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_174",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_175",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_176",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_179",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_182",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_183",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_198",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_199",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_200",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_217",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_218",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_219",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_234",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_235",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_271",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_272",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_277",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_278",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_280",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_281",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_282",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_297",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_298",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_299",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_316",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_317",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_318",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_333",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_334",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_360",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_361",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_362",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_363",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_364",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_381",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_382",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_383",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_403",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_404",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_463",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_464",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_481",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_482",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_500",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_501",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_518",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_519",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_537",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_538",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_556",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_557",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_605",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_606",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_607",
+          "declared": [
+            1
+          ],
+          "actual": [
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_608",
+          "declared": [
+            1
+          ],
+          "actual": [
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_620",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_621",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_622",
+          "declared": [
+            1
+          ],
+          "actual": [
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_623",
+          "declared": [
+            1
+          ],
+          "actual": [
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_625",
+          "declared": [
+            1
+          ],
+          "actual": [
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_626",
+          "declared": [
+            1
+          ],
+          "actual": [
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_627",
+          "declared": [
+            1
+          ],
+          "actual": [
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_637",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_638",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_650",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_651",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_652",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_653",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_685",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_686",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_687",
+          "declared": [
+            1
+          ],
+          "actual": [
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_688",
+          "declared": [
+            1
+          ],
+          "actual": [
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_711",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_712",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_713",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_714",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_756",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_757",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_758",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_759",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_777",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_778",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_779",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_780",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_781",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_785",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_786",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_787",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_788",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_789",
+          "declared": [
+            5
+          ],
+          "actual": [
+            75
+          ]
+        },
+        {
+          "tensor": "safe_name_181",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_180",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_279",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_177",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 8,
+      "single_example_intermediate_bytes": 9100
+    },
+    "official_like_score": {
+      "memory": 7281,
+      "params": 365,
+      "cost": 7646,
+      "score": 16.058062085743643,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 251,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 255,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 251,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 255,
+        "wrong": 0,
+        "errors": 0
+      }
+    }
+  },
+  "task366_known_only_7916": {
+    "label": "task366_known_only_7916",
+    "task": 366,
+    "path": "others/2/1203/task366_further_improved.onnx",
+    "sha256": "ccf0de58d11bc9eac5c5996f328abdff1347f3e91b9cd28b8856b74da364814b",
+    "file_bytes": 79163,
+    "nodes": 777,
+    "initializers": 42,
+    "params": 368,
+    "op_histogram": {
+      "Cast": 133,
+      "Unsqueeze": 83,
+      "Gather": 64,
+      "Sub": 48,
+      "Add": 38,
+      "BitwiseAnd": 36,
+      "And": 31,
+      "CastLike": 31,
+      "Greater": 31,
+      "Div": 24,
+      "ArgMax": 24,
+      "Mul": 22,
+      "CenterCropPad": 21,
+      "Log": 21,
+      "Round": 21,
+      "Equal": 19,
+      "Concat": 18,
+      "ReduceMax": 16,
+      "BitShift": 15,
+      "Less": 12,
+      "ScatterElements": 12,
+      "GreaterOrEqual": 10,
+      "Einsum": 7,
+      "Or": 7,
+      "Not": 6,
+      "Where": 4,
+      "Shape": 4,
+      "BitwiseOr": 4,
+      "ReduceSum": 2,
+      "TopK": 2,
+      "BitwiseNot": 2,
+      "Clip": 2,
+      "LessOrEqual": 1,
+      "Xor": 1,
+      "Identity": 1,
+      "Max": 1,
+      "GridSample": 1,
+      "Reshape": 1,
+      "ScatterND": 1
+    },
+    "max_node_inputs": 6,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 779,
+      "declared_tensors": 779,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "safe_name_67",
+          "declared": [
+            4
+          ],
+          "actual": [
+            10
+          ]
+        },
+        {
+          "tensor": "safe_name_68",
+          "declared": [
+            4
+          ],
+          "actual": [
+            10
+          ]
+        },
+        {
+          "tensor": "safe_name_88",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_89",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_90",
+          "declared": [
+            2
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_91",
+          "declared": [
+            2
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_109",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_110",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_128",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_129",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_134",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_135",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_170",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_171",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_172",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_173",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_174",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_176",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_177",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_192",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_193",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_194",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_211",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_212",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_213",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_228",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_229",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_265",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_266",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_267",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_268",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_269",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_270",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_271",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_272",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_287",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_288",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_289",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_306",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_307",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_308",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_323",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_324",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_350",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_351",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_352",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_353",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_354",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_371",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_372",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_373",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_390",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_391",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_392",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_451",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_452",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_469",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_470",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_488",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_489",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_506",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_507",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_525",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_526",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_544",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_545",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_593",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_594",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_608",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_609",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_638",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_639",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_640",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_673",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_674",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_699",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_700",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_701",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_744",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_745",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_746",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_765",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_766",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_773",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_774",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_775",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_776",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_777",
+          "declared": [
+            61
+          ],
+          "actual": [
+            75
+          ]
+        },
+        {
+          "tensor": "safe_name_175_u16_b0",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_129_u16_b2pre",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_267_u32_for_sub",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_171_u16_b0x",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 8998
+    },
+    "official_like_score": {
+      "memory": 7548,
+      "params": 368,
+      "cost": 7916,
+      "score": 16.023358693277544,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 251,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 255,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 251,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 255,
+        "wrong": 0,
+        "errors": 0
+      }
+    }
+  },
+  "task366_known_only_7985": {
+    "label": "task366_known_only_7985",
+    "task": 366,
+    "path": "others/2/1203/task366_improved.onnx",
+    "sha256": "f69bca6435313f68a59d68938cc00ec06dbf9c90c9fae25598d94d069f08b5a3",
+    "file_bytes": 79278,
+    "nodes": 779,
+    "initializers": 42,
+    "params": 368,
+    "op_histogram": {
+      "Cast": 132,
+      "Unsqueeze": 83,
+      "Gather": 64,
+      "Sub": 48,
+      "Add": 38,
+      "BitwiseAnd": 36,
+      "CastLike": 32,
+      "And": 31,
+      "Greater": 31,
+      "Div": 24,
+      "ArgMax": 24,
+      "Mul": 22,
+      "CenterCropPad": 22,
+      "Log": 21,
+      "Round": 21,
+      "Equal": 19,
+      "Concat": 18,
+      "ReduceMax": 16,
+      "BitShift": 15,
+      "Less": 12,
+      "ScatterElements": 12,
+      "GreaterOrEqual": 10,
+      "Einsum": 7,
+      "Or": 7,
+      "Not": 7,
+      "Where": 4,
+      "Shape": 4,
+      "BitwiseOr": 4,
+      "ReduceSum": 2,
+      "TopK": 2,
+      "BitwiseNot": 2,
+      "Clip": 2,
+      "LessOrEqual": 1,
+      "Xor": 1,
+      "Identity": 1,
+      "Max": 1,
+      "GridSample": 1,
+      "Reshape": 1,
+      "ScatterND": 1
+    },
+    "max_node_inputs": 6,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 781,
+      "declared_tensors": 781,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "safe_name_67",
+          "declared": [
+            4
+          ],
+          "actual": [
+            10
+          ]
+        },
+        {
+          "tensor": "safe_name_68",
+          "declared": [
+            4
+          ],
+          "actual": [
+            10
+          ]
+        },
+        {
+          "tensor": "safe_name_88",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_89",
+          "declared": [
+            1
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_90",
+          "declared": [
+            2
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_91",
+          "declared": [
+            2
+          ],
+          "actual": [
+            30
+          ]
+        },
+        {
+          "tensor": "safe_name_109",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_110",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_128",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_129",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_134",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_135",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_170",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_171",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_172",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_173",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_174",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_175",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_176",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_177",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_192",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_193",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_194",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_211",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_212",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_213",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_228",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_229",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_265",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_266",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_267",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_268",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_269",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_270",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_271",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_272",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_287",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_288",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_289",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_306",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_307",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_308",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_323",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_324",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_350",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_351",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_352",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_353",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_354",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_371",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_372",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_373",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_390",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_391",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_392",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_451",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_452",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_469",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_470",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_488",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_489",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_506",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_507",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_525",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_526",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_544",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_545",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_593",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_594",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_608",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_609",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_625",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_626",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_638",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_639",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_640",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_641",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_673",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_674",
+          "declared": [
+            6,
+            1
+          ],
+          "actual": [
+            6,
+            6
+          ]
+        },
+        {
+          "tensor": "safe_name_699",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_700",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_701",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_702",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_744",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_745",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_746",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_747",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_765",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_766",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_767",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_768",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_769",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_773",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_774",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_775",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_776",
+          "declared": [
+            1
+          ],
+          "actual": [
+            15
+          ]
+        },
+        {
+          "tensor": "safe_name_777",
+          "declared": [
+            5
+          ],
+          "actual": [
+            75
+          ]
+        },
+        {
+          "tensor": "safe_name_175_u16_b0",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_129_u16_b2pre",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        },
+        {
+          "tensor": "safe_name_267_u32_for_sub",
+          "declared": [
+            1
+          ],
+          "actual": [
+            16
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 9151
+    },
+    "official_like_score": {
+      "memory": 7617,
+      "params": 368,
+      "cost": 7985,
+      "score": 16.014679939350888,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 251,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 255,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 251,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 255,
+        "wrong": 0,
+        "errors": 0
+      }
+    }
+  },
+  "task366_known_fail_5246": {
+    "label": "task366_known_fail_5246",
+    "task": 366,
+    "path": "others/7906/task366_improved_v2 (1).onnx",
+    "sha256": "efa536c8175b56e0ba845559adf39097560251596b6941776f3146217ceb70ce",
+    "file_bytes": 19833,
+    "nodes": 195,
+    "initializers": 51,
+    "params": 1651,
+    "op_histogram": {
+      "BitShift": 45,
+      "BitwiseAnd": 35,
+      "Cast": 32,
+      "Unsqueeze": 24,
+      "ScatterND": 9,
+      "Mul": 8,
+      "Sub": 6,
+      "Add": 5,
+      "Gather": 5,
+      "Less": 5,
+      "Concat": 5,
+      "Mod": 3,
+      "GreaterOrEqual": 3,
+      "And": 3,
+      "Min": 3,
+      "BitwiseOr": 2,
+      "Einsum": 1,
+      "Equal": 1
+    },
+    "max_node_inputs": 9,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 195,
+      "declared_tensors": 1,
+      "declared_actual_mismatches": [],
+      "undeclared_intermediate_count": 194,
+      "single_example_intermediate_bytes": 3595
+    },
+    "official_like_score": {
+      "memory": 3595,
+      "params": 1651,
+      "cost": 5246,
+      "score": 16.43477883957318,
+      "correct": false
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 0,
+        "wrong": 1,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 209,
+        "wrong": 42,
+        "errors": 0
+      },
+      "total": {
+        "right": 212,
+        "wrong": 43,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 0,
+        "wrong": 1,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 209,
+        "wrong": 42,
+        "errors": 0
+      },
+      "total": {
+        "right": 212,
+        "wrong": 43,
+        "errors": 0
+      }
+    }
+  },
+  "task366_cc_core_floor_13309": {
+    "label": "task366_cc_core_floor_13309",
+    "task": 366,
+    "path": "scripts/golf/scratch_claude/task366/cc_floor.onnx",
+    "sha256": "f17ec936b85727ec9c578074edeb9b8621895f5932d5eed9a08308a208fcd6c1",
+    "file_bytes": 1741,
+    "nodes": 20,
+    "initializers": 5,
+    "params": 274,
+    "op_histogram": {
+      "Mul": 8,
+      "MaxPool": 7,
+      "Conv": 1,
+      "Slice": 1,
+      "Greater": 1,
+      "Cast": 1,
+      "Identity": 1
+    },
+    "max_node_inputs": 3,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 20,
+      "declared_tensors": 1,
+      "declared_actual_mismatches": [],
+      "undeclared_intermediate_count": 19,
+      "single_example_intermediate_bytes": 13035
+    },
+    "official_like_score": {
+      "memory": 13035,
+      "params": 274,
+      "cost": 13309,
+      "score": 15.503804222913445,
+      "correct": false
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 0,
+        "wrong": 3,
+        "errors": 0
+      },
+      "test": {
+        "right": 0,
+        "wrong": 1,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 0,
+        "wrong": 251,
+        "errors": 0
+      },
+      "total": {
+        "right": 0,
+        "wrong": 255,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 0,
+        "wrong": 3,
+        "errors": 0
+      },
+      "test": {
+        "right": 0,
+        "wrong": 1,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 0,
+        "wrong": 251,
+        "errors": 0
+      },
+      "total": {
+        "right": 0,
+        "wrong": 255,
+        "errors": 0
+      }
+    }
+  }
+}

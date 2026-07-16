@@ -1,0 +1,110 @@
+{
+  "task": 379,
+  "status": "rejected_no_strict_lower_exact_candidate",
+  "authority": {
+    "baseline": "LB8009.46",
+    "path": "scripts/golf/loop_8004_42_plus20/agent_algebraic20_83/candidates/task379_exact_initializer_absorption.onnx",
+    "sha256": "854c63d966310949803391cf4c019b02a9c0f2a53578257fee5898386e53cf64",
+    "cost": {
+      "memory": 1570,
+      "parameters": 377,
+      "total": 1947
+    },
+    "structure": {
+      "nodes": 68,
+      "initializers": 29,
+      "value_info_entries": 0,
+      "all_nodes_live": true,
+      "all_initializers_used": true
+    },
+    "full_onnx_checker": "pass",
+    "strict_shape_inference_data_prop": "pass"
+  },
+  "admissibility": {
+    "lineage": "private-zero",
+    "required_semantics": "complete generator-support exact pass-through",
+    "policy90_allowed": false,
+    "lookup_allowed": false,
+    "cloak_allowed": false,
+    "runtime_error_allowed": false,
+    "nonfinite_allowed": false,
+    "undefined_behavior_allowed": false
+  },
+  "generator_support": {
+    "source": "inputs/arc-gen-repo/tasks/task_ecdecbb3.py",
+    "grid_size_inclusive": [12, 20],
+    "cyan_separator_count": [1, 2],
+    "optional_transpose": true,
+    "rule": "red seeds project vertically to applicable cyan separators; paths become red and contacts receive a cyan 3x3 stamp with a red center"
+  },
+  "residual_search": {
+    "dead_node_or_initializer_saving": 0,
+    "metadata_saving": 0,
+    "type_narrowing_parameter_saving": 0,
+    "remaining_precontract_family": {
+      "source_elements": 20,
+      "replacement_elements": 32,
+      "parameter_delta": 12,
+      "reason": "QCore2 has five uses and remains; the two shared 6-element maps become two 12-element dense products"
+    },
+    "prior_probes": [
+      {
+        "name": "drop_identity_mode",
+        "cost": 1942,
+        "accepted": false,
+        "reason": "NU is rank two and not an identity"
+      },
+      {
+        "name": "drop_redundant_E",
+        "cost": 1891,
+        "accepted": false,
+        "reason": "E contains a required spatial coordinate row"
+      },
+      {
+        "name": "fold_mode_into_M2",
+        "cost": 1942,
+        "accepted": false,
+        "reason": "changes the float16 terminal contraction and raw outputs"
+      },
+      {
+        "name": "add_to_sum",
+        "cost": 1947,
+        "accepted": false,
+        "reason": "invalid int32 Sum input in ONNX Runtime and no strict saving"
+      },
+      {
+        "name": "exact_operand_order_and_reciprocal_scaling",
+        "cost": 1947,
+        "accepted": false,
+        "reason": "no strict saving and nonfinite outputs remain"
+      },
+      {
+        "name": "finite_sentinel_or_uniform_scale_diagnostics",
+        "cost": 1947,
+        "accepted": false,
+        "reason": "nonexact raw algebra and no strict saving"
+      }
+    ]
+  },
+  "finite_output_audit": {
+    "first_nonfinite_node": 67,
+    "op_type": "Einsum",
+    "input_count": 28,
+    "common_dtype": "float16",
+    "all_preceding_outputs_finite": true,
+    "known_negative_infinity_count_per_audited_config": 12896,
+    "dynamic_terminal_elements": 274,
+    "float32_widening_added_parameters_lower_bound": 548,
+    "widened_cost_lower_bound": 2495,
+    "raw_pass_through_preserves_nonfinite": true
+  },
+  "candidate": null,
+  "candidate_sha256": null,
+  "candidate_cost": null,
+  "strict_gain": 0,
+  "winner_validation": {
+    "run": false,
+    "reason": "no candidate passed the strict cost-lower-than-1947 prerequisite"
+  },
+  "accepted": false
+}

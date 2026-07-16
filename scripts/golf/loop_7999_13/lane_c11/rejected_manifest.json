@@ -1,0 +1,80 @@
+{
+  "baseline_costs": {
+    "77": {"cost": 3364, "memory": 3274, "params": 90},
+    "79": {"cost": 210, "memory": 145, "params": 65},
+    "90": {"cost": 1050, "memory": 916, "params": 134},
+    "96": {"cost": 1275, "memory": 925, "params": 350},
+    "143": {"cost": 212, "memory": 100, "params": 112},
+    "153": {"cost": 237, "memory": 152, "params": 85}
+  },
+  "candidates": {
+    "task077_r07": {
+      "cost": 3345,
+      "delta_cost": -19,
+      "known_both_runtimes": "266/266, errors=0",
+      "fresh_history": "4807/5000",
+      "terminal_rejection": "Ten false declared shapes hide runtime tensors; one-example runtime intermediate bytes are 9980 versus charged memory 3254. It also fails exact fresh generalization."
+    },
+    "task079_r02": {
+      "cost": 209,
+      "delta_cost": -1,
+      "known_both_runtimes": "266/266, errors=0",
+      "fresh_history": "4962/5000",
+      "terminal_rejection": "Five false declared shapes hide a 1x10x30x30 carrier and 10-way selector; runtime intermediates total 63137 bytes versus charged memory 144. Hardmax plus a 17-input Einsum adds overfit risk, and exact fresh generalization fails."
+    },
+    "task090_r02": {
+      "cost": 348,
+      "delta_cost": -702,
+      "known_both_runtimes": "267/267, errors=0",
+      "terminal_rejection": "Twelve TfIdfVectorizer nodes and five false declared shapes form an impermissible lookup/shape-cloak carrier."
+    },
+    "task090_r04": {
+      "cost": 400,
+      "delta_cost": -650,
+      "known_both_runtimes": "267/267, errors=0",
+      "terminal_rejection": "Twelve TfIdfVectorizer nodes, a giant Einsum, and four false declared shapes form an impermissible lookup/shape-cloak carrier."
+    },
+    "task090_r06": {
+      "cost": 1004,
+      "delta_cost": -46,
+      "known_both_runtimes": "267/267, errors=0",
+      "fresh_disable_all": {"correct": 4766, "wrong": 234, "errors": 0, "total": 5000},
+      "fresh_default": {"correct": 4777, "wrong": 223, "errors": 0, "total": 5000},
+      "terminal_rejection": "Independent dual-runtime fresh exactness fails."
+    },
+    "task090_r07": {
+      "cost": 1016,
+      "delta_cost": -34,
+      "known_both_runtimes": "267/267, errors=0",
+      "fresh_disable_all": {"correct": 4786, "wrong": 214, "errors": 0, "total": 5000},
+      "fresh_default": {"correct": 4782, "wrong": 218, "errors": 0, "total": 5000},
+      "terminal_rejection": "Independent dual-runtime fresh exactness fails."
+    },
+    "task096_r01": {
+      "cost": 1111,
+      "delta_cost": -164,
+      "known_disable_all": "266/266, errors=0",
+      "terminal_rejection": "Default ORT rejects CenterCropPad shape/axes, ten false declared shapes hide dynamic QLinearConv weights, and the dynamic output-channel count prevents exact bias-safety proof."
+    },
+    "task096_r02": {
+      "cost": 1151,
+      "delta_cost": -124,
+      "known_disable_all": "266/266, errors=0",
+      "terminal_rejection": "Default ORT rejects CenterCropPad shape/axes; three false declared shapes, two TfIdfVectorizer nodes, and dynamic QLinearConv weights fail runtime, no-cloak, lookup, and bias-safety gates."
+    },
+    "task143_r02": {
+      "cost": 148,
+      "delta_cost": -64,
+      "known_both_runtimes": "266/266, errors=0",
+      "fresh_disable_all": {"correct": 2, "wrong": 4998, "errors": 0, "total": 5000},
+      "fresh_default": {"correct": 3, "wrong": 4997, "errors": 0, "total": 5000},
+      "terminal_rejection": "The five-node TfIdfVectorizer/17-input-Einsum lookup carrier catastrophically fails independent fresh validation."
+    },
+    "task153_r02": {
+      "cost": 236,
+      "delta_cost": -1,
+      "known_both_runtimes": "265/265, errors=0",
+      "terminal_rejection": "QLinearConv has 10 output channels but a length-9 bias initializer. The one-byte saving is an exact Conv bias out-of-bounds/undefined-behavior violation."
+    }
+  }
+}

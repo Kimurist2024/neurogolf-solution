@@ -1,0 +1,72 @@
+{
+  "baseline_zip": "scripts/golf/loop_8004_42/submission_8004.42_fixed_rebase_meta.zip",
+  "scope": [15, 20, 31, 68, 71, 79, 88, 105, 174, 183, 189, 206, 221, 240, 243, 259, 300, 302],
+  "accepted": [],
+  "candidates": [
+    {
+      "task": 31,
+      "path": "scripts/golf/loop_8004_42/agent_fixed18_deeper/candidates/task031_cast_carrier.onnx",
+      "baseline_cost": 224,
+      "candidate_cost": 411,
+      "projected_gain": -0.6069471626411947,
+      "known_gold": true,
+      "official_gold": true,
+      "fresh_total": 100,
+      "fresh_fails": 0,
+      "runtime_errors": 0,
+      "strict_shape_inference": true,
+      "conv_bias_ub": 0,
+      "decision": "REJECT_COST"
+    },
+    {
+      "task": 71,
+      "path": "scripts/golf/loop_8004_42/agent_fixed18_deeper/candidates/task071_cast_carrier.onnx",
+      "baseline_cost": 188,
+      "candidate_cost": null,
+      "projected_gain": null,
+      "known_gold": false,
+      "official_gold": false,
+      "fresh_total": 100,
+      "fresh_fails": 100,
+      "runtime_errors": "nonzero: Cast allocator shape mismatch {1} != {30}",
+      "strict_shape_inference": true,
+      "conv_bias_ub": 0,
+      "decision": "REJECT_RUNTIME"
+    },
+    {
+      "task": 88,
+      "path": "scripts/golf/loop_8004_42/agent_fixed18_deeper/candidates/task088_cast_carrier.onnx",
+      "baseline_cost": 218,
+      "candidate_cost": 316,
+      "projected_gain": -0.3712471507978231,
+      "known_gold": true,
+      "official_gold": true,
+      "fresh_total": 100,
+      "fresh_fails": 0,
+      "runtime_errors": 0,
+      "strict_shape_inference": true,
+      "conv_bias_ub": 0,
+      "decision": "REJECT_COST"
+    },
+    {
+      "task": 302,
+      "path": "scripts/golf/loop_8004_42/agent_fixed18_deeper/candidates/task302_cast_carrier.onnx",
+      "baseline_cost": 151,
+      "candidate_cost": 52346,
+      "projected_gain": -5.848350967777448,
+      "known_gold": true,
+      "official_gold": true,
+      "fresh_total": 100,
+      "fresh_fails": 0,
+      "runtime_errors": 0,
+      "strict_shape_inference": true,
+      "conv_bias_ub": 0,
+      "decision": "REJECT_COST"
+    }
+  ],
+  "notes": [
+    "All four transformations are value-exact CastLike-to-Cast rewrites, but changing the operator changes ORT_DISABLE_ALL allocator behavior in these stale-shape graphs.",
+    "The task183 dead Min hold_u8 was not adopted; prior evidence shows it is an allocator barrier whose removal causes Resize buffer-reuse runtime failures.",
+    "No ZIP was built or merged."
+  ]
+}

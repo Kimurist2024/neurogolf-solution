@@ -1,0 +1,3045 @@
+{
+  "authority": "submission_base_8009.46.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "tasks_scanned": 400,
+  "linear_to_arithmetic_single_use_sites": 67,
+  "operator_pair_census": {
+    "Einsum->Add": 5,
+    "Einsum->Div": 20,
+    "Einsum->Mul": 2,
+    "Einsum->Sub": 21,
+    "QLinearConv->Add": 4,
+    "QLinearConv->Mul": 1,
+    "QLinearConv->Sub": 7,
+    "QLinearMatMul->Add": 2,
+    "QLinearMatMul->Mul": 2,
+    "QLinearMatMul->Sub": 3
+  },
+  "scalar_operand_sites": 50,
+  "einsum_operand_fuse_sites": 2,
+  "offline_constant_probe_sites": 0,
+  "candidate_records": 2,
+  "strict_lower_candidates": 1,
+  "sites": [
+    {
+      "task": 14,
+      "producer_index": 15,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "mask_h",
+        "coord_h"
+      ],
+      "producer_output": "row_sum",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 19,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "rare_count",
+      "other_shape": [],
+      "other_source": "Sub",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "row_mean",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 14,
+      "producer_index": 16,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "mask_h",
+        "coord_h"
+      ],
+      "producer_output": "col_sum",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 20,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "rare_count",
+      "other_shape": [],
+      "other_source": "Sub",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "col_mean",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 14,
+      "producer_index": 17,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "mask_h",
+        "coord_h",
+        "coord_h"
+      ],
+      "producer_output": "row2_sum",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 21,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "rare_count",
+      "other_shape": [],
+      "other_source": "Sub",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "row2_mean",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 14,
+      "producer_index": 18,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "mask_h",
+        "coord_h",
+        "coord_h"
+      ],
+      "producer_output": "col2_sum",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 22,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "rare_count",
+      "other_shape": [],
+      "other_source": "Sub",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "col2_mean",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 29,
+      "producer_index": 23,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "xh",
+        "xh",
+        "foh",
+        "halfh",
+        "halfh",
+        "invh"
+      ],
+      "producer_output": "Qrf",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 25,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "Qcf",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "Qdn",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 29,
+      "producer_index": 24,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "xh",
+        "xh",
+        "foh",
+        "halfh",
+        "halfh",
+        "invh"
+      ],
+      "producer_output": "Qcf",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 25,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "Qrf",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "Qdn",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 35,
+      "producer_index": 57,
+      "producer_op": "QLinearMatMul",
+      "producer_inputs": [
+        "rank_rowsT",
+        "one_f",
+        "zero_u8",
+        "rank_colT3",
+        "one_f",
+        "zero_u8",
+        "one_f",
+        "zero_u8"
+      ],
+      "producer_output": "poolT3",
+      "producer_output_shape": [
+        1,
+        1,
+        4,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 58,
+      "consumer_op": "Add",
+      "linear_side": 0,
+      "other_operand": "rightvT",
+      "other_shape": [
+        1,
+        1,
+        4,
+        1
+      ],
+      "other_source": "Cast",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "poolT3r",
+      "consumer_output_shape": [
+        1,
+        1,
+        4,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 38,
+      "producer_index": 2,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "ga",
+        "p",
+        "z",
+        "ga",
+        "p",
+        "z",
+        "p",
+        "z"
+      ],
+      "producer_output": "ha",
+      "producer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 6,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "hr",
+      "other_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "other_source": "QLinearConv",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "hb",
+      "consumer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 38,
+      "producer_index": 5,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "gr",
+        "p",
+        "z",
+        "gr",
+        "p",
+        "z",
+        "p",
+        "z"
+      ],
+      "producer_output": "hr",
+      "producer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 6,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "ha",
+      "other_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "other_source": "QLinearConv",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "hb",
+      "consumer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 44,
+      "producer_index": 8,
+      "producer_op": "QLinearMatMul",
+      "producer_inputs": [
+        "half_cols_u8",
+        "one1",
+        "qzp",
+        "ones10",
+        "one1",
+        "qzp",
+        "one1",
+        "qzp"
+      ],
+      "producer_output": "width_u8",
+      "producer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 10,
+      "consumer_op": "Mul",
+      "linear_side": 1,
+      "other_operand": "height",
+      "other_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "other_source": "MaxPool",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "area_u8",
+      "consumer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 44,
+      "producer_index": 9,
+      "producer_op": "QLinearMatMul",
+      "producer_inputs": [
+        "half_cols",
+        "one1",
+        "qzp",
+        "ones10",
+        "one1",
+        "qzp",
+        "one1",
+        "qzp"
+      ],
+      "producer_output": "sumgray_u8",
+      "producer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 11,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "area_u8",
+      "other_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "other_source": "Mul",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "hcnt_u8",
+      "consumer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 44,
+      "producer_index": 12,
+      "producer_op": "QLinearMatMul",
+      "producer_inputs": [
+        "half_cols_u8",
+        "one1",
+        "qzp",
+        "pos10_col",
+        "one1",
+        "qzp",
+        "one1",
+        "qzp"
+      ],
+      "producer_output": "mask_m1_u8",
+      "producer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 14,
+      "consumer_op": "Mul",
+      "linear_side": 1,
+      "other_operand": "height",
+      "other_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "other_source": "MaxPool",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "full_m1_u8",
+      "consumer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 44,
+      "producer_index": 13,
+      "producer_op": "QLinearMatMul",
+      "producer_inputs": [
+        "half_cols",
+        "one1",
+        "qzp",
+        "pos10_col",
+        "one1",
+        "qzp",
+        "one1",
+        "qzp"
+      ],
+      "producer_output": "gray_m1_u8",
+      "producer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 15,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "full_m1_u8",
+      "other_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "other_source": "Mul",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "hm1_u8",
+      "consumer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 44,
+      "producer_index": 28,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "present_mask",
+        "one1",
+        "qzp",
+        "color_ids_u8",
+        "one1",
+        "qzp",
+        "one1",
+        "qzp"
+      ],
+      "producer_output": "psum_u8",
+      "producer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 35,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "mc_sum",
+      "other_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "other_source": "QLinearConv",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "dust",
+      "consumer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 44,
+      "producer_index": 32,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "codes",
+        "one1",
+        "qzp",
+        "vones5",
+        "one1",
+        "qzp",
+        "one1",
+        "qzp"
+      ],
+      "producer_output": "mc_sum",
+      "producer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 35,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "psum_u8",
+      "other_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "other_source": "QLinearConv",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "dust",
+      "consumer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 49,
+      "producer_index": 8,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "x",
+        "x",
+        "scores"
+      ],
+      "producer_output": "row_w",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 12,
+      "consumer_op": "Div",
+      "linear_side": 1,
+      "other_operand": "area_scaled",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "h_end",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "scalar_divided_by_linear_output_is_nonlinear_reciprocal",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 49,
+      "producer_index": 9,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "x",
+        "x",
+        "scores"
+      ],
+      "producer_output": "col_w",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 13,
+      "consumer_op": "Div",
+      "linear_side": 1,
+      "other_operand": "area_scaled",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "w_end",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "scalar_divided_by_linear_output_is_nonlinear_reciprocal",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 54,
+      "producer_index": 36,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input16",
+        "B",
+        "coord",
+        "coord"
+      ],
+      "producer_output": "sumR2",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 37,
+      "consumer_op": "Mul",
+      "linear_side": 1,
+      "other_operand": "bcount",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "vr0",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "einsum_operand_fuse",
+      "reason": "multiplicative scalar can be appended as an Einsum operand",
+      "known_shape_cloak": true
+    },
+    {
+      "task": 68,
+      "producer_index": 5,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "gmap_i32",
+        "coord_i32"
+      ],
+      "producer_output": "row_value_i32",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 6,
+      "consumer_index": 7,
+      "consumer_op": "Add",
+      "linear_side": 0,
+      "other_operand": "offsets_i32",
+      "other_shape": [
+        3
+      ],
+      "other_source": "initializer",
+      "other_constant_dtype": "int32",
+      "other_constant_shape": [
+        3
+      ],
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "row_indices_i32",
+      "consumer_output_shape": [
+        3
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 68,
+      "producer_index": 6,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "gmap_i32",
+        "coord_i32"
+      ],
+      "producer_output": "col_value_i32",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 6,
+      "consumer_index": 8,
+      "consumer_op": "Add",
+      "linear_side": 0,
+      "other_operand": "offsets_i32",
+      "other_shape": [
+        3
+      ],
+      "other_source": "initializer",
+      "other_constant_dtype": "int32",
+      "other_constant_shape": [
+        3
+      ],
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "col_indices_i32",
+      "consumer_output_shape": [
+        3
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 89,
+      "producer_index": 51,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "value",
+        "q_scale",
+        "c2_u8",
+        "red_all_u8",
+        "q_scale",
+        "q_zp_u8",
+        "q_scale",
+        "q_zp_u8"
+      ],
+      "producer_output": "red_Tall_u8",
+      "producer_output_shape": [
+        1,
+        1,
+        5,
+        5
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 53,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "red_Tlone_u8",
+      "other_shape": [
+        1,
+        1,
+        5,
+        5
+      ],
+      "other_source": "QLinearConv",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "red_Tval_u8",
+      "consumer_output_shape": [
+        1,
+        1,
+        5,
+        5
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 89,
+      "producer_index": 52,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "value",
+        "q_scale",
+        "c2_u8",
+        "red_lone_u8",
+        "q_scale",
+        "q_zp_u8",
+        "q_scale",
+        "q_zp_u8"
+      ],
+      "producer_output": "red_Tlone_u8",
+      "producer_output_shape": [
+        1,
+        1,
+        5,
+        5
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 53,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "red_Tall_u8",
+      "other_shape": [
+        1,
+        1,
+        5,
+        5
+      ],
+      "other_source": "QLinearConv",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "red_Tval_u8",
+      "consumer_output_shape": [
+        1,
+        1,
+        5,
+        5
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 92,
+      "producer_index": 5,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_hid_f16",
+        "idx_row_hid"
+      ],
+      "producer_output": "sum_x_all",
+      "producer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 29,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "c1_all_f16",
+      "other_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "other_source": "CastLike",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "c2",
+      "consumer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 92,
+      "producer_index": 6,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_hid_f16",
+        "idx_row_hid"
+      ],
+      "producer_output": "sum_y_all",
+      "producer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 17,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "r1_all_f16",
+      "other_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "other_source": "CastLike",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "r2",
+      "consumer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 105,
+      "producer_index": 15,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "out_basis",
+        "out_basis",
+        "input",
+        "out_basis",
+        "out_basis",
+        "coord_basis",
+        "pair_top",
+        "coord_basis",
+        "pair_bottom",
+        "coord_basis",
+        "root_2",
+        "coord_basis",
+        "pair_right",
+        "coord_basis",
+        "pair_top",
+        "coord_basis",
+        "pair_bottom",
+        "coord_basis",
+        "root_2",
+        "coord_basis",
+        "pair_right",
+        "coord_basis",
+        "T_base",
+        "coord_basis",
+        "T_base",
+        "coord_basis",
+        "T_base",
+        "T_base",
+        "coord_basis",
+        "T_base"
+      ],
+      "producer_output": "h_pair",
+      "producer_output_shape": [
+        2
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 17,
+      "consumer_op": "Add",
+      "linear_side": 0,
+      "other_operand": "pair_top",
+      "other_shape": [
+        2
+      ],
+      "other_source": "Cast",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "pair_h",
+      "consumer_output_shape": [
+        2
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 105,
+      "producer_index": 16,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "out_basis",
+        "out_basis",
+        "input",
+        "out_basis",
+        "out_basis",
+        "coord_basis",
+        "pair_top",
+        "coord_basis",
+        "pair_bottom",
+        "coord_basis",
+        "root_2",
+        "coord_basis",
+        "pair_right",
+        "coord_basis",
+        "pair_top",
+        "coord_basis",
+        "pair_bottom",
+        "coord_basis",
+        "root_2",
+        "coord_basis",
+        "pair_right",
+        "coord_basis",
+        "T_base",
+        "coord_basis",
+        "T_base",
+        "coord_basis",
+        "T_base",
+        "T_base",
+        "coord_basis",
+        "T_base"
+      ],
+      "producer_output": "v_pair",
+      "producer_output_shape": [
+        2
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 18,
+      "consumer_op": "Add",
+      "linear_side": 0,
+      "other_operand": "root_2",
+      "other_shape": [
+        2
+      ],
+      "other_source": "initializer",
+      "other_constant_dtype": "float32",
+      "other_constant_shape": [
+        2
+      ],
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "pair_v",
+      "consumer_output_shape": [
+        2
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 117,
+      "producer_index": 7,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_f16_hidden",
+        "color_f",
+        "color_f"
+      ],
+      "producer_output": "Q",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 13,
+      "consumer_op": "Mul",
+      "linear_side": 1,
+      "other_operand": "N",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "NQ",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "einsum_operand_fuse",
+      "reason": "multiplicative scalar can be appended as an Einsum operand",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 117,
+      "producer_index": 11,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_f16_hidden",
+        "color_f",
+        "coord"
+      ],
+      "producer_output": "Cc",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 33,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "lC_sel",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Mul",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "cx5_diff",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 133,
+      "producer_index": 30,
+      "producer_op": "QLinearMatMul",
+      "producer_inputs": [
+        "pfix_mask_i8",
+        "ones30",
+        "zero_i8",
+        "pfix_delta_w",
+        "ones30",
+        "zero_i8",
+        "ones30",
+        "zero_i8"
+      ],
+      "producer_output": "pfix_delta_i8",
+      "producer_output_shape": [
+        1,
+        1
+      ],
+      "producer_output_type": 3,
+      "consumer_index": 31,
+      "consumer_op": "Add",
+      "linear_side": 1,
+      "other_operand": "p_rel__cast1_t",
+      "other_shape": [
+        1,
+        1
+      ],
+      "other_source": "Cast",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "p_rel_fixed_i8",
+      "consumer_output_shape": [
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_add_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 138,
+      "producer_index": 33,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_f16",
+        "seed_color_weights_f16",
+        "r_ge_f",
+        "r_le_f",
+        "c_ge_f",
+        "c_le_f"
+      ],
+      "producer_output": "interior_n",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 35,
+      "consumer_op": "Div",
+      "linear_side": 1,
+      "other_operand": "interior_color_sum",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "draw_color_f",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "scalar_divided_by_linear_output_is_nonlinear_reciprocal",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 138,
+      "producer_index": 34,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_f16",
+        "line_channel_weights",
+        "r_ge_f",
+        "r_le_f",
+        "c_ge_f",
+        "c_le_f"
+      ],
+      "producer_output": "interior_color_sum",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 35,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "interior_n",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "draw_color_f",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 148,
+      "producer_index": 1,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "P",
+        "H",
+        "zexp",
+        "B",
+        "zexp",
+        "thr255"
+      ],
+      "producer_output": "allsum",
+      "producer_output_shape": [
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 3,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "leftsum",
+      "other_shape": [
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "rightsum_raw",
+      "consumer_output_shape": [
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 156,
+      "producer_index": 7,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "row_core",
+        "scale1",
+        "u0",
+        "w3",
+        "scale1",
+        "u0",
+        "scale1",
+        "u0"
+      ],
+      "producer_output": "row_sums",
+      "producer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 9,
+      "consumer_op": "Add",
+      "linear_side": 0,
+      "other_operand": "col_sums",
+      "other_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "other_source": "QLinearConv",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "total_sums",
+      "consumer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 156,
+      "producer_index": 8,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "col_core",
+        "scale1",
+        "u0",
+        "w_colsum",
+        "scale1",
+        "u0",
+        "scale1",
+        "u0"
+      ],
+      "producer_output": "col_sums",
+      "producer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 9,
+      "consumer_op": "Add",
+      "linear_side": 1,
+      "other_operand": "row_sums",
+      "other_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "other_source": "QLinearConv",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "total_sums",
+      "consumer_output_shape": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 158,
+      "producer_index": 158,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "p_mag",
+        "local_offset"
+      ],
+      "producer_output": "scaled_local_offset",
+      "producer_output_shape": [
+        6,
+        1,
+        3
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 159,
+      "consumer_op": "Add",
+      "linear_side": 1,
+      "other_operand": "obj_base",
+      "other_shape": [
+        1,
+        3
+      ],
+      "other_source": "Add",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "cell_base",
+      "consumer_output_shape": [
+        6,
+        1,
+        3
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 159,
+      "producer_index": 0,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "red_mask"
+      ],
+      "producer_output": "red_count_f",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 19,
+      "consumer_op": "Div",
+      "linear_side": 1,
+      "other_operand": "cEnd32",
+      "other_shape": [
+        1
+      ],
+      "other_source": "initializer",
+      "other_constant_dtype": "float32",
+      "other_constant_shape": [
+        1
+      ],
+      "other_constant_uniform": true,
+      "other_constant_value": "105.69999694824219",
+      "consumer_output": "end_s",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "scalar_divided_by_linear_output_is_nonlinear_reciprocal",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 159,
+      "producer_index": 7,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "q16",
+        "color_power",
+        "desc30"
+      ],
+      "producer_output": "sprite_row_code16",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 9,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "color_code16",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "row_log16",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 159,
+      "producer_index": 8,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "q16",
+        "color_power",
+        "desc30"
+      ],
+      "producer_output": "sprite_col_code16",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 10,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "color_code16",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "col_log16",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 200,
+      "producer_index": 1,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "color_w",
+        "width_w"
+      ],
+      "producer_output": "seed_prod",
+      "producer_output_shape": [
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 2,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "color_f",
+      "other_shape": [
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "seed_f",
+      "consumer_output_shape": [
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 213,
+      "producer_index": 0,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "Cmask"
+      ],
+      "producer_output": "nongray",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 2,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "area",
+      "other_shape": [
+        1
+      ],
+      "other_source": "ReduceSum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "gray",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 280,
+      "producer_index": 0,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "input",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "input",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "Bemb",
+        "Bemb",
+        "Gcoef"
+      ],
+      "producer_output": "det_a",
+      "producer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 2,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "det_b",
+      "other_shape": [
+        1,
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "det2",
+      "consumer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 280,
+      "producer_index": 1,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "input",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "input",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "Bemb",
+        "Bemb",
+        "Gcoef"
+      ],
+      "producer_output": "det_b",
+      "producer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 2,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "det_a",
+      "other_shape": [
+        1,
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "det2",
+      "consumer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 280,
+      "producer_index": 6,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "idxF"
+      ],
+      "producer_output": "row_a",
+      "producer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 8,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "row_b",
+      "other_shape": [
+        1,
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "row_num",
+      "consumer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 280,
+      "producer_index": 7,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "idxF"
+      ],
+      "producer_output": "row_b",
+      "producer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 8,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "row_a",
+      "other_shape": [
+        1,
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "row_num",
+      "consumer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 280,
+      "producer_index": 10,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "idxF"
+      ],
+      "producer_output": "col_a",
+      "producer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 12,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "col_b",
+      "other_shape": [
+        1,
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "col_num",
+      "consumer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 280,
+      "producer_index": 11,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "idxF"
+      ],
+      "producer_output": "col_b",
+      "producer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 12,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "col_a",
+      "other_shape": [
+        1,
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "col_num",
+      "consumer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 280,
+      "producer_index": 23,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "pow2"
+      ],
+      "producer_output": "row_code_a",
+      "producer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 25,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "row_code_b",
+      "other_shape": [
+        1,
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "row_code_num",
+      "consumer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 280,
+      "producer_index": 24,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "pow2"
+      ],
+      "producer_output": "row_code_b",
+      "producer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 25,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "row_code_a",
+      "other_shape": [
+        1,
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "row_code_num",
+      "consumer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 280,
+      "producer_index": 30,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "pow2"
+      ],
+      "producer_output": "col_code_a",
+      "producer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 32,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "col_code_b",
+      "other_shape": [
+        1,
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "col_code_num",
+      "consumer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 280,
+      "producer_index": 31,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Rcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "input",
+        "Bemb",
+        "Bemb",
+        "Gcoef",
+        "pow2"
+      ],
+      "producer_output": "col_code_b",
+      "producer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 32,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "col_code_a",
+      "other_shape": [
+        1,
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "col_code_num",
+      "consumer_output_shape": [
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 308,
+      "producer_index": 4,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_f16",
+        "input_f16",
+        "idx30",
+        "idx30"
+      ],
+      "producer_output": "rsum",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 9,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "r2sum",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "vr_all",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 310,
+      "producer_index": 6,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "rare8",
+        "idx30",
+        "scale"
+      ],
+      "producer_output": "rs",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 8,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "halfspan",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "rmean",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 310,
+      "producer_index": 7,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input",
+        "rare8",
+        "idx30",
+        "scale"
+      ],
+      "producer_output": "cs",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 1,
+      "consumer_index": 11,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "halfspan",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "cmean",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 324,
+      "producer_index": 11,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "graph_input_cast_0",
+        "active_oh",
+        "seedsel",
+        "coord",
+        "coord",
+        "binom",
+        "signpow",
+        "base0",
+        "onehot_values",
+        "onehot_values",
+        "base0",
+        "onehot_values",
+        "onehot_values",
+        "refdiff",
+        "onehot_values",
+        "seedsel",
+        "Emap"
+      ],
+      "producer_output": "sig_sqsum",
+      "producer_output_shape": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 14,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "sum_sq",
+      "other_shape": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "other_source": "Mul",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "root_diff",
+      "consumer_output_shape": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 355,
+      "producer_index": 17,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "top8",
+        "q_s",
+        "zero8",
+        "score",
+        "q_s",
+        "zero8",
+        "q_s",
+        "zero8"
+      ],
+      "producer_output": "sT",
+      "producer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 21,
+      "consumer_op": "Add",
+      "linear_side": 1,
+      "other_operand": "top_cnt",
+      "other_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "other_source": "Sub",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "top_total",
+      "consumer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_add_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 355,
+      "producer_index": 18,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "top8",
+        "q_neg",
+        "one8",
+        "score",
+        "q_s",
+        "zero8",
+        "q_s",
+        "zero8"
+      ],
+      "producer_output": "sB",
+      "producer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 22,
+      "consumer_op": "Add",
+      "linear_side": 1,
+      "other_operand": "bot_cnt",
+      "other_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "other_source": "Sub",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "bot_total",
+      "consumer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_add_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 368,
+      "producer_index": 5,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "lab_rev",
+        "one_f",
+        "source_base",
+        "b2",
+        "one_f",
+        "zero_u8",
+        "one_f",
+        "source_base"
+      ],
+      "producer_output": "patch",
+      "producer_output_shape": [
+        1,
+        1,
+        4,
+        4
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 6,
+      "consumer_op": "Mul",
+      "linear_side": 0,
+      "other_operand": "mul_codes",
+      "other_shape": [
+        2,
+        1,
+        1,
+        1
+      ],
+      "other_source": "initializer",
+      "other_constant_dtype": "uint8",
+      "other_constant_shape": [
+        2,
+        1,
+        1,
+        1
+      ],
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "kernel_features",
+      "consumer_output_shape": [
+        2,
+        1,
+        4,
+        4
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 370,
+      "producer_index": 36,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input20",
+        "sel_black",
+        "coords20"
+      ],
+      "producer_output": "black_row_weight",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 37,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "black_count",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "hint_row_center",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 374,
+      "producer_index": 8,
+      "producer_op": "QLinearConv",
+      "producer_inputs": [
+        "hmask",
+        "s1",
+        "c0",
+        "ones4",
+        "s1",
+        "c0",
+        "s1",
+        "c0"
+      ],
+      "producer_output": "h_col_counts",
+      "producer_output_shape": [
+        1,
+        1,
+        1,
+        10
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 9,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "occ_col_counts",
+      "other_shape": [
+        1,
+        1,
+        1,
+        10
+      ],
+      "other_source": "QLinearConv",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "col_counts",
+      "consumer_output_shape": [
+        1,
+        1,
+        1,
+        10
+      ],
+      "eligibility": "ineligible",
+      "reason": "other_operand_not_scalar",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 374,
+      "producer_index": 16,
+      "producer_op": "QLinearMatMul",
+      "producer_inputs": [
+        "occ_col_counts",
+        "s1",
+        "c0",
+        "ones4",
+        "s1",
+        "c0",
+        "s1",
+        "c0"
+      ],
+      "producer_output": "sumlen",
+      "producer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "producer_output_type": 2,
+      "consumer_index": 17,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "gmax",
+      "other_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "other_source": "Max",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "restsum",
+      "consumer_output_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 377,
+      "producer_index": 13,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "areas",
+        "min_geb_f",
+        "one_vec_f16"
+      ],
+      "producer_output": "min_area",
+      "producer_output_shape": [
+        1,
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 15,
+      "consumer_op": "Div",
+      "linear_side": 1,
+      "other_operand": "min_moment",
+      "other_shape": [
+        1,
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "row_centroid",
+      "consumer_output_shape": [
+        1,
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "scalar_divided_by_linear_output_is_nonlinear_reciprocal",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 387,
+      "producer_index": 5,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_f",
+        "b",
+        "a"
+      ],
+      "producer_output": "l",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 6,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "j",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "n",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 387,
+      "producer_index": 7,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_f",
+        "b",
+        "a",
+        "a"
+      ],
+      "producer_output": "o",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 8,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "j",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "q",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 387,
+      "producer_index": 9,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_f",
+        "b",
+        "a"
+      ],
+      "producer_output": "r",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 10,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "j",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "t",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 387,
+      "producer_index": 11,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_f",
+        "b",
+        "a",
+        "a"
+      ],
+      "producer_output": "u",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 12,
+      "consumer_op": "Div",
+      "linear_side": 0,
+      "other_operand": "j",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "w",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_div_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 387,
+      "producer_index": 31,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "input_f",
+        "b",
+        "a",
+        "a"
+      ],
+      "producer_output": "N",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 33,
+      "consumer_op": "Sub",
+      "linear_side": 0,
+      "other_operand": "P",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "Q",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    },
+    {
+      "task": 387,
+      "producer_index": 32,
+      "producer_op": "Einsum",
+      "producer_inputs": [
+        "j",
+        "n",
+        "t"
+      ],
+      "producer_output": "P",
+      "producer_output_shape": [
+        1
+      ],
+      "producer_output_type": 10,
+      "consumer_index": 33,
+      "consumer_op": "Sub",
+      "linear_side": 1,
+      "other_operand": "N",
+      "other_shape": [
+        1
+      ],
+      "other_source": "Einsum",
+      "other_constant_dtype": null,
+      "other_constant_shape": null,
+      "other_constant_uniform": false,
+      "other_constant_value": null,
+      "consumer_output": "Q",
+      "consumer_output_shape": [
+        1
+      ],
+      "eligibility": "ineligible",
+      "reason": "dynamic_sub_has_no_supported_linear_bias_or_scale_slot",
+      "known_shape_cloak": false
+    }
+  ],
+  "candidates": [
+    {
+      "task": 54,
+      "site": {
+        "task": 54,
+        "producer_index": 36,
+        "producer_op": "Einsum",
+        "producer_inputs": [
+          "input16",
+          "B",
+          "coord",
+          "coord"
+        ],
+        "producer_output": "sumR2",
+        "producer_output_shape": [
+          1
+        ],
+        "producer_output_type": 10,
+        "consumer_index": 37,
+        "consumer_op": "Mul",
+        "linear_side": 1,
+        "other_operand": "bcount",
+        "other_shape": [
+          1
+        ],
+        "other_source": "Einsum",
+        "other_constant_dtype": null,
+        "other_constant_shape": null,
+        "other_constant_uniform": false,
+        "other_constant_value": null,
+        "consumer_output": "vr0",
+        "consumer_output_shape": [
+          1
+        ],
+        "eligibility": "einsum_operand_fuse",
+        "reason": "multiplicative scalar can be appended as an Einsum operand",
+        "known_shape_cloak": true
+      },
+      "structure": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "nonstatic": [],
+        "conv_bias_findings": [],
+        "conv_bias_ub0": true,
+        "pass": true
+      },
+      "baseline_profile": {
+        "memory": 2008,
+        "params": 250,
+        "cost": 2258
+      },
+      "candidate_profile": {
+        "memory": 2006,
+        "params": 250,
+        "cost": 2256
+      },
+      "activation_bytes_removed": 2,
+      "strict_lower": true,
+      "path": "scripts/golf/root_linear_output_affine_absorb_267/candidates/task054_einsum_scalar_fuse.onnx",
+      "sha256": "be1ebdaa57005aada607927c482e892465295079a7afae18c80cbb86d5483cf6"
+    },
+    {
+      "task": 117,
+      "site": {
+        "task": 117,
+        "producer_index": 7,
+        "producer_op": "Einsum",
+        "producer_inputs": [
+          "input_f16_hidden",
+          "color_f",
+          "color_f"
+        ],
+        "producer_output": "Q",
+        "producer_output_shape": [
+          1
+        ],
+        "producer_output_type": 10,
+        "consumer_index": 13,
+        "consumer_op": "Mul",
+        "linear_side": 1,
+        "other_operand": "N",
+        "other_shape": [
+          1
+        ],
+        "other_source": "Einsum",
+        "other_constant_dtype": null,
+        "other_constant_shape": null,
+        "other_constant_uniform": false,
+        "other_constant_value": null,
+        "consumer_output": "NQ",
+        "consumer_output_shape": [
+          1
+        ],
+        "eligibility": "einsum_operand_fuse",
+        "reason": "multiplicative scalar can be appended as an Einsum operand",
+        "known_shape_cloak": false
+      },
+      "structure": {
+        "full_check": true,
+        "strict_data_prop": false,
+        "strict_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:AffineGrid, node name: grid3): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n",
+        "nonstatic": [],
+        "conv_bias_findings": [],
+        "conv_bias_ub0": true,
+        "pass": false
+      },
+      "baseline_profile": {
+        "memory": 496,
+        "params": 109,
+        "cost": 605
+      }
+    }
+  ],
+  "task367_single_use_exclusion": [
+    {
+      "task": 367,
+      "producer_index": 25,
+      "output": "G",
+      "uses": 7,
+      "reason": "fanout is seven (including Mul and Div), outside the required single-use-output gate; task is also known shape-cloaked"
+    }
+  ]
+}

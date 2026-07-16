@@ -1,0 +1,56 @@
+{
+  "lane": "b31",
+  "task": 192,
+  "decision": "NO_PROMOTION",
+  "baseline": {
+    "path": "scripts/golf/loop_7999_13/lane_sound/baseline/task192.onnx",
+    "sha256": "e7f9a11b93b611acfa4bba39e90e1ddf24223d50add4277fe9716f21f6ede10c",
+    "memory": 88,
+    "params": 1521,
+    "cost": 1609
+  },
+  "sound_control": {
+    "path": "scripts/golf/loop_7999_13/lane_sound/task192_sound_control_cost3325.onnx",
+    "sha256": "16f59d172be152d14e087e54085d6ef2cb6ee188528e70e9549c1a3fac391193",
+    "memory": 3208,
+    "params": 117,
+    "cost": 3325,
+    "known": "265/265",
+    "fresh": "5000/5000",
+    "reason": "generator-SOUND but 1716 cost above the retained baseline"
+  },
+  "probes": [
+    {
+      "path": "scripts/golf/loop_7999_13/lane_b31/task192_conv3_probe.onnx",
+      "sha256": "15139991449b328d6f68924f0016256847ea73d83d5ba318ef93f63d2757fec0",
+      "memory": 88,
+      "params": 921,
+      "cost": 1009,
+      "verifier_known": "fail",
+      "verifier_fresh": "0/500",
+      "margin_stable": true,
+      "margin_min": 1.0,
+      "reason": "selected-color classifier omitted the required positive background output channel; official threshold semantics are per-channel >0, not argmax"
+    },
+    {
+      "architecture": "3x3 Conv with explicit background channel",
+      "training_cases": 500,
+      "result": "LP_INFEASIBLE",
+      "reason": "the background complement of the horizontal-presence AND vertical-presence predicate is not a single linear threshold over raw 3x3 one-hot counts"
+    },
+    {
+      "architecture": "3x4 Conv, left pad 1",
+      "training_cases": 500,
+      "nominal_cost": 1309,
+      "result": "LP_INFEASIBLE"
+    },
+    {
+      "architecture": "3x4 Conv, left pad 2",
+      "training_cases": 500,
+      "nominal_cost": 1309,
+      "result": "LP_INFEASIBLE"
+    }
+  ],
+  "shared_zip_modified": false,
+  "projected_gain": 0.0
+}

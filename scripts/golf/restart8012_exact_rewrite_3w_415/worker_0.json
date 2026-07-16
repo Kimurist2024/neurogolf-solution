@@ -1,0 +1,471 @@
+{
+  "worker": 0,
+  "pid": 83014,
+  "tasks": [
+    8,
+    14,
+    29,
+    36,
+    51,
+    59,
+    64,
+    71,
+    79,
+    91,
+    94,
+    105,
+    109,
+    119,
+    123,
+    136,
+    148,
+    156,
+    162,
+    180,
+    189,
+    194,
+    200,
+    212,
+    218,
+    224,
+    228,
+    234,
+    243,
+    250,
+    257,
+    263,
+    268,
+    273,
+    279,
+    295,
+    301,
+    308,
+    315,
+    323,
+    335,
+    345,
+    358,
+    376,
+    387,
+    394,
+    400
+  ],
+  "baseline_failures": [
+    {
+      "task": 8,
+      "canonical_io": "contract:output:3:(1, 1, 1, 1)"
+    },
+    {
+      "task": 14,
+      "canonical_io": "contract:output:1:(1, 1, 1, 1)"
+    },
+    {
+      "task": 29,
+      "canonical_io": "contract:output:3:(1, 10, 30, 30)"
+    },
+    {
+      "task": 36,
+      "canonical_io": "contract:output:6:(1, 10, 30, 30)"
+    },
+    {
+      "task": 71,
+      "canonical_io": "contract:output:1:(1, 10, 30, 1)"
+    },
+    {
+      "task": 79,
+      "canonical_io": "contract:output:6:(1, 10, 30, 30)"
+    },
+    {
+      "task": 91,
+      "canonical_io": "contract:output:3:(1, 1, 1, 1)"
+    },
+    {
+      "task": 109,
+      "canonical_io": "contract:output:6:(1, 10, 19, 30)"
+    },
+    {
+      "task": 136,
+      "canonical_io": "contract:output:10:(1, 10, 30, 30)"
+    },
+    {
+      "task": 156,
+      "canonical_io": "contract:output:2:(1, 10, 30, 30)"
+    },
+    {
+      "task": 180,
+      "canonical_io": "contract:output:3:(1, 10, 30, 30)"
+    },
+    {
+      "task": 189,
+      "canonical_io": "contract:output:3:(1, 1, 1, 1)"
+    },
+    {
+      "task": 200,
+      "canonical_io": "contract:output:10:(1, 10, 30, 30)"
+    },
+    {
+      "task": 218,
+      "canonical_io": "contract:output:3:(1, 10, 30, 30)"
+    },
+    {
+      "task": 234,
+      "canonical_io": "contract:output:1:(1, 1, 30, 30)"
+    },
+    {
+      "task": 243,
+      "canonical_io": "contract:output:1:(1, 1, 1, 1)"
+    },
+    {
+      "task": 250,
+      "canonical_io": "contract:output:2:(1, 10, 30, 30)"
+    },
+    {
+      "task": 263,
+      "canonical_io": "contract:output:2:(1, 10, 30, 30)"
+    },
+    {
+      "task": 301,
+      "canonical_io": "contract:output:10:(1, 10, 30, 30)"
+    },
+    {
+      "task": 308,
+      "canonical_io": "contract:output:2:(1, 1, 1, 1)"
+    },
+    {
+      "task": 345,
+      "canonical_io": "contract:output:6:(1, 10, 30, 30)"
+    },
+    {
+      "task": 387,
+      "canonical_io": "contract:output:6:(1, 1, 1, 1)"
+    },
+    {
+      "task": 394,
+      "canonical_io": "contract:output:10:(1, 1, 30, 30)"
+    },
+    {
+      "task": 400,
+      "canonical_io": "contract:output:3:(1, 10, 30, 30)"
+    }
+  ],
+  "rows": [
+    {
+      "task": 64,
+      "label": "opt_extract_constant_to_initializer",
+      "authority_sha256": "56a992e221f00d83d0fe13f9ffc26b4e3c460b98fece13f8d12ad40b08895669",
+      "candidate_sha256": "d702df7eec4403152f281fb2a734cb978cebdc562be8d7c9abaaa8092955e0d4",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "extract_constant_to_initializer"
+        ]
+      },
+      "authority_static": {
+        "memory": 119,
+        "params": 152,
+        "cost": 271
+      },
+      "candidate_static": {
+        "memory": 119,
+        "params": 152,
+        "cost": 271
+      },
+      "authority_official_cost": 271,
+      "status": "not_static_lower"
+    },
+    {
+      "task": 64,
+      "label": "opt_eliminate_shape_op",
+      "authority_sha256": "56a992e221f00d83d0fe13f9ffc26b4e3c460b98fece13f8d12ad40b08895669",
+      "candidate_sha256": "977a9b68d8772b077556418fe89303011340bcb52e0cfa08ed865098da03fc95",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "eliminate_shape_op"
+        ]
+      },
+      "authority_static": {
+        "memory": 119,
+        "params": 152,
+        "cost": 271
+      },
+      "candidate_static": {
+        "memory": null,
+        "params": null,
+        "cost": null
+      },
+      "authority_official_cost": 271,
+      "status": "structural_reject",
+      "structural": {
+        "checker": false,
+        "strict_shape_data_prop": false,
+        "static_positive": false,
+        "banned_ops": [],
+        "nested_graphs": [],
+        "conv_bias_ub": [],
+        "errors": [
+          "checker_or_inference:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (10) vs (1)\n"
+        ],
+        "cost": null
+      }
+    },
+    {
+      "task": 162,
+      "label": "centercroppad_noops",
+      "authority_sha256": "75da61167192e9a78716d5bca24f4163a6fdbe7b44b82c9e63242bc6bd529249",
+      "candidate_sha256": "f2fc8e21e0480868e88a28f9f0793d450b1d4014d3629dd57278c13b8e130e9d",
+      "detail": {
+        "seed": {},
+        "kind": "literal_noop_centercroppad",
+        "actions": [
+          {
+            "kind": "bypass",
+            "op": "CenterCropPad",
+            "output": "black",
+            "source": "ch11",
+            "proof": "literal CenterCropPad target equals source dimensions",
+            "was_graph_output": false
+          }
+        ]
+      },
+      "authority_static": {
+        "memory": 134,
+        "params": 12,
+        "cost": 146
+      },
+      "candidate_static": {
+        "memory": 133,
+        "params": 12,
+        "cost": 145
+      },
+      "authority_official_cost": 146,
+      "status": "known_raw_mismatch"
+    },
+    {
+      "task": 228,
+      "label": "opt_extract_constant_to_initializer",
+      "authority_sha256": "13946c8d5a52886212f495b13fa6c128a091e77b84e10e27b442ed87f9694a45",
+      "candidate_sha256": "7e85c05e9961296b6ceb2f87360ff54449124d509b2b328a8492c8751d3305c1",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "extract_constant_to_initializer"
+        ]
+      },
+      "authority_static": {
+        "memory": 196,
+        "params": 50,
+        "cost": 246
+      },
+      "candidate_static": {
+        "memory": 196,
+        "params": 50,
+        "cost": 246
+      },
+      "authority_official_cost": 291,
+      "status": "not_static_lower"
+    },
+    {
+      "task": 228,
+      "label": "opt_eliminate_shape_op",
+      "authority_sha256": "13946c8d5a52886212f495b13fa6c128a091e77b84e10e27b442ed87f9694a45",
+      "candidate_sha256": "2f2ed863357101619916efd4a3a3aac2f1e4e30e35dd709ec0c138b70ed2385a",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "eliminate_shape_op"
+        ]
+      },
+      "authority_static": {
+        "memory": 196,
+        "params": 50,
+        "cost": 246
+      },
+      "candidate_static": {
+        "memory": null,
+        "params": null,
+        "cost": null
+      },
+      "authority_official_cost": 291,
+      "status": "structural_reject",
+      "structural": {
+        "checker": false,
+        "strict_shape_data_prop": false,
+        "static_positive": false,
+        "banned_ops": [],
+        "nested_graphs": [],
+        "conv_bias_ub": [],
+        "errors": [
+          "checker_or_inference:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: chcol): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (16) vs (1)\n(op_type:CenterCropPad, node name: rowcol): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (16) vs (1)\n(op_type:CenterCropPad, node name: colcol): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (16) vs (1)\n(op_type:CenterCropPad, node name: idx_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (16) vs (1)\n"
+        ],
+        "cost": null
+      }
+    },
+    {
+      "task": 268,
+      "label": "opt_extract_constant_to_initializer",
+      "authority_sha256": "4c8ec91a517e5c3ba63c816f489aee1782a6de7ba75f49f3b638c7923e189a12",
+      "candidate_sha256": "3e2d7100972b3f4708d24aac03bc386b431f8d9d55eff9e78cb8c5ec552c60a0",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "extract_constant_to_initializer"
+        ]
+      },
+      "authority_static": {
+        "memory": 193,
+        "params": 47,
+        "cost": 240
+      },
+      "candidate_static": {
+        "memory": 193,
+        "params": 47,
+        "cost": 240
+      },
+      "authority_official_cost": 420,
+      "status": "not_static_lower"
+    },
+    {
+      "task": 268,
+      "label": "opt_eliminate_shape_op",
+      "authority_sha256": "4c8ec91a517e5c3ba63c816f489aee1782a6de7ba75f49f3b638c7923e189a12",
+      "candidate_sha256": "b3ea2553c67a9fc62146320d2168cd80fbebfb9c859387cb03f216e091248c06",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "eliminate_shape_op"
+        ]
+      },
+      "authority_static": {
+        "memory": 193,
+        "params": 47,
+        "cost": 240
+      },
+      "candidate_static": {
+        "memory": null,
+        "params": null,
+        "cost": null
+      },
+      "authority_official_cost": 420,
+      "status": "structural_reject",
+      "structural": {
+        "checker": false,
+        "strict_shape_data_prop": false,
+        "static_positive": false,
+        "banned_ops": [],
+        "nested_graphs": [],
+        "conv_bias_ub": [],
+        "errors": [
+          "checker_or_inference:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (30) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (10) vs (1)\n"
+        ],
+        "cost": null
+      }
+    },
+    {
+      "task": 279,
+      "label": "centercroppad_noops",
+      "authority_sha256": "d3bb22792a3e44e09d21971f88642622a32d161f3a7888f9d0e9efe5862d0a9b",
+      "candidate_sha256": "a54d33961bcc7f17cde37e93b3b635287d99794fd191fc901bf2b816511662a6",
+      "detail": {
+        "seed": {},
+        "kind": "literal_noop_centercroppad",
+        "actions": [
+          {
+            "kind": "bypass",
+            "op": "CenterCropPad",
+            "output": "blue_u8",
+            "source": "chA9",
+            "proof": "literal CenterCropPad target equals source dimensions",
+            "was_graph_output": false
+          }
+        ]
+      },
+      "authority_static": {
+        "memory": 385,
+        "params": 12,
+        "cost": 397
+      },
+      "candidate_static": {
+        "memory": 384,
+        "params": 12,
+        "cost": 396
+      },
+      "authority_official_cost": 397,
+      "status": "known_raw_mismatch"
+    },
+    {
+      "task": 279,
+      "label": "opt_extract_constant_to_initializer",
+      "authority_sha256": "d3bb22792a3e44e09d21971f88642622a32d161f3a7888f9d0e9efe5862d0a9b",
+      "candidate_sha256": "6e110a71805d17d210fc0b40b5be6a51daee8e26d6c8f0a1a8aefb952db3b308",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "extract_constant_to_initializer"
+        ]
+      },
+      "authority_static": {
+        "memory": 385,
+        "params": 12,
+        "cost": 397
+      },
+      "candidate_static": {
+        "memory": 385,
+        "params": 12,
+        "cost": 397
+      },
+      "authority_official_cost": 397,
+      "status": "not_static_lower"
+    },
+    {
+      "task": 279,
+      "label": "opt_eliminate_shape_op",
+      "authority_sha256": "d3bb22792a3e44e09d21971f88642622a32d161f3a7888f9d0e9efe5862d0a9b",
+      "candidate_sha256": "6c55aa17bccc188c340799b593c1b76db86136ad35521f9f59f29855ea2de76b",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "eliminate_shape_op"
+        ]
+      },
+      "authority_static": {
+        "memory": 385,
+        "params": 12,
+        "cost": 397
+      },
+      "candidate_static": {
+        "memory": null,
+        "params": null,
+        "cost": null
+      },
+      "authority_official_cost": 397,
+      "status": "structural_reject",
+      "structural": {
+        "checker": false,
+        "strict_shape_data_prop": false,
+        "static_positive": false,
+        "banned_ops": [],
+        "nested_graphs": [],
+        "conv_bias_ub": [],
+        "errors": [
+          "checker_or_inference:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: chA0): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (30) vs (1)\n(op_type:CenterCropPad, node name: chA3): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: chA6): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: chA9): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (30) vs (1)\n(op_type:CenterCropPad, node name: msU_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: msL_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: p0fL_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p0fR_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: p0fU_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p0fD_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: p1fL_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p1fR_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: p1fU_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p1fD_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: p2fL_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p2fR_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: p2fU_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p2fD_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: p3fL_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p3fR_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: p3fU_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p3fD_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: p4fL_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p4fR_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: p4fU_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p4fD_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: p5fL_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p5fR_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: p5fU_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: p5fD_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: c6fL_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: c6fR_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: c6fU_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: c6fD_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: f0bL_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: f0bR_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: f0bU_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: fdUb_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: f2L_2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (3) vs (4)\n(op_type:CenterCropPad, node name: f2R_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: f2D_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: bkD_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: bkR_2): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n"
+        ],
+        "cost": null
+      }
+    }
+  ],
+  "summary": {
+    "tasks": 47,
+    "baseline_failures": 24,
+    "variants": 10,
+    "finalists_known_exact": 0
+  }
+}

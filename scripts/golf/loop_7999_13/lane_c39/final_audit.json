@@ -1,0 +1,181 @@
+{
+  "task": 343,
+  "policy": "user permits adoption at >=95% generator-gold accuracy with runtime errors 0",
+  "baseline": {
+    "sha256": "7d64c3eda1167f322d8981531e433e7195e54d48e16e29c771b52a379af17ab1",
+    "cost": 173,
+    "fresh": {
+      "disable_all": {
+        "path": "scripts/golf/loop_7999_13/lane_c39/baseline/task343.onnx",
+        "sha256": "7d64c3eda1167f322d8981531e433e7195e54d48e16e29c771b52a379af17ab1",
+        "right": 4963,
+        "wrong": 37,
+        "runtime_errors": 0,
+        "first_wrong": {
+          "case": 191,
+          "grid_shape": [
+            5,
+            15
+          ],
+          "different_threshold_cells": 36
+        },
+        "first_runtime_error": null,
+        "accuracy": 0.9926,
+        "passes_user_95_percent_gate": true
+      },
+      "default": {
+        "path": "scripts/golf/loop_7999_13/lane_c39/baseline/task343.onnx",
+        "sha256": "7d64c3eda1167f322d8981531e433e7195e54d48e16e29c771b52a379af17ab1",
+        "right": 4963,
+        "wrong": 37,
+        "runtime_errors": 0,
+        "first_wrong": {
+          "case": 191,
+          "grid_shape": [
+            5,
+            15
+          ],
+          "different_threshold_cells": 36
+        },
+        "first_runtime_error": null,
+        "accuracy": 0.9926,
+        "passes_user_95_percent_gate": true
+      }
+    }
+  },
+  "candidate": {
+    "sha256": "6ada3c411cf90b4bcb42ff69e47eee35ed1c1b7d8b842c96c5c02c0eb06bec9e",
+    "cost": 172,
+    "cost_reduction": 1,
+    "projected_score_gain": 0.005797117684327446,
+    "known_disable_all": {
+      "right": 266,
+      "wrong": 0,
+      "errors": 0
+    },
+    "known_default": {
+      "right": 266,
+      "wrong": 0,
+      "errors": 0
+    },
+    "fresh": {
+      "disable_all": {
+        "path": "scripts/golf/loop_7999_13/lane_c39/candidate/task343.onnx",
+        "sha256": "6ada3c411cf90b4bcb42ff69e47eee35ed1c1b7d8b842c96c5c02c0eb06bec9e",
+        "right": 4975,
+        "wrong": 25,
+        "runtime_errors": 0,
+        "first_wrong": {
+          "case": 367,
+          "grid_shape": [
+            5,
+            15
+          ],
+          "different_threshold_cells": 20
+        },
+        "first_runtime_error": null,
+        "accuracy": 0.995,
+        "passes_user_95_percent_gate": true
+      },
+      "default": {
+        "path": "scripts/golf/loop_7999_13/lane_c39/candidate/task343.onnx",
+        "sha256": "6ada3c411cf90b4bcb42ff69e47eee35ed1c1b7d8b842c96c5c02c0eb06bec9e",
+        "right": 4975,
+        "wrong": 25,
+        "runtime_errors": 0,
+        "first_wrong": {
+          "case": 367,
+          "grid_shape": [
+            5,
+            15
+          ],
+          "different_threshold_cells": 20
+        },
+        "first_runtime_error": null,
+        "accuracy": 0.995,
+        "passes_user_95_percent_gate": true
+      }
+    },
+    "safe_structure": {
+      "checks": {
+        "full_checker": true,
+        "strict_inference": true,
+        "all_inferred_shapes_static_positive": true,
+        "runtime_declared_shape_mismatches_zero": true,
+        "truthful_runtime_bytes_equal_scored_memory": true,
+        "standard_domains": true,
+        "no_banned_ops": true,
+        "no_nested_graphs": true,
+        "no_functions": true,
+        "no_sparse_initializers": true,
+        "conv_bias_safe": true,
+        "no_lookup_red_flags": true,
+        "no_giant_einsum": true
+      },
+      "pass": true,
+      "lookup_ops": {},
+      "gather_explanation": "The sole Gather applies the Mod-generated periodic coordinate vector to the input. It is an algorithmic axis remap, not a stored output lookup table.",
+      "dynamic_conv_explanation": "Each Conv reuses the input as its weight to compute a scalar self-correlation feature; there is no bias input and no out-of-bounds bias dependency.",
+      "shape_cloak": false
+    }
+  },
+  "fresh_comparison": {
+    "seed": 343799445,
+    "generated": 5000,
+    "generation_errors": 0,
+    "disable_all": {
+      "both_correct": 4938,
+      "baseline_only_correct": 25,
+      "candidate_only_correct": 37,
+      "both_wrong": 0,
+      "threshold_outputs_equal": 4938,
+      "threshold_outputs_different": 62
+    },
+    "default": {
+      "both_correct": 4938,
+      "baseline_only_correct": 25,
+      "candidate_only_correct": 37,
+      "both_wrong": 0,
+      "threshold_outputs_equal": 4938,
+      "threshold_outputs_different": 62
+    },
+    "accuracy_delta_candidate_minus_baseline": {
+      "disable_all": 0.0023999999999999577,
+      "default": 0.0023999999999999577
+    },
+    "ort_mode_parity": {
+      "baseline": {
+        "equal": 5000,
+        "different": 0,
+        "not_comparable_due_to_error": 0
+      },
+      "candidate": {
+        "equal": 5000,
+        "different": 0,
+        "not_comparable_due_to_error": 0
+      }
+    }
+  },
+  "external_validator": {
+    "seeds": [
+      80004605,
+      80004606,
+      80004607
+    ],
+    "requested": 1500,
+    "executable": 1500,
+    "threshold_equal": 662,
+    "threshold_mismatches_vs_baseline": 838,
+    "skipped_both_failed": 0,
+    "skipped_one_failed": 0,
+    "preflight_and_runtime_pass": true,
+    "interpretation": "These are arbitrary-grid differential probes, not task-generator gold. Large baseline/candidate disagreement demonstrates non-equivalence but does not replace the generator-gold accuracy measurement."
+  },
+  "decision": {
+    "adoption_eligible_under_user_95_policy": true,
+    "recommended_under_user_95_policy": true,
+    "strict_sound_recommended": false,
+    "candidate_accuracy_non_regressing_on_matched_fresh_corpus": true,
+    "reason": "Candidate is cheaper, structurally safe, known-complete, runtime-error-free, and 99.5% accurate on the matched 5000-case generator corpus. It also exceeds the baseline's 99.26% on that corpus. It remains an approximate classifier with 25 wrong cases, so it is not a strict 100%-sound promotion."
+  }
+}

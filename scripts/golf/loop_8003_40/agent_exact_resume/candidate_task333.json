@@ -1,0 +1,49 @@
+{
+  "task": 333,
+  "candidate": "scripts/golf/loop_8003_40/agent_exact_resume/candidates/task333_requested.onnx",
+  "candidate_sha256": "0628a573302f0a816d010482ed8b883caac7c307a27f47c9b53df85e2042a6bc",
+  "baseline_sha256": "5bb4ddf301f100bca1a4c6151452bf3f0bacf41cf1d8348573f28771d77eb826",
+  "rewrite": "absorb GE sign into shared HC and compensate GHHT; Einsum inputs 36 -> 35",
+  "cost_before": 423,
+  "cost_after": 421,
+  "cost_reduction": 2,
+  "projected_gain": 0.0047393453638946426,
+  "known": {
+    "right": 265,
+    "wrong": 0,
+    "skipped": 0,
+    "errors": 0,
+    "total_seen": 265
+  },
+  "raw_differential": {
+    "requested": 2000,
+    "executable": 2000,
+    "raw_equal": 2000,
+    "threshold_equal": 2000,
+    "mismatches": 0,
+    "skipped_both_failed": 0,
+    "skipped_one_failed": 0,
+    "max_abs_difference": 0.0,
+    "first_mismatch": null
+  },
+  "fresh_ground_truth": {
+    "status": "not_required_after_policy_rejection",
+    "count": 0
+  },
+  "checker": {
+    "checker": "PASS",
+    "strict_shape_inference": "PASS",
+    "static_shapes": true,
+    "banned_ops": [],
+    "conv_bias_ub": [],
+    "errors": [],
+    "pass": true
+  },
+  "runtime_errors": 0,
+  "verdict": "REJECT",
+  "reasons": [
+    "policy rejects giant/multi-input floating Einsum contraction changes even when sampled raw outputs match",
+    "catalogued monitored task; operand count/order changes can be platform-sensitive",
+    "projected gain is only +0.004739"
+  ]
+}

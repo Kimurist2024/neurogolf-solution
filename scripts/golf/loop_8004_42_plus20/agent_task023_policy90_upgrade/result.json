@@ -1,0 +1,89 @@
+{
+  "task": 23,
+  "authority": {
+    "zip": "submission_base_8009.46.zip",
+    "zip_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "task_sha256": "bd242d29ab9514b2432dce31e6df28dd67f00bf1bdcb54c8a00f28614f974fb0",
+    "cost": 1622
+  },
+  "policy": {
+    "strictly_lower_cost": true,
+    "minimum_fresh_rate_each": 0.9,
+    "minimum_disjoint_fresh_streams": 2,
+    "known_complete": true,
+    "runtime_errors": 0,
+    "truthful_static_shapes": true
+  },
+  "analysis_stream": {
+    "seed_start": 230900001,
+    "count": 50000,
+    "method": "exact uint8 QLinearConv clipping plus deterministic TopK index tie order"
+  },
+  "evaluated": [
+    {
+      "label": "archive_r03",
+      "path": "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task023_r03_static1541.onnx",
+      "sha256": "9a2b7813889112837080e0364d0a8971671ca384079e188f460dee6b158b3ab1",
+      "cost": 1541,
+      "right": 44022,
+      "total": 50000,
+      "rate": 0.88044,
+      "eligible": false
+    },
+    {
+      "label": "root_coordinate2",
+      "path": "scripts/golf/loop_8004_42_plus20/root_task023_tune80/task023_ranker_coordinate2.onnx",
+      "sha256": "763c7002607625de9812bab2ea0cd6db73799a3dc7c8153eaf6c4ee7c7a1d346",
+      "cost": 1541,
+      "right": 44512,
+      "total": 50000,
+      "rate": 0.89024,
+      "width_breakdown": [
+        {"width": 9, "height": 8, "right": 8062, "total": 8295},
+        {"width": 9, "height": 9, "right": 8165, "total": 8407},
+        {"width": 10, "height": 8, "right": 7054, "total": 8281},
+        {"width": 10, "height": 9, "right": 7087, "total": 8331},
+        {"width": 11, "height": 8, "right": 7105, "total": 8326},
+        {"width": 11, "height": 9, "right": 7039, "total": 8360}
+      ],
+      "eligible": false
+    },
+    {
+      "label": "rank82_integer_root_c2",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_task023_rank82/candidates/task023_rank82_integer_root_c2.onnx",
+      "sha256": "d9c9c5d471b34b6c35ffc6006d038b6e21ef3e91ae31145e85da8ca46ffff0e9",
+      "cost": 1541,
+      "right": 44507,
+      "total": 50000,
+      "rate": 0.89014,
+      "eligible": false
+    }
+  ],
+  "failure_diagnosis": {
+    "primary": "false filled 2x2 anchors formed by adjacent nonoverlapping objects",
+    "model_limit": "single clipped linear 6x6 rank score followed by fixed-count TopK",
+    "coordinate2_rate_by_false_anchor_count": [
+      {"false_anchors": 0, "cases": 9310, "rate": 0.9983888292158969},
+      {"false_anchors": 1, "cases": 13904, "rate": 0.9546892980437284},
+      {"false_anchors": 2, "cases": 11725, "rate": 0.8937313432835821},
+      {"false_anchors": 3, "cases": 7519, "rate": 0.8201888549009176},
+      {"false_anchors": 4, "cases": 4266, "rate": 0.7440225035161744}
+    ]
+  },
+  "designed_not_implemented": {
+    "architecture": "two-channel 4x4 QLinearConv then one-output 1x1 QLinearConv before unchanged TopK tail",
+    "theoretical_cost_without_bias": 1611,
+    "theoretical_cost_with_valid_biases": 1614,
+    "onnx_generated": false,
+    "holdout_measured": false,
+    "eligible": false
+  },
+  "delegation": {
+    "kimi_session_started": false,
+    "kimi_files_edited": false,
+    "reason": "configured wrapper absent; direct launch failed before session creation; escalation aborted"
+  },
+  "winner": null,
+  "decision": "REJECT_POLICY90",
+  "root_or_stage_modified": false
+}

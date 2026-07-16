@@ -1,0 +1,153 @@
+{
+  "baseline_zip": "scripts/golf/loop_8004_42/submission_8004.42_fixed_rebase_meta.zip",
+  "baseline_zip_sha256": "dc64ef5ac672fd7cc67418318e70f94cafd5396af8e25ad2939cdcd4eb1e0149",
+  "task_list_file": "scripts/golf/loop_8004_42/agent_batch20_low/TASKS.txt",
+  "selection_policy": "task001-200, fixed tasks and task153 excluded, current cost 150-500 prioritized",
+  "unique_models": 639,
+  "raw_references": 1877,
+  "accepted": [],
+  "aggregate_projected_gain": 0.0,
+  "tasks": [
+    {
+      "task": 25,
+      "base_cost": 474,
+      "known_total": 266,
+      "unique_models": 61,
+      "scored_models": 3,
+      "result": "NO_SAFE_WINNER",
+      "reason": "No scored sub-baseline model passed known correctness."
+    },
+    {
+      "task": 62,
+      "base_cost": 465,
+      "known_total": 267,
+      "unique_models": 49,
+      "scored_models": 0,
+      "result": "NO_SAFE_WINNER",
+      "reason": "Every loadable alternative was dominated by the static cost floor; one remaining model was unscorable."
+    },
+    {
+      "task": 8,
+      "base_cost": 431,
+      "known_total": 266,
+      "unique_models": 32,
+      "scored_models": 2,
+      "result": "NO_SAFE_WINNER",
+      "nearest_known_correct_cost": 454,
+      "reason": "The nearest distinct known-complete model costs more than the incumbent."
+    },
+    {
+      "task": 134,
+      "base_cost": 423,
+      "known_total": 266,
+      "unique_models": 55,
+      "scored_models": 11,
+      "result": "REJECT_UNSAFE",
+      "numeric_best": {
+        "cost": 320,
+        "sha256": "a610dcc58d2715ea4c39e000bfc83bb39ee69b69b95ee4a7ead252f3b126880b",
+        "known": "266/266",
+        "fresh": "4840/5000",
+        "fresh_rate": 0.968,
+        "runtime_errors": 0,
+        "strict_shape_data_prop": true,
+        "conv_bias_ub": 0
+      },
+      "reason": "Rejected despite exceeding the 95% fresh threshold: it contains ten TfIdfVectorizer lookup tables with thousands of embedded n-gram entries. The non-TfIdf cost-412 fallback has six false intermediate shape declarations and is also rejected as shape cloaking."
+    },
+    {
+      "task": 112,
+      "base_cost": 422,
+      "known_total": 266,
+      "unique_models": 199,
+      "scored_models": 3,
+      "result": "REJECT_UNSAFE",
+      "numeric_best": {
+        "cost": 420,
+        "sha256": "d06c050df286e8c6cdc816444510f58f3c61156548866a45f9f8b50d1dc8ec3f",
+        "known_disable_all": "266/266",
+        "runtime_errors_disable_all": 0,
+        "strict_shape_data_prop": false,
+        "conv_bias_ub": 0
+      },
+      "reason": "Strict shape/data propagation fails at AffineGrid, default ORT cannot create a session, and runtime tracing found eleven false declarations including output [1,1,1,1] versus actual [1,10,30,30]."
+    },
+    {
+      "task": 184,
+      "base_cost": 421,
+      "known_total": 169,
+      "unique_models": 44,
+      "scored_models": 8,
+      "result": "NO_SAFE_WINNER",
+      "nearest_known_correct_cost": 421,
+      "reason": "The only equal-cost known-complete alternative gives no score gain; the cost-420 candidate fails known correctness."
+    },
+    {
+      "task": 168,
+      "base_cost": 416,
+      "known_total": 265,
+      "unique_models": 61,
+      "scored_models": 9,
+      "result": "REJECT_UNSAFE",
+      "numeric_best": {
+        "cost": 166,
+        "sha256": "e27c909a920a7994f13bf011eedefc3f7464947480aa8bcb4fa814df80e34083",
+        "known": "265/265",
+        "runtime_errors_known": 0,
+        "strict_shape_data_prop": true,
+        "conv_bias_ub": 0
+      },
+      "reason": "The 258672-byte graph stores four large TfIdf lookup tables and ends in a 52-input floating Einsum. Both constructions are explicitly prohibited. The cost-285 fallback uses the same unsafe families."
+    },
+    {
+      "task": 48,
+      "base_cost": 379,
+      "known_total": 270,
+      "unique_models": 36,
+      "scored_models": 14,
+      "result": "REJECT_FRESH_BELOW_95",
+      "numeric_best_cost": 142,
+      "strongest_exact_rewrite": {
+        "cost": 378,
+        "sha256": "992a2311e0d9f26e2d3b3f9b1cdf631dc1ca3dca8e6566fbf42edd0d24426737",
+        "known_disable_all": "270/270",
+        "known_default": "270/270",
+        "fresh_disable_all": "4467/5000",
+        "fresh_disable_all_rate": 0.8934,
+        "fresh_default": "4521/5000",
+        "fresh_default_rate": 0.9042,
+        "runtime_errors": 0,
+        "strict_shape_data_prop": true,
+        "conv_bias_ub": 0
+      },
+      "reason": "The exact one-parameter rewrite is raw-bitwise equal to the incumbent on all 5000 differential cases, but the shared rule is below the authorized 95% fresh threshold. The cost-142 candidate already failed 3/5 quick fresh cases."
+    },
+    {
+      "task": 37,
+      "base_cost": 374,
+      "known_total": 266,
+      "unique_models": 40,
+      "scored_models": 3,
+      "result": "NO_SAFE_WINNER",
+      "nearest_known_correct_cost": 437668,
+      "reason": "No sub-baseline model passed known correctness; the only distinct known-complete model is vastly more expensive."
+    },
+    {
+      "task": 14,
+      "base_cost": 370,
+      "known_total": 266,
+      "unique_models": 62,
+      "scored_models": 32,
+      "result": "NO_SAFE_WINNER",
+      "nearest_known_correct_cost": 370,
+      "reason": "The cheapest distinct known-complete alternative only ties the incumbent, so there is no strict cost decrease."
+    }
+  ],
+  "evidence": {
+    "complete_scan": "scripts/golf/loop_8004_42/agent_batch20_low/scan_results.json",
+    "numeric_pre_fresh_manifest": "scripts/golf/loop_8004_42/agent_batch20_low/winner_manifest_pre_fresh.json",
+    "task134_fresh": "scripts/golf/loop_7999_13/lane_b10/task134_r04_fresh5000.json",
+    "task112_structural": "scripts/golf/loop_7999_13/lane_c15/candidate_audit.json",
+    "task048_fresh": "scripts/golf/loop_7999_13/lane_a10/task048_audit.json"
+  }
+}

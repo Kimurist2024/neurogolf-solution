@@ -1,0 +1,44 @@
+{
+  "lane": "c13",
+  "policy": {
+    "required": "independent fresh 5000/5000 under default ORT and ORT_DISABLE_ALL, runtime_errors=0",
+    "prerequisites": "strictly cheaper, complete known correctness under both runtimes, structural/static/standard-domain/Conv-bias clean, no shape/value cloak or host UB"
+  },
+  "new_fresh_runs": [],
+  "reason_no_new_runs": "No candidate passed all prerequisite gates, so no rejected model was promoted to the expensive final fresh-5000 stage.",
+  "prior_evidence": [
+    {
+      "task": 365,
+      "candidate": "task365_r01_static1199.onnx",
+      "sha256": "56c70262d89d54954d4cf4c5f9ba651078a391d9b83cf15bc0c94fd6e5681b9d",
+      "result": "2559/3000",
+      "wrong": 441,
+      "source": "scripts/golf/loop_7999_13/lane_b3/REPORT.md",
+      "decision": "reject"
+    },
+    {
+      "task": 365,
+      "candidates": ["r01", "r02", "r03"],
+      "result": "3/5 each on a prior quick fresh screen",
+      "source": "scripts/golf/loop_7999_13/scratch_codex_plus10/wave2_actual/REPORT.md and retained-candidate metadata",
+      "decision": "reject"
+    },
+    {
+      "task": 382,
+      "candidate": "task382_r03_static292.onnx",
+      "sha256": "ac0d47cfa37effc8453f77a8498a0a8516ef63ab610ed6e4fb49afef485dee29",
+      "disable_all": {
+        "right": 5000,
+        "wrong": 0,
+        "runtime_errors": 0
+      },
+      "default_ort": {
+        "right": 0,
+        "wrong": 0,
+        "runtime_errors": 5000
+      },
+      "source": "root-provided C13 evidence; known rerun in candidate_audit.json independently reproduces 0/266 with 266 default-ORT errors",
+      "decision": "reject"
+    }
+  ]
+}

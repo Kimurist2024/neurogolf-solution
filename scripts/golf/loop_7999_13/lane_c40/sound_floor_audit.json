@@ -1,0 +1,173 @@
+{
+  "model": "others/highspeed/task391_cost139.onnx",
+  "measured": {
+    "memory": 104,
+    "params": 35,
+    "cost": 139
+  },
+  "intermediates": [
+    {
+      "tensor": "c",
+      "producer": "Einsum",
+      "dtype": "float32",
+      "shape": [
+        1,
+        1,
+        10,
+        1
+      ],
+      "elements": 10,
+      "bytes": 40
+    },
+    {
+      "tensor": "v",
+      "producer": "TopK",
+      "dtype": "float32",
+      "shape": [
+        1,
+        1,
+        4,
+        1
+      ],
+      "elements": 4,
+      "bytes": 16
+    },
+    {
+      "tensor": "i",
+      "producer": "TopK",
+      "dtype": "int64",
+      "shape": [
+        1,
+        1,
+        4,
+        1
+      ],
+      "elements": 4,
+      "bytes": 32
+    },
+    {
+      "tensor": "j",
+      "producer": "Cast",
+      "dtype": "int8",
+      "shape": [
+        1,
+        1,
+        4,
+        1
+      ],
+      "elements": 4,
+      "bytes": 4
+    },
+    {
+      "tensor": "s",
+      "producer": "Slice",
+      "dtype": "int8",
+      "shape": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "elements": 3,
+      "bytes": 3
+    },
+    {
+      "tensor": "q",
+      "producer": "Mul",
+      "dtype": "int8",
+      "shape": [
+        1,
+        1,
+        3,
+        1
+      ],
+      "elements": 3,
+      "bytes": 3
+    },
+    {
+      "tensor": "u",
+      "producer": "Concat",
+      "dtype": "int8",
+      "shape": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "elements": 6,
+      "bytes": 6
+    }
+  ],
+  "static_intermediate_bytes": 104,
+  "initializers": [
+    {
+      "name": "m",
+      "shape": [
+        1,
+        1,
+        10,
+        1
+      ],
+      "elements": 10
+    },
+    {
+      "name": "k",
+      "shape": [
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "st",
+      "shape": [
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "ax",
+      "shape": [
+        1
+      ],
+      "elements": 1
+    },
+    {
+      "name": "sc",
+      "shape": [],
+      "elements": 1
+    },
+    {
+      "name": "z",
+      "shape": [],
+      "elements": 1
+    },
+    {
+      "name": "w",
+      "shape": [
+        10,
+        2,
+        1,
+        1
+      ],
+      "elements": 20
+    }
+  ],
+  "initializer_elements": 35,
+  "no_duplicate_initializer_values": true,
+  "floor_explanation": {
+    "counts_float32": 40,
+    "required_topk_values_float32": 16,
+    "required_topk_indices_int64": 32,
+    "ranking_subtotal_before_label_emitter": 88,
+    "remaining_label_intermediates": 16,
+    "memory_alone_equals_baseline_total_cost": true,
+    "topk_unused_values_cannot_be_omitted": "ONNX TopK output 0 is required; the prior empty-output probe fails full checker.",
+    "byte_topk_unavailable": "The prior int8 TopK probe fails ORT session creation with NOT_IMPLEMENTED.",
+    "conclusion": "This standard TopK rule engine cannot fall below baseline cost 104: its truthful intermediate memory is already 104 before adding 35 parameters."
+  },
+  "alternative_control": {
+    "path": "scripts/golf/scratch_codex/task391/cand_argmax_xor.onnx",
+    "cost": 148,
+    "reason": "Repeated ArgMax/Scatter avoids TopK but raises truthful memory to 122 bytes."
+  }
+}

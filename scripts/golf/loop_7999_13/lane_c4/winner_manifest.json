@@ -1,0 +1,98 @@
+{
+  "lane": "c4",
+  "aggregate_baseline_score": 7999.13,
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "authority": "exact archive members"
+  },
+  "accepted": [
+    {
+      "task": 270,
+      "candidate": "scripts/golf/loop_7999_13/lane_c4/task270_pack_petals.onnx",
+      "builder": "scripts/golf/loop_7999_13/lane_c4/build_task270_pack_petals.py",
+      "sha256": "f2a877344c1a3c43672303ed32a90c47a7007b336bd32008fd85221053e6d78f",
+      "baseline_cost": 608,
+      "candidate_cost": 595,
+      "baseline_memory": 408,
+      "candidate_memory": 404,
+      "baseline_params": 200,
+      "candidate_params": 191,
+      "score_gain": 0.02161347642053717,
+      "known": {
+        "lib_gold": true,
+        "official_gold": true,
+        "margin_stable": true,
+        "minimum_margin": 0.41015625
+      },
+      "fresh": {
+        "fixed_seed_correct": 5000,
+        "fixed_seed_total": 5000,
+        "fixed_seed_errors": 0,
+        "independent_seed": 270799913,
+        "independent_correct": 5000,
+        "independent_total": 5000,
+        "independent_errors": 0
+      },
+      "exhaustive_domain": {
+        "presence_masks_correct": 256,
+        "presence_masks_total": 256,
+        "renderer_states_correct": 79,
+        "renderer_states_total": 79,
+        "minimum_positive": 0.72216796875
+      },
+      "structure": {
+        "onnx_checker_full": true,
+        "strict_shape_inference": true,
+        "all_shapes_static": true,
+        "foreign_domains": 0,
+        "banned_or_nested": 0,
+        "functions": 0,
+        "sparse_initializers": 0,
+        "conv_nodes": 0,
+        "conv_bias_ub": 0,
+        "nodes": 59,
+        "file_bytes": 4897
+      },
+      "decision": "ADOPT"
+    }
+  ],
+  "projected_gain": 0.02161347642053717,
+  "projected_reported_score": 7999.15161347642,
+  "rejected": [
+    {
+      "task": 238,
+      "candidate": "scripts/golf/loop_7999_13/lane_c4/vi_probe/task238_single_vi1.onnx",
+      "sha256": "455c7f6befbb86ea2a37b1c8946c622e2b2dd99f6fdd240af9a1c95e87a21b7a",
+      "baseline_cost": 562,
+      "nominal_candidate_cost": 535,
+      "known_correct": 0,
+      "known_errors": 266,
+      "fresh_correct": 0,
+      "fresh_total": 3000,
+      "fresh_errors": 3000,
+      "reason": "A value_info shave causes an ORT Slice buffer mismatch ({1,1,5,5} != {1,1,7,7}) on every input. The executable truthful-shape alternative is correct but costs 587."
+    },
+    {
+      "task": 12,
+      "baseline_cost": 710,
+      "searched_alignments_below_70_kernel_params": 351,
+      "feasible_alignments": 0,
+      "same_cost_probe": "scripts/golf/loop_7999_13/lane_c4/task012_probe_h7w10.onnx",
+      "same_cost_probe_cost": 710,
+      "reason": "Complete hard-separation search found no foreground Conv classifier with fewer than 70 kernel elements; the first feasible 7x10 geometry is the incumbent cost."
+    },
+    {
+      "task": 165,
+      "baseline_cost": 592,
+      "candidate_cost": 552,
+      "candidate_sha256": "9e317dc4e254d23439ce6b2935c5b6d52ac8843a51b3b597b26f049db768e99e",
+      "known_correct": 0,
+      "known_total": 265,
+      "known_errors": 265,
+      "reason": "CSE merges shape-cloaked tensors and produces a Slice allocator mismatch ({1,9,30,30} != {1,10,30,30}) on every known example."
+    }
+  ],
+  "unchanged_tasks": [46, 66, 117],
+  "root_artifacts_modified": false
+}

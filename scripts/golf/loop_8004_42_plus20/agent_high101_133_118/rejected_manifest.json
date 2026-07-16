@@ -1,0 +1,32 @@
+{
+  "task101": [
+    {
+      "sha256": "3e60ea7e630360a106c20630cf168dbd6d0c139554cfa12bb8bc6507e36afa6a",
+      "rewrite": "generic scalar substitution",
+      "reason": "not shape preserving; Concat infers 15 instead of 17 and ORT/checker reject"
+    },
+    {
+      "sha256": "788c809c98869afded6dc6dc553de139d0149da53cf32acc7a1156431bc47255",
+      "rewrite": "bool Resize to [3,6]",
+      "reason": "ORT 1.24 has no Resize(bool) implementation"
+    }
+  ],
+  "task133": [
+    {
+      "authority_member_sha256": "6c5dc3a593b0900e16966b9d4c40af509a34c1dd1f0264c31cd30eaf9b4570e5",
+      "base_cost": 4393,
+      "reason": "no semantic cleanup/dedupe/no-op/CSE/fold/absorb opportunity; current graph has 30 runtime/declaration shape mismatches"
+    },
+    {
+      "sha256": "f7dd6c37e74f1d6e6cc88b2f3311fb1ce667a7fc62717f7eac4c75d53bedf24a",
+      "rewrite": "clear 238 stale value_info annotations",
+      "reason": "not statically fully shaped and not scorer-profileable; not a strictly-lower admissible candidate"
+    },
+    {
+      "sha256": "867f1f1c7d4e8ea09f5d01de4fcce619640d364827c73c3c515ba0bcd4ad1731",
+      "rewrite": "independent truthful generator-rule control",
+      "cost": 5570,
+      "reason": "truthful but 1177 cost above incumbent 4393"
+    }
+  ]
+}

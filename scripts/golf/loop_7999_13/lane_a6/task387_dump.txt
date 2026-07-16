@@ -1,0 +1,92 @@
+# task387.onnx
+
+## Initializers
+a: float16 (30,) [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0]
+b: float16 (10,) [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5]
+c: uint8 () 1
+d: uint8 () 254
+g: uint8 (1, 30) [[254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254]]
+h: uint8 (1, 10) [[139, 99, 139, 11, 227, 11, 122, 122, 122, 122]]
+scale: int32 (1,) [16777216]
+e8: uint8 (1, 10) [[10, 0, 0, 0, 0, 118, 0, 0, 0, 0]]
+f8: uint8 (1, 2) [[61, 189]]
+
+## Nodes
+00 Size ['input'] -> ['shape_dyn'] {}
+01 CenterCropPad ['input', 'shape_dyn'] -> ['input_f_lie'] {'axes': []}
+02 CastLike ['input_f_lie', 'b'] -> ['input_f'] {}
+03 Einsum ['input_f', 'b'] -> ['j'] {'equation': 'bchw,c->b'}
+04 CastLike ['input_f_lie', 'scale'] -> ['input_i'] {}
+05 Einsum ['input_f', 'b', 'a'] -> ['l'] {'equation': 'bchw,c,h->b'}
+06 Div ['l', 'j'] -> ['n'] {}
+07 Einsum ['input_f', 'b', 'a', 'a'] -> ['o'] {'equation': 'bchw,c,h,h->b'}
+08 Div ['o', 'j'] -> ['q'] {}
+09 Einsum ['input_f', 'b', 'a'] -> ['r'] {'equation': 'bchw,c,w->b'}
+10 Div ['r', 'j'] -> ['t'] {}
+11 Einsum ['input_f', 'b', 'a', 'a'] -> ['u'] {'equation': 'bchw,c,w,w->b'}
+12 Div ['u', 'j'] -> ['w'] {}
+13 Mul ['n', 'n'] -> ['x'] {}
+14 Sub ['q', 'x'] -> ['y'] {}
+15 Sqrt ['y'] -> ['z'] {}
+16 Cast ['z'] -> ['A'] {'to': 2}
+17 Cast ['n'] -> ['B'] {'to': 2}
+18 Sub ['B', 'A'] -> ['C'] {}
+19 Add ['n', 'z'] -> ['D'] {}
+20 Cast ['D'] -> ['E'] {'to': 2}
+21 Mul ['t', 't'] -> ['F'] {}
+22 Sub ['w', 'F'] -> ['G'] {}
+23 Sqrt ['G'] -> ['H'] {}
+24 Cast ['H'] -> ['I'] {'to': 2}
+25 Cast ['t'] -> ['J'] {'to': 2}
+26 Sub ['J', 'I'] -> ['K'] {}
+27 Add ['t', 'H'] -> ['L'] {}
+28 Cast ['L'] -> ['M'] {'to': 2}
+29 Einsum ['input_f', 'b', 'a', 'a'] -> ['N'] {'equation': 'bchw,c,h,w->b'}
+30 Einsum ['j', 'n', 't'] -> ['P'] {'equation': 'b,b,b->b'}
+31 Sub ['N', 'P'] -> ['Q'] {}
+32 Mul ['z', 'H'] -> ['R'] {}
+33 Div ['Q', 'R'] -> ['S'] {}
+34 Mean ['j', 'S'] -> ['T'] {}
+35 Cast ['j'] -> ['U'] {'to': 3}
+36 Cast ['T'] -> ['V'] {'to': 3}
+37 Sub ['U', 'V'] -> ['W'] {}
+38 Concat ['V', 'W'] -> ['X'] {'axis': 0}
+39 Flatten ['X'] -> ['X2_i8'] {'axis': 0}
+40 CenterCropPad ['X2_i8', 'shape_dyn'] -> ['X_lie'] {'axes': []}
+41 CastLike ['X_lie', 'scale'] -> ['Y'] {}
+42 Sub ['C', 'c'] -> ['5'] {}
+43 Add ['C', 'c'] -> ['6'] {}
+44 Sub ['E', 'c'] -> ['7'] {}
+45 Add ['E', 'c'] -> ['8'] {}
+46 BitwiseAnd ['A', 'd'] -> ['9'] {}
+47 Add ['6', 'c'] -> ['ba'] {}
+48 Sub ['7', 'c'] -> ['bb'] {}
+49 Add ['C', '9'] -> ['bc'] {}
+50 Sub ['E', '9'] -> ['bd'] {}
+51 Concat ['5', 'C', '6', '7', 'E', '8', 'ba', 'bb', 'bc', 'bd'] -> ['bh'] {'axis': 0}
+52 Flatten ['bh'] -> ['bh2_u8'] {'axis': 0}
+53 CenterCropPad ['bh2_u8', 'shape_dyn'] -> ['bh_lie'] {'axes': []}
+54 CastLike ['bh_lie', 'scale'] -> ['bi'] {}
+55 ScatterElements ['g', 'bi', 'h'] -> ['bj'] {'axis': 1}
+56 CenterCropPad ['bj', 'shape_dyn'] -> ['bj_lie_u8'] {'axes': []}
+57 CastLike ['bj_lie_u8', 'scale'] -> ['bj_i32'] {}
+58 Sub ['K', 'c'] -> ['bk'] {}
+59 Add ['K', 'c'] -> ['bl'] {}
+60 Sub ['M', 'c'] -> ['bm'] {}
+61 Add ['M', 'c'] -> ['bn'] {}
+62 BitwiseAnd ['I', 'd'] -> ['bo'] {}
+63 Add ['bl', 'c'] -> ['bp'] {}
+64 Sub ['bm', 'c'] -> ['bq'] {}
+65 Add ['K', 'bo'] -> ['br'] {}
+66 Sub ['M', 'bo'] -> ['bs'] {}
+67 Concat ['bk', 'K', 'bl', 'bm', 'M', 'bn', 'bp', 'bq', 'br', 'bs'] -> ['bw'] {'axis': 0}
+68 Flatten ['bw'] -> ['bw2_u8'] {'axis': 0}
+69 CenterCropPad ['bw2_u8', 'shape_dyn'] -> ['bw_lie'] {'axes': []}
+70 CastLike ['bw_lie', 'scale'] -> ['bx'] {}
+71 ScatterElements ['g', 'bx', 'h'] -> ['by'] {'axis': 1}
+72 CenterCropPad ['by', 'shape_dyn'] -> ['by_lie_u8'] {'axes': []}
+73 CastLike ['by_lie_u8', 'scale'] -> ['by_i32'] {}
+74 ScatterElements ['e8', 'Y', 'f8'] -> ['bz8'] {'axis': 1}
+75 CenterCropPad ['bz8', 'shape_dyn'] -> ['bz8_lie'] {'axes': []}
+76 CastLike ['bz8_lie', 'scale'] -> ['bz_i32'] {}
+77 Einsum ['input_i', 'bz_i32', 'bj_i32', 'by_i32', 'scale'] -> ['output'] {'equation': 'bkhw,zc,xh,yw,s->bchw'}

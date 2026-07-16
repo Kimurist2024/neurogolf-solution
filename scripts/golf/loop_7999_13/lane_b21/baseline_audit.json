@@ -1,0 +1,97 @@
+{
+  "wave15": "scripts/golf/loop_7999_13/submission_7999.13_wave15_candidate_meta.zip",
+  "wave15_sha256": "0f106fa0d9599d4853397e0f9310e3ae1bcf47d6f418c6b9dec31e4a4490bc36",
+  "rows": [
+    {
+      "task": 226,
+      "wave15_member": "task226.onnx",
+      "sha256": "342ff4b0df090df3cb1fdea435049e05f9e317f4775af82a14ded63b2a490c13",
+      "cost": 399,
+      "memory": 346,
+      "params": 53,
+      "structure": {
+        "checks": {
+          "checker_full": true,
+          "strict_data_prop": true,
+          "canonical_io": true,
+          "standard_domains": true,
+          "no_functions_sparse_nested": true,
+          "no_banned_ops": true,
+          "no_giant_einsum": true,
+          "static_positive_shapes": true,
+          "no_external_initializers": true,
+          "finite_initializers": true,
+          "conv_bias_safe": true
+        },
+        "pass_before_runtime_shape": true,
+        "error": null
+      },
+      "runtime_shape": {
+        "declared_runtime_mismatches": [],
+        "shape_cloak": false,
+        "truthful_one_example_intermediate_bytes": 346
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 133,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        },
+        {
+          "mode": "default",
+          "right": 133,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        }
+      ]
+    },
+    {
+      "task": 338,
+      "wave15_member": "task338.onnx",
+      "sha256": "edcac049616e90e42b848d1a719b3af7a4a078b5d1180a3cdf0ecf60e340a01d",
+      "cost": 426,
+      "memory": 424,
+      "params": 2,
+      "structure": {
+        "checks": {
+          "checker_full": true,
+          "strict_data_prop": true,
+          "canonical_io": true,
+          "standard_domains": true,
+          "no_functions_sparse_nested": true,
+          "no_banned_ops": true,
+          "no_giant_einsum": true,
+          "static_positive_shapes": true,
+          "no_external_initializers": true,
+          "finite_initializers": true,
+          "conv_bias_safe": true
+        },
+        "pass_before_runtime_shape": true,
+        "error": null
+      },
+      "runtime_shape": {
+        "shape_cloak": null,
+        "trace_error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_D3_pb' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1,29,30} != {1,1,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        },
+        {
+          "mode": "default",
+          "right": 0,
+          "wrong": 0,
+          "errors": 1,
+          "session_error": "Fail(\"[ONNXRuntimeError] : 1 : FAIL : Node (output) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=30 Declared=1 Dimension=2\")"
+        }
+      ]
+    }
+  ]
+}

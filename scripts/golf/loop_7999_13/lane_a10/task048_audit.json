@@ -1,0 +1,250 @@
+{
+  "task": 48,
+  "baseline": {
+    "path": "scripts/golf/loop_7999_13/lane_a10/baseline/task048.onnx",
+    "sha256": "04455e6bef7fc9252df79102c3fbc914855199ae834adc356ecd2365a11d12a8",
+    "file_bytes": 5823,
+    "under_1_44mb": true,
+    "checker_full": "pass",
+    "strict_shape_inference": "pass",
+    "standard_domains": true,
+    "custom_domains": [],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "nested_graphs": [],
+    "banned_or_sequence_ops": [],
+    "conv_bias_issues": [],
+    "negative_conv_pads": [],
+    "dynamic_or_nonpositive_tensors": [],
+    "nonfinite_initializers": [],
+    "value_info_count": 0,
+    "node_count": 94,
+    "parameter_elements": 71,
+    "max_einsum_inputs": 4,
+    "op_histogram": {
+      "Add": 1,
+      "ArgMax": 1,
+      "BitShift": 17,
+      "BitwiseAnd": 19,
+      "BitwiseOr": 22,
+      "Cast": 4,
+      "ConvTranspose": 1,
+      "Div": 1,
+      "Einsum": 1,
+      "Equal": 5,
+      "GatherElements": 1,
+      "Greater": 1,
+      "Max": 1,
+      "MaxPool": 1,
+      "Min": 1,
+      "Or": 5,
+      "ScatterElements": 1,
+      "Slice": 2,
+      "Split": 3,
+      "Sub": 5,
+      "Where": 1
+    },
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ]
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_7999_13/lane_a10/task048_fold_singleton_axes.onnx",
+    "sha256": "992a2311e0d9f26e2d3b3f9b1cdf631dc1ca3dca8e6566fbf42edd0d24426737",
+    "file_bytes": 5790,
+    "under_1_44mb": true,
+    "checker_full": "pass",
+    "strict_shape_inference": "pass",
+    "standard_domains": true,
+    "custom_domains": [],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "nested_graphs": [],
+    "banned_or_sequence_ops": [],
+    "conv_bias_issues": [],
+    "negative_conv_pads": [],
+    "dynamic_or_nonpositive_tensors": [],
+    "nonfinite_initializers": [],
+    "value_info_count": 0,
+    "node_count": 94,
+    "parameter_elements": 70,
+    "max_einsum_inputs": 3,
+    "op_histogram": {
+      "Add": 1,
+      "ArgMax": 1,
+      "BitShift": 17,
+      "BitwiseAnd": 19,
+      "BitwiseOr": 22,
+      "Cast": 4,
+      "ConvTranspose": 1,
+      "Div": 1,
+      "Einsum": 1,
+      "Equal": 5,
+      "GatherElements": 1,
+      "Greater": 1,
+      "Max": 1,
+      "MaxPool": 1,
+      "Min": 1,
+      "Or": 5,
+      "ScatterElements": 1,
+      "Slice": 2,
+      "Split": 3,
+      "Sub": 5,
+      "Where": 1
+    },
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ]
+  },
+  "comparison": {
+    "node_count_delta": 0,
+    "parameter_delta": -1,
+    "value_info_delta": 0,
+    "only_semantic_edit": "fold unit singleton-axis Einsum operand into shapes of existing coefficient operands"
+  },
+  "profile": {
+    "memory": 308,
+    "params": 70,
+    "cost": 378,
+    "score": 19.065105804380412,
+    "correct": true
+  },
+  "projected_gain": 0.002642009462838576,
+  "known_disable_all": {
+    "train": {
+      "right": 6,
+      "wrong": 0,
+      "errors": 0
+    },
+    "test": {
+      "right": 2,
+      "wrong": 0,
+      "errors": 0
+    },
+    "arc-gen": {
+      "right": 262,
+      "wrong": 0,
+      "errors": 0
+    },
+    "total": {
+      "right": 270,
+      "wrong": 0,
+      "errors": 0
+    }
+  },
+  "known_default_ort": {
+    "train": {
+      "right": 6,
+      "wrong": 0,
+      "errors": 0
+    },
+    "test": {
+      "right": 2,
+      "wrong": 0,
+      "errors": 0
+    },
+    "arc-gen": {
+      "right": 262,
+      "wrong": 0,
+      "errors": 0
+    },
+    "total": {
+      "right": 270,
+      "wrong": 0,
+      "errors": 0
+    }
+  },
+  "fresh_disable_all": {
+    "seed": 8048000001,
+    "mode": "ORT_DISABLE_ALL",
+    "requested_valid": 5000,
+    "valid": 5000,
+    "attempts": 5000,
+    "generation_errors": 0,
+    "oversize_skipped": 0,
+    "baseline": {
+      "right": 4467,
+      "wrong": 533,
+      "errors": 0
+    },
+    "candidate": {
+      "right": 4467,
+      "wrong": 533,
+      "errors": 0
+    },
+    "differential": {
+      "raw_bitwise_equal": 5000,
+      "decoded_equal": 5000,
+      "one_sided_errors": 0,
+      "max_abs_raw_difference": 0.0
+    },
+    "first_failure": {
+      "stage": "candidate_wrong",
+      "valid_case": 1,
+      "input_shape": [
+        8,
+        5
+      ],
+      "differing_elements": 2
+    },
+    "elapsed_seconds": 1.23372262500925
+  },
+  "fresh_default_ort": {
+    "seed": 8048000002,
+    "mode": "ORT_DEFAULT",
+    "requested_valid": 5000,
+    "valid": 5000,
+    "attempts": 5000,
+    "generation_errors": 0,
+    "oversize_skipped": 0,
+    "baseline": {
+      "right": 4521,
+      "wrong": 479,
+      "errors": 0
+    },
+    "candidate": {
+      "right": 4521,
+      "wrong": 479,
+      "errors": 0
+    },
+    "differential": {
+      "raw_bitwise_equal": 5000,
+      "decoded_equal": 5000,
+      "one_sided_errors": 0,
+      "max_abs_raw_difference": 0.0
+    },
+    "first_failure": {
+      "stage": "candidate_wrong",
+      "valid_case": 5,
+      "input_shape": [
+        8,
+        5
+      ],
+      "differing_elements": 2
+    },
+    "elapsed_seconds": 1.1474532920110505
+  },
+  "official_gold": true,
+  "margin": {
+    "stable": true,
+    "minimum": 1.0
+  }
+}

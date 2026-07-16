@@ -1,0 +1,44 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 21],
+   producer_name: "oai-task382-v5factor"
+>
+task382_v5factor (float[1,10,30,30] input) => (float16[1,10,1,1] output) 
+   <float16 f16ref = ..., float16[1,10] redsel = ..., int64[1] axes2 =  {2}, int64[1] ax3 =  {3}, int8[5,1,5] W = ..., float q_scale =  {1}, int8 i8ref = ..., uint8[1,1,16] cW = ..., uint8 u8ref = ..., int8 i8one = ..., float q255 =  {0.00392157}, int32[1] si =  {0}, int32[1] axes2_i32 =  {2}, int32[1] c15 =  {15}, int32[1] c30 =  {30}, uint8 u8one = ..., int64[2] spads_low =  {4,0}, int64[2] spads_high =  {0,4}, float16[2,10] T = ..., float16[10] Z = ..., float16[5,2,2] Qsel = ..., float16[5,2] Lsel = ..., float16[5,2,2] Hres = ..., float16[2] Rfalse = ..., uint8[2,1,1,1] Wb = ..., int64[1] in_shape, float[1,1,1,1] hid_input, float16[1,1,1,1] x16, float16[1,1,1] mix_rows, float16[1,1,1] mix_cols, float16 cyan_row_max, bool horizontal, int64[1] prog_axis, int64[1] lat_axis, uint8[1,1,1] prog_mix, uint8[1,1,1] lat_mix, bool red_low, bool prog_low, uint8[1,1,1] count, uint8[1,1,1,1] count_oriented, int8[1,1,1] cyan_source_i8, int8[1,1,1,1] source_oriented_i8, int8[1,5,1,1] q_signed_bank, float16[1,5,1,1] signed_bank, uint8[1,1,1] mix_rows_u8, uint8[1,1,1] mix_cols_u8, uint8[1,1,16] count_all, int32[1] count_starts, int32[1] count_ends, int8[1,1,1] red0slice, uint8[1,1,1] prog0slice, int8 red0v, uint8 prog0v, uint8[1,2,1,1] basis_u8, float16[1,2,1,1] basis2, int8[5,1,1,5] w_oriented, int64[2] source_pads, int8[1,1,1,5] source_padded_i8, float16[2] red_basis>
+{
+   [in_shape] in_shape = Shape <start: int = 2, end: int = 3> (input)
+   [hid_input] hid_input = CenterCropPad <axes: ints = [2]> (input, in_shape)
+   [x16] x16 = CastLike (hid_input, f16ref)
+   [mix_rows] mix_rows = Einsum <equation: string = "nchw,kc->nkh"> (x16, redsel)
+   [mix_rows_u8] mix_rows_u8 = CastLike (mix_rows, u8ref)
+   [mix_cols] mix_cols = Einsum <equation: string = "nchw,kc->nkw"> (x16, redsel)
+   [mix_cols_u8] mix_cols_u8 = CastLike (mix_cols, u8ref)
+   [cyan_row_max] cyan_row_max = ReduceMax <keepdims: int = 0> (mix_rows)
+   [horizontal] horizontal = Greater (cyan_row_max, f16ref)
+   [prog_axis] prog_axis = Where (horizontal, axes2, ax3)
+   [lat_axis] lat_axis = Where (horizontal, ax3, axes2)
+   [prog_mix] prog_mix = Where (horizontal, mix_rows_u8, mix_cols_u8)
+   [lat_mix] lat_mix = Where (horizontal, mix_cols_u8, mix_rows_u8)
+   [cyan_source_u8] cyan_source_i8 = CastLike (lat_mix, i8ref)
+   [red0slice] red0slice = Gather <axis: int = 2> (cyan_source_i8, si)
+   [red0v] red0v = Squeeze (red0slice)
+   [red_low] red_low = Less (red0v, i8ref)
+   [prog0slice] prog0slice = Gather <axis: int = 2> (prog_mix, si)
+   [prog0v] prog0v = Squeeze (prog0slice)
+   [prog_low] prog_low = Greater (prog0v, u8ref)
+   [QLinearConv_count_fwd] count_all = QLinearConv <pads: ints = [15, 15]> (prog_mix, q255, u8ref, cW, q_scale, u8ref, q_scale, u8ref)
+   count_starts = Where (prog_low, si, c15)
+   [count_ends] count_ends = Add (count_starts, c30)
+   count = Slice (count_all, count_starts, count_ends, axes2_i32)
+   [count_oriented] count_oriented = Unsqueeze (count, lat_axis)
+   [basis_u8] basis_u8 = QLinearConv (count_oriented, q_scale, u8ref, Wb, q_scale, u8ref, q_scale, u8one)
+   [basis2] basis2 = CastLike (basis_u8, f16ref)
+   [Unsqueeze_source_i8] source_oriented_i8 = Unsqueeze (cyan_source_i8, prog_axis)
+   [w_oriented] w_oriented = Unsqueeze (W, prog_axis)
+   [source_pads] source_pads = Where (red_low, spads_low, spads_high)
+   [source_padded_i8] source_padded_i8 = Pad <mode: string = "constant"> (source_oriented_i8, source_pads, i8ref, lat_axis)
+   [QLinearConv_signed_bank] q_signed_bank = QLinearConv (source_padded_i8, q_scale, i8ref, w_oriented, q_scale, i8ref, q_scale, i8one)
+   [Cast_bank_f16] signed_bank = CastLike (q_signed_bank, f16ref)
+   red_basis = Where (red_low, f16ref, Rfalse)
+   [output] output = Einsum <equation: string = "nirc,ki,ko,o,narc,nbrc,lab,ndrc,ld,nerc,lme,m,nlrc->norc"> (x16, T, T, Z, basis2, basis2, Qsel, basis2, Lsel, basis2, Hres, red_basis, signed_bank)
+}

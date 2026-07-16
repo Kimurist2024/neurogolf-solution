@@ -1,0 +1,52 @@
+{
+  "lane": "global_exact_factor_reuse",
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "score": 7999.13
+  },
+  "accepted": [
+    {
+      "task": 137,
+      "candidate": "scripts/golf/loop_7999_13/lane_factor_reuse_small/accepted/task137.onnx",
+      "sha256": "c277b0fe51ab29ec6ec6334a1f486f342c5490bc97981fe18c12a294dd79302f",
+      "baseline_cost": 260,
+      "candidate_cost": 258,
+      "baseline_memory": 196,
+      "candidate_memory": 196,
+      "baseline_params": 64,
+      "candidate_params": 62,
+      "cost_reduction": 2,
+      "projected_gain": 0.007722046093910251,
+      "algebraic_proof": {
+        "target": "CA_h[2,3] float16",
+        "source": "CM_h[2,3] float16",
+        "replacement": "CA_h = M[2,2] @ CM_h",
+        "float16_reconstruction_max_abs_error": 0.0,
+        "runtime_nodes_added": 0
+      },
+      "known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "fresh": {
+        "right": 5000,
+        "wrong": 0,
+        "runtime_errors": 0,
+        "minimum_margin": 1.7275390625
+      },
+      "external_validator": {
+        "valid": true,
+        "preflight_ok": true,
+        "verdict": "ACCEPT_KNOWN_ONLY"
+      }
+    }
+  ],
+  "evidence": {
+    "build": "scripts/golf/loop_7999_13/lane_factor_reuse_small/build_manifest.json",
+    "strict_fresh5000": "scripts/golf/loop_7999_13/lane_factor_reuse_small/strict_task137_5000.json",
+    "external": "scripts/golf/loop_7999_13/lane_factor_reuse_small/external_task137.json"
+  },
+  "root_artifacts_modified": false
+}

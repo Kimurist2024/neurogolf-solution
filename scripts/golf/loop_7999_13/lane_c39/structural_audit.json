@@ -1,0 +1,242 @@
+{
+  "task": 343,
+  "models": {
+    "baseline": {
+      "label": "lane_c39_baseline_task343",
+      "task": 343,
+      "path": "scripts/golf/loop_7999_13/lane_c39/baseline/task343.onnx",
+      "sha256": "7d64c3eda1167f322d8981531e433e7195e54d48e16e29c771b52a379af17ab1",
+      "file_bytes": 765,
+      "nodes": 10,
+      "initializers": 4,
+      "params": 33,
+      "op_histogram": {
+        "Conv": 3,
+        "Greater": 1,
+        "Equal": 1,
+        "And": 1,
+        "Squeeze": 1,
+        "Where": 1,
+        "Mod": 1,
+        "Gather": 1
+      },
+      "max_node_inputs": 3,
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_einsum_nodes": 0,
+        "params_over_10000": false
+      },
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "nested_graph_attributes": 0,
+      "function_count": 0,
+      "sparse_initializer_count": 0,
+      "conv_bias_findings": [],
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_trace": {
+        "runtime_tensors": 10,
+        "declared_tensors": 1,
+        "declared_actual_mismatches": [],
+        "undeclared_intermediate_count": 9,
+        "single_example_intermediate_bytes": 140
+      },
+      "official_like_score": {
+        "memory": 140,
+        "params": 33,
+        "cost": 173,
+        "score": 19.84670840550222,
+        "correct": true
+      },
+      "known_disable_all": {
+        "train": {
+          "right": 3,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0
+        }
+      },
+      "known_default": {
+        "train": {
+          "right": 3,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0
+        }
+      },
+      "safe_structure": {
+        "checks": {
+          "full_checker": true,
+          "strict_inference": true,
+          "all_inferred_shapes_static_positive": true,
+          "runtime_declared_shape_mismatches_zero": true,
+          "truthful_runtime_bytes_equal_scored_memory": true,
+          "standard_domains": true,
+          "no_banned_ops": true,
+          "no_nested_graphs": true,
+          "no_functions": true,
+          "no_sparse_initializers": true,
+          "conv_bias_safe": true,
+          "no_lookup_red_flags": true,
+          "no_giant_einsum": true
+        },
+        "pass": true,
+        "lookup_ops": {},
+        "gather_explanation": "The sole Gather applies the Mod-generated periodic coordinate vector to the input. It is an algorithmic axis remap, not a stored output lookup table.",
+        "dynamic_conv_explanation": "Each Conv reuses the input as its weight to compute a scalar self-correlation feature; there is no bias input and no out-of-bounds bias dependency.",
+        "shape_cloak": false
+      }
+    },
+    "candidate": {
+      "label": "lane_c39_candidate_task343",
+      "task": 343,
+      "path": "scripts/golf/loop_7999_13/lane_c39/candidate/task343.onnx",
+      "sha256": "6ada3c411cf90b4bcb42ff69e47eee35ed1c1b7d8b842c96c5c02c0eb06bec9e",
+      "file_bytes": 1106,
+      "nodes": 10,
+      "initializers": 3,
+      "params": 32,
+      "op_histogram": {
+        "Conv": 3,
+        "Equal": 1,
+        "GreaterOrEqual": 1,
+        "And": 1,
+        "Squeeze": 1,
+        "Where": 1,
+        "Mod": 1,
+        "Gather": 1
+      },
+      "max_node_inputs": 3,
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_einsum_nodes": 0,
+        "params_over_10000": false
+      },
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "nested_graph_attributes": 0,
+      "function_count": 0,
+      "sparse_initializer_count": 0,
+      "conv_bias_findings": [],
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_trace": {
+        "runtime_tensors": 10,
+        "declared_tensors": 10,
+        "declared_actual_mismatches": [],
+        "undeclared_intermediate_count": 0,
+        "single_example_intermediate_bytes": 140
+      },
+      "official_like_score": {
+        "memory": 140,
+        "params": 32,
+        "cost": 172,
+        "score": 19.852505523186547,
+        "correct": true
+      },
+      "known_disable_all": {
+        "train": {
+          "right": 3,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0
+        }
+      },
+      "known_default": {
+        "train": {
+          "right": 3,
+          "wrong": 0,
+          "errors": 0
+        },
+        "test": {
+          "right": 1,
+          "wrong": 0,
+          "errors": 0
+        },
+        "arc-gen": {
+          "right": 262,
+          "wrong": 0,
+          "errors": 0
+        },
+        "total": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0
+        }
+      },
+      "safe_structure": {
+        "checks": {
+          "full_checker": true,
+          "strict_inference": true,
+          "all_inferred_shapes_static_positive": true,
+          "runtime_declared_shape_mismatches_zero": true,
+          "truthful_runtime_bytes_equal_scored_memory": true,
+          "standard_domains": true,
+          "no_banned_ops": true,
+          "no_nested_graphs": true,
+          "no_functions": true,
+          "no_sparse_initializers": true,
+          "conv_bias_safe": true,
+          "no_lookup_red_flags": true,
+          "no_giant_einsum": true
+        },
+        "pass": true,
+        "lookup_ops": {},
+        "gather_explanation": "The sole Gather applies the Mod-generated periodic coordinate vector to the input. It is an algorithmic axis remap, not a stored output lookup table.",
+        "dynamic_conv_explanation": "Each Conv reuses the input as its weight to compute a scalar self-correlation feature; there is no bias input and no out-of-bounds bias dependency.",
+        "shape_cloak": false
+      }
+    }
+  },
+  "comparison": {
+    "baseline_cost": 173,
+    "candidate_cost": 172,
+    "cost_reduction": 1,
+    "projected_score_gain": 0.005797117684327446,
+    "both_safe_structure": true
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "lane": "a18_archive_all400_strict",
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "baseline_score": 7999.13,
+  "targets": [63, 73, 139, 202],
+  "accepted": [
+    {
+      "task": 63,
+      "variant": "r01",
+      "baseline_model": "scripts/golf/loop_7999_13/lane_a18/baseline/task063.onnx",
+      "baseline_sha256": "91e2612945cd3de520424f7abe6e9db70338a1d66332c093a88c27bcc76858a6",
+      "baseline_memory": 0,
+      "baseline_params": 26,
+      "baseline_cost": 26,
+      "candidate_model": "scripts/golf/loop_7999_13/lane_a18/candidates/task063_r01.onnx",
+      "candidate_sha256": "5028b6c409027bb66b1c3f58c8f48523eb767cb2238e7cfd5446dcb93984ff5b",
+      "candidate_memory": 0,
+      "candidate_params": 24,
+      "candidate_cost": 24,
+      "actual_static_agreement": true,
+      "cost_reduction": 2,
+      "projected_gain": 0.08004270767353816,
+      "known": {
+        "disable_all": {"right": 266, "wrong": 0, "errors": 0},
+        "default": {"right": 266, "wrong": 0, "errors": 0}
+      },
+      "fresh": {
+        "seed": 71418063,
+        "valid_cases_per_mode": 5000,
+        "disable_all": {"right": 5000, "wrong": 0, "errors": 0},
+        "default": {"right": 5000, "wrong": 0, "errors": 0},
+        "decoded_equal_to_exact_baseline_per_mode": 5000
+      },
+      "structural": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_issues": 0,
+        "shape_value_cloak": false,
+        "ub_issues": 0,
+        "lookup_red_flags": 0,
+        "nodes": 1,
+        "value_info": 0,
+        "einsum_inputs": 26
+      },
+      "lineage": {
+        "source": "others/2/7908/task063_improved_cost24.onnx",
+        "source_byte_identical": true,
+        "quarantine_or_private_zero_named": false
+      }
+    },
+    {
+      "task": 139,
+      "variant": "r04",
+      "baseline_model": "scripts/golf/loop_7999_13/lane_a18/baseline/task139.onnx",
+      "baseline_sha256": "31090c675176263a46a600822c9dbd38828751b7406bf1f72a00ebe8e5459224",
+      "baseline_memory": 0,
+      "baseline_params": 52,
+      "baseline_cost": 52,
+      "candidate_model": "scripts/golf/loop_7999_13/lane_a18/candidates/task139_r04.onnx",
+      "candidate_sha256": "9603e8c0f0d1b89774d4c04837a50da0feeeed2f4111131a01d81491f638a776",
+      "candidate_memory": 0,
+      "candidate_params": 50,
+      "candidate_cost": 50,
+      "actual_static_agreement": true,
+      "cost_reduction": 2,
+      "projected_gain": 0.039220713153280684,
+      "known": {
+        "disable_all": {"right": 265, "wrong": 0, "errors": 0},
+        "default": {"right": 265, "wrong": 0, "errors": 0}
+      },
+      "fresh": {
+        "seed": 71418139,
+        "valid_cases_per_mode": 5000,
+        "disable_all": {"right": 5000, "wrong": 0, "errors": 0},
+        "default": {"right": 5000, "wrong": 0, "errors": 0},
+        "decoded_equal_to_exact_baseline_per_mode": 5000
+      },
+      "structural": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_issues": 0,
+        "shape_value_cloak": false,
+        "ub_issues": 0,
+        "lookup_red_flags": 0,
+        "nodes": 1,
+        "value_info": 0,
+        "einsum_inputs": 16
+      },
+      "lineage": {
+        "source": "others/2/7907/task139_improved.onnx",
+        "source_byte_identical": true,
+        "quarantine_or_private_zero_named": false
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "task": 73,
+      "variants": ["r01", "r02"],
+      "candidate_cost": 15,
+      "baseline_cost": 16,
+      "reason": "ConvTranspose bias length is 9 for an inferred 10-channel output; this is the known out-of-bounds bias UB. The two variants are executable-identical after normalizing metadata and TensorProto storage."
+    },
+    {
+      "task": 202,
+      "variant": "r02",
+      "candidate_cost": 28,
+      "baseline_cost": 48,
+      "fresh_disable_all": {"right": 4862, "wrong": 138, "errors": 0},
+      "fresh_default": {"right": 4862, "wrong": 138, "errors": 0},
+      "reason": "Independent fresh generator counterexamples; additionally one byte-identical source has quarantine/private0 provenance."
+    },
+    {
+      "task": 202,
+      "variant": "r03",
+      "candidate_cost": 28,
+      "baseline_cost": 48,
+      "fresh_disable_all": {"right": 4993, "wrong": 7, "errors": 0},
+      "fresh_default": {"right": 4993, "wrong": 7, "errors": 0},
+      "reason": "Clean lineage and known-complete, but independent fresh generator found seven counterexamples in each ORT mode."
+    }
+  ],
+  "lane_projected_gain": 0.11926342082681884,
+  "projected_score_if_applied_alone": 7999.249263420826,
+  "root_artifacts_modified": false,
+  "evidence": {
+    "models_and_inventory": "scripts/golf/loop_7999_13/lane_a18/model_manifest.json",
+    "source_lineage": "scripts/golf/loop_7999_13/lane_a18/lineage_audit.json",
+    "known_cost_structure_diff": "scripts/golf/loop_7999_13/lane_a18/candidate_audit.json",
+    "independent_fresh_dual_5000": "scripts/golf/loop_7999_13/lane_a18/fresh_dual_5000.json"
+  }
+}

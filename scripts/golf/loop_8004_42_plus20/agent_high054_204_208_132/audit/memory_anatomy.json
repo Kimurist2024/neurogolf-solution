@@ -1,0 +1,4585 @@
+{
+  "54": {
+    "task": 54,
+    "known_run_errors": 0,
+    "memory": 2008,
+    "params": 250,
+    "memory_by_op": {
+      "Concat": 634,
+      "Einsum": 396,
+      "ScatterElements": 360,
+      "CastLike": 132,
+      "Add": 106,
+      "Sub": 60,
+      "Or": 52,
+      "Where": 49,
+      "TopK": 40,
+      "Equal": 34,
+      "Mul": 28,
+      "CenterCropPad": 23,
+      "ReduceSum": 20,
+      "And": 14,
+      "Xor": 13,
+      "Not": 12,
+      "Reshape": 12,
+      "Shape": 8,
+      "Sign": 4,
+      "GreaterOrEqual": 4,
+      "Greater": 4,
+      "ReduceMin": 2,
+      "LessOrEqual": 1
+    },
+    "top_intermediates": [
+      {
+        "name": "safe_name_145",
+        "original_name": "rowNew",
+        "op": "Concat",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          9,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            9,
+            30
+          ]
+        ],
+        "charged_bytes": 270
+      },
+      {
+        "name": "safe_name_146",
+        "original_name": "colNew",
+        "op": "Concat",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          9,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            9,
+            30
+          ]
+        ],
+        "charged_bytes": 270
+      },
+      {
+        "name": "safe_name_112",
+        "original_name": "fillR",
+        "op": "ScatterElements",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          4,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            4,
+            30
+          ]
+        ],
+        "charged_bytes": 120
+      },
+      {
+        "name": "safe_name_113",
+        "original_name": "fillC",
+        "op": "ScatterElements",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          4,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            4,
+            30
+          ]
+        ],
+        "charged_bytes": 120
+      },
+      {
+        "name": "safe_name_91",
+        "original_name": "R2",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          2,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            30
+          ]
+        ],
+        "charged_bytes": 120
+      },
+      {
+        "name": "safe_name_92",
+        "original_name": "C2",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          2,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            30
+          ]
+        ],
+        "charged_bytes": 120
+      },
+      {
+        "name": "safe_name_93",
+        "original_name": "colMom",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          2,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            30
+          ]
+        ],
+        "charged_bytes": 120
+      },
+      {
+        "name": "safe_name_133",
+        "original_name": "__groupR_i8",
+        "op": "ScatterElements",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            30
+          ]
+        ],
+        "charged_bytes": 60
+      },
+      {
+        "name": "safe_name_138",
+        "original_name": "__groupC_i8",
+        "op": "ScatterElements",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            30
+          ]
+        ],
+        "charged_bytes": 60
+      },
+      {
+        "name": "safe_name_109",
+        "original_name": "fillR_idx",
+        "op": "Add",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          4,
+          3
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            4,
+            3
+          ]
+        ],
+        "charged_bytes": 48
+      },
+      {
+        "name": "safe_name_110",
+        "original_name": "fillC_idx",
+        "op": "Add",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          4,
+          3
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            4,
+            3
+          ]
+        ],
+        "charged_bytes": 48
+      },
+      {
+        "name": "safe_name_140",
+        "original_name": "coefNew",
+        "op": "Concat",
+        "dtype": "int8",
+        "static_shape": [
+          4,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            4,
+            10
+          ]
+        ],
+        "charged_bytes": 40
+      },
+      {
+        "name": "safe_name_143",
+        "original_name": "sel3",
+        "op": "Concat",
+        "dtype": "int8",
+        "static_shape": [
+          4,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            4,
+            10
+          ]
+        ],
+        "charged_bytes": 40
+      },
+      {
+        "name": "safe_name_96",
+        "original_name": "rowIdx64",
+        "op": "TopK",
+        "dtype": "int64",
+        "static_shape": [
+          1,
+          1,
+          2
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            2
+          ]
+        ],
+        "charged_bytes": 32
+      },
+      {
+        "name": "safe_name_135",
+        "original_name": "__gc_idx",
+        "op": "CastLike",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          2,
+          3
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 24
+      },
+      {
+        "name": "safe_name_34",
+        "original_name": "counts",
+        "op": "ReduceSum",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 20
+      },
+      {
+        "name": "safe_name_41",
+        "original_name": "centScore",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 20
+      },
+      {
+        "name": "safe_name_45",
+        "original_name": "Bscore",
+        "op": "Where",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 20
+      },
+      {
+        "name": "safe_name_107",
+        "original_name": "__ridx",
+        "op": "CastLike",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          4,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 16
+      },
+      {
+        "name": "safe_name_108",
+        "original_name": "__cidx",
+        "op": "CastLike",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          4,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 16
+      },
+      {
+        "name": "safe_name_131",
+        "original_name": "__gr_idx",
+        "op": "CastLike",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          2,
+          2
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 16
+      },
+      {
+        "name": "safe_name_111",
+        "original_name": "fill_upd3",
+        "op": "Mul",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          4,
+          3
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            4,
+            3
+          ]
+        ],
+        "charged_bytes": 12
+      },
+      {
+        "name": "safe_name_54",
+        "original_name": "Qb",
+        "op": "Or",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_117",
+        "original_name": "cisAAb",
+        "op": "And",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_118",
+        "original_name": "Fillb",
+        "op": "Or",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_125",
+        "original_name": "__i8_boxCoef",
+        "op": "Sub",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_127",
+        "original_name": "__i8_fillCoef",
+        "op": "Sub",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_139",
+        "original_name": "centerBoxCoef",
+        "op": "Sub",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_141",
+        "original_name": "Dsel2",
+        "op": "Add",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_142",
+        "original_name": "boxSel",
+        "op": "Sub",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_37",
+        "original_name": "Db",
+        "op": "Xor",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_42",
+        "original_name": "cnt4",
+        "op": "Equal",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_43",
+        "original_name": "cnt8",
+        "op": "Equal",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_44",
+        "original_name": "cnt48",
+        "op": "Or",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_49",
+        "original_name": "Cb",
+        "op": "Equal",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_50",
+        "original_name": "used0",
+        "op": "Or",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_51",
+        "original_name": "used",
+        "op": "Or",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_52",
+        "original_name": "Ab",
+        "op": "Not",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_126",
+        "original_name": "Dfill8",
+        "op": "Mul",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_128",
+        "original_name": "BD8",
+        "op": "Sub",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_129",
+        "original_name": "lineCoef8",
+        "op": "Sub",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_28",
+        "original_name": "__size30",
+        "op": "Shape",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_88",
+        "original_name": "stateR",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          4
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_90",
+        "original_name": "stateC",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          4
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_147",
+        "original_name": "coefNew16h",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          4,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_144",
+        "original_name": "sel3_16h",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          4,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_95",
+        "original_name": "rowVal",
+        "op": "TopK",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1,
+          2
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            2
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_134",
+        "original_name": "__gc_idx_u8",
+        "op": "Concat",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          3
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "charged_bytes": 6
+      },
+      {
+        "name": "safe_name_137",
+        "original_name": "__gc_mask_V",
+        "op": "Where",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          3
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "charged_bytes": 6
+      },
+      {
+        "name": "safe_name_31",
+        "original_name": "__zero1430i8",
+        "op": "CenterCropPad",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          4,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_32",
+        "original_name": "__fp16_input_hid",
+        "op": "CenterCropPad",
+        "dtype": "float32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_94",
+        "original_name": "rowProfTrue",
+        "op": "CenterCropPad",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1,
+          2
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_105",
+        "original_name": "__rupd0",
+        "op": "Sign",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          2
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            2
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_103",
+        "original_name": "__ridx_u8",
+        "op": "Reshape",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          4,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            4,
+            1
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_106",
+        "original_name": "__rupd",
+        "op": "Reshape",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          4,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            4,
+            1
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_104",
+        "original_name": "__cidx_u8",
+        "op": "Reshape",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          4,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            4,
+            1
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_132",
+        "original_name": "__gr_upd_H",
+        "op": "Where",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          2
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            2
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_87",
+        "original_name": "stateR_b",
+        "op": "Concat",
+        "dtype": "bool",
+        "static_shape": [
+          4
+        ],
+        "runtime_shapes": [
+          [
+            4
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_89",
+        "original_name": "stateC_b",
+        "op": "Concat",
+        "dtype": "bool",
+        "static_shape": [
+          4
+        ],
+        "runtime_shapes": [
+          [
+            4
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_99",
+        "original_name": "rowTe",
+        "op": "Where",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          2
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            2
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_100",
+        "original_name": "colTe",
+        "op": "Where",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          2
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            2
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_101",
+        "original_name": "rowCoord_u8",
+        "op": "Where",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          2
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            2
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_102",
+        "original_name": "colCoord_u8",
+        "op": "Where",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          2
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            2,
+            2
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_136",
+        "original_name": "__gc_mask",
+        "op": "Where",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          1,
+          3
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            1,
+            3
+          ]
+        ],
+        "charged_bytes": 3
+      },
+      {
+        "name": "safe_name_29",
+        "original_name": "P",
+        "op": "CenterCropPad",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_30",
+        "original_name": "__zero1230i8",
+        "op": "CenterCropPad",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_33",
+        "original_name": "input16",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_40",
+        "original_name": "cent",
+        "op": "CenterCropPad",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_53",
+        "original_name": "A",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_55",
+        "original_name": "Qrole",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_39",
+        "original_name": "dcount",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_61",
+        "original_name": "coord",
+        "op": "CenterCropPad",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_78",
+        "original_name": "centerThresh",
+        "op": "Mul",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_114",
+        "original_name": "R2_u8_dyn",
+        "op": "CastLike",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_115",
+        "original_name": "C2_u8_dyn",
+        "op": "CastLike",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          2,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_149",
+        "original_name": "rowNew16h",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_151",
+        "original_name": "colNew16h",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_38",
+        "original_name": "Dflt",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_46",
+        "original_name": "Bmin",
+        "op": "ReduceMin",
+        "dtype": "float16",
+        "static_shape": [],
+        "runtime_shapes": [
+          []
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_48",
+        "original_name": "B",
+        "op": "CastLike",
+        "dtype": "float16",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_58",
+        "original_name": "acount",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_60",
+        "original_name": "bcount",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_62",
+        "original_name": "sumR",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_63",
+        "original_name": "sumC",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_64",
+        "original_name": "sumR2",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_65",
+        "original_name": "vr0",
+        "op": "Mul",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_66",
+        "original_name": "srSq",
+        "op": "Mul",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_71",
+        "original_name": "sc3",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_72",
+        "original_name": "sr3",
+        "op": "Einsum",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_97",
+        "original_name": "rowIdx",
+        "op": "CastLike",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          1,
+          2
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_98",
+        "original_name": "colIdx",
+        "op": "CastLike",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          1,
+          2
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_81",
+        "original_name": "highDiff",
+        "op": "Xor",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_82",
+        "original_name": "xdiff",
+        "op": "And",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_84",
+        "original_name": "notX",
+        "op": "Not",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_85",
+        "original_name": "s1b",
+        "op": "And",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_86",
+        "original_name": "s3b",
+        "op": "And",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_119",
+        "original_name": "Fill8",
+        "op": "CastLike",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_120",
+        "original_name": "__i8_G",
+        "op": "CastLike",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_130",
+        "original_name": "oneRow16_hid",
+        "op": "CenterCropPad",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_148",
+        "original_name": "rowNew_hid",
+        "op": "CenterCropPad",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_150",
+        "original_name": "colNew_hid",
+        "op": "CenterCropPad",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_36",
+        "original_name": "big",
+        "op": "GreaterOrEqual",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_35",
+        "original_name": "Gb",
+        "op": "GreaterOrEqual",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_47",
+        "original_name": "Bb",
+        "op": "LessOrEqual",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_56",
+        "original_name": "trainEx",
+        "op": "Equal",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_57",
+        "original_name": "testEx",
+        "op": "Equal",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_59",
+        "original_name": "cisA",
+        "op": "Greater",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_67",
+        "original_name": "V",
+        "op": "Greater",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_68",
+        "original_name": "b8B",
+        "op": "Equal",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_69",
+        "original_name": "singleFill",
+        "op": "Not",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_70",
+        "original_name": "H",
+        "op": "Xor",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_73",
+        "original_name": "scZero",
+        "op": "Equal",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_74",
+        "original_name": "scGt",
+        "op": "Greater",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_75",
+        "original_name": "srNZ",
+        "op": "Greater",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_76",
+        "original_name": "xmid",
+        "op": "And",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_77",
+        "original_name": "xpose",
+        "op": "Or",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_79",
+        "original_name": "highR",
+        "op": "GreaterOrEqual",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_80",
+        "original_name": "highC",
+        "op": "GreaterOrEqual",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_83",
+        "original_name": "flip",
+        "op": "Xor",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_116",
+        "original_name": "anyFill",
+        "op": "Or",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_121",
+        "original_name": "D8",
+        "op": "CastLike",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_122",
+        "original_name": "B8",
+        "op": "CastLike",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_123",
+        "original_name": "A8",
+        "op": "CastLike",
+        "dtype": "int8",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_124",
+        "original_name": "fillSide8",
+        "op": "CastLike",
+        "dtype": "int8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      }
+    ]
+  },
+  "204": {
+    "task": 204,
+    "known_run_errors": 0,
+    "memory": 2076,
+    "params": 146,
+    "memory_by_op": {
+      "BitwiseXor": 504,
+      "BitwiseAnd": 360,
+      "Mul": 360,
+      "Concat": 240,
+      "Div": 144,
+      "CenterCropPad": 104,
+      "Sub": 96,
+      "Einsum": 80,
+      "Add": 72,
+      "BitwiseOr": 72,
+      "Equal": 20,
+      "Shape": 16,
+      "CastLike": 8
+    },
+    "top_intermediates": [
+      {
+        "name": "safe_name_65",
+        "original_name": "masks5_20",
+        "op": "Concat",
+        "dtype": "int32",
+        "static_shape": [
+          3,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            3,
+            20,
+            1
+          ]
+        ],
+        "charged_bytes": 240
+      },
+      {
+        "name": "safe_name_36",
+        "original_name": "blue_30",
+        "op": "Einsum",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            20,
+            1
+          ]
+        ],
+        "charged_bytes": 80
+      },
+      {
+        "name": "safe_name_53",
+        "original_name": "same_parity_rights",
+        "op": "BitwiseXor",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_51",
+        "original_name": "px_xor_even",
+        "op": "BitwiseXor",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_40",
+        "original_name": "vertical_sides",
+        "op": "BitwiseAnd",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_54",
+        "original_name": "odd_right_boundary",
+        "op": "BitwiseAnd",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_56",
+        "original_name": "odd_g2",
+        "op": "Div",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_50",
+        "original_name": "interior_rows",
+        "op": "BitwiseAnd",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_58",
+        "original_name": "gshift4",
+        "op": "Div",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_52",
+        "original_name": "px_xor_even_plus_even",
+        "op": "Add",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_59",
+        "original_name": "gadd4",
+        "op": "BitwiseAnd",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_57",
+        "original_name": "qshift3",
+        "op": "BitwiseAnd",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_60",
+        "original_name": "orange_rows",
+        "op": "BitwiseOr",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_55",
+        "original_name": "g2_mul",
+        "op": "Mul",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_41",
+        "original_name": "p6_shift",
+        "op": "Mul",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_42",
+        "original_name": "p6",
+        "op": "BitwiseXor",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_43",
+        "original_name": "p48_shift",
+        "op": "Mul",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_44",
+        "original_name": "p48",
+        "op": "BitwiseXor",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_45",
+        "original_name": "p3072_shift",
+        "op": "Mul",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_46",
+        "original_name": "p3072",
+        "op": "BitwiseXor",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_47",
+        "original_name": "px16_shift",
+        "op": "Mul",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_48",
+        "original_name": "px16",
+        "op": "BitwiseXor",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_49",
+        "original_name": "px_xor_v",
+        "op": "BitwiseXor",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            18,
+            1
+          ]
+        ],
+        "charged_bytes": 72
+      },
+      {
+        "name": "safe_name_63",
+        "original_name": "ones20_bool",
+        "op": "Equal",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            20,
+            1
+          ]
+        ],
+        "charged_bytes": 20
+      },
+      {
+        "name": "safe_name_10",
+        "original_name": "__ng_shape_black_orig_30",
+        "op": "Shape",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_22",
+        "original_name": "__ng_row_e_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_21",
+        "original_name": "__ng_row_e20_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_11",
+        "original_name": "__ng_row30_dim",
+        "op": "Shape",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_12",
+        "original_name": "row29_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_13",
+        "original_name": "row28_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_14",
+        "original_name": "row27_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_15",
+        "original_name": "row26_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_16",
+        "original_name": "row25_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_17",
+        "original_name": "row24_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_18",
+        "original_name": "row23_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_19",
+        "original_name": "row22_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_20",
+        "original_name": "row21_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_23",
+        "original_name": "row18_dyn",
+        "op": "Sub",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_61",
+        "original_name": "orange_20",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_62",
+        "original_name": "interior_20",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_26",
+        "original_name": "input_h29",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_27",
+        "original_name": "input_h28",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_28",
+        "original_name": "input_h27",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_29",
+        "original_name": "input_h26",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_30",
+        "original_name": "input_h25",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_31",
+        "original_name": "input_h24",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_32",
+        "original_name": "input_h23",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_33",
+        "original_name": "input_h22",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_34",
+        "original_name": "input_h21",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_35",
+        "original_name": "input_h20",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_38",
+        "original_name": "blue_up19",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_39",
+        "original_name": "blue_down",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_37",
+        "original_name": "blue_rows",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_64",
+        "original_name": "ones20_i32",
+        "op": "CastLike",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_66",
+        "original_name": "masks5_rows21",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_67",
+        "original_name": "masks5_rows22",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_68",
+        "original_name": "masks5_rows23",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_69",
+        "original_name": "masks5_rows24",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_70",
+        "original_name": "masks5_rows25",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_71",
+        "original_name": "masks5_rows26",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_72",
+        "original_name": "masks5_rows27",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_73",
+        "original_name": "masks5_rows28",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_74",
+        "original_name": "masks5_rows29",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_75",
+        "original_name": "masks5_rows30",
+        "op": "CenterCropPad",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_24",
+        "original_name": "input_full_hide",
+        "op": "CenterCropPad",
+        "dtype": "float32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_25",
+        "original_name": "input_full_i32",
+        "op": "CastLike",
+        "dtype": "int32",
+        "static_shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 4
+      }
+    ]
+  },
+  "208": {
+    "task": 208,
+    "known_run_errors": 0,
+    "memory": 1300,
+    "params": 122,
+    "memory_by_op": {
+      "Less": 371,
+      "Cast": 158,
+      "Einsum": 132,
+      "Slice": 130,
+      "BitwiseAnd": 103,
+      "Add": 81,
+      "Div": 45,
+      "Where": 42,
+      "Concat": 42,
+      "GlobalLpPool": 40,
+      "Pad": 38,
+      "ScatterElements": 32,
+      "Sub": 23,
+      "Gather": 18,
+      "Mul": 12,
+      "CenterCropPad": 9,
+      "ArgMax": 8,
+      "Transpose": 7,
+      "ReduceMax": 4,
+      "Pow": 2,
+      "Log": 2,
+      "Equal": 1
+    },
+    "top_intermediates": [
+      {
+        "name": "safe_name_116",
+        "original_name": "border26",
+        "op": "Less",
+        "dtype": "bool",
+        "static_shape": [
+          19,
+          19
+        ],
+        "runtime_shapes": [
+          [
+            19,
+            19
+          ]
+        ],
+        "charged_bytes": 361
+      },
+      {
+        "name": "safe_name_57",
+        "original_name": "black_words_f",
+        "op": "Einsum",
+        "dtype": "float32",
+        "static_shape": [
+          30
+        ],
+        "runtime_shapes": [
+          [
+            30
+          ]
+        ],
+        "charged_bytes": 120
+      },
+      {
+        "name": "safe_name_58",
+        "original_name": "black_words_u16_full",
+        "op": "Cast",
+        "dtype": "uint16",
+        "static_shape": [
+          30
+        ],
+        "runtime_shapes": [
+          [
+            30
+          ]
+        ],
+        "charged_bytes": 60
+      },
+      {
+        "name": "safe_name_28",
+        "original_name": "counts10",
+        "op": "GlobalLpPool",
+        "dtype": "float32",
+        "static_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10,
+            1,
+            1
+          ]
+        ],
+        "charged_bytes": 40
+      },
+      {
+        "name": "safe_name_30",
+        "original_name": "box_onehot",
+        "op": "Where",
+        "dtype": "float32",
+        "static_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10,
+            1,
+            1
+          ]
+        ],
+        "charged_bytes": 40
+      },
+      {
+        "name": "safe_name_65",
+        "original_name": "cand2",
+        "op": "Concat",
+        "dtype": "uint16",
+        "static_shape": [
+          19
+        ],
+        "runtime_shapes": [
+          [
+            19
+          ]
+        ],
+        "charged_bytes": 38
+      },
+      {
+        "name": "safe_name_59",
+        "original_name": "black_words_u16",
+        "op": "Slice",
+        "dtype": "uint16",
+        "static_shape": [
+          17
+        ],
+        "runtime_shapes": [
+          [
+            17
+          ]
+        ],
+        "charged_bytes": 34
+      },
+      {
+        "name": "safe_name_60",
+        "original_name": "black_shift_base_u16",
+        "op": "Div",
+        "dtype": "uint16",
+        "static_shape": [
+          17
+        ],
+        "runtime_shapes": [
+          [
+            17
+          ]
+        ],
+        "charged_bytes": 34
+      },
+      {
+        "name": "safe_name_61",
+        "original_name": "run2",
+        "op": "BitwiseAnd",
+        "dtype": "uint16",
+        "static_shape": [
+          17
+        ],
+        "runtime_shapes": [
+          [
+            17
+          ]
+        ],
+        "charged_bytes": 34
+      },
+      {
+        "name": "safe_name_68",
+        "original_name": "cand_bottom",
+        "op": "Slice",
+        "dtype": "uint16",
+        "static_shape": [
+          16
+        ],
+        "runtime_shapes": [
+          [
+            16
+          ]
+        ],
+        "charged_bytes": 32
+      },
+      {
+        "name": "safe_name_62",
+        "original_name": "run2_base",
+        "op": "Slice",
+        "dtype": "uint16",
+        "static_shape": [
+          16
+        ],
+        "runtime_shapes": [
+          [
+            16
+          ]
+        ],
+        "charged_bytes": 32
+      },
+      {
+        "name": "safe_name_63",
+        "original_name": "run2_next",
+        "op": "Slice",
+        "dtype": "uint16",
+        "static_shape": [
+          16
+        ],
+        "runtime_shapes": [
+          [
+            16
+          ]
+        ],
+        "charged_bytes": 32
+      },
+      {
+        "name": "safe_name_64",
+        "original_name": "cand2_base",
+        "op": "BitwiseAnd",
+        "dtype": "uint16",
+        "static_shape": [
+          16
+        ],
+        "runtime_shapes": [
+          [
+            16
+          ]
+        ],
+        "charged_bytes": 32
+      },
+      {
+        "name": "safe_name_69",
+        "original_name": "cand_fullh",
+        "op": "BitwiseAnd",
+        "dtype": "uint16",
+        "static_shape": [
+          16
+        ],
+        "runtime_shapes": [
+          [
+            16
+          ]
+        ],
+        "charged_bytes": 32
+      },
+      {
+        "name": "safe_name_79",
+        "original_name": "starts_clean",
+        "op": "ScatterElements",
+        "dtype": "uint16",
+        "static_shape": [
+          16
+        ],
+        "runtime_shapes": [
+          [
+            16
+          ]
+        ],
+        "charged_bytes": 32
+      },
+      {
+        "name": "safe_name_80",
+        "original_name": "starts_clean_h",
+        "op": "Cast",
+        "dtype": "float16",
+        "static_shape": [
+          16
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 32
+      },
+      {
+        "name": "safe_name_114",
+        "original_name": "row_pad19",
+        "op": "Pad",
+        "dtype": "uint8",
+        "static_shape": [
+          19,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            19,
+            1
+          ]
+        ],
+        "charged_bytes": 19
+      },
+      {
+        "name": "safe_name_115",
+        "original_name": "col_pad19",
+        "op": "Pad",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          19
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            19
+          ]
+        ],
+        "charged_bytes": 19
+      },
+      {
+        "name": "safe_name_111",
+        "original_name": "row_pads_i64",
+        "op": "Cast",
+        "dtype": "int64",
+        "static_shape": [
+          2
+        ],
+        "runtime_shapes": [
+          [
+            2
+          ]
+        ],
+        "charged_bytes": 16
+      },
+      {
+        "name": "safe_name_113",
+        "original_name": "col_pads_i64",
+        "op": "Cast",
+        "dtype": "int64",
+        "static_shape": [
+          2
+        ],
+        "runtime_shapes": [
+          [
+            2
+          ]
+        ],
+        "charged_bytes": 16
+      },
+      {
+        "name": "safe_name_29",
+        "original_name": "small",
+        "op": "Less",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            10,
+            1,
+            1
+          ]
+        ],
+        "charged_bytes": 10
+      },
+      {
+        "name": "safe_name_117",
+        "original_name": "target22",
+        "op": "Add",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_118",
+        "original_name": "target23",
+        "op": "Add",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_119",
+        "original_name": "target24",
+        "op": "Add",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_120",
+        "original_name": "target25",
+        "op": "Add",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_121",
+        "original_name": "target26",
+        "op": "Add",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_122",
+        "original_name": "target27",
+        "op": "Add",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_123",
+        "original_name": "target28",
+        "op": "Add",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_124",
+        "original_name": "target29",
+        "op": "Add",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_125",
+        "original_name": "target30",
+        "op": "Add",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_81",
+        "original_name": "r1_i64k",
+        "op": "ArgMax",
+        "dtype": "int64",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 8
+      },
+      {
+        "name": "safe_name_89",
+        "original_name": "row_updates",
+        "op": "Gather",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          7
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            7
+          ]
+        ],
+        "charged_bytes": 7
+      },
+      {
+        "name": "safe_name_90",
+        "original_name": "col_tmp_pat",
+        "op": "Gather",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          7
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            7
+          ]
+        ],
+        "charged_bytes": 7
+      },
+      {
+        "name": "safe_name_91",
+        "original_name": "col_tmp_inv",
+        "op": "Sub",
+        "dtype": "uint8",
+        "static_shape": [
+          1,
+          7
+        ],
+        "runtime_shapes": [
+          [
+            1,
+            7
+          ]
+        ],
+        "charged_bytes": 7
+      },
+      {
+        "name": "safe_name_92",
+        "original_name": "col_updates",
+        "op": "Transpose",
+        "dtype": "uint8",
+        "static_shape": [
+          7,
+          1
+        ],
+        "runtime_shapes": [
+          [
+            7,
+            1
+          ]
+        ],
+        "charged_bytes": 7
+      },
+      {
+        "name": "safe_name_31",
+        "original_name": "p_count",
+        "op": "ReduceMax",
+        "dtype": "float32",
+        "static_shape": [],
+        "runtime_shapes": [
+          []
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_34",
+        "original_name": "row_m1",
+        "op": "Einsum",
+        "dtype": "float32",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_36",
+        "original_name": "row_m2",
+        "op": "Einsum",
+        "dtype": "float32",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_38",
+        "original_name": "col_m1",
+        "op": "Einsum",
+        "dtype": "float32",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_52",
+        "original_name": "first_r_shift",
+        "op": "Cast",
+        "dtype": "int32",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_56",
+        "original_name": "w_pat_idx_i32",
+        "op": "Cast",
+        "dtype": "int32",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_66",
+        "original_name": "h_off_s",
+        "op": "Cast",
+        "dtype": "int32",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_67",
+        "original_name": "h_end_s",
+        "op": "Add",
+        "dtype": "int32",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 4
+      },
+      {
+        "name": "safe_name_32",
+        "original_name": "p_count_h",
+        "op": "Cast",
+        "dtype": "float16",
+        "static_shape": [],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_33",
+        "original_name": "p_count_sq_h",
+        "op": "Mul",
+        "dtype": "float16",
+        "static_shape": [],
+        "runtime_shapes": [
+          []
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_35",
+        "original_name": "row_m1_h",
+        "op": "Cast",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_37",
+        "original_name": "row_m2_h",
+        "op": "Cast",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_39",
+        "original_name": "col_m1_h",
+        "op": "Cast",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_40",
+        "original_name": "row_mean_h",
+        "op": "Div",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_41",
+        "original_name": "row_mean2_h",
+        "op": "Div",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_42",
+        "original_name": "row_mean_sq_h",
+        "op": "Mul",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_43",
+        "original_name": "row_var_h",
+        "op": "Sub",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_44",
+        "original_name": "h_scaled_h",
+        "op": "Mul",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_45",
+        "original_name": "h_shift_h",
+        "op": "Add",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_49",
+        "original_name": "r_offset_h",
+        "op": "Div",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_50",
+        "original_name": "first_r_h",
+        "op": "Sub",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_51",
+        "original_name": "first_r_shift_h",
+        "op": "Sub",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_53",
+        "original_name": "col_mean_h",
+        "op": "Div",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_70",
+        "original_name": "first_shift_tmp_h",
+        "op": "Sub",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_72",
+        "original_name": "first_shift_h",
+        "op": "Cast",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_73",
+        "original_name": "first_bit_h",
+        "op": "Pow",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_74",
+        "original_name": "first_bit",
+        "op": "Cast",
+        "dtype": "uint16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_75",
+        "original_name": "first_row_bits_u16",
+        "op": "Gather",
+        "dtype": "uint16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_76",
+        "original_name": "first_mask_u16",
+        "op": "Mul",
+        "dtype": "uint16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_77",
+        "original_name": "first_remove_u16",
+        "op": "BitwiseAnd",
+        "dtype": "uint16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_78",
+        "original_name": "neg_first_bit",
+        "op": "Sub",
+        "dtype": "uint16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_82",
+        "original_name": "row_bits_u16",
+        "op": "Gather",
+        "dtype": "uint16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_83",
+        "original_name": "neg_row_bits_u16",
+        "op": "Sub",
+        "dtype": "uint16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_84",
+        "original_name": "cand_row_u16",
+        "op": "BitwiseAnd",
+        "dtype": "uint16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_85",
+        "original_name": "cand_row_h",
+        "op": "Cast",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_86",
+        "original_name": "cand_log_h",
+        "op": "Log",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_87",
+        "original_name": "cand_log2_h",
+        "op": "Div",
+        "dtype": "float16",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_110",
+        "original_name": "row_pads_i8",
+        "op": "Concat",
+        "dtype": "int8",
+        "static_shape": [
+          2
+        ],
+        "runtime_shapes": [
+          [
+            2
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_112",
+        "original_name": "col_pads_i8",
+        "op": "Concat",
+        "dtype": "int8",
+        "static_shape": [
+          2
+        ],
+        "runtime_shapes": [
+          [
+            2
+          ]
+        ],
+        "charged_bytes": 2
+      },
+      {
+        "name": "safe_name_126",
+        "original_name": "border22",
+        "op": "CenterCropPad",
+        "dtype": "bool",
+        "static_shape": [],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_127",
+        "original_name": "border23",
+        "op": "CenterCropPad",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_128",
+        "original_name": "border24",
+        "op": "CenterCropPad",
+        "dtype": "bool",
+        "static_shape": [],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_129",
+        "original_name": "border25",
+        "op": "CenterCropPad",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_130",
+        "original_name": "border26ccp",
+        "op": "CenterCropPad",
+        "dtype": "bool",
+        "static_shape": [],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_131",
+        "original_name": "border27",
+        "op": "CenterCropPad",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_132",
+        "original_name": "border28",
+        "op": "CenterCropPad",
+        "dtype": "bool",
+        "static_shape": [],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_133",
+        "original_name": "border29",
+        "op": "CenterCropPad",
+        "dtype": "bool",
+        "static_shape": [
+          1,
+          1
+        ],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_134",
+        "original_name": "border",
+        "op": "CenterCropPad",
+        "dtype": "bool",
+        "static_shape": [],
+        "runtime_shapes": [],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_94",
+        "original_name": "first_r_u8",
+        "op": "Cast",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_95",
+        "original_name": "poly_r2_u8",
+        "op": "Mul",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_96",
+        "original_name": "poly_9r2_u8",
+        "op": "Mul",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_97",
+        "original_name": "poly_12h_u8",
+        "op": "Mul",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_98",
+        "original_name": "poly_inner_a_u8",
+        "op": "Add",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_99",
+        "original_name": "poly_inner_u8",
+        "op": "Add",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_100",
+        "original_name": "poly_cprod_u8",
+        "op": "Mul",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_101",
+        "original_name": "poly_row_raw_u8",
+        "op": "Add",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_102",
+        "original_name": "poly_row_u8",
+        "op": "BitwiseAnd",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_103",
+        "original_name": "empty_cand",
+        "op": "Equal",
+        "dtype": "bool",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_106",
+        "original_name": "r1_sel_i8",
+        "op": "Cast",
+        "dtype": "int8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_107",
+        "original_name": "cidx_sel_i8",
+        "op": "Cast",
+        "dtype": "int8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_104",
+        "original_name": "r1_sel_u8",
+        "op": "Where",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_105",
+        "original_name": "cidx_sel_u8",
+        "op": "Where",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_46",
+        "original_name": "h_sum012",
+        "op": "Cast",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_47",
+        "original_name": "p_count_u8",
+        "op": "Cast",
+        "dtype": "uint8",
+        "static_shape": [],
+        "runtime_shapes": [
+          []
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_48",
+        "original_name": "p_half_u8",
+        "op": "Div",
+        "dtype": "uint8",
+        "static_shape": [],
+        "runtime_shapes": [
+          []
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_54",
+        "original_name": "wh_tmp_u8",
+        "op": "Sub",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_55",
+        "original_name": "span0_u8",
+        "op": "Sub",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_71",
+        "original_name": "first_shift_u8",
+        "op": "Cast",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_88",
+        "original_name": "cidx_u8_raw",
+        "op": "Cast",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_93",
+        "original_name": "r1_u8",
+        "op": "Cast",
+        "dtype": "uint8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_108",
+        "original_name": "row_after_i8",
+        "op": "Sub",
+        "dtype": "int8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      },
+      {
+        "name": "safe_name_109",
+        "original_name": "col_after_i8",
+        "op": "Sub",
+        "dtype": "int8",
+        "static_shape": [
+          1
+        ],
+        "runtime_shapes": [
+          [
+            1
+          ]
+        ],
+        "charged_bytes": 1
+      }
+    ]
+  }
+}

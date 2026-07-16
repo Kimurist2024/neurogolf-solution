@@ -1,0 +1,1241 @@
+{
+  "baseline": {
+    "zip": "submission_base_8005.16.zip",
+    "zip_sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "lb_score": 8005.16
+  },
+  "policy": {
+    "normal": "lower cost; complete known 100%; two independent fresh seeds each >=90%; dual ORT runtime0; strict/data_prop; truthful runtime shapes; UB0; no lookup/cloak/giant",
+    "private_zero": "decoded true rule or exact LB-white lineage plus known/fresh 100% in both ORT modes; runtime0; strict/truthful/UB0"
+  },
+  "tasks": [
+    13,
+    18,
+    54,
+    80,
+    89,
+    96,
+    101,
+    131
+  ],
+  "rows": [
+    {
+      "task": 13,
+      "baseline_sha256": "d0d2eea63b192eb7d9258f8408d00a72229dfbaef130887f64b708aef3536a2d",
+      "baseline_cost": 638,
+      "known_dual": {
+        "disable_all": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "rate": 1.0
+        },
+        "default": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "rate": 1.0
+        }
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "runtime_shapes_truthful": true,
+        "runtime_shape_mismatches": 0,
+        "conv_bias_findings": 0,
+        "standard_domains": true,
+        "max_einsum_inputs": 51,
+        "lookup_ops": []
+      },
+      "sound_control": {
+        "cost": 7884,
+        "path": "scripts/golf/scratch_claude/task013/cand.onnx"
+      },
+      "decision": "REJECT_NO_SAFE_IMPROVEMENT",
+      "reasons": [
+        "51-input terminal Einsum violates the no-giant-contraction gate",
+        "the truthful spec control costs 7884, above the cost-638 incumbent"
+      ]
+    },
+    {
+      "task": 18,
+      "baseline_sha256": "36eef8bf93f0e79ea8e730594a986add071ee30ea92fc8f662c61663bd6c52c3",
+      "baseline_cost": 4753,
+      "known_dual": {
+        "disable_all": {
+          "total": 266,
+          "right": 266,
+          "errors": 0,
+          "rate": 1.0
+        },
+        "default": {
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_72) Op (TopK) [ShapeInferenceError] Axis has less than the requested k elements."
+        }
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": false,
+        "static_positive": false,
+        "runtime_shapes_truthful": false,
+        "runtime_shape_mismatches": 61,
+        "conv_bias_findings": 0,
+        "standard_domains": true,
+        "max_einsum_inputs": 0,
+        "lookup_ops": []
+      },
+      "sound_control": {
+        "cost": 10857,
+        "path": "scripts/golf/scratch_codex/task018/tile2x3_k22_allmode_clean.onnx"
+      },
+      "decision": "REJECT_NO_SAFE_IMPROVEMENT",
+      "reasons": [
+        "strict data-propagating shape inference fails",
+        "default ORT session creation fails",
+        "61 declared/runtime shape mismatches",
+        "the clean truthful rebuild costs 10857, above 4753"
+      ]
+    },
+    {
+      "task": 54,
+      "baseline_sha256": "783e18d6e3ec8abef5c7aae6111b80f47583bc2d0b02954984414efc1a3b86b8",
+      "baseline_cost": 2258,
+      "known_dual": {
+        "disable_all": {
+          "total": 266,
+          "right": 266,
+          "errors": 0,
+          "rate": 1.0
+        },
+        "default": {
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_146) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=1 Declared=30 Dimension=2"
+        }
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "runtime_shapes_truthful": false,
+        "runtime_shape_mismatches": 40,
+        "conv_bias_findings": 0,
+        "standard_domains": true,
+        "max_einsum_inputs": 7,
+        "lookup_ops": []
+      },
+      "sound_control": {
+        "cost": 49618,
+        "path": "scripts/golf/scratch_codex/task054/task054_vector.onnx"
+      },
+      "decision": "REJECT_NO_SAFE_IMPROVEMENT",
+      "reasons": [
+        "default ORT session creation fails",
+        "40 declared/runtime shape mismatches",
+        "the dual/fresh-perfect truthful control costs 49618, above 2258"
+      ]
+    },
+    {
+      "task": 80,
+      "baseline_sha256": "761ed9c5c4d9c9aab1284f8ebfb0be11afb9d5103e72727495d39be186d12daf",
+      "baseline_cost": 3050,
+      "known_dual": {
+        "disable_all": {
+          "total": 231,
+          "right": 231,
+          "errors": 0,
+          "rate": 1.0
+        },
+        "default": {
+          "total": 231,
+          "right": 231,
+          "errors": 0,
+          "rate": 1.0
+        }
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "runtime_shapes_truthful": true,
+        "runtime_shape_mismatches": 0,
+        "conv_bias_findings": 0,
+        "standard_domains": true,
+        "max_einsum_inputs": 0,
+        "lookup_ops": []
+      },
+      "sound_control": {
+        "cost": 3050,
+        "path": "8005.16 incumbent (spec-derived floor)"
+      },
+      "decision": "REJECT_NO_SAFE_IMPROVEMENT",
+      "reasons": [
+        "no strictly cheaper candidate survived exact scanning",
+        "no Identity, duplicate producer, unused initializer, or further safe scalar-broadcast shave exists",
+        "the prior cost-3073 ablations are now above the cost-3050 incumbent and fail stored gold"
+      ],
+      "fresh_dual": [
+        {
+          "total": 5000,
+          "modes": {
+            "disable_all": {
+              "right": 5000,
+              "runtime_errors": 0,
+              "rate": 1.0
+            },
+            "default": {
+              "right": 5000,
+              "runtime_errors": 0,
+              "rate": 1.0
+            }
+          },
+          "dual_raw_equal": 5000,
+          "first_failures": {},
+          "seed": 80800001,
+          "attempts": 5927
+        },
+        {
+          "total": 5000,
+          "modes": {
+            "disable_all": {
+              "right": 5000,
+              "runtime_errors": 0,
+              "rate": 1.0
+            },
+            "default": {
+              "right": 5000,
+              "runtime_errors": 0,
+              "rate": 1.0
+            }
+          },
+          "dual_raw_equal": 5000,
+          "first_failures": {},
+          "seed": 80800002,
+          "attempts": 6027
+        }
+      ]
+    },
+    {
+      "task": 89,
+      "baseline_sha256": "cf72627641735930c993eef05c7114b1e4945cec1fd90c9eb1093c3c1f1c7d9e",
+      "baseline_cost": 1349,
+      "known_dual": {
+        "disable_all": {
+          "total": 267,
+          "right": 267,
+          "errors": 0,
+          "rate": 1.0
+        },
+        "default": {
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_60) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "runtime_shapes_truthful": false,
+        "runtime_shape_mismatches": 49,
+        "conv_bias_findings": 0,
+        "standard_domains": true,
+        "max_einsum_inputs": 0,
+        "lookup_ops": []
+      },
+      "sound_control": {
+        "cost": 2620,
+        "sha256": "c97fff30f5fa41cf8345791fbcd78b6ad0c0af4e6b25d9aed38258b952b6a683"
+      },
+      "decision": "REJECT_NO_SAFE_IMPROVEMENT",
+      "reasons": [
+        "default ORT session creation fails",
+        "49 declared/runtime shape mismatches",
+        "the truthful spec-derived control costs 2620, above 1349",
+        "the new cost-1180 root lead crashes all 267 known cases under ORT_DISABLE_ALL"
+      ]
+    },
+    {
+      "task": 96,
+      "baseline_sha256": "d026067708b4017d81ad095fc7da1725350d45cffde2bb8e8d4d409711d6f31e",
+      "baseline_cost": 1128,
+      "known_dual": {
+        "disable_all": {
+          "total": 266,
+          "right": 266,
+          "errors": 0,
+          "rate": 1.0
+        },
+        "default": {
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_59) Op (CenterCropPad) [ShapeInferenceError] Unexpected axis value: 2. Expected range [0, 0)"
+        }
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "runtime_shapes_truthful": false,
+        "runtime_shape_mismatches": 6,
+        "conv_bias_findings": 0,
+        "standard_domains": true,
+        "max_einsum_inputs": 6,
+        "lookup_ops": []
+      },
+      "sound_control": {
+        "cost": 2000,
+        "path": "agent_policy90_repairs7/candidates/task096_default_safe.onnx"
+      },
+      "decision": "REJECT_NO_SAFE_IMPROVEMENT",
+      "reasons": [
+        "default ORT session creation fails",
+        "6 declared/runtime shape mismatches",
+        "the truthful repair costs 2000, above 1128",
+        "removing the only Identity exposes the shape cloak and prevents checker/ORT initialization"
+      ]
+    },
+    {
+      "task": 101,
+      "baseline_sha256": "ad535c519c18681700f956262c48ca5990f15ff4b58fd94de95ef3beff69a84b",
+      "baseline_cost": 5655,
+      "known_dual": {
+        "disable_all": {
+          "total": 266,
+          "right": 266,
+          "errors": 0,
+          "rate": 1.0
+        },
+        "default": {
+          "total": 266,
+          "right": 266,
+          "errors": 0,
+          "rate": 1.0
+        }
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "runtime_shapes_truthful": true,
+        "runtime_shape_mismatches": 0,
+        "conv_bias_findings": 0,
+        "standard_domains": true,
+        "max_einsum_inputs": 0,
+        "lookup_ops": []
+      },
+      "sound_control": {
+        "cost": 7264,
+        "path": "scripts/golf/scratch_codex_7994/task101_sound/sound_7264.onnx"
+      },
+      "decision": "REJECT_NO_SAFE_IMPROVEMENT",
+      "reasons": [
+        "private-zero lineage requires 100% fresh correctness",
+        "fresh correctness is 994/1000 and 987/1000 in both ORT modes",
+        "the decoded-rule sound control costs 7264, above 5655"
+      ],
+      "fresh_dual": [
+        {
+          "total": 1000,
+          "modes": {
+            "disable_all": {
+              "right": 994,
+              "runtime_errors": 0,
+              "rate": 0.994
+            },
+            "default": {
+              "right": 994,
+              "runtime_errors": 0,
+              "rate": 0.994
+            }
+          },
+          "dual_raw_equal": 1000,
+          "first_failures": {
+            "disable_all": {
+              "index": 171,
+              "wrong_cells": 36
+            },
+            "default": {
+              "index": 171,
+              "wrong_cells": 36
+            }
+          },
+          "seed": 101800001,
+          "attempts": 1000
+        },
+        {
+          "total": 1000,
+          "modes": {
+            "disable_all": {
+              "right": 987,
+              "runtime_errors": 0,
+              "rate": 0.987
+            },
+            "default": {
+              "right": 987,
+              "runtime_errors": 0,
+              "rate": 0.987
+            }
+          },
+          "dual_raw_equal": 1000,
+          "first_failures": {
+            "disable_all": {
+              "index": 145,
+              "wrong_cells": 8
+            },
+            "default": {
+              "index": 145,
+              "wrong_cells": 8
+            }
+          },
+          "seed": 101800002,
+          "attempts": 1000
+        }
+      ]
+    },
+    {
+      "task": 131,
+      "baseline_sha256": "d72faec0655603b5dc7e6857799988200a08953f724b0d6f58703dbfbed5ebc4",
+      "baseline_cost": 691,
+      "known_dual": {
+        "disable_all": {
+          "total": 266,
+          "right": 266,
+          "errors": 0,
+          "rate": 1.0
+        },
+        "default": {
+          "total": 266,
+          "right": 266,
+          "errors": 0,
+          "rate": 1.0
+        }
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "static_positive": true,
+        "runtime_shapes_truthful": false,
+        "runtime_shape_mismatches": 18,
+        "conv_bias_findings": 0,
+        "standard_domains": true,
+        "max_einsum_inputs": 3,
+        "lookup_ops": []
+      },
+      "sound_control": {
+        "cost": 1521,
+        "path": "scripts/golf/scratch_claude/task131/cand_tie.onnx"
+      },
+      "decision": "REJECT_NO_SAFE_IMPROVEMENT",
+      "reasons": [
+        "18 declared/runtime shape mismatches",
+        "the independent spec rebuild costs 1521, above 691"
+      ]
+    }
+  ],
+  "new_root_task089_candidate": {
+    "task": 89,
+    "baseline_path": "scripts/golf/loop_8004_42_plus20/agent_rebase_new21/base/task089.onnx",
+    "candidate_path": "scripts/golf/loop_8004_42_plus20/root_exact_noop26/task089.onnx",
+    "baseline_sha256": "cf72627641735930c993eef05c7114b1e4945cec1fd90c9eb1093c3c1f1c7d9e",
+    "candidate_sha256": "d8793c28527b54545d1cc504a7bfec11cda0c048cdf28bef1f12241889a55eb1",
+    "baseline_cost": 1349,
+    "candidate_cost": 1180,
+    "projected_gain_if_valid": 0.13384913874804547,
+    "structure": {
+      "checker_full": true,
+      "strict_data_prop": true,
+      "conv_bias_findings": [],
+      "standard_domains": true,
+      "lookup_ops": []
+    },
+    "known": {
+      "disable_all": {
+        "total": 267,
+        "base_right": 267,
+        "candidate_right": 0,
+        "base_runtime_errors": 0,
+        "candidate_runtime_errors": 267,
+        "raw_equal": 0,
+        "decoded_equal": 0,
+        "first_candidate_error": {
+          "index": 0,
+          "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,2,2} != {1,1,13,13}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+        }
+      },
+      "default": {
+        "base_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_60) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+        "candidate_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_60) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      }
+    },
+    "fresh_run": false,
+    "verdict": "REJECT",
+    "reasons": [
+      "disable_all_runtime_errors_on_all_known_cases",
+      "default_ORT_session_creation_failed",
+      "runtime_shapes_not_truthful",
+      "not_raw_equal_to_LB_incumbent",
+      "fresh_not_run_after_mandatory_known/runtime/shape_gates_failed"
+    ],
+    "runtime_shapes": {
+      "truthful": false,
+      "mismatch_count": 49,
+      "mismatches": [
+        {
+          "tensor": "input_hidden",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "input_u8",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "decode_big",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            2,
+            2
+          ]
+        },
+        {
+          "tensor": "pad_grid_14",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            14,
+            14
+          ]
+        },
+        {
+          "tensor": "pad_grid_15",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            15,
+            15
+          ]
+        },
+        {
+          "tensor": "pad_grid_16",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            16,
+            16
+          ]
+        },
+        {
+          "tensor": "pad_grid_17",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            17,
+            17
+          ]
+        },
+        {
+          "tensor": "pad_grid_18",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            18,
+            18
+          ]
+        },
+        {
+          "tensor": "pad_grid_19",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            19,
+            19
+          ]
+        },
+        {
+          "tensor": "pad_grid_20",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            20,
+            20
+          ]
+        },
+        {
+          "tensor": "pad_grid_21",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            21,
+            21
+          ]
+        },
+        {
+          "tensor": "pad_grid_22",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            22,
+            22
+          ]
+        },
+        {
+          "tensor": "pad_grid_23",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            23,
+            23
+          ]
+        },
+        {
+          "tensor": "pad_grid_24",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            24,
+            24
+          ]
+        },
+        {
+          "tensor": "pad_grid_25",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            25,
+            25
+          ]
+        },
+        {
+          "tensor": "pad_grid_26",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            26,
+            26
+          ]
+        },
+        {
+          "tensor": "pad_grid_27",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            27,
+            27
+          ]
+        },
+        {
+          "tensor": "pad_grid_28",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            28,
+            28
+          ]
+        },
+        {
+          "tensor": "pad_grid_29",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "pad_grid_30",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "red_crop3",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            3,
+            3
+          ]
+        },
+        {
+          "tensor": "grn_crop3",
+          "declared": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "runtime": [
+            1,
+            1,
+            3,
+            3
+          ]
+        },
+        {
+          "tensor": "value_hide",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            13,
+            13
+          ]
+        },
+        {
+          "tensor": "top_sp0",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            29,
+            29
+          ]
+        },
+        {
+          "tensor": "top_sp1",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            28,
+            28
+          ]
+        },
+        {
+          "tensor": "top_sp2",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            27,
+            27
+          ]
+        },
+        {
+          "tensor": "top_sp3",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            26,
+            26
+          ]
+        },
+        {
+          "tensor": "top_sp4",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            25,
+            25
+          ]
+        },
+        {
+          "tensor": "top_sp5",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            24,
+            24
+          ]
+        },
+        {
+          "tensor": "top_sp6",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            23,
+            23
+          ]
+        },
+        {
+          "tensor": "top_sp7",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            22,
+            22
+          ]
+        },
+        {
+          "tensor": "top_sp8",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            21,
+            21
+          ]
+        },
+        {
+          "tensor": "top_sp9",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            20,
+            20
+          ]
+        },
+        {
+          "tensor": "top_sp10",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            19,
+            19
+          ]
+        },
+        {
+          "tensor": "top_sp11",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            18,
+            18
+          ]
+        },
+        {
+          "tensor": "top_sp12",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            17,
+            17
+          ]
+        },
+        {
+          "tensor": "top_sp13",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            16,
+            16
+          ]
+        },
+        {
+          "tensor": "top_sp14",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            15,
+            15
+          ]
+        },
+        {
+          "tensor": "top_sp15",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            14,
+            14
+          ]
+        },
+        {
+          "tensor": "top13_u8",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            13,
+            13
+          ]
+        },
+        {
+          "tensor": "grn_ch0",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            3,
+            13,
+            13
+          ]
+        },
+        {
+          "tensor": "grn_ch1",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            2,
+            13,
+            13
+          ]
+        },
+        {
+          "tensor": "grn_mark",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            13,
+            13
+          ]
+        },
+        {
+          "tensor": "red_ch2",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            3,
+            13,
+            13
+          ]
+        },
+        {
+          "tensor": "red_ch3",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            2,
+            13,
+            13
+          ]
+        },
+        {
+          "tensor": "red_all_u8",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            1,
+            13,
+            13
+          ]
+        },
+        {
+          "tensor": "red_ch0",
+          "declared": [
+            1,
+            5,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            5,
+            13,
+            13
+          ]
+        },
+        {
+          "tensor": "red_ch1",
+          "declared": [
+            1,
+            4,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            4,
+            13,
+            13
+          ]
+        },
+        {
+          "tensor": "output",
+          "declared": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "runtime": [
+            1,
+            10,
+            30,
+            30
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostic_task096_identity_prune": {
+    "task": 96,
+    "source": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_8004_42_plus20/agent_rebase_new21/base/task096.onnx",
+    "candidate": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_8004_42_plus20/agent_rebase_new21/candidates/task096_identity_pruned_exact.onnx",
+    "rewrite": {
+      "node_index": 32,
+      "op": "Identity",
+      "input": "shape11_const1",
+      "output": "shape11_dyn",
+      "proof": "Identity(x)=x for every tensor; every consumer was rewired to x."
+    },
+    "source_sha256": "d026067708b4017d81ad095fc7da1725350d45cffde2bb8e8d4d409711d6f31e",
+    "candidate_sha256": "39a1d2b8c3b9f375f8ea6dde111eb16e9a32962b2a55578bc63f5599f722f7f2",
+    "structure": {
+      "checker_full": false,
+      "strict_data_prop": false,
+      "checker_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: featcen): [ShapeInferenceError] Unexpected axis value: 2. Expected range [0, 0)\n",
+      "strict_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: featcen): [ShapeInferenceError] Unexpected axis value: 2. Expected range [0, 0)\n"
+    }
+  },
+  "accepted": [],
+  "accepted_count": 0,
+  "aggregate_projected_gain": 0.0,
+  "final_verdict": "NO_SAFE_CANDIDATE",
+  "protected_files_modified": false
+}

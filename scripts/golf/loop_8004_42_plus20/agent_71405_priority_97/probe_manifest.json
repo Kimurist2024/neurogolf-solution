@@ -1,0 +1,40 @@
+{
+  "authority": "submission.zip",
+  "authority_sha256": "9085e2f795c0a73d44d27d712ad8fbaad67a3f37b1d8363a0f33305fbafa4118",
+  "status": "LB_PROBE_REQUIRED",
+  "candidates": [
+    {
+      "priority": 1,
+      "task": 46,
+      "path": "others/71405/task046_reimproved.onnx",
+      "sha256": "fb649383229d5cdcb562b8c1ce52256ff344193810888b795c20ac0aa0660d77",
+      "authority_cost": 631,
+      "candidate_cost": 627,
+      "projected_gain": 0.0063593219082924216,
+      "known": "267/267 in disable/default ORT at threads 1/4",
+      "fresh": "500/500 on two seeds plus 5000/5000 on a third seed in both ORT modes",
+      "structure": "checker/strict/static/domains/functions/banned/UB0 pass; runtime shape mismatches 0",
+      "risk": ["one nonfinite intermediate value in direct trace", "no exact-SHA LB history"],
+      "tail_order_sensitive": false,
+      "decision": "LB_PROBE_REQUIRED"
+    },
+    {
+      "priority": 2,
+      "task": 66,
+      "path": "others/71405/task066_further_cost_reduced.onnx",
+      "sha256": "bb8cebc8d71d275f4ec3f542d6aefea238b6c36d1cec77c0f2c1d533bf04ab4e",
+      "authority_cost": 677,
+      "candidate_cost": 562,
+      "projected_gain": 0.18616942301858388,
+      "known": "266/266 in disable/default ORT at threads 1/4",
+      "fresh": "470/500 and 478/500 per seed in both modes; minimum 94.0%",
+      "structure": "runtime shape mismatches 0 and UB0, but maximum Einsum arity 61",
+      "risk": ["giant Einsum", "one nonfinite intermediate value", "three other exact task066 SHAs are LB-black", "no exact-SHA LB history for this payload"],
+      "tail_order_sensitive": false,
+      "decision": "LB_PROBE_REQUIRED_HIGH_RISK"
+    }
+  ],
+  "known_black_exact_sha": [],
+  "merge_performed": false,
+  "probe_zip_created": false
+}

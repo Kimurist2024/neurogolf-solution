@@ -1,0 +1,47 @@
+# task174.onnx
+
+## Initializers
+base_w_i8: int8 (10, 1, 1, 1) [[[[-1]]], [[[0]]], [[[0]]], [[[0]]], [[[0]]], [[[0]]], [[[0]]], [[[0]]], [[[0]]], [[[0]]]]
+axes_slice_i32: int32 (3,) [1, 2, 3]
+crop_sizes_i32: int32 (3,) [1, 5, 5]
+zero_i8: int8 (1,) [0]
+signal_w_i8: int8 (1, 1, 4, 3) [[[[0, -1, 0], [-3, 127, -60], [0, -58, 57], [0, -1, 0]]]]
+gn_scale: float32 () 0.14000000059604645
+unsq_axes_i64: int64 (3,) [1, 2, 3]
+xp16: float16 (30,) [1.0, 0.96875, 0.9375, 0.90625, 0.875, 0.84375, 0.8125, 0.78125, 0.75, 0.71875, -8.5, 0.00384521484375, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+color_idx16: float16 (10,) [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+loc_scale16: float16 (1,) [-2.361328125]
+
+## Value info
+gnq: FLOAT [1, 1, 1, 1]
+qin_i8: INT8 [1, 1, 1, 1]
+qin_h: FLOAT16 [1, 1, 1, 1]
+obj_i8: INT8 [1, 1, 5, 5]
+signal_i8: INT8 [1, 1, 5, 5]
+
+## Nodes
+00 GroupNormalization ['input', 'gn_scale', 'gn_scale'] -> ['gnq'] {'epsilon': 9.999999747378752e-06, 'num_groups': 1}
+01 CastLike ['gnq', 'zero_i8'] -> ['qin_i8'] {}
+02 CastLike ['qin_i8', 'xp16'] -> ['qin_h'] {}
+03 Einsum ['qin_h', 'qin_h', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16'] -> ['lhs_cov'] {'equation': b'bchw,bcij,j,i,i,i,i->bc'}
+04 Einsum ['qin_h', 'qin_h', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16'] -> ['rhs_cov'] {'equation': b'bchw,bcij,w,i,i,i,i->bc'}
+05 Equal ['lhs_cov', 'rhs_cov'] -> ['cov_b'] {}
+06 CastLike ['cov_b', 'xp16'] -> ['sel_h'] {}
+07 Einsum ['qin_h', 'sel_h', 'color_idx16'] -> ['color_sum'] {'equation': b'bchw,bc,c->b'}
+08 Einsum ['qin_h', 'sel_h'] -> ['count_sum'] {'equation': b'bchw,bc->b'}
+09 QuantizeLinear ['color_sum', 'count_sum', 'zero_i8'] -> ['target_i8'] {}
+10 Einsum ['qin_h', 'sel_h', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16'] -> ['top_scaled_h'] {'equation': b'bchw,bc,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,h,z->b'}
+11 Einsum ['qin_h', 'sel_h', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16', 'xp16'] -> ['left_scaled_h'] {'equation': b'bchw,bc,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,z->b'}
+12 Log ['top_scaled_h'] -> ['top_shift_h'] {}
+13 Log ['left_scaled_h'] -> ['left_shift_h'] {}
+14 QuantizeLinear ['top_shift_h', 'loc_scale16', 'zero_i8'] -> ['rmin_i8'] {}
+15 QuantizeLinear ['left_shift_h', 'loc_scale16', 'zero_i8'] -> ['cmin_i8'] {}
+16 Concat ['target_i8', 'rmin_i8', 'cmin_i8'] -> ['starts_i8'] {'axis': 0}
+17 Cast ['starts_i8'] -> ['starts_i32'] {'to': 6}
+18 Add ['starts_i32', 'crop_sizes_i32'] -> ['ends_i32'] {}
+19 Slice ['qin_i8', 'starts_i32', 'ends_i32', 'axes_slice_i32'] -> ['obj_i8'] {}
+20 QLinearConv ['obj_i8', 'gn_scale', 'zero_i8', 'signal_w_i8', 'gn_scale', 'zero_i8', 'gn_scale', 'zero_i8'] -> ['signal_i8'] {'pads': [1, 1, 2, 1]}
+21 Unsqueeze ['target_i8', 'unsq_axes_i64'] -> ['target_i8_4d'] {}
+22 Cast ['target_i8_4d'] -> ['target_i32_4d'] {'to': 6}
+23 ScatterElements ['base_w_i8', 'target_i32_4d', 'target_i8_4d'] -> ['dyn_w_i8'] {'axis': 0}
+24 ConvInteger ['signal_i8', 'dyn_w_i8', 'zero_i8', 'zero_i8'] -> ['output'] {'pads': [0, 0, 25, 25]}

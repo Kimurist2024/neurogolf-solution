@@ -1,0 +1,61 @@
+{
+  "task": 158,
+  "baseline": {
+    "cost": 7529,
+    "sha256": "9d9a3ca8fb39856125925ea464ed1cc80f0301bd785ff7b60da37bd1c2b6b9d1"
+  },
+  "candidate": {
+    "cost": 7525,
+    "sha256": "127984c6807d84559bbf74fd58e3b09a66459d142cef65a8635647e64f5e59fd"
+  },
+  "trusted_7612_reference": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_task158_deep46/sound/task158_scatter_max_orientation_only.onnx",
+    "sha256": "3bfa73410f489f0bc444a1f4567f95837e445cd940d10b7282bdc50a95dd2dba"
+  },
+  "formal_anchor_transform": {
+    "definition": "Let S be the bias-free anchor Conv sum in the cost-7529 graph.",
+    "integrality": "endpoint_code is in {0,1,2}, anchor_stencil is integral float32, and input is exactly one-hot, so S is an integer.",
+    "absolute_bound": "sum(abs(anchor_stencil))=179 and endpoint_code<=2, hence abs(S)<=358; abs(S+146)<=504 and abs(2*S)<=716.",
+    "float16_exactness": "Every integer in these ranges is exactly representable in float16, so Cast(S+146)=S+146 and Cast(2*S)=2*S without rounding.",
+    "rewrite": "Remove Conv bias +146, multiply anchor_stencil by 2, and map every comparison threshold t to 2*(t-146).",
+    "phase_thresholds": {
+      "old": [149, 157, 177],
+      "new": [6, 22, 62]
+    },
+    "role_thresholds": {
+      "old": [148, 154, 170, 218],
+      "new": [4, 16, 48, 144]
+    },
+    "validity": "Old anchor_valid is S+146>146, i.e. integer S>=1; new anchor_valid is 2*S>=2 using existing fc_two_f16.",
+    "ordering": "Multiplication by positive two preserves every TopK ordering and tie.",
+    "consequence": "All phase, role, validity, slot, coordinate, permutation, Scatter and final output tensors downstream of the score decisions are unchanged."
+  },
+  "initializer_cse": [
+    {
+      "removed": "phase_cut_2",
+      "canonical": "nm_d62",
+      "typed_value": "float16 scalar 62"
+    },
+    {
+      "removed": "more_role_0",
+      "canonical": "lutnp_shift4",
+      "typed_value": "uint8 scalar 4"
+    }
+  ],
+  "removed_initializers": [
+    "da_anchor_bias",
+    "anchor_floor",
+    "phase_cut_2",
+    "more_role_0"
+  ],
+  "empirical_confirmation": {
+    "known_raw_equal_to_trusted_each_mode": 266,
+    "fresh_seeds": [1581141, 1581142],
+    "fresh_count_per_seed_each_mode": 2000,
+    "fresh_raw_equal_to_trusted_each_seed_each_mode": 2000,
+    "max_abs_raw_delta": 0.0,
+    "wrong": 0,
+    "runtime_errors": 0
+  },
+  "passed": true
+}

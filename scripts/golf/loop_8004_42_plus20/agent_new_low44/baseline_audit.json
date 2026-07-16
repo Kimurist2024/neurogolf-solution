@@ -1,0 +1,894 @@
+{
+  "baseline": "submission_base_8005.16.zip",
+  "baseline_sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+  "comparison_baseline": "submission_base_8004.50.zip",
+  "comparison_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+  "targets": [
+    303,
+    98,
+    395,
+    167,
+    289,
+    38,
+    262,
+    269
+  ],
+  "same_payload_as_8004_50": {
+    "303": true,
+    "98": true,
+    "395": true,
+    "167": true,
+    "289": true,
+    "38": true,
+    "262": true,
+    "269": true
+  },
+  "rows": {
+    "303": {
+      "task": 303,
+      "rule": "Add 2 to every cell whose row or column is entirely zero; otherwise retain the cell.",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_new_low44/baselines/task303.onnx",
+      "sha256": "dfe6d9f2300ba8496331af55f988d8ec5dc4e2c473fba425b048247d60a49042",
+      "file_bytes": 391,
+      "actual_cost": {
+        "memory": 0,
+        "params": 39,
+        "cost": 39
+      },
+      "node_count": 1,
+      "initializer_count": 2,
+      "ops": {
+        "Einsum": 1
+      },
+      "max_node_inputs": 8,
+      "max_einsum_inputs": 8,
+      "giant_einsum": false,
+      "risk_ops": [],
+      "checker_full": true,
+      "checker_error": null,
+      "strict_data_prop": true,
+      "strict_error": null,
+      "standard_domains": true,
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "declared_output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "runtime_shape_trace": {
+        "shape_cloak": false,
+        "mismatch_count": 0,
+        "mismatches": []
+      },
+      "known_disable_all": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "total": 265,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "known_default": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "total": 265,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "exact_local_scan": {
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "identity_nodes": [],
+        "candidate_count": 0
+      }
+    },
+    "98": {
+      "task": 98,
+      "rule": "Retain a cell iff its generator-defined clipped 3x3 neighborhood contains a zero; otherwise output zero.",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_new_low44/baselines/task098.onnx",
+      "sha256": "d4593edb4b8f56dbc19d2533670c572155951af869526121f0b3aca8a533fdde",
+      "file_bytes": 347,
+      "actual_cost": {
+        "memory": 0,
+        "params": 37,
+        "cost": 37
+      },
+      "node_count": 1,
+      "initializer_count": 2,
+      "ops": {
+        "ConvTranspose": 1
+      },
+      "max_node_inputs": 3,
+      "max_einsum_inputs": 0,
+      "giant_einsum": false,
+      "risk_ops": [],
+      "checker_full": true,
+      "checker_error": null,
+      "strict_data_prop": true,
+      "strict_error": null,
+      "standard_domains": true,
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "declared_output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "runtime_shape_trace": {
+        "shape_cloak": false,
+        "mismatch_count": 0,
+        "mismatches": []
+      },
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "exact_local_scan": {
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "identity_nodes": [],
+        "candidate_count": 0
+      }
+    },
+    "395": {
+      "task": 395,
+      "rule": "Remove row 3, compare every remaining cell with the corresponding row-3 cell, and output 2 iff both are zero.",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_new_low44/baselines/task395.onnx",
+      "sha256": "1fcc0253659bf6a6fe2cd5783d515884d5ea419bfd73a836c3f2dab1b2c3886d",
+      "file_bytes": 665,
+      "actual_cost": {
+        "memory": 23,
+        "params": 12,
+        "cost": 35
+      },
+      "node_count": 5,
+      "initializer_count": 3,
+      "ops": {
+        "CastLike": 1,
+        "ConvInteger": 1,
+        "GroupNormalization": 1,
+        "QLinearConv": 2
+      },
+      "max_node_inputs": 8,
+      "max_einsum_inputs": 0,
+      "giant_einsum": false,
+      "risk_ops": [],
+      "checker_full": true,
+      "checker_error": null,
+      "strict_data_prop": true,
+      "strict_error": null,
+      "standard_domains": true,
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "declared_output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "runtime_shape_trace": {
+        "shape_cloak": true,
+        "mismatch_count": 2,
+        "mismatches": [
+          {
+            "tensor": "g",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "x",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ]
+      },
+      "known_disable_all": {
+        "right": 268,
+        "wrong": 0,
+        "errors": 0,
+        "total": 268,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "known_default": {
+        "right": 268,
+        "wrong": 0,
+        "errors": 0,
+        "total": 268,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "exact_local_scan": {
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "identity_nodes": [],
+        "candidate_count": 0
+      }
+    },
+    "167": {
+      "task": 167,
+      "rule": "Emit a fixed 3x3 color-5 permutation pattern selected by the generator's distinct-character count modulo 5.",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_new_low44/baselines/task167.onnx",
+      "sha256": "ae201828c20e3943f5130795853a677d29f73e271863dd7a66485a38dfa8effb",
+      "file_bytes": 448,
+      "actual_cost": {
+        "memory": 14,
+        "params": 20,
+        "cost": 34
+      },
+      "node_count": 4,
+      "initializer_count": 3,
+      "ops": {
+        "ConvInteger": 1,
+        "Einsum": 1,
+        "Mul": 1,
+        "QuantizeLinear": 1
+      },
+      "max_node_inputs": 4,
+      "max_einsum_inputs": 4,
+      "giant_einsum": false,
+      "risk_ops": [],
+      "checker_full": true,
+      "checker_error": null,
+      "strict_data_prop": true,
+      "strict_error": null,
+      "standard_domains": true,
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "declared_output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "runtime_shape_trace": {
+        "shape_cloak": false,
+        "mismatch_count": 0,
+        "mismatches": []
+      },
+      "known_disable_all": {
+        "right": 268,
+        "wrong": 0,
+        "errors": 0,
+        "total": 268,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "known_default": {
+        "right": 268,
+        "wrong": 0,
+        "errors": 0,
+        "total": 268,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "exact_local_scan": {
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "identity_nodes": [],
+        "candidate_count": 0
+      }
+    },
+    "289": {
+      "task": 289,
+      "rule": "Nearest-neighbor repeat every cell in both axes by the generator's distinct-character-count scale.",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_new_low44/baselines/task289.onnx",
+      "sha256": "d6098659b327d3f0c5f1fb8179686fb687d36fa52ced063ed45bb49561ae7408",
+      "file_bytes": 913,
+      "actual_cost": {
+        "memory": 24,
+        "params": 8,
+        "cost": 32
+      },
+      "node_count": 9,
+      "initializer_count": 4,
+      "ops": {
+        "Cast": 1,
+        "CenterCropPad": 1,
+        "Einsum": 1,
+        "HardSigmoid": 1,
+        "Identity": 1,
+        "Log": 1,
+        "Mod": 1,
+        "PRelu": 1,
+        "Resize": 1
+      },
+      "max_node_inputs": 6,
+      "max_einsum_inputs": 6,
+      "giant_einsum": false,
+      "risk_ops": [
+        "CenterCropPad",
+        "Resize"
+      ],
+      "checker_full": true,
+      "checker_error": null,
+      "strict_data_prop": true,
+      "strict_error": null,
+      "standard_domains": true,
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "declared_output_shape": [
+        1,
+        1,
+        30,
+        30
+      ],
+      "runtime_shape_trace": {
+        "shape_cloak": true,
+        "mismatch_count": 4,
+        "mismatches": [
+          {
+            "tensor": "src31",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              31,
+              31
+            ]
+          },
+          {
+            "tensor": "src16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              31,
+              31
+            ]
+          },
+          {
+            "tensor": "roi",
+            "declared": [
+              1
+            ],
+            "runtime": [
+              4
+            ]
+          },
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              1,
+              30,
+              30
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ]
+      },
+      "known_disable_all": {
+        "right": 268,
+        "wrong": 0,
+        "errors": 0,
+        "total": 268,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "known_default": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 268,
+        "total": 268,
+        "skipped": 0,
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_5) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+        "output_shapes": []
+      },
+      "exact_local_scan": {
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "identity_nodes": [
+          0
+        ],
+        "candidate_count": 1
+      }
+    },
+    "38": {
+      "task": 38,
+      "rule": "Emit a 1x5 prefix of ones derived from adjacent horizontal 1,1 occurrences, followed by zeros.",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_new_low44/baselines/task038.onnx",
+      "sha256": "40c66a303cb7e46e2f8f718ccf3d3d6400a1d51525813ed9fe2d302706757c38",
+      "file_bytes": 915,
+      "actual_cost": {
+        "memory": 14,
+        "params": 17,
+        "cost": 31
+      },
+      "node_count": 9,
+      "initializer_count": 4,
+      "ops": {
+        "CastLike": 2,
+        "ConvInteger": 1,
+        "GroupNormalization": 2,
+        "QLinearConv": 2,
+        "Squeeze": 1,
+        "Sub": 1
+      },
+      "max_node_inputs": 8,
+      "max_einsum_inputs": 0,
+      "giant_einsum": false,
+      "risk_ops": [],
+      "checker_full": true,
+      "checker_error": null,
+      "strict_data_prop": true,
+      "strict_error": null,
+      "standard_domains": true,
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "declared_output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "runtime_shape_trace": {
+        "shape_cloak": true,
+        "mismatch_count": 4,
+        "mismatches": [
+          {
+            "tensor": "fa",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "ga",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "fr",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "gr",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ]
+      },
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "known_default": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 266,
+        "total": 266,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": []
+      },
+      "exact_local_scan": {
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "identity_nodes": [],
+        "candidate_count": 0
+      }
+    },
+    "262": {
+      "task": 262,
+      "rule": "For every input row emit three copies of 3+(second-first)/5.",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_new_low44/baselines/task262.onnx",
+      "sha256": "9d6f5e4d366a7f566b881f73546b822bb6b9ecb41004b872094b351c6d9cff26",
+      "file_bytes": 560,
+      "actual_cost": {
+        "memory": 10,
+        "params": 21,
+        "cost": 31
+      },
+      "node_count": 4,
+      "initializer_count": 2,
+      "ops": {
+        "CastLike": 1,
+        "Einsum": 1,
+        "HannWindow": 1,
+        "Identity": 1
+      },
+      "max_node_inputs": 14,
+      "max_einsum_inputs": 14,
+      "giant_einsum": false,
+      "risk_ops": [],
+      "checker_full": true,
+      "checker_error": null,
+      "strict_data_prop": true,
+      "strict_error": null,
+      "standard_domains": true,
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "declared_output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "runtime_shape_trace": {
+        "shape_cloak": true,
+        "mismatch_count": 2,
+        "mismatches": [
+          {
+            "tensor": "pos16",
+            "declared": [
+              1
+            ],
+            "runtime": [
+              30
+            ]
+          },
+          {
+            "tensor": "pos",
+            "declared": [
+              1
+            ],
+            "runtime": [
+              30
+            ]
+          }
+        ]
+      },
+      "known_disable_all": {
+        "right": 11,
+        "wrong": 0,
+        "errors": 0,
+        "total": 11,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "known_default": {
+        "right": 11,
+        "wrong": 0,
+        "errors": 0,
+        "total": 11,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "exact_local_scan": {
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "identity_nodes": [
+          0
+        ],
+        "candidate_count": 1
+      }
+    },
+    "269": {
+      "task": 269,
+      "rule": "Nearest-neighbor repeat every cell in both axes by the generator's distinct-character-count scale.",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_new_low44/baselines/task269.onnx",
+      "sha256": "4b76e4e0339b59c00192cf6028ab7828b813794fb3d269d0f9851db2db3a10ac",
+      "file_bytes": 808,
+      "actual_cost": {
+        "memory": 24,
+        "params": 7,
+        "cost": 31
+      },
+      "node_count": 9,
+      "initializer_count": 3,
+      "ops": {
+        "Cast": 1,
+        "CenterCropPad": 1,
+        "Einsum": 1,
+        "HardSigmoid": 1,
+        "Identity": 1,
+        "Log": 1,
+        "PRelu": 1,
+        "Reciprocal": 1,
+        "Resize": 1
+      },
+      "max_node_inputs": 4,
+      "max_einsum_inputs": 2,
+      "giant_einsum": false,
+      "risk_ops": [
+        "CenterCropPad",
+        "Resize"
+      ],
+      "checker_full": true,
+      "checker_error": null,
+      "strict_data_prop": true,
+      "strict_error": null,
+      "standard_domains": true,
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "declared_output_shape": [
+        1,
+        1,
+        30,
+        30
+      ],
+      "runtime_shape_trace": {
+        "shape_cloak": true,
+        "mismatch_count": 4,
+        "mismatches": [
+          {
+            "tensor": "src31",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              31,
+              31
+            ]
+          },
+          {
+            "tensor": "src16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              31,
+              31
+            ]
+          },
+          {
+            "tensor": "roi",
+            "declared": [
+              1
+            ],
+            "runtime": [
+              4
+            ]
+          },
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              1,
+              30,
+              30
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ]
+      },
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "skipped": 0,
+        "near_margin": 0,
+        "output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ]
+      },
+      "known_default": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 266,
+        "total": 266,
+        "skipped": 0,
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_4) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+        "output_shapes": []
+      },
+      "exact_local_scan": {
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "identity_nodes": [
+          0
+        ],
+        "candidate_count": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+# task035.onnx
+
+## Initializers
+zero_u8: uint8 () 0
+one_u8: uint8 () 128
+one_f: float32 () 1.0
+edge_w_t: float32 (10, 1, 1, 1) [[[[0.0]]], [[[155.0]]], [[[114.0]]], [[[49.0]]], [[[142.0]]], [[[249.0]]], [[[181.0]]], [[[251.0]]], [[[1.0]]], [[[200.0]]]]
+br_w: uint8 (1, 1, 2, 1) [[[[129], [127]]]]
+zero_col10: uint8 (1, 1, 10, 1) [[[[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]]]]
+q_y_scale: float32 () 12000.0
+seven_u8: uint8 () 7
+q_w_sp: uint8 (10, 1, 1, 2) [[[[120, 88]]], [[[201, 59]]], [[[157, 55]]], [[[13, 200]]], [[[26, 214]]], [[[204, 91]]], [[[130, 182]]], [[[150, 165]]], [[[30, 180]]], [[[211, 74]]]]
+zero_cell: uint8 (1, 1, 1, 1) [[[[0]]]]
+col_has2: uint8 (1, 1, 1, 1) [[[[1]]]]
+
+## Value info
+
+## Nodes
+00 ConvTranspose ['input', 'edge_w_t'] -> ['row_tailT_f'] {'pads': [5, 5, 22, 24]}
+01 Cast ['row_tailT_f'] -> ['row_tailT'] {'to': 2}
+02 Concat ['col_has2', 'row_tailT'] -> ['row_tail'] {'axis': 2}
+03 QLinearConv ['row_tail', 'one_f', 'zero_u8', 'br_w', 'one_f', 'one_u8', 'one_f', 'zero_u8'] -> ['bottom_tail'] {'pads': [0, 0, 1, 0]}
+04 ConvTranspose ['input', 'edge_w_t'] -> ['top0_f'] {'pads': [0, 2, 29, 27]}
+05 Cast ['top0_f'] -> ['top0'] {'to': 2}
+06 ConvTranspose ['input', 'edge_w_t'] -> ['top1_f'] {'pads': [0, 3, 29, 26]}
+07 Cast ['top1_f'] -> ['top1'] {'to': 2}
+08 ConvTranspose ['input', 'edge_w_t'] -> ['top2_f'] {'pads': [0, 4, 29, 25]}
+09 Cast ['top2_f'] -> ['top2'] {'to': 2}
+10 ConvTranspose ['input', 'edge_w_t'] -> ['top3_f'] {'pads': [0, 5, 29, 24]}
+11 Cast ['top3_f'] -> ['top3'] {'to': 2}
+12 ConvTranspose ['input', 'edge_w_t'] -> ['bot0_f'] {'pads': [9, 2, 20, 27]}
+13 Cast ['bot0_f'] -> ['bot0'] {'to': 2}
+14 ConvTranspose ['input', 'edge_w_t'] -> ['bot1_f'] {'pads': [9, 3, 20, 26]}
+15 Cast ['bot1_f'] -> ['bot1'] {'to': 2}
+16 ConvTranspose ['input', 'edge_w_t'] -> ['bot2_f'] {'pads': [9, 4, 20, 25]}
+17 Cast ['bot2_f'] -> ['bot2'] {'to': 2}
+18 ConvTranspose ['input', 'edge_w_t'] -> ['bot3_f'] {'pads': [9, 5, 20, 24]}
+19 Cast ['bot3_f'] -> ['bot3'] {'to': 2}
+20 ConvTranspose ['input', 'edge_w_t'] -> ['leftv0_f'] {'pads': [3, 0, 26, 29]}
+21 Cast ['leftv0_f'] -> ['leftv0'] {'to': 2}
+22 ConvTranspose ['input', 'edge_w_t'] -> ['leftvT_f'] {'pads': [4, 0, 22, 29]}
+23 Cast ['leftvT_f'] -> ['leftvT'] {'to': 2}
+24 ConvTranspose ['input', 'edge_w_t'] -> ['rightv0_f'] {'pads': [3, 9, 26, 20]}
+25 Cast ['rightv0_f'] -> ['rightv0'] {'to': 2}
+26 ConvTranspose ['input', 'edge_w_t'] -> ['rightvT_f'] {'pads': [4, 9, 22, 20]}
+27 Cast ['rightvT_f'] -> ['rightvT'] {'to': 2}
+28 Concat ['zero_cell', 'zero_cell', 'zero_cell', 'leftv0', 'leftvT', 'zero_cell', 'zero_cell'] -> ['left_full'] {'axis': 2}
+29 Concat ['zero_cell', 'zero_cell', 'zero_cell', 'rightv0', 'rightvT', 'zero_cell', 'zero_cell'] -> ['right_full'] {'axis': 2}
+30 Concat ['row_tail', 'bottom_tail', 'leftvT'] -> ['rank_rowsT'] {'axis': 3}
+31 ConvTranspose ['input', 'edge_w_t'] -> ['col_has0_f'] {'pads': [3, 2, 26, 27]}
+32 Cast ['col_has0_f'] -> ['col_has0'] {'to': 2}
+33 ConvTranspose ['input', 'edge_w_t'] -> ['col_has1_f'] {'pads': [3, 3, 26, 26]}
+34 Cast ['col_has1_f'] -> ['col_has1'] {'to': 2}
+35 Sub ['col_has1', 'col_has0'] -> ['left_col1'] {}
+36 Sub ['col_has2', 'col_has1'] -> ['left_col2'] {}
+37 Mul ['leftv0', 'col_has0'] -> ['lefttop0'] {}
+38 Max ['col_has0', 'top0', 'lefttop0'] -> ['tpool0'] {}
+39 Mul ['leftv0', 'left_col1'] -> ['lefttop1'] {}
+40 Max ['col_has1', 'top1', 'lefttop1'] -> ['tpool1'] {}
+41 Mul ['leftv0', 'left_col2'] -> ['lefttop2'] {}
+42 Max ['col_has2', 'top2', 'lefttop2'] -> ['tpool2'] {}
+43 Max ['col_has2', 'top3', 'rightv0'] -> ['tpool3'] {}
+44 Concat ['col_has0', 'bot0', 'col_has0'] -> ['rank_colT0'] {'axis': 2}
+45 QLinearMatMul ['rank_rowsT', 'one_f', 'zero_u8', 'rank_colT0', 'one_f', 'zero_u8', 'one_f', 'zero_u8'] -> ['poolT0'] {}
+46 Concat ['top0', 'zero_cell', 'zero_cell', 'tpool0', 'poolT0', 'zero_cell', 'bot0'] -> ['core0'] {'axis': 2}
+47 Mul ['core0', 'seven_u8'] -> ['core0b'] {}
+48 Concat ['col_has1', 'bot1', 'left_col1'] -> ['rank_colT1'] {'axis': 2}
+49 QLinearMatMul ['rank_rowsT', 'one_f', 'zero_u8', 'rank_colT1', 'one_f', 'zero_u8', 'one_f', 'zero_u8'] -> ['poolT1'] {}
+50 Concat ['top1', 'zero_cell', 'zero_cell', 'tpool1', 'poolT1', 'zero_cell', 'bot1'] -> ['core1'] {'axis': 2}
+51 Mul ['core1', 'seven_u8'] -> ['core1b'] {}
+52 Concat ['col_has2', 'bot2', 'left_col2'] -> ['rank_colT2'] {'axis': 2}
+53 QLinearMatMul ['rank_rowsT', 'one_f', 'zero_u8', 'rank_colT2', 'one_f', 'zero_u8', 'one_f', 'zero_u8'] -> ['poolT2'] {}
+54 Concat ['top2', 'zero_cell', 'zero_cell', 'tpool2', 'poolT2', 'zero_cell', 'bot2'] -> ['core2'] {'axis': 2}
+55 Mul ['core2', 'seven_u8'] -> ['core2b'] {}
+56 Concat ['col_has2', 'bot3', 'zero_cell'] -> ['rank_colT3'] {'axis': 2}
+57 QLinearMatMul ['rank_rowsT', 'one_f', 'zero_u8', 'rank_colT3', 'one_f', 'zero_u8', 'one_f', 'zero_u8'] -> ['poolT3'] {}
+58 Add ['poolT3', 'rightvT'] -> ['poolT3r'] {}
+59 Concat ['top3', 'zero_cell', 'zero_cell', 'tpool3', 'poolT3r', 'zero_cell', 'bot3'] -> ['core3'] {'axis': 2}
+60 Mul ['core3', 'seven_u8'] -> ['core3b'] {}
+61 Mul ['left_full', 'seven_u8'] -> ['left2'] {}
+62 Mul ['right_full', 'seven_u8'] -> ['right2'] {}
+63 Concat ['left_full', 'left2', 'zero_col10', 'zero_col10', 'core0', 'core0b', 'core1', 'core1b', 'core2', 'core2b', 'core3', 'core3b', 'zero_col10', 'zero_col10', 'zero_col10', 'zero_col10', 'zero_col10', 'zero_col10', 'right_full', 'right2'] -> ['pack'] {'axis': 3}
+64 QLinearConv ['pack', 'one_f', 'one_u8', 'q_w_sp', 'one_f', 'one_u8', 'q_y_scale', 'zero_u8'] -> ['output'] {'pads': [0, 0, 20, 40], 'strides': [1, 2]}

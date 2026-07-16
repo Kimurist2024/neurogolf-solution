@@ -1,0 +1,2386 @@
+{
+  "baseline_archive": "submission_base_8009.46.zip",
+  "fresh_seeds": [
+    21839401,
+    21839402
+  ],
+  "fresh_per_seed": 1500,
+  "tasks": {
+    "218": {
+      "static": {
+        "task": 218,
+        "sha256": "6740bffa1e0434430c998a6a7b1b05251258071f2b741b362d00c53d86934113",
+        "nodes": 21,
+        "initializers": 11,
+        "initializer_params": 69,
+        "ops": {
+          "Cast": 4,
+          "CastLike": 1,
+          "Concat": 1,
+          "Flatten": 1,
+          "Gather": 2,
+          "GroupNormalization": 1,
+          "Mul": 3,
+          "QLinearConv": 4,
+          "TopK": 2,
+          "Where": 2
+        },
+        "standard_domains": true,
+        "center_crop_pad": 0,
+        "lookup_ops": [],
+        "banned_ops": [],
+        "max_node_inputs": 8,
+        "giant_nodes": [],
+        "conv_bias_ub": [],
+        "declared_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "checker_full": true,
+        "strict_data_prop": true,
+        "inferred_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "profile": {
+          "memory": 260,
+          "params": 69,
+          "cost": 329
+        }
+      },
+      "runtime_shape_trace": {
+        "traced": 23,
+        "mismatch_count": 2,
+        "mismatches": [
+          {
+            "tensor": "gn",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "qi",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "truthful": false
+      },
+      "mechanical_scan": [
+        {
+          "label": "cse",
+          "passes": [
+            "eliminate_common_subexpression"
+          ],
+          "changed": false
+        },
+        {
+          "label": "idempotent",
+          "passes": [
+            "eliminate_consecutive_idempotent_ops"
+          ],
+          "changed": false
+        },
+        {
+          "label": "dead",
+          "passes": [
+            "eliminate_deadend"
+          ],
+          "changed": false
+        },
+        {
+          "label": "initializer_aliases",
+          "passes": [
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer"
+          ],
+          "changed": false
+        },
+        {
+          "label": "noops",
+          "passes": [
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "all_safe_cleanup",
+          "passes": [
+            "eliminate_deadend",
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer",
+            "eliminate_common_subexpression",
+            "eliminate_consecutive_idempotent_ops",
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "conv_fusions",
+          "passes": [
+            "fuse_add_bias_into_conv",
+            "fuse_bn_into_conv",
+            "fuse_pad_into_conv",
+            "fuse_pad_into_pool"
+          ],
+          "changed": false
+        },
+        {
+          "label": "shape_folds",
+          "passes": [
+            "eliminate_shape_gather",
+            "eliminate_slice_after_shape",
+            "eliminate_shape_op",
+            "fuse_consecutive_slices"
+          ],
+          "changed": false
+        },
+        {
+          "label": "einsum_matmul",
+          "passes": [
+            "replace_einsum_with_matmul"
+          ],
+          "changed": false
+        },
+        {
+          "label": "rewrite_where",
+          "passes": [
+            "rewrite_where"
+          ],
+          "changed": false
+        },
+        {
+          "label": "adjust_add",
+          "passes": [
+            "adjust_add"
+          ],
+          "changed": false
+        }
+      ],
+      "known": {
+        "attempts": 266,
+        "valid": 266,
+        "session_errors": {},
+        "configs": {
+          "disable_all_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "disable_all_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          }
+        },
+        "first_failure": null
+      },
+      "fresh": {
+        "21839401": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {},
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1497,
+              "wrong": 3,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1497,
+              "wrong": 3,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 1497,
+              "wrong": 3,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads4": {
+              "right": 1497,
+              "wrong": 3,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            }
+          },
+          "first_failure": {
+            "index": 577,
+            "config": "disable_all_threads1",
+            "observed_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "expected_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "threshold_differences": 3
+          }
+        },
+        "21839402": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {},
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1497,
+              "wrong": 3,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1497,
+              "wrong": 3,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 1497,
+              "wrong": 3,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads4": {
+              "right": 1497,
+              "wrong": 3,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            }
+          },
+          "first_failure": {
+            "index": 152,
+            "config": "disable_all_threads1",
+            "observed_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "expected_shape": [
+              1,
+              10,
+              30,
+              30
+            ],
+            "threshold_differences": 3
+          }
+        }
+      }
+    },
+    "394": {
+      "static": {
+        "task": 394,
+        "sha256": "cb47909c49db2fab103bdbaa0be19c49d2eacc2336393086260c7754bd0ffb89",
+        "nodes": 29,
+        "initializers": 8,
+        "initializer_params": 65,
+        "ops": {
+          "Add": 5,
+          "BitShift": 1,
+          "Cast": 4,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "ConvTranspose": 1,
+          "DequantizeLinear": 1,
+          "Div": 3,
+          "Einsum": 3,
+          "Gather": 1,
+          "GridSample": 1,
+          "LessOrEqual": 1,
+          "Mod": 1,
+          "QuantizeLinear": 1,
+          "ReduceSum": 1,
+          "Shape": 1,
+          "Where": 2
+        },
+        "standard_domains": true,
+        "center_crop_pad": 1,
+        "lookup_ops": [],
+        "banned_ops": [],
+        "max_node_inputs": 3,
+        "giant_nodes": [],
+        "conv_bias_ub": [],
+        "declared_outputs": [
+          [
+            1,
+            1,
+            30,
+            30
+          ]
+        ],
+        "checker_full": true,
+        "strict_data_prop": true,
+        "inferred_outputs": [
+          [
+            1,
+            1,
+            30,
+            30
+          ]
+        ],
+        "profile": {
+          "memory": 285,
+          "params": 65,
+          "cost": 350
+        }
+      },
+      "runtime_shape_trace": {
+        "traced": 29,
+        "mismatch_count": 4,
+        "mismatches": [
+          {
+            "tensor": "hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "O",
+            "declared": [
+              1,
+              1,
+              3,
+              3
+            ],
+            "runtime": [
+              1,
+              10,
+              3,
+              3
+            ]
+          },
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              1,
+              30,
+              30
+            ],
+            "runtime": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "truthful": false
+      },
+      "mechanical_scan": [
+        {
+          "label": "cse",
+          "passes": [
+            "eliminate_common_subexpression"
+          ],
+          "changed": false
+        },
+        {
+          "label": "idempotent",
+          "passes": [
+            "eliminate_consecutive_idempotent_ops"
+          ],
+          "changed": false
+        },
+        {
+          "label": "dead",
+          "passes": [
+            "eliminate_deadend"
+          ],
+          "changed": false
+        },
+        {
+          "label": "initializer_aliases",
+          "passes": [
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer"
+          ],
+          "changed": false
+        },
+        {
+          "label": "noops",
+          "passes": [
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "all_safe_cleanup",
+          "passes": [
+            "eliminate_deadend",
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer",
+            "eliminate_common_subexpression",
+            "eliminate_consecutive_idempotent_ops",
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "conv_fusions",
+          "passes": [
+            "fuse_add_bias_into_conv",
+            "fuse_bn_into_conv",
+            "fuse_pad_into_conv",
+            "fuse_pad_into_pool"
+          ],
+          "changed": false
+        },
+        {
+          "label": "shape_folds",
+          "passes": [
+            "eliminate_shape_gather",
+            "eliminate_slice_after_shape",
+            "eliminate_shape_op",
+            "fuse_consecutive_slices"
+          ],
+          "changed": true,
+          "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n"
+        },
+        {
+          "label": "einsum_matmul",
+          "passes": [
+            "replace_einsum_with_matmul"
+          ],
+          "changed": false
+        },
+        {
+          "label": "rewrite_where",
+          "passes": [
+            "rewrite_where"
+          ],
+          "changed": false
+        },
+        {
+          "label": "adjust_add",
+          "passes": [
+            "adjust_add"
+          ],
+          "changed": false
+        }
+      ],
+      "known": {
+        "attempts": 266,
+        "valid": 266,
+        "session_errors": {},
+        "configs": {
+          "disable_all_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "disable_all_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          }
+        },
+        "first_failure": null
+      },
+      "fresh": {
+        "21839401": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {},
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            }
+          },
+          "first_failure": null
+        },
+        "21839402": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {},
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            }
+          },
+          "first_failure": null
+        }
+      }
+    },
+    "397": {
+      "static": {
+        "task": 397,
+        "sha256": "2361956a9b6d1391aff9d8bc4af26d5112877e0e2946b365d04e461899f4d7e1",
+        "nodes": 60,
+        "initializers": 15,
+        "initializer_params": 89,
+        "ops": {
+          "Add": 3,
+          "Cast": 2,
+          "CastLike": 14,
+          "CenterCropPad": 10,
+          "Concat": 1,
+          "Equal": 1,
+          "Flatten": 2,
+          "Gather": 4,
+          "Greater": 1,
+          "PRelu": 8,
+          "ReduceL1": 2,
+          "ScatterND": 1,
+          "Shape": 2,
+          "Sub": 5,
+          "TfIdfVectorizer": 1,
+          "TopK": 1,
+          "Unsqueeze": 2
+        },
+        "standard_domains": true,
+        "center_crop_pad": 10,
+        "lookup_ops": [
+          "TfIdfVectorizer"
+        ],
+        "banned_ops": [],
+        "max_node_inputs": 3,
+        "giant_nodes": [],
+        "conv_bias_ub": [],
+        "declared_outputs": [
+          [
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        "checker_full": true,
+        "strict_data_prop": false,
+        "strict_data_prop_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Gather): [ShapeInferenceError] indices must be in [-rank, rank-1].\n",
+        "profile": {
+          "memory": 249,
+          "params": 89,
+          "cost": 338
+        }
+      },
+      "runtime_shape_trace": {
+        "truthful": false,
+        "trace_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Gather): [ShapeInferenceError] indices must be in [-rank, rank-1].\n"
+      },
+      "mechanical_scan": [
+        {
+          "label": "cse",
+          "passes": [
+            "eliminate_common_subexpression"
+          ],
+          "changed": false
+        },
+        {
+          "label": "idempotent",
+          "passes": [
+            "eliminate_consecutive_idempotent_ops"
+          ],
+          "changed": false
+        },
+        {
+          "label": "dead",
+          "passes": [
+            "eliminate_deadend"
+          ],
+          "changed": false
+        },
+        {
+          "label": "initializer_aliases",
+          "passes": [
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer"
+          ],
+          "changed": false
+        },
+        {
+          "label": "noops",
+          "passes": [
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "all_safe_cleanup",
+          "passes": [
+            "eliminate_deadend",
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer",
+            "eliminate_common_subexpression",
+            "eliminate_consecutive_idempotent_ops",
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "conv_fusions",
+          "passes": [
+            "fuse_add_bias_into_conv",
+            "fuse_bn_into_conv",
+            "fuse_pad_into_conv",
+            "fuse_pad_into_pool"
+          ],
+          "changed": false
+        },
+        {
+          "label": "shape_folds",
+          "passes": [
+            "eliminate_shape_gather",
+            "eliminate_slice_after_shape",
+            "eliminate_shape_op",
+            "fuse_consecutive_slices"
+          ],
+          "changed": true,
+          "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 1: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:TopK): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (5) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (5) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (5) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (5) vs (1)\n"
+        },
+        {
+          "label": "einsum_matmul",
+          "passes": [
+            "replace_einsum_with_matmul"
+          ],
+          "changed": false
+        },
+        {
+          "label": "rewrite_where",
+          "passes": [
+            "rewrite_where"
+          ],
+          "changed": false
+        },
+        {
+          "label": "adjust_add",
+          "passes": [
+            "adjust_add"
+          ],
+          "changed": false
+        }
+      ],
+      "known": {
+        "attempts": 266,
+        "valid": 266,
+        "session_errors": {
+          "default_threads1": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_51) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=1 Declared=3 Dimension=0",
+          "default_threads4": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_51) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=1 Declared=3 Dimension=0"
+        },
+        "configs": {
+          "disable_all_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "disable_all_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads1": {
+            "right": 0,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [],
+            "raw_equal_to_disable_all_threads1": 0
+          },
+          "default_threads4": {
+            "right": 0,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [],
+            "raw_equal_to_disable_all_threads1": 0
+          }
+        },
+        "first_failure": null
+      },
+      "fresh": {
+        "21839401": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {
+            "default_threads1": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_51) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=1 Declared=3 Dimension=0",
+            "default_threads4": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_51) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=1 Declared=3 Dimension=0"
+          },
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 0,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [],
+              "raw_equal_to_disable_all_threads1": 0
+            },
+            "default_threads4": {
+              "right": 0,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [],
+              "raw_equal_to_disable_all_threads1": 0
+            }
+          },
+          "first_failure": null
+        },
+        "21839402": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {
+            "default_threads1": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_51) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=1 Declared=3 Dimension=0",
+            "default_threads4": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_51) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=1 Declared=3 Dimension=0"
+          },
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 0,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [],
+              "raw_equal_to_disable_all_threads1": 0
+            },
+            "default_threads4": {
+              "right": 0,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [],
+              "raw_equal_to_disable_all_threads1": 0
+            }
+          },
+          "first_failure": null
+        }
+      }
+    }
+  },
+  "truthful_reference_attempts": {
+    "218": {
+      "path": "artifacts/optimized/task218.onnx",
+      "static": {
+        "task": 218,
+        "sha256": "efdaa7c8154ea6b7622da22d7e48f880c94899139d1ba327e1f847f6e36eeb03",
+        "nodes": 133,
+        "initializers": 21,
+        "initializer_params": 46,
+        "ops": {
+          "ArgMax": 6,
+          "Cast": 13,
+          "Concat": 15,
+          "Conv": 3,
+          "CumSum": 2,
+          "Equal": 6,
+          "GatherND": 9,
+          "Greater": 4,
+          "Mul": 20,
+          "OneHot": 9,
+          "Pad": 1,
+          "ReduceSum": 10,
+          "Reshape": 15,
+          "Slice": 3,
+          "Unsqueeze": 9,
+          "Where": 8
+        },
+        "standard_domains": true,
+        "center_crop_pad": 0,
+        "lookup_ops": [],
+        "banned_ops": [],
+        "max_node_inputs": 4,
+        "giant_nodes": [],
+        "conv_bias_ub": [],
+        "declared_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "checker_full": true,
+        "strict_data_prop": true,
+        "inferred_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "profile": {
+          "memory": 16438,
+          "params": 46,
+          "cost": 16484
+        }
+      },
+      "runtime_shape_trace": {
+        "traced": 133,
+        "mismatch_count": 0,
+        "mismatches": [],
+        "truthful": true
+      },
+      "mechanical_scan": [
+        {
+          "label": "cse",
+          "passes": [
+            "eliminate_common_subexpression"
+          ],
+          "changed": false
+        },
+        {
+          "label": "idempotent",
+          "passes": [
+            "eliminate_consecutive_idempotent_ops"
+          ],
+          "changed": false
+        },
+        {
+          "label": "dead",
+          "passes": [
+            "eliminate_deadend"
+          ],
+          "changed": false
+        },
+        {
+          "label": "initializer_aliases",
+          "passes": [
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer"
+          ],
+          "changed": false
+        },
+        {
+          "label": "noops",
+          "passes": [
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "all_safe_cleanup",
+          "passes": [
+            "eliminate_deadend",
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer",
+            "eliminate_common_subexpression",
+            "eliminate_consecutive_idempotent_ops",
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "conv_fusions",
+          "passes": [
+            "fuse_add_bias_into_conv",
+            "fuse_bn_into_conv",
+            "fuse_pad_into_conv",
+            "fuse_pad_into_pool"
+          ],
+          "changed": false
+        },
+        {
+          "label": "shape_folds",
+          "passes": [
+            "eliminate_shape_gather",
+            "eliminate_slice_after_shape",
+            "eliminate_shape_op",
+            "fuse_consecutive_slices"
+          ],
+          "changed": false
+        },
+        {
+          "label": "einsum_matmul",
+          "passes": [
+            "replace_einsum_with_matmul"
+          ],
+          "changed": false
+        },
+        {
+          "label": "rewrite_where",
+          "passes": [
+            "rewrite_where"
+          ],
+          "changed": false
+        },
+        {
+          "label": "adjust_add",
+          "passes": [
+            "adjust_add"
+          ],
+          "changed": false
+        }
+      ],
+      "known": {
+        "attempts": 266,
+        "valid": 266,
+        "session_errors": {},
+        "configs": {
+          "disable_all_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "disable_all_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          }
+        },
+        "first_failure": null
+      },
+      "fresh": {
+        "21839401": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {},
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            }
+          },
+          "first_failure": null
+        },
+        "21839402": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {},
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            }
+          },
+          "first_failure": null
+        }
+      }
+    },
+    "394": {
+      "path": "artifacts/optimized/task394.onnx",
+      "static": {
+        "task": 394,
+        "sha256": "fcc9b7620204c217e3921ea437676f8dd50c145f580ac707313464e41d3156c2",
+        "nodes": 79,
+        "initializers": 15,
+        "initializer_params": 36,
+        "ops": {
+          "Add": 10,
+          "ArgMax": 2,
+          "Cast": 15,
+          "Clip": 3,
+          "Concat": 3,
+          "Expand": 1,
+          "Gather": 2,
+          "Greater": 3,
+          "Less": 3,
+          "Mod": 7,
+          "Mul": 2,
+          "Pad": 1,
+          "ReduceMax": 2,
+          "ReduceSum": 3,
+          "Reshape": 4,
+          "Sign": 1,
+          "Slice": 2,
+          "Sub": 4,
+          "Unsqueeze": 8,
+          "Where": 3
+        },
+        "standard_domains": true,
+        "center_crop_pad": 0,
+        "lookup_ops": [],
+        "banned_ops": [],
+        "max_node_inputs": 4,
+        "giant_nodes": [],
+        "conv_bias_ub": [],
+        "declared_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "checker_full": true,
+        "strict_data_prop": true,
+        "inferred_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "profile": {
+          "memory": 4462,
+          "params": 36,
+          "cost": 4498
+        }
+      },
+      "runtime_shape_trace": {
+        "traced": 79,
+        "mismatch_count": 0,
+        "mismatches": [],
+        "truthful": true
+      },
+      "mechanical_scan": [
+        {
+          "label": "cse",
+          "passes": [
+            "eliminate_common_subexpression"
+          ],
+          "changed": false
+        },
+        {
+          "label": "idempotent",
+          "passes": [
+            "eliminate_consecutive_idempotent_ops"
+          ],
+          "changed": false
+        },
+        {
+          "label": "dead",
+          "passes": [
+            "eliminate_deadend"
+          ],
+          "changed": false
+        },
+        {
+          "label": "initializer_aliases",
+          "passes": [
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer"
+          ],
+          "changed": false
+        },
+        {
+          "label": "noops",
+          "passes": [
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "all_safe_cleanup",
+          "passes": [
+            "eliminate_deadend",
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer",
+            "eliminate_common_subexpression",
+            "eliminate_consecutive_idempotent_ops",
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "conv_fusions",
+          "passes": [
+            "fuse_add_bias_into_conv",
+            "fuse_bn_into_conv",
+            "fuse_pad_into_conv",
+            "fuse_pad_into_pool"
+          ],
+          "changed": false
+        },
+        {
+          "label": "shape_folds",
+          "passes": [
+            "eliminate_shape_gather",
+            "eliminate_slice_after_shape",
+            "eliminate_shape_op",
+            "fuse_consecutive_slices"
+          ],
+          "changed": false
+        },
+        {
+          "label": "einsum_matmul",
+          "passes": [
+            "replace_einsum_with_matmul"
+          ],
+          "changed": false
+        },
+        {
+          "label": "rewrite_where",
+          "passes": [
+            "rewrite_where"
+          ],
+          "changed": false
+        },
+        {
+          "label": "adjust_add",
+          "passes": [
+            "adjust_add"
+          ],
+          "changed": false
+        }
+      ],
+      "known": {
+        "attempts": 266,
+        "valid": 266,
+        "session_errors": {},
+        "configs": {
+          "disable_all_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "disable_all_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          }
+        },
+        "first_failure": null
+      },
+      "fresh": {
+        "21839401": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {},
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            }
+          },
+          "first_failure": null
+        },
+        "21839402": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {},
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            }
+          },
+          "first_failure": null
+        }
+      }
+    },
+    "397": {
+      "path": "artifacts/optimized/task397.onnx",
+      "static": {
+        "task": 397,
+        "sha256": "f775f0c6ed2d5be77fd3f02340b3b4da67c60c0d7ce7edd47595ae1d4f89561f",
+        "nodes": 82,
+        "initializers": 28,
+        "initializer_params": 87,
+        "ops": {
+          "Add": 1,
+          "And": 4,
+          "Cast": 25,
+          "Concat": 1,
+          "Conv": 18,
+          "Equal": 1,
+          "Gather": 9,
+          "Greater": 16,
+          "Not": 1,
+          "Pad": 1,
+          "Slice": 1,
+          "Sum": 4
+        },
+        "standard_domains": true,
+        "center_crop_pad": 0,
+        "lookup_ops": [],
+        "banned_ops": [],
+        "max_node_inputs": 10,
+        "giant_nodes": [],
+        "conv_bias_ub": [],
+        "declared_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "checker_full": true,
+        "strict_data_prop": true,
+        "inferred_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "profile": {
+          "memory": 20146,
+          "params": 87,
+          "cost": 20233
+        }
+      },
+      "runtime_shape_trace": {
+        "traced": 82,
+        "mismatch_count": 0,
+        "mismatches": [],
+        "truthful": true
+      },
+      "mechanical_scan": [
+        {
+          "label": "cse",
+          "passes": [
+            "eliminate_common_subexpression"
+          ],
+          "changed": false
+        },
+        {
+          "label": "idempotent",
+          "passes": [
+            "eliminate_consecutive_idempotent_ops"
+          ],
+          "changed": false
+        },
+        {
+          "label": "dead",
+          "passes": [
+            "eliminate_deadend"
+          ],
+          "changed": false
+        },
+        {
+          "label": "initializer_aliases",
+          "passes": [
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer"
+          ],
+          "changed": false
+        },
+        {
+          "label": "noops",
+          "passes": [
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "all_safe_cleanup",
+          "passes": [
+            "eliminate_deadend",
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer",
+            "eliminate_common_subexpression",
+            "eliminate_consecutive_idempotent_ops",
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "conv_fusions",
+          "passes": [
+            "fuse_add_bias_into_conv",
+            "fuse_bn_into_conv",
+            "fuse_pad_into_conv",
+            "fuse_pad_into_pool"
+          ],
+          "changed": false
+        },
+        {
+          "label": "shape_folds",
+          "passes": [
+            "eliminate_shape_gather",
+            "eliminate_slice_after_shape",
+            "eliminate_shape_op",
+            "fuse_consecutive_slices"
+          ],
+          "changed": false
+        },
+        {
+          "label": "einsum_matmul",
+          "passes": [
+            "replace_einsum_with_matmul"
+          ],
+          "changed": false
+        },
+        {
+          "label": "rewrite_where",
+          "passes": [
+            "rewrite_where"
+          ],
+          "changed": false
+        },
+        {
+          "label": "adjust_add",
+          "passes": [
+            "adjust_add"
+          ],
+          "changed": false
+        }
+      ],
+      "known": {
+        "attempts": 266,
+        "valid": 266,
+        "session_errors": {},
+        "configs": {
+          "disable_all_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "disable_all_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          },
+          "default_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "raw_equal_to_disable_all_threads1": 266
+          }
+        },
+        "first_failure": null
+      },
+      "fresh": {
+        "21839401": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {},
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            }
+          },
+          "first_failure": null
+        },
+        "21839402": {
+          "attempts": 1500,
+          "valid": 1500,
+          "session_errors": {},
+          "configs": {
+            "disable_all_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "disable_all_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads1": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            },
+            "default_threads4": {
+              "right": 1500,
+              "wrong": 0,
+              "runtime_errors": 0,
+              "nonfinite_values": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "raw_equal_to_disable_all_threads1": 1500
+            }
+          },
+          "first_failure": null
+        }
+      }
+    }
+  },
+  "summary": {
+    "baseline_profiles": 33,
+    "truthful_reference_profiles": 33,
+    "profiles": 66,
+    "baseline_strict_lower_count": 0,
+    "truthful_reference_strict_lower_count": 0,
+    "strict_lower_count": 0,
+    "strict_lower": []
+  }
+}

@@ -1,0 +1,709 @@
+{
+  "authority_zip": "submission_base_8009.46.zip",
+  "authority_zip_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "fresh_seeds": [
+    153161200,
+    316200161
+  ],
+  "fresh_per_seed": 3000,
+  "configs": [
+    "disable_all_threads1",
+    "disable_all_threads4",
+    "default_threads1",
+    "default_threads4"
+  ],
+  "tasks": {
+    "153": {
+      "structural": {
+        "task": 153,
+        "sha256": "a0fae5a7d5d934d8e9cd382da50b6cdb8c1995a0cb991174631d17abe6247159",
+        "nodes": 31,
+        "initializers": 12,
+        "profile": {
+          "memory": 154,
+          "params": 76,
+          "cost": 230
+        },
+        "authority_cost": 230,
+        "profile_matches_authority": true,
+        "checker_full": true,
+        "strict_data_prop": true,
+        "declared_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "inferred_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "ops": {
+          "Add": 3,
+          "BitwiseAnd": 1,
+          "Cast": 4,
+          "Concat": 3,
+          "Einsum": 1,
+          "Greater": 3,
+          "LeakyRelu": 1,
+          "Log": 1,
+          "Mod": 1,
+          "Mul": 2,
+          "Pow": 1,
+          "QLinearConv": 1,
+          "Selu": 1,
+          "Split": 2,
+          "TopK": 1,
+          "Where": 4,
+          "Xor": 1
+        },
+        "standard_domains": true,
+        "banned_ops": [],
+        "lookup_ops": [],
+        "center_crop_pad": 0,
+        "giant_nodes": [],
+        "conv_bias_ub": [],
+        "dead_node_outputs": [],
+        "unused_initializers": [],
+        "duplicate_initializer_groups": []
+      },
+      "runtime_shape": {
+        "traced": 34,
+        "truthful": true,
+        "mismatch_count": 0,
+        "mismatches": []
+      },
+      "optimizer_profiles": [
+        {
+          "label": "dead",
+          "passes": [
+            "eliminate_deadend"
+          ],
+          "changed": false
+        },
+        {
+          "label": "cse",
+          "passes": [
+            "eliminate_common_subexpression"
+          ],
+          "changed": false
+        },
+        {
+          "label": "initializer_aliases",
+          "passes": [
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer"
+          ],
+          "changed": false
+        },
+        {
+          "label": "idempotent",
+          "passes": [
+            "eliminate_consecutive_idempotent_ops"
+          ],
+          "changed": false
+        },
+        {
+          "label": "noops",
+          "passes": [
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "all_safe_cleanup",
+          "passes": [
+            "eliminate_deadend",
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer",
+            "eliminate_common_subexpression",
+            "eliminate_consecutive_idempotent_ops",
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "conv_fusions",
+          "passes": [
+            "fuse_add_bias_into_conv",
+            "fuse_bn_into_conv",
+            "fuse_pad_into_conv",
+            "fuse_pad_into_pool"
+          ],
+          "changed": false
+        },
+        {
+          "label": "shape_folds",
+          "passes": [
+            "eliminate_shape_gather",
+            "eliminate_slice_after_shape",
+            "eliminate_shape_op",
+            "fuse_consecutive_slices"
+          ],
+          "changed": false
+        },
+        {
+          "label": "einsum_matmul",
+          "passes": [
+            "replace_einsum_with_matmul"
+          ],
+          "changed": false
+        },
+        {
+          "label": "rewrite_where",
+          "passes": [
+            "rewrite_where"
+          ],
+          "changed": false
+        },
+        {
+          "label": "adjust_add",
+          "passes": [
+            "adjust_add"
+          ],
+          "changed": false
+        }
+      ],
+      "known_rule": {
+        "attempts": 265,
+        "right": 265,
+        "mismatch_count": 0,
+        "first_mismatches": []
+      },
+      "known_runtime": {
+        "attempts": 265,
+        "valid": 265,
+        "session_errors": {},
+        "configs": {
+          "disable_all_threads1": {
+            "right": 265,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "bad_margin_values": 0,
+            "raw_equal_to_disable_all_threads1": 265,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "min_positive": 1.0,
+            "max_nonpositive": 0.0
+          },
+          "disable_all_threads4": {
+            "right": 265,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "bad_margin_values": 0,
+            "raw_equal_to_disable_all_threads1": 265,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "min_positive": 1.0,
+            "max_nonpositive": 0.0
+          },
+          "default_threads1": {
+            "right": 265,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "bad_margin_values": 0,
+            "raw_equal_to_disable_all_threads1": 265,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "min_positive": 1.0,
+            "max_nonpositive": 0.0
+          },
+          "default_threads4": {
+            "right": 265,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "bad_margin_values": 0,
+            "raw_equal_to_disable_all_threads1": 265,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "min_positive": 1.0,
+            "max_nonpositive": 0.0
+          }
+        },
+        "first_failure": null
+      },
+      "fresh": {
+        "153161200": {
+          "rule": {
+            "attempts": 3000,
+            "right": 3000,
+            "mismatch_count": 0,
+            "first_mismatches": []
+          },
+          "runtime": {
+            "attempts": 3000,
+            "valid": 3000,
+            "session_errors": {},
+            "configs": {
+              "disable_all_threads1": {
+                "right": 3000,
+                "wrong": 0,
+                "runtime_errors": 0,
+                "nonfinite_values": 0,
+                "bad_margin_values": 0,
+                "raw_equal_to_disable_all_threads1": 3000,
+                "output_shapes": [
+                  [
+                    1,
+                    10,
+                    30,
+                    30
+                  ]
+                ],
+                "min_positive": 1.0,
+                "max_nonpositive": 0.0
+              },
+              "disable_all_threads4": {
+                "right": 3000,
+                "wrong": 0,
+                "runtime_errors": 0,
+                "nonfinite_values": 0,
+                "bad_margin_values": 0,
+                "raw_equal_to_disable_all_threads1": 3000,
+                "output_shapes": [
+                  [
+                    1,
+                    10,
+                    30,
+                    30
+                  ]
+                ],
+                "min_positive": 1.0,
+                "max_nonpositive": 0.0
+              },
+              "default_threads1": {
+                "right": 3000,
+                "wrong": 0,
+                "runtime_errors": 0,
+                "nonfinite_values": 0,
+                "bad_margin_values": 0,
+                "raw_equal_to_disable_all_threads1": 3000,
+                "output_shapes": [
+                  [
+                    1,
+                    10,
+                    30,
+                    30
+                  ]
+                ],
+                "min_positive": 1.0,
+                "max_nonpositive": 0.0
+              },
+              "default_threads4": {
+                "right": 3000,
+                "wrong": 0,
+                "runtime_errors": 0,
+                "nonfinite_values": 0,
+                "bad_margin_values": 0,
+                "raw_equal_to_disable_all_threads1": 3000,
+                "output_shapes": [
+                  [
+                    1,
+                    10,
+                    30,
+                    30
+                  ]
+                ],
+                "min_positive": 1.0,
+                "max_nonpositive": 0.0
+              }
+            },
+            "first_failure": null
+          }
+        },
+        "316200161": {
+          "rule": {
+            "attempts": 3000,
+            "right": 3000,
+            "mismatch_count": 0,
+            "first_mismatches": []
+          },
+          "runtime": {
+            "attempts": 3000,
+            "valid": 3000,
+            "session_errors": {},
+            "configs": {
+              "disable_all_threads1": {
+                "right": 3000,
+                "wrong": 0,
+                "runtime_errors": 0,
+                "nonfinite_values": 0,
+                "bad_margin_values": 0,
+                "raw_equal_to_disable_all_threads1": 3000,
+                "output_shapes": [
+                  [
+                    1,
+                    10,
+                    30,
+                    30
+                  ]
+                ],
+                "min_positive": 1.0,
+                "max_nonpositive": 0.0
+              },
+              "disable_all_threads4": {
+                "right": 3000,
+                "wrong": 0,
+                "runtime_errors": 0,
+                "nonfinite_values": 0,
+                "bad_margin_values": 0,
+                "raw_equal_to_disable_all_threads1": 3000,
+                "output_shapes": [
+                  [
+                    1,
+                    10,
+                    30,
+                    30
+                  ]
+                ],
+                "min_positive": 1.0,
+                "max_nonpositive": 0.0
+              },
+              "default_threads1": {
+                "right": 3000,
+                "wrong": 0,
+                "runtime_errors": 0,
+                "nonfinite_values": 0,
+                "bad_margin_values": 0,
+                "raw_equal_to_disable_all_threads1": 3000,
+                "output_shapes": [
+                  [
+                    1,
+                    10,
+                    30,
+                    30
+                  ]
+                ],
+                "min_positive": 1.0,
+                "max_nonpositive": 0.0
+              },
+              "default_threads4": {
+                "right": 3000,
+                "wrong": 0,
+                "runtime_errors": 0,
+                "nonfinite_values": 0,
+                "bad_margin_values": 0,
+                "raw_equal_to_disable_all_threads1": 3000,
+                "output_shapes": [
+                  [
+                    1,
+                    10,
+                    30,
+                    30
+                  ]
+                ],
+                "min_positive": 1.0,
+                "max_nonpositive": 0.0
+              }
+            },
+            "first_failure": null
+          }
+        }
+      }
+    },
+    "161": {
+      "structural": {
+        "task": 161,
+        "sha256": "5dc274d8515f1ac2a5c58583197984cd60fa2ede69fbe8206992f98940a38fbe",
+        "nodes": 3,
+        "initializers": 3,
+        "profile": {
+          "memory": 120,
+          "params": 70,
+          "cost": 190
+        },
+        "authority_cost": 190,
+        "profile_matches_authority": true,
+        "checker_full": true,
+        "strict_data_prop": true,
+        "declared_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "inferred_outputs": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "ops": {
+          "Einsum": 2,
+          "Pow": 1
+        },
+        "standard_domains": true,
+        "banned_ops": [],
+        "lookup_ops": [],
+        "center_crop_pad": 0,
+        "giant_nodes": [],
+        "conv_bias_ub": [],
+        "dead_node_outputs": [],
+        "unused_initializers": [],
+        "duplicate_initializer_groups": []
+      },
+      "runtime_shape": {
+        "traced": 3,
+        "truthful": true,
+        "mismatch_count": 0,
+        "mismatches": []
+      },
+      "optimizer_profiles": [
+        {
+          "label": "dead",
+          "passes": [
+            "eliminate_deadend"
+          ],
+          "changed": false
+        },
+        {
+          "label": "cse",
+          "passes": [
+            "eliminate_common_subexpression"
+          ],
+          "changed": false
+        },
+        {
+          "label": "initializer_aliases",
+          "passes": [
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer"
+          ],
+          "changed": false
+        },
+        {
+          "label": "idempotent",
+          "passes": [
+            "eliminate_consecutive_idempotent_ops"
+          ],
+          "changed": false
+        },
+        {
+          "label": "noops",
+          "passes": [
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "all_safe_cleanup",
+          "passes": [
+            "eliminate_deadend",
+            "eliminate_duplicate_initializer",
+            "eliminate_unused_initializer",
+            "eliminate_common_subexpression",
+            "eliminate_consecutive_idempotent_ops",
+            "eliminate_identity",
+            "eliminate_nop_cast",
+            "eliminate_nop_concat",
+            "eliminate_nop_dropout",
+            "eliminate_nop_expand",
+            "eliminate_nop_flatten",
+            "eliminate_nop_pad",
+            "eliminate_nop_reshape",
+            "eliminate_nop_split",
+            "eliminate_nop_transpose",
+            "eliminate_nop_with_unit"
+          ],
+          "changed": false
+        },
+        {
+          "label": "conv_fusions",
+          "passes": [
+            "fuse_add_bias_into_conv",
+            "fuse_bn_into_conv",
+            "fuse_pad_into_conv",
+            "fuse_pad_into_pool"
+          ],
+          "changed": false
+        },
+        {
+          "label": "shape_folds",
+          "passes": [
+            "eliminate_shape_gather",
+            "eliminate_slice_after_shape",
+            "eliminate_shape_op",
+            "fuse_consecutive_slices"
+          ],
+          "changed": false
+        },
+        {
+          "label": "einsum_matmul",
+          "passes": [
+            "replace_einsum_with_matmul"
+          ],
+          "changed": false
+        },
+        {
+          "label": "rewrite_where",
+          "passes": [
+            "rewrite_where"
+          ],
+          "changed": false
+        },
+        {
+          "label": "adjust_add",
+          "passes": [
+            "adjust_add"
+          ],
+          "changed": false
+        }
+      ],
+      "known_rule": {
+        "attempts": 266,
+        "right": 266,
+        "mismatch_count": 0,
+        "first_mismatches": []
+      },
+      "known_runtime": {
+        "attempts": 266,
+        "valid": 266,
+        "session_errors": {},
+        "configs": {
+          "disable_all_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "bad_margin_values": 0,
+            "raw_equal_to_disable_all_threads1": 266,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "min_positive": 0.9762963652610779,
+            "max_nonpositive": 0.0
+          },
+          "disable_all_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "bad_margin_values": 0,
+            "raw_equal_to_disable_all_threads1": 266,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "min_positive": 0.9762963652610779,
+            "max_nonpositive": 0.0
+          },
+          "default_threads1": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "bad_margin_values": 0,
+            "raw_equal_to_disable_all_threads1": 266,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "min_positive": 0.9762963652610779,
+            "max_nonpositive": 0.0
+          },
+          "default_threads4": {
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "bad_margin_values": 0,
+            "raw_equal_to_disable_all_threads1": 266,
+            "output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ],
+            "min_positive": 0.9762963652610779,
+            "max_nonpositive": 0.0
+          }
+        },
+        "first_failure": null
+      },
+      "fresh": {}
+    }
+  }
+}

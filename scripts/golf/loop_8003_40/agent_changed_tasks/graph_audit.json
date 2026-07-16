@@ -1,0 +1,9419 @@
+[
+  {
+    "task": 73,
+    "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_8003_40/base_models/task073.onnx",
+    "ir_version": 10,
+    "opsets": {
+      "": 21
+    },
+    "inputs": [
+      {
+        "name": "input",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "initializers": [
+      {
+        "name": "scale",
+        "dtype": "float32",
+        "shape": [],
+        "size": 1,
+        "values": 0.05272629112005234
+      },
+      {
+        "name": "gbias",
+        "dtype": "float32",
+        "shape": [],
+        "size": 1,
+        "values": -0.9871222376823425
+      },
+      {
+        "name": "x",
+        "dtype": "float32",
+        "shape": [
+          1,
+          1,
+          6,
+          1
+        ],
+        "size": 6,
+        "values": [
+          [
+            [
+              [
+                100.25990295410156
+              ],
+              [
+                -1.25
+              ],
+              [
+                9926.72265625
+              ],
+              [
+                -9925.4599609375
+              ],
+              [
+                0.0
+              ],
+              [
+                NaN
+              ]
+            ]
+          ]
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "index": 0,
+        "name": "",
+        "op": "GroupNormalization",
+        "inputs": [
+          "input",
+          "scale",
+          "gbias"
+        ],
+        "outputs": [
+          "g"
+        ],
+        "output_types": {
+          "g": {
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "epsilon": 9.999999747378752e-06,
+          "num_groups": 1
+        }
+      },
+      {
+        "index": 1,
+        "name": "",
+        "op": "ConvTranspose",
+        "inputs": [
+          "x",
+          "g"
+        ],
+        "outputs": [
+          "output"
+        ],
+        "output_types": {
+          "output": {
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "dilations": [
+            1,
+            1
+          ],
+          "pads": [
+            0,
+            0,
+            5,
+            0
+          ],
+          "strides": [
+            1,
+            1
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "task": 111,
+    "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_8003_40/base_models/task111.onnx",
+    "ir_version": 10,
+    "opsets": {
+      "": 21
+    },
+    "inputs": [
+      {
+        "name": "input",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "dtype": "INT8",
+        "shape": [
+          1,
+          1,
+          30,
+          30
+        ]
+      }
+    ],
+    "initializers": [
+      {
+        "name": "u8_ref",
+        "dtype": "int8",
+        "shape": [],
+        "size": 1,
+        "values": 0
+      },
+      {
+        "name": "shape1",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          1
+        ]
+      },
+      {
+        "name": "shape2",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          2
+        ]
+      },
+      {
+        "name": "shape3",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          3
+        ]
+      },
+      {
+        "name": "x_scale",
+        "dtype": "float32",
+        "shape": [],
+        "size": 1,
+        "values": 0.125
+      },
+      {
+        "name": "wscale",
+        "dtype": "float32",
+        "shape": [
+          10
+        ],
+        "size": 10,
+        "values": [
+          -30.0,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.25,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "name": "shape4",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          4
+        ]
+      },
+      {
+        "name": "shape25",
+        "dtype": "int64",
+        "shape": [
+          2
+        ],
+        "size": 2,
+        "values": [
+          2,
+          5
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "index": 0,
+        "name": "gn",
+        "op": "GroupNormalization",
+        "inputs": [
+          "input",
+          "wscale",
+          "x_scale"
+        ],
+        "outputs": [
+          "gn"
+        ],
+        "output_types": {
+          "gn": {
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "epsilon": 9.999999747378752e-06,
+          "num_groups": 1
+        }
+      },
+      {
+        "index": 1,
+        "name": "q",
+        "op": "CastLike",
+        "inputs": [
+          "gn",
+          "u8_ref"
+        ],
+        "outputs": [
+          "q"
+        ],
+        "output_types": {
+          "q": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 2,
+        "name": "m2",
+        "op": "CenterCropPad",
+        "inputs": [
+          "q",
+          "shape2"
+        ],
+        "outputs": [
+          "m2"
+        ],
+        "output_types": {
+          "m2": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              2,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 3,
+        "name": "m3",
+        "op": "CenterCropPad",
+        "inputs": [
+          "m2",
+          "shape3"
+        ],
+        "outputs": [
+          "m3"
+        ],
+        "output_types": {
+          "m3": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              3,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 4,
+        "name": "marker",
+        "op": "CenterCropPad",
+        "inputs": [
+          "m3",
+          "shape1"
+        ],
+        "outputs": [
+          "marker"
+        ],
+        "output_types": {
+          "marker": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 5,
+        "name": "Wc2",
+        "op": "CenterCropPad",
+        "inputs": [
+          "marker",
+          "shape2"
+        ],
+        "outputs": [
+          "Wc2"
+        ],
+        "output_types": {
+          "Wc2": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              2,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 6,
+        "name": "Wc3",
+        "op": "CenterCropPad",
+        "inputs": [
+          "Wc2",
+          "shape3"
+        ],
+        "outputs": [
+          "Wc3"
+        ],
+        "output_types": {
+          "Wc3": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              3,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 7,
+        "name": "Wc4",
+        "op": "CenterCropPad",
+        "inputs": [
+          "Wc3",
+          "shape4"
+        ],
+        "outputs": [
+          "Wc4"
+        ],
+        "output_types": {
+          "Wc4": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              4,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 8,
+        "name": "W25",
+        "op": "CenterCropPad",
+        "inputs": [
+          "Wc4",
+          "shape25"
+        ],
+        "outputs": [
+          "W25"
+        ],
+        "output_types": {
+          "W25": {
+            "dtype": "INT8",
+            "shape": [
+              2,
+              5,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0,
+            1
+          ]
+        }
+      },
+      {
+        "index": 9,
+        "name": "crop2",
+        "op": "QLinearConv",
+        "inputs": [
+          "q",
+          "x_scale",
+          "u8_ref",
+          "W25",
+          "x_scale",
+          "u8_ref",
+          "x_scale",
+          "u8_ref"
+        ],
+        "outputs": [
+          "crop2"
+        ],
+        "output_types": {
+          "crop2": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              2,
+              3,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "group": 2,
+          "pads": [
+            -1,
+            1,
+            3,
+            1
+          ]
+        }
+      },
+      {
+        "index": 10,
+        "name": "presence1",
+        "op": "MaxPool",
+        "inputs": [
+          "q"
+        ],
+        "outputs": [
+          "presence1"
+        ],
+        "output_types": {
+          "presence1": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "kernel_shape": [
+            30,
+            30
+          ],
+          "pads": [
+            0,
+            0,
+            29,
+            29
+          ],
+          "strides": [
+            30,
+            30
+          ]
+        }
+      },
+      {
+        "index": 11,
+        "name": "weights",
+        "op": "Transpose",
+        "inputs": [
+          "presence1"
+        ],
+        "outputs": [
+          "weights"
+        ],
+        "output_types": {
+          "weights": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "perm": [
+            1,
+            0,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "index": 12,
+        "name": "weights2",
+        "op": "CenterCropPad",
+        "inputs": [
+          "weights",
+          "shape2"
+        ],
+        "outputs": [
+          "weights2"
+        ],
+        "output_types": {
+          "weights2": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              2,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 13,
+        "name": "dummy",
+        "op": "CenterCropPad",
+        "inputs": [
+          "marker",
+          "shape1"
+        ],
+        "outputs": [
+          "dummy_13"
+        ],
+        "output_types": {
+          "dummy_13": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 14,
+        "name": "output",
+        "op": "QLinearConv",
+        "inputs": [
+          "crop2",
+          "x_scale",
+          "u8_ref",
+          "weights2",
+          "wscale",
+          "u8_ref",
+          "x_scale",
+          "u8_ref"
+        ],
+        "outputs": [
+          "output"
+        ],
+        "output_types": {
+          "output": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              30,
+              30
+            ]
+          }
+        },
+        "attrs": {
+          "pads": [
+            0,
+            0,
+            27,
+            27
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "task": 122,
+    "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_8003_40/base_models/task122.onnx",
+    "ir_version": 10,
+    "opsets": {
+      "": 18
+    },
+    "inputs": [
+      {
+        "name": "input",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "dtype": "BOOL",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ]
+      }
+    ],
+    "initializers": [
+      {
+        "name": "s1",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          1
+        ]
+      },
+      {
+        "name": "b0",
+        "dtype": "bool",
+        "shape": [],
+        "size": 1,
+        "values": false
+      }
+    ],
+    "nodes": [
+      {
+        "index": 0,
+        "name": "",
+        "op": "ConstantOfShape",
+        "inputs": [
+          "s1"
+        ],
+        "outputs": [
+          "s31"
+        ],
+        "output_types": {
+          "s31": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "value": {
+            "dtype": "int64",
+            "shape": [
+              1
+            ],
+            "values": [
+              31
+            ]
+          }
+        }
+      },
+      {
+        "index": 1,
+        "name": "",
+        "op": "ConstantOfShape",
+        "inputs": [
+          "s1"
+        ],
+        "outputs": [
+          "s29"
+        ],
+        "output_types": {
+          "s29": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "value": {
+            "dtype": "int64",
+            "shape": [
+              1
+            ],
+            "values": [
+              29
+            ]
+          }
+        }
+      },
+      {
+        "index": 2,
+        "name": "",
+        "op": "ConstantOfShape",
+        "inputs": [
+          "s1"
+        ],
+        "outputs": [
+          "s30"
+        ],
+        "output_types": {
+          "s30": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "value": {
+            "dtype": "int64",
+            "shape": [
+              1
+            ],
+            "values": [
+              30
+            ]
+          }
+        }
+      },
+      {
+        "index": 3,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "input",
+          "s30"
+        ],
+        "outputs": [
+          "x31"
+        ],
+        "output_types": {
+          "x31": {
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 4,
+        "name": "",
+        "op": "CastLike",
+        "inputs": [
+          "x31",
+          "b0"
+        ],
+        "outputs": [
+          "x31u"
+        ],
+        "output_types": {
+          "x31u": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 5,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "x31u",
+          "s29"
+        ],
+        "outputs": [
+          "c1"
+        ],
+        "output_types": {
+          "c1": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 6,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c1",
+          "s31"
+        ],
+        "outputs": [
+          "c2"
+        ],
+        "output_types": {
+          "c2": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 7,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c2",
+          "s30"
+        ],
+        "outputs": [
+          "c3"
+        ],
+        "output_types": {
+          "c3": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 8,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3",
+          "s29"
+        ],
+        "outputs": [
+          "c4"
+        ],
+        "output_types": {
+          "c4": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 9,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c4",
+          "s31"
+        ],
+        "outputs": [
+          "c5"
+        ],
+        "output_types": {
+          "c5": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 10,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c5",
+          "s30"
+        ],
+        "outputs": [
+          "c6"
+        ],
+        "output_types": {
+          "c6": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 11,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c6",
+          "s29"
+        ],
+        "outputs": [
+          "c7"
+        ],
+        "output_types": {
+          "c7": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 12,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c7",
+          "s31"
+        ],
+        "outputs": [
+          "c8"
+        ],
+        "output_types": {
+          "c8": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 13,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c8",
+          "s30"
+        ],
+        "outputs": [
+          "c9"
+        ],
+        "output_types": {
+          "c9": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 14,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c9",
+          "s29"
+        ],
+        "outputs": [
+          "c10"
+        ],
+        "output_types": {
+          "c10": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 15,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c10",
+          "s31"
+        ],
+        "outputs": [
+          "c11"
+        ],
+        "output_types": {
+          "c11": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 16,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c11",
+          "s30"
+        ],
+        "outputs": [
+          "c12"
+        ],
+        "output_types": {
+          "c12": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 17,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "x31u",
+          "s1"
+        ],
+        "outputs": [
+          "Z0"
+        ],
+        "output_types": {
+          "Z0": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 18,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3",
+          "s1"
+        ],
+        "outputs": [
+          "G"
+        ],
+        "output_types": {
+          "G": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 19,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c6",
+          "s1"
+        ],
+        "outputs": [
+          "R"
+        ],
+        "output_types": {
+          "R": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 20,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c12",
+          "s1"
+        ],
+        "outputs": [
+          "Zin"
+        ],
+        "output_types": {
+          "Zin": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 21,
+        "name": "",
+        "op": "Cast",
+        "inputs": [
+          "G"
+        ],
+        "outputs": [
+          "Gf"
+        ],
+        "output_types": {
+          "Gf": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 22,
+        "name": "",
+        "op": "Selu",
+        "inputs": [
+          "Gf"
+        ],
+        "outputs": [
+          "negG"
+        ],
+        "output_types": {
+          "negG": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "gamma": -1.0
+        }
+      },
+      {
+        "index": 23,
+        "name": "c3r_0",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3",
+          "s29"
+        ],
+        "outputs": [
+          "c3r_0"
+        ],
+        "output_types": {
+          "c3r_0": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            3
+          ]
+        }
+      },
+      {
+        "index": 24,
+        "name": "c3r_1",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3r_0",
+          "s31"
+        ],
+        "outputs": [
+          "c3r_1"
+        ],
+        "output_types": {
+          "c3r_1": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            3
+          ]
+        }
+      },
+      {
+        "index": 25,
+        "name": "c3r_2",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3r_1",
+          "s30"
+        ],
+        "outputs": [
+          "c3r_2"
+        ],
+        "output_types": {
+          "c3r_2": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            3
+          ]
+        }
+      },
+      {
+        "index": 26,
+        "name": "c3r_3",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3r_2",
+          "s29"
+        ],
+        "outputs": [
+          "c3r_3"
+        ],
+        "output_types": {
+          "c3r_3": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            3
+          ]
+        }
+      },
+      {
+        "index": 27,
+        "name": "c3r_4",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3r_3",
+          "s31"
+        ],
+        "outputs": [
+          "c3r_4"
+        ],
+        "output_types": {
+          "c3r_4": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            3
+          ]
+        }
+      },
+      {
+        "index": 28,
+        "name": "c3r_5",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3r_4",
+          "s30"
+        ],
+        "outputs": [
+          "c3r_5"
+        ],
+        "output_types": {
+          "c3r_5": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            3
+          ]
+        }
+      },
+      {
+        "index": 29,
+        "name": "Gr2_5",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3r_5",
+          "s1"
+        ],
+        "outputs": [
+          "Gr2_5"
+        ],
+        "output_types": {
+          "Gr2_5": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 30,
+        "name": "c3r_c0",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3r_5",
+          "s29"
+        ],
+        "outputs": [
+          "c3r_c0"
+        ],
+        "output_types": {
+          "c3r_c0": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 31,
+        "name": "c3r_c1",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3r_c0",
+          "s31"
+        ],
+        "outputs": [
+          "c3r_c1"
+        ],
+        "output_types": {
+          "c3r_c1": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 32,
+        "name": "c3r_c2",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3r_c1",
+          "s30"
+        ],
+        "outputs": [
+          "c3r_c2"
+        ],
+        "output_types": {
+          "c3r_c2": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 33,
+        "name": "Rr2_5",
+        "op": "CenterCropPad",
+        "inputs": [
+          "c3r_c2",
+          "s1"
+        ],
+        "outputs": [
+          "Rr2_5"
+        ],
+        "output_types": {
+          "Rr2_5": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 34,
+        "name": "",
+        "op": "Cast",
+        "inputs": [
+          "Gr2_5"
+        ],
+        "outputs": [
+          "Gr2f"
+        ],
+        "output_types": {
+          "Gr2f": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 35,
+        "name": "",
+        "op": "Einsum",
+        "inputs": [
+          "negG",
+          "Gr2f"
+        ],
+        "outputs": [
+          "Hsum"
+        ],
+        "output_types": {
+          "Hsum": {
+            "dtype": "FLOAT16",
+            "shape": []
+          }
+        },
+        "attrs": {
+          "equation": "abcd,abcd->"
+        }
+      },
+      {
+        "index": 36,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "R",
+          "s29"
+        ],
+        "outputs": [
+          "Rd2_0"
+        ],
+        "output_types": {
+          "Rd2_0": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            2
+          ]
+        }
+      },
+      {
+        "index": 37,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "Rd2_0",
+          "s31"
+        ],
+        "outputs": [
+          "Rd2_1"
+        ],
+        "output_types": {
+          "Rd2_1": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            2
+          ]
+        }
+      },
+      {
+        "index": 38,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "Rd2_1",
+          "s30"
+        ],
+        "outputs": [
+          "Rd2_2"
+        ],
+        "output_types": {
+          "Rd2_2": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            2
+          ]
+        }
+      },
+      {
+        "index": 39,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "Rd2_2",
+          "s29"
+        ],
+        "outputs": [
+          "Rd2_3"
+        ],
+        "output_types": {
+          "Rd2_3": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            2
+          ]
+        }
+      },
+      {
+        "index": 40,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "Rd2_3",
+          "s31"
+        ],
+        "outputs": [
+          "Rd2_4"
+        ],
+        "output_types": {
+          "Rd2_4": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            2
+          ]
+        }
+      },
+      {
+        "index": 41,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "Rd2_4",
+          "s30"
+        ],
+        "outputs": [
+          "Rd2_5"
+        ],
+        "output_types": {
+          "Rd2_5": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            2
+          ]
+        }
+      },
+      {
+        "index": 42,
+        "name": "",
+        "op": "Cast",
+        "inputs": [
+          "Rr2_5"
+        ],
+        "outputs": [
+          "Rr2f"
+        ],
+        "output_types": {
+          "Rr2f": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 43,
+        "name": "",
+        "op": "Cast",
+        "inputs": [
+          "Rd2_5"
+        ],
+        "outputs": [
+          "Rd2f"
+        ],
+        "output_types": {
+          "Rd2f": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 44,
+        "name": "",
+        "op": "Selu",
+        "inputs": [
+          "Rr2f"
+        ],
+        "outputs": [
+          "negRr2"
+        ],
+        "output_types": {
+          "negRr2": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "gamma": -1.0
+        }
+      },
+      {
+        "index": 45,
+        "name": "",
+        "op": "Selu",
+        "inputs": [
+          "Rd2f"
+        ],
+        "outputs": [
+          "negRd2"
+        ],
+        "output_types": {
+          "negRd2": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "gamma": -1.0
+        }
+      },
+      {
+        "index": 46,
+        "name": "red_h_pos",
+        "op": "PRelu",
+        "inputs": [
+          "negRr2",
+          "Hsum"
+        ],
+        "outputs": [
+          "red_h_pos"
+        ],
+        "output_types": {
+          "red_h_pos": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 47,
+        "name": "v_none",
+        "op": "GreaterOrEqual",
+        "inputs": [
+          "negRd2",
+          "Hsum"
+        ],
+        "outputs": [
+          "v_none"
+        ],
+        "output_types": {
+          "v_none": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 48,
+        "name": "v_none_f",
+        "op": "Cast",
+        "inputs": [
+          "v_none"
+        ],
+        "outputs": [
+          "v_none_f"
+        ],
+        "output_types": {
+          "v_none_f": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 49,
+        "name": "red_bool",
+        "op": "GreaterOrEqual",
+        "inputs": [
+          "red_h_pos",
+          "v_none_f"
+        ],
+        "outputs": [
+          "red_bool"
+        ],
+        "output_types": {
+          "red_bool": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 50,
+        "name": "d_keep",
+        "op": "GreaterOrEqual",
+        "inputs": [
+          "negRd2",
+          "red_h_pos"
+        ],
+        "outputs": [
+          "d_keep"
+        ],
+        "output_types": {
+          "d_keep": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 51,
+        "name": "red_bool_f",
+        "op": "Cast",
+        "inputs": [
+          "red_bool"
+        ],
+        "outputs": [
+          "red_bool_f"
+        ],
+        "output_types": {
+          "red_bool_f": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 52,
+        "name": "",
+        "op": "Cast",
+        "inputs": [
+          "Zin"
+        ],
+        "outputs": [
+          "Zinf"
+        ],
+        "output_types": {
+          "Zinf": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 53,
+        "name": "",
+        "op": "Selu",
+        "inputs": [
+          "Zinf"
+        ],
+        "outputs": [
+          "negZin"
+        ],
+        "output_types": {
+          "negZin": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "gamma": -1.0
+        }
+      },
+      {
+        "index": 54,
+        "name": "",
+        "op": "Cast",
+        "inputs": [
+          "R"
+        ],
+        "outputs": [
+          "Rf0"
+        ],
+        "output_types": {
+          "Rf0": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 55,
+        "name": "",
+        "op": "GreaterOrEqual",
+        "inputs": [
+          "negZin",
+          "Rf0"
+        ],
+        "outputs": [
+          "none_base"
+        ],
+        "output_types": {
+          "none_base": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 56,
+        "name": "",
+        "op": "Cast",
+        "inputs": [
+          "none_base"
+        ],
+        "outputs": [
+          "none_base_f"
+        ],
+        "output_types": {
+          "none_base_f": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 57,
+        "name": "",
+        "op": "Selu",
+        "inputs": [
+          "none_base_f"
+        ],
+        "outputs": [
+          "none_base_neg"
+        ],
+        "output_types": {
+          "none_base_neg": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "gamma": -1.0
+        }
+      },
+      {
+        "index": 58,
+        "name": "Zout",
+        "op": "GreaterOrEqual",
+        "inputs": [
+          "none_base_neg",
+          "red_bool_f"
+        ],
+        "outputs": [
+          "Zout"
+        ],
+        "output_types": {
+          "Zout": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 59,
+        "name": "output",
+        "op": "Concat",
+        "inputs": [
+          "Zout",
+          "Z0",
+          "red_bool",
+          "G",
+          "Z0",
+          "Z0",
+          "Z0",
+          "Z0",
+          "Z0",
+          "Z0"
+        ],
+        "outputs": [
+          "output"
+        ],
+        "output_types": {
+          "output": {
+            "dtype": "BOOL",
+            "shape": [
+              1,
+              10,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      }
+    ]
+  },
+  {
+    "task": 260,
+    "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_8003_40/base_models/task260.onnx",
+    "ir_version": 10,
+    "opsets": {
+      "": 18
+    },
+    "inputs": [
+      {
+        "name": "input",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "initializers": [
+      {
+        "name": "E",
+        "dtype": "float32",
+        "shape": [
+          2,
+          30
+        ],
+        "size": 60,
+        "values": [
+          [
+            0.1053992211818695,
+            0.17377394437789917,
+            0.2865048050880432,
+            0.4723665416240692,
+            0.7788007855415344,
+            1.2840254306793213,
+            2.117000102996826,
+            3.490342855453491,
+            5.754602909088135,
+            9.487735748291016,
+            -9.567352294921875,
+            -4.153197288513184,
+            -2.5989673137664795,
+            -4.190881729125977,
+            -3.9401485919952393,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            9.487735748291016,
+            5.754602909088135,
+            3.490342855453491,
+            2.117000102996826,
+            1.2840254306793213,
+            0.7788007855415344,
+            0.4723665416240692,
+            0.2865048050880432,
+            0.17377394437789917,
+            0.1053992211818695,
+            -9.532567977905273,
+            -1.5447709560394287,
+            -4.396507263183594,
+            -2.4201037883758545,
+            -5.056604862213135,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "name": "v1",
+        "dtype": "float32",
+        "shape": [
+          2
+        ],
+        "size": 2,
+        "values": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Flip",
+        "dtype": "float32",
+        "shape": [
+          2,
+          2
+        ],
+        "size": 4,
+        "values": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "name": "gate",
+        "dtype": "float32",
+        "shape": [
+          10
+        ],
+        "size": 10,
+        "values": [
+          100000000.0,
+          -100000000.0,
+          -100000000.0,
+          -100000000.0,
+          -100000000.0,
+          0.0,
+          -100000000.0,
+          -100000000.0,
+          -100000000.0,
+          -100000000.0
+        ]
+      },
+      {
+        "name": "W",
+        "dtype": "float32",
+        "shape": [
+          2,
+          10
+        ],
+        "size": 20,
+        "values": [
+          [
+            1.000000013351432e-10,
+            -0.5,
+            -0.5,
+            -0.5,
+            -0.5,
+            1.0,
+            -0.5,
+            -0.5,
+            -0.5,
+            -0.5
+          ],
+          [
+            4.931612056680024e-05,
+            4.931612056680024e-05,
+            4.931612056680024e-05,
+            4.931612056680024e-05,
+            4.931612056680024e-05,
+            4.931612056680024e-05,
+            4.931612056680024e-05,
+            4.931612056680024e-05,
+            4.931612056680024e-05,
+            4.931612056680024e-05
+          ]
+        ]
+      },
+      {
+        "name": "S3",
+        "dtype": "float32",
+        "shape": [
+          2
+        ],
+        "size": 2,
+        "values": [
+          -0.12499713897705078,
+          0.9999885559082031
+        ]
+      },
+      {
+        "name": "T3",
+        "dtype": "float32",
+        "shape": [
+          2
+        ],
+        "size": 2,
+        "values": [
+          -0.3518218994140625,
+          1.0
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "index": 0,
+        "name": "output",
+        "op": "Einsum",
+        "inputs": [
+          "Flip",
+          "W",
+          "input",
+          "E",
+          "Flip",
+          "E",
+          "Flip",
+          "E",
+          "E",
+          "Flip",
+          "W",
+          "input",
+          "E",
+          "Flip",
+          "E",
+          "Flip",
+          "E",
+          "E",
+          "Flip",
+          "W",
+          "input",
+          "E",
+          "E",
+          "E",
+          "Flip",
+          "E",
+          "Flip",
+          "Flip",
+          "W",
+          "input",
+          "E",
+          "E",
+          "E",
+          "Flip",
+          "E",
+          "Flip",
+          "input",
+          "gate",
+          "input",
+          "W",
+          "Flip",
+          "S3",
+          "E",
+          "E",
+          "E",
+          "Flip",
+          "E",
+          "Flip",
+          "T3",
+          "E",
+          "E",
+          "E",
+          "Flip",
+          "E",
+          "Flip",
+          "S3",
+          "E",
+          "Flip",
+          "E",
+          "Flip",
+          "E",
+          "E",
+          "T3",
+          "E",
+          "Flip",
+          "E",
+          "Flip",
+          "E",
+          "E",
+          "v1"
+        ],
+        "outputs": [
+          "output"
+        ],
+        "output_types": {
+          "output": {
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        },
+        "attrs": {
+          "equation": "lb,bd,...def,ge,gZ,he,hZ,Zf,Zf,ui,ij,...jkm,tk,tZ,vk,vZ,Zm,Zm,Ay,yC,...CDE,ZD,ZD,HE,HZ,IE,IZ,FJ,JK,...KLM,ZL,ZL,NM,NZ,OM,OZ,...opq,o,...zrc,az,aZ,l,lr,Zr,nc,nZ,sc,ls,u,ur,Zr,wc,wZ,xc,ux,A,Pr,AP,Br,BZ,Ac,Zc,F,Qr,FQ,Gr,GZ,Fc,Zc,Z->...orc"
+        }
+      }
+    ]
+  },
+  {
+    "task": 271,
+    "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_8003_40/base_models/task271.onnx",
+    "ir_version": 10,
+    "opsets": {
+      "": 21
+    },
+    "inputs": [
+      {
+        "name": "input",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "dtype": "INT32",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "initializers": [
+      {
+        "name": "coeff",
+        "dtype": "float32",
+        "shape": [
+          10
+        ],
+        "size": 10,
+        "values": [
+          0.004540867637842894,
+          0.07500000298023224,
+          -0.5,
+          -0.5,
+          -0.5,
+          -0.5,
+          -0.5,
+          -0.5,
+          0.05000000074505806,
+          -0.5
+        ]
+      },
+      {
+        "name": "qscale",
+        "dtype": "float32",
+        "shape": [],
+        "size": 1,
+        "values": -0.5
+      },
+      {
+        "name": "red_axes",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          1
+        ]
+      },
+      {
+        "name": "seven8",
+        "dtype": "int8",
+        "shape": [],
+        "size": 1,
+        "values": 7
+      },
+      {
+        "name": "forty8",
+        "dtype": "int8",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          48
+        ]
+      },
+      {
+        "name": "delta2",
+        "dtype": "int32",
+        "shape": [],
+        "size": 1,
+        "values": 3
+      },
+      {
+        "name": "axes2",
+        "dtype": "int32",
+        "shape": [
+          2
+        ],
+        "size": 2,
+        "values": [
+          2,
+          3
+        ]
+      },
+      {
+        "name": "out_w",
+        "dtype": "int8",
+        "shape": [
+          10,
+          1,
+          1,
+          1
+        ],
+        "size": 10,
+        "values": [
+          [
+            [
+              [
+                7
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                8
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                7
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                7
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                7
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                7
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                7
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                7
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                6
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                7
+              ]
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "zero3",
+        "dtype": "int8",
+        "shape": [
+          1,
+          1,
+          3,
+          3
+        ],
+        "size": 9,
+        "values": [
+          [
+            [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ]
+          ]
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "index": 0,
+        "name": "",
+        "op": "GroupNormalization",
+        "inputs": [
+          "input",
+          "coeff",
+          "qscale"
+        ],
+        "outputs": [
+          "wf"
+        ],
+        "output_types": {
+          "wf": {
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "epsilon": -0.008837999776005745,
+          "num_groups": 1
+        }
+      },
+      {
+        "index": 1,
+        "name": "",
+        "op": "Cast",
+        "inputs": [
+          "wf"
+        ],
+        "outputs": [
+          "wf16"
+        ],
+        "output_types": {
+          "wf16": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 2,
+        "name": "",
+        "op": "ReduceL1",
+        "inputs": [
+          "wf16",
+          "red_axes"
+        ],
+        "outputs": [
+          "w1f"
+        ],
+        "output_types": {
+          "w1f": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "keepdims": 1
+        }
+      },
+      {
+        "index": 3,
+        "name": "",
+        "op": "CastLike",
+        "inputs": [
+          "w1f",
+          "seven8"
+        ],
+        "outputs": [
+          "w1"
+        ],
+        "output_types": {
+          "w1": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 4,
+        "name": "",
+        "op": "QLinearConv",
+        "inputs": [
+          "zero3",
+          "qscale",
+          "seven8",
+          "w1",
+          "qscale",
+          "seven8",
+          "qscale",
+          "seven8"
+        ],
+        "outputs": [
+          "scores"
+        ],
+        "output_types": {
+          "scores": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              7,
+              7
+            ]
+          }
+        },
+        "attrs": {
+          "kernel_shape": [
+            30,
+            30
+          ],
+          "pads": [
+            6,
+            6,
+            27,
+            27
+          ]
+        }
+      },
+      {
+        "index": 5,
+        "name": "",
+        "op": "MaxPool",
+        "inputs": [
+          "scores"
+        ],
+        "outputs": [
+          "max_score",
+          "flat64"
+        ],
+        "output_types": {
+          "max_score": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "flat64": {
+            "dtype": "INT64",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "kernel_shape": [
+            7,
+            7
+          ]
+        }
+      },
+      {
+        "index": 6,
+        "name": "",
+        "op": "CastLike",
+        "inputs": [
+          "flat64",
+          "seven8"
+        ],
+        "outputs": [
+          "flat8"
+        ],
+        "output_types": {
+          "flat8": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 7,
+        "name": "",
+        "op": "Squeeze",
+        "inputs": [
+          "flat8"
+        ],
+        "outputs": [
+          "flat0"
+        ],
+        "output_types": {
+          "flat0": {
+            "dtype": "INT8",
+            "shape": []
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 8,
+        "name": "",
+        "op": "Sub",
+        "inputs": [
+          "forty8",
+          "flat0"
+        ],
+        "outputs": [
+          "inv8"
+        ],
+        "output_types": {
+          "inv8": {
+            "dtype": "INT8",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 9,
+        "name": "",
+        "op": "Div",
+        "inputs": [
+          "inv8",
+          "seven8"
+        ],
+        "outputs": [
+          "r4"
+        ],
+        "output_types": {
+          "r4": {
+            "dtype": "INT8",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 10,
+        "name": "",
+        "op": "Mod",
+        "inputs": [
+          "inv8",
+          "seven8"
+        ],
+        "outputs": [
+          "c4"
+        ],
+        "output_types": {
+          "c4": {
+            "dtype": "INT8",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "fmod": 0
+        }
+      },
+      {
+        "index": 11,
+        "name": "",
+        "op": "Concat",
+        "inputs": [
+          "r4",
+          "c4"
+        ],
+        "outputs": [
+          "tmp"
+        ],
+        "output_types": {
+          "tmp": {
+            "dtype": "INT8",
+            "shape": [
+              2
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 12,
+        "name": "",
+        "op": "Cast",
+        "inputs": [
+          "tmp"
+        ],
+        "outputs": [
+          "starts"
+        ],
+        "output_types": {
+          "starts": {
+            "dtype": "INT32",
+            "shape": [
+              2
+            ]
+          }
+        },
+        "attrs": {
+          "to": 6
+        }
+      },
+      {
+        "index": 13,
+        "name": "",
+        "op": "Add",
+        "inputs": [
+          "starts",
+          "delta2"
+        ],
+        "outputs": [
+          "ends"
+        ],
+        "output_types": {
+          "ends": {
+            "dtype": "INT32",
+            "shape": [
+              2
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 14,
+        "name": "",
+        "op": "Slice",
+        "inputs": [
+          "w1",
+          "starts",
+          "ends",
+          "axes2"
+        ],
+        "outputs": [
+          "patch"
+        ],
+        "output_types": {
+          "patch": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              3,
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 15,
+        "name": "",
+        "op": "ConvInteger",
+        "inputs": [
+          "patch",
+          "out_w",
+          "seven8",
+          "seven8"
+        ],
+        "outputs": [
+          "output"
+        ],
+        "output_types": {
+          "output": {
+            "dtype": "INT32",
+            "shape": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        },
+        "attrs": {
+          "kernel_shape": [
+            1,
+            1
+          ],
+          "pads": [
+            0,
+            0,
+            27,
+            27
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "task": 285,
+    "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_8003_40/base_models/task285.onnx",
+    "ir_version": 10,
+    "opsets": {
+      "": 18
+    },
+    "inputs": [
+      {
+        "name": "input",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "initializers": [
+      {
+        "name": "z_8",
+        "dtype": "uint8",
+        "shape": [],
+        "size": 1,
+        "values": 0
+      },
+      {
+        "name": "one_i",
+        "dtype": "int32",
+        "shape": [],
+        "size": 1,
+        "values": 1
+      },
+      {
+        "name": "one_u",
+        "dtype": "uint32",
+        "shape": [],
+        "size": 1,
+        "values": 1
+      },
+      {
+        "name": "one_8",
+        "dtype": "uint8",
+        "shape": [],
+        "size": 1,
+        "values": 1
+      },
+      {
+        "name": "mask31",
+        "dtype": "uint8",
+        "shape": [],
+        "size": 1,
+        "values": 31
+      },
+      {
+        "name": "fg_code",
+        "dtype": "float32",
+        "shape": [
+          10
+        ],
+        "size": 10,
+        "values": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "name": "rowbias",
+        "dtype": "float16",
+        "shape": [
+          1,
+          1,
+          29
+        ],
+        "size": 29,
+        "values": [
+          [
+            [
+              -100.0,
+              -100.0,
+              -100.0,
+              0.005001068115234375,
+              0.0020008087158203125,
+              0.01200103759765625,
+              0.01800537109375,
+              0.004001617431640625,
+              0.00800323486328125,
+              0.006000518798828125,
+              0.01399993896484375,
+              0.009002685546875,
+              0.01000213623046875,
+              0.0149993896484375,
+              0.016998291015625,
+              0.022003173828125,
+              0.0229949951171875,
+              0.0110015869140625,
+              0.02099609375,
+              0.0200042724609375,
+              0.006999969482421875,
+              0.0010004043579101562,
+              0.0030002593994140625,
+              0.0160064697265625,
+              0.01300048828125,
+              -100.0,
+              -100.0,
+              -100.0,
+              -100.0
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "K9",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          6
+        ]
+      },
+      {
+        "name": "pow2",
+        "dtype": "float32",
+        "shape": [
+          30
+        ],
+        "size": 30,
+        "values": [
+          1.0,
+          2.0,
+          4.0,
+          8.0,
+          16.0,
+          32.0,
+          64.0,
+          128.0,
+          256.0,
+          512.0,
+          1024.0,
+          2048.0,
+          4096.0,
+          8192.0,
+          16384.0,
+          32768.0,
+          65536.0,
+          131072.0,
+          262144.0,
+          524288.0,
+          1048576.0,
+          2097152.0,
+          4194304.0,
+          8388608.0,
+          16777216.0,
+          33554432.0,
+          67108864.0,
+          134217728.0,
+          268435456.0,
+          536870912.0
+        ]
+      },
+      {
+        "name": "bp_code",
+        "dtype": "float32",
+        "shape": [
+          4,
+          10
+        ],
+        "size": 40,
+        "values": [
+          [
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        ]
+      },
+      {
+        "name": "K3a",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          3
+        ]
+      },
+      {
+        "name": "cw2_ax",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          1
+        ]
+      },
+      {
+        "name": "bitflat_shape",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          63
+        ]
+      },
+      {
+        "name": "n21_i",
+        "dtype": "int8",
+        "shape": [],
+        "size": 1,
+        "values": 21
+      },
+      {
+        "name": "four_i",
+        "dtype": "int8",
+        "shape": [],
+        "size": 1,
+        "values": 4
+      },
+      {
+        "name": "rowoff",
+        "dtype": "int8",
+        "shape": [
+          1,
+          4,
+          5
+        ],
+        "size": 20,
+        "values": [
+          [
+            [
+              0,
+              -1,
+              -2,
+              -3,
+              -4
+            ],
+            [
+              0,
+              -1,
+              -2,
+              -3,
+              -4
+            ],
+            [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "coloff",
+        "dtype": "int8",
+        "shape": [
+          1,
+          4
+        ],
+        "size": 4,
+        "values": [
+          [
+            -4,
+            1,
+            -4,
+            1
+          ]
+        ]
+      },
+      {
+        "name": "start_u3_ax",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          2
+        ]
+      },
+      {
+        "name": "rev_lut",
+        "dtype": "uint8",
+        "shape": [
+          32
+        ],
+        "size": 32,
+        "values": [
+          0,
+          16,
+          8,
+          24,
+          4,
+          20,
+          12,
+          28,
+          2,
+          18,
+          10,
+          26,
+          6,
+          22,
+          14,
+          30,
+          1,
+          17,
+          9,
+          25,
+          5,
+          21,
+          13,
+          29,
+          3,
+          19,
+          11,
+          27,
+          7,
+          23,
+          15,
+          31
+        ]
+      },
+      {
+        "name": "cidxf_shape",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          60
+        ]
+      },
+      {
+        "name": "rows4_shape",
+        "dtype": "int64",
+        "shape": [
+          4
+        ],
+        "size": 4,
+        "values": [
+          1,
+          10,
+          30,
+          1
+        ]
+      },
+      {
+        "name": "bitcols",
+        "dtype": "uint32",
+        "shape": [
+          1,
+          1,
+          1,
+          30
+        ],
+        "size": 30,
+        "values": [
+          [
+            [
+              [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                128,
+                256,
+                512,
+                1024,
+                2048,
+                4096,
+                8192,
+                16384,
+                32768,
+                65536,
+                131072,
+                262144,
+                524288,
+                1048576,
+                2097152,
+                4194304,
+                8388608,
+                16777216,
+                33554432,
+                67108864,
+                134217728,
+                268435456,
+                536870912
+              ]
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "q1",
+        "dtype": "float32",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          1.0
+        ]
+      },
+      {
+        "name": "count_thr",
+        "dtype": "float32",
+        "shape": [],
+        "size": 1,
+        "values": 3.0
+      },
+      {
+        "name": "first2",
+        "dtype": "int64",
+        "shape": [
+          2
+        ],
+        "size": 2,
+        "values": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "show_near_mask",
+        "dtype": "uint8",
+        "shape": [
+          1,
+          4,
+          2
+        ],
+        "size": 8,
+        "values": [
+          [
+            [
+              8,
+              24
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              8,
+              24
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        ]
+      },
+      {
+        "name": "source_side_lut",
+        "dtype": "bool",
+        "shape": [
+          4
+        ],
+        "size": 4,
+        "values": [
+          true,
+          false,
+          true,
+          false
+        ]
+      },
+      {
+        "name": "axis0",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          0
+        ]
+      },
+      {
+        "name": "__zd_shape_const_zero300",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          300
+        ]
+      },
+      {
+        "name": "colbits8",
+        "dtype": "uint8",
+        "shape": [
+          8
+        ],
+        "size": 8,
+        "values": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64,
+          128
+        ]
+      },
+      {
+        "name": "colbits5",
+        "dtype": "uint8",
+        "shape": [
+          5
+        ],
+        "size": 5,
+        "values": [
+          1,
+          2,
+          4,
+          8,
+          16
+        ]
+      },
+      {
+        "name": "shift4_u",
+        "dtype": "uint32",
+        "shape": [],
+        "size": 1,
+        "values": 4
+      },
+      {
+        "name": "shift12_u",
+        "dtype": "uint32",
+        "shape": [],
+        "size": 1,
+        "values": 12
+      },
+      {
+        "name": "shift20_u",
+        "dtype": "uint32",
+        "shape": [],
+        "size": 1,
+        "values": 20
+      },
+      {
+        "name": "axes12",
+        "dtype": "int64",
+        "shape": [
+          2
+        ],
+        "size": 2,
+        "values": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "thirty_i",
+        "dtype": "float16",
+        "shape": [],
+        "size": 1,
+        "values": 30.0
+      },
+      {
+        "name": "rowrange",
+        "dtype": "float16",
+        "shape": [
+          30
+        ],
+        "size": 30,
+        "values": [
+          0.0,
+          1.0,
+          2.0,
+          3.0,
+          4.0,
+          5.0,
+          6.0,
+          7.0,
+          8.0,
+          9.0,
+          10.0,
+          11.0,
+          12.0,
+          13.0,
+          14.0,
+          15.0,
+          16.0,
+          17.0,
+          18.0,
+          19.0,
+          20.0,
+          21.0,
+          22.0,
+          23.0,
+          24.0,
+          25.0,
+          26.0,
+          27.0,
+          28.0,
+          29.0
+        ]
+      },
+      {
+        "name": "colorw4",
+        "dtype": "uint8",
+        "shape": [
+          1,
+          4
+        ],
+        "size": 4,
+        "values": [
+          [
+            1,
+            2,
+            4,
+            8
+          ]
+        ]
+      },
+      {
+        "name": "target_rows",
+        "dtype": "int32",
+        "shape": [
+          6
+        ],
+        "size": 6,
+        "values": [
+          11,
+          -1,
+          13,
+          18,
+          -1,
+          22
+        ]
+      },
+      {
+        "name": "target_keep_bits_i",
+        "dtype": "int32",
+        "shape": [
+          6
+        ],
+        "size": 6,
+        "values": [
+          -49153,
+          -1,
+          -17,
+          -2097153,
+          -1,
+          -16385
+        ]
+      },
+      {
+        "name": "zero30_seed",
+        "dtype": "uint32",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          0
+        ]
+      },
+      {
+        "name": "rowmask_pat",
+        "dtype": "int64",
+        "shape": [
+          5
+        ],
+        "size": 5,
+        "values": [
+          0,
+          0,
+          0,
+          2,
+          2
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "index": 0,
+        "name": "width_f",
+        "op": "Einsum",
+        "inputs": [
+          "input"
+        ],
+        "outputs": [
+          "width_area"
+        ],
+        "output_types": {
+          "width_area": {
+            "dtype": "FLOAT",
+            "shape": []
+          }
+        },
+        "attrs": {
+          "equation": "ncrw->"
+        }
+      },
+      {
+        "index": 1,
+        "name": "width_f_sqrt",
+        "op": "Sqrt",
+        "inputs": [
+          "width_area"
+        ],
+        "outputs": [
+          "width_f"
+        ],
+        "output_types": {
+          "width_f": {
+            "dtype": "FLOAT",
+            "shape": []
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 2,
+        "name": "width",
+        "op": "Cast",
+        "inputs": [
+          "width_f"
+        ],
+        "outputs": [
+          "width"
+        ],
+        "output_types": {
+          "width": {
+            "dtype": "FLOAT16",
+            "shape": []
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 3,
+        "name": "width_u",
+        "op": "Cast",
+        "inputs": [
+          "width"
+        ],
+        "outputs": [
+          "width_u"
+        ],
+        "output_types": {
+          "width_u": {
+            "dtype": "UINT32",
+            "shape": []
+          }
+        },
+        "attrs": {
+          "to": 12
+        }
+      },
+      {
+        "index": 4,
+        "name": "width_pow2",
+        "op": "BitShift",
+        "inputs": [
+          "one_u",
+          "width_u"
+        ],
+        "outputs": [
+          "width_pow2"
+        ],
+        "output_types": {
+          "width_pow2": {
+            "dtype": "UINT32",
+            "shape": []
+          }
+        },
+        "attrs": {
+          "direction": "LEFT"
+        }
+      },
+      {
+        "index": 5,
+        "name": "validbits",
+        "op": "Sub",
+        "inputs": [
+          "width_pow2",
+          "one_u"
+        ],
+        "outputs": [
+          "validbits"
+        ],
+        "output_types": {
+          "validbits": {
+            "dtype": "UINT32",
+            "shape": []
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 6,
+        "name": "rowok",
+        "op": "Less",
+        "inputs": [
+          "rowrange",
+          "width"
+        ],
+        "outputs": [
+          "rowok"
+        ],
+        "output_types": {
+          "rowok": {
+            "dtype": "BOOL",
+            "shape": [
+              30
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 7,
+        "name": "__ch_s_6",
+        "op": "Shape",
+        "inputs": [
+          "rowok"
+        ],
+        "outputs": [
+          "__ch_s_6"
+        ],
+        "output_types": {
+          "__ch_s_6": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 8,
+        "name": "zero30",
+        "op": "CenterCropPad",
+        "inputs": [
+          "zero30_seed",
+          "__ch_s_6"
+        ],
+        "outputs": [
+          "zero30"
+        ],
+        "output_types": {
+          "zero30": {
+            "dtype": "UINT32",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 9,
+        "name": "__ch_h_6",
+        "op": "CenterCropPad",
+        "inputs": [
+          "rowok",
+          "__ch_s_6"
+        ],
+        "outputs": [
+          "__ch_h_6"
+        ],
+        "output_types": {
+          "__ch_h_6": {
+            "dtype": "BOOL",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 10,
+        "name": "rowok_u",
+        "op": "CastLike",
+        "inputs": [
+          "__ch_h_6",
+          "zero30"
+        ],
+        "outputs": [
+          "rowok_u"
+        ],
+        "output_types": {
+          "rowok_u": {
+            "dtype": "UINT32",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 11,
+        "name": "validrows",
+        "op": "Mul",
+        "inputs": [
+          "rowok_u",
+          "validbits"
+        ],
+        "outputs": [
+          "validrows"
+        ],
+        "output_types": {
+          "validrows": {
+            "dtype": "UINT32",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 12,
+        "name": "colorcount",
+        "op": "Einsum",
+        "inputs": [
+          "input"
+        ],
+        "outputs": [
+          "colorcount"
+        ],
+        "output_types": {
+          "colorcount": {
+            "dtype": "FLOAT",
+            "shape": [
+              10
+            ]
+          }
+        },
+        "attrs": {
+          "equation": "ncrw->c"
+        }
+      },
+      {
+        "index": 13,
+        "name": "lowcolor",
+        "op": "LessOrEqual",
+        "inputs": [
+          "colorcount",
+          "count_thr"
+        ],
+        "outputs": [
+          "lowcolor"
+        ],
+        "output_types": {
+          "lowcolor": {
+            "dtype": "BOOL",
+            "shape": [
+              10
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 14,
+        "name": "row_color_weight",
+        "op": "Where",
+        "inputs": [
+          "lowcolor",
+          "count_thr",
+          "fg_code"
+        ],
+        "outputs": [
+          "row_color_weight"
+        ],
+        "output_types": {
+          "row_color_weight": {
+            "dtype": "FLOAT",
+            "shape": [
+              10
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 15,
+        "name": "rowcount3",
+        "op": "Einsum",
+        "inputs": [
+          "input",
+          "row_color_weight",
+          "q1"
+        ],
+        "outputs": [
+          "rowcount3"
+        ],
+        "output_types": {
+          "rowcount3": {
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              1,
+              30
+            ]
+          }
+        },
+        "attrs": {
+          "equation": "ncrw,c,q->nqr"
+        }
+      },
+      {
+        "index": 16,
+        "name": "",
+        "op": "Shape",
+        "inputs": [
+          "rowcount3"
+        ],
+        "outputs": [
+          "sh_rc3"
+        ],
+        "output_types": {
+          "sh_rc3": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "start": 0,
+          "end": 1
+        }
+      },
+      {
+        "index": 17,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "rowcount3",
+          "sh_rc3"
+        ],
+        "outputs": [
+          "rc3_hid"
+        ],
+        "output_types": {
+          "rc3_hid": {
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              1,
+              2
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 18,
+        "name": "",
+        "op": "CastLike",
+        "inputs": [
+          "rc3_hid",
+          "rowbias"
+        ],
+        "outputs": [
+          "rowcount3_h"
+        ],
+        "output_types": {
+          "rowcount3_h": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              2
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 19,
+        "name": "rowscore",
+        "op": "AveragePool",
+        "inputs": [
+          "rowcount3_h"
+        ],
+        "outputs": [
+          "rowscore"
+        ],
+        "output_types": {
+          "rowscore": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "kernel_shape": [
+            2
+          ],
+          "strides": [
+            1
+          ]
+        }
+      },
+      {
+        "index": 20,
+        "name": "rowscore_b",
+        "op": "Add",
+        "inputs": [
+          "rowscore",
+          "rowbias"
+        ],
+        "outputs": [
+          "rowscore_b"
+        ],
+        "output_types": {
+          "rowscore_b": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              29
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 21,
+        "name": "rowvals",
+        "op": "TopK",
+        "inputs": [
+          "rowscore_b",
+          "K9"
+        ],
+        "outputs": [
+          "rowvals",
+          "rowidx4"
+        ],
+        "output_types": {
+          "rowvals": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              6
+            ]
+          },
+          "rowidx4": {
+            "dtype": "INT64",
+            "shape": [
+              1,
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 2,
+          "largest": 1,
+          "sorted": 1
+        }
+      },
+      {
+        "index": 22,
+        "name": "selrows",
+        "op": "Cast",
+        "inputs": [
+          "rowidx4"
+        ],
+        "outputs": [
+          "cm_pre_0"
+        ],
+        "output_types": {
+          "cm_pre_0": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "to": 3
+        }
+      },
+      {
+        "index": 23,
+        "name": "selrows64",
+        "op": "Reshape",
+        "inputs": [
+          "cm_pre_0",
+          "K9"
+        ],
+        "outputs": [
+          "selrows"
+        ],
+        "output_types": {
+          "selrows": {
+            "dtype": "INT8",
+            "shape": [
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 24,
+        "name": "selrows__cast_int32",
+        "op": "Cast",
+        "inputs": [
+          "selrows"
+        ],
+        "outputs": [
+          "selrows__cast_int32"
+        ],
+        "output_types": {
+          "selrows__cast_int32": {
+            "dtype": "INT32",
+            "shape": [
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "to": 6
+        }
+      },
+      {
+        "index": 25,
+        "name": "selrows1",
+        "op": "Add",
+        "inputs": [
+          "selrows__cast_int32",
+          "one_i"
+        ],
+        "outputs": [
+          "selrows1"
+        ],
+        "output_types": {
+          "selrows1": {
+            "dtype": "INT32",
+            "shape": [
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 26,
+        "name": "bpf",
+        "op": "Einsum",
+        "inputs": [
+          "input",
+          "bp_code",
+          "pow2"
+        ],
+        "outputs": [
+          "bpf"
+        ],
+        "output_types": {
+          "bpf": {
+            "dtype": "FLOAT",
+            "shape": [
+              4,
+              30
+            ]
+          }
+        },
+        "attrs": {
+          "equation": "ncrw,bc,w->br"
+        }
+      },
+      {
+        "index": 27,
+        "name": "occf",
+        "op": "Einsum",
+        "inputs": [
+          "input",
+          "fg_code",
+          "pow2"
+        ],
+        "outputs": [
+          "occf"
+        ],
+        "output_types": {
+          "occf": {
+            "dtype": "FLOAT",
+            "shape": [
+              30
+            ]
+          }
+        },
+        "attrs": {
+          "equation": "ncrw,c,w->r"
+        }
+      },
+      {
+        "index": 28,
+        "name": "__cl_occu_hid",
+        "op": "CenterCropPad",
+        "inputs": [
+          "occf",
+          "__ch_s_6"
+        ],
+        "outputs": [
+          "__cl_occu_hid"
+        ],
+        "output_types": {
+          "__cl_occu_hid": {
+            "dtype": "FLOAT",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 29,
+        "name": "occu",
+        "op": "CastLike",
+        "inputs": [
+          "__cl_occu_hid",
+          "zero30"
+        ],
+        "outputs": [
+          "occu"
+        ],
+        "output_types": {
+          "occu": {
+            "dtype": "UINT32",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 30,
+        "name": "",
+        "op": "Shape",
+        "inputs": [
+          "bpf"
+        ],
+        "outputs": [
+          "sh_bpf"
+        ],
+        "output_types": {
+          "sh_bpf": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "start": 0,
+          "end": 1
+        }
+      },
+      {
+        "index": 31,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "bpf",
+          "sh_bpf"
+        ],
+        "outputs": [
+          "bpf_hid"
+        ],
+        "output_types": {
+          "bpf_hid": {
+            "dtype": "FLOAT",
+            "shape": [
+              4,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 32,
+        "name": "",
+        "op": "CastLike",
+        "inputs": [
+          "bpf_hid",
+          "zero30"
+        ],
+        "outputs": [
+          "bpf_u"
+        ],
+        "output_types": {
+          "bpf_u": {
+            "dtype": "UINT32",
+            "shape": [
+              4,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 33,
+        "name": "",
+        "op": "Gather",
+        "inputs": [
+          "bpf_u",
+          "selrows__cast_int32"
+        ],
+        "outputs": [
+          "topg"
+        ],
+        "output_types": {
+          "topg": {
+            "dtype": "UINT32",
+            "shape": [
+              4,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 34,
+        "name": "",
+        "op": "Gather",
+        "inputs": [
+          "bpf_u",
+          "selrows1"
+        ],
+        "outputs": [
+          "botg"
+        ],
+        "output_types": {
+          "botg": {
+            "dtype": "UINT32",
+            "shape": [
+              4,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 35,
+        "name": "t0",
+        "op": "Split",
+        "inputs": [
+          "topg"
+        ],
+        "outputs": [
+          "t0",
+          "t1",
+          "t2",
+          "t3"
+        ],
+        "output_types": {
+          "t0": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          },
+          "t1": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          },
+          "t2": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          },
+          "t3": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0,
+          "num_outputs": 4
+        }
+      },
+      {
+        "index": 36,
+        "name": "b0",
+        "op": "Split",
+        "inputs": [
+          "botg"
+        ],
+        "outputs": [
+          "b0",
+          "b1",
+          "b2",
+          "b3"
+        ],
+        "output_types": {
+          "b0": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          },
+          "b1": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          },
+          "b2": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          },
+          "b3": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0,
+          "num_outputs": 4
+        }
+      },
+      {
+        "index": 37,
+        "name": "ts0",
+        "op": "BitShift",
+        "inputs": [
+          "t0",
+          "one_u"
+        ],
+        "outputs": [
+          "ts0"
+        ],
+        "output_types": {
+          "ts0": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 38,
+        "name": "ts1",
+        "op": "BitShift",
+        "inputs": [
+          "t1",
+          "one_u"
+        ],
+        "outputs": [
+          "ts1"
+        ],
+        "output_types": {
+          "ts1": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 39,
+        "name": "ts2",
+        "op": "BitShift",
+        "inputs": [
+          "t2",
+          "one_u"
+        ],
+        "outputs": [
+          "ts2"
+        ],
+        "output_types": {
+          "ts2": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 40,
+        "name": "ts3",
+        "op": "BitShift",
+        "inputs": [
+          "t3",
+          "one_u"
+        ],
+        "outputs": [
+          "ts3"
+        ],
+        "output_types": {
+          "ts3": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 41,
+        "name": "bs0",
+        "op": "BitShift",
+        "inputs": [
+          "b0",
+          "one_u"
+        ],
+        "outputs": [
+          "bs0"
+        ],
+        "output_types": {
+          "bs0": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 42,
+        "name": "bs1",
+        "op": "BitShift",
+        "inputs": [
+          "b1",
+          "one_u"
+        ],
+        "outputs": [
+          "bs1"
+        ],
+        "output_types": {
+          "bs1": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 43,
+        "name": "bs2",
+        "op": "BitShift",
+        "inputs": [
+          "b2",
+          "one_u"
+        ],
+        "outputs": [
+          "bs2"
+        ],
+        "output_types": {
+          "bs2": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 44,
+        "name": "bs3",
+        "op": "BitShift",
+        "inputs": [
+          "b3",
+          "one_u"
+        ],
+        "outputs": [
+          "bs3"
+        ],
+        "output_types": {
+          "bs3": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 45,
+        "name": "htx0",
+        "op": "BitwiseXor",
+        "inputs": [
+          "t0",
+          "ts0"
+        ],
+        "outputs": [
+          "htx0"
+        ],
+        "output_types": {
+          "htx0": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 46,
+        "name": "htx1",
+        "op": "BitwiseXor",
+        "inputs": [
+          "t1",
+          "ts1"
+        ],
+        "outputs": [
+          "htx1"
+        ],
+        "output_types": {
+          "htx1": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 47,
+        "name": "htx2",
+        "op": "BitwiseXor",
+        "inputs": [
+          "t2",
+          "ts2"
+        ],
+        "outputs": [
+          "htx2"
+        ],
+        "output_types": {
+          "htx2": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 48,
+        "name": "htx3",
+        "op": "BitwiseXor",
+        "inputs": [
+          "t3",
+          "ts3"
+        ],
+        "outputs": [
+          "htx3"
+        ],
+        "output_types": {
+          "htx3": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 49,
+        "name": "hta",
+        "op": "BitwiseOr",
+        "inputs": [
+          "htx0",
+          "htx1"
+        ],
+        "outputs": [
+          "hta"
+        ],
+        "output_types": {
+          "hta": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 50,
+        "name": "htb",
+        "op": "BitwiseOr",
+        "inputs": [
+          "hta",
+          "htx2"
+        ],
+        "outputs": [
+          "htb"
+        ],
+        "output_types": {
+          "htb": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 51,
+        "name": "ht",
+        "op": "BitwiseOr",
+        "inputs": [
+          "htb",
+          "htx3"
+        ],
+        "outputs": [
+          "ht"
+        ],
+        "output_types": {
+          "ht": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 52,
+        "name": "hbx0",
+        "op": "BitwiseXor",
+        "inputs": [
+          "b0",
+          "bs0"
+        ],
+        "outputs": [
+          "hbx0"
+        ],
+        "output_types": {
+          "hbx0": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 53,
+        "name": "hbx1",
+        "op": "BitwiseXor",
+        "inputs": [
+          "b1",
+          "bs1"
+        ],
+        "outputs": [
+          "hbx1"
+        ],
+        "output_types": {
+          "hbx1": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 54,
+        "name": "hbx2",
+        "op": "BitwiseXor",
+        "inputs": [
+          "b2",
+          "bs2"
+        ],
+        "outputs": [
+          "hbx2"
+        ],
+        "output_types": {
+          "hbx2": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 55,
+        "name": "hbx3",
+        "op": "BitwiseXor",
+        "inputs": [
+          "b3",
+          "bs3"
+        ],
+        "outputs": [
+          "hbx3"
+        ],
+        "output_types": {
+          "hbx3": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 56,
+        "name": "hba",
+        "op": "BitwiseOr",
+        "inputs": [
+          "hbx0",
+          "hbx1"
+        ],
+        "outputs": [
+          "hba"
+        ],
+        "output_types": {
+          "hba": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 57,
+        "name": "hbb",
+        "op": "BitwiseOr",
+        "inputs": [
+          "hba",
+          "hbx2"
+        ],
+        "outputs": [
+          "hbb"
+        ],
+        "output_types": {
+          "hbb": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 58,
+        "name": "hb",
+        "op": "BitwiseOr",
+        "inputs": [
+          "hbb",
+          "hbx3"
+        ],
+        "outputs": [
+          "hb"
+        ],
+        "output_types": {
+          "hb": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 59,
+        "name": "vx0",
+        "op": "BitwiseXor",
+        "inputs": [
+          "t0",
+          "b0"
+        ],
+        "outputs": [
+          "vx0"
+        ],
+        "output_types": {
+          "vx0": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 60,
+        "name": "vx1",
+        "op": "BitwiseXor",
+        "inputs": [
+          "t1",
+          "b1"
+        ],
+        "outputs": [
+          "vx1"
+        ],
+        "output_types": {
+          "vx1": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 61,
+        "name": "vx2",
+        "op": "BitwiseXor",
+        "inputs": [
+          "t2",
+          "b2"
+        ],
+        "outputs": [
+          "vx2"
+        ],
+        "output_types": {
+          "vx2": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 62,
+        "name": "vx3",
+        "op": "BitwiseXor",
+        "inputs": [
+          "t3",
+          "b3"
+        ],
+        "outputs": [
+          "vx3"
+        ],
+        "output_types": {
+          "vx3": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 63,
+        "name": "vva",
+        "op": "BitwiseOr",
+        "inputs": [
+          "vx0",
+          "vx1"
+        ],
+        "outputs": [
+          "vva"
+        ],
+        "output_types": {
+          "vva": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 64,
+        "name": "vvb",
+        "op": "BitwiseOr",
+        "inputs": [
+          "vva",
+          "vx2"
+        ],
+        "outputs": [
+          "vvb"
+        ],
+        "output_types": {
+          "vvb": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 65,
+        "name": "vv",
+        "op": "BitwiseOr",
+        "inputs": [
+          "vvb",
+          "vx3"
+        ],
+        "outputs": [
+          "vv"
+        ],
+        "output_types": {
+          "vv": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 66,
+        "name": "vv1",
+        "op": "BitShift",
+        "inputs": [
+          "vv",
+          "one_u"
+        ],
+        "outputs": [
+          "vv1"
+        ],
+        "output_types": {
+          "vv1": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 67,
+        "name": "cm1",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "ht",
+          "hb"
+        ],
+        "outputs": [
+          "cm1"
+        ],
+        "output_types": {
+          "cm1": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 68,
+        "name": "cm2",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "cm1",
+          "vv"
+        ],
+        "outputs": [
+          "cm2"
+        ],
+        "output_types": {
+          "cm2": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 69,
+        "name": "cm3",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "cm2",
+          "vv1"
+        ],
+        "outputs": [
+          "cm4_pre"
+        ],
+        "output_types": {
+          "cm4_pre": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 70,
+        "name": "cm4_pre_i",
+        "op": "Cast",
+        "inputs": [
+          "cm4_pre"
+        ],
+        "outputs": [
+          "cm4_pre_i"
+        ],
+        "output_types": {
+          "cm4_pre_i": {
+            "dtype": "INT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {
+          "to": 6
+        }
+      },
+      {
+        "index": 71,
+        "name": "badrow_bool",
+        "op": "Equal",
+        "inputs": [
+          "selrows__cast_int32",
+          "target_rows"
+        ],
+        "outputs": [
+          "badrow_bool"
+        ],
+        "output_types": {
+          "badrow_bool": {
+            "dtype": "BOOL",
+            "shape": [
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 72,
+        "name": "cm_masked_i",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "cm4_pre_i",
+          "target_keep_bits_i"
+        ],
+        "outputs": [
+          "cm_masked_i"
+        ],
+        "output_types": {
+          "cm_masked_i": {
+            "dtype": "INT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 73,
+        "name": "cm_i",
+        "op": "Where",
+        "inputs": [
+          "badrow_bool",
+          "cm_masked_i",
+          "cm4_pre_i"
+        ],
+        "outputs": [
+          "cm_i"
+        ],
+        "output_types": {
+          "cm_i": {
+            "dtype": "INT32",
+            "shape": [
+              1,
+              6
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 74,
+        "name": "cwvals",
+        "op": "TopK",
+        "inputs": [
+          "cm_i",
+          "K3a"
+        ],
+        "outputs": [
+          "cwvals",
+          "cwidx4"
+        ],
+        "output_types": {
+          "cwvals": {
+            "dtype": "INT32",
+            "shape": [
+              1,
+              3
+            ]
+          },
+          "cwidx4": {
+            "dtype": "INT64",
+            "shape": [
+              1,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1,
+          "largest": 1,
+          "sorted": 1
+        }
+      },
+      {
+        "index": 75,
+        "name": "cw",
+        "op": "Transpose",
+        "inputs": [
+          "cwvals"
+        ],
+        "outputs": [
+          "cw"
+        ],
+        "output_types": {
+          "cw": {
+            "dtype": "INT32",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "perm": [
+            1,
+            0
+          ]
+        }
+      },
+      {
+        "index": 76,
+        "name": "cwrow_slot",
+        "op": "Cast",
+        "inputs": [
+          "cwidx4"
+        ],
+        "outputs": [
+          "cm_pre_1"
+        ],
+        "output_types": {
+          "cm_pre_1": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "to": 3
+        }
+      },
+      {
+        "index": 77,
+        "name": "cwrow_slot64",
+        "op": "Reshape",
+        "inputs": [
+          "cm_pre_1",
+          "K3a"
+        ],
+        "outputs": [
+          "cwrow_slot"
+        ],
+        "output_types": {
+          "cwrow_slot": {
+            "dtype": "INT8",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 78,
+        "name": "cw_u",
+        "op": "Cast",
+        "inputs": [
+          "cw"
+        ],
+        "outputs": [
+          "cw_u"
+        ],
+        "output_types": {
+          "cw_u": {
+            "dtype": "UINT32",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 12
+        }
+      },
+      {
+        "index": 79,
+        "name": "cw_sh0",
+        "op": "BitShift",
+        "inputs": [
+          "cw_u",
+          "shift4_u"
+        ],
+        "outputs": [
+          "cw_sh0"
+        ],
+        "output_types": {
+          "cw_sh0": {
+            "dtype": "UINT32",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 80,
+        "name": "cw8_0",
+        "op": "Cast",
+        "inputs": [
+          "cw_sh0"
+        ],
+        "outputs": [
+          "cw8_0"
+        ],
+        "output_types": {
+          "cw8_0": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 2
+        }
+      },
+      {
+        "index": 81,
+        "name": "bitand0",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "cw8_0",
+          "colbits8"
+        ],
+        "outputs": [
+          "bitand0"
+        ],
+        "output_types": {
+          "bitand0": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              8
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 82,
+        "name": "biton0",
+        "op": "Greater",
+        "inputs": [
+          "bitand0",
+          "z_8"
+        ],
+        "outputs": [
+          "biton0"
+        ],
+        "output_types": {
+          "biton0": {
+            "dtype": "BOOL",
+            "shape": [
+              3,
+              8
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 83,
+        "name": "cw_sh1",
+        "op": "BitShift",
+        "inputs": [
+          "cw_u",
+          "shift12_u"
+        ],
+        "outputs": [
+          "cw_sh1"
+        ],
+        "output_types": {
+          "cw_sh1": {
+            "dtype": "UINT32",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 84,
+        "name": "cw8_1",
+        "op": "Cast",
+        "inputs": [
+          "cw_sh1"
+        ],
+        "outputs": [
+          "cw8_1"
+        ],
+        "output_types": {
+          "cw8_1": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 2
+        }
+      },
+      {
+        "index": 85,
+        "name": "bitand1",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "cw8_1",
+          "colbits8"
+        ],
+        "outputs": [
+          "bitand1"
+        ],
+        "output_types": {
+          "bitand1": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              8
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 86,
+        "name": "biton1",
+        "op": "Greater",
+        "inputs": [
+          "bitand1",
+          "z_8"
+        ],
+        "outputs": [
+          "biton1"
+        ],
+        "output_types": {
+          "biton1": {
+            "dtype": "BOOL",
+            "shape": [
+              3,
+              8
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 87,
+        "name": "cw_sh2",
+        "op": "BitShift",
+        "inputs": [
+          "cw_u",
+          "shift20_u"
+        ],
+        "outputs": [
+          "cw_sh2"
+        ],
+        "output_types": {
+          "cw_sh2": {
+            "dtype": "UINT32",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 88,
+        "name": "cw8_2",
+        "op": "Cast",
+        "inputs": [
+          "cw_sh2"
+        ],
+        "outputs": [
+          "cw8_2"
+        ],
+        "output_types": {
+          "cw8_2": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 2
+        }
+      },
+      {
+        "index": 89,
+        "name": "bitand2",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "cw8_2",
+          "colbits5"
+        ],
+        "outputs": [
+          "bitand2"
+        ],
+        "output_types": {
+          "bitand2": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 90,
+        "name": "biton2",
+        "op": "Greater",
+        "inputs": [
+          "bitand2",
+          "z_8"
+        ],
+        "outputs": [
+          "biton2"
+        ],
+        "output_types": {
+          "biton2": {
+            "dtype": "BOOL",
+            "shape": [
+              3,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 91,
+        "name": "biton",
+        "op": "Concat",
+        "inputs": [
+          "biton0",
+          "biton1",
+          "biton2"
+        ],
+        "outputs": [
+          "biton"
+        ],
+        "output_types": {
+          "biton": {
+            "dtype": "BOOL",
+            "shape": [
+              3,
+              21
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 92,
+        "name": "bitflat",
+        "op": "Reshape",
+        "inputs": [
+          "biton",
+          "bitflat_shape"
+        ],
+        "outputs": [
+          "cm_post_0"
+        ],
+        "output_types": {
+          "cm_post_0": {
+            "dtype": "BOOL",
+            "shape": [
+              63
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 93,
+        "name": "__cl_bitflat_shape",
+        "op": "Shape",
+        "inputs": [
+          "cm_post_0"
+        ],
+        "outputs": [
+          "__cl_bitflat_shape"
+        ],
+        "output_types": {
+          "__cl_bitflat_shape": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 94,
+        "name": "__cl_bitflat_hid",
+        "op": "CenterCropPad",
+        "inputs": [
+          "cm_post_0",
+          "__cl_bitflat_shape"
+        ],
+        "outputs": [
+          "__cl_bitflat_hid"
+        ],
+        "output_types": {
+          "__cl_bitflat_hid": {
+            "dtype": "BOOL",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 95,
+        "name": "bitflat_d1",
+        "op": "CastLike",
+        "inputs": [
+          "__cl_bitflat_hid",
+          "rowbias"
+        ],
+        "outputs": [
+          "bitflat"
+        ],
+        "output_types": {
+          "bitflat": {
+            "dtype": "FLOAT16",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 96,
+        "name": "bvals",
+        "op": "TopK",
+        "inputs": [
+          "bitflat",
+          "K3a"
+        ],
+        "outputs": [
+          "bvals",
+          "bidx"
+        ],
+        "output_types": {
+          "bvals": {
+            "dtype": "FLOAT16",
+            "shape": [
+              3
+            ]
+          },
+          "bidx": {
+            "dtype": "INT64",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0,
+          "largest": 1,
+          "sorted": 1
+        }
+      },
+      {
+        "index": 97,
+        "name": "bidx_i",
+        "op": "Cast",
+        "inputs": [
+          "bidx"
+        ],
+        "outputs": [
+          "bidx_i"
+        ],
+        "output_types": {
+          "bidx_i": {
+            "dtype": "INT8",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "to": 3
+        }
+      },
+      {
+        "index": 98,
+        "name": "wordslot",
+        "op": "Div",
+        "inputs": [
+          "bidx_i",
+          "n21_i"
+        ],
+        "outputs": [
+          "wordslot"
+        ],
+        "output_types": {
+          "wordslot": {
+            "dtype": "INT8",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 99,
+        "name": "wordslot__cast_int32",
+        "op": "Cast",
+        "inputs": [
+          "wordslot"
+        ],
+        "outputs": [
+          "wordslot__cast_int32"
+        ],
+        "output_types": {
+          "wordslot__cast_int32": {
+            "dtype": "INT32",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "to": 6
+        }
+      },
+      {
+        "index": 100,
+        "name": "ccol0",
+        "op": "Mod",
+        "inputs": [
+          "bidx_i",
+          "n21_i"
+        ],
+        "outputs": [
+          "ccol0"
+        ],
+        "output_types": {
+          "ccol0": {
+            "dtype": "INT8",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 101,
+        "name": "ccol",
+        "op": "Add",
+        "inputs": [
+          "ccol0",
+          "four_i"
+        ],
+        "outputs": [
+          "ccol"
+        ],
+        "output_types": {
+          "ccol": {
+            "dtype": "INT8",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 102,
+        "name": "rowslot",
+        "op": "Gather",
+        "inputs": [
+          "cwrow_slot",
+          "wordslot__cast_int32"
+        ],
+        "outputs": [
+          "rowslot"
+        ],
+        "output_types": {
+          "rowslot": {
+            "dtype": "INT8",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 103,
+        "name": "rowslot__cast_int32",
+        "op": "Cast",
+        "inputs": [
+          "rowslot"
+        ],
+        "outputs": [
+          "rowslot__cast_int32"
+        ],
+        "output_types": {
+          "rowslot__cast_int32": {
+            "dtype": "INT32",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "to": 6
+        }
+      },
+      {
+        "index": 104,
+        "name": "crow",
+        "op": "Gather",
+        "inputs": [
+          "selrows",
+          "rowslot__cast_int32"
+        ],
+        "outputs": [
+          "crow"
+        ],
+        "output_types": {
+          "crow": {
+            "dtype": "INT8",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 105,
+        "name": "r3",
+        "op": "Unsqueeze",
+        "inputs": [
+          "crow",
+          "axes12"
+        ],
+        "outputs": [
+          "r3"
+        ],
+        "output_types": {
+          "r3": {
+            "dtype": "INT8",
+            "shape": [
+              3,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 106,
+        "name": "rowraw",
+        "op": "Add",
+        "inputs": [
+          "r3",
+          "rowoff"
+        ],
+        "outputs": [
+          "rowraw"
+        ],
+        "output_types": {
+          "rowraw": {
+            "dtype": "INT8",
+            "shape": [
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 107,
+        "name": "__cl_rowraw__cast_int16_shape",
+        "op": "Shape",
+        "inputs": [
+          "rowraw"
+        ],
+        "outputs": [
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "output_types": {
+          "__cl_rowraw__cast_int16_shape": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "start": 0,
+          "end": 1
+        }
+      },
+      {
+        "index": 108,
+        "name": "__cl_rowraw__cast_int16_hid",
+        "op": "CenterCropPad",
+        "inputs": [
+          "rowraw",
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "outputs": [
+          "__cl_rowraw__cast_int16_hid"
+        ],
+        "output_types": {
+          "__cl_rowraw__cast_int16_hid": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 109,
+        "name": "rowraw__cast_int16",
+        "op": "CastLike",
+        "inputs": [
+          "__cl_rowraw__cast_int16_hid",
+          "thirty_i"
+        ],
+        "outputs": [
+          "rowraw__cast_int16"
+        ],
+        "output_types": {
+          "rowraw__cast_int16": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 110,
+        "name": "c2",
+        "op": "Unsqueeze",
+        "inputs": [
+          "ccol",
+          "cw2_ax"
+        ],
+        "outputs": [
+          "c2"
+        ],
+        "output_types": {
+          "c2": {
+            "dtype": "INT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 111,
+        "name": "start",
+        "op": "Add",
+        "inputs": [
+          "c2",
+          "coloff"
+        ],
+        "outputs": [
+          "start"
+        ],
+        "output_types": {
+          "start": {
+            "dtype": "INT8",
+            "shape": [
+              3,
+              4
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 112,
+        "name": "start_u3",
+        "op": "Unsqueeze",
+        "inputs": [
+          "start",
+          "start_u3_ax"
+        ],
+        "outputs": [
+          "__cast_move_post_98_12"
+        ],
+        "output_types": {
+          "__cast_move_post_98_12": {
+            "dtype": "INT8",
+            "shape": [
+              3,
+              4,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 113,
+        "name": "__ch_h_104",
+        "op": "CenterCropPad",
+        "inputs": [
+          "__cast_move_post_98_12",
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "outputs": [
+          "__ch_h_104"
+        ],
+        "output_types": {
+          "__ch_h_104": {
+            "dtype": "INT8",
+            "shape": [
+              3,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 114,
+        "name": "start_u3_d1",
+        "op": "CastLike",
+        "inputs": [
+          "__ch_h_104",
+          "zero30"
+        ],
+        "outputs": [
+          "start_u3"
+        ],
+        "output_types": {
+          "start_u3": {
+            "dtype": "UINT32",
+            "shape": [
+              3,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 115,
+        "name": "rowraw_near",
+        "op": "Gather",
+        "inputs": [
+          "rowraw",
+          "first2"
+        ],
+        "outputs": [
+          "rowraw_near"
+        ],
+        "output_types": {
+          "rowraw_near": {
+            "dtype": "INT8",
+            "shape": [
+              3,
+              4,
+              2
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 2
+        }
+      },
+      {
+        "index": 116,
+        "name": "__ch_h_106",
+        "op": "CenterCropPad",
+        "inputs": [
+          "rowraw_near",
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "outputs": [
+          "__ch_h_106"
+        ],
+        "output_types": {
+          "__ch_h_106": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 117,
+        "name": "rowraw_near__cast_int32",
+        "op": "CastLike",
+        "inputs": [
+          "__ch_h_106",
+          "one_i"
+        ],
+        "outputs": [
+          "rowraw_near__cast_int32"
+        ],
+        "output_types": {
+          "rowraw_near__cast_int32": {
+            "dtype": "INT32",
+            "shape": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 118,
+        "name": "rows_near",
+        "op": "Gather",
+        "inputs": [
+          "occu",
+          "rowraw_near__cast_int32"
+        ],
+        "outputs": [
+          "rows_near"
+        ],
+        "output_types": {
+          "rows_near": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 119,
+        "name": "seg_near",
+        "op": "BitShift",
+        "inputs": [
+          "rows_near",
+          "start_u3"
+        ],
+        "outputs": [
+          "seg_near"
+        ],
+        "output_types": {
+          "seg_near": {
+            "dtype": "UINT32",
+            "shape": [
+              3,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 120,
+        "name": "seg_near8",
+        "op": "CastLike",
+        "inputs": [
+          "seg_near",
+          "one_8"
+        ],
+        "outputs": [
+          "seg_near8"
+        ],
+        "output_types": {
+          "seg_near8": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 121,
+        "name": "near",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "seg_near8",
+          "show_near_mask"
+        ],
+        "outputs": [
+          "near"
+        ],
+        "output_types": {
+          "near": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              4,
+              2
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 122,
+        "name": "qscore",
+        "op": "ReduceMax",
+        "inputs": [
+          "near",
+          "start_u3_ax"
+        ],
+        "outputs": [
+          "qscore"
+        ],
+        "output_types": {
+          "qscore": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              4
+            ]
+          }
+        },
+        "attrs": {
+          "keepdims": 0
+        }
+      },
+      {
+        "index": 123,
+        "name": "show",
+        "op": "ArgMax",
+        "inputs": [
+          "qscore"
+        ],
+        "outputs": [
+          "show"
+        ],
+        "output_types": {
+          "show": {
+            "dtype": "INT64",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1,
+          "keepdims": 1
+        }
+      },
+      {
+        "index": 124,
+        "name": "sel_rows",
+        "op": "GatherND",
+        "inputs": [
+          "rowraw",
+          "show"
+        ],
+        "outputs": [
+          "sel_rows"
+        ],
+        "output_types": {
+          "sel_rows": {
+            "dtype": "INT8",
+            "shape": [
+              3,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "batch_dims": 1
+        }
+      },
+      {
+        "index": 125,
+        "name": "__ch_h_116",
+        "op": "CenterCropPad",
+        "inputs": [
+          "sel_rows",
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "outputs": [
+          "__ch_h_116"
+        ],
+        "output_types": {
+          "__ch_h_116": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 126,
+        "name": "sel_rows__cast_int32",
+        "op": "CastLike",
+        "inputs": [
+          "__ch_h_116",
+          "one_i"
+        ],
+        "outputs": [
+          "sel_rows__cast_int32"
+        ],
+        "output_types": {
+          "sel_rows__cast_int32": {
+            "dtype": "INT32",
+            "shape": [
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 127,
+        "name": "sel_rows_occ",
+        "op": "Gather",
+        "inputs": [
+          "occu",
+          "sel_rows__cast_int32"
+        ],
+        "outputs": [
+          "sel_rows_occ"
+        ],
+        "output_types": {
+          "sel_rows_occ": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 128,
+        "name": "sel_start_u",
+        "op": "GatherND",
+        "inputs": [
+          "start",
+          "show"
+        ],
+        "outputs": [
+          "__cast_move_post_112_12"
+        ],
+        "output_types": {
+          "__cast_move_post_112_12": {
+            "dtype": "INT8",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "batch_dims": 1
+        }
+      },
+      {
+        "index": 129,
+        "name": "sel_start_u2",
+        "op": "Unsqueeze",
+        "inputs": [
+          "__cast_move_post_112_12",
+          "cw2_ax"
+        ],
+        "outputs": [
+          "__cast_move_post_114_12"
+        ],
+        "output_types": {
+          "__cast_move_post_114_12": {
+            "dtype": "INT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 130,
+        "name": "__hide_sel_start_hid",
+        "op": "CenterCropPad",
+        "inputs": [
+          "__cast_move_post_114_12",
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "outputs": [
+          "__hide_sel_start_hid"
+        ],
+        "output_types": {
+          "__hide_sel_start_hid": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 131,
+        "name": "sel_start_u2__1",
+        "op": "CastLike",
+        "inputs": [
+          "__hide_sel_start_hid",
+          "zero30"
+        ],
+        "outputs": [
+          "sel_start_u2"
+        ],
+        "output_types": {
+          "sel_start_u2": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 132,
+        "name": "sel_seg",
+        "op": "BitShift",
+        "inputs": [
+          "sel_rows_occ",
+          "sel_start_u2"
+        ],
+        "outputs": [
+          "sel_seg"
+        ],
+        "output_types": {
+          "sel_seg": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 133,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "sel_seg",
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "outputs": [
+          "segu_hid"
+        ],
+        "output_types": {
+          "segu_hid": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 134,
+        "name": "",
+        "op": "CastLike",
+        "inputs": [
+          "segu_hid",
+          "one_8"
+        ],
+        "outputs": [
+          "sel_seg_u8"
+        ],
+        "output_types": {
+          "sel_seg_u8": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 135,
+        "name": "sel_seg8",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "sel_seg_u8",
+          "mask31"
+        ],
+        "outputs": [
+          "sel_seg8"
+        ],
+        "output_types": {
+          "sel_seg8": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 136,
+        "name": "source_side",
+        "op": "Gather",
+        "inputs": [
+          "source_side_lut",
+          "show"
+        ],
+        "outputs": [
+          "source_side"
+        ],
+        "output_types": {
+          "source_side": {
+            "dtype": "BOOL",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 137,
+        "name": "__ch_h_127",
+        "op": "CenterCropPad",
+        "inputs": [
+          "sel_seg8",
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "outputs": [
+          "__ch_h_127"
+        ],
+        "output_types": {
+          "__ch_h_127": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 138,
+        "name": "normkey_i",
+        "op": "CastLike",
+        "inputs": [
+          "__ch_h_127",
+          "one_i"
+        ],
+        "outputs": [
+          "normkey_i"
+        ],
+        "output_types": {
+          "normkey_i": {
+            "dtype": "INT32",
+            "shape": [
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 139,
+        "name": "chosen_rev",
+        "op": "Gather",
+        "inputs": [
+          "rev_lut",
+          "normkey_i"
+        ],
+        "outputs": [
+          "chosen_rev"
+        ],
+        "output_types": {
+          "chosen_rev": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 140,
+        "name": "chosen_raw_full",
+        "op": "Where",
+        "inputs": [
+          "source_side",
+          "chosen_rev",
+          "sel_seg8"
+        ],
+        "outputs": [
+          "chosen_raw_full"
+        ],
+        "output_types": {
+          "chosen_raw_full": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 141,
+        "name": "s0",
+        "op": "Gather",
+        "inputs": [
+          "chosen_raw_full",
+          "axis0"
+        ],
+        "outputs": [
+          "s0"
+        ],
+        "output_types": {
+          "s0": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 142,
+        "name": "s1",
+        "op": "Gather",
+        "inputs": [
+          "chosen_raw_full",
+          "cw2_ax"
+        ],
+        "outputs": [
+          "s1"
+        ],
+        "output_types": {
+          "s1": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 143,
+        "name": "s2",
+        "op": "Gather",
+        "inputs": [
+          "chosen_raw_full",
+          "start_u3_ax"
+        ],
+        "outputs": [
+          "s2"
+        ],
+        "output_types": {
+          "s2": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 144,
+        "name": "s3",
+        "op": "Gather",
+        "inputs": [
+          "chosen_raw_full",
+          "K3a"
+        ],
+        "outputs": [
+          "s3"
+        ],
+        "output_types": {
+          "s3": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 145,
+        "name": "co1",
+        "op": "BitwiseOr",
+        "inputs": [
+          "s0",
+          "s1"
+        ],
+        "outputs": [
+          "co1"
+        ],
+        "output_types": {
+          "co1": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 146,
+        "name": "co2",
+        "op": "BitwiseOr",
+        "inputs": [
+          "co1",
+          "s2"
+        ],
+        "outputs": [
+          "co2"
+        ],
+        "output_types": {
+          "co2": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 147,
+        "name": "co3",
+        "op": "BitwiseOr",
+        "inputs": [
+          "co2",
+          "s3"
+        ],
+        "outputs": [
+          "co3"
+        ],
+        "output_types": {
+          "co3": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 148,
+        "name": "colpref_p1",
+        "op": "Add",
+        "inputs": [
+          "co3",
+          "one_8"
+        ],
+        "outputs": [
+          "colpref_p1"
+        ],
+        "output_types": {
+          "colpref_p1": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 149,
+        "name": "colpref_x",
+        "op": "BitwiseXor",
+        "inputs": [
+          "co3",
+          "colpref_p1"
+        ],
+        "outputs": [
+          "colpref_x"
+        ],
+        "output_types": {
+          "colpref_x": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 150,
+        "name": "chosen_c",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "chosen_raw_full",
+          "colpref_x"
+        ],
+        "outputs": [
+          "chosen_c"
+        ],
+        "output_types": {
+          "chosen_c": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 151,
+        "name": "rowocc",
+        "op": "Greater",
+        "inputs": [
+          "chosen_c",
+          "z_8"
+        ],
+        "outputs": [
+          "rowocc"
+        ],
+        "output_types": {
+          "rowocc": {
+            "dtype": "BOOL",
+            "shape": [
+              3,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 152,
+        "name": "rowmask2",
+        "op": "Gather",
+        "inputs": [
+          "rowocc",
+          "rowmask_pat"
+        ],
+        "outputs": [
+          "rowmask2"
+        ],
+        "output_types": {
+          "rowmask2": {
+            "dtype": "BOOL",
+            "shape": [
+              3,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 153,
+        "name": "chosen_pre",
+        "op": "Where",
+        "inputs": [
+          "rowmask2",
+          "chosen_c",
+          "z_8"
+        ],
+        "outputs": [
+          "chosen_pre"
+        ],
+        "output_types": {
+          "chosen_pre": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 154,
+        "name": "bvals_u8",
+        "op": "Cast",
+        "inputs": [
+          "bvals"
+        ],
+        "outputs": [
+          "bvals_u8"
+        ],
+        "output_types": {
+          "bvals_u8": {
+            "dtype": "UINT8",
+            "shape": [
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "to": 2
+        }
+      },
+      {
+        "index": 155,
+        "name": "cv2u",
+        "op": "Unsqueeze",
+        "inputs": [
+          "bvals_u8",
+          "cw2_ax"
+        ],
+        "outputs": [
+          "cv2u"
+        ],
+        "output_types": {
+          "cv2u": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 156,
+        "name": "chosen",
+        "op": "Mul",
+        "inputs": [
+          "chosen_pre",
+          "cv2u"
+        ],
+        "outputs": [
+          "chosen"
+        ],
+        "output_types": {
+          "chosen": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 157,
+        "name": "__hide_chosen_hid",
+        "op": "CenterCropPad",
+        "inputs": [
+          "chosen",
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "outputs": [
+          "__hide_chosen_hid"
+        ],
+        "output_types": {
+          "__hide_chosen_hid": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 158,
+        "name": "revchosenkey_i",
+        "op": "CastLike",
+        "inputs": [
+          "__hide_chosen_hid",
+          "one_i"
+        ],
+        "outputs": [
+          "revchosenkey_i"
+        ],
+        "output_types": {
+          "revchosenkey_i": {
+            "dtype": "INT32",
+            "shape": [
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 159,
+        "name": "revchosen",
+        "op": "Gather",
+        "inputs": [
+          "rev_lut",
+          "revchosenkey_i"
+        ],
+        "outputs": [
+          "revchosen"
+        ],
+        "output_types": {
+          "revchosen": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 160,
+        "name": "cu",
+        "op": "Unsqueeze",
+        "inputs": [
+          "__hide_chosen_hid",
+          "cw2_ax"
+        ],
+        "outputs": [
+          "cu"
+        ],
+        "output_types": {
+          "cu": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 161,
+        "name": "ru",
+        "op": "Unsqueeze",
+        "inputs": [
+          "revchosen",
+          "cw2_ax"
+        ],
+        "outputs": [
+          "ru"
+        ],
+        "output_types": {
+          "ru": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 162,
+        "name": "phys8",
+        "op": "Concat",
+        "inputs": [
+          "ru",
+          "cu",
+          "ru",
+          "cu"
+        ],
+        "outputs": [
+          "phys8"
+        ],
+        "output_types": {
+          "phys8": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              4,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 163,
+        "name": "ctop",
+        "op": "Gather",
+        "inputs": [
+          "topg",
+          "rowslot__cast_int32"
+        ],
+        "outputs": [
+          "ctop"
+        ],
+        "output_types": {
+          "ctop": {
+            "dtype": "UINT32",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 164,
+        "name": "cbot",
+        "op": "Gather",
+        "inputs": [
+          "botg",
+          "rowslot__cast_int32"
+        ],
+        "outputs": [
+          "cbot"
+        ],
+        "output_types": {
+          "cbot": {
+            "dtype": "UINT32",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 1
+        }
+      },
+      {
+        "index": 165,
+        "name": "ccol_u0",
+        "op": "Unsqueeze",
+        "inputs": [
+          "ccol",
+          "axis0"
+        ],
+        "outputs": [
+          "__cast_move_post_160_12"
+        ],
+        "output_types": {
+          "__cast_move_post_160_12": {
+            "dtype": "INT8",
+            "shape": [
+              1,
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 166,
+        "name": "ccol_u0__1",
+        "op": "Cast",
+        "inputs": [
+          "__cast_move_post_160_12"
+        ],
+        "outputs": [
+          "ccol_u0"
+        ],
+        "output_types": {
+          "ccol_u0": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "to": 12
+        }
+      },
+      {
+        "index": 167,
+        "name": "ctop_s",
+        "op": "BitShift",
+        "inputs": [
+          "ctop",
+          "ccol_u0"
+        ],
+        "outputs": [
+          "ctop_s"
+        ],
+        "output_types": {
+          "ctop_s": {
+            "dtype": "UINT32",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 168,
+        "name": "cbot_s",
+        "op": "BitShift",
+        "inputs": [
+          "cbot",
+          "ccol_u0"
+        ],
+        "outputs": [
+          "cbot_s"
+        ],
+        "output_types": {
+          "cbot_s": {
+            "dtype": "UINT32",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 169,
+        "name": "ctop_pair_u8",
+        "op": "Cast",
+        "inputs": [
+          "ctop_s"
+        ],
+        "outputs": [
+          "ctop_pair_u8"
+        ],
+        "output_types": {
+          "ctop_pair_u8": {
+            "dtype": "UINT8",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "to": 2
+        }
+      },
+      {
+        "index": 170,
+        "name": "cbot_pair_u8",
+        "op": "Cast",
+        "inputs": [
+          "cbot_s"
+        ],
+        "outputs": [
+          "cbot_pair_u8"
+        ],
+        "output_types": {
+          "cbot_pair_u8": {
+            "dtype": "UINT8",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "to": 2
+        }
+      },
+      {
+        "index": 171,
+        "name": "ctop_pair_low",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "ctop_pair_u8",
+          "one_8"
+        ],
+        "outputs": [
+          "ctop_pair_low"
+        ],
+        "output_types": {
+          "ctop_pair_low": {
+            "dtype": "UINT8",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 172,
+        "name": "ctop_pair_hi0",
+        "op": "BitShift",
+        "inputs": [
+          "ctop_pair_u8",
+          "one_8"
+        ],
+        "outputs": [
+          "ctop_pair_hi0"
+        ],
+        "output_types": {
+          "ctop_pair_hi0": {
+            "dtype": "UINT8",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 173,
+        "name": "ctop_pair_hi",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "ctop_pair_hi0",
+          "one_8"
+        ],
+        "outputs": [
+          "ctop_pair_hi"
+        ],
+        "output_types": {
+          "ctop_pair_hi": {
+            "dtype": "UINT8",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 174,
+        "name": "cbot_pair_low",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "cbot_pair_u8",
+          "one_8"
+        ],
+        "outputs": [
+          "cbot_pair_low"
+        ],
+        "output_types": {
+          "cbot_pair_low": {
+            "dtype": "UINT8",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 175,
+        "name": "cbot_pair_hi0",
+        "op": "BitShift",
+        "inputs": [
+          "cbot_pair_u8",
+          "one_8"
+        ],
+        "outputs": [
+          "cbot_pair_hi0"
+        ],
+        "output_types": {
+          "cbot_pair_hi0": {
+            "dtype": "UINT8",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "RIGHT"
+        }
+      },
+      {
+        "index": 176,
+        "name": "cbot_pair_hi",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "cbot_pair_hi0",
+          "one_8"
+        ],
+        "outputs": [
+          "cbot_pair_hi"
+        ],
+        "output_types": {
+          "cbot_pair_hi": {
+            "dtype": "UINT8",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 177,
+        "name": "tl",
+        "op": "QLinearMatMul",
+        "inputs": [
+          "colorw4",
+          "q1",
+          "z_8",
+          "ctop_pair_low",
+          "q1",
+          "z_8",
+          "q1",
+          "z_8"
+        ],
+        "outputs": [
+          "tl"
+        ],
+        "output_types": {
+          "tl": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 178,
+        "name": "tr",
+        "op": "QLinearMatMul",
+        "inputs": [
+          "colorw4",
+          "q1",
+          "z_8",
+          "ctop_pair_hi",
+          "q1",
+          "z_8",
+          "q1",
+          "z_8"
+        ],
+        "outputs": [
+          "tr"
+        ],
+        "output_types": {
+          "tr": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 179,
+        "name": "bl",
+        "op": "QLinearMatMul",
+        "inputs": [
+          "colorw4",
+          "q1",
+          "z_8",
+          "cbot_pair_low",
+          "q1",
+          "z_8",
+          "q1",
+          "z_8"
+        ],
+        "outputs": [
+          "bl"
+        ],
+        "output_types": {
+          "bl": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 180,
+        "name": "br",
+        "op": "QLinearMatMul",
+        "inputs": [
+          "colorw4",
+          "q1",
+          "z_8",
+          "cbot_pair_hi",
+          "q1",
+          "z_8",
+          "q1",
+          "z_8"
+        ],
+        "outputs": [
+          "br"
+        ],
+        "output_types": {
+          "br": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              3
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 181,
+        "name": "colors4x3",
+        "op": "Concat",
+        "inputs": [
+          "tl",
+          "tr",
+          "bl",
+          "br"
+        ],
+        "outputs": [
+          "colors4x3"
+        ],
+        "output_types": {
+          "colors4x3": {
+            "dtype": "UINT8",
+            "shape": [
+              4,
+              3
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 182,
+        "name": "colors",
+        "op": "Transpose",
+        "inputs": [
+          "colors4x3"
+        ],
+        "outputs": [
+          "colors"
+        ],
+        "output_types": {
+          "colors": {
+            "dtype": "UINT8",
+            "shape": [
+              3,
+              4
+            ]
+          }
+        },
+        "attrs": {
+          "perm": [
+            1,
+            0
+          ]
+        }
+      },
+      {
+        "index": 183,
+        "name": "__cl_phys_hid",
+        "op": "CenterCropPad",
+        "inputs": [
+          "phys8",
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "outputs": [
+          "__cl_phys_hid"
+        ],
+        "output_types": {
+          "__cl_phys_hid": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 184,
+        "name": "phys",
+        "op": "CastLike",
+        "inputs": [
+          "__cl_phys_hid",
+          "zero30"
+        ],
+        "outputs": [
+          "phys"
+        ],
+        "output_types": {
+          "phys": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 185,
+        "name": "updates",
+        "op": "BitShift",
+        "inputs": [
+          "phys",
+          "start_u3"
+        ],
+        "outputs": [
+          "updates"
+        ],
+        "output_types": {
+          "updates": {
+            "dtype": "UINT32",
+            "shape": [
+              3,
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {
+          "direction": "LEFT"
+        }
+      },
+      {
+        "index": 186,
+        "name": "__ch_h_199",
+        "op": "CenterCropPad",
+        "inputs": [
+          "colors",
+          "__cl_rowraw__cast_int16_shape"
+        ],
+        "outputs": [
+          "__ch_h_199"
+        ],
+        "output_types": {
+          "__ch_h_199": {
+            "dtype": "UINT8",
+            "shape": [
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            0
+          ]
+        }
+      },
+      {
+        "index": 187,
+        "name": "colors_i",
+        "op": "CastLike",
+        "inputs": [
+          "__ch_h_199",
+          "thirty_i"
+        ],
+        "outputs": [
+          "colors_i"
+        ],
+        "output_types": {
+          "colors_i": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 188,
+        "name": "base",
+        "op": "Mul",
+        "inputs": [
+          "colors_i",
+          "thirty_i"
+        ],
+        "outputs": [
+          "base"
+        ],
+        "output_types": {
+          "base": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 189,
+        "name": "base3",
+        "op": "Unsqueeze",
+        "inputs": [
+          "base",
+          "start_u3_ax"
+        ],
+        "outputs": [
+          "base3"
+        ],
+        "output_types": {
+          "base3": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 190,
+        "name": "cidx",
+        "op": "Add",
+        "inputs": [
+          "base3",
+          "rowraw__cast_int16"
+        ],
+        "outputs": [
+          "cidx"
+        ],
+        "output_types": {
+          "cidx": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              5
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 191,
+        "name": "cidxf",
+        "op": "Reshape",
+        "inputs": [
+          "cidx",
+          "cidxf_shape"
+        ],
+        "outputs": [
+          "cidxf"
+        ],
+        "output_types": {
+          "cidxf": {
+            "dtype": "FLOAT16",
+            "shape": [
+              60
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 192,
+        "name": "updf",
+        "op": "Reshape",
+        "inputs": [
+          "updates",
+          "cidxf_shape"
+        ],
+        "outputs": [
+          "updf"
+        ],
+        "output_types": {
+          "updf": {
+            "dtype": "UINT32",
+            "shape": [
+              60
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 193,
+        "name": "ridxf",
+        "op": "Reshape",
+        "inputs": [
+          "rowraw",
+          "cidxf_shape"
+        ],
+        "outputs": [
+          "ridxf"
+        ],
+        "output_types": {
+          "ridxf": {
+            "dtype": "INT8",
+            "shape": [
+              60
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 194,
+        "name": "__cl_ridxf__cast_int32_shape",
+        "op": "Shape",
+        "inputs": [
+          "ridxf"
+        ],
+        "outputs": [
+          "__cl_ridxf__cast_int32_shape"
+        ],
+        "output_types": {
+          "__cl_ridxf__cast_int32_shape": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 195,
+        "name": "__cl_ridxf__cast_int32_hid",
+        "op": "CenterCropPad",
+        "inputs": [
+          "ridxf",
+          "__cl_ridxf__cast_int32_shape"
+        ],
+        "outputs": [
+          "__cl_ridxf__cast_int32_hid"
+        ],
+        "output_types": {
+          "__cl_ridxf__cast_int32_hid": {
+            "dtype": "INT8",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 196,
+        "name": "ridxf__cast_int32",
+        "op": "CastLike",
+        "inputs": [
+          "__cl_ridxf__cast_int32_hid",
+          "one_i"
+        ],
+        "outputs": [
+          "ridxf__cast_int32"
+        ],
+        "output_types": {
+          "ridxf__cast_int32": {
+            "dtype": "INT32",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 197,
+        "name": "union",
+        "op": "ScatterElements",
+        "inputs": [
+          "zero30",
+          "ridxf__cast_int32",
+          "updf"
+        ],
+        "outputs": [
+          "union"
+        ],
+        "output_types": {
+          "union": {
+            "dtype": "UINT32",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0,
+          "reduction": "add"
+        }
+      },
+      {
+        "index": 198,
+        "name": "bg",
+        "op": "BitwiseXor",
+        "inputs": [
+          "validrows",
+          "union"
+        ],
+        "outputs": [
+          "bg"
+        ],
+        "output_types": {
+          "bg": {
+            "dtype": "UINT32",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 199,
+        "name": "allidx",
+        "op": "Concat",
+        "inputs": [
+          "cidxf",
+          "rowrange"
+        ],
+        "outputs": [
+          "allidx"
+        ],
+        "output_types": {
+          "allidx": {
+            "dtype": "FLOAT16",
+            "shape": [
+              90
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 200,
+        "name": "__rs_allidx_shape",
+        "op": "Shape",
+        "inputs": [
+          "allidx"
+        ],
+        "outputs": [
+          "__rs_allidx_shape"
+        ],
+        "output_types": {
+          "__rs_allidx_shape": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 201,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "allidx",
+          "__rs_allidx_shape"
+        ],
+        "outputs": [
+          "__rs_allidx_hid"
+        ],
+        "output_types": {
+          "__rs_allidx_hid": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 202,
+        "name": "allidx__cast_int32",
+        "op": "CastLike",
+        "inputs": [
+          "__rs_allidx_hid",
+          "one_i"
+        ],
+        "outputs": [
+          "allidx__cast_int32"
+        ],
+        "output_types": {
+          "allidx__cast_int32": {
+            "dtype": "INT32",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 203,
+        "name": "allupd",
+        "op": "Concat",
+        "inputs": [
+          "updf",
+          "bg"
+        ],
+        "outputs": [
+          "allupd"
+        ],
+        "output_types": {
+          "allupd": {
+            "dtype": "UINT32",
+            "shape": [
+              61
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0
+        }
+      },
+      {
+        "index": 204,
+        "name": "__zd_shape_zero300",
+        "op": "Identity",
+        "inputs": [
+          "__zd_shape_const_zero300"
+        ],
+        "outputs": [
+          "__zd_shape_zero300"
+        ],
+        "output_types": {
+          "__zd_shape_zero300": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 205,
+        "name": "zero300",
+        "op": "CenterCropPad",
+        "inputs": [
+          "zero30",
+          "__zd_shape_zero300"
+        ],
+        "outputs": [
+          "zero300"
+        ],
+        "output_types": {
+          "zero300": {
+            "dtype": "UINT32",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 206,
+        "name": "rows300",
+        "op": "ScatterElements",
+        "inputs": [
+          "zero300",
+          "allidx__cast_int32",
+          "allupd"
+        ],
+        "outputs": [
+          "rows300"
+        ],
+        "output_types": {
+          "rows300": {
+            "dtype": "UINT32",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axis": 0,
+          "reduction": "add"
+        }
+      },
+      {
+        "index": 207,
+        "name": "rows4",
+        "op": "Reshape",
+        "inputs": [
+          "rows300",
+          "rows4_shape"
+        ],
+        "outputs": [
+          "rows4"
+        ],
+        "output_types": {
+          "rows4": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              10,
+              30,
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 208,
+        "name": "output",
+        "op": "BitwiseAnd",
+        "inputs": [
+          "rows4",
+          "bitcols"
+        ],
+        "outputs": [
+          "output"
+        ],
+        "output_types": {
+          "output": {
+            "dtype": "UINT32",
+            "shape": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        },
+        "attrs": {}
+      }
+    ]
+  },
+  {
+    "task": 289,
+    "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_8003_40/base_models/task289.onnx",
+    "ir_version": 10,
+    "opsets": {
+      "": 18
+    },
+    "inputs": [
+      {
+        "name": "input",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "dtype": "FLOAT16",
+        "shape": [
+          1,
+          1,
+          30,
+          30
+        ]
+      }
+    ],
+    "initializers": [
+      {
+        "name": "sizes2",
+        "dtype": "int64",
+        "shape": [
+          2
+        ],
+        "size": 2,
+        "values": [
+          30,
+          30
+        ]
+      },
+      {
+        "name": "crop_dim",
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          31
+        ]
+      },
+      {
+        "name": "seven",
+        "dtype": "float16",
+        "shape": [
+          1
+        ],
+        "size": 1,
+        "values": [
+          7.0
+        ]
+      },
+      {
+        "name": "slope",
+        "dtype": "float16",
+        "shape": [
+          4
+        ],
+        "size": 4,
+        "values": [
+          0.0,
+          0.0,
+          -0.2176513671875,
+          -0.2176513671875
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "index": 0,
+        "name": "",
+        "op": "Identity",
+        "inputs": [
+          "crop_dim"
+        ],
+        "outputs": [
+          "shape_dyn"
+        ],
+        "output_types": {
+          "shape_dyn": {
+            "dtype": "INT64",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 1,
+        "name": "",
+        "op": "CenterCropPad",
+        "inputs": [
+          "input",
+          "shape_dyn"
+        ],
+        "outputs": [
+          "src31"
+        ],
+        "output_types": {
+          "src31": {
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "index": 2,
+        "name": "",
+        "op": "Cast",
+        "inputs": [
+          "src31"
+        ],
+        "outputs": [
+          "src16"
+        ],
+        "output_types": {
+          "src16": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "to": 10
+        }
+      },
+      {
+        "index": 3,
+        "name": "",
+        "op": "Einsum",
+        "inputs": [
+          "src16",
+          "src16",
+          "src16",
+          "src16",
+          "src16",
+          "src16"
+        ],
+        "outputs": [
+          "s6"
+        ],
+        "output_types": {
+          "s6": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "equation": "bchw,bcij,bckl,bcmn,bcop,bcqr->b"
+        }
+      },
+      {
+        "index": 4,
+        "name": "",
+        "op": "Mod",
+        "inputs": [
+          "s6",
+          "seven"
+        ],
+        "outputs": [
+          "mod7"
+        ],
+        "output_types": {
+          "mod7": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "fmod": 1
+        }
+      },
+      {
+        "index": 5,
+        "name": "",
+        "op": "HardSigmoid",
+        "inputs": [
+          "mod7"
+        ],
+        "outputs": [
+          "z"
+        ],
+        "output_types": {
+          "z": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {
+          "alpha": 0.10100000351667404,
+          "beta": -0.19832344353199005
+        }
+      },
+      {
+        "index": 6,
+        "name": "",
+        "op": "Log",
+        "inputs": [
+          "z"
+        ],
+        "outputs": [
+          "lz"
+        ],
+        "output_types": {
+          "lz": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 7,
+        "name": "",
+        "op": "PRelu",
+        "inputs": [
+          "lz",
+          "slope"
+        ],
+        "outputs": [
+          "roi"
+        ],
+        "output_types": {
+          "roi": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1
+            ]
+          }
+        },
+        "attrs": {}
+      },
+      {
+        "index": 8,
+        "name": "",
+        "op": "Resize",
+        "inputs": [
+          "src16",
+          "roi",
+          "",
+          "sizes2"
+        ],
+        "outputs": [
+          "output"
+        ],
+        "output_types": {
+          "output": {
+            "dtype": "FLOAT16",
+            "shape": [
+              1,
+              1,
+              30,
+              30
+            ]
+          }
+        },
+        "attrs": {
+          "axes": [
+            2,
+            3
+          ],
+          "coordinate_transformation_mode": "tf_crop_and_resize",
+          "extrapolation_value": 0.0,
+          "mode": "nearest",
+          "nearest_mode": "floor"
+        }
+      }
+    ]
+  },
+  {
+    "task": 359,
+    "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_8003_40/base_models/task359.onnx",
+    "ir_version": 7,
+    "opsets": {
+      "": 12
+    },
+    "inputs": [
+      {
+        "name": "input",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "initializers": [
+      {
+        "name": "E",
+        "dtype": "float32",
+        "shape": [
+          10,
+          2
+        ],
+        "size": 20,
+        "values": [
+          [
+            0.09251122176647186,
+            -0.3851527273654938
+          ],
+          [
+            0.2119346708059311,
+            -0.36749961972236633
+          ],
+          [
+            0.28369903564453125,
+            -0.2692718505859375
+          ],
+          [
+            0.3925212323665619,
+            -0.1767161339521408
+          ],
+          [
+            0.40547770261764526,
+            -0.04781358316540718
+          ],
+          [
+            0.3782340884208679,
+            0.05536162853240967
+          ],
+          [
+            0.3444467782974243,
+            0.14925117790699005
+          ],
+          [
+            0.3049545884132385,
+            0.2444073110818863
+          ],
+          [
+            0.22367529571056366,
+            0.31705331802368164
+          ],
+          [
+            0.11134687066078186,
+            0.35807642340660095
+          ]
+        ]
+      },
+      {
+        "name": "M",
+        "dtype": "float32",
+        "shape": [
+          2,
+          2
+        ],
+        "size": 4,
+        "values": [
+          [
+            1.0537829399108887,
+            4.408379077911377
+          ],
+          [
+            -4.452401161193848,
+            1.2331591844558716
+          ]
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "index": 0,
+        "name": "output",
+        "op": "Einsum",
+        "inputs": [
+          "input",
+          "input",
+          "input",
+          "input",
+          "input",
+          "input",
+          "input",
+          "input",
+          "input",
+          "input",
+          "E",
+          "M",
+          "E",
+          "E",
+          "M",
+          "E",
+          "E",
+          "E",
+          "E",
+          "E"
+        ],
+        "outputs": [
+          "output"
+        ],
+        "output_types": {
+          "output": {
+            "dtype": "FLOAT",
+            "shape": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        },
+        "attrs": {
+          "equation": "nark,naik,nbym,nbys,ndis,ncrl,ncjl,nepm,nepv,ndjv,ot,tu,du,oq,wq,dw,ox,dx,oz,dz->norm"
+        }
+      }
+    ]
+  }
+]

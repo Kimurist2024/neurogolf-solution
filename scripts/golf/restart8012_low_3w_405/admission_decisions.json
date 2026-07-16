@@ -1,0 +1,75 @@
+{
+  "authority": {
+    "zip": "submission_base_8012.15.zip",
+    "sha256": "1dce2bc9bd65497daf59575512972309a3d71b87ee406a97c21fe2ee16010231",
+    "lb": 8012.15
+  },
+  "policy": {
+    "minimum_accuracy_each_known_config_and_fresh_seed_config": 0.9,
+    "known_lb_black_excluded_unconditionally": true,
+    "runtime_errors": 0,
+    "nonfinite_cases": 0,
+    "shape_mismatches": 0,
+    "small_positive_elements_0_to_0_25": 0,
+    "ub_or_shape_cloak": 0
+  },
+  "guaranteed_safe": [],
+  "admitted_policy90": [
+    {
+      "task": 175,
+      "authority_cost": 166,
+      "candidate_cost": 145,
+      "half_target_met": false,
+      "score_gain": 0.1352540459359689,
+      "candidate": "scripts/golf/restart8012_low_3w_405/candidates/task175_policy95_cost145.onnx",
+      "sha256": "40a9405880836a60f100e0072b476e4383c12c7ee053eb12ada1f049ee2e8d7c",
+      "known_accuracy_all_four_configs": 0.9849624060150376,
+      "fresh_seed_405200175_accuracy_all_four_configs": 1.0,
+      "fresh_seed_405300175_accuracy_all_four_configs": 1.0,
+      "fresh_cases_per_seed": 2000,
+      "errors_nonfinite_shape_smallpositive_config_mismatch": 0,
+      "finite_static_no_ub_no_cloak": true,
+      "known_lb_black_catalog_hit": false,
+      "evidence": "scripts/golf/restart8012_low_3w_405/task175_policy95_rebase8012_audit.json",
+      "warning": "POLICY90 admission, not a leaderboard guarantee; known corpus is not 100%."
+    }
+  ],
+  "excluded": [
+    {
+      "task": 70,
+      "candidate_costs_seen": [50, 52, 53, 56, 58],
+      "decision": "EXCLUDE_KNOWN_LB_BLACK",
+      "reason": "Latest team LB update confirms task070@52 is black/error; all task070 reductions are quarantined. The cost50 row also violates the small-positive gate."
+    },
+    {
+      "task": 202,
+      "candidate_costs_seen": [20, 28],
+      "decision": "EXCLUDE_KNOWN_PRIVATE_ZERO_LINEAGE",
+      "reason": "Repeated private-zero quarantine lineage; the apparent half-cost win is not checkpoint-admissible."
+    },
+    {
+      "task": 271,
+      "candidate_costs_seen": [126],
+      "decision": "EXCLUDE_FRESH_FAILURE",
+      "reason": "Known 267/267 but independent dual-runtime fresh gate passed only 2/5000; lookup-net private guarantee failed."
+    },
+    {
+      "task": 391,
+      "candidate_costs_seen": [85, 87, 88],
+      "decision": "EXCLUDE_KNOWN_LB_BLACK",
+      "reason": "Multiple independently probed task391 lineages are known leaderboard-black."
+    },
+    {
+      "tasks": [322, 372],
+      "candidate_costs_seen": {"322": [19], "372": [12]},
+      "decision": "EXCLUDE_NONFINITE_SHORT_BIAS_UB",
+      "reason": "Nonfinite ConvTranspose initializers and unsafe short-bias behavior."
+    }
+  ],
+  "projected_if_task175_receives_credit": {
+    "gain": 0.1352540459359689,
+    "lb": 8012.285254045936
+  },
+  "checkpoint_merge_performed": false,
+  "protected_writes": "Only scripts/golf/restart8012_low_3w_405 was modified; root authority and others/ were untouched."
+}

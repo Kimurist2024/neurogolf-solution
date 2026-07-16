@@ -1,0 +1,210 @@
+{
+  "lane": "agent_sound285_105",
+  "target": 285,
+  "current_authority": {
+    "archive": "submission_base_8008.14.zip",
+    "archive_sha256": "50b3215030cf506f692af50e41203d805256a250bd29882cc777749767a350c6",
+    "member": "task285.onnx",
+    "member_sha256": "366212e29105fde0295030f3ec3bb014bd300f23aa8259ccd79da2eea720b9e2",
+    "serialized_bytes": 19239,
+    "cost": {
+      "memory": 8322,
+      "params": 301,
+      "cost": 8623
+    },
+    "known_disable_all": {
+      "right": 265,
+      "wrong": 0,
+      "errors": 0,
+      "skipped": 0,
+      "total": 265,
+      "near_margin_count": 0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "first_failure": null
+    },
+    "known_default": {
+      "right": 0,
+      "wrong": 0,
+      "errors": 265,
+      "total": 265,
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_213) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=3 Declared=1 Dimension=0"
+    },
+    "sound_admission": "PROHIBITED_UNSAFE_LINEAGE"
+  },
+  "minimum_sound_candidate": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_sound285_105/candidates/task285_sound_dedup_copy.onnx",
+    "sha256": "3e10bc4d23b8692c0c52893ef140e0df45c96ae3c28f13651b19f59325eb7837",
+    "serialized_bytes": 27161,
+    "cost": {
+      "memory": 13016,
+      "params": 1669,
+      "cost": 14685
+    },
+    "strict_lower": false,
+    "cost_gap_above_current": 6062,
+    "known_disable_all": {
+      "right": 265,
+      "wrong": 0,
+      "errors": 0,
+      "skipped": 0,
+      "total": 265,
+      "near_margin_count": 0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "first_failure": null
+    },
+    "known_default": {
+      "right": 265,
+      "wrong": 0,
+      "errors": 0,
+      "skipped": 0,
+      "total": 265,
+      "near_margin_count": 0,
+      "output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "first_failure": null
+    },
+    "structure": {
+      "checker_full": true,
+      "strict_data_prop": true,
+      "static_positive": true,
+      "standard_domains": true,
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "ops": {
+        "Add": 12,
+        "ArgMax": 1,
+        "BitShift": 41,
+        "BitwiseAnd": 19,
+        "BitwiseOr": 33,
+        "BitwiseXor": 2,
+        "Cast": 30,
+        "Concat": 4,
+        "Div": 1,
+        "Einsum": 6,
+        "Gather": 11,
+        "Greater": 2,
+        "Less": 1,
+        "Mod": 1,
+        "Mul": 3,
+        "QLinearMatMul": 4,
+        "ReduceSum": 1,
+        "Reshape": 5,
+        "ScatterElements": 2,
+        "Slice": 5,
+        "Sub": 2,
+        "TopK": 2,
+        "Transpose": 1,
+        "Unsqueeze": 13,
+        "Where": 1
+      },
+      "node_count": 203,
+      "initializer_count": 55,
+      "max_node_inputs": 8,
+      "giant_einsum": [],
+      "huge_fanin": [],
+      "lookup_or_scatter": [
+        "ScatterElements",
+        "ScatterElements"
+      ],
+      "declared_cost": {
+        "memory": 13016,
+        "params": 1669,
+        "cost": 14685
+      },
+      "runtime_shapes": {
+        "shape_cloak": false,
+        "mismatch_count": 0,
+        "mismatches": []
+      },
+      "errors": []
+    },
+    "raw_equivalence_to_pre_dedup_source": {
+      "source": "scripts/golf/scratch_codex/task285/agent_hub_algebra/candidate_columnfull_bitboard.onnx",
+      "source_sha256": "1f1bd10f2f2b5480468e73cdab2330f7f8447d5ddb294178601d364d0bbd2b15",
+      "proof": "Only byte-identical TensorProto initializers were aliased.",
+      "disable_all": {
+        "total": 265,
+        "raw_bitwise_equal": 265,
+        "decoded_equal": 265,
+        "max_abs_raw_difference": 0.0,
+        "first_failure": null
+      },
+      "default": {
+        "total": 265,
+        "raw_bitwise_equal": 265,
+        "decoded_equal": 265,
+        "max_abs_raw_difference": 0.0,
+        "first_failure": null
+      }
+    },
+    "nonfinite_all_known_intermediates": {
+      "disable_all": {
+        "cases": 265,
+        "floating_tensor_evaluations": 2120,
+        "nonfinite_cells": 0,
+        "affected_tensors": [],
+        "declared_runtime_shape_mismatches": 0,
+        "first_shape_mismatch": null
+      },
+      "default": {
+        "cases": 265,
+        "floating_tensor_evaluations": 2120,
+        "nonfinite_cells": 0,
+        "affected_tensors": [],
+        "declared_runtime_shape_mismatches": 0,
+        "first_shape_mismatch": null
+      }
+    },
+    "fresh_evidence_inherited": {
+      "detector_exhaustive": "23353/23353 (23088 reachable configurations plus 265 saved)",
+      "detector_true_generator": "10000/10000",
+      "full_model": "1000/1000",
+      "reference_solver": "3000/3000",
+      "formal_inheritance": "The 14-parameter dedup aliases byte-identical constants and cannot alter any input/output behavior."
+    }
+  },
+  "banned_prior_lineage": {
+    "current_sha256": "366212e29105fde0295030f3ec3bb014bd300f23aa8259ccd79da2eea720b9e2",
+    "cost8717_fresh": "93/100; seven generator failures",
+    "historical_fresh30": "29/30 followed by LB 6844.55 -> 6830.41 (-14.14)",
+    "policy": "Never re-admit this shortcut/fixture lineage as SOUND."
+  },
+  "admission_gate": {
+    "required": [
+      "strictly lower than current cost 8623",
+      "known all cases in ORT_DISABLE_ALL and default",
+      "fresh seed A 5000/5000 and seed B 5000/5000",
+      "standard domain, no fixture lookup, truthful runtime shapes",
+      "Conv UB findings 0 and nonfinite findings 0"
+    ],
+    "fresh_two_seed_5000": {
+      "ran": false,
+      "reason": "No candidate passed the strict-lower pre-gate; running an adoption-only probe cannot change the rejection."
+    }
+  },
+  "winner": null,
+  "verified_gain": 0,
+  "verdict": "NO_STRICT_LOWER_SOUND_CANDIDATE",
+  "protected_files_modified": false
+}

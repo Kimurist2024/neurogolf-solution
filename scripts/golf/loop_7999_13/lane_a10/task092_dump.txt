@@ -1,0 +1,83 @@
+# task092.onnx
+
+## Initializers
+u16_30: uint16 () 30
+u8_29: uint8 (1, 1, 1, 1) [[[[29]]]]
+idx_row_f16: float16 (1, 1, 30, 1) [[[[0.0], [1.0], [2.0], [3.0], [4.0], [5.0], [6.0], [7.0], [8.0], [9.0], [10.0], [11.0], [12.0], [13.0], [14.0], [15.0], [16.0], [17.0], [18.0], [19.0], [20.0], [21.0], [22.0], [23.0], [24.0], [25.0], [26.0], [27.0], [28.0], [29.0]]]]
+src_emb: float16 (1, 10, 1, 1, 3) [[[[[-0.0013341903686523438, -0.062286376953125, 0.060821533203125]]], [[[13.3203125, -1.46484375, 12.09375]]], [[[10.6328125, 8.453125, 12.0703125]]], [[[2.828125, 13.3203125, 11.828125]]], [[[-7.4296875, 11.8125, 11.828125]]], [[[-12.5703125, 4.15625, 12.0859375]]], [[[-12.1796875, -4.8203125, 12.4375]]], [[[-7.96875, -9.671875, 12.0859375]]], [[[4.9140625, -11.9921875, 12.515625]]], [[[10.0078125, -8.3828125, 12.5703125]]]]]
+metric_diag: float16 (3,) [144.0, 144.0, -144.0]
+f16_29_bg: float16 () 29.0
+
+## Value info
+input_hid: FLOAT [1, 1, 1, 1]
+input_hid_f16: FLOAT16 [1, 1, 1, 1]
+pool_value: UINT8 [1, 1, 1, 1]
+pool_index: INT64 [1, 1, 1, 1]
+pool_index_u16: UINT16 [1, 1, 1, 1]
+global_div30_u16: UINT16 [1, 1, 1, 1]
+r1_u16: UINT16 [1, 1, 1, 1]
+c1_u16: UINT16 [1, 1, 1, 1]
+r1: UINT8 [1, 1, 1, 1]
+c1: UINT8 [1, 1, 1, 1]
+sum_x_all: FLOAT16 [1, 1, 1, 1]
+sum_y_all: FLOAT16 [1, 1, 1, 1]
+sum_x_all_u8: UINT8 [1, 1, 1, 1]
+sum_y_all_u8: UINT8 [1, 1, 1, 1]
+c2: UINT8 [1, 1, 1, 1]
+r2: UINT8 [1, 1, 1, 1]
+r2_all: UINT8 [1, 1, 1, 1]
+c1_all: UINT8 [1, 1, 1, 1]
+c2_all: UINT8 [1, 1, 1, 1]
+scale_dir: UINT8 [1, 1, 1, 1]
+row_shape_dyn: INT64 [1]
+r1_all_f16: FLOAT16 [1, 1, 1, 1]
+r2_all_f16: FLOAT16 [1, 1, 1, 1]
+c1_all_f16: FLOAT16 [1, 1, 1, 1]
+c2_all_f16: FLOAT16 [1, 1, 1, 1]
+scale_f32: FLOAT16 [1, 1, 1, 1]
+idx_row_hid: FLOAT16 [1, 1, 1, 1]
+pool_value_f32: FLOAT16 [1, 1, 1, 1]
+input_hid_u8: UINT8 [1, 1, 1, 1]
+scale_eq: BOOL [1, 1, 1, 1]
+
+## Nodes
+00 Shape ['input'] -> ['row_shape_dyn'] {'end': 3, 'start': 2}
+01 CenterCropPad ['input', 'row_shape_dyn'] -> ['input_hid'] {'axes': [2]}
+02 CastLike ['input_hid', 'idx_row_f16'] -> ['input_hid_f16'] {}
+03 CastLike ['input_hid', 'u8_29'] -> ['input_hid_u8'] {}
+04 CenterCropPad ['idx_row_f16', 'row_shape_dyn'] -> ['idx_row_hid'] {'axes': [2]}
+05 Einsum ['input_hid_f16', 'idx_row_hid'] -> ['sum_x_all'] {'equation': b'bchw,qrwe->bcqe'}
+06 Einsum ['input_hid_f16', 'idx_row_hid'] -> ['sum_y_all'] {'equation': b'bchw,qrhe->bcqe'}
+07 CastLike ['sum_x_all', 'u8_29'] -> ['sum_x_all_u8'] {}
+08 CastLike ['sum_y_all', 'u8_29'] -> ['sum_y_all_u8'] {}
+09 MaxPool ['input_hid_u8'] -> ['pool_value', 'pool_index'] {'kernel_shape': [30, 30], 'pads': [0, 0, 29, 29], 'strides': [30, 30]}
+10 CastLike ['pool_index', 'u16_30'] -> ['pool_index_u16'] {}
+11 Div ['pool_index_u16', 'u16_30'] -> ['global_div30_u16'] {}
+12 CastLike ['global_div30_u16', 'f16_29_bg'] -> ['global_div30_f16'] {}
+13 LessOrEqual ['global_div30_f16', 'f16_29_bg'] -> ['bg_mask_dyn'] {}
+14 Mod ['global_div30_u16', 'u16_30'] -> ['r1_u16'] {'fmod': 0}
+15 Mod ['pool_index_u16', 'u16_30'] -> ['c1_u16'] {'fmod': 0}
+16 CastLike ['r1_u16', 'u8_29'] -> ['r1'] {}
+17 CastLike ['c1_u16', 'u8_29'] -> ['c1'] {}
+18 Sub ['sum_x_all_u8', 'c1'] -> ['c2'] {}
+19 Sub ['sum_y_all_u8', 'r1'] -> ['r2'] {}
+20 Where ['bg_mask_dyn', 'u8_29', 'r2'] -> ['r2_all'] {}
+21 Where ['bg_mask_dyn', 'r1', 'c1'] -> ['c1_all'] {}
+22 Where ['bg_mask_dyn', 'u8_29', 'c2'] -> ['c2_all'] {}
+23 CastLike ['r1', 'idx_row_f16'] -> ['r1_all_f16'] {}
+24 CastLike ['r2_all', 'idx_row_f16'] -> ['r2_all_f16'] {}
+25 LessOrEqual ['r2_all_f16', 'r1_all_f16'] -> ['scale_eq'] {}
+26 Where ['scale_eq', 'pool_value', 'u8_29'] -> ['scale_dir'] {}
+27 CastLike ['c1_all', 'idx_row_f16'] -> ['c1_all_f16'] {}
+28 CastLike ['c2_all', 'idx_row_f16'] -> ['c2_all_f16'] {}
+29 CastLike ['scale_dir', 'idx_row_f16'] -> ['scale_f32'] {}
+30 GreaterOrEqual ['idx_row_hid', 'r1_all_f16'] -> ['row_ge'] {}
+31 LessOrEqual ['idx_row_hid', 'r2_all_f16'] -> ['row_le'] {}
+32 GreaterOrEqual ['idx_row_hid', 'c1_all_f16'] -> ['col_ge'] {}
+33 LessOrEqual ['idx_row_hid', 'c2_all_f16'] -> ['col_le'] {}
+34 CastLike ['row_ge', 'idx_row_f16'] -> ['row_ge_f32'] {}
+35 CastLike ['row_le', 'idx_row_f16'] -> ['row_le_f32'] {}
+36 CastLike ['col_ge', 'idx_row_f16'] -> ['col_ge_f32'] {}
+37 CastLike ['col_le', 'idx_row_f16'] -> ['col_le_f32'] {}
+38 CastLike ['pool_value', 'idx_row_f16'] -> ['pool_value_f32'] {}
+39 Einsum ['input_hid_f16', 'src_emb', 'metric_diag', 'src_emb', 'scale_f32', 'pool_value_f32', 'row_ge_f32', 'row_le_f32', 'col_ge_f32', 'col_le_f32'] -> ['output'] {'equation': b'bqrw,bsuvh,h,bkxyh,bsuv,bsuv,bsra,bsra,bswa,bswa->bkrw'}

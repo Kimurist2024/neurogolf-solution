@@ -1,0 +1,55 @@
+{
+  "lane": "a15",
+  "baseline": {
+    "zip": "submission_base_7999.13.zip",
+    "zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "score": 7999.13
+  },
+  "tasks": [170, 234, 239, 333, 338, 374, 377],
+  "baseline_costs": {
+    "170": 387,
+    "234": 368,
+    "239": 384,
+    "333": 449,
+    "338": 426,
+    "374": 481,
+    "377": 409
+  },
+  "coverage": {
+    "target_retained_candidates_profiled": 18,
+    "target_loose_exact_byte_distinct_models_screened": 247,
+    "archive_inventory_global": {
+      "zips_seen": 1195,
+      "zip_members_seen": 224111,
+      "loose_observations_seen": 118938,
+      "unique_different_models": 9572
+    }
+  },
+  "outcomes": {
+    "170": "No retained lead exists. All 37 loose-history models are baseline duplicates, structurally rejected, or screen at/above cost 387; the exact current member has pre-existing strict data-propagation shape conflicts.",
+    "234": "The sole retained candidate is known-correct but costs 441 versus 368; prior exact sharing attempts add charged reversal intermediates.",
+    "239": "The r01 candidate is unscorable due unsupported TopK; cost-374 and cost-379 candidates fail complete known data.",
+    "333": "Both retained candidates inherit 40-47 input giant Einsums. The current exact model is itself a 41-input one-node tensor network; safe Slice reuse has a known lower bound above baseline.",
+    "338": "The cost-334 candidate is a giant-Einsum rewrite; cost 424 fails known/runtime, while the known-correct alternative costs 18423 versus 426.",
+    "374": "The only retained candidate is known-correct but costs 876 versus 481; prior CastLike replacement exposes the full tensor.",
+    "377": "Four known-correct candidates cost 431-481 versus 409. The cost-408 and cost-409 candidates fail known data."
+  },
+  "winners": [],
+  "verified_gain": 0.0,
+  "fresh5000_run": false,
+  "fresh5000_skip_reason": "No candidate passed strictly-cheaper actual cost, complete known correctness, and structural/UB gates.",
+  "root_artifacts_modified": false,
+  "root_submission_created": false,
+  "evidence": [
+    "scripts/golf/loop_7999_13/lane_a15/model_manifest.json",
+    "scripts/golf/loop_7999_13/lane_a15/current_model_audit.json",
+    "scripts/golf/loop_7999_13/lane_a15/retained_scan.json",
+    "scripts/golf/loop_7999_13/lane_a15/loose_history_scan.json",
+    "scripts/golf/loop_7999_13/lane_c5/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_a6/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_b4/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_b5/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_a5/REPORT.md",
+    "scripts/golf/loop_7999_13/lane_a4/REPORT.md"
+  ]
+}

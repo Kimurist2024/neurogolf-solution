@@ -1,0 +1,79 @@
+{
+  "task224": {
+    "initializer_inventory": {
+      "uses": {
+        "Z": 10,
+        "Q": 15,
+        "HCore": 8,
+        "H0B": 10,
+        "H1B": 10,
+        "Cdiag": 10,
+        "Csum": 11
+      },
+      "unused": [],
+      "identical_same_shape": []
+    },
+    "shared_operand_exact_fusion_plans": {
+      "Z": false,
+      "Q": false,
+      "HCore": false,
+      "H0B": false,
+      "H1B": false,
+      "Cdiag": false,
+      "Csum": false
+    },
+    "shared_operand_exact_fusion_candidates": 0,
+    "identity_operand_removals": [],
+    "single_use_einsum_inline_cap128": [],
+    "same_shape_reuse_attempts": [
+      {
+        "pair": "H0B/H1B",
+        "parameter_saving": 6,
+        "known_result_both_directions": "0/266 in both ORT modes"
+      },
+      {
+        "pair": "Cdiag/Csum",
+        "parameter_saving": 4,
+        "known_result_both_directions": "0/266 in both ORT modes"
+      }
+    ],
+    "decision": "no_exact_factor_or_reuse_candidate"
+  },
+  "task400": {
+    "initializer_inventory": {
+      "uses": {
+        "code_scale": 2,
+        "slice_steps": 1,
+        "feat_mul": 1,
+        "scale": 3,
+        "z0": 4,
+        "poly_w": 1,
+        "one_i64": 2,
+        "c30u": 2,
+        "c713u": 1,
+        "axes_hw": 1
+      },
+      "unused": [],
+      "identical_same_shape": []
+    },
+    "observed_generator_code_to_color": {
+      "-5": 0,
+      "-4": 2,
+      "-2": 3,
+      "1": 4,
+      "2": 5,
+      "3": 6,
+      "4": 7,
+      "5": 8,
+      "6": 9
+    },
+    "multipliers_enumerated": 256,
+    "decoder_weights_per_class_enumerated": 256,
+    "one_feature_survivors": [],
+    "one_feature_survivor_count": 0,
+    "current_two_feature_intermediate_elements": 50,
+    "folding_would_save_intermediate_elements": 25,
+    "proof_note": "A one-dimensional QLinearConv decoder is a half-line test after a shared zero point; it cannot make all nine reachable non-blue colors separate one-vs-rest classes. The exhaustive int8 multiplier/weight check confirms zero survivors.",
+    "decision": "two_wraparound_features_are_semantically_essential"
+  }
+}

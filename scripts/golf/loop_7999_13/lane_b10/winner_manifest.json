@@ -1,0 +1,136 @@
+{
+  "lane": "b10_sound",
+  "aggregate_baseline_score": 7999.13,
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "authority": "exact archive members"
+  },
+  "accepted": [],
+  "projected_gain": 0.0,
+  "projected_reported_score": 7999.13,
+  "rejected": [
+    {
+      "task": 123,
+      "generator": "task_539a4f51.py",
+      "baseline_cost": 266,
+      "rule_type": "B: bounded periodic Chebyshev-ring extension",
+      "evidence": {
+        "baseline_fresh": "scripts/golf/loop_7999_13/lane_c6/winner_manifest.json",
+        "archive_smoke": "scripts/golf/loop_7999_13/lane_archive_top200/quick_k5.json",
+        "graph_audit": "scripts/golf/loop_7999_13/lane_b10/exact_graph_audit.json"
+      },
+      "reason": "Baseline is 3000/3000 and truthful. All six CP lanes are required (each deletion 0/100); all eight cheaper archive candidates fail known/fresh correctness."
+    },
+    {
+      "task": 134,
+      "generator": "task_5ad4f10b.py",
+      "baseline_cost": 423,
+      "rule_type": "D: data-dependent scale, crop, and recolor",
+      "baseline_fresh": {
+        "correct": 2977,
+        "total": 3000,
+        "wrong": 23,
+        "errors": 0,
+        "evidence": "scripts/golf/loop_7999_13/lane_c5/baseline_fresh_audit.json"
+      },
+      "truthful_leads": [
+        {
+          "label": "r04",
+          "cost": 320,
+          "disable_all": {"correct": 4840, "total": 5000, "wrong": 160, "errors": 0},
+          "default": {"correct": 4823, "total": 5000, "wrong": 177, "errors": 0},
+          "evidence": "scripts/golf/loop_7999_13/lane_b10/task134_r04_fresh5000.json"
+        },
+        {
+          "label": "r06",
+          "cost": 322,
+          "disable_all": {"correct": 4803, "total": 5000, "wrong": 197, "errors": 0},
+          "default": {"correct": 4825, "total": 5000, "wrong": 175, "errors": 0},
+          "evidence": "scripts/golf/loop_7999_13/lane_b10/task134_r06_fresh5000.json"
+        }
+      ],
+      "reason": "Both shape-truthful cheaper leads are incomplete global heuristics. The remaining known-correct archive leads contain runtime shape cloak."
+    },
+    {
+      "task": 143,
+      "generator": "task_63613498.py",
+      "baseline_cost": 212,
+      "rule_type": "D: boxed-template matching and recoloring",
+      "best_lead": {
+        "label": "archive_r02",
+        "cost": 148,
+        "disable_all": {"correct": 2, "total": 5000, "wrong": 4998, "errors": 0},
+        "default": {"correct": 3, "total": 5000, "wrong": 4997, "errors": 0},
+        "evidence": "scripts/golf/loop_7999_13/lane_c11/fresh_audit.json"
+      },
+      "reason": "The only known-correct cheap carrier catastrophically fails independent fresh generation; no safe exact initializer or CSE shave exists in the baseline."
+    },
+    {
+      "task": 162,
+      "generator": "task_6cf79266.py",
+      "baseline_cost": 451,
+      "rule_type": "B: row-major fill of empty 3x3 holes",
+      "baseline_structure": {
+        "runtime_shape_mismatches": 261,
+        "default_ort_session": false,
+        "evidence": "scripts/golf/loop_7999_13/lane_b10/baseline_shape_safety.json"
+      },
+      "cse_probe": {
+        "cost": 373,
+        "correct": 99,
+        "total": 100,
+        "wrong": 1,
+        "evidence": "scripts/golf/loop_7999_13/lane_exact_cse/strict_verify100.json"
+      },
+      "reason": "CSE is not generator-complete and retains an ineligible hidden-shape contract; historical sound rebuilds cost at least 828."
+    },
+    {
+      "task": 169,
+      "generator": "task_6e82a1ae.py",
+      "baseline_cost": 248,
+      "rule_type": "B: component size to color mapping",
+      "baseline_structure": {
+        "runtime_shape_mismatches": 107,
+        "default_ort_session": false,
+        "evidence": "scripts/golf/loop_7999_13/lane_b10/baseline_shape_safety.json"
+      },
+      "cse_probe": {
+        "runtime_errors": 100,
+        "total": 100,
+        "evidence": "scripts/golf/loop_7999_13/lane_exact_cse/strict_verify100.json"
+      },
+      "reason": "The only apparent exact duplicate removal triggers runtime buffer-shape failures; historical sound rebuilds cost at least 710."
+    },
+    {
+      "task": 184,
+      "generator": "task_780d0b14.py",
+      "baseline_cost": 421,
+      "rule_type": "D: variable patch-grid compression",
+      "baseline_structure": {
+        "runtime_shape_mismatches": 6,
+        "default_ort_session": false,
+        "evidence": "scripts/golf/loop_7999_13/lane_b10/baseline_shape_safety.json"
+      },
+      "best_historical_cost": 422,
+      "archive_evidence": "scripts/golf/loop_7999_13/lane_archive_top200/quick_k5.json",
+      "reason": "The two best known-correct historical models cost one point more than the exact baseline; no shape-truthful cheaper lead exists."
+    },
+    {
+      "task": 206,
+      "generator": "task_88a10436.py",
+      "baseline_cost": 196,
+      "rule_type": "D: data-dependent sprite copy to marker",
+      "best_historical": {
+        "cost": 199,
+        "correct": 100,
+        "total": 100,
+        "wrong": 0,
+        "errors": 0,
+        "evidence": "scripts/golf/loop_7999_13/lane_archive_top200/task206_k100.json"
+      },
+      "reason": "All validated alternatives are more expensive; the exact graph has no duplicate initializer/expression shave and runtime generation of arange30 costs more memory than it saves."
+    }
+  ],
+  "root_artifacts_modified": false
+}

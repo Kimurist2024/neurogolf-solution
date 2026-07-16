@@ -1,0 +1,102 @@
+{
+  "lane": "a10",
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "archive_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "authority": "exact archive members"
+  },
+  "targets": [37, 48, 92, 222, 226, 297, 345],
+  "baseline_costs": {
+    "37": {"sha256": "ed757e114a4471ab5851c6b2a31d0ad5a79b01b7ab6d9c160abd2746c5d873dc", "memory": 368, "params": 6, "cost": 374},
+    "48": {"sha256": "04455e6bef7fc9252df79102c3fbc914855199ae834adc356ecd2365a11d12a8", "memory": 308, "params": 71, "cost": 379},
+    "92": {"sha256": "74465cc960aace95fdcd4f4787273b25c2d8d0a3000611fa673462f03eed91c6", "memory": 301, "params": 66, "cost": 367},
+    "222": {"sha256": "49cc513b28ccc5edca65c2cf886b79337a098400785a928599719d4bcfade7d7", "memory": 0, "params": 380, "cost": 380},
+    "226": {"sha256": "342ff4b0df090df3cb1fdea435049e05f9e317f4775af82a14ded63b2a490c13", "memory": 346, "params": 53, "cost": 399},
+    "297": {"sha256": "cdba3d03bf43853742508f284bf98ca5341fdb2ab50042ec895afb0069296537", "memory": 320, "params": 51, "cost": 371},
+    "345": {"sha256": "36b1e2be6488496ca637996552b505cf9b2742775b663c4210407d61b861d636", "memory": 248, "params": 141, "cost": 389}
+  },
+  "rejected_candidates": [
+    {
+      "task": 48,
+      "candidate": "scripts/golf/loop_7999_13/lane_a10/task048_fold_singleton_axes.onnx",
+      "sha256": "992a2311e0d9f26e2d3b3f9b1cdf631dc1ca3dca8e6566fbf42edd0d24426737",
+      "memory": 308,
+      "params": 70,
+      "cost": 378,
+      "nominal_gain": 0.002642009462838576,
+      "known_disable_all": {"right": 270, "wrong": 0, "errors": 0},
+      "known_default": {"right": 270, "wrong": 0, "errors": 0},
+      "fresh_disable_all": {"seed": 8048000001, "right": 4467, "wrong": 533, "errors": 0, "raw_equal_to_baseline": 5000},
+      "fresh_default": {"seed": 8048000002, "right": 4521, "wrong": 479, "errors": 0, "raw_equal_to_baseline": 5000},
+      "checker_full": "pass",
+      "strict_shape_inference": "pass",
+      "standard_domains": true,
+      "conv_bias_issues": [],
+      "shape_cloak_added": false,
+      "decision": "REJECT_GENERATOR_UNSOUND",
+      "reason": "The algebraic fold is bitwise identical to the exact baseline and inherits its fresh-domain failures; strict fresh 5000/5000 is not met in either ORT mode."
+    },
+    {
+      "task": 297,
+      "candidate": "scripts/golf/loop_7999_13/lane_a10/task297_trim_zero_kernel.onnx",
+      "sha256": "5b1b2dbc6f86a3f1658b092b7d2c296f46852489258d7a7bf3d50f08d796365e",
+      "memory": 320,
+      "params": 41,
+      "cost": 361,
+      "known_disable_all": {"right": 265, "wrong": 0, "errors": 0},
+      "known_default": {"right": 265, "wrong": 0, "errors": 0},
+      "checker_full": "pass",
+      "strict_shape_inference": "pass",
+      "negative_conv_pads": [0, 0, 0, -24],
+      "fresh5000_run": false,
+      "decision": "REJECT_ONNX_SCHEMA",
+      "reason": "ONNX Conv defines pads as values >=0. The -24 end crop is out of schema and fails the standard-structure gate even though current ORT executes it."
+    },
+    {
+      "task": 297,
+      "candidate": "scripts/golf/loop_7999_13/lane_a10/task297_standard_slice.onnx",
+      "sha256": "5af49c9b040eefdf588dad6a0b2b21064cf1d600bcdaf5d42800a8588ebc8eb3",
+      "memory": 440,
+      "params": 44,
+      "cost": 484,
+      "known_correct": true,
+      "negative_conv_pads": false,
+      "decision": "REJECT_NOT_CHEAPER"
+    },
+    {
+      "task": 297,
+      "candidate": "scripts/golf/loop_7999_13/lane_a10/task297_standard_split.onnx",
+      "sha256": "02b110a8ab9dda211ca8e82aa67ab2cb65ce39ee9bd26126f81d01dab14a7ba3",
+      "memory": 470,
+      "params": 41,
+      "cost": 511,
+      "known_correct": true,
+      "negative_conv_pads": false,
+      "decision": "REJECT_NOT_CHEAPER"
+    }
+  ],
+  "task_findings": {
+    "37": "Exact-hash lane_a6 already tested true-rule Min/Max fusion, topology-preserving bool logic, and direct shape constants. The fusion raises a deterministic Slice allocator mismatch; bool logic costs 437668; the direct shape form conflicts with the incumbent shape cloak. Eight harvested alternatives have static floors >=497.",
+    "48": "The only new parameter-only fold reaches cost378 but exact fresh differential proves it preserves the baseline's wrong outputs bit-for-bit. The earlier zero-sharing rewrite is only a cost379 tie.",
+    "92": "Five harvested alternatives were screened; the best actual cost is393 versus367. The remaining constants have dtype/schema or true 3-dimensional embedding roles and no parameter-only exact reuse.",
+    "222": "The exact one-Einsum analog matcher is memory0 but only2813/3000 on the existing independent fresh audit. The true rule requires selecting a bounded-area rectangle amid dense colored noise; no sound implementation below the 380-parameter analog matcher was found. No harvested model is cheaper and structurally admissible.",
+    "226": "Exact-hash lane_a5 found no safe initializer substitution. Three harvested alternatives have static floors400,408,1534 versus incumbent399; bitmask code tensors and GatherND indices require their full schema shapes.",
+    "297": "lane_b5 scored30 unique historical models: 11 were cheaper, all 11 failed known gold. The new zero-column observation only saves cost with out-of-schema negative Conv padding; standard Slice/Split reconstructions expose a charged full-width carrier and cost484/511.",
+    "345": "lane_b5 scored26 unique historical models: the only cheaper cost365 row omission fails known gold. The dense Wpack is channel-width rank1, but any standard factorization creates a counted full-grid intermediate that costs more than the parameter saving."
+  },
+  "evidence": {
+    "baseline_extraction": "scripts/golf/loop_7999_13/lane_a10/baseline_manifest.json",
+    "history_screen": "scripts/golf/loop_7999_13/lane_a10/history_screen.json",
+    "task48_build_proof": "scripts/golf/loop_7999_13/lane_a10/task048_fold_singleton_build.json",
+    "task48_full_audit": "scripts/golf/loop_7999_13/lane_a10/task048_audit.json",
+    "task297_structural_reject": "scripts/golf/loop_7999_13/lane_a10/task297_audit.json",
+    "task297_standard_profiles": "scripts/golf/loop_7999_13/lane_a10/task297_standard_profiles.json",
+    "task37_48_prior_exact_audit": "scripts/golf/loop_7999_13/lane_a6/REPORT.md",
+    "task226_prior_exact_audit": "scripts/golf/loop_7999_13/lane_a5/REPORT.md",
+    "task297_345_prior_actual_scan": "scripts/golf/loop_7999_13/lane_b5/REPORT.md",
+    "task222_soundness_audit": "scripts/golf/loop_7999_13/lane_c5/baseline_fresh_audit.json"
+  },
+  "accepted": [],
+  "projected_gain": 0.0,
+  "root_artifacts_modified": false
+}

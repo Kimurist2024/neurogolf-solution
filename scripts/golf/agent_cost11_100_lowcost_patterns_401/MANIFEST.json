@@ -1,0 +1,100 @@
+{
+  "authority": {
+    "lb": 8011.05,
+    "zip": "submission_base_8011.05.zip",
+    "sha256": "ad96519a07bcae72017bdb92855b361374f7a34c9f40db237cb2e854615bcd56",
+    "scope_cost_min": 11,
+    "scope_cost_max": 100,
+    "task_count": 148
+  },
+  "new_current_authority_search": {
+    "loose_onnx_paths": 9155,
+    "unique_target_sha_pairs": 426,
+    "theoretical_strict_lower_candidates": 197,
+    "known_exact_strict_lower_rows": 15,
+    "unique_winner_tasks": [70, 202, 322, 372],
+    "evidence": "current_history_scan.json"
+  },
+  "cost_le_10_pattern_transplant": {
+    "authority_members": 21,
+    "unique_graphs": 17,
+    "structurally_admitted_unique_graphs": 13,
+    "structurally_rejected_nonfinite_unique_graphs": 4,
+    "candidate_task_evaluations": 22280,
+    "known_exact_strict_lower_finalists": 0,
+    "evidence": "pattern_scan.json"
+  },
+  "guaranteed_safe": {
+    "half_cost_candidates": [],
+    "strict_lower_candidates": []
+  },
+  "policy95": {
+    "half_cost_candidates": [
+      {
+        "task": 202,
+        "authority_cost": 48,
+        "candidate_cost": 20,
+        "half_target_met": true,
+        "score_gain": 0.8754687373538999,
+        "candidate": "candidates/task202_policy95_cost20.onnx",
+        "sha256": "06a945b16a5682a14458a54463f23634cf6963906ff7f9370e9d64084ff71073",
+        "known_exact": "230/230 in four ORT configurations",
+        "fresh_rates": [0.974, 0.9665],
+        "fresh_per_seed": 2000,
+        "runtime_errors": 0,
+        "nonfinite_cases": 0,
+        "shape_mismatches": 0,
+        "small_positive_elements": 0,
+        "margin_min_current_reprofile": 1.4960119724273682,
+        "classification": "POLICY95_PRIVATE_ZERO_LINEAGE_NON_GIANT",
+        "audit": "task202_policy95_audit_reused.json"
+      }
+    ],
+    "strict_lower_not_half": [
+      {
+        "task": 70,
+        "authority_cost": 66,
+        "candidate_cost": 52,
+        "half_target_met": false,
+        "score_gain": 0.23841102344499815,
+        "candidate": "candidates/task070_policy95_cost52.onnx",
+        "sha256": "a4c8818ae04ee8445e42907383d5d1fd003eb0537ff54d48278534e173297b60",
+        "known_exact": "266/266 in four ORT configurations",
+        "fresh_rates": [0.99, 0.9845],
+        "fresh_per_seed": 2000,
+        "runtime_errors": 0,
+        "nonfinite_cases": 0,
+        "shape_mismatches": 0,
+        "small_positive_elements": 0,
+        "margin_min_current_reprofile": 999.9957885742188,
+        "classification": "POLICY95_PRIVATE_ZERO_RISK",
+        "audit": "task070_policy95_audit_reused.json"
+      }
+    ]
+  },
+  "rejected": [
+    {
+      "task": 70,
+      "candidate_cost": 50,
+      "reason": "Fresh output contains positive values in (0,0.25); mandatory margin rejection."
+    },
+    {
+      "task": 322,
+      "candidate_cost": 19,
+      "reason": "Nonfinite ConvTranspose kernel and 9-element bias for a 10-channel dynamic weight; undefined short-bias behavior."
+    },
+    {
+      "task": 372,
+      "candidate_cost": 12,
+      "reason": "Nonfinite ConvTranspose kernel and 9-element bias for a 10-channel dynamic weight; undefined short-bias behavior."
+    }
+  ],
+  "projected_policy95": {
+    "half_candidate_gain": 0.8754687373538999,
+    "strict_lower_additional_gain": 0.23841102344499815,
+    "combined_gain": 1.113879760798898,
+    "lb_if_both_receive_credit": 8012.163879760799,
+    "warning": "Fresh >=95% does not guarantee private-LB task credit."
+  },
+  "protected_writes": "No root submission, CSV, score ledger, or others directory was modified by this lane."
+}

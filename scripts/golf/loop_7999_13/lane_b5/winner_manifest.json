@@ -1,0 +1,51 @@
+{
+  "lane": "b5_exact_factor_rebuild",
+  "aggregate_baseline_score": 7999.13,
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "authority": "exact archive members"
+  },
+  "targets": [99, 239, 268, 297, 345, 374, 394],
+  "accepted": [],
+  "projected_gain": 0.0,
+  "projected_score": 7999.13,
+  "rejected": [
+    {
+      "task": 268,
+      "candidate": "others/7907/task268_improved_rebuild.onnx",
+      "candidate_sha256": "22ea97ffce8b14fbf923a89a0cda2233d83469201732ed3f4e914e5b2b1ced69",
+      "baseline_cost": 446,
+      "candidate_cost": 327,
+      "nominal_gain": 0.3103587811228106,
+      "known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "verify_fix_fresh5000": {
+        "right": 2219,
+        "wrong": 2781,
+        "rate": 0.4438,
+        "minimum_required_rate": 1.0,
+        "margin_min": 1.0,
+        "note": "verify_fix counts inference errors inside wrong; it does not report a separate runtime-error count"
+      },
+      "independent_differential": {
+        "requested": 3000,
+        "executable": 3000,
+        "threshold_equal": 2988,
+        "mismatches": 12,
+        "one_sided_errors": 0
+      },
+      "reason": "Complete-known but not generator-sound; strict fresh 5000 gate failed. Do not merge."
+    }
+  ],
+  "evidence": {
+    "baseline_extraction": "scripts/golf/loop_7999_13/lane_b5/baseline_manifest.json",
+    "historical_candidate_scan": "scripts/golf/loop_7999_13/lane_b5/existing_scan.json",
+    "external_task268": "scripts/golf/loop_7999_13/lane_harvest/external_task268.json",
+    "report": "scripts/golf/loop_7999_13/lane_b5/REPORT.md"
+  },
+  "root_artifacts_modified": false
+}

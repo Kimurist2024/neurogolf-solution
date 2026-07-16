@@ -1,0 +1,362 @@
+{
+  "authority": {
+    "archive": "submission_base_8009.46.zip",
+    "archive_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "root_submission_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores_sha256": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78",
+    "lb": 8009.46,
+    "immutable": true
+  },
+  "policy": {
+    "safe_exact_preferred": true,
+    "normal_policy90_min_rate": 0.9,
+    "normal_policy90_requires_strict_lower": true,
+    "normal_policy90_requires_truthful_runtime_shapes": true,
+    "private_zero_requires_all_support_pass_through": true,
+    "lookup_cloak_giant_nonfinite_error_ub0_rejected": true
+  },
+  "tasks": {
+    "8": {
+      "generator": "inputs/arc-gen-repo/tasks/task_05f2a901.py",
+      "generator_sha256": "1cc6165c9eba7aed2a60d2c5a0e13ba108a6426b544efa49411a93d6436302b3",
+      "rule": "Translate the perforated red rectangle along the separated axis until it touches the cyan 2x2 object, preserving the red pattern; the case may be flipped and transposed.",
+      "authority_member": "task008.onnx",
+      "authority_sha256": "30abdd1f30f1aa88549edbf22c6e7a4af4fec3036fd8809812456ccb0df6e292",
+      "serialized_bytes": 5957,
+      "nodes": 60,
+      "initializers": 16,
+      "profile": {
+        "memory": 331,
+        "params": 100,
+        "cost": 431,
+        "score": 18.933891909896253
+      },
+      "known_four_configs": {
+        "total_each": 266,
+        "right_each": 266,
+        "wrong_each": 0,
+        "errors_each": 0,
+        "nonfinite_output_values_each": 0
+      },
+      "structural_static": {
+        "full_checker": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "finite_initializers": true
+      },
+      "runtime_shape_truthful": false,
+      "runtime_shape_evidence": {
+        "declared_output": [1, 1, 1, 1],
+        "runtime_output": [1, 10, 30, 30],
+        "representative_hidden_cloaks": [
+          "input_cloak [1,1,1,1] -> [1,10,30,30]",
+          "grid3_f16 [1,1,1,1,3] -> up to [2,2,3,5,3]",
+          "indices_i64_hidden has a truthful carrier floor of 1920 bytes"
+        ]
+      },
+      "authority_fresh_characterization": {
+        "seed": 194008,
+        "right": 1958,
+        "total": 2000,
+        "rate": 0.979,
+        "errors": 0,
+        "note": "Characterization only; the authority is not a candidate and fails the truthful-shape gate."
+      },
+      "history_frontier": [
+        {
+          "sha256": "625161e57deca5178c9ce8fb1391c86df5fd6d1de3ad26a72d9792e98bac9368",
+          "nominal_cost": 427,
+          "official_runtime_cost": 22021,
+          "decision": "NOT_STRICT_LOWER_AND_SHAPE_CLOAK"
+        },
+        {
+          "sha256": "79b3ced1e3778048f8df7b78acdf459f9f1081c26c80991575e062a862daba7e",
+          "nominal_cost": 430,
+          "official_runtime_cost": 454,
+          "decision": "NOT_STRICT_LOWER_AND_SHAPE_CLOAK"
+        },
+        {
+          "sha256": "39620c960bdeb07ee1123be909ab96bc5b4991685b4e59c3b5e94385643ab7ee",
+          "cost": 431,
+          "rewrite": "derive scalar 2 as 1+1",
+          "decision": "COST_TIE"
+        },
+        {
+          "sha256": "51eae341a4e9d85b80410d4d737dc37ec95130bbe0e5802394ee3bd8e77e9026",
+          "cost": 431,
+          "rewrite": "derive scalar 3 as 1+2",
+          "decision": "COST_TIE"
+        },
+        {
+          "sha256": "6ee829ca223e11751f0c3a986a980d8bac8a66419fd24f857654138436c4759a",
+          "cost": 431,
+          "rewrite": "derive scalar 5 as 2+3",
+          "decision": "COST_TIE"
+        }
+      ],
+      "finite_support_algebra": {
+        "scalar_derivation": "Removing a one-element int8 initializer creates one byte of charged activation, so every tested derivation ties at 431.",
+        "sign_vector": "Reconstructing the four-element sign vector needs an equal-or-larger materialized tensor.",
+        "position_vectors": "The generator bound is 16, but trimming either 30-element vector requires Slice/Pad/Gather materialization whose charged activation exceeds the saved parameter elements.",
+        "shape_theta_affine": "Shape, theta and affine-size schema inputs require complete materialized carriers; factoring cannot reduce memory+element-count cost.",
+        "semantic_blocker": "A reachable explicit generator case already disproves all-support exactness of the authority lineage."
+      },
+      "strict_lower_candidate_count": 0,
+      "policy90_candidate_count": 0,
+      "large_fresh_run": "SKIPPED_NO_PREFRESH_FINALIST",
+      "gain": 0.0,
+      "verdict": "NO_SAFE_OR_POLICY90_STRICT_LOWER_CANDIDATE"
+    },
+    "62": {
+      "generator": "inputs/arc-gen-repo/tasks/task_2bcee788.py",
+      "generator_sha256": "ac2e6be57e971ea67ed50fa9ef31789c059d2127ec00c13221b7ad0877f10536",
+      "rule": "Use the red seam to reflect the visible colored 3x3 sprite across the seam and emit the completed sprite on a green 10x10 canvas; horizontal/vertical and side orientation vary.",
+      "authority_member": "task062.onnx",
+      "authority_sha256": "6767dbf75899d7330115c9f9a8fda97c77e6dcf84f3e5c9de7ba88d79ae2004e",
+      "serialized_bytes": 5741,
+      "nodes": 58,
+      "initializers": 15,
+      "profile": {
+        "memory": 370,
+        "params": 93,
+        "cost": 463,
+        "score": 18.862272945913766
+      },
+      "known_four_configs": {
+        "total_each": 267,
+        "right_each": 267,
+        "wrong_each": 0,
+        "errors_each": 0
+      },
+      "structural_static": {
+        "full_checker": true,
+        "strict_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "finite_initializers": true
+      },
+      "runtime_shape_truthful": false,
+      "runtime_shape_evidence": {
+        "mismatch_count": 3,
+        "mismatches": [
+          "gn [1,1,1,1] -> [1,10,30,30]",
+          "q [1,1,1,1] -> [1,10,30,30]",
+          "qf [1,1,1,1] -> [1,10,30,30]"
+        ],
+        "profiled_intermediate_bytes_on_one_example": 63363,
+        "declared_cost_memory": 370
+      },
+      "authority_fresh_characterization": {
+        "seeds": [47000063, 47100063],
+        "right": [1990, 1989],
+        "total_each": 2000,
+        "rates": [0.995, 0.9945],
+        "errors": [0, 0],
+        "note": "Existing evidence is for the semantically equivalent predecessor lineage and is characterization only; no lower successor reaches the shape gate."
+      },
+      "history": {
+        "predecessor_cost": 465,
+        "current_463_origin": "The sole new strict-lower history lead removed two charged units but retained all three shape cloaks; it is now the immutable authority, not a successor candidate.",
+        "complete_retained_alternatives_before_current": 28,
+        "lower_than_predecessor_before_current": 0,
+        "post_current_mechanical_successors_below_463": 0,
+        "normalization_candidate_sha256": "5abb3b9257b343c5482dba455f394a4b090a57cac431497fba5833c9d7df0e77",
+        "normalization_decision": "NOT_STRICT_LOWER",
+        "add_to_sum_sha256": "03fa3c8b8810882aba7db1dea1ff1ba7fa098a91400b5f61a422c8a7e98d6b93",
+        "add_to_sum_decision": "INVALID_UINT8_SUM"
+      },
+      "finite_support_algebra": {
+        "rank_typed_scalar_aliases": "Equal scalar values have incompatible schema-required rank/dtype; Reshape/Cast materialization erases any one-element parameter saving.",
+        "idx_table": "The 18-element reflection table is already a finite 3x6 selector. Reconstructing it creates int32 activation bytes at four times the saved element count.",
+        "coordinate_vector": "Only the generator-supported coordinates matter, but shortening the 30-vector requires a charged padded/gathered 30-vector and is more expensive.",
+        "color_and_weight_vectors": "The object-color moment and dynamic ConvInteger decoder require their complete schema-shaped tensors; there are no exact duplicate initializers."
+      },
+      "strict_lower_candidate_count": 0,
+      "policy90_candidate_count": 0,
+      "large_fresh_run": "SKIPPED_NO_PREFRESH_FINALIST",
+      "gain": 0.0,
+      "verdict": "NO_SAFE_OR_POLICY90_STRICT_LOWER_CANDIDATE"
+    },
+    "239": {
+      "generator": "inputs/arc-gen-repo/tasks/task_9af7a82c.py",
+      "generator_sha256": "1c16c85b0b539ed427ae181ed4e309c26d81991a21c6bad9c5153468d362d55e",
+      "rule": "Count every used color, sort the distinct counts descending, and render top-aligned colored bars whose heights are those counts.",
+      "authority_member": "task239.onnx",
+      "authority_sha256": "e15519d37ccaa4f3ad478091a2eb5a6a1fe984bc602a2ffd347f03c250eb68e0",
+      "serialized_bytes": 1233,
+      "nodes": 12,
+      "initializers": 7,
+      "profile": {
+        "memory": 328,
+        "params": 56,
+        "cost": 384,
+        "score": 19.049357447412273
+      },
+      "known_four_configs": {
+        "total_each": 267,
+        "right_each": 267,
+        "wrong_each": 0,
+        "errors_each": 0,
+        "nonfinite_output_values_each": 0,
+        "raw_equal_each": 267
+      },
+      "structural_static": {
+        "full_checker": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "finite_initializers": true,
+        "lookup": false,
+        "runtime_shape_truthful": true,
+        "runtime_shape_mismatch_count": 0
+      },
+      "reference_evidence": {
+        "known": 267,
+        "fresh_seeds": 2,
+        "fresh_total_each": 5000,
+        "reference_right_each": 5000,
+        "note": "This validates the decoded rule. Rejected lower ONNX candidates fail before fresh admission."
+      },
+      "strict_lower_history": [
+        {
+          "sha256": "5db156c5348d5daffec6d1108e0aa94509b5c69ff6a96fd053feb51d878b88c4",
+          "nominal_cost": 374,
+          "decision": "UNSCORABLE_TOPK_RUNTIME_NOT_IMPLEMENTED"
+        },
+        {
+          "sha256": "d9cc9754b142b18d181cae8093ca67b36fd2258b2f8fa27edcca58fdef5eeced",
+          "cost": 374,
+          "rewrite": "remove inactive-feature safety",
+          "known_right": 24,
+          "known_total": 267,
+          "known_rate": 0.0898876404494382,
+          "fresh_right": 75,
+          "fresh_total": 1000,
+          "fresh_rate": 0.075,
+          "decision": "BELOW_POLICY90"
+        },
+        {
+          "sha256": "a0aecbe36c3d67df2c89c01754c71a41174fb53e713afad3275b512ced2d678c",
+          "cost": 379,
+          "rewrite": "remove inactive-bar sentinel",
+          "known_right": 2,
+          "known_total": 267,
+          "known_rate": 0.00749063670411985,
+          "fresh_right": 2,
+          "fresh_total": 1000,
+          "fresh_rate": 0.002,
+          "decision": "BELOW_POLICY90"
+        }
+      ],
+      "finite_support_algebra": {
+        "two_required_inactive_gates": "Inactive TopK columns, within-output background, and outside-output zero-hot cells are three distinct states. The barbase and safe_truefeat gates encode those distinctions; deleting either is directly falsified above.",
+        "decoder_factorization": "The 2x10 embedding and 10x2 QLinearConv tables are already a two-dimensional finite code. Reconstructing either table materializes at least the removed number of elements and does not eliminate the charged 1x2x12x5 feature field.",
+        "rows_and_constants": "Range/Pad/Gather reconstruction of the 12-row vector or scalar constants costs activation bytes at least equal to the saved parameter elements.",
+        "optimizer": "All applicable exact optimizer passes return the same SHA/cost or no legal change."
+      },
+      "strict_lower_candidate_count": 2,
+      "policy90_candidate_count": 0,
+      "large_fresh_run": "SKIPPED_ALL_LOWER_CANDIDATES_FAIL_KNOWN_OR_RUNTIME_PREGATE",
+      "gain": 0.0,
+      "verdict": "NO_SAFE_OR_POLICY90_STRICT_LOWER_CANDIDATE"
+    },
+    "363": {
+      "generator": "inputs/arc-gen-repo/tasks/task_e5062a87.py",
+      "generator_sha256": "81f24acd5c627c4b4d153caeb3c098f21e815193db3b9df9c93acf399e706603",
+      "rule": "Restore the red exemplar to black, normalize its diagonally connected sprite, find every legal translation over black cells, and paint each occurrence red.",
+      "authority_member": "task363.onnx",
+      "authority_sha256": "5daecf63ed4badce69970a3632afd52bf972b67d6f4dfaa3b41dbb93943d05e8",
+      "serialized_bytes": 4696,
+      "nodes": 31,
+      "initializers": 18,
+      "profile": {
+        "memory": 430,
+        "params": 82,
+        "cost": 512,
+        "score": 18.761675374960493
+      },
+      "known_four_configs": {
+        "total_each": 265,
+        "right_each": 265,
+        "wrong_each": 0,
+        "errors_each": 0,
+        "nonfinite_output_values_each": 0
+      },
+      "structural_static": {
+        "full_checker": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "finite_initializers": true
+      },
+      "runtime_shape_truthful": false,
+      "runtime_shape_evidence": {
+        "mismatch_count": 7,
+        "mismatches": [
+          "safe_name_22 [1,1,1,1] -> [1,10,30,30]",
+          "safe_name_23 [1,1,1,1] -> [1,10,30,30]",
+          "data_hid [1,1,1,1] -> [1,10,30,30]",
+          "data_u8_hid [1,1,1,1] -> [1,10,30,30]",
+          "idx_u8_hid [1,1,1,1] -> [1,1,10,10]",
+          "idx_hid [1,1,1,1] -> [1,1,10,10]",
+          "output [1,1,1,1] -> [1,10,30,30]"
+        ]
+      },
+      "private_zero": true,
+      "private_zero_policy": "ALL_SUPPORT_PASS_THROUGH_REQUIRED_POLICY90_NOT_PERMITTED",
+      "authority_fresh_characterization": {
+        "seeds": [202607149901, 202607149902],
+        "right": [495, 500],
+        "total_each": 500,
+        "combined_rate": 0.995,
+        "errors": [0, 0],
+        "note": "The 512 graph was the 513-to-512 one-parameter shave and is now authority. It is shape-cloaked, non-total, and cannot qualify as an all-support pass-through successor."
+      },
+      "generator_fixture_conflict": {
+        "truthful_control_fresh": "3000/3000",
+        "truthful_control_known": "263/265",
+        "cost": 12542,
+        "reason": "Two stored fixtures are inconsistent with the generator legality relation; a deterministic pure-rule graph cannot simultaneously satisfy those fixtures and every legal support point."
+      },
+      "history": {
+        "predecessor_sha256": "aec5b5333bb9fae7c7718096c7640bc6b6ae61c3ca82d0cef8e5b9c70fd95607",
+        "predecessor_cost": 513,
+        "current_rewrite": "remove one parameter",
+        "prior_retained_cost_floor": 514,
+        "prior_retained_costs": [514, 517, 525, 579, 704, 707, 735, 4284],
+        "strict_lower_successors_below_512": 0,
+        "normalization_sha256": "a09aa7634891f6e333ad336dec07a807b0f97cbe635d12877cdbf998f69822d4",
+        "normalization_decision": "NONSTATIC_SHAPE_AND_NOT_LOWER",
+        "add_to_sum_sha256": "09d160182e33ec74f4024782611c0b392ad2931ac44a2a7795b6ff62a4bfc349",
+        "add_to_sum_decision": "INVALID_INT32_SUM"
+      },
+      "finite_support_algebra": {
+        "initializer_aliases": "No exact duplicate or unused initializer exists.",
+        "castlike_subsets": "All seven CastLike-to-Cast subsets tie at 512 or rise to 9511; none is strict-lower.",
+        "factor_lower_bound": "For every initializer, ordinary materialized reconstruction adds at least one cost unit even under an optimistic free-shape-carrier assumption.",
+        "bias_vector": "The one-special-entry ten-element GroupNormalization bias cannot be reconstructed without a larger charged float activation.",
+        "coordinate_vector": "Trimming the 30-element exponential coordinate vector requires a padded runtime vector whose bytes exceed the saved parameter elements."
+      },
+      "strict_lower_candidate_count": 0,
+      "policy90_candidate_count": 0,
+      "large_fresh_run": "SKIPPED_NO_PREFRESH_FINALIST_AND_PRIVATE_ZERO_REQUIRES_ALL_SUPPORT",
+      "gain": 0.0,
+      "verdict": "NO_ALL_SUPPORT_STRICT_LOWER_CANDIDATE"
+    }
+  },
+  "summary": {
+    "task_count": 4,
+    "safe_exact_winners": 0,
+    "normal_policy90_winners": 0,
+    "private_zero_all_support_winners": 0,
+    "winner_count": 0,
+    "projected_gain": 0.0,
+    "large_fresh_runs_started": 0,
+    "promotion_performed": false,
+    "root_or_stage_modified": false,
+    "verdict": "NO_SAFE_STRICT_LOWER_OR_POLICY90_CANDIDATE"
+  }
+}

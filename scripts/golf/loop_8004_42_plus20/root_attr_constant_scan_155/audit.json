@@ -1,0 +1,5569 @@
+{
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "tasks": {
+    "71": {
+      "candidate_path": "scripts/golf/loop_8004_42_plus20/root_attr_constant_scan_155/candidates/task071_0027_CastLike.onnx",
+      "authority_sha256": "61798cc38df4cde5275141ce77900eb47fb61f83987a86ba7ad36fd38fb749a6",
+      "candidate_sha256": "1abcca8e1b56070a40e8f2c86335b2af7b782148491a6d2c2f97c9991d7d2e6c",
+      "declared_profiles": {
+        "authority": {
+          "memory": 130,
+          "params": 58,
+          "cost": 188
+        },
+        "candidate": {
+          "memory": 130,
+          "params": 57,
+          "cost": 187
+        }
+      },
+      "official_profiles": {
+        "authority": {
+          "memory": 130,
+          "params": 58,
+          "cost": 188,
+          "score": 19.76355803717005,
+          "correct": true
+        },
+        "candidate": {
+          "memory": 130,
+          "params": 57,
+          "cost": 187,
+          "score": 19.768891383145412,
+          "correct": false
+        }
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 29,
+        "initializer_count": 12,
+        "value_info_count": 28,
+        "op_histogram": {
+          "Cast": 1,
+          "Concat": 1,
+          "Einsum": 4,
+          "Gather": 1,
+          "LessOrEqual": 1,
+          "Max": 1,
+          "Min": 4,
+          "QuantizeLinear": 1,
+          "Shape": 1,
+          "Slice": 1,
+          "Sub": 7,
+          "Where": 6
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 29,
+        "actual_shapes": {
+          "axis_den": [
+            1
+          ],
+          "axis_rev": [
+            1
+          ],
+          "axis_code": [
+            1
+          ],
+          "axis2": [
+            1
+          ],
+          "left_moment": [
+            1
+          ],
+          "right_moment": [
+            1
+          ],
+          "box_left": [
+            1
+          ],
+          "clean_bg": [
+            1
+          ],
+          "p1": [
+            1
+          ],
+          "r1": [
+            1
+          ],
+          "p23": [
+            2
+          ],
+          "q23": [
+            2
+          ],
+          "r23": [
+            2
+          ],
+          "p45": [
+            2
+          ],
+          "r45": [
+            2
+          ],
+          "p69": [
+            4
+          ],
+          "lo69": [
+            4
+          ],
+          "hi69": [
+            4
+          ],
+          "r69": [
+            4
+          ],
+          "p1011": [
+            2
+          ],
+          "r1011": [
+            2
+          ],
+          "clip1213": [
+            2
+          ],
+          "p1213": [
+            2
+          ],
+          "r1213": [
+            2
+          ],
+          "gather_raw": [
+            30
+          ],
+          "end30": [
+            1
+          ],
+          "gather_u8_s": [
+            30
+          ],
+          "gather_i32": [
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 3,
+        "mismatches": [
+          {
+            "name": "gather_u8_s",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "gather_i32",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              10,
+              30,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "known_candidate": {
+        "disable_all_threads1": {
+          "total": 265,
+          "right": 0,
+          "runtime_errors": 265,
+          "nonfinite_values": 0,
+          "shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'safe_name_39' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1} != {30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "perfect": false
+        },
+        "disable_all_threads4": {
+          "total": 265,
+          "right": 0,
+          "runtime_errors": 265,
+          "nonfinite_values": 0,
+          "shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'safe_name_39' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1} != {30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "perfect": false
+        },
+        "default_threads1": {
+          "total": 265,
+          "right": 265,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "perfect": true
+        },
+        "default_threads4": {
+          "total": 265,
+          "right": 265,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "perfect": true
+        }
+      },
+      "known_differential": {
+        "disable_all_threads1": {
+          "total": 265,
+          "candidate_right": 0,
+          "baseline_right": 265,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 265,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "model": "candidate",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'safe_name_39' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1} != {30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "runtime_errors_total": 265,
+          "nonfinite_values_total": 0,
+          "perfect": false
+        },
+        "disable_all_threads4": {
+          "total": 265,
+          "candidate_right": 0,
+          "baseline_right": 265,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 265,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "model": "candidate",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'safe_name_39' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1} != {30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "runtime_errors_total": 265,
+          "nonfinite_values_total": 0,
+          "perfect": false
+        },
+        "default_threads1": {
+          "total": 265,
+          "candidate_right": 265,
+          "baseline_right": 265,
+          "raw_equal": 265,
+          "threshold_equal": 265,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "default_threads4": {
+          "total": 265,
+          "candidate_right": 265,
+          "baseline_right": 265,
+          "raw_equal": 265,
+          "threshold_equal": 265,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        }
+      },
+      "official_strict_lower": true
+    },
+    "133": {
+      "candidate_path": "scripts/golf/loop_8004_42_plus20/root_attr_constant_scan_155/candidates/task133_0007_CastLike.onnx",
+      "authority_sha256": "6c5dc3a593b0900e16966b9d4c40af509a34c1dd1f0264c31cd30eaf9b4570e5",
+      "candidate_sha256": "34fe1c446e77782b7c1268d115198d3e21e7156b3f4284165cc9d3aa015331b3",
+      "declared_profiles": {
+        "authority": {
+          "memory": 4176,
+          "params": 217,
+          "cost": 4393
+        },
+        "candidate": {
+          "memory": 4130,
+          "params": 217,
+          "cost": 4347
+        }
+      },
+      "official_profiles": {
+        "authority": {
+          "memory": 4176,
+          "params": 217,
+          "cost": 4393,
+          "score": 16.612232356024222,
+          "correct": true
+        },
+        "candidate": {
+          "memory": 4130,
+          "params": 217,
+          "cost": 4347,
+          "score": 16.622758769011206,
+          "correct": false
+        }
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": false,
+        "conv_bias_ub0": true,
+        "reasons": [
+          "nonfinite_initializer"
+        ],
+        "node_count": 231,
+        "initializer_count": 38,
+        "value_info_count": 238,
+        "op_histogram": {
+          "Add": 19,
+          "ArgMax": 1,
+          "ArgMin": 1,
+          "Cast": 29,
+          "CastLike": 12,
+          "CenterCropPad": 13,
+          "Concat": 19,
+          "Div": 4,
+          "Einsum": 3,
+          "Equal": 7,
+          "Expand": 1,
+          "Gather": 13,
+          "GatherElements": 9,
+          "GatherND": 1,
+          "LessOrEqual": 2,
+          "Max": 2,
+          "Mul": 21,
+          "Pad": 12,
+          "QLinearMatMul": 4,
+          "ReduceMax": 4,
+          "ReduceSum": 6,
+          "Round": 1,
+          "ScatterElements": 1,
+          "Shape": 1,
+          "Slice": 2,
+          "Split": 5,
+          "Sqrt": 1,
+          "Squeeze": 6,
+          "Sub": 22,
+          "TopK": 1,
+          "Unsqueeze": 6,
+          "Where": 2
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": false
+      },
+      "runtime_shape_trace": {
+        "traced": 243,
+        "actual_shapes": {
+          "counts": [
+            1,
+            10
+          ],
+          "shape_1x10_dyn": [
+            1
+          ],
+          "counts__cast1_t": [
+            1,
+            10
+          ],
+          "sum_r": [
+            1,
+            10
+          ],
+          "sum_r_var": [
+            1,
+            10
+          ],
+          "sum_c": [
+            1,
+            10
+          ],
+          "sum_c_var_ccp": [
+            1,
+            10
+          ],
+          "sum_c_var": [
+            1,
+            10
+          ],
+          "total_count": [
+            1
+          ],
+          "total_sum_r": [
+            1
+          ],
+          "total_sum_c": [
+            1
+          ],
+          "double_sum_r": [
+            1
+          ],
+          "double_sum_c": [
+            1
+          ],
+          "height_m1_f16": [
+            1
+          ],
+          "height_m1": [
+            1
+          ],
+          "width_m1_f16": [
+            1
+          ],
+          "width_m1": [
+            1
+          ],
+          "sum_r2": [
+            1,
+            10
+          ],
+          "sum_r2_var_ccp": [
+            1,
+            10
+          ],
+          "sum_r2_var": [
+            1,
+            10
+          ],
+          "n_sum2": [
+            1,
+            10
+          ],
+          "sr_sq": [
+            1,
+            10
+          ],
+          "var_r": [
+            1,
+            10
+          ],
+          "var_r9": [
+            1,
+            9
+          ],
+          "p_rel": [
+            1,
+            1
+          ],
+          "p_rel__cast1_t": [
+            1,
+            1
+          ],
+          "pfix_c6": [
+            1,
+            1
+          ],
+          "pfix_key": [
+            1,
+            1
+          ],
+          "pfix_mask": [
+            1,
+            4
+          ],
+          "pfix_mask_i8": [
+            1,
+            4
+          ],
+          "pfix_delta_i8": [
+            1,
+            1
+          ],
+          "p_rel_fixed_i8": [
+            1,
+            1
+          ],
+          "pcolor": [
+            1,
+            1
+          ],
+          "pcolor_u__cast_int32": [
+            1,
+            1
+          ],
+          "main_excl_idx": [
+            1,
+            2
+          ],
+          "main_score9": [
+            1,
+            10
+          ],
+          "main_vals": [
+            1,
+            4
+          ],
+          "main_rel": [
+            1,
+            4
+          ],
+          "main_rel__cast2_t": [
+            1,
+            4
+          ],
+          "msr": [
+            1,
+            4
+          ],
+          "msc": [
+            1,
+            4
+          ],
+          "scale_sqrt": [
+            1,
+            4
+          ],
+          "scale_f": [
+            1,
+            4
+          ],
+          "scale64": [
+            1,
+            4
+          ],
+          "count_square": [
+            1,
+            4
+          ],
+          "scale_m1": [
+            1,
+            4
+          ],
+          "scale_half": [
+            1,
+            4
+          ],
+          "mean_r": [
+            1,
+            4
+          ],
+          "top_f0": [
+            1,
+            4
+          ],
+          "main_top": [
+            1,
+            4
+          ],
+          "mean_c": [
+            1,
+            4
+          ],
+          "left_f0": [
+            1,
+            4
+          ],
+          "main_left": [
+            1,
+            4
+          ],
+          "main_top_u": [
+            1,
+            4,
+            1,
+            1
+          ],
+          "main_left_u": [
+            1,
+            4,
+            1,
+            1
+          ],
+          "top_minus": [
+            1,
+            4
+          ],
+          "left_minus": [
+            1,
+            4
+          ],
+          "top_minus_u": [
+            1,
+            4,
+            1,
+            1
+          ],
+          "left_minus_u": [
+            1,
+            4,
+            1,
+            1
+          ],
+          "cand_r": [
+            1,
+            4,
+            2,
+            1
+          ],
+          "cand_c": [
+            1,
+            4,
+            2,
+            1
+          ],
+          "pcolor_grid": [
+            1,
+            4,
+            2,
+            1
+          ],
+          "cand_indices": [
+            1,
+            4,
+            2,
+            3
+          ],
+          "__hid_cand_indices__cast3_s": [
+            1,
+            4,
+            2,
+            3
+          ],
+          "cand_indices__cast3_s": [
+            1,
+            4,
+            2,
+            3
+          ],
+          "cand_values": [
+            1,
+            4,
+            2
+          ],
+          "cand_pc": [
+            1,
+            4,
+            2
+          ],
+          "cand_pc_u": [
+            1,
+            4,
+            2,
+            1
+          ],
+          "square_shape_u": [
+            1,
+            4,
+            1,
+            1
+          ],
+          "square_shape_i8": [
+            1,
+            4,
+            1,
+            1
+          ],
+          "cand_hit_i8": [
+            1,
+            4,
+            2,
+            1
+          ],
+          "is_target2_i8": [
+            1,
+            4
+          ],
+          "vis_c4": [
+            1,
+            1
+          ],
+          "vis_key": [
+            1,
+            1
+          ],
+          "vis_mask": [
+            1,
+            4
+          ],
+          "vis_mask_i8": [
+            1,
+            4
+          ],
+          "vis_m0": [
+            1,
+            1
+          ],
+          "vis_m1": [
+            1,
+            1
+          ],
+          "vis_m2": [
+            1,
+            1
+          ],
+          "vis_m3": [
+            1,
+            1
+          ],
+          "vis_r1": [
+            1,
+            1
+          ],
+          "vis_d0": [
+            1,
+            1
+          ],
+          "vis_zero11": [
+            1,
+            1
+          ],
+          "vis_right_flags": [
+            1,
+            4
+          ],
+          "vis_down_flags": [
+            1,
+            4
+          ],
+          "vis_extra_any": [
+            1,
+            4
+          ],
+          "is_target_i8": [
+            1,
+            4
+          ],
+          "is_target": [
+            1,
+            4
+          ],
+          "hit_r_weighted": [
+            1,
+            4,
+            2,
+            1
+          ],
+          "target_marker_r2": [
+            1,
+            4
+          ],
+          "hit_c_weighted": [
+            1,
+            4,
+            2,
+            1
+          ],
+          "target_marker_c2": [
+            1,
+            4
+          ],
+          "extra_r_base": [
+            1,
+            4
+          ],
+          "extra_r_delta": [
+            1,
+            4
+          ],
+          "extra_c_base": [
+            1,
+            4
+          ],
+          "extra_c_delta": [
+            1,
+            4
+          ],
+          "vis_marker_r": [
+            1,
+            4
+          ],
+          "vis_marker_c": [
+            1,
+            4
+          ],
+          "target_marker_r": [
+            1,
+            4
+          ],
+          "target_marker_c": [
+            1,
+            4
+          ],
+          "target_marker_r__cast_int32__hack_ccp": [
+            1,
+            4
+          ],
+          "target_marker_r__cast_int32": [
+            1,
+            4
+          ],
+          "target_marker_c__cast_int32__hack_ccp": [
+            1,
+            4
+          ],
+          "target_marker_c__cast_int32": [
+            1,
+            4
+          ],
+          "template_slot": [
+            1
+          ],
+          "tcolor": [
+            1,
+            1
+          ],
+          "p_sum_r__cast10_t": [
+            1,
+            1
+          ],
+          "p_sum_c__cast11_t": [
+            1,
+            1
+          ],
+          "target_center_r": [
+            1,
+            4
+          ],
+          "target_center_c": [
+            1,
+            4
+          ],
+          "target_pc_sr0": [
+            1,
+            4
+          ],
+          "target_pc_sc0": [
+            1,
+            4
+          ],
+          "target_pc_sr": [
+            1,
+            4
+          ],
+          "target_pc_sc": [
+            1,
+            4
+          ],
+          "target_pc_sr_sum": [
+            1,
+            1
+          ],
+          "target_pc_sc_sum": [
+            1,
+            1
+          ],
+          "tmr_f0": [
+            1,
+            1
+          ],
+          "tmr_abs": [
+            1,
+            1
+          ],
+          "tmc_f0": [
+            1,
+            1
+          ],
+          "tmc_abs": [
+            1,
+            1
+          ],
+          "manual_feat_vec": [
+            1,
+            3
+          ],
+          "manual_key": [
+            1,
+            1
+          ],
+          "manual_mask": [
+            1,
+            3
+          ],
+          "manual_mask_i8": [
+            1,
+            3
+          ],
+          "tmc_off_h": [
+            1,
+            1
+          ],
+          "rhit1_i8_h": [
+            1,
+            1
+          ],
+          "template_top": [
+            1,
+            1
+          ],
+          "template_left_raw": [
+            1,
+            1
+          ],
+          "template_left": [
+            1
+          ],
+          "template_top_1": [
+            1
+          ],
+          "tcolor_1d_i8": [
+            1
+          ],
+          "slice_starts_i8": [
+            3
+          ],
+          "slice_starts": [
+            3
+          ],
+          "tcolor_end_i8": [
+            1
+          ],
+          "slice_h_end_i8": [
+            1
+          ],
+          "slice_w_end_i8": [
+            1
+          ],
+          "slice_ends_i8": [
+            3
+          ],
+          "slice_ends": [
+            3
+          ],
+          "tres_slice3": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "pat_i8_3": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "train1_i8_2d": [
+            1,
+            1
+          ],
+          "pat_i8": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "marker_row": [
+            1,
+            1,
+            3,
+            1
+          ],
+          "marker_col": [
+            1,
+            1,
+            4
+          ],
+          "marker_row_i8": [
+            1,
+            1,
+            3,
+            1
+          ],
+          "marker_col_i8": [
+            1,
+            1,
+            4
+          ],
+          "marker_row_values": [
+            1,
+            1,
+            3,
+            1
+          ],
+          "marker_values": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "tmr_scaled_all": [
+            1,
+            4
+          ],
+          "sprite_tops": [
+            1,
+            4
+          ],
+          "tmc_scaled_all": [
+            1,
+            4
+          ],
+          "sprite_lefts": [
+            1,
+            4
+          ],
+          "valid_row_bool": [
+            1,
+            1,
+            30,
+            1
+          ],
+          "valid_row_i8": [
+            1,
+            1,
+            30,
+            1
+          ],
+          "valid_col_bool": [
+            1,
+            1,
+            1,
+            30
+          ],
+          "valid_col_i8": [
+            1,
+            1,
+            1,
+            30
+          ],
+          "target_idx": [
+            1,
+            3
+          ],
+          "target_scales": [
+            1,
+            3
+          ],
+          "target_tops": [
+            1,
+            3
+          ],
+          "target_lefts": [
+            1,
+            3
+          ],
+          "target_colors": [
+            1,
+            3
+          ],
+          "scale_0_i8": [
+            1,
+            1
+          ],
+          "scale_1_i8": [
+            1,
+            1
+          ],
+          "scale_2_i8": [
+            1,
+            1
+          ],
+          "stop_0": [
+            1,
+            1
+          ],
+          "stop_1": [
+            1,
+            1
+          ],
+          "stop_2": [
+            1,
+            1
+          ],
+          "sleft_0": [
+            1,
+            1
+          ],
+          "sleft_1": [
+            1,
+            1
+          ],
+          "sleft_2": [
+            1,
+            1
+          ],
+          "scolor_0": [
+            1,
+            1
+          ],
+          "scolor_1": [
+            1,
+            1
+          ],
+          "scolor_2": [
+            1,
+            1
+          ],
+          "main_values_0": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "pattern_values_0": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "hidx_scalar_0_i8": [],
+          "hidx_scalar_0": [],
+          "hidx_0": [
+            12
+          ],
+          "pattern_pad_0": [
+            1,
+            1,
+            3,
+            5
+          ],
+          "horizontal_0": [
+            1,
+            1,
+            3,
+            12
+          ],
+          "pad_right_0": [
+            1,
+            1
+          ],
+          "hpads_0": [
+            1,
+            2
+          ],
+          "hpads_0__cast5_s_ccp": [
+            1,
+            2
+          ],
+          "hpads_0__cast5_s": [
+            1,
+            2
+          ],
+          "C_0": [
+            1,
+            1,
+            3,
+            30
+          ],
+          "vsmall_0": [
+            1,
+            1,
+            12,
+            3
+          ],
+          "pad_bottom_0": [
+            1,
+            1
+          ],
+          "vpads_0": [
+            1,
+            2
+          ],
+          "vpads_0__cast6_s_ccp": [
+            1,
+            2
+          ],
+          "vpads_0__cast6_s": [
+            1,
+            2
+          ],
+          "R_0": [
+            1,
+            1,
+            30,
+            3
+          ],
+          "main_values_1": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "pattern_values_1": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "hidx_scalar_1_i8": [],
+          "hidx_scalar_1": [],
+          "hidx_1": [
+            12
+          ],
+          "pattern_pad_1": [
+            1,
+            1,
+            3,
+            5
+          ],
+          "horizontal_1": [
+            1,
+            1,
+            3,
+            12
+          ],
+          "pad_right_1": [
+            1,
+            1
+          ],
+          "hpads_1": [
+            1,
+            2
+          ],
+          "hpads_1__cast7_s_ccp": [
+            1,
+            2
+          ],
+          "hpads_1__cast7_s": [
+            1,
+            2
+          ],
+          "C_1": [
+            1,
+            1,
+            3,
+            30
+          ],
+          "vsmall_1": [
+            1,
+            1,
+            12,
+            3
+          ],
+          "pad_bottom_1": [
+            1,
+            1
+          ],
+          "vpads_1": [
+            1,
+            2
+          ],
+          "vpads_1__cast8_s_ccp": [
+            1,
+            2
+          ],
+          "vpads_1__cast8_s": [
+            1,
+            2
+          ],
+          "R_1": [
+            1,
+            1,
+            30,
+            3
+          ],
+          "main_values_2": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "pattern_values_2": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "hidx_scalar_2_i8": [],
+          "hidx_scalar_2": [],
+          "hidx_2": [
+            12
+          ],
+          "pattern_pad_2": [
+            1,
+            1,
+            3,
+            5
+          ],
+          "horizontal_2": [
+            1,
+            1,
+            3,
+            12
+          ],
+          "pad_right_2": [
+            1,
+            1
+          ],
+          "hpads_2": [
+            1,
+            2
+          ],
+          "hpads_2__cast9_s_ccp": [
+            1,
+            2
+          ],
+          "hpads_2__cast9_s": [
+            1,
+            2
+          ],
+          "C_2": [
+            1,
+            1,
+            3,
+            30
+          ],
+          "vsmall_2": [
+            1,
+            1,
+            12,
+            3
+          ],
+          "pad_bottom_2": [
+            1,
+            1
+          ],
+          "vpads_2": [
+            1,
+            2
+          ],
+          "vpads_2__cast10_s_ccp": [
+            1,
+            2
+          ],
+          "vpads_2__cast10_s": [
+            1,
+            2
+          ],
+          "R_2": [
+            1,
+            1,
+            30,
+            3
+          ],
+          "main_values_tpl": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "pattern_values_tpl": [
+            1,
+            1,
+            3,
+            4
+          ],
+          "pad_right_tpl": [
+            1,
+            1
+          ],
+          "hpads_tpl": [
+            1,
+            2
+          ],
+          "hpads_tpl_ccp": [
+            1,
+            2
+          ],
+          "hpads_tpl_i64": [
+            1,
+            2
+          ],
+          "C_tpl": [
+            1,
+            1,
+            3,
+            30
+          ],
+          "pad_bottom_tpl": [
+            1,
+            1
+          ],
+          "vpads_tpl": [
+            1,
+            2
+          ],
+          "vpads_tpl_ccp": [
+            1,
+            2
+          ],
+          "vpads_tpl_i64": [
+            1,
+            2
+          ],
+          "R_tpl": [
+            1,
+            1,
+            30,
+            3
+          ],
+          "R_all": [
+            1,
+            1,
+            30,
+            13
+          ],
+          "C_all": [
+            1,
+            1,
+            13,
+            30
+          ],
+          "label": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 30,
+        "mismatches": [
+          {
+            "name": "sum_c_var_ccp",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "sum_c_var",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "sum_r2_var_ccp",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "sum_r2_var",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "__hid_cand_indices__cast3_s",
+            "declared": [
+              1,
+              1,
+              1,
+              3
+            ],
+            "actual": [
+              1,
+              4,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "cand_indices__cast3_s",
+            "declared": [
+              1,
+              1,
+              1,
+              3
+            ],
+            "actual": [
+              1,
+              4,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "cand_values",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              2
+            ]
+          },
+          {
+            "name": "cand_pc",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              2
+            ]
+          },
+          {
+            "name": "cand_pc_u",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              2,
+              1
+            ]
+          },
+          {
+            "name": "cand_hit_i8",
+            "declared": [
+              1,
+              4,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              2,
+              1
+            ]
+          },
+          {
+            "name": "target_marker_r__cast_int32__hack_ccp",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              4
+            ]
+          },
+          {
+            "name": "target_marker_r__cast_int32",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              4
+            ]
+          },
+          {
+            "name": "target_marker_c__cast_int32__hack_ccp",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              4
+            ]
+          },
+          {
+            "name": "target_marker_c__cast_int32",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              4
+            ]
+          },
+          {
+            "name": "hpads_0__cast5_s_ccp",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hpads_0__cast5_s",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "vpads_0__cast6_s_ccp",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "vpads_0__cast6_s",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hpads_1__cast7_s_ccp",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hpads_1__cast7_s",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "vpads_1__cast8_s_ccp",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "vpads_1__cast8_s",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hpads_2__cast9_s_ccp",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hpads_2__cast9_s",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "vpads_2__cast10_s_ccp",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "vpads_2__cast10_s",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hpads_tpl_ccp",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "hpads_tpl_i64",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "vpads_tpl_ccp",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "vpads_tpl_i64",
+            "declared": [
+              1
+            ],
+            "actual": [
+              1,
+              2
+            ]
+          }
+        ],
+        "nonfinite_values": 13,
+        "truthful": false
+      },
+      "known_candidate": {
+        "disable_all_threads1": {
+          "total": 267,
+          "right": 0,
+          "runtime_errors": 267,
+          "nonfinite_values": 0,
+          "shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'safe_name_45' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1} != {1,10}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "perfect": false
+        },
+        "disable_all_threads4": {
+          "total": 267,
+          "right": 0,
+          "runtime_errors": 267,
+          "nonfinite_values": 0,
+          "shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'safe_name_45' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1} != {1,10}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "perfect": false
+        },
+        "default_threads1": {
+          "total": 267,
+          "right": 267,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "perfect": true
+        },
+        "default_threads4": {
+          "total": 267,
+          "right": 267,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "perfect": true
+        }
+      },
+      "known_differential": {
+        "disable_all_threads1": {
+          "total": 267,
+          "candidate_right": 0,
+          "baseline_right": 267,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 267,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "model": "candidate",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'safe_name_45' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1} != {1,10}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "runtime_errors_total": 267,
+          "nonfinite_values_total": 0,
+          "perfect": false
+        },
+        "disable_all_threads4": {
+          "total": 267,
+          "candidate_right": 0,
+          "baseline_right": 267,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 267,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "model": "candidate",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'safe_name_45' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,1} != {1,10}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "runtime_errors_total": 267,
+          "nonfinite_values_total": 0,
+          "perfect": false
+        },
+        "default_threads1": {
+          "total": 267,
+          "candidate_right": 267,
+          "baseline_right": 267,
+          "raw_equal": 267,
+          "threshold_equal": 267,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "default_threads4": {
+          "total": 267,
+          "candidate_right": 267,
+          "baseline_right": 267,
+          "raw_equal": 267,
+          "threshold_equal": 267,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        }
+      },
+      "official_strict_lower": true
+    },
+    "216": {
+      "candidate_path": "scripts/golf/loop_8004_42_plus20/root_attr_constant_scan_155/candidates/task216_0052_CastLike.onnx",
+      "authority_sha256": "9a5f4f10d6e014b3f053ce1dabeb39cbeaf95964ae685aa71514fd695caf0756",
+      "candidate_sha256": "c86015a124a0a1a21872f708e029edeb6ec894c014819765bdca7cb99695eecf",
+      "declared_profiles": {
+        "authority": {
+          "memory": 979,
+          "params": 46,
+          "cost": 1025
+        },
+        "candidate": {
+          "memory": 857,
+          "params": 46,
+          "cost": 903
+        }
+      },
+      "official_profiles": {
+        "authority": {
+          "memory": 1453,
+          "params": 46,
+          "cost": 1499,
+          "score": 17.6874465018974,
+          "correct": true
+        },
+        "candidate": {
+          "memory": 857,
+          "params": 46,
+          "cost": 903,
+          "score": 18.194277446583015,
+          "correct": false
+        }
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 94,
+        "initializer_count": 14,
+        "value_info_count": 95,
+        "op_histogram": {
+          "Add": 8,
+          "ArgMax": 1,
+          "BitShift": 1,
+          "BitwiseAnd": 4,
+          "BitwiseXor": 3,
+          "Cast": 2,
+          "CastLike": 19,
+          "CenterCropPad": 15,
+          "Concat": 6,
+          "Div": 1,
+          "Einsum": 3,
+          "Gather": 7,
+          "Identity": 1,
+          "Log": 3,
+          "Neg": 2,
+          "Pad": 1,
+          "RoiAlign": 1,
+          "Selu": 3,
+          "Shape": 2,
+          "Slice": 2,
+          "Sub": 3,
+          "TopK": 2,
+          "Unsqueeze": 4
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 96,
+        "actual_shapes": {
+          "input_shape": [
+            1
+          ],
+          "shape4_dyn": [
+            1
+          ],
+          "input_hid": [
+            1,
+            7,
+            30,
+            30
+          ],
+          "input_u8": [
+            1,
+            7,
+            30,
+            30
+          ],
+          "red4_hid": [
+            1,
+            4,
+            30,
+            30
+          ],
+          "red3_hid": [
+            1,
+            3,
+            30,
+            30
+          ],
+          "red2_hid": [
+            1,
+            2,
+            30,
+            30
+          ],
+          "red1_hid": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "input_f16": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "input_i32": [
+            1,
+            7,
+            30,
+            30
+          ],
+          "row30": [
+            30
+          ],
+          "sl20_dyn": [
+            1
+          ],
+          "rowu": [
+            17
+          ],
+          "col30": [
+            30
+          ],
+          "rowu_len_minus": [
+            1
+          ],
+          "rowu_len_plus": [
+            1
+          ],
+          "prev_a": [
+            16
+          ],
+          "prev_b": [
+            18
+          ],
+          "prev": [
+            17
+          ],
+          "xor": [
+            17
+          ],
+          "new": [
+            17
+          ],
+          "rowvals": [
+            4
+          ],
+          "rowidx": [
+            4
+          ],
+          "rowidx_u8": [
+            4
+          ],
+          "neg1": [
+            4
+          ],
+          "low1": [
+            4
+          ],
+          "runplus": [
+            4
+          ],
+          "rem": [
+            4
+          ],
+          "neg2": [
+            4
+          ],
+          "low2": [
+            4
+          ],
+          "low8": [
+            9
+          ],
+          "corner_vals": [
+            4
+          ],
+          "corner_src": [
+            4
+          ],
+          "corner_vals_hid": [
+            4
+          ],
+          "rowidx8_u8": [
+            9
+          ],
+          "rows_u": [
+            4
+          ],
+          "__cl_rows_u__cast_uint32_hid": [
+            4
+          ],
+          "rows_u__cast_uint32": [
+            4
+          ],
+          "rows_i32_h": [
+            4
+          ],
+          "cvf": [
+            4
+          ],
+          "lgc": [
+            4
+          ],
+          "lg2c": [
+            4
+          ],
+          "cols_u": [
+            4
+          ],
+          "cols_u4": [
+            4
+          ],
+          "rsel": [
+            4
+          ],
+          "rseg": [
+            4
+          ],
+          "rplus": [
+            4
+          ],
+          "wbit": [
+            4
+          ],
+          "wf": [
+            4
+          ],
+          "wlog": [
+            4
+          ],
+          "wlg2_pre": [
+            4
+          ],
+          "width_u": [
+            4
+          ],
+          "cols_i64": [
+            4
+          ],
+          "__cast_move_post_38_12": [
+            4
+          ],
+          "csel": [
+            4
+          ],
+          "cseg": [
+            4
+          ],
+          "cplus": [
+            4
+          ],
+          "hbit": [
+            4
+          ],
+          "hf": [
+            4
+          ],
+          "hlog": [
+            4
+          ],
+          "hlg2_pre": [
+            4
+          ],
+          "height_u": [
+            4
+          ],
+          "x2": [
+            4
+          ],
+          "y2": [
+            4
+          ],
+          "cu": [
+            4,
+            1
+          ],
+          "ru": [
+            4,
+            1
+          ],
+          "x2u": [
+            4,
+            1
+          ],
+          "y2u": [
+            4,
+            1
+          ],
+          "roi_u": [
+            4,
+            4
+          ],
+          "__cl_roi_f_hid": [
+            4,
+            4
+          ],
+          "roi_f": [
+            4,
+            4
+          ],
+          "roiout": [
+            4,
+            1,
+            1,
+            1
+          ],
+          "width_f": [
+            4
+          ],
+          "height_f": [
+            4
+          ],
+          "counts": [
+            4
+          ],
+          "winner": [
+            1
+          ],
+          "wr": [
+            1
+          ],
+          "wc": [
+            1
+          ],
+          "wh": [
+            1
+          ],
+          "ww": [
+            1
+          ],
+          "wr2": [
+            1
+          ],
+          "wc2": [
+            1
+          ],
+          "__cs_concat_pair0": [
+            4
+          ],
+          "starts_hid": [
+            4
+          ],
+          "starts_pair": [
+            4
+          ],
+          "__cs_concat_pair1": [
+            4
+          ],
+          "ends_hid": [
+            4
+          ],
+          "ends_pair": [
+            4
+          ],
+          "pair": [
+            1,
+            2,
+            5,
+            6
+          ],
+          "ht": [
+            1
+          ],
+          "wt": [
+            1
+          ],
+          "__cs_concat_2": [
+            8
+          ],
+          "__cl_pads_shape": [
+            1
+          ],
+          "__cl_pads_hid": [
+            8
+          ],
+          "pads": [
+            8
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 53,
+        "mismatches": [
+          {
+            "name": "input_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              7,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "input_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              7,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "red4_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "red3_hid",
+            "declared": [
+              1,
+              3,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              3,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "red2_hid",
+            "declared": [
+              1,
+              2,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "red1_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "input_f16",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "input_i32",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              7,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "row30",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "col30",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "prev_a",
+            "declared": [
+              1
+            ],
+            "actual": [
+              16
+            ]
+          },
+          {
+            "name": "prev_b",
+            "declared": [
+              1
+            ],
+            "actual": [
+              18
+            ]
+          },
+          {
+            "name": "prev",
+            "declared": [
+              1
+            ],
+            "actual": [
+              17
+            ]
+          },
+          {
+            "name": "rowidx",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "rowidx_u8",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "corner_vals_hid",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "rowidx8_u8",
+            "declared": [
+              3
+            ],
+            "actual": [
+              9
+            ]
+          },
+          {
+            "name": "__cl_rows_u__cast_uint32_hid",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "rows_u__cast_uint32",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "rows_i32_h",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "cvf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "lgc",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "lg2c",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "cols_u",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "rsel",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "rseg",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "rplus",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "wbit",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "wf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "wlog",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "wlg2_pre",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "width_u",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "cols_i64",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "__cast_move_post_38_12",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "csel",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "cseg",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "cplus",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "hbit",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "hf",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "hlog",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "hlg2_pre",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "height_u",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "__cl_roi_f_hid",
+            "declared": [
+              4,
+              1
+            ],
+            "actual": [
+              4,
+              4
+            ]
+          },
+          {
+            "name": "roi_f",
+            "declared": [
+              4,
+              1
+            ],
+            "actual": [
+              4,
+              4
+            ]
+          },
+          {
+            "name": "width_f",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "height_f",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "starts_hid",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "starts_pair",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "ends_hid",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "ends_pair",
+            "declared": [
+              1
+            ],
+            "actual": [
+              4
+            ]
+          },
+          {
+            "name": "pair",
+            "declared": [
+              1,
+              2,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              5,
+              6
+            ]
+          },
+          {
+            "name": "__cl_pads_hid",
+            "declared": [],
+            "actual": [
+              8
+            ]
+          },
+          {
+            "name": "pads",
+            "declared": [],
+            "actual": [
+              8
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "known_candidate": {
+        "disable_all_threads1": {
+          "total": 266,
+          "right": 0,
+          "runtime_errors": 266,
+          "nonfinite_values": 0,
+          "shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Einsum node. Name:'safe_name_27' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {4} != {30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "perfect": false
+        },
+        "disable_all_threads4": {
+          "total": 266,
+          "right": 0,
+          "runtime_errors": 266,
+          "nonfinite_values": 0,
+          "shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Einsum node. Name:'safe_name_27' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {4} != {30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "perfect": false
+        },
+        "default_threads1": {
+          "total": 266,
+          "right": 266,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "perfect": true
+        },
+        "default_threads4": {
+          "total": 266,
+          "right": 266,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "perfect": true
+        }
+      },
+      "known_differential": {
+        "disable_all_threads1": {
+          "total": 266,
+          "candidate_right": 0,
+          "baseline_right": 266,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 266,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "model": "candidate",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Einsum node. Name:'safe_name_27' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {4} != {30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "runtime_errors_total": 266,
+          "nonfinite_values_total": 0,
+          "perfect": false
+        },
+        "disable_all_threads4": {
+          "total": 266,
+          "candidate_right": 0,
+          "baseline_right": 266,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 266,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "model": "candidate",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Einsum node. Name:'safe_name_27' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {4} != {30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "runtime_errors_total": 266,
+          "nonfinite_values_total": 0,
+          "perfect": false
+        },
+        "default_threads1": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "default_threads4": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        }
+      },
+      "official_strict_lower": true
+    },
+    "285": {
+      "candidate_path": "scripts/golf/loop_8004_42_plus20/root_attr_constant_scan_155/candidates/task285_0202_CastLike.onnx",
+      "authority_sha256": "366212e29105fde0295030f3ec3bb014bd300f23aa8259ccd79da2eea720b9e2",
+      "candidate_sha256": "3eec54cb97d9ef117ab63837ad4f3ed75835b474682d668356109d9e4165169f",
+      "declared_profiles": {
+        "authority": {
+          "memory": 8322,
+          "params": 301,
+          "cost": 8623
+        },
+        "candidate": {
+          "memory": 6972,
+          "params": 301,
+          "cost": 7273
+        }
+      },
+      "official_profiles": {
+        "authority": {
+          "memory": 8322,
+          "params": 301,
+          "cost": 8623,
+          "score": 15.937811669047676,
+          "correct": true
+        },
+        "candidate": {
+          "memory": 6972,
+          "params": 301,
+          "cost": 7273,
+          "score": 16.10807585984546,
+          "correct": false
+        }
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 209,
+        "initializer_count": 42,
+        "value_info_count": 194,
+        "op_histogram": {
+          "Add": 7,
+          "ArgMax": 1,
+          "AveragePool": 1,
+          "BitShift": 20,
+          "BitwiseAnd": 15,
+          "BitwiseOr": 12,
+          "BitwiseXor": 14,
+          "Cast": 18,
+          "CastLike": 17,
+          "CenterCropPad": 19,
+          "Concat": 5,
+          "Div": 1,
+          "Einsum": 5,
+          "Equal": 1,
+          "Gather": 17,
+          "GatherND": 2,
+          "Greater": 4,
+          "Identity": 1,
+          "Less": 1,
+          "LessOrEqual": 1,
+          "Mod": 1,
+          "Mul": 3,
+          "QLinearMatMul": 4,
+          "ReduceMax": 1,
+          "Reshape": 7,
+          "ScatterElements": 2,
+          "Shape": 7,
+          "Split": 2,
+          "Sqrt": 1,
+          "Sub": 1,
+          "TopK": 3,
+          "Transpose": 2,
+          "Unsqueeze": 9,
+          "Where": 4
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 218,
+        "actual_shapes": {
+          "width_area": [],
+          "width_f": [],
+          "width": [],
+          "width_u": [],
+          "width_pow2": [],
+          "validbits": [],
+          "rowok": [
+            30
+          ],
+          "__ch_s_6": [
+            1
+          ],
+          "zero30": [
+            30
+          ],
+          "__ch_h_6": [
+            30
+          ],
+          "rowok_u": [
+            30
+          ],
+          "validrows": [
+            30
+          ],
+          "colorcount": [
+            10
+          ],
+          "lowcolor": [
+            10
+          ],
+          "row_color_weight": [
+            10
+          ],
+          "rowcount3": [
+            1,
+            1,
+            30
+          ],
+          "sh_rc3": [
+            1
+          ],
+          "rc3_hid": [
+            1,
+            1,
+            30
+          ],
+          "rowcount3_h": [
+            1,
+            1,
+            30
+          ],
+          "rowscore": [
+            1,
+            1,
+            29
+          ],
+          "rowscore_b": [
+            1,
+            1,
+            29
+          ],
+          "rowvals": [
+            1,
+            1,
+            6
+          ],
+          "rowidx4": [
+            1,
+            1,
+            6
+          ],
+          "cm_pre_0": [
+            1,
+            1,
+            6
+          ],
+          "selrows": [
+            6
+          ],
+          "selrows__cast_int32": [
+            6
+          ],
+          "selrows1": [
+            6
+          ],
+          "bpf": [
+            4,
+            30
+          ],
+          "occf": [
+            30
+          ],
+          "__cl_occu_hid": [
+            30
+          ],
+          "occu": [
+            30
+          ],
+          "sh_bpf": [
+            1
+          ],
+          "bpf_hid": [
+            4,
+            30
+          ],
+          "bpf_u": [
+            4,
+            30
+          ],
+          "topg": [
+            4,
+            6
+          ],
+          "botg": [
+            4,
+            6
+          ],
+          "t0": [
+            1,
+            6
+          ],
+          "t1": [
+            1,
+            6
+          ],
+          "t2": [
+            1,
+            6
+          ],
+          "t3": [
+            1,
+            6
+          ],
+          "b0": [
+            1,
+            6
+          ],
+          "b1": [
+            1,
+            6
+          ],
+          "b2": [
+            1,
+            6
+          ],
+          "b3": [
+            1,
+            6
+          ],
+          "ts0": [
+            1,
+            6
+          ],
+          "ts1": [
+            1,
+            6
+          ],
+          "ts2": [
+            1,
+            6
+          ],
+          "ts3": [
+            1,
+            6
+          ],
+          "bs0": [
+            1,
+            6
+          ],
+          "bs1": [
+            1,
+            6
+          ],
+          "bs2": [
+            1,
+            6
+          ],
+          "bs3": [
+            1,
+            6
+          ],
+          "htx0": [
+            1,
+            6
+          ],
+          "htx1": [
+            1,
+            6
+          ],
+          "htx2": [
+            1,
+            6
+          ],
+          "htx3": [
+            1,
+            6
+          ],
+          "hta": [
+            1,
+            6
+          ],
+          "htb": [
+            1,
+            6
+          ],
+          "ht": [
+            1,
+            6
+          ],
+          "hbx0": [
+            1,
+            6
+          ],
+          "hbx1": [
+            1,
+            6
+          ],
+          "hbx2": [
+            1,
+            6
+          ],
+          "hbx3": [
+            1,
+            6
+          ],
+          "hba": [
+            1,
+            6
+          ],
+          "hbb": [
+            1,
+            6
+          ],
+          "hb": [
+            1,
+            6
+          ],
+          "vx0": [
+            1,
+            6
+          ],
+          "vx1": [
+            1,
+            6
+          ],
+          "vx2": [
+            1,
+            6
+          ],
+          "vx3": [
+            1,
+            6
+          ],
+          "vva": [
+            1,
+            6
+          ],
+          "vvb": [
+            1,
+            6
+          ],
+          "vv": [
+            1,
+            6
+          ],
+          "vv1": [
+            1,
+            6
+          ],
+          "cm1": [
+            1,
+            6
+          ],
+          "cm2": [
+            1,
+            6
+          ],
+          "cm4_pre": [
+            1,
+            6
+          ],
+          "cm4_pre_i": [
+            1,
+            6
+          ],
+          "badrow_bool": [
+            6
+          ],
+          "cm_masked_i": [
+            1,
+            6
+          ],
+          "cm_i": [
+            1,
+            6
+          ],
+          "cwvals": [
+            1,
+            3
+          ],
+          "cwidx4": [
+            1,
+            3
+          ],
+          "cw": [
+            3,
+            1
+          ],
+          "cm_pre_1": [
+            1,
+            3
+          ],
+          "cwrow_slot": [
+            3
+          ],
+          "cw_u": [
+            3,
+            1
+          ],
+          "cw_sh0": [
+            3,
+            1
+          ],
+          "cw8_0": [
+            3,
+            1
+          ],
+          "bitand0": [
+            3,
+            8
+          ],
+          "biton0": [
+            3,
+            8
+          ],
+          "cw_sh1": [
+            3,
+            1
+          ],
+          "cw8_1": [
+            3,
+            1
+          ],
+          "bitand1": [
+            3,
+            8
+          ],
+          "biton1": [
+            3,
+            8
+          ],
+          "cw_sh2": [
+            3,
+            1
+          ],
+          "cw8_2": [
+            3,
+            1
+          ],
+          "bitand2": [
+            3,
+            5
+          ],
+          "biton2": [
+            3,
+            5
+          ],
+          "biton": [
+            3,
+            21
+          ],
+          "cm_post_0": [
+            63
+          ],
+          "__cl_bitflat_shape": [
+            1
+          ],
+          "__cl_bitflat_hid": [
+            63
+          ],
+          "bitflat": [
+            63
+          ],
+          "bvals": [
+            3
+          ],
+          "bidx": [
+            3
+          ],
+          "bidx_i": [
+            3
+          ],
+          "wordslot": [
+            3
+          ],
+          "wordslot__cast_int32": [
+            3
+          ],
+          "ccol0": [
+            3
+          ],
+          "ccol": [
+            3
+          ],
+          "rowslot": [
+            3
+          ],
+          "rowslot__cast_int32": [
+            3
+          ],
+          "crow": [
+            3
+          ],
+          "r3": [
+            3,
+            1,
+            1
+          ],
+          "rowraw": [
+            3,
+            4,
+            5
+          ],
+          "__cl_rowraw__cast_int16_shape": [
+            1
+          ],
+          "__cl_rowraw__cast_int16_hid": [
+            3,
+            4,
+            5
+          ],
+          "rowraw__cast_int16": [
+            3,
+            4,
+            5
+          ],
+          "c2": [
+            3,
+            1
+          ],
+          "start": [
+            3,
+            4
+          ],
+          "__cast_move_post_98_12": [
+            3,
+            4,
+            1
+          ],
+          "__ch_h_104": [
+            3,
+            4,
+            1
+          ],
+          "start_u3": [
+            3,
+            4,
+            1
+          ],
+          "rowraw_near": [
+            3,
+            4,
+            2
+          ],
+          "__ch_h_106": [
+            3,
+            4,
+            2
+          ],
+          "rowraw_near__cast_int32": [
+            3,
+            4,
+            2
+          ],
+          "rows_near": [
+            3,
+            4,
+            2
+          ],
+          "seg_near": [
+            3,
+            4,
+            2
+          ],
+          "seg_near8": [
+            3,
+            4,
+            2
+          ],
+          "near": [
+            3,
+            4,
+            2
+          ],
+          "qscore": [
+            3,
+            4
+          ],
+          "show": [
+            3,
+            1
+          ],
+          "sel_rows": [
+            3,
+            5
+          ],
+          "__ch_h_116": [
+            3,
+            5
+          ],
+          "sel_rows__cast_int32": [
+            3,
+            5
+          ],
+          "sel_rows_occ": [
+            3,
+            5
+          ],
+          "__cast_move_post_112_12": [
+            3
+          ],
+          "__cast_move_post_114_12": [
+            3,
+            1
+          ],
+          "__hide_sel_start_hid": [
+            3,
+            1
+          ],
+          "sel_start_u2": [
+            3,
+            1
+          ],
+          "sel_seg": [
+            3,
+            5
+          ],
+          "segu_hid": [
+            3,
+            5
+          ],
+          "sel_seg_u8": [
+            3,
+            5
+          ],
+          "sel_seg8": [
+            3,
+            5
+          ],
+          "source_side": [
+            3,
+            1
+          ],
+          "__ch_h_127": [
+            3,
+            5
+          ],
+          "normkey_i": [
+            3,
+            5
+          ],
+          "chosen_rev": [
+            3,
+            5
+          ],
+          "chosen_raw_full": [
+            3,
+            5
+          ],
+          "s0": [
+            3,
+            1
+          ],
+          "s1": [
+            3,
+            1
+          ],
+          "s2": [
+            3,
+            1
+          ],
+          "s3": [
+            3,
+            1
+          ],
+          "co1": [
+            3,
+            1
+          ],
+          "co2": [
+            3,
+            1
+          ],
+          "co3": [
+            3,
+            1
+          ],
+          "colpref_p1": [
+            3,
+            1
+          ],
+          "colpref_x": [
+            3,
+            1
+          ],
+          "chosen_c": [
+            3,
+            5
+          ],
+          "rowocc": [
+            3,
+            5
+          ],
+          "rowmask2": [
+            3,
+            5
+          ],
+          "chosen_pre": [
+            3,
+            5
+          ],
+          "bvals_u8": [
+            3
+          ],
+          "cv2u": [
+            3,
+            1
+          ],
+          "chosen": [
+            3,
+            5
+          ],
+          "__hide_chosen_hid": [
+            3,
+            5
+          ],
+          "revchosenkey_i": [
+            3,
+            5
+          ],
+          "revchosen": [
+            3,
+            5
+          ],
+          "cu": [
+            3,
+            1,
+            5
+          ],
+          "ru": [
+            3,
+            1,
+            5
+          ],
+          "phys8": [
+            3,
+            4,
+            5
+          ],
+          "ctop": [
+            4,
+            3
+          ],
+          "cbot": [
+            4,
+            3
+          ],
+          "__cast_move_post_160_12": [
+            1,
+            3
+          ],
+          "ccol_u0": [
+            1,
+            3
+          ],
+          "ctop_s": [
+            4,
+            3
+          ],
+          "cbot_s": [
+            4,
+            3
+          ],
+          "ctop_pair_u8": [
+            4,
+            3
+          ],
+          "cbot_pair_u8": [
+            4,
+            3
+          ],
+          "ctop_pair_low": [
+            4,
+            3
+          ],
+          "ctop_pair_hi0": [
+            4,
+            3
+          ],
+          "ctop_pair_hi": [
+            4,
+            3
+          ],
+          "cbot_pair_low": [
+            4,
+            3
+          ],
+          "cbot_pair_hi0": [
+            4,
+            3
+          ],
+          "cbot_pair_hi": [
+            4,
+            3
+          ],
+          "tl": [
+            1,
+            3
+          ],
+          "tr": [
+            1,
+            3
+          ],
+          "bl": [
+            1,
+            3
+          ],
+          "br": [
+            1,
+            3
+          ],
+          "colors4x3": [
+            4,
+            3
+          ],
+          "colors": [
+            3,
+            4
+          ],
+          "__cl_phys_hid": [
+            3,
+            4,
+            5
+          ],
+          "phys": [
+            3,
+            4,
+            5
+          ],
+          "updates": [
+            3,
+            4,
+            5
+          ],
+          "__ch_h_199": [
+            3,
+            4
+          ],
+          "colors_i": [
+            3,
+            4
+          ],
+          "base": [
+            3,
+            4
+          ],
+          "base3": [
+            3,
+            4,
+            1
+          ],
+          "cidx": [
+            3,
+            4,
+            5
+          ],
+          "cidxf": [
+            60
+          ],
+          "updf": [
+            60
+          ],
+          "ridxf": [
+            60
+          ],
+          "__cl_ridxf__cast_int32_shape": [
+            1
+          ],
+          "__cl_ridxf__cast_int32_hid": [
+            60
+          ],
+          "ridxf__cast_int32": [
+            60
+          ],
+          "union": [
+            30
+          ],
+          "bg": [
+            30
+          ],
+          "allidx": [
+            90
+          ],
+          "__rs_allidx_shape": [
+            1
+          ],
+          "__rs_allidx_hid": [
+            90
+          ],
+          "allidx__cast_int32": [
+            90
+          ],
+          "allupd": [
+            90
+          ],
+          "__zd_shape_zero300": [
+            1
+          ],
+          "zero300": [
+            300
+          ],
+          "rows300": [
+            300
+          ],
+          "rows4": [
+            1,
+            10,
+            30,
+            1
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 57,
+        "mismatches": [
+          {
+            "name": "zero30",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "__ch_h_6",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "rowok_u",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "validrows",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "rc3_hid",
+            "declared": [
+              1,
+              1,
+              2
+            ],
+            "actual": [
+              1,
+              1,
+              30
+            ]
+          },
+          {
+            "name": "rowcount3_h",
+            "declared": [
+              1,
+              1,
+              2
+            ],
+            "actual": [
+              1,
+              1,
+              30
+            ]
+          },
+          {
+            "name": "rowscore",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29
+            ]
+          },
+          {
+            "name": "__cl_occu_hid",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "occu",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "bpf_hid",
+            "declared": [
+              4,
+              1
+            ],
+            "actual": [
+              4,
+              30
+            ]
+          },
+          {
+            "name": "bpf_u",
+            "declared": [
+              4,
+              1
+            ],
+            "actual": [
+              4,
+              30
+            ]
+          },
+          {
+            "name": "__cl_bitflat_hid",
+            "declared": [
+              3
+            ],
+            "actual": [
+              63
+            ]
+          },
+          {
+            "name": "bitflat",
+            "declared": [
+              3
+            ],
+            "actual": [
+              63
+            ]
+          },
+          {
+            "name": "__cl_rowraw__cast_int16_hid",
+            "declared": [
+              1,
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "name": "rowraw__cast_int16",
+            "declared": [
+              1,
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "name": "__ch_h_104",
+            "declared": [
+              3,
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4,
+              1
+            ]
+          },
+          {
+            "name": "start_u3",
+            "declared": [
+              3,
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4,
+              1
+            ]
+          },
+          {
+            "name": "__ch_h_106",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4,
+              2
+            ]
+          },
+          {
+            "name": "rowraw_near__cast_int32",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4,
+              2
+            ]
+          },
+          {
+            "name": "rows_near",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4,
+              2
+            ]
+          },
+          {
+            "name": "seg_near",
+            "declared": [
+              3,
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4,
+              2
+            ]
+          },
+          {
+            "name": "seg_near8",
+            "declared": [
+              3,
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4,
+              2
+            ]
+          },
+          {
+            "name": "__ch_h_116",
+            "declared": [
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "sel_rows__cast_int32",
+            "declared": [
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "sel_rows_occ",
+            "declared": [
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "__hide_sel_start_hid",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              1
+            ]
+          },
+          {
+            "name": "sel_start_u2",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              1
+            ]
+          },
+          {
+            "name": "sel_seg",
+            "declared": [
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "segu_hid",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "sel_seg_u8",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "sel_seg8",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "__ch_h_127",
+            "declared": [
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "normkey_i",
+            "declared": [
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "chosen_rev",
+            "declared": [
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "__hide_chosen_hid",
+            "declared": [
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "revchosenkey_i",
+            "declared": [
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "revchosen",
+            "declared": [
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              5
+            ]
+          },
+          {
+            "name": "cu",
+            "declared": [
+              1,
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              1,
+              5
+            ]
+          },
+          {
+            "name": "ru",
+            "declared": [
+              1,
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              1,
+              5
+            ]
+          },
+          {
+            "name": "phys8",
+            "declared": [
+              1,
+              4,
+              5
+            ],
+            "actual": [
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "name": "__cl_phys_hid",
+            "declared": [
+              1,
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "name": "phys",
+            "declared": [
+              1,
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "name": "updates",
+            "declared": [
+              3,
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "name": "__ch_h_199",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4
+            ]
+          },
+          {
+            "name": "colors_i",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4
+            ]
+          },
+          {
+            "name": "base",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4
+            ]
+          },
+          {
+            "name": "base3",
+            "declared": [
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              3,
+              4,
+              1
+            ]
+          },
+          {
+            "name": "cidx",
+            "declared": [
+              1,
+              1,
+              5
+            ],
+            "actual": [
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "name": "__cl_ridxf__cast_int32_hid",
+            "declared": [
+              1
+            ],
+            "actual": [
+              60
+            ]
+          },
+          {
+            "name": "ridxf__cast_int32",
+            "declared": [
+              1
+            ],
+            "actual": [
+              60
+            ]
+          },
+          {
+            "name": "union",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "bg",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "__rs_allidx_hid",
+            "declared": [
+              1
+            ],
+            "actual": [
+              90
+            ]
+          },
+          {
+            "name": "allidx__cast_int32",
+            "declared": [
+              1
+            ],
+            "actual": [
+              90
+            ]
+          },
+          {
+            "name": "allupd",
+            "declared": [
+              61
+            ],
+            "actual": [
+              90
+            ]
+          },
+          {
+            "name": "zero300",
+            "declared": [
+              1
+            ],
+            "actual": [
+              300
+            ]
+          },
+          {
+            "name": "rows300",
+            "declared": [
+              1
+            ],
+            "actual": [
+              300
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "known_candidate": {
+        "disable_all_threads1": {
+          "total": 265,
+          "right": 0,
+          "runtime_errors": 265,
+          "nonfinite_values": 0,
+          "shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_safe_name_238' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {3,1} != {3,4}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "perfect": false
+        },
+        "disable_all_threads4": {
+          "total": 265,
+          "right": 0,
+          "runtime_errors": 265,
+          "nonfinite_values": 0,
+          "shapes": [],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_safe_name_238' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {3,1} != {3,4}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "perfect": false
+        },
+        "default_threads1": {
+          "total": 265,
+          "right": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [],
+          "first_failure": null,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_213) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=3 Declared=1 Dimension=0",
+          "perfect": false
+        },
+        "default_threads4": {
+          "total": 265,
+          "right": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [],
+          "first_failure": null,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_213) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=3 Declared=1 Dimension=0",
+          "perfect": false
+        }
+      },
+      "known_differential": {
+        "disable_all_threads1": {
+          "total": 265,
+          "candidate_right": 0,
+          "baseline_right": 265,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 265,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "model": "candidate",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_safe_name_238' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {3,1} != {3,4}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "runtime_errors_total": 265,
+          "nonfinite_values_total": 0,
+          "perfect": false
+        },
+        "disable_all_threads4": {
+          "total": 265,
+          "candidate_right": 0,
+          "baseline_right": 265,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 265,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "model": "candidate",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_safe_name_238' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {3,1} != {3,4}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "runtime_errors_total": 265,
+          "nonfinite_values_total": 0,
+          "perfect": false
+        },
+        "default_threads1": {
+          "total": 265,
+          "candidate_right": 0,
+          "baseline_right": 0,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [],
+          "first_failure": null,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_213) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=3 Declared=1 Dimension=0",
+          "perfect": false
+        },
+        "default_threads4": {
+          "total": 265,
+          "candidate_right": 0,
+          "baseline_right": 0,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [],
+          "first_failure": null,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_213) Op (Concat) [ShapeInferenceError] Can't merge shape info. Both inferred and declared dimension have values but they differ. Inferred=3 Declared=1 Dimension=0",
+          "perfect": false
+        }
+      },
+      "official_strict_lower": true
+    },
+    "388": {
+      "candidate_path": "scripts/golf/loop_8004_42_plus20/root_attr_constant_scan_155/candidates/task388_0015_CastLike.onnx",
+      "authority_sha256": "f27fa5f4f0bcade23d02fed2a74e3c2b826b11140bd03d29f47e0c59c382a8e1",
+      "candidate_sha256": "aca14029d7b152eaeed10994de21f473ff520de99c858353a68a281d0c1e6496",
+      "declared_profiles": {
+        "authority": {
+          "memory": 63,
+          "params": 22,
+          "cost": 85
+        },
+        "candidate": {
+          "memory": 63,
+          "params": 21,
+          "cost": 84
+        }
+      },
+      "official_profiles": {
+        "authority": {
+          "memory": 283,
+          "params": 22,
+          "cost": 305,
+          "score": 19.27968822339259,
+          "correct": true
+        },
+        "candidate": {
+          "memory": 1578,
+          "params": 21,
+          "cost": 1599,
+          "score": 17.622866287166048,
+          "correct": true
+        }
+      },
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 19,
+        "initializer_count": 11,
+        "value_info_count": 18,
+        "op_histogram": {
+          "ArgMax": 1,
+          "Cast": 1,
+          "CastLike": 6,
+          "CenterCropPad": 1,
+          "Concat": 1,
+          "GroupNormalization": 1,
+          "ReduceL2": 1,
+          "ReduceMax": 1,
+          "ReduceMin": 1,
+          "ScatterElements": 1,
+          "Slice": 1,
+          "Tile": 1,
+          "Where": 2
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 19,
+        "actual_shapes": {
+          "nf": [
+            1
+          ],
+          "ni": [
+            1
+          ],
+          "gn": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "q": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "qb": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "presence": [
+            1,
+            10
+          ],
+          "color64": [
+            1
+          ],
+          "color_u8": [
+            1
+          ],
+          "ends_bg": [
+            3
+          ],
+          "background": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "all_bg": [
+            1,
+            1,
+            1,
+            3
+          ],
+          "stripe": [
+            1,
+            1,
+            1,
+            3
+          ],
+          "tile_ids": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "ids": [
+            1,
+            1,
+            6,
+            6
+          ],
+          "ids_hid": [
+            1,
+            2,
+            6,
+            6
+          ],
+          "idx_i8": [
+            1,
+            2,
+            6,
+            6
+          ],
+          "indices": [
+            1,
+            2,
+            6,
+            6
+          ],
+          "updates_float": [
+            1,
+            2,
+            6,
+            6
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 14,
+        "mismatches": [
+          {
+            "name": "gn",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "q",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "qb",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "presence",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10
+            ]
+          },
+          {
+            "name": "background",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              3,
+              3
+            ]
+          },
+          {
+            "name": "all_bg",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              1,
+              3
+            ]
+          },
+          {
+            "name": "stripe",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              1,
+              3
+            ]
+          },
+          {
+            "name": "tile_ids",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              3,
+              3
+            ]
+          },
+          {
+            "name": "ids",
+            "declared": [
+              1,
+              1,
+              2,
+              2
+            ],
+            "actual": [
+              1,
+              1,
+              6,
+              6
+            ]
+          },
+          {
+            "name": "ids_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              6,
+              6
+            ]
+          },
+          {
+            "name": "idx_i8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              6,
+              6
+            ]
+          },
+          {
+            "name": "indices",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              6,
+              6
+            ]
+          },
+          {
+            "name": "updates_float",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              2,
+              6,
+              6
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "known_candidate": {
+        "disable_all_threads1": {
+          "total": 266,
+          "right": 266,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "total": 266,
+          "right": 266,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "perfect": true
+        },
+        "default_threads1": {
+          "total": 266,
+          "right": 266,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "perfect": true
+        },
+        "default_threads4": {
+          "total": 266,
+          "right": 266,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "perfect": true
+        }
+      },
+      "known_differential": {
+        "disable_all_threads1": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "default_threads1": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "default_threads4": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        }
+      },
+      "official_strict_lower": false
+    }
+  }
+}

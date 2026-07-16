@@ -1,0 +1,786 @@
+{
+  "task": 89,
+  "baseline_path": "scripts/golf/loop_8004_42_plus20/agent_rebase_new21/base/task089.onnx",
+  "candidate_path": "scripts/golf/loop_8004_42_plus20/root_exact_noop26/task089.onnx",
+  "baseline_sha256": "cf72627641735930c993eef05c7114b1e4945cec1fd90c9eb1093c3c1f1c7d9e",
+  "candidate_sha256": "d8793c28527b54545d1cc504a7bfec11cda0c048cdf28bef1f12241889a55eb1",
+  "baseline_cost": 1349,
+  "candidate_cost": 1180,
+  "projected_gain_if_valid": 0.13384913874804547,
+  "structure": {
+    "checker_full": true,
+    "strict_data_prop": true,
+    "conv_bias_findings": [],
+    "standard_domains": true,
+    "lookup_ops": []
+  },
+  "known": {
+    "disable_all": {
+      "total": 267,
+      "base_right": 267,
+      "candidate_right": 0,
+      "base_runtime_errors": 0,
+      "candidate_runtime_errors": 267,
+      "raw_equal": 0,
+      "decoded_equal": 0,
+      "first_candidate_error": {
+        "index": 0,
+        "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,10,2,2} != {1,1,13,13}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+      }
+    },
+    "default": {
+      "base_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_60) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+      "candidate_session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_60) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    }
+  },
+  "fresh_run": false,
+  "verdict": "REJECT",
+  "reasons": [
+    "disable_all_runtime_errors_on_all_known_cases",
+    "default_ORT_session_creation_failed",
+    "runtime_shapes_not_truthful",
+    "not_raw_equal_to_LB_incumbent",
+    "fresh_not_run_after_mandatory_known/runtime/shape_gates_failed"
+  ],
+  "runtime_shapes": {
+    "truthful": false,
+    "mismatch_count": 49,
+    "mismatches": [
+      {
+        "tensor": "input_hidden",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "input_u8",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "decode_big",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          2,
+          2
+        ]
+      },
+      {
+        "tensor": "pad_grid_14",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          14,
+          14
+        ]
+      },
+      {
+        "tensor": "pad_grid_15",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          15,
+          15
+        ]
+      },
+      {
+        "tensor": "pad_grid_16",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          16,
+          16
+        ]
+      },
+      {
+        "tensor": "pad_grid_17",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          17,
+          17
+        ]
+      },
+      {
+        "tensor": "pad_grid_18",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          18,
+          18
+        ]
+      },
+      {
+        "tensor": "pad_grid_19",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          19,
+          19
+        ]
+      },
+      {
+        "tensor": "pad_grid_20",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          20,
+          20
+        ]
+      },
+      {
+        "tensor": "pad_grid_21",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          21,
+          21
+        ]
+      },
+      {
+        "tensor": "pad_grid_22",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          22,
+          22
+        ]
+      },
+      {
+        "tensor": "pad_grid_23",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          23,
+          23
+        ]
+      },
+      {
+        "tensor": "pad_grid_24",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          24,
+          24
+        ]
+      },
+      {
+        "tensor": "pad_grid_25",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          25,
+          25
+        ]
+      },
+      {
+        "tensor": "pad_grid_26",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          26,
+          26
+        ]
+      },
+      {
+        "tensor": "pad_grid_27",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          27,
+          27
+        ]
+      },
+      {
+        "tensor": "pad_grid_28",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          28,
+          28
+        ]
+      },
+      {
+        "tensor": "pad_grid_29",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "pad_grid_30",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "red_crop3",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          3,
+          3
+        ]
+      },
+      {
+        "tensor": "grn_crop3",
+        "declared": [
+          1,
+          1,
+          1,
+          2
+        ],
+        "runtime": [
+          1,
+          1,
+          3,
+          3
+        ]
+      },
+      {
+        "tensor": "value_hide",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          13,
+          13
+        ]
+      },
+      {
+        "tensor": "top_sp0",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          29,
+          29
+        ]
+      },
+      {
+        "tensor": "top_sp1",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          28,
+          28
+        ]
+      },
+      {
+        "tensor": "top_sp2",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          27,
+          27
+        ]
+      },
+      {
+        "tensor": "top_sp3",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          26,
+          26
+        ]
+      },
+      {
+        "tensor": "top_sp4",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          25,
+          25
+        ]
+      },
+      {
+        "tensor": "top_sp5",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          24,
+          24
+        ]
+      },
+      {
+        "tensor": "top_sp6",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          23,
+          23
+        ]
+      },
+      {
+        "tensor": "top_sp7",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          22,
+          22
+        ]
+      },
+      {
+        "tensor": "top_sp8",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          21,
+          21
+        ]
+      },
+      {
+        "tensor": "top_sp9",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          20,
+          20
+        ]
+      },
+      {
+        "tensor": "top_sp10",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          19,
+          19
+        ]
+      },
+      {
+        "tensor": "top_sp11",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          18,
+          18
+        ]
+      },
+      {
+        "tensor": "top_sp12",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          17,
+          17
+        ]
+      },
+      {
+        "tensor": "top_sp13",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          16,
+          16
+        ]
+      },
+      {
+        "tensor": "top_sp14",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          15,
+          15
+        ]
+      },
+      {
+        "tensor": "top_sp15",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          14,
+          14
+        ]
+      },
+      {
+        "tensor": "top13_u8",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          13,
+          13
+        ]
+      },
+      {
+        "tensor": "grn_ch0",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          3,
+          13,
+          13
+        ]
+      },
+      {
+        "tensor": "grn_ch1",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          2,
+          13,
+          13
+        ]
+      },
+      {
+        "tensor": "grn_mark",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          13,
+          13
+        ]
+      },
+      {
+        "tensor": "red_ch2",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          3,
+          13,
+          13
+        ]
+      },
+      {
+        "tensor": "red_ch3",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          2,
+          13,
+          13
+        ]
+      },
+      {
+        "tensor": "red_all_u8",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          1,
+          13,
+          13
+        ]
+      },
+      {
+        "tensor": "red_ch0",
+        "declared": [
+          1,
+          5,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          5,
+          13,
+          13
+        ]
+      },
+      {
+        "tensor": "red_ch1",
+        "declared": [
+          1,
+          4,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          4,
+          13,
+          13
+        ]
+      },
+      {
+        "tensor": "output",
+        "declared": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ]
+  }
+}

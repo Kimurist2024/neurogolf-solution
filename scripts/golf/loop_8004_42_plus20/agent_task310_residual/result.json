@@ -1,0 +1,103 @@
+{
+  "task": 310,
+  "generator_hash": "c909285e",
+  "decision": "ADMIT_AUTHORITY_RAW_PASS_THROUGH",
+  "authority": {
+    "zip": "submission_base_8009.46.zip",
+    "zip_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "member_sha256": "4eed21efedf2b44e11d2bb748d383275d193144c3c0f8f9f55265c8639e6fdec",
+    "memory": 194,
+    "parameters": 307,
+    "cost": 501
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_task310_residual/task310_exact_parity_factor.onnx",
+    "sha256": "6ccf625a0dca41d5c9cb39ddb41c3756313f2a01ac95f38d70c880c677ccf858",
+    "memory": 194,
+    "parameters": 297,
+    "cost": 491,
+    "strict_gain": 10,
+    "score_gain": 0.020161973290344318
+  },
+  "transformation": {
+    "removed_initializer": "A2[2,2,2,2]",
+    "removed_elements": 16,
+    "added_initializers": {
+      "ParityH[2,2]": 4,
+      "ParityW[2]": 2
+    },
+    "added_elements": 6,
+    "parameter_delta": -10,
+    "identity": "A2[d,r,j,c] = 0.5 * sum_k H[k,d] * H[k,r] * H[k,j] * H[k,c]",
+    "H": [[1.0, 1.0], [1.0, -1.0]],
+    "W": [0.5, 0.5],
+    "source_tensor_bit_identical": true,
+    "all_input_real_algebra_exact": true,
+    "authority_occurrences_replaced": 2
+  },
+  "policy_scope": {
+    "classification": "authority raw-pass-through only",
+    "complete_generator_support_claim": false,
+    "candidate_only_new_errors": 0,
+    "inherited_authority_generator_failure": {
+      "seed": 202607149901,
+      "case": 4037,
+      "different_cells": 132
+    },
+    "inherited_lookup_nodes": 6,
+    "authority_final_einsum_inputs": 31,
+    "candidate_final_einsum_inputs": 39
+  },
+  "runtime_configurations": [
+    "ORT_DISABLE_ALL threads=1",
+    "ORT_DISABLE_ALL threads=4",
+    "ORT_ENABLE_ALL threads=1",
+    "ORT_ENABLE_ALL threads=4"
+  ],
+  "known": {
+    "cases_per_configuration": 266,
+    "raw_equal_per_configuration": 266,
+    "truth_right_per_configuration": 266,
+    "aggregate_raw_equal": 1064,
+    "aggregate_case_configurations": 1064,
+    "runtime_errors": 0,
+    "nonfinite_values": 0,
+    "near_positive_values": 0,
+    "maximum_raw_delta": 0.0
+  },
+  "fresh": {
+    "seeds": [202607149901, 202607149902],
+    "cases_per_seed_per_configuration": 5000,
+    "raw_equal_per_configuration": 10000,
+    "aggregate_raw_equal": 40000,
+    "aggregate_case_configurations": 40000,
+    "truth_right_per_configuration": 9999,
+    "candidate_only_new_wrong": 0,
+    "runtime_errors": 0,
+    "nonfinite_values": 0,
+    "near_positive_values": 0,
+    "maximum_raw_delta": 0.0
+  },
+  "structural_gates": {
+    "checker_full": true,
+    "strict_shape_inference_data_prop": true,
+    "runtime_shape_outputs_traced": 21,
+    "runtime_shape_mismatches": 0,
+    "truthful_shapes": true,
+    "standard_domain_only": true,
+    "banned_ops": [],
+    "nested_graphs": 0,
+    "functions": 0,
+    "sparse_initializers": 0,
+    "finite_initializers": true,
+    "conv_bias_ub_findings": 0
+  },
+  "evidence": [
+    "scripts/golf/loop_8004_42_plus20/agent_task310_residual/audit.json",
+    "scripts/golf/loop_8004_42_plus20/agent_task310_residual/REPORT.md",
+    "scripts/golf/loop_8004_42_plus20/agent_task310_residual/build_parity_factor.py",
+    "scripts/golf/loop_8004_42_plus20/agent_task310_residual/audit_candidate.py"
+  ],
+  "accepted": true,
+  "root_or_stage_modified": false
+}

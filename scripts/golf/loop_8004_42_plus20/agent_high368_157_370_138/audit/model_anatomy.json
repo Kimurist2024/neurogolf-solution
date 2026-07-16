@@ -1,0 +1,1631 @@
+{
+  "157": {
+    "task": 157,
+    "path": "scripts/golf/loop_8004_42_plus20/agent_high368_157_370_138/baseline/task157.onnx",
+    "sha256": "a1254f2619406b8db5d3fe5fdd1c42c917820fa51b91faef0f3ceed5d8b3662f",
+    "nodes": 258,
+    "value_info": 0,
+    "op_histogram": {
+      "Einsum": 2,
+      "Gather": 12,
+      "Cast": 49,
+      "BitwiseXor": 13,
+      "Mul": 21,
+      "Add": 12,
+      "BitwiseOr": 20,
+      "BitwiseAnd": 27,
+      "Sub": 10,
+      "Equal": 18,
+      "Where": 46,
+      "Concat": 2,
+      "Div": 22,
+      "Mod": 1,
+      "ArgMax": 3
+    },
+    "declared_static_memory": 746,
+    "memory_by_op": {
+      "Concat": 128,
+      "Einsum": 120,
+      "Cast": 98,
+      "Where": 58,
+      "Div": 56,
+      "BitwiseAnd": 47,
+      "Mul": 42,
+      "BitwiseOr": 39,
+      "Equal": 36,
+      "Gather": 33,
+      "ArgMax": 24,
+      "BitwiseXor": 23,
+      "Sub": 20,
+      "Add": 18,
+      "Mod": 4
+    },
+    "largest_intermediates": [
+      {
+        "name": "comp30_i32",
+        "op": "Concat",
+        "dtype": "INT32",
+        "shape": [
+          30
+        ],
+        "bytes": 120
+      },
+      {
+        "name": "rows30f",
+        "op": "Einsum",
+        "dtype": "FLOAT",
+        "shape": [
+          30
+        ],
+        "bytes": 120
+      },
+      {
+        "name": "b1shift_vec",
+        "op": "Div",
+        "dtype": "UINT16",
+        "shape": [
+          4
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "b2shift_vec",
+        "op": "Div",
+        "dtype": "UINT16",
+        "shape": [
+          4
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "bs_safe",
+        "op": "Concat",
+        "dtype": "UINT16",
+        "shape": [
+          4
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "chosen_idx_0",
+        "op": "ArgMax",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "chosen_idx_1",
+        "op": "ArgMax",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "chosen_idx_2",
+        "op": "ArgMax",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "b1low_vec",
+        "op": "Mod",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "b1shift8_vec",
+        "op": "Cast",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "b2low16_vec",
+        "op": "Mul",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "b2shift8_vec",
+        "op": "Cast",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "bcode12_full_vec",
+        "op": "BitwiseOr",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "bcode12_vec_0",
+        "op": "BitwiseAnd",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "bcode12_vec_1",
+        "op": "BitwiseAnd",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "bcode12_vec_2",
+        "op": "BitwiseAnd",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "g0f",
+        "op": "Gather",
+        "dtype": "FLOAT",
+        "shape": [
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "g1f",
+        "op": "Gather",
+        "dtype": "FLOAT",
+        "shape": [
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "g2f",
+        "op": "Gather",
+        "dtype": "FLOAT",
+        "shape": [
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "g3f",
+        "op": "Gather",
+        "dtype": "FLOAT",
+        "shape": [
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "match1_vec_0",
+        "op": "Equal",
+        "dtype": "BOOL",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "match1_vec_1",
+        "op": "Equal",
+        "dtype": "BOOL",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "match1_vec_2",
+        "op": "Equal",
+        "dtype": "BOOL",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "match2_vec_0",
+        "op": "Equal",
+        "dtype": "BOOL",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "match2_vec_1",
+        "op": "Equal",
+        "dtype": "BOOL",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "match2_vec_2",
+        "op": "Equal",
+        "dtype": "BOOL",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "match2u8_vec_0",
+        "op": "Cast",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "match2u8_vec_1",
+        "op": "Cast",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "match2u8_vec_2",
+        "op": "Cast",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "match_score_vec_0",
+        "op": "Where",
+        "dtype": "UINT8",
+        "shape": [
+          4
+        ],
+        "bytes": 4
+      }
+    ],
+    "parameter_elements": 103,
+    "initializers": [
+      {
+        "name": "pack_cols",
+        "dtype": "FLOAT",
+        "shape": [
+          30
+        ],
+        "elements": 30,
+        "uses": 1,
+        "values": [
+          1.0,
+          2.0,
+          4.0,
+          8.0,
+          16.0,
+          32.0,
+          64.0,
+          128.0,
+          256.0,
+          512.0,
+          1024.0,
+          2048.0,
+          4096.0,
+          8192.0,
+          16384.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "wfac",
+        "dtype": "INT32",
+        "shape": [
+          30
+        ],
+        "elements": 30,
+        "uses": 1,
+        "values": [
+          16384,
+          8192,
+          4096,
+          2048,
+          1024,
+          512,
+          256,
+          128,
+          64,
+          32,
+          16,
+          8,
+          4,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "cfac",
+        "dtype": "INT32",
+        "shape": [
+          1,
+          10
+        ],
+        "elements": 10,
+        "uses": 1,
+        "values": [
+          131071,
+          -131070,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "pack_ch",
+        "dtype": "FLOAT",
+        "shape": [
+          10
+        ],
+        "elements": 10,
+        "uses": 1,
+        "values": [
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "delta_a117_num_f16",
+        "dtype": "FLOAT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          64.0
+        ]
+      },
+      {
+        "name": "delta_a187_num_f16",
+        "dtype": "FLOAT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          512.0
+        ]
+      },
+      {
+        "name": "delta_train_num_f16",
+        "dtype": "FLOAT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          1025.0
+        ]
+      },
+      {
+        "name": "fixk_a117",
+        "dtype": "UINT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          6871
+        ]
+      },
+      {
+        "name": "fixk_a187",
+        "dtype": "UINT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          6795
+        ]
+      },
+      {
+        "name": "fixk_train",
+        "dtype": "UINT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          7062
+        ]
+      },
+      {
+        "name": "full15",
+        "dtype": "UINT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 3,
+        "values": [
+          32767
+        ]
+      },
+      {
+        "name": "idx_g0",
+        "dtype": "INT32",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          6
+        ]
+      },
+      {
+        "name": "idx_g1",
+        "dtype": "INT32",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          7
+        ]
+      },
+      {
+        "name": "idx_g2",
+        "dtype": "INT32",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          8
+        ]
+      },
+      {
+        "name": "idx_g3",
+        "dtype": "INT32",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          9
+        ]
+      },
+      {
+        "name": "idx_r1",
+        "dtype": "INT32",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 5,
+        "values": [
+          1
+        ]
+      },
+      {
+        "name": "idx_r2",
+        "dtype": "INT32",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          2
+        ]
+      },
+      {
+        "name": "invRtail32",
+        "dtype": "INT32",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 2,
+        "values": [
+          131073
+        ]
+      },
+      {
+        "name": "one16",
+        "dtype": "UINT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 4,
+        "values": [
+          1
+        ]
+      },
+      {
+        "name": "one8",
+        "dtype": "UINT8",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 3,
+        "values": [
+          1
+        ]
+      },
+      {
+        "name": "row0_32",
+        "dtype": "INT32",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          -65537
+        ]
+      },
+      {
+        "name": "sentinel16",
+        "dtype": "UINT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 2,
+        "values": [
+          32768
+        ]
+      },
+      {
+        "name": "sixteen8",
+        "dtype": "UINT8",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 11,
+        "values": [
+          16
+        ]
+      },
+      {
+        "name": "zero16",
+        "dtype": "UINT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 9,
+        "values": [
+          0
+        ]
+      },
+      {
+        "name": "zero32",
+        "dtype": "INT32",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 20,
+        "values": [
+          0
+        ]
+      },
+      {
+        "name": "zero8",
+        "dtype": "UINT8",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 20,
+        "values": [
+          0
+        ]
+      },
+      {
+        "name": "zero_f16",
+        "dtype": "FLOAT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          0.0
+        ]
+      }
+    ],
+    "unused_initializers": [],
+    "duplicate_initializer_groups": [],
+    "duplicate_node_groups": []
+  },
+  "368": {
+    "task": 368,
+    "path": "scripts/golf/loop_8004_42_plus20/agent_high368_157_370_138/baseline/task368.onnx",
+    "sha256": "0d950f5053aa62e7a3208be01514ad061b85580875e0e93aa7ee941cbacaa811",
+    "nodes": 9,
+    "value_info": 8,
+    "op_histogram": {
+      "GroupNormalization": 1,
+      "CastLike": 1,
+      "QLinearConv": 6,
+      "Mul": 1
+    },
+    "declared_static_memory": 481,
+    "memory_by_op": {
+      "QLinearConv": 444,
+      "Mul": 32,
+      "GroupNormalization": 4,
+      "CastLike": 1
+    },
+    "largest_intermediates": [
+      {
+        "name": "features",
+        "op": "QLinearConv",
+        "dtype": "UINT8",
+        "shape": [
+          1,
+          2,
+          10,
+          10
+        ],
+        "bytes": 200
+      },
+      {
+        "name": "lab_rev",
+        "op": "QLinearConv",
+        "dtype": "UINT8",
+        "shape": [
+          1,
+          1,
+          10,
+          10
+        ],
+        "bytes": 100
+      },
+      {
+        "name": "b2",
+        "op": "QLinearConv",
+        "dtype": "UINT8",
+        "shape": [
+          1,
+          1,
+          8,
+          8
+        ],
+        "bytes": 64
+      },
+      {
+        "name": "br",
+        "op": "QLinearConv",
+        "dtype": "UINT8",
+        "shape": [
+          1,
+          1,
+          8,
+          8
+        ],
+        "bytes": 64
+      },
+      {
+        "name": "kernel_features",
+        "op": "Mul",
+        "dtype": "UINT8",
+        "shape": [
+          2,
+          1,
+          4,
+          4
+        ],
+        "bytes": 32
+      },
+      {
+        "name": "patch",
+        "op": "QLinearConv",
+        "dtype": "UINT8",
+        "shape": [
+          1,
+          1,
+          4,
+          4
+        ],
+        "bytes": 16
+      },
+      {
+        "name": "gn",
+        "op": "GroupNormalization",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "qi",
+        "op": "CastLike",
+        "dtype": "UINT8",
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "bytes": 1
+      }
+    ],
+    "parameter_elements": 40,
+    "initializers": [
+      {
+        "name": "final_w",
+        "dtype": "UINT8",
+        "shape": [
+          10,
+          2,
+          1,
+          1
+        ],
+        "elements": 20,
+        "uses": 1,
+        "values": [
+          110,
+          130,
+          78,
+          255,
+          164,
+          88,
+          197,
+          145,
+          92,
+          255,
+          140,
+          140,
+          169,
+          88,
+          149,
+          97,
+          72,
+          176,
+          208,
+          123
+        ]
+      },
+      {
+        "name": "lab_w_q",
+        "dtype": "UINT8",
+        "shape": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "elements": 10,
+        "uses": 1,
+        "values": [
+          0,
+          17,
+          24,
+          23,
+          18,
+          14,
+          25,
+          19,
+          21,
+          16
+        ]
+      },
+      {
+        "name": "edge_rot",
+        "dtype": "UINT8",
+        "shape": [
+          1,
+          1,
+          2,
+          2
+        ],
+        "elements": 4,
+        "uses": 2,
+        "values": [
+          140,
+          100,
+          100,
+          180
+        ]
+      },
+      {
+        "name": "mul_codes",
+        "dtype": "UINT8",
+        "shape": [
+          2,
+          1,
+          1,
+          1
+        ],
+        "elements": 2,
+        "uses": 1,
+        "values": [
+          11,
+          159
+        ]
+      },
+      {
+        "name": "edge_scale",
+        "dtype": "FLOAT",
+        "shape": [],
+        "elements": 1,
+        "uses": 3,
+        "values": [
+          9868.0
+        ]
+      },
+      {
+        "name": "one_f",
+        "dtype": "FLOAT",
+        "shape": [],
+        "elements": 1,
+        "uses": 17,
+        "values": [
+          1.0
+        ]
+      },
+      {
+        "name": "source_base",
+        "dtype": "UINT8",
+        "shape": [],
+        "elements": 1,
+        "uses": 6,
+        "values": [
+          140
+        ]
+      },
+      {
+        "name": "zero_u8",
+        "dtype": "UINT8",
+        "shape": [],
+        "elements": 1,
+        "uses": 13,
+        "values": [
+          0
+        ]
+      }
+    ],
+    "unused_initializers": [],
+    "duplicate_initializer_groups": [],
+    "duplicate_node_groups": []
+  },
+  "370": {
+    "task": 370,
+    "path": "scripts/golf/loop_8004_42_plus20/agent_high368_157_370_138/baseline/task370.onnx",
+    "sha256": "513c0b40056f0ef9ee30cffe32a940571a0e977bf467d1c90096425c68e682d9",
+    "nodes": 86,
+    "value_info": 85,
+    "op_histogram": {
+      "Shape": 3,
+      "Sub": 13,
+      "CenterCropPad": 24,
+      "CastLike": 9,
+      "ReduceL1": 3,
+      "Einsum": 6,
+      "ReduceMax": 2,
+      "Unsqueeze": 3,
+      "Concat": 3,
+      "Equal": 2,
+      "Div": 1,
+      "Greater": 2,
+      "Abs": 1,
+      "Add": 2,
+      "Cast": 1,
+      "Mod": 1,
+      "Not": 1,
+      "PRelu": 3,
+      "Where": 2,
+      "Conv": 1,
+      "ConvTranspose": 1,
+      "BitwiseAnd": 2
+    },
+    "declared_static_memory": 333,
+    "memory_by_op": {
+      "Sub": 86,
+      "CenterCropPad": 71,
+      "CastLike": 28,
+      "Where": 28,
+      "Shape": 24,
+      "Equal": 16,
+      "Concat": 14,
+      "Mod": 13,
+      "Einsum": 12,
+      "ReduceL1": 6,
+      "Unsqueeze": 6,
+      "PRelu": 6,
+      "ReduceMax": 4,
+      "BitwiseAnd": 4,
+      "Add": 3,
+      "Div": 2,
+      "Greater": 2,
+      "Abs": 2,
+      "Conv": 2,
+      "ConvTranspose": 2,
+      "Cast": 1,
+      "Not": 1
+    },
+    "largest_intermediates": [
+      {
+        "name": "kernel",
+        "op": "Where",
+        "dtype": "FLOAT16",
+        "shape": [
+          1,
+          1,
+          13,
+          1
+        ],
+        "bytes": 26
+      },
+      {
+        "name": "kernel_mask",
+        "op": "Equal",
+        "dtype": "BOOL",
+        "shape": [
+          1,
+          1,
+          13,
+          1
+        ],
+        "bytes": 13
+      },
+      {
+        "name": "rem13_i8",
+        "op": "Mod",
+        "dtype": "INT8",
+        "shape": [
+          1,
+          1,
+          13,
+          1
+        ],
+        "bytes": 13
+      },
+      {
+        "name": "batch_shape",
+        "op": "Shape",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape20",
+        "op": "Sub",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape21",
+        "op": "Sub",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape22",
+        "op": "Sub",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape23",
+        "op": "Sub",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape24",
+        "op": "Sub",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape25",
+        "op": "Sub",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape26",
+        "op": "Sub",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape27",
+        "op": "Sub",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape28",
+        "op": "Sub",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape29",
+        "op": "Sub",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "h_shape30",
+        "op": "Shape",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "shape10",
+        "op": "Shape",
+        "dtype": "INT64",
+        "shape": [
+          1
+        ],
+        "bytes": 8
+      },
+      {
+        "name": "mask3_pos",
+        "op": "Concat",
+        "dtype": "FLOAT16",
+        "shape": [
+          1,
+          3,
+          1,
+          1
+        ],
+        "bytes": 6
+      },
+      {
+        "name": "selector_counts",
+        "op": "Concat",
+        "dtype": "FLOAT16",
+        "shape": [
+          3
+        ],
+        "bytes": 6
+      },
+      {
+        "name": "avail_u32",
+        "op": "CastLike",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "col_sel2_slope",
+        "op": "CastLike",
+        "dtype": "FLOAT16",
+        "shape": [
+          1,
+          2,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "color_rows",
+        "op": "BitwiseAnd",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "input29",
+        "op": "CenterCropPad",
+        "dtype": "FLOAT",
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "packed_u32_20",
+        "op": "CastLike",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "packed_u32_21",
+        "op": "CenterCropPad",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "packed_u32_22",
+        "op": "CenterCropPad",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "packed_u32_23",
+        "op": "CenterCropPad",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "packed_u32_24",
+        "op": "CenterCropPad",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "packed_u32_25",
+        "op": "CenterCropPad",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "packed_u32_26",
+        "op": "CenterCropPad",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      },
+      {
+        "name": "packed_u32_27",
+        "op": "CenterCropPad",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1
+        ],
+        "bytes": 4
+      }
+    ],
+    "parameter_elements": 120,
+    "initializers": [
+      {
+        "name": "pow_norm",
+        "dtype": "UINT32",
+        "shape": [
+          1,
+          1,
+          1,
+          30
+        ],
+        "elements": 30,
+        "uses": 1,
+        "values": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64,
+          128,
+          256,
+          512,
+          1024,
+          2048,
+          4096,
+          8192,
+          16384,
+          32768,
+          65536,
+          131072,
+          262144,
+          524288,
+          1048576,
+          2097152,
+          4194304,
+          8388608,
+          16777216,
+          33554432,
+          67108864,
+          134217728,
+          268435456,
+          536870912
+        ]
+      },
+      {
+        "name": "base_pair_neg",
+        "dtype": "FLOAT16",
+        "shape": [
+          1,
+          2,
+          13,
+          1
+        ],
+        "elements": 26,
+        "uses": 1,
+        "values": [
+          -4096.0,
+          -2048.0,
+          -1024.0,
+          -512.0,
+          -256.0,
+          -128.0,
+          -64.0,
+          -32.0,
+          -16.0,
+          -8.0,
+          -4.0,
+          -2.0,
+          -0.0,
+          -0.000244140625,
+          -0.00048828125,
+          -0.0009765625,
+          -0.001953125,
+          -0.00390625,
+          -0.0078125,
+          -0.015625,
+          -0.03125,
+          -0.0625,
+          -0.125,
+          -0.25,
+          -0.5,
+          -0.0
+        ]
+      },
+      {
+        "name": "coords20",
+        "dtype": "FLOAT16",
+        "shape": [
+          20
+        ],
+        "elements": 20,
+        "uses": 2,
+        "values": [
+          0.0,
+          1.0,
+          2.0,
+          3.0,
+          4.0,
+          5.0,
+          6.0,
+          7.0,
+          8.0,
+          9.0,
+          10.0,
+          11.0,
+          12.0,
+          13.0,
+          14.0,
+          15.0,
+          16.0,
+          17.0,
+          18.0,
+          19.0
+        ]
+      },
+      {
+        "name": "dist13_i8",
+        "dtype": "INT8",
+        "shape": [
+          1,
+          1,
+          13,
+          1
+        ],
+        "elements": 13,
+        "uses": 1,
+        "values": [
+          12,
+          11,
+          10,
+          9,
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1,
+          0
+        ]
+      },
+      {
+        "name": "sel_black",
+        "dtype": "FLOAT16",
+        "shape": [
+          10
+        ],
+        "elements": 10,
+        "uses": 3,
+        "values": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "name": "sel_nonblack",
+        "dtype": "FLOAT16",
+        "shape": [
+          10
+        ],
+        "elements": 10,
+        "uses": 1,
+        "values": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "name": "axes_counts",
+        "dtype": "INT64",
+        "shape": [
+          3
+        ],
+        "elements": 3,
+        "uses": 2,
+        "values": [
+          0,
+          2,
+          3
+        ]
+      },
+      {
+        "name": "axes_slope23",
+        "dtype": "INT64",
+        "shape": [
+          2
+        ],
+        "elements": 2,
+        "uses": 1,
+        "values": [
+          2,
+          3
+        ]
+      },
+      {
+        "name": "neg_one_1111",
+        "dtype": "FLOAT16",
+        "shape": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          -1.0
+        ]
+      },
+      {
+        "name": "one_f16_vec",
+        "dtype": "FLOAT16",
+        "shape": [
+          1
+        ],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          1.0
+        ]
+      },
+      {
+        "name": "six_i8",
+        "dtype": "INT8",
+        "shape": [],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          2
+        ]
+      },
+      {
+        "name": "three_f",
+        "dtype": "FLOAT16",
+        "shape": [],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          2.5
+        ]
+      },
+      {
+        "name": "zero_f16",
+        "dtype": "FLOAT16",
+        "shape": [],
+        "elements": 1,
+        "uses": 4,
+        "values": [
+          0.0
+        ]
+      },
+      {
+        "name": "zero_i8",
+        "dtype": "INT8",
+        "shape": [],
+        "elements": 1,
+        "uses": 1,
+        "values": [
+          0
+        ]
+      }
+    ],
+    "unused_initializers": [],
+    "duplicate_initializer_groups": [],
+    "duplicate_node_groups": []
+  }
+}

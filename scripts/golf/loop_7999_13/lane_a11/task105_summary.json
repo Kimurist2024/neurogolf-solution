@@ -1,0 +1,56 @@
+{
+  "task": 105,
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_sha256": "d65b634c57083b1dd9ed7721e5d6f69ead925ad6303be789adc3a3c6b4d5b2f1",
+  "candidate_path": "scripts/golf/loop_7999_13/lane_archive_top200/task105_r01_static198.onnx",
+  "candidate_sha256": "4c1f75e2464994ca7597b13e6f5c52a10814c76d6159fb8ceaff37ab3220adb7",
+  "source_lineage": {
+    "inventory": "scripts/golf/loop_7999_13/lane_archive_top200/inventory.json",
+    "source_count": 13,
+    "canonical_loose_source": "scripts/golf/scratch_codex_7991/lane27/task105_batch_axis.onnx"
+  },
+  "executable_diff": {
+    "evidence": "scripts/golf/loop_7999_13/lane_a11/task105_diff.json",
+    "metadata_only": false,
+    "baseline_value_info_count": 0,
+    "candidate_value_info_count": 0,
+    "parameter_delta": -1,
+    "edit": "Remove one_f and retarget six singleton-output Einsums to the fixed batch label.",
+    "clearing_value_info_makes_models_equal": false
+  },
+  "profile": {
+    "baseline_cost": 199,
+    "candidate_memory": 89,
+    "candidate_params": 109,
+    "candidate_cost": 198,
+    "complete_known_correct": true,
+    "projected_log_gain": 0.005037794029959741
+  },
+  "structure": {
+    "checker_full": "pass",
+    "strict_shape_inference": "pass",
+    "max_einsum_inputs_baseline": 45,
+    "max_einsum_inputs_candidate": 45,
+    "giant_einsum_gate": "reject"
+  },
+  "independent_fresh": {
+    "evidence": "scripts/golf/loop_7999_13/lane_archive_top200/task105_dual5000.json",
+    "generated": 5000,
+    "generation_errors": 0,
+    "ORT_DISABLE_ALL": {
+      "right": 4980,
+      "wrong": 20,
+      "runtime_or_output_failures": 20
+    },
+    "ORT_DEFAULT": {
+      "right": 4980,
+      "wrong": 20,
+      "runtime_or_output_failures": 20
+    }
+  },
+  "verdict": "reject",
+  "reasons": [
+    "Independent fresh validation is 4980/5000 in both ORT modes, below the required perfect gate.",
+    "The model retains a 45-input giant Einsum and therefore also fails the structural adoption gate."
+  ]
+}

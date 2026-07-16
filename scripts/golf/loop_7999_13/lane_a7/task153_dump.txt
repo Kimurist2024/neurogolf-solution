@@ -1,0 +1,48 @@
+# task153.onnx
+
+## Initializers
+P: float32 (30,) [1.0, 0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625, 0.0078125, 0.00390625, 0.001953125, 0.0009765625, 0.00048828125, 0.000244140625, 0.0001220703125, 6.103515625e-05, 3.0517578125e-05, 1.52587890625e-05, 7.62939453125e-06, 3.814697265625e-06, 1.9073486328125e-06, 9.5367431640625e-07, 4.76837158203125e-07, 2.384185791015625e-07, 1.1920928955078125e-07, 5.960464477539063e-08, 2.9802322387695312e-08, 1.4901161193847656e-08, 7.450580596923828e-09, 3.725290298461914e-09, 1.862645149230957e-09]
+G: float32 (10, 1) [[0.0], [0.125], [0.125], [0.125], [0.125], [0.125], [0.125], [0.125], [0.125], [0.125]]
+k2: int64 (1,) [2]
+twoh: float16 () 1.681640625
+T: float16 () 1.3330078125
+onef: float32 () 1.0
+zu8: uint8 () 0
+zi8: int8 () 0
+W: int8 (10, 2, 1, 1) [[[[0]], [[-1]]], [[[2]], [[-1]]], [[[4]], [[-1]]], [[[6]], [[-1]]], [[[8]], [[-1]]], [[[10]], [[-1]]], [[[12]], [[-1]]], [[[14]], [[-1]]], [[[16]], [[-1]]], [[[18]], [[-1]]]]
+B: int32 (10,) [0, 0, -3, -8, -15, -24, -35, -48, -63, -80]
+top_thf: float16 (1, 1, 1, 3) [[[[0.0, 1535.0, 1791.0]]]]
+low_masks: uint8 (1, 1, 2, 3) [[[[64, 32, 16], [4, 2, 1]]]]
+
+## Value info
+
+## Nodes
+00 Einsum ['input', 'G', 'P', 'P', 'P', 'P', 'P'] -> ['z'] {'equation': b'bkrc,ku,r,r,r,r,c->bku'}
+01 TopK ['z', 'k2'] -> ['zpair', 'pair'] {'axis': 1, 'largest': 1, 'sorted': 1}
+02 Cast ['zpair'] -> ['zpair16'] {'to': 10}
+03 Log ['zpair16'] -> ['lz'] {}
+04 LeakyRelu ['lz'] -> ['log2z'] {'alpha': 1.9231237173080444}
+05 Mod ['log2z', 'T'] -> ['frac'] {'fmod': 1}
+06 Pow ['twoh', 'frac'] -> ['mant'] {}
+07 Split ['mant'] -> ['m0', 'm1'] {'axis': 1, 'num_outputs': 2}
+08 Greater ['m0', 'm1'] -> ['gtm'] {}
+09 Add ['m0', 'm1'] -> ['msum'] {}
+10 Greater ['msum', 'T'] -> ['gts'] {}
+11 Xor ['gtm', 'gts'] -> ['pick1'] {}
+12 Cast ['pair'] -> ['pair8'] {'to': 2}
+13 Split ['pair8'] -> ['p0', 'p1'] {'axis': 1, 'num_outputs': 2}
+14 Where ['pick1', 'p1', 'p0'] -> ['selected'] {}
+15 Where ['pick1', 'p0', 'p1'] -> ['other'] {}
+16 Where ['pick1', 'm1', 'm0'] -> ['msel'] {}
+17 Selu ['msel'] -> ['codef'] {'alpha': 1.0, 'gamma': 2048.25}
+18 Cast ['codef'] -> ['code8'] {'to': 2}
+19 Greater ['codef', 'top_thf'] -> ['topmask'] {}
+20 BitwiseAnd ['code8', 'low_masks'] -> ['lowmasked'] {}
+21 Cast ['lowmasked'] -> ['lowmask'] {'to': 9}
+22 Concat ['topmask', 'lowmask'] -> ['mask'] {'axis': 2}
+23 Mul ['selected', 'selected'] -> ['sel2'] {}
+24 Mul ['other', 'other'] -> ['oth2'] {}
+25 Concat ['selected', 'sel2'] -> ['sfeat'] {'axis': 0}
+26 Concat ['other', 'oth2'] -> ['ofeat'] {'axis': 0}
+27 Where ['mask', 'sfeat', 'ofeat'] -> ['feat'] {}
+28 QLinearConv ['feat', 'onef', 'zu8', 'W', 'onef', 'zi8', 'onef', 'zu8', 'B'] -> ['output'] {'pads': [0, 0, 27, 27]}

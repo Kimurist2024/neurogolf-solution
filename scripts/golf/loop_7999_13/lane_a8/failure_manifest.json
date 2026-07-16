@@ -1,0 +1,68 @@
+{
+  "lane": "a8",
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "archive_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "authority": "exact archive members"
+  },
+  "targets": [12, 19, 34, 35, 46, 117, 125],
+  "baseline_costs": {
+    "12": {"memory": 0, "params": 710, "cost": 710},
+    "19": {"memory": 423, "params": 113, "cost": 536},
+    "34": {"memory": 250, "params": 261, "cost": 511},
+    "35": {"memory": 496, "params": 49, "cost": 545},
+    "46": {"memory": 401, "params": 230, "cost": 631},
+    "117": {"memory": 496, "params": 110, "cost": 606},
+    "125": {"memory": 921, "params": 129, "cost": 1050}
+  },
+  "rejected_candidates": [
+    {
+      "task": 35,
+      "candidate": "scripts/golf/loop_7999_13/lane_a8/task035_fold_pair_bias.onnx",
+      "sha256": "9adddc6da5f90bfb4b9cf3658c9b9cff96ca5aacbda1ae928c348087a5022433",
+      "nominal_memory": 436,
+      "nominal_params": 57,
+      "nominal_cost": 493,
+      "nominal_reduction": 52,
+      "checker_full": "pass",
+      "strict_shape_inference": "pass",
+      "ort_disable_all": {"right": 0, "wrong": 266, "errors": 0},
+      "ort_default": {"right": 0, "wrong": 266, "errors": 0},
+      "decision": "REJECT_KNOWN_INCORRECT",
+      "reason": "The old [x,7x mod 256] pair is not a plain affine duplicate. Replacing the second lane by zero loses the modulo code needed by the final color decoder."
+    },
+    {
+      "task": 19,
+      "candidate": "scripts/golf/loop_7999_13/lane_a4/candidates/task019_empty_unused.onnx",
+      "nominal_cost": 535,
+      "decision": "REJECT_RUNTIME_ERROR",
+      "reason": "Emptying unused Split output ca0 passes the checker but ORT exits -11; this is not a standard safe optional output."
+    }
+  ],
+  "task35_integer_separation_audit": {
+    "evidence": "scripts/golf/loop_7999_13/lane_a8/task035_fold_search.json",
+    "known_unique_pack_label_samples": 94,
+    "feature_lanes": ["left2", "core0b", "core1b", "core2b", "core3b", "right2"],
+    "subsets_checked": 64,
+    "maximum_removable_lanes": 0,
+    "method": "integer MILP with effective uint8 QLinearConv weights restricted to [-128,127], ordinary int32 bias, explicit padding-negative constraint, and exact known labels"
+  },
+  "historical_and_archive_evidence": {
+    "loose_screen": "scripts/golf/loop_7999_13/lane_a8/loose_static_screen.json",
+    "archive_screen": "scripts/golf/loop_7999_13/lane_archive_zip_sweep/inventory.json",
+    "task12": "Exact same member was exhaustively searched in lane_c4: 351 sub-70 kernel alignments, zero feasible; the first feasible geometry is incumbent 7x10 cost 710.",
+    "task19": "Only strict loose candidate is the ORT-crashing empty Split-output variant.",
+    "task34": "Exact same member was audited in lane_a4; no cheaper loose/archive member and the 14x14 shift table has exact rank 7, so factorization is not cheaper.",
+    "task35": "34 unique proper loose models checked; none has a static floor below 545. Exact initializer audit found only rank-mismatched zero scalars, yielding no reduction.",
+    "task46": "58 unique proper loose models checked; none has a static floor below 631. Exact same member was unchanged in lane_c4.",
+    "task117": "Exact same member was unchanged in lane_c4. The apparent 278 static-floor loose model uses a declared/runtime shape cloak and is excluded by the lane safety contract.",
+    "task125": "lane_c3 screened 85 unique models from 921 observations. Best alternate known-correct actual cost was 1051; the actual 321 candidate was known-incorrect. Static floors below 1050 are value-info/CenterCropPad cloak artifacts and are excluded."
+  },
+  "fresh5000": {
+    "run": false,
+    "reason": "No candidate passed the complete known set, so the mandatory gate order stops before fresh generation."
+  },
+  "accepted": [],
+  "projected_gain": 0.0,
+  "root_artifacts_modified": false
+}

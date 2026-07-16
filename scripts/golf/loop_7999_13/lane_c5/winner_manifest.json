@@ -1,0 +1,125 @@
+{
+  "lane": "c5_sound",
+  "aggregate_baseline_score": 7999.13,
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "authority": "exact archive members"
+  },
+  "accepted": [],
+  "projected_gain": 0.0,
+  "rejected": [
+    {
+      "task": 102,
+      "generator": "task_44d8ac46.py",
+      "rule_type": "bounded component geometry",
+      "baseline_cost": 493,
+      "baseline_fresh": {
+        "correct": 2721,
+        "total": 3000,
+        "wrong": 279,
+        "errors": 0
+      },
+      "reason": "The output fills interiors of square gray frames red while retaining nonsquare frames and nested/junk geometry. The compact two-QLinearConv graph is not generator-sound. A truthful multi-size frame detector needs explicit gray-channel extraction and 4x4/5x5/6x6 geometry, exceeding cost 493 before rendering."
+    },
+    {
+      "task": 109,
+      "generator": "task_47c1f68c.py",
+      "rule_type": "D: data-dependent pivot reflection",
+      "baseline_cost": 406,
+      "baseline_fresh": {
+        "correct": 5000,
+        "total": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "seed": 1700800022
+      },
+      "probe": {
+        "candidate": "scripts/golf/loop_7999_13/lane_c5/task109_global_l1.onnx",
+        "rewrite": "ReduceL1(H,W,p=1) to GlobalLpPool(p=1), remove two-element axes initializer",
+        "known_lib_gold": true,
+        "known_official_gold": true,
+        "fresh_correct": 100,
+        "fresh_total": 100,
+        "errors": 0,
+        "candidate_cost": 422
+      },
+      "reason": "The exact parameter shave increases profiled intermediate memory and costs 422, above the exact baseline 406. Metadata-only historical shaves were intentionally not adopted."
+    },
+    {
+      "task": 112,
+      "generator": "task_4938f0c2.py",
+      "rule_type": "D: four-way reflection about a data-dependent 2x2 pivot",
+      "baseline_cost": 422,
+      "baseline_fresh": {
+        "correct": 5000,
+        "total": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "seed": 1700800025
+      },
+      "probe": {
+        "candidate": "scripts/golf/loop_7999_13/lane_c5/task112_broadcast_sign_truthful.onnx",
+        "rewrite": "broadcast three identical sign rows from one row",
+        "decision": "REJECT",
+        "error": "ScatterND requires updates [3,2,4,4], but the broadcast probe produces [1,2,4,4] under the runtime shape contract"
+      },
+      "reason": "The apparent four-parameter factor is also the required replication dimension for ScatterND and cannot be removed. Constant shape folding exposes incompatible hidden declarations and fails the strict structural gate."
+    },
+    {
+      "task": 134,
+      "generator": "task_5ad4f10b.py",
+      "rule_type": "D: data-dependent scale, crop, and recolor",
+      "baseline_cost": 423,
+      "baseline_fresh": {
+        "correct": 2977,
+        "total": 3000,
+        "wrong": 23,
+        "errors": 0
+      },
+      "reason": "The true rule finds a 2x-6x magnified 3x3 sprite among random pixels, infers scale/offset and the other color, then downsamples and recolors it. The compact TfIdf/TopK/Resize graph is not sound; a truthful global rebuild cannot fit below 423."
+    },
+    {
+      "task": 170,
+      "generator": "task_6ecd11f4.py",
+      "rule_type": "D: data-dependent scale plus separate palette lookup",
+      "baseline_cost": 387,
+      "baseline_fresh": {
+        "correct": 5000,
+        "total": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "seed": 1700800083
+      },
+      "reason": "The exact graph is already below the honest cost of independently locating and downsampling the 3x3/4x4 megasprite and locating its separate color box. Folding Shape(fixed_initializer) exposes the incumbent's hidden runtime shapes and fails the strict structural gate."
+    },
+    {
+      "task": 222,
+      "generator": "task_91714a58.py",
+      "rule_type": "C: global monochrome rectangle extraction amid noise",
+      "baseline_cost": 380,
+      "baseline_fresh": {
+        "correct": 2813,
+        "total": 3000,
+        "wrong": 187,
+        "errors": 0
+      },
+      "reason": "The one-Einsum rank-8 analog matcher is not generator-sound. Exact rectangle isolation requires joint color, row-run, column-run, and boundary/component checks over the 16x16 field; a sound static graph cannot beat the existing 380-parameter one-node approximation."
+    },
+    {
+      "task": 245,
+      "generator": "task_a1570a43.py",
+      "rule_type": "D: data-dependent translation into a 7x7 corner frame",
+      "baseline_cost": 387,
+      "baseline_fresh": {
+        "correct": 5000,
+        "total": 5000,
+        "wrong": 0,
+        "errors": 0,
+        "seed": 1700800158
+      },
+      "reason": "The baseline already recovers the red/green position codes and translates the sprite at the cost floor. Its 2x2 sign matrix is rank one, but materializing the outer product costs more runtime memory than the two saved parameters; fixed-shape folding breaks the strict hidden-shape contract."
+    }
+  ],
+  "root_artifacts_modified": false
+}

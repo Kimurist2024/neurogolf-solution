@@ -1,0 +1,133 @@
+{
+  "lane": "c6_sound",
+  "aggregate_baseline_score": 7999.13,
+  "baseline": {
+    "archive": "submission_base_7999.13.zip",
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "authority": "exact archive members"
+  },
+  "accepted": [
+    {
+      "task": 185,
+      "generator": "task_7837ac64.py",
+      "rule_type": "D: bounded lattice extraction and 3x3 colour recovery",
+      "candidate": "scripts/golf/loop_7999_13/lane_c6/task185_padded_palette.onnx",
+      "builder": "scripts/golf/loop_7999_13/lane_c6/build_task185_padded_palette.py",
+      "audit": "scripts/golf/loop_7999_13/lane_c6/task185_audit.json",
+      "sha256": "b9cdf53f270874779b816741c0562222876bf8d33eb0e7a268702ff8a9b1c910",
+      "file_bytes": 194167,
+      "baseline": {
+        "sha256": "9ce90f954e19a92e11f28363f96b21ca4738587439e646def475452c7432f203",
+        "memory": 216,
+        "params": 68,
+        "cost": 284,
+        "known_correct": true
+      },
+      "candidate_score": {
+        "memory": 219,
+        "params": 60,
+        "cost": 279,
+        "known_lib_gold": true,
+        "known_official_gold": true,
+        "margin_stable": true,
+        "minimum_margin": 1.0
+      },
+      "fresh_fixed_gate": {
+        "seed": 777185,
+        "correct": 5000,
+        "total": 5000,
+        "wrong": 0,
+        "runtime_errors": 0
+      },
+      "fresh_independent": {
+        "seed": 185799913,
+        "ort_disable_all": {
+          "correct": 5000,
+          "total": 5000,
+          "wrong": 0,
+          "runtime_errors": 0
+        },
+        "ort_default_optimizations": {
+          "correct": 5000,
+          "total": 5000,
+          "wrong": 0,
+          "runtime_errors": 0
+        }
+      },
+      "structure": {
+        "onnx_checker_full": true,
+        "strict_shape_inference": true,
+        "all_shapes_static_positive": true,
+        "standard_domains": true,
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graphs": 0,
+        "banned_or_sequence_ops": 0,
+        "conv_bias_ub": 0,
+        "nodes": 39,
+        "initializers": 10,
+        "output_shape": [1, 10, 30, 30]
+      },
+      "cost_reduction": 5,
+      "score_gain": 0.017762456339840468,
+      "decision": "ADOPT"
+    }
+  ],
+  "projected_gain": 0.017762456339840468,
+  "projected_reported_score": 7999.14776245634,
+  "rejected": [
+    {
+      "task": 51,
+      "generator": "task_25d487eb.py",
+      "rule_type": "B: oriented laser head and edge ray",
+      "baseline_cost": 283,
+      "baseline_fresh": {"correct": 2992, "total": 3000, "wrong": 8, "runtime_errors": 0},
+      "reason": "The exact baseline is not generator-sound. A complete four-orientation head detector and ray renderer cannot be introduced below this tensor-network cost without accepting known failures."
+    },
+    {
+      "task": 64,
+      "generator": "task_2c608aff.py",
+      "rule_type": "B: box-aligned coloured ray extension",
+      "baseline_cost": 271,
+      "baseline_fresh": {"correct": 2991, "total": 3000, "wrong": 9, "runtime_errors": 0},
+      "reason": "The exact baseline is not generator-sound. The full rule needs background inference, rectangle bounds, dot alignment, and directional clipping; no honest rebuild fit below 271."
+    },
+    {
+      "task": 123,
+      "generator": "task_539a4f51.py",
+      "rule_type": "B: periodic Chebyshev-ring extension",
+      "baseline_cost": 266,
+      "baseline_fresh": {"correct": 3000, "total": 3000, "wrong": 0, "runtime_errors": 0},
+      "probes": {
+        "shared_cp_components_removed": 6,
+        "fresh_correct_each": 0,
+        "fresh_total_each": 100
+      },
+      "reason": "All six shared CP lanes are semantically necessary. F is rank five per period case but its two cases do not admit a cheaper shared factorization, and runtime generation of the zero-padded spatial basis costs more memory than it saves in parameters."
+    },
+    {
+      "task": 124,
+      "generator": "task_53b68214.py",
+      "rule_type": "B: periodic sprite completion",
+      "baseline_cost": 265,
+      "reason": "Rejected for runtime safety. The exact model can pass with ORT graph optimizations disabled, but default ORT fails with a MaxPool allocator mismatch ({1,1,1,1} != {1,10,1,1}); no candidate derived from this hidden-shape contract was accepted."
+    },
+    {
+      "task": 148,
+      "generator": "task_673ef223.py",
+      "rule_type": "B: paired portal and horizontal ray projection",
+      "baseline_cost": 265,
+      "baseline_fresh": {"correct": 2982, "total": 3000, "wrong": 18, "runtime_errors": 0},
+      "reason": "The exact baseline is not generator-sound. A complete portal-side, portal-span, marker-offset, and flip-aware renderer cannot beat the existing approximate cost."
+    },
+    {
+      "task": 178,
+      "generator": "task_746b3537.py",
+      "rule_type": "A: one-dimensional run compression with orientation",
+      "baseline_cost": 269,
+      "baseline_fresh": {"correct": 3000, "total": 3000, "wrong": 0, "runtime_errors": 0},
+      "reason": "The exact baseline is already the sound 208-memory/61-parameter rebuild. Its convolution kernel has 27 nonzeros, but ONNX full shape inference rejects a sparse Conv weight as unsupported; factoring it densely materializes a 30x30 intermediate and is more expensive."
+    }
+  ],
+  "root_artifacts_modified": false
+}

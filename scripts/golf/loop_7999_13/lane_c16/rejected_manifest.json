@@ -1,0 +1,45 @@
+{
+  "lane": "c16",
+  "baseline": "submission_base_7999.13.zip",
+  "baseline_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "audited_bases": 7,
+  "audited_probes": 31,
+  "harvest_rows_screened": 14,
+  "tasks": {
+    "074": {
+      "base_cost": 135,
+      "decision": "reject_all",
+      "reason": "Both exact 2x2 feature-mode transformations nominally reach cost 133, but the 80-operand Einsum has only two free index letters for eight independent contractions. All ten feasible two-letter sharing patterns are 0/267 known in both ORT modes. Truthful spec controls cost 6236 and 11622."
+    },
+    "093": {
+      "base_cost": 135,
+      "decision": "reject_all",
+      "reason": "All known-complete spec-derived controls cost at least 1132. Harvest history contains only a 23-input giant-Einsum lineage and a static floor of 1656."
+    },
+    "136": {
+      "base_cost": 135,
+      "decision": "reject_all",
+      "reason": "The historical improved model ties cost 135 and uses a 58-input Einsum. No strictly cheaper retained model exists; the conventional historical floor is 1194."
+    },
+    "180": {
+      "base_cost": 139,
+      "decision": "reject_all",
+      "reason": "Both cost-129 direct candidates fail: one errors on 268/268 because QLinearConv output zero point is not scalar, and the other is wrong on 268/268. Removing the zero point makes an invalid graph. The truthful control costs 1344."
+    },
+    "221": {
+      "base_cost": 145,
+      "decision": "reject_all",
+      "reason": "The cost-142 index-cloak probe errors on 267/267 under ORT_DISABLE_ALL and has a buffer shape mismatch. Known-complete alternatives cost 151 and 200 and retain many false shape declarations."
+    },
+    "278": {
+      "base_cost": 138,
+      "decision": "reject_all",
+      "reason": "The cost-135 Min/Max probe errors on 265/265 under ORT_DISABLE_ALL with a Slice/Cast allocation mismatch. Other correct controls cost 13649 or 18156."
+    },
+    "295": {
+      "base_cost": 137,
+      "decision": "reject_all",
+      "reason": "The exact model is the generator-complete cost-137 floor. A finite-domain search rejected nominal costs 117, 125, and 134; fp16 initializer conversion is type-invalid and the truthful conventional graph costs 1759."
+    }
+  }
+}

@@ -1,0 +1,1392 @@
+{
+  "lane": "agent_new_low43",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "previous_path": "submission_base_8004.50.zip",
+    "previous_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "policy": {
+    "nonprivate": "strictly cheaper, known100 dual, two independent fresh seeds each >=90%, runtime0, checker full, strict/data_prop, truthful shapes, standard domains, no lookup/cloak/giant, Conv-bias UB0",
+    "private_risk": "same gates but known/fresh must be 100% dual and the model must have a decoded true-rule guarantee or exact LB-white lineage",
+    "fail_closed": "fresh gates are not run when price, known, runtime, or structure gates fail"
+  },
+  "targets_requested": [
+    6,
+    334,
+    244,
+    249,
+    347,
+    386,
+    146,
+    291
+  ],
+  "targets_completed": 8,
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_integration": false,
+  "rows": [
+    {
+      "task": 6,
+      "rule_summary": "For each fixed 3x7 row, output color 2 where the corresponding left/right binary cells are both one.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task006.onnx",
+      "baseline_sha256": "59125feea943ced2cbbee726987499aae04d47d4e73743c396b0453d629aec64",
+      "baseline_cost": {
+        "memory": 23,
+        "params": 22,
+        "cost": 45
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 6,
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "QLinearConv": 2
+        },
+        "node_count": 5,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 2,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "lower_leads": [
+        {
+          "path": "scripts/golf/loop_7999_13/lane_archive_all400/task006_r01_static30.onnx",
+          "sha256": "bfff011da19acbb4ce1a61027f51a1ab507964f3f1643eed1e74fcf5a32cc8c2",
+          "actual_cost": {
+            "memory": 0,
+            "params": 30,
+            "cost": 30
+          },
+          "structure": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "conv_bias_findings": [],
+            "ops": {
+              "Conv": 1
+            },
+            "node_count": 1,
+            "initializer_count": 2,
+            "max_node_inputs": 3,
+            "giant_einsum": [],
+            "huge_fanin": [],
+            "lookup_or_scatter": [],
+            "declared_cost": {
+              "memory": 0,
+              "params": 30,
+              "cost": 30
+            },
+            "runtime_shapes": {
+              "shape_cloak": false,
+              "mismatch_count": 0,
+              "mismatches": []
+            },
+            "errors": []
+          },
+          "task": 6,
+          "known_dual": {
+            "disable_all": {
+              "right": 0,
+              "wrong": 266,
+              "errors": 0,
+              "skipped": 0,
+              "total": 266,
+              "near_margin_count": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "first_failure": {
+                "split": "train",
+                "index": 0,
+                "kind": "wrong"
+              }
+            },
+            "default": {
+              "right": 0,
+              "wrong": 266,
+              "errors": 0,
+              "skipped": 0,
+              "total": 266,
+              "near_margin_count": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "first_failure": {
+                "split": "train",
+                "index": 0,
+                "kind": "wrong"
+              }
+            }
+          }
+        },
+        {
+          "path": "scripts/golf/loop_7999_13/lane_archive_all400/task006_r02_static38.onnx",
+          "sha256": "04ec6bff2cf519e1ee69bde75a228ac56903920cd121831ebfb0b826117e1117",
+          "actual_cost": {
+            "memory": 36,
+            "params": 2,
+            "cost": 38
+          },
+          "structure": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "conv_bias_findings": [],
+            "ops": {
+              "Conv": 1,
+              "ConvTranspose": 1
+            },
+            "node_count": 2,
+            "initializer_count": 1,
+            "max_node_inputs": 2,
+            "giant_einsum": [],
+            "huge_fanin": [],
+            "lookup_or_scatter": [],
+            "declared_cost": {
+              "memory": 36,
+              "params": 2,
+              "cost": 38
+            },
+            "runtime_shapes": {
+              "shape_cloak": true,
+              "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Non-zero status code returned while running Conv node. Name:'sign' Status Message: Output channels M is not divisible by group. M: 1 group: 10"
+            },
+            "errors": []
+          },
+          "task": 6,
+          "known_dual": {
+            "disable_all": {
+              "right": 0,
+              "wrong": 0,
+              "errors": 266,
+              "skipped": 0,
+              "total": 266,
+              "near_margin_count": 0,
+              "output_shapes": [],
+              "first_failure": {
+                "split": "train",
+                "index": 0,
+                "kind": "runtime",
+                "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Non-zero status code returned while running Conv node. Name:'safe_name_1' Status Message: Output channels M is not divisible by group. M: 1 group: 10"
+              }
+            },
+            "default": {
+              "right": 0,
+              "wrong": 0,
+              "errors": 266,
+              "skipped": 0,
+              "total": 266,
+              "near_margin_count": 0,
+              "output_shapes": [],
+              "first_failure": {
+                "split": "train",
+                "index": 0,
+                "kind": "runtime",
+                "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Non-zero status code returned while running Conv node. Name:'safe_name_1' Status Message: Output channels M is not divisible by group. M: 1 group: 10"
+              }
+            }
+          }
+        },
+        {
+          "path": "scripts/golf/loop_7999_13/lane_archive_all400/task006_r03_static40.onnx",
+          "sha256": "47133c9f4cd9aeabf13ac9f4efef64e78ae43c6b9719ac591e2fd4a87b47af62",
+          "actual_cost": {
+            "memory": 36,
+            "params": 4,
+            "cost": 40
+          },
+          "structure": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "conv_bias_findings": [],
+            "ops": {
+              "Conv": 1,
+              "ConvTranspose": 1
+            },
+            "node_count": 2,
+            "initializer_count": 1,
+            "max_node_inputs": 2,
+            "giant_einsum": [],
+            "huge_fanin": [],
+            "lookup_or_scatter": [],
+            "declared_cost": {
+              "memory": 36,
+              "params": 4,
+              "cost": 40
+            },
+            "runtime_shapes": {
+              "shape_cloak": true,
+              "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Non-zero status code returned while running Conv node. Name:'sign' Status Message: Output channels M is not divisible by group. M: 1 group: 5"
+            },
+            "errors": []
+          },
+          "task": 6,
+          "known_dual": {
+            "disable_all": {
+              "right": 0,
+              "wrong": 0,
+              "errors": 266,
+              "skipped": 0,
+              "total": 266,
+              "near_margin_count": 0,
+              "output_shapes": [],
+              "first_failure": {
+                "split": "train",
+                "index": 0,
+                "kind": "runtime",
+                "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Non-zero status code returned while running Conv node. Name:'safe_name_1' Status Message: Output channels M is not divisible by group. M: 1 group: 5"
+              }
+            },
+            "default": {
+              "right": 0,
+              "wrong": 0,
+              "errors": 266,
+              "skipped": 0,
+              "total": 266,
+              "near_margin_count": 0,
+              "output_shapes": [],
+              "first_failure": {
+                "split": "train",
+                "index": 0,
+                "kind": "runtime",
+                "error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Non-zero status code returned while running Conv node. Name:'safe_name_1' Status Message: Output channels M is not divisible by group. M: 1 group: 5"
+              }
+            }
+          }
+        },
+        {
+          "path": "scripts/golf/loop_7999_13/lane_archive_all400/task006_r04_static40.onnx",
+          "sha256": "b1033ae2660d8f38665f319d1604918517574e06f1ade84bf82369dbdb088bbb",
+          "actual_cost": {
+            "memory": 0,
+            "params": 40,
+            "cost": 40
+          },
+          "structure": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "conv_bias_findings": [],
+            "ops": {
+              "Conv": 1
+            },
+            "node_count": 1,
+            "initializer_count": 1,
+            "max_node_inputs": 2,
+            "giant_einsum": [],
+            "huge_fanin": [],
+            "lookup_or_scatter": [],
+            "declared_cost": {
+              "memory": 0,
+              "params": 40,
+              "cost": 40
+            },
+            "runtime_shapes": {
+              "shape_cloak": false,
+              "mismatch_count": 0,
+              "mismatches": []
+            },
+            "errors": []
+          },
+          "task": 6,
+          "known_dual": {
+            "disable_all": {
+              "right": 27,
+              "wrong": 239,
+              "errors": 0,
+              "skipped": 0,
+              "total": 266,
+              "near_margin_count": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "first_failure": {
+                "split": "train",
+                "index": 0,
+                "kind": "wrong"
+              }
+            },
+            "default": {
+              "right": 27,
+              "wrong": 239,
+              "errors": 0,
+              "skipped": 0,
+              "total": 266,
+              "near_margin_count": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "first_failure": {
+                "split": "train",
+                "index": 0,
+                "kind": "wrong"
+              }
+            }
+          }
+        }
+      ],
+      "exact_scan": {
+        "task": 6,
+        "identity_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_deterministic_nodes": [],
+        "optional_output_observations": [],
+        "exact_price_reduction_count": 0
+      },
+      "best_probe": "actual-cost 30/38/40/40 history candidates",
+      "reason": "All four strict numeric leads fail complete-known dual validation: 0/266, runtime failure on 266/266, runtime failure on 266/266, and 27/266. The spec-derived truthful Conv/ConvTranspose floor is cost 56, above the cost-45 immutable member.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ADOPTABLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ADOPTABLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 334,
+      "rule_summary": "Map the single nonzero input color 1, 2, or 3 to its fixed color-5 3x3 glyph.",
+      "true_rule_known": {
+        "right": 271,
+        "wrong": 0,
+        "errors": 0,
+        "total": 271,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task334.onnx",
+      "baseline_sha256": "297481dfc097dbfad231596ef076967f560342841f17c5ee754b49bda4b040e2",
+      "baseline_cost": {
+        "memory": 14,
+        "params": 29,
+        "cost": 43
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 334,
+        "disable_all": {
+          "right": 271,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 271,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 271,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 271,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Cast": 1,
+          "ConvInteger": 1,
+          "Einsum": 1,
+          "Mul": 1
+        },
+        "node_count": 4,
+        "max_node_inputs": 2,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "lower_leads": [],
+      "exact_scan": {
+        "task": 334,
+        "identity_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_deterministic_nodes": [],
+        "optional_output_observations": [],
+        "exact_price_reduction_count": 0
+      },
+      "best_probe": "no below-43 graph; focused-history floor 85",
+      "reason": "The complete archive, focused harvest, local exact scan, exact Wave2, and all-400 exact Einsum scan contain no strict decrease. The prior spec-derived supported rebuild floor was cost 49, already above the current cost 43.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ADOPTABLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ADOPTABLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 244,
+      "rule_summary": "Decode the separator period, sample one representative from each constant-color block, and emit the block-color matrix.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task244.onnx",
+      "baseline_sha256": "8b126c011293d94d8a846f47b71273f9f78a8f514fc2e078c995b0332aa9fa01",
+      "baseline_cost": {
+        "memory": 32,
+        "params": 9,
+        "cost": 41
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 244,
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Conv": 1,
+          "Einsum": 1,
+          "RoiAlign": 1,
+          "Softmax": 1
+        },
+        "node_count": 4,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "lower_leads": [],
+      "exact_scan": {
+        "task": 244,
+        "identity_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_deterministic_nodes": [],
+        "optional_output_observations": [],
+        "exact_price_reduction_count": 0
+      },
+      "best_probe": "best different focused-history floor 43",
+      "reason": "All harvested alternatives cost at least 43 versus 41. The spec-derived safe rebuild costs 70; its cost-67 shortcut is generator-wrong. No exact local or all-400 rewrite applies.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ADOPTABLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ADOPTABLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 249,
+      "rule_summary": "Duplicate every input row horizontally.",
+      "true_rule_known": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "total": 265,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task249.onnx",
+      "baseline_sha256": "102f9100237176097fc57d6edb012a92e7ecd808ba60d819fa397b136b072cfe",
+      "baseline_cost": {
+        "memory": 37,
+        "params": 4,
+        "cost": 41
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 249,
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Cast": 1,
+          "Concat": 1,
+          "ConvTranspose": 1,
+          "Einsum": 1,
+          "Equal": 1,
+          "Greater": 1,
+          "Less": 1
+        },
+        "node_count": 7,
+        "max_node_inputs": 6,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "lower_leads": [],
+      "exact_scan": {
+        "task": 249,
+        "identity_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_deterministic_nodes": [],
+        "optional_output_observations": [],
+        "exact_price_reduction_count": 0
+      },
+      "best_probe": "cost-41 tie; other focused-history floor 206",
+      "reason": "The only competitive different graph ties rather than improves. The supported spec-derived construction costs 57, and no exact price reduction exists.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ADOPTABLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ADOPTABLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 347,
+      "rule_summary": "For each fixed 3x6 row, output color 6 where either corresponding half-cell is nonzero.",
+      "true_rule_known": {
+        "right": 269,
+        "wrong": 0,
+        "errors": 0,
+        "total": 269,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task347.onnx",
+      "baseline_sha256": "4cd97cf3c8d39172afe89f9f5dedb71b41643415be1f4606ffa9f457624980e7",
+      "baseline_cost": {
+        "memory": 23,
+        "params": 18,
+        "cost": 41
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 347,
+        "disable_all": {
+          "right": 269,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 269,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 269,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 269,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "QLinearConv": 1,
+          "Slice": 1
+        },
+        "node_count": 5,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 2,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "lower_leads": [],
+      "exact_scan": {
+        "task": 347,
+        "identity_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_deterministic_nodes": [],
+        "optional_output_observations": [],
+        "exact_price_reduction_count": 0
+      },
+      "best_probe": "best different focused-history floor 51",
+      "reason": "No graph below 41 appears in history or exact scans. A truthful spec-derived Conv/ConvTranspose rebuild costs 56; sub-floor grouped direct routes cannot route source colors 3/4 to output color 6.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ADOPTABLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ADOPTABLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 386,
+      "rule_summary": "For each fixed 4x7 row, output color 3 where both corresponding half-cells are zero.",
+      "true_rule_known": {
+        "right": 268,
+        "wrong": 0,
+        "errors": 0,
+        "total": 268,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task386.onnx",
+      "baseline_sha256": "e49063715d78b04aba839021b6327765c2943622b2b74a55368dd73045e3f285",
+      "baseline_cost": {
+        "memory": 29,
+        "params": 12,
+        "cost": 41
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 386,
+        "disable_all": {
+          "right": 268,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 268,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 268,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 268,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "QLinearConv": 2
+        },
+        "node_count": 5,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 1,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "lower_leads": [],
+      "exact_scan": {
+        "task": 386,
+        "identity_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_deterministic_nodes": [],
+        "optional_output_observations": [],
+        "exact_price_reduction_count": 0
+      },
+      "best_probe": "best different focused-history floor 60",
+      "reason": "No graph below 41 appears in history or exact scans. A truthful spec-derived rebuild costs 78; the smaller direct/grouped families are incorrect or cannot satisfy the full output contract.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ADOPTABLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ADOPTABLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 146,
+      "rule_summary": "Split the fixed 9x3 input into three 3x3 blocks and return the first block that is not symmetric under transpose.",
+      "true_rule_known": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "total": 267,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task146.onnx",
+      "baseline_sha256": "0232e2fff6e2c29558f4a178298e5ff9627c8372fc5c52c1cbb28ce82785afd3",
+      "baseline_cost": {
+        "memory": 36,
+        "params": 4,
+        "cost": 40
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 146,
+        "disable_all": {
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Conv": 3,
+          "ConvTranspose": 1,
+          "Einsum": 1,
+          "HardSigmoid": 1,
+          "Mod": 1
+        },
+        "node_count": 7,
+        "max_node_inputs": 5,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "lower_leads": [
+        {
+          "path": "scripts/golf/loop_7999_13/lane_archive_all400/task146_r01_static38.onnx",
+          "sha256": "2f6ccb38c61ed9ed06f48b937a7519547d67f78e5f7dc692c0faca99d313b53e",
+          "actual_cost": {
+            "memory": 59,
+            "params": 8,
+            "cost": 67
+          },
+          "structure": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "conv_bias_findings": [],
+            "ops": {
+              "BitwiseOr": 1,
+              "Cast": 1,
+              "CastLike": 1,
+              "Conv": 3,
+              "Einsum": 1,
+              "Gather": 1,
+              "Identity": 1,
+              "Mod": 1,
+              "Pad": 1
+            },
+            "node_count": 11,
+            "initializer_count": 5,
+            "max_node_inputs": 5,
+            "giant_einsum": [],
+            "huge_fanin": [],
+            "lookup_or_scatter": [],
+            "declared_cost": {
+              "memory": 30,
+              "params": 8,
+              "cost": 38
+            },
+            "runtime_shapes": {
+              "shape_cloak": true,
+              "mismatch_count": 2,
+              "mismatches": [
+                {
+                  "tensor": "idxu",
+                  "declared": [
+                    1
+                  ],
+                  "runtime": [
+                    30
+                  ]
+                },
+                {
+                  "tensor": "output",
+                  "declared": [
+                    1,
+                    10,
+                    1,
+                    30
+                  ],
+                  "runtime": [
+                    1,
+                    10,
+                    30,
+                    30
+                  ]
+                }
+              ]
+            },
+            "errors": []
+          },
+          "task": 146,
+          "known_dual": {
+            "disable_all": {
+              "right": 267,
+              "wrong": 0,
+              "errors": 0,
+              "skipped": 0,
+              "total": 267,
+              "near_margin_count": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "first_failure": null
+            },
+            "default": {
+              "right": 0,
+              "wrong": 0,
+              "errors": 267,
+              "total": 267,
+              "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_13) Op (Pad) [ShapeInferenceError] ParseData type mismatch for tensor: safe_name_4. Expected:int64 Actual:int32"
+            }
+          }
+        },
+        {
+          "path": "scripts/golf/loop_7999_13/lane_archive_all400/task146_r02_static38.onnx",
+          "sha256": "8435eabceb4cba08330e321509674e4b7aebbb366982a72facacdc54b6da7227",
+          "actual_cost": {
+            "memory": 59,
+            "params": 8,
+            "cost": 67
+          },
+          "structure": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "conv_bias_findings": [],
+            "ops": {
+              "BitwiseOr": 1,
+              "Cast": 1,
+              "CastLike": 1,
+              "Conv": 3,
+              "Einsum": 1,
+              "Gather": 1,
+              "Identity": 1,
+              "Mod": 1,
+              "Pad": 1
+            },
+            "node_count": 11,
+            "initializer_count": 5,
+            "max_node_inputs": 5,
+            "giant_einsum": [],
+            "huge_fanin": [],
+            "lookup_or_scatter": [],
+            "declared_cost": {
+              "memory": 30,
+              "params": 8,
+              "cost": 38
+            },
+            "runtime_shapes": {
+              "shape_cloak": true,
+              "mismatch_count": 2,
+              "mismatches": [
+                {
+                  "tensor": "idxu",
+                  "declared": [
+                    1
+                  ],
+                  "runtime": [
+                    30
+                  ]
+                },
+                {
+                  "tensor": "output",
+                  "declared": [
+                    1,
+                    10,
+                    1,
+                    30
+                  ],
+                  "runtime": [
+                    1,
+                    10,
+                    30,
+                    30
+                  ]
+                }
+              ]
+            },
+            "errors": []
+          },
+          "task": 146,
+          "known_dual": {
+            "disable_all": {
+              "right": 267,
+              "wrong": 0,
+              "errors": 0,
+              "skipped": 0,
+              "total": 267,
+              "near_margin_count": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "first_failure": null
+            },
+            "default": {
+              "right": 0,
+              "wrong": 0,
+              "errors": 267,
+              "total": 267,
+              "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_13) Op (Pad) [ShapeInferenceError] ParseData type mismatch for tensor: safe_name_3. Expected:int64 Actual:int32"
+            }
+          }
+        }
+      ],
+      "exact_scan": {
+        "task": 146,
+        "identity_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_deterministic_nodes": [],
+        "optional_output_observations": [],
+        "exact_price_reduction_count": 0
+      },
+      "best_probe": "two static-38 history leads reprofile to actual cost 67",
+      "reason": "Both apparent lower leads exceed the cost-40 baseline after runtime-shape accounting, declare false output/runtime shapes, and fail default ORT session creation. No exact local or all-400 rewrite applies.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ADOPTABLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ADOPTABLE_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 291,
+      "rule_summary": "Return the color of the hollow object, recognized by two same-color cells separated by one or more zeros in a row-major encoding.",
+      "true_rule_known": {
+        "right": 265,
+        "wrong": 0,
+        "errors": 0,
+        "total": 265,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task291.onnx",
+      "baseline_sha256": "320f83da6c7eda200e32bf257d94312fc4536f3ce04f004e641986cba8ed9b58",
+      "baseline_cost": {
+        "memory": 0,
+        "params": 40,
+        "cost": 40
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 291,
+        "disable_all": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 265,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 265,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "structure_observation": {
+        "ops": {
+          "Einsum": 1
+        },
+        "node_count": 1,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "lower_leads": [
+        {
+          "path": "scripts/golf/scratch_codex/task291/no_channel_constants_edge30.onnx",
+          "sha256": "51c0a8ec0a25f8258570ced285ce73d1ff83d4b43d835bc26859fad09daf820b",
+          "actual_cost": {
+            "memory": 0,
+            "params": 30,
+            "cost": 30
+          },
+          "structure": {
+            "checker_full": true,
+            "strict_data_prop": true,
+            "static_positive": true,
+            "standard_domains": true,
+            "nonstandard_domains": [],
+            "banned_ops": [],
+            "conv_bias_findings": [],
+            "ops": {
+              "Einsum": 1
+            },
+            "node_count": 1,
+            "initializer_count": 1,
+            "max_node_inputs": 5,
+            "giant_einsum": [],
+            "huge_fanin": [],
+            "lookup_or_scatter": [],
+            "declared_cost": {
+              "memory": 0,
+              "params": 30,
+              "cost": 30
+            },
+            "runtime_shapes": {
+              "shape_cloak": false,
+              "mismatch_count": 0,
+              "mismatches": []
+            },
+            "errors": []
+          },
+          "task": 291,
+          "known_dual": {
+            "disable_all": {
+              "right": 0,
+              "wrong": 265,
+              "errors": 0,
+              "skipped": 0,
+              "total": 265,
+              "near_margin_count": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "first_failure": {
+                "split": "train",
+                "index": 0,
+                "kind": "wrong"
+              }
+            },
+            "default": {
+              "right": 0,
+              "wrong": 265,
+              "errors": 0,
+              "skipped": 0,
+              "total": 265,
+              "near_margin_count": 0,
+              "output_shapes": [
+                [
+                  1,
+                  10,
+                  30,
+                  30
+                ]
+              ],
+              "first_failure": {
+                "split": "train",
+                "index": 0,
+                "kind": "wrong"
+              }
+            }
+          }
+        }
+      ],
+      "exact_scan": {
+        "task": 291,
+        "identity_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializers": [],
+        "duplicate_deterministic_nodes": [],
+        "optional_output_observations": [],
+        "exact_price_reduction_count": 0
+      },
+      "best_probe": "truthful cost-40 one-node Einsum; cost-30 channel-free probe",
+      "reason": "The cost-30 probe is 0/265 in both ORT modes because it cannot distinguish the answer channel. The exact spec-derived Einsum needs sign[10] plus edge[30], has zero intermediate memory, and already sits at cost 40; history offers ties only.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "FAILED_OR_NOT_RUN_PRE_GATE",
+      "fresh_seed_1_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "fresh_seed_2_dual": "NOT_RUN_PRE_GATE_FAILED",
+      "runtime_errors": "NO_ADOPTABLE_CANDIDATE",
+      "conv_bias_ub0": "NO_ADOPTABLE_CANDIDATE",
+      "projected_gain": 0.0
+    }
+  ],
+  "evidence": {
+    "baseline": "baseline_audit.json",
+    "known_dual": "known_baseline_dual.json",
+    "true_rules": "true_rule_audit.json",
+    "history": "history_audit.json",
+    "lower_leads": "lower_leads_dual.json",
+    "exact": "exact_candidate_scan.json"
+  },
+  "final_verdict": "NO_SAFE_CANDIDATE"
+}

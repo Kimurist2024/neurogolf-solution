@@ -1,0 +1,104 @@
+{
+  "lane": "rebuild_b2",
+  "aggregate_baseline_score": 7999.13,
+  "baseline_authority": {
+    "source": "exact submission archive",
+    "archive_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "note": "Exact archive members override stale task costs in the assignment payload."
+  },
+  "accepted": [
+    {
+      "task": 204,
+      "candidate": "winner_task204.onnx",
+      "candidate_sha256": "6e21b4c6a53d3f8a56d165e4a2e29dcc12aba66c77759e5e56ab032dff12bb3f",
+      "baseline_sha256": "3eb32f63b04097c4529dd79bc79e2eb8c64ccff453e8ee3313db98acac1e8dc9",
+      "baseline_cost": 2560,
+      "candidate_cost": 2544,
+      "cost_reduction": 16,
+      "baseline_score": 17.152237462526394,
+      "candidate_score": 17.158507075539987,
+      "projected_gain": 0.0062696130135933,
+      "projected_aggregate_score": 7999.136269613014,
+      "known": {
+        "right": 268,
+        "total": 268,
+        "accuracy": 1.0
+      },
+      "fresh_generator": {
+        "requested": 3000,
+        "correct": 3000,
+        "wrong": 0,
+        "errors": 0,
+        "accuracy": 1.0
+      },
+      "independent_differential": {
+        "requested": 3000,
+        "executable": 3000,
+        "raw_equal": 3000,
+        "threshold_equal": 3000,
+        "mismatches": 0,
+        "one_sided_errors": 0,
+        "max_abs_difference": 0.0
+      },
+      "structural_gates": {
+        "checker": true,
+        "strict_shape_data_prop": true,
+        "static_positive_shapes": true,
+        "banned_ops": 0,
+        "sequence_ops": 0,
+        "nested_graph_attributes": 0,
+        "functions": 0,
+        "sparse_initializers": 0,
+        "conv_bias_findings": 0,
+        "minimum_margin": 2.0
+      },
+      "semantic_basis": "The executable graph is byte-identical to the exact baseline after graph.value_info is cleared.",
+      "archive_merge_caveat": "Preserve the original task204 member position (zero-based index 370) because historical allocator/order sensitivity is not changed by this metadata-only shave."
+    }
+  ],
+  "audited_not_accepted": [
+    {
+      "task": 23,
+      "exact_baseline_cost": 1622,
+      "fresh_correct": 2503,
+      "fresh_requested": 3000,
+      "reason": "Exact baseline is not generator-sound; the task has private-zero ambiguity."
+    },
+    {
+      "task": 80,
+      "exact_baseline_cost": 3051,
+      "fresh_correct": 3000,
+      "fresh_requested": 3000,
+      "reason": "Sound baseline, but no strict-cheaper candidate survived the value_info shave search and prior sound-candidate review."
+    },
+    {
+      "task": 138,
+      "exact_baseline_cost": 2731,
+      "fresh_correct": 3000,
+      "fresh_requested": 3000,
+      "reason": "Sound baseline, but no strict-cheaper candidate survived the value_info shave search and prior sound-candidate review."
+    },
+    {
+      "task": 187,
+      "exact_baseline_cost": 1814,
+      "fresh_correct": 2996,
+      "fresh_requested": 3000,
+      "reason": "Exact compact baseline is not generator-sound; known sound rebuilds are more expensive."
+    },
+    {
+      "task": 216,
+      "exact_baseline_cost": 1511,
+      "fresh_correct_before_error": 10,
+      "first_error_case": 11,
+      "reason": "Exact compact baseline raises a Gather out-of-bounds error; known sound rebuilds are more expensive."
+    },
+    {
+      "task": 379,
+      "exact_baseline_cost": 1955,
+      "fresh_correct": 2996,
+      "fresh_requested": 3000,
+      "reason": "Exact compact baseline is not generator-sound; known sound rebuilds are more expensive."
+    }
+  ],
+  "root_artifacts_modified": false
+}

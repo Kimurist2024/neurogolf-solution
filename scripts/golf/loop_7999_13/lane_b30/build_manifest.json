@@ -1,0 +1,51 @@
+{
+  "baseline_zip": "submission_base_8000.46.zip",
+  "baseline_zip_sha256": "74cb9c4a96dcf9d1d1ca4ad1e0afdb67f5218c0a06ad8e896ad1654b6548f534",
+  "baseline_model_sha256": "36b1e2be6488496ca637996552b505cf9b2742775b663c4210407d61b861d636",
+  "legal_swapped_prescaled": {
+    "path": "scripts/golf/loop_7999_13/lane_b30/task345_legal_swapped_prescaled_cost389.onnx",
+    "sha256": "dace8512d2882a34289713fa530cb2991c17164a6fbfb465f7e7f3051e28bbcb",
+    "full_checker": true,
+    "strict_shape_data_prop": true,
+    "change": "swap Conv data/weight and replace negative crop pads with positive standard pads; retain identical Wpack values and recurrence"
+  },
+  "sparse_probes": [
+    {
+      "initializers": [
+        "Wpack"
+      ],
+      "dense_elements_removed": 100,
+      "stored_nonzero_values": 20,
+      "full_checker": false,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Conv, node name: g2_f): [ShapeInferenceError] Input tensor must have at least 2 dimensions\n(op_type:Conv, node name: g3_f): [ShapeInferenceError] Input tensor must have at least 2 dimensions\n(op_type:Conv, node name: g4_f): [ShapeInferenceError] Input tensor must have at least 2 dimensions\n(op_type:Conv, node name: g5_f): [ShapeInferenceError] Input tensor must have at least 2 dimensions\n(op_type:Conv, node name: g6_f): [ShapeInferenceError] Input tensor must have at least 2 dimensions\n(op_type:Conv, node name: r9_f): [ShapeInferenceError] Input tensor must have at least 2 dimensions\n"
+    },
+    {
+      "initializers": [
+        "cfac"
+      ],
+      "dense_elements_removed": 10,
+      "stored_nonzero_values": 3,
+      "full_checker": false,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Einsum, node name: output): [ShapeInferenceError] Rank of input 1 (0) does not match the equation indices (2).\n"
+    },
+    {
+      "initializers": [
+        "wfac"
+      ],
+      "dense_elements_removed": 30,
+      "stored_nonzero_values": 10,
+      "full_checker": false,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Einsum, node name: output): [ShapeInferenceError] Rank of input 2 (0) does not match the equation indices (1).\n"
+    },
+    {
+      "initializers": [
+        "cfac",
+        "wfac"
+      ],
+      "dense_elements_removed": 40,
+      "stored_nonzero_values": 13,
+      "full_checker": false,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Einsum, node name: output): [ShapeInferenceError] Rank of input 1 (0) does not match the equation indices (2).\n"
+    }
+  ]
+}

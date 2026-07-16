@@ -1,0 +1,87 @@
+{
+  "lane": "agent_sound216_255_103",
+  "authority": {
+    "zip": "submission_base_8008.14.zip",
+    "sha256": "50b3215030cf506f692af50e41203d805256a250bd29882cc777749767a350c6"
+  },
+  "verdict": "NO_ADOPTABLE_STRICT_LOWER_EXACT_MODEL",
+  "new_projected_gain": 0.0,
+  "root_or_others_modified": false,
+  "tasks": {
+    "216": {
+      "authority_member_sha256": "9a5f4f10d6e014b3f053ce1dabeb39cbeaf95964ae685aa71514fd695caf0756",
+      "authority_cost": 1499,
+      "authority_known_dual": {
+        "disable_all": "266/266",
+        "default": "266/266"
+      },
+      "authority_runtime_shape_mismatches": 53,
+      "authority_fresh_two_seed": [
+        {
+          "seed": 2162551031,
+          "count": 5000,
+          "disable_all": {"right": 3331, "wrong": 2, "errors": 1667},
+          "default": {"right": 3331, "wrong": 2, "errors": 1667}
+        },
+        {
+          "seed": 2162551032,
+          "count": 5000,
+          "disable_all": {"right": 3333, "wrong": 0, "errors": 1667},
+          "default": {"right": 3333, "wrong": 0, "errors": 1667}
+        }
+      ],
+      "truthful_exact_control": {
+        "path": "scripts/golf/scratch/task216/cand3.onnx",
+        "cost": 31511,
+        "memory": 31372,
+        "params": 139,
+        "runtime_shape_mismatches": 0,
+        "known_disable_all": "266/266",
+        "known_default": "266/266",
+        "fresh_seed_2162551031_disable_all_default": "5000/5000 each",
+        "fresh_seed_2162551032_disable_all_default": "5000/5000 each",
+        "nonfinite": 0,
+        "mid_margin": 0,
+        "min_positive": 1.0,
+        "strict_lower_than_authority": false
+      },
+      "historical_unique_sha": 58,
+      "historical_static_below_authority": 24,
+      "historical_strict_survivors": 0,
+      "blocker": "The compact family uses a data-dependent [1,2,h,w] Slice before Pad; h=3..18 and w=4..18, so no single static declaration is truthful. The fixed-shape exact control costs 31511. A conventional f32 [1,1,20,20] spatial decode alone is 1600 bytes, already above 1499."
+    },
+    "255": {
+      "authority_member_sha256": "5bcf1caa5a31f2800cb5b1a0dc578355701168da8081d995d475765816943030",
+      "authority_cost": 1307,
+      "authority_known_dual": {
+        "disable_all": "265/265",
+        "default": "265/265"
+      },
+      "authority_runtime_shape_mismatches": 19,
+      "authority_fresh_two_seed": [
+        {
+          "seed": 2162551031,
+          "count": 5000,
+          "disable_all": {"right": 4758, "wrong": 242, "errors": 0},
+          "default": {"right": 4758, "wrong": 242, "errors": 0}
+        },
+        {
+          "seed": 2162551032,
+          "count": 5000,
+          "disable_all": {"right": 4722, "wrong": 278, "errors": 0},
+          "default": {"right": 4722, "wrong": 278, "errors": 0}
+        }
+      ],
+      "ambiguity_proof": {
+        "same_input": true,
+        "same_output": false,
+        "output_diff_cells": 15,
+        "legal_parameter_difference": {"low_right_tall": [3, 4]}
+      },
+      "historical_unique_sha": 60,
+      "historical_static_below_authority": 11,
+      "historical_strict_survivors": 0,
+      "blocker": "The generator mapping is not a function of the visible input. No deterministic input-only ONNX can be exact on all legal instances at any cost."
+    }
+  }
+}

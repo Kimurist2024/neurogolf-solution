@@ -1,0 +1,225 @@
+{
+  "assignment": [
+    50,
+    287
+  ],
+  "incumbents": [
+    {
+      "task": 50,
+      "path": "scripts/golf/loop_7999_13/lane_c30/baseline/task050.onnx",
+      "sha256": "63dcf2dac0ab38c95afe890e5ba2decac3e7d35d622172a8bee9dc78ea23d45a",
+      "cost": {
+        "memory": 0,
+        "params": 88,
+        "total": 88
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "canonical_io": true,
+        "static_positive_shapes": true,
+        "no_external_initializers": true,
+        "finite_initializers": true,
+        "conv_ub_findings": [],
+        "existing_giant_einsum_count": 1,
+        "existing_giant_einsum_operands": [
+          35
+        ],
+        "giant_policy": "grandfathered incumbent only; no candidate enlarged it"
+      },
+      "runtime_shapes": {
+        "declared_runtime_mismatches": [],
+        "shape_cloak": false,
+        "truthful_one_example_intermediate_bytes": 0
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 271,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        },
+        {
+          "mode": "default",
+          "right": 271,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        }
+      ]
+    },
+    {
+      "task": 287,
+      "path": "scripts/golf/loop_7999_13/lane_c30/baseline/task287.onnx",
+      "sha256": "0c360bdd79e302da2f5ae1c45b3d7022870b497dea4a5f6da932864dbc7d2b7b",
+      "cost": {
+        "memory": 0,
+        "params": 74,
+        "total": 74
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_data_prop": true,
+        "canonical_io": true,
+        "static_positive_shapes": true,
+        "no_external_initializers": true,
+        "finite_initializers": true,
+        "conv_ub_findings": [],
+        "existing_giant_einsum_count": 1,
+        "existing_giant_einsum_operands": [
+          86
+        ],
+        "giant_policy": "grandfathered incumbent only; no candidate enlarged it"
+      },
+      "runtime_shapes": {
+        "declared_runtime_mismatches": [],
+        "shape_cloak": false,
+        "truthful_one_example_intermediate_bytes": 0
+      },
+      "known_dual": [
+        {
+          "mode": "disabled",
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        },
+        {
+          "mode": "default",
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "first_failure": null
+        }
+      ]
+    }
+  ],
+  "cheaper_rejections": {
+    "task050": {
+      "candidates": [
+        {
+          "path": "task050_common_k_hadamard.onnx",
+          "modes": [
+            {
+              "mode": "disabled",
+              "right_before_stop": 0,
+              "wrong": 1,
+              "errors": 0,
+              "first_failure": {
+                "subset": "train",
+                "index": 0
+              }
+            },
+            {
+              "mode": "default",
+              "right_before_stop": 0,
+              "wrong": 1,
+              "errors": 0,
+              "first_failure": {
+                "subset": "train",
+                "index": 0
+              }
+            }
+          ]
+        },
+        {
+          "path": "task050_common_k_slice0.onnx",
+          "modes": [
+            {
+              "mode": "disabled",
+              "right_before_stop": 0,
+              "wrong": 1,
+              "errors": 0,
+              "first_failure": {
+                "subset": "train",
+                "index": 0
+              }
+            },
+            {
+              "mode": "default",
+              "right_before_stop": 0,
+              "wrong": 1,
+              "errors": 0,
+              "first_failure": {
+                "subset": "train",
+                "index": 0
+              }
+            }
+          ]
+        },
+        {
+          "path": "task050_common_k_slice1.onnx",
+          "modes": [
+            {
+              "mode": "disabled",
+              "right_before_stop": 0,
+              "wrong": 1,
+              "errors": 0,
+              "first_failure": {
+                "subset": "train",
+                "index": 0
+              }
+            },
+            {
+              "mode": "default",
+              "right_before_stop": 0,
+              "wrong": 1,
+              "errors": 0,
+              "first_failure": {
+                "subset": "train",
+                "index": 0
+              }
+            }
+          ]
+        },
+        {
+          "path": "task050_common_k_sum.onnx",
+          "modes": [
+            {
+              "mode": "disabled",
+              "right_before_stop": 0,
+              "wrong": 1,
+              "errors": 0,
+              "first_failure": {
+                "subset": "train",
+                "index": 0
+              }
+            },
+            {
+              "mode": "default",
+              "right_before_stop": 0,
+              "wrong": 1,
+              "errors": 0,
+              "first_failure": {
+                "subset": "train",
+                "index": 0
+              }
+            }
+          ]
+        }
+      ],
+      "cost_each": 84,
+      "baseline_cost": 88,
+      "reason": "all four fail train[0] in both ORT modes",
+      "fresh5000": "not run because known gate failed"
+    },
+    "task287": {
+      "candidate": "others/1/62901/task287_cost30_gather (1).onnx",
+      "candidate_cost": 30,
+      "baseline_cost": 74,
+      "external_known": {
+        "right": 263,
+        "wrong": 4,
+        "skipped": 0,
+        "errors": 0,
+        "total_seen": 267
+      },
+      "reason": "wrong on all four train examples and fixed-index lookup is prohibited",
+      "fresh5000": "not run because known gate failed"
+    }
+  },
+  "winners": [],
+  "projected_gain": 0.0,
+  "conclusion": "No eligible lower-cost model; retain both exact incumbents."
+}

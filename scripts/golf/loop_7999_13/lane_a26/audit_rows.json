@@ -1,0 +1,2913 @@
+{
+  "rows": [
+    {
+      "task": 182,
+      "label": "task182_base",
+      "path": "scripts/golf/loop_7999_13/lane_a26/baseline/task182.onnx",
+      "sha256": "eb60c542b43cab9ddee08e33e4dbef778e7199632c9dc16a4cd29ef55bad9587",
+      "inventory_static_cost": 994,
+      "baseline_actual_cost": 994,
+      "sources": [
+        "submission_base_7999.13.zip"
+      ],
+      "nodes": 85,
+      "params": 64,
+      "value_info": 84,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          1,
+          1
+        ]
+      ],
+      "ops": {
+        "Identity": 2,
+        "Add": 13,
+        "CenterCropPad": 39,
+        "Einsum": 3,
+        "Mul": 2,
+        "Equal": 3,
+        "Where": 4,
+        "Cast": 4,
+        "Div": 2,
+        "Pow": 1,
+        "BitwiseAnd": 1,
+        "Slice": 1,
+        "CastLike": 4,
+        "ReduceMax": 1,
+        "QLinearConv": 2,
+        "Sub": 2,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 3,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "dynamic_or_external_conv_bias:match_u8_raw",
+      "recomputed_static_floor": null,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 47,
+        "first_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "det_kernel_big",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "det_kernel_small",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "sel_pat01_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "detect_w_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "input_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop7",
+            "declared": [
+              1,
+              7,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              7,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop6",
+            "declared": [
+              1,
+              6,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              6,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop5",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              5,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop4",
+            "declared": [
+              1,
+              4,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop3",
+            "declared": [
+              1,
+              3,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              3,
+              30,
+              30
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 169444
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_94) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "official_like_score": {
+        "memory": 930,
+        "params": 64,
+        "cost": 994,
+        "score": 18.098262793343427,
+        "correct": true
+      },
+      "actual_static_agreement": true,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "shape_value_cloak_free"
+      ]
+    },
+    {
+      "task": 330,
+      "label": "task330_base",
+      "path": "scripts/golf/loop_7999_13/lane_a26/baseline/task330.onnx",
+      "sha256": "06dcb5216cb441f6d760a28fa4a5b4affa678c9001504dbd8f4f80f3bbd2d5af",
+      "inventory_static_cost": 897,
+      "baseline_actual_cost": 897,
+      "sources": [
+        "submission_base_7999.13.zip"
+      ],
+      "nodes": 44,
+      "params": 167,
+      "value_info": 43,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          22,
+          22
+        ]
+      ],
+      "ops": {
+        "GroupNormalization": 1,
+        "CastLike": 1,
+        "ConstantOfShape": 6,
+        "CenterCropPad": 31,
+        "QLinearConv": 3,
+        "Mod": 1,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          21
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 273,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 38,
+        "first_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              22,
+              22
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "g",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "u",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "uc0",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              8,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "uc1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              9,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "uch",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "q",
+            "declared": [
+              1,
+              3,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              3,
+              9,
+              9
+            ]
+          },
+          {
+            "tensor": "rsum",
+            "declared": [
+              1,
+              1,
+              2,
+              2
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "rr",
+            "declared": [
+              1,
+              1,
+              2,
+              2
+            ],
+            "actual": [
+              1,
+              1,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "arr",
+            "declared": [
+              1,
+              2,
+              2,
+              2
+            ],
+            "actual": [
+              1,
+              2,
+              10,
+              10
+            ]
+          },
+          {
+            "tensor": "s0",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          },
+          {
+            "tensor": "s1",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              28,
+              28
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 83177
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_21) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "official_like_score": {
+        "memory": 730,
+        "params": 167,
+        "cost": 897,
+        "score": 18.200944137941203,
+        "correct": true
+      },
+      "actual_static_agreement": true,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "shape_value_cloak_free"
+      ]
+    },
+    {
+      "task": 182,
+      "label": "task182_r01",
+      "path": "scripts/golf/loop_7999_13/lane_a26/history/task182_r01.onnx",
+      "sha256": "c36621d98f70428550b2c1d2de98ea70499630c93697d1d4ae74cebbca99949e",
+      "inventory_static_cost": 398,
+      "baseline_actual_cost": 994,
+      "sources": [
+        "artifacts/sub_1203Q4.zip::task182.onnx",
+        "artifacts/submission_1203adopt.zip::task182.onnx",
+        "artifacts/submission_1203final.zip::task182.onnx",
+        "artifacts/submission_hc2.zip::task182.onnx",
+        "others/2/1300/submission (60).zip::task182.onnx",
+        "others/2/1300/submission (62).zip::task182.onnx",
+        "others/7130/submission (62).zip::task182.onnx",
+        "others/7130/submission (63).zip::task182.onnx",
+        "others/7130/submission (64).zip::task182.onnx",
+        "others/7130/submission (65).zip::task182.onnx",
+        "others/7130/submission (66).zip::task182.onnx",
+        "others/7130/submission (67).zip::task182.onnx",
+        "others/7130/submission (68).zip::task182.onnx",
+        "others/7907/7982.53.zip::task182.onnx",
+        "others/7907/submission (59).zip::task182.onnx",
+        "others/7907/submission (60).zip::task182.onnx",
+        "submission_base_7982.53.zip::task182.onnx",
+        "submission_base_7982.54.zip::task182.onnx",
+        "submission_base_7985.60.zip::task182.onnx",
+        "submission_base_7986.20.zip::task182.onnx"
+      ],
+      "nodes": 55,
+      "params": 108,
+      "value_info": 49,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          1,
+          1
+        ]
+      ],
+      "ops": {
+        "Identity": 7,
+        "CenterCropPad": 23,
+        "Cast": 5,
+        "ConvTranspose": 1,
+        "ReduceMax": 1,
+        "Mod": 1,
+        "Equal": 2,
+        "CastLike": 7,
+        "ArgMax": 1,
+        "Pow": 1,
+        "BitwiseAnd": 1,
+        "QLinearConv": 1,
+        "Greater": 1,
+        "Not": 1,
+        "Concat": 1,
+        "Where": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 398,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 32,
+        "first_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input_hid",
+            "declared": [],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input_h",
+            "declared": [],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "hash_w_pad",
+            "declared": [],
+            "actual": [
+              10,
+              1,
+              5,
+              4
+            ]
+          },
+          {
+            "tensor": "hash_map",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              15,
+              15
+            ]
+          },
+          {
+            "tensor": "match_bool",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              15,
+              15
+            ]
+          },
+          {
+            "tensor": "stamp_u8",
+            "declared": [
+              1,
+              1,
+              8,
+              8
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              18
+            ]
+          },
+          {
+            "tensor": "stamp_kernel_big",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "stamp_kernel_small",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "stamp_kernel_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "match_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              15,
+              15
+            ]
+          },
+          {
+            "tensor": "cc0",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 79468
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_21) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "official_like_score": {
+        "memory": 1222,
+        "params": 108,
+        "cost": 1330,
+        "score": 17.8070657787842,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "archive_order_pollution_review": {
+        "aggregate_archive_sources": [
+          "artifacts/sub_1203Q4.zip::task182.onnx",
+          "artifacts/submission_1203adopt.zip::task182.onnx",
+          "artifacts/submission_1203final.zip::task182.onnx",
+          "artifacts/submission_hc2.zip::task182.onnx",
+          "others/2/1300/submission (60).zip::task182.onnx",
+          "others/2/1300/submission (62).zip::task182.onnx",
+          "others/7130/submission (62).zip::task182.onnx",
+          "others/7130/submission (63).zip::task182.onnx",
+          "others/7130/submission (64).zip::task182.onnx",
+          "others/7130/submission (65).zip::task182.onnx",
+          "others/7130/submission (66).zip::task182.onnx",
+          "others/7130/submission (67).zip::task182.onnx",
+          "others/7130/submission (68).zip::task182.onnx",
+          "others/7907/7982.53.zip::task182.onnx",
+          "others/7907/submission (59).zip::task182.onnx",
+          "others/7907/submission (60).zip::task182.onnx",
+          "submission_base_7982.53.zip::task182.onnx",
+          "submission_base_7982.54.zip::task182.onnx",
+          "submission_base_7985.60.zip::task182.onnx",
+          "submission_base_7986.20.zip::task182.onnx"
+        ],
+        "known_or_fresh_alone_sufficient": false
+      }
+    },
+    {
+      "task": 182,
+      "label": "task182_r02",
+      "path": "scripts/golf/loop_7999_13/lane_a26/history/task182_r02.onnx",
+      "sha256": "054dfce6083538795a7a1b7cd45c24425f9a107e50f8de182a14f79bae26a85a",
+      "inventory_static_cost": 417,
+      "baseline_actual_cost": 994,
+      "sources": [
+        "artifacts/sub_1201Q3.zip::task182.onnx",
+        "artifacts/sub_1201rA.zip::task182.onnx",
+        "artifacts/sub_1201rB.zip::task182.onnx",
+        "artifacts/sub_1203Q1.zip::task182.onnx",
+        "artifacts/sub_1203Q1a.zip::task182.onnx",
+        "artifacts/sub_1203Q1b.zip::task182.onnx",
+        "artifacts/sub_1203Q2.zip::task182.onnx",
+        "artifacts/sub_1203Q2a.zip::task182.onnx",
+        "artifacts/sub_1203Q2b.zip::task182.onnx",
+        "artifacts/sub_1203Q3.zip::task182.onnx",
+        "artifacts/sub_hcA.zip::task182.onnx",
+        "artifacts/sub_hcB.zip::task182.onnx",
+        "artifacts/submission_1201adopt.zip::task182.onnx",
+        "artifacts/submission_1201final.zip::task182.onnx",
+        "artifacts/submission_1201merge.zip::task182.onnx",
+        "artifacts/submission_1201rec.zip::task182.onnx",
+        "artifacts/submission_1201rej.zip::task182.onnx",
+        "artifacts/submission_1202bmerge.zip::task182.onnx",
+        "artifacts/submission_1202final.zip::task182.onnx",
+        "artifacts/submission_hccodex.zip::task182.onnx"
+      ],
+      "nodes": 51,
+      "params": 118,
+      "value_info": 45,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          1,
+          1
+        ]
+      ],
+      "ops": {
+        "Identity": 7,
+        "CenterCropPad": 23,
+        "CastLike": 5,
+        "ConvTranspose": 1,
+        "ReduceMax": 1,
+        "Cast": 3,
+        "Mod": 1,
+        "Equal": 2,
+        "ArgMax": 1,
+        "Gather": 1,
+        "BitwiseAnd": 1,
+        "QLinearConv": 1,
+        "Sub": 1,
+        "Neg": 1,
+        "Concat": 1,
+        "Where": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 417,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 31,
+        "first_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input_hid",
+            "declared": [],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input_h",
+            "declared": [],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "hash_w_pad",
+            "declared": [],
+            "actual": [
+              10,
+              1,
+              5,
+              4
+            ]
+          },
+          {
+            "tensor": "hash_map",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              15,
+              15
+            ]
+          },
+          {
+            "tensor": "match_bool",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              15,
+              15
+            ]
+          },
+          {
+            "tensor": "stamp_u8",
+            "declared": [
+              1,
+              1,
+              8,
+              8
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              18
+            ]
+          },
+          {
+            "tensor": "stamp_kernel_big",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "stamp_kernel_small",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "stamp_kernel_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "match_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              15,
+              15
+            ]
+          },
+          {
+            "tensor": "cc0",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 70476
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_22) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "official_like_score": {
+        "memory": 1231,
+        "params": 118,
+        "cost": 1349,
+        "score": 17.792881143792243,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "archive_order_pollution_review": {
+        "aggregate_archive_sources": [
+          "artifacts/sub_1201Q3.zip::task182.onnx",
+          "artifacts/sub_1201rA.zip::task182.onnx",
+          "artifacts/sub_1201rB.zip::task182.onnx",
+          "artifacts/sub_1203Q1.zip::task182.onnx",
+          "artifacts/sub_1203Q1a.zip::task182.onnx",
+          "artifacts/sub_1203Q1b.zip::task182.onnx",
+          "artifacts/sub_1203Q2.zip::task182.onnx",
+          "artifacts/sub_1203Q2a.zip::task182.onnx",
+          "artifacts/sub_1203Q2b.zip::task182.onnx",
+          "artifacts/sub_1203Q3.zip::task182.onnx",
+          "artifacts/sub_hcA.zip::task182.onnx",
+          "artifacts/sub_hcB.zip::task182.onnx",
+          "artifacts/submission_1201adopt.zip::task182.onnx",
+          "artifacts/submission_1201final.zip::task182.onnx",
+          "artifacts/submission_1201merge.zip::task182.onnx",
+          "artifacts/submission_1201rec.zip::task182.onnx",
+          "artifacts/submission_1201rej.zip::task182.onnx",
+          "artifacts/submission_1202bmerge.zip::task182.onnx",
+          "artifacts/submission_1202final.zip::task182.onnx",
+          "artifacts/submission_hccodex.zip::task182.onnx"
+        ],
+        "known_or_fresh_alone_sufficient": false
+      }
+    },
+    {
+      "task": 182,
+      "label": "task182_r03",
+      "path": "scripts/golf/loop_7999_13/lane_a26/history/task182_r03.onnx",
+      "sha256": "d11479be2703a35afb1f5fe5224ee6a258b3d11c4480a15e8e88db50747ccff8",
+      "inventory_static_cost": 482,
+      "baseline_actual_cost": 994,
+      "sources": [
+        "scripts/golf/loop_7999_13/lane_b9/task182_reuse_constants.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r03_static482.onnx"
+      ],
+      "nodes": 85,
+      "params": 60,
+      "value_info": 84,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          1,
+          1
+        ]
+      ],
+      "ops": {
+        "Add": 13,
+        "Mul": 1,
+        "Sub": 3,
+        "CenterCropPad": 39,
+        "Einsum": 3,
+        "Selu": 1,
+        "Equal": 3,
+        "Where": 4,
+        "Cast": 4,
+        "Div": 2,
+        "Pow": 1,
+        "Neg": 1,
+        "BitwiseAnd": 1,
+        "Slice": 1,
+        "CastLike": 4,
+        "ReduceMax": 1,
+        "QLinearConv": 2,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 3,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "dynamic_or_external_conv_bias:match_u8_raw",
+      "recomputed_static_floor": null,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 47,
+        "first_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "det_kernel_big",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "det_kernel_small",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "sel_pat01_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "detect_w_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "input_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop7",
+            "declared": [
+              1,
+              7,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              7,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop6",
+            "declared": [
+              1,
+              6,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              6,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop5",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              5,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop4",
+            "declared": [
+              1,
+              4,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop3",
+            "declared": [
+              1,
+              3,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              3,
+              30,
+              30
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 169444
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_66) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "official_like_score": {
+        "memory": 930,
+        "params": 60,
+        "cost": 990,
+        "score": 18.102295056871363,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "shape_value_cloak_free"
+      ],
+      "archive_order_pollution_review": {
+        "aggregate_archive_sources": [],
+        "known_or_fresh_alone_sufficient": false
+      }
+    },
+    {
+      "task": 182,
+      "label": "task182_r04",
+      "path": "scripts/golf/loop_7999_13/lane_a26/history/task182_r04.onnx",
+      "sha256": "2b0c330cf320d5b18c9cf676545b4e59c0e44004f7166f1ac640e64087bbf266",
+      "inventory_static_cost": 485,
+      "baseline_actual_cost": 994,
+      "sources": [
+        "scripts/golf/loop_7999_13/lane_b9/task182_reuse_s2_s3.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r04_static485.onnx"
+      ],
+      "nodes": 85,
+      "params": 63,
+      "value_info": 84,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          1,
+          1
+        ]
+      ],
+      "ops": {
+        "Add": 14,
+        "Identity": 1,
+        "CenterCropPad": 39,
+        "Einsum": 3,
+        "Mul": 2,
+        "Equal": 3,
+        "Where": 4,
+        "Cast": 4,
+        "Div": 2,
+        "Pow": 1,
+        "BitwiseAnd": 1,
+        "Slice": 1,
+        "CastLike": 4,
+        "ReduceMax": 1,
+        "QLinearConv": 2,
+        "Sub": 2,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 3,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "dynamic_or_external_conv_bias:match_u8_raw",
+      "recomputed_static_floor": null,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 47,
+        "first_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "det_kernel_big",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "det_kernel_small",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "sel_pat01_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "detect_w_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "input_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop7",
+            "declared": [
+              1,
+              7,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              7,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop6",
+            "declared": [
+              1,
+              6,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              6,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop5",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              5,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop4",
+            "declared": [
+              1,
+              4,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop3",
+            "declared": [
+              1,
+              3,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              3,
+              30,
+              30
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 169444
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_90) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "official_like_score": {
+        "memory": 930,
+        "params": 63,
+        "cost": 993,
+        "score": 18.099269335954826,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "shape_value_cloak_free"
+      ],
+      "archive_order_pollution_review": {
+        "aggregate_archive_sources": [],
+        "known_or_fresh_alone_sufficient": false
+      }
+    },
+    {
+      "task": 182,
+      "label": "task182_r05",
+      "path": "scripts/golf/loop_7999_13/lane_a26/history/task182_r05.onnx",
+      "sha256": "4e3243918eed8190e6974b116401b82ee885969651044fbbba25e370daf33ded",
+      "inventory_static_cost": 554,
+      "baseline_actual_cost": 994,
+      "sources": [
+        "scripts/golf/scratch_codex_7994/submission_7994.49_soundplus7.zip::task182.onnx",
+        "scripts/golf/scratch_codex_7994/submission_7994_carryover8.zip::task182.onnx",
+        "scripts/golf/scratch_codex_7994/submission_7994_carryover9.zip::task182.onnx",
+        "scripts/golf/scratch_codex_7994/submission_7994_task344_sound.zip::task182.onnx",
+        "scripts/golf/scratch_codex_plus10/review_task192/submission_task192_sound_review.zip::task182.onnx",
+        "scripts/golf/scratch_codex_plus10/submission_7994.49_plus17.67_ordered_soundcore.zip::task182.onnx",
+        "scripts/golf/scratch_codex_plus10/submission_7994.49_plus17.74_candidate.zip::task182.onnx",
+        "scripts/golf/scratch_codex_plus10/submission_7994.49_plus17.78_candidate.zip::task182.onnx",
+        "scripts/golf/scratch_codex_plus10/submission_7994.49_plus17.78_ordered_candidate.zip::task182.onnx",
+        "scripts/golf/scratch_codex_plus10/submission_7994.49_plus17.85_candidate.zip::task182.onnx",
+        "scripts/golf/scratch_codex_plus10/wave2_actual/submission_wave2_actual.zip::task182.onnx",
+        "scripts/golf/scratch_codex_plus10/wave2_actual/submission_wave2_actual_ordered.zip::task182.onnx",
+        "scripts/golf/scratch_codex_plus10/wave2_sound/submission_7994.49_task192_sound.zip::task182.onnx",
+        "submission_base_7991.66.zip::task182.onnx",
+        "submission_base_7992.90.zip::task182.onnx",
+        "submission_base_7994.45.zip::task182.onnx",
+        "submission_base_7994.49.zip::task182.onnx",
+        "others/7131/task182_further_improved.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task182_r03_static554.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r05_static554.onnx"
+      ],
+      "nodes": 86,
+      "params": 118,
+      "value_info": 85,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          1,
+          1
+        ]
+      ],
+      "ops": {
+        "Identity": 2,
+        "Add": 13,
+        "Einsum": 3,
+        "Mul": 3,
+        "Sub": 2,
+        "Equal": 4,
+        "Where": 4,
+        "Cast": 5,
+        "ArgMax": 1,
+        "Pow": 1,
+        "BitwiseAnd": 1,
+        "Slice": 1,
+        "CenterCropPad": 34,
+        "CastLike": 4,
+        "Div": 1,
+        "ReduceMax": 1,
+        "QLinearConv": 2,
+        "Unsqueeze": 3,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 3,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "dynamic_or_external_conv_bias:match_u8_raw",
+      "recomputed_static_floor": null,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 42,
+        "first_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "det_kernel_big",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "det_kernel_small",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "sel_pat01_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "detect_w_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "input_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop7",
+            "declared": [
+              1,
+              7,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              7,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop6",
+            "declared": [
+              1,
+              6,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              6,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop5",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              5,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop4",
+            "declared": [
+              1,
+              4,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop3",
+            "declared": [
+              1,
+              3,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              3,
+              30,
+              30
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 87038
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_97) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "official_like_score": {
+        "memory": 944,
+        "params": 118,
+        "cost": 1062,
+        "score": 18.032090798198116,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "archive_order_pollution_review": {
+        "aggregate_archive_sources": [
+          "scripts/golf/scratch_codex_7994/submission_7994.49_soundplus7.zip::task182.onnx",
+          "scripts/golf/scratch_codex_7994/submission_7994_carryover8.zip::task182.onnx",
+          "scripts/golf/scratch_codex_7994/submission_7994_carryover9.zip::task182.onnx",
+          "scripts/golf/scratch_codex_7994/submission_7994_task344_sound.zip::task182.onnx",
+          "scripts/golf/scratch_codex_plus10/review_task192/submission_task192_sound_review.zip::task182.onnx",
+          "scripts/golf/scratch_codex_plus10/submission_7994.49_plus17.67_ordered_soundcore.zip::task182.onnx",
+          "scripts/golf/scratch_codex_plus10/submission_7994.49_plus17.74_candidate.zip::task182.onnx",
+          "scripts/golf/scratch_codex_plus10/submission_7994.49_plus17.78_candidate.zip::task182.onnx",
+          "scripts/golf/scratch_codex_plus10/submission_7994.49_plus17.78_ordered_candidate.zip::task182.onnx",
+          "scripts/golf/scratch_codex_plus10/submission_7994.49_plus17.85_candidate.zip::task182.onnx",
+          "scripts/golf/scratch_codex_plus10/wave2_actual/submission_wave2_actual.zip::task182.onnx",
+          "scripts/golf/scratch_codex_plus10/wave2_actual/submission_wave2_actual_ordered.zip::task182.onnx",
+          "scripts/golf/scratch_codex_plus10/wave2_sound/submission_7994.49_task192_sound.zip::task182.onnx",
+          "submission_base_7991.66.zip::task182.onnx",
+          "submission_base_7992.90.zip::task182.onnx",
+          "submission_base_7994.45.zip::task182.onnx",
+          "submission_base_7994.49.zip::task182.onnx"
+        ],
+        "known_or_fresh_alone_sufficient": false
+      }
+    },
+    {
+      "task": 182,
+      "label": "task182_r06",
+      "path": "scripts/golf/loop_7999_13/lane_a26/history/task182_r06.onnx",
+      "sha256": "6beaa897f35afb8a4364fbc170fbc2017cfa75595bec8c56e40ddae180bdf9f6",
+      "inventory_static_cost": 688,
+      "baseline_actual_cost": 994,
+      "sources": [
+        "submission_base_7989.60.zip::task182.onnx",
+        "others/7130/task182_improved.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_zip_sweep/task182_r04_static688.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task182_r06_static688.onnx"
+      ],
+      "nodes": 96,
+      "params": 159,
+      "value_info": 95,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          1,
+          1
+        ]
+      ],
+      "ops": {
+        "Identity": 19,
+        "Einsum": 4,
+        "Mul": 4,
+        "Sub": 2,
+        "Add": 1,
+        "Equal": 4,
+        "Where": 4,
+        "Cast": 7,
+        "ArgMax": 1,
+        "Pow": 1,
+        "BitwiseAnd": 2,
+        "CenterCropPad": 33,
+        "CastLike": 4,
+        "Div": 1,
+        "Neg": 1,
+        "Unsqueeze": 4,
+        "QLinearConv": 2,
+        "Greater": 1,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 3,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "dynamic_or_external_conv_bias:match_u8_raw",
+      "recomputed_static_floor": null,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 41,
+        "first_mismatches": [
+          {
+            "tensor": "output",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "det_kernel_big",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "det_kernel_small",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "sel_pat01_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "detect_w_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          {
+            "tensor": "input_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "input_u8",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop7",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              7,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop6",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              6,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop5",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              5,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop4",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              4,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "chcrop3",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              3,
+              30,
+              30
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 86249
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_93) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+      },
+      "official_like_score": {
+        "memory": 1037,
+        "params": 159,
+        "cost": 1196,
+        "score": 17.913262065489423,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "not_strictly_cheaper_actual",
+        "shape_value_cloak_free"
+      ],
+      "archive_order_pollution_review": {
+        "aggregate_archive_sources": [
+          "submission_base_7989.60.zip::task182.onnx"
+        ],
+        "known_or_fresh_alone_sufficient": false
+      }
+    },
+    {
+      "task": 330,
+      "label": "task330_r01",
+      "path": "scripts/golf/loop_7999_13/lane_a26/history/task330_r01.onnx",
+      "sha256": "b4f79322a726b544fe7986a760c2ebcb2c526cb5f7c524f6e1ea2ec6ea32fc10",
+      "inventory_static_cost": 807,
+      "baseline_actual_cost": 897,
+      "sources": [
+        "scripts/golf/scratch_codex/task330/task330_pair_frames.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task330_r01_static807.onnx"
+      ],
+      "nodes": 8,
+      "params": 140,
+      "value_info": 7,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "GroupNormalization": 1,
+        "CastLike": 1,
+        "Resize": 1,
+        "QLinearConv": 3,
+        "Mod": 1,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          21
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 807,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 2,
+        "first_mismatches": [
+          {
+            "tensor": "g",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "u",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 45662
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 166,
+        "wrong": 100,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 166,
+        "wrong": 100,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 667,
+        "params": 140,
+        "cost": 807,
+        "score": 18.306676331730053,
+        "correct": false
+      },
+      "actual_static_agreement": true,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "known_disable_all",
+        "shape_value_cloak_free"
+      ]
+    },
+    {
+      "task": 330,
+      "label": "task330_r02",
+      "path": "scripts/golf/loop_7999_13/lane_a26/history/task330_r02.onnx",
+      "sha256": "1c5afaebb477473d33b00a99155d05b44862487b147e0ac9b78f5b67c93221d6",
+      "inventory_static_cost": 808,
+      "baseline_actual_cost": 897,
+      "sources": [
+        "scripts/golf/scratch_codex/task330/task330_pair_frames_anchor.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task330_r02_static808.onnx"
+      ],
+      "nodes": 8,
+      "params": 141,
+      "value_info": 7,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "GroupNormalization": 1,
+        "CastLike": 1,
+        "Resize": 1,
+        "QLinearConv": 3,
+        "Mod": 1,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          21
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 808,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 2,
+        "first_mismatches": [
+          {
+            "tensor": "g",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "u",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 45662
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 162,
+        "wrong": 104,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 162,
+        "wrong": 104,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 667,
+        "params": 141,
+        "cost": 808,
+        "score": 18.305437941478907,
+        "correct": false
+      },
+      "actual_static_agreement": true,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "known_disable_all",
+        "shape_value_cloak_free"
+      ]
+    },
+    {
+      "task": 330,
+      "label": "task330_r03",
+      "path": "scripts/golf/loop_7999_13/lane_a26/history/task330_r03.onnx",
+      "sha256": "7c500ae8eea26ef575be99e6834fce7fc7e2b779f3721da21cddf48843ab8793",
+      "inventory_static_cost": 817,
+      "baseline_actual_cost": 897,
+      "sources": [
+        "scripts/golf/scratch_codex/task330/task330_pair_frames_mod9.onnx",
+        "scripts/golf/loop_7999_13/lane_archive_loose_sweep/task330_r03_static817.onnx"
+      ],
+      "nodes": 8,
+      "params": 150,
+      "value_info": 7,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "GroupNormalization": 1,
+        "CastLike": 1,
+        "Resize": 1,
+        "QLinearConv": 3,
+        "Mod": 1,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          21
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 817,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 2,
+        "first_mismatches": [
+          {
+            "tensor": "g",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "tensor": "u",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "runtime_intermediate_bytes": 45662
+      },
+      "shape_value_cloak_free": false,
+      "known_disable_all": {
+        "right": 210,
+        "wrong": 56,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 210,
+        "wrong": 56,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 667,
+        "params": 150,
+        "cost": 817,
+        "score": 18.294360905139996,
+        "correct": false
+      },
+      "actual_static_agreement": true,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "known_default",
+        "known_disable_all",
+        "shape_value_cloak_free"
+      ]
+    },
+    {
+      "task": 182,
+      "label": "task182_truthful_rule_r1",
+      "path": "scripts/golf/loop_7999_13/lane_a26/rule_references/task182_truthful_rule_r1.onnx",
+      "sha256": "2890b75b8662f02dd350a3278597ebcedee8a971ee49879b01c193772a8d8708",
+      "inventory_static_cost": null,
+      "baseline_actual_cost": 994,
+      "sources": [
+        "scripts/golf/scratch_claude/task182/r1.onnx"
+      ],
+      "nodes": 31,
+      "params": 100,
+      "value_info": 0,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Conv": 2,
+        "Cast": 8,
+        "AveragePool": 2,
+        "ArgMax": 2,
+        "Reshape": 3,
+        "Mul": 2,
+        "Add": 2,
+        "Gather": 1,
+        "Greater": 1,
+        "Sub": 1,
+        "ReduceSum": 1,
+        "Equal": 2,
+        "ConvTranspose": 1,
+        "Pad": 1,
+        "Slice": 1,
+        "Where": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          13
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 7099,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 6999
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 6999,
+        "params": 100,
+        "cost": 7099,
+        "score": 16.132290791960614,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "not_strictly_cheaper_actual"
+      ],
+      "archive_order_pollution_review": {
+        "aggregate_archive_sources": [],
+        "known_or_fresh_alone_sufficient": false
+      }
+    },
+    {
+      "task": 182,
+      "label": "task182_exact_truthful_shapes",
+      "path": "scripts/golf/loop_7999_13/lane_a26/rule_references/task182_exact_truthful_shapes.onnx",
+      "sha256": "4c80813c6e5c0a047ff0debb35e4443766a5f58dc85294d0da80d46f75c83322",
+      "inventory_static_cost": null,
+      "baseline_actual_cost": 994,
+      "sources": [
+        "scripts/golf/loop_7999_13/lane_b9/task182_static_shapes.onnx"
+      ],
+      "nodes": 72,
+      "params": 89,
+      "value_info": 0,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "CenterCropPad": 39,
+        "Einsum": 3,
+        "Mul": 2,
+        "Add": 2,
+        "Equal": 3,
+        "Where": 4,
+        "Cast": 4,
+        "Div": 2,
+        "Pow": 1,
+        "BitwiseAnd": 1,
+        "Slice": 1,
+        "CastLike": 4,
+        "ReduceMax": 1,
+        "QLinearConv": 2,
+        "Sub": 2,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 3,
+      "opsets": [
+        [
+          "",
+          18
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "dynamic_or_external_conv_bias:match_u8_raw",
+      "recomputed_static_floor": null,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 169340
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 169340,
+        "params": 89,
+        "cost": 169429,
+        "score": 12.959810761007743,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "not_strictly_cheaper_actual"
+      ],
+      "archive_order_pollution_review": {
+        "aggregate_archive_sources": [],
+        "known_or_fresh_alone_sufficient": false
+      }
+    },
+    {
+      "task": 330,
+      "label": "task330_truthful_component_rect",
+      "path": "scripts/golf/loop_7999_13/lane_a26/rule_references/task330_truthful_component_rect.onnx",
+      "sha256": "6268e9acdeb8a79af2c1dc2485bc843a54d0b599ec41be1de74faa75ac5c610d",
+      "inventory_static_cost": null,
+      "baseline_actual_cost": 897,
+      "sources": [
+        "scripts/golf/scratch_codex/task330/agent_rect.onnx"
+      ],
+      "nodes": 50,
+      "params": 1263,
+      "value_info": 0,
+      "declared_output_shapes": [
+        [
+          1,
+          10,
+          30,
+          30
+        ]
+      ],
+      "ops": {
+        "Pad": 1,
+        "Cast": 12,
+        "QLinearConv": 24,
+        "Equal": 11,
+        "Max": 1,
+        "Concat": 1
+      },
+      "max_einsum_inputs": 0,
+      "opsets": [
+        [
+          "",
+          12
+        ]
+      ],
+      "nonstandard_domains": [],
+      "banned_ops": [],
+      "functions": 0,
+      "sparse_initializers": 0,
+      "external_initializers": [],
+      "conv_bias_issues": [],
+      "lookup_red_flags": {
+        "tfidf": 0,
+        "hardmax": 0,
+        "giant_initializer": 0
+      },
+      "full_check": true,
+      "strict_data_prop": true,
+      "nonstatic_inferred": [],
+      "shared_structure_gate": "pass",
+      "recomputed_static_floor": 5525,
+      "runtime_shape_trace": {
+        "declared_actual_mismatch_count": 0,
+        "first_mismatches": [],
+        "runtime_intermediate_bytes": 4262
+      },
+      "shape_value_cloak_free": true,
+      "known_disable_all": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "official_like_score": {
+        "memory": 4262,
+        "params": 1263,
+        "cost": 5525,
+        "score": 16.382961473614046,
+        "correct": true
+      },
+      "actual_static_agreement": false,
+      "pre_fresh_pass": false,
+      "pre_fresh_reasons": [
+        "not_strictly_cheaper_actual"
+      ]
+    }
+  ],
+  "pending": [],
+  "complete": true
+}

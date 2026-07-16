@@ -1,0 +1,56 @@
+{
+  "lane": "c15",
+  "required_for_adoption": {
+    "known": "complete under default ORT and ORT_DISABLE_ALL",
+    "fresh_disable_all": "5000/5000, runtime_errors=0",
+    "fresh_default": "5000/5000, runtime_errors=0",
+    "structure": "full checker, strict inference, static standard-domain graph, safe Conv-family bias, zero runtime/static shape contradictions, no lookup or host UB"
+  },
+  "new_dual_5000_runs": [],
+  "reason_no_new_runs": "No candidate survived the strictly-cheaper, complete-known-both-modes, and structural-truthfulness prerequisites, so no rejected graph advanced to the final 10000-execution gate.",
+  "prior_decisive_evidence": [
+    {
+      "task": 112,
+      "model": "exact cost-422 baseline",
+      "fresh": {"right": 5000, "wrong": 0, "errors": 0},
+      "source": "scripts/golf/loop_7999_13/lane_c5/winner_manifest.json",
+      "note": "The distinct cost-420 probe was not advanced because it fails default ORT, strict inference, and truthful-shape prerequisites."
+    },
+    {
+      "task": 148,
+      "model": "z5hi_scalar cost-264 probe",
+      "fresh": {"right": 99, "wrong": 1, "errors": 0},
+      "known": {"right": 261, "wrong": 5, "errors": 0},
+      "source": "scripts/golf/scratch_codex/deep_task148/REPORT.md",
+      "decision": "reject"
+    },
+    {
+      "task": 212,
+      "model": "exact cost-240 baseline",
+      "fresh": {"right": 1000, "wrong": 0, "errors": 0},
+      "source": "scripts/golf/scratch_codex/deep_task212/REPORT.md",
+      "note": "All 123 axis-collapse candidates and all six coupled rank reductions failed screening."
+    },
+    {
+      "task": 316,
+      "model": "exact cost-246 baseline",
+      "fresh": {"right": 5000, "wrong": 0, "errors": 0},
+      "known": {"right": 266, "wrong": 0, "errors": 0},
+      "source": "scripts/golf/scratch_codex/deep_task316/REPORT.md"
+    },
+    {
+      "task": 325,
+      "model": "prefix_outer cost-249 dominated probe",
+      "fresh": {"right": 3000, "wrong": 0, "errors": 0},
+      "source": "scripts/golf/scratch_codex/task325/REPORT.md",
+      "decision": "reject_as_cost_dominated_by_exact_235"
+    },
+    {
+      "task": 341,
+      "model": "center_index_v4 cost-261 dominated probe",
+      "fresh": {"right": 1000, "wrong": 0, "errors": 0},
+      "source": "scripts/golf/scratch_codex/task341/REPORT.md",
+      "decision": "reject_as_cost_dominated_by_exact_260_and_shape_cloaked"
+    }
+  ]
+}

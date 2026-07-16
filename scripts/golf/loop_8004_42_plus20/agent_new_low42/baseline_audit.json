@@ -1,0 +1,906 @@
+{
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "previous_path": "submission_base_8004.50.zip",
+    "previous_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "targets": [
+    {
+      "task": 339,
+      "member": "task339.onnx",
+      "sha256": "4e87fd96583e859a9c56cbff5a8e01a285bf11b97d0cc3ebbc8134efc2c52751",
+      "file_bytes": 606,
+      "unchanged_from_8004_50": true,
+      "previous_member_sha256": "4e87fd96583e859a9c56cbff5a8e01a285bf11b97d0cc3ebbc8134efc2c52751",
+      "actual_cost": {
+        "memory": 34,
+        "params": 19,
+        "cost": 53
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "Cast": 2,
+          "ConvInteger": 1,
+          "Div": 1,
+          "Einsum": 1,
+          "Equal": 1,
+          "Floor": 1,
+          "Neg": 1
+        },
+        "node_count": 8,
+        "initializer_count": 2,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter_nodes": [],
+        "declared_cost": {
+          "memory": 34,
+          "params": 19,
+          "cost": 53
+        },
+        "runtime_shape_trace": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 126,
+      "member": "task126.onnx",
+      "sha256": "2b42a9b1c6e4390f29faece29888f7626ad4eb18b27c3362aa6fd1b8e75926e5",
+      "file_bytes": 2033,
+      "unchanged_from_8004_50": true,
+      "previous_member_sha256": "2b42a9b1c6e4390f29faece29888f7626ad4eb18b27c3362aa6fd1b8e75926e5",
+      "actual_cost": {
+        "memory": 44,
+        "params": 8,
+        "cost": 52
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "CastLike": 6,
+          "CenterCropPad": 2,
+          "GatherND": 1,
+          "LessOrEqual": 2,
+          "PRelu": 3,
+          "ReduceL1": 1,
+          "ReduceLogSumExp": 1,
+          "ScatterElements": 1,
+          "Selu": 2,
+          "Shape": 1
+        },
+        "node_count": 20,
+        "initializer_count": 4,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter_nodes": [
+          "GatherND",
+          "ScatterElements"
+        ],
+        "declared_cost": {
+          "memory": 44,
+          "params": 8,
+          "cost": 52
+        },
+        "runtime_shape_trace": {
+          "shape_cloak": true,
+          "mismatch_count": 19,
+          "mismatches": [
+            {
+              "tensor": "hidden_input",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "input_u8",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "hidden_input_f16",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "color_counts_f16",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30
+              ]
+            },
+            {
+              "tensor": "l2_counts_f16",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "ref_f16",
+              "declared": [
+                1
+              ],
+              "runtime": []
+            },
+            {
+              "tensor": "a_le_b",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "b_le_a",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "a_f16",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "b_f16",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "neg_a",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "eq_neg1",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "threshold_pair_hidden",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                5,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "updates_pair_f16",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                5,
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "updates_u8",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                5,
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "neg_ref_f16",
+              "declared": [
+                1
+              ],
+              "runtime": []
+            },
+            {
+              "tensor": "indices_f16",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                5,
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "indices_i32",
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                5,
+                1,
+                30
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 21,
+      "member": "task021.onnx",
+      "sha256": "32cf74fd73b1d43cc553934029fdfa39026f3233d77eb4690ed1e4b31818f245",
+      "file_bytes": 657,
+      "unchanged_from_8004_50": true,
+      "previous_member_sha256": "32cf74fd73b1d43cc553934029fdfa39026f3233d77eb4690ed1e4b31818f245",
+      "actual_cost": {
+        "memory": 48,
+        "params": 3,
+        "cost": 51
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "Concat": 1,
+          "Conv": 2,
+          "Einsum": 2,
+          "Reciprocal": 2,
+          "RoiAlign": 1
+        },
+        "node_count": 8,
+        "initializer_count": 2,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter_nodes": [],
+        "declared_cost": {
+          "memory": 48,
+          "params": 3,
+          "cost": 51
+        },
+        "runtime_shape_trace": {
+          "shape_cloak": false,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 171,
+      "member": "task171.onnx",
+      "sha256": "56eab810a3d0e18e0ae4860b7501f3a9aa87753726ea5f1b522c3c1fabc9a8a4",
+      "file_bytes": 955,
+      "unchanged_from_8004_50": true,
+      "previous_member_sha256": "56eab810a3d0e18e0ae4860b7501f3a9aa87753726ea5f1b522c3c1fabc9a8a4",
+      "actual_cost": {
+        "memory": 39,
+        "params": 11,
+        "cost": 50
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "CastLike": 1,
+          "CenterCropPad": 4,
+          "ConstantOfShape": 3,
+          "LessOrEqual": 1,
+          "ReduceL1": 1,
+          "Where": 1
+        },
+        "node_count": 11,
+        "initializer_count": 2,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter_nodes": [],
+        "declared_cost": {
+          "memory": 39,
+          "params": 11,
+          "cost": 50
+        },
+        "runtime_shape_trace": {
+          "shape_cloak": true,
+          "mismatch_count": 8,
+          "mismatches": [
+            {
+              "tensor": "xc",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "x",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "m",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "e0",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                26,
+                26
+              ]
+            },
+            {
+              "tensor": "e1",
+              "declared": [
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                27,
+                27
+              ]
+            },
+            {
+              "tensor": "inter",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "keep",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                10,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 346,
+      "member": "task346.onnx",
+      "sha256": "b882fabd270a30bd4200ca8c767d7ecd5ce38fcee43004350ceeebb2bc0203ec",
+      "file_bytes": 631,
+      "unchanged_from_8004_50": true,
+      "previous_member_sha256": "b882fabd270a30bd4200ca8c767d7ecd5ce38fcee43004350ceeebb2bc0203ec",
+      "actual_cost": {
+        "memory": 39,
+        "params": 11,
+        "cost": 50
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "CastLike": 2,
+          "Einsum": 1,
+          "Equal": 1,
+          "GroupNormalization": 1,
+          "Pad": 1,
+          "ReduceMin": 1
+        },
+        "node_count": 7,
+        "initializer_count": 4,
+        "max_node_inputs": 5,
+        "giant_einsum": [],
+        "lookup_or_scatter_nodes": [],
+        "declared_cost": {
+          "memory": 12,
+          "params": 11,
+          "cost": 23
+        },
+        "runtime_shape_trace": {
+          "shape_cloak": true,
+          "mismatch_count": 6,
+          "mismatches": [
+            {
+              "tensor": "fa",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "u",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "f",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "rect",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "eq",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                1,
+                1
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                1,
+                30,
+                30
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 227,
+      "member": "task227.onnx",
+      "sha256": "f4310e4d1d2229cd06ad77f5e2da9ba9cd8debd8409cffa4c9e55421d94e1d14",
+      "file_bytes": 592,
+      "unchanged_from_8004_50": true,
+      "previous_member_sha256": "f4310e4d1d2229cd06ad77f5e2da9ba9cd8debd8409cffa4c9e55421d94e1d14",
+      "actual_cost": {
+        "memory": 37,
+        "params": 12,
+        "cost": 49
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "QLinearConv": 2
+        },
+        "node_count": 5,
+        "initializer_count": 3,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter_nodes": [],
+        "declared_cost": {
+          "memory": 37,
+          "params": 12,
+          "cost": 49
+        },
+        "runtime_shape_trace": {
+          "shape_cloak": true,
+          "mismatch_count": 1,
+          "mismatches": [
+            {
+              "tensor": "gn",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 318,
+      "member": "task318.onnx",
+      "sha256": "b5869143ce2fbd7d7cf3fc49de3eaec4555331ee5f17fecaab5159cf3eaa65bf",
+      "file_bytes": 587,
+      "unchanged_from_8004_50": true,
+      "previous_member_sha256": "b5869143ce2fbd7d7cf3fc49de3eaec4555331ee5f17fecaab5159cf3eaa65bf",
+      "actual_cost": {
+        "memory": 37,
+        "params": 12,
+        "cost": 49
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "QLinearConv": 2
+        },
+        "node_count": 5,
+        "initializer_count": 3,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter_nodes": [],
+        "declared_cost": {
+          "memory": 37,
+          "params": 12,
+          "cost": 49
+        },
+        "runtime_shape_trace": {
+          "shape_cloak": true,
+          "mismatch_count": 1,
+          "mismatches": [
+            {
+              "tensor": "g",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "task": 332,
+      "member": "task332.onnx",
+      "sha256": "aac601d6658a8080930a969b857ca58aeb1a2f10f6a03e5b2bd7c1271a9d5268",
+      "file_bytes": 561,
+      "unchanged_from_8004_50": true,
+      "previous_member_sha256": "aac601d6658a8080930a969b857ca58aeb1a2f10f6a03e5b2bd7c1271a9d5268",
+      "actual_cost": {
+        "memory": 8,
+        "params": 41,
+        "cost": 49
+      },
+      "structure": {
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "static_positive": true,
+        "standard_domains": true,
+        "nonstandard_domains": [],
+        "banned_ops": [],
+        "conv_bias_findings": [],
+        "op_histogram": {
+          "CastLike": 1,
+          "Einsum": 1,
+          "GroupNormalization": 1
+        },
+        "node_count": 3,
+        "initializer_count": 3,
+        "max_node_inputs": 6,
+        "giant_einsum": [],
+        "lookup_or_scatter_nodes": [],
+        "declared_cost": {
+          "memory": 8,
+          "params": 41,
+          "cost": 49
+        },
+        "runtime_shape_trace": {
+          "shape_cloak": true,
+          "mismatch_count": 3,
+          "mismatches": [
+            {
+              "tensor": "data",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "x32",
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            },
+            {
+              "tensor": "output",
+              "declared": [
+                1,
+                10,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          ]
+        },
+        "errors": []
+      }
+    }
+  ],
+  "exact_wave2": {
+    "baseline": "submission_base_8004.50.zip",
+    "tasks_scanned": 400,
+    "accepted": 0,
+    "target_hits": [],
+    "interpretation": "Cross-check against the complete exact-Wave2 scan; each target hit is recorded without assuming adoptability."
+  }
+}

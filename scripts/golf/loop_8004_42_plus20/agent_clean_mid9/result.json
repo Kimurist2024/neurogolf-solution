@@ -1,0 +1,129 @@
+{
+  "lane": "agent_clean_mid9",
+  "baseline_zip": "submission_base_8004.50.zip",
+  "assigned_tasks": [89, 2, 191, 88],
+  "accepted": [],
+  "accepted_count": 0,
+  "aggregate_projected_gain": 0.0,
+  "zip_promoted": false,
+  "policy": {
+    "known_complete_accuracy": 1.0,
+    "fresh_non_private_minimum": 0.9,
+    "private_zero_required_accuracy": 1.0,
+    "dual_ort_runtime_errors": 0,
+    "strict_truthful_shapes": true,
+    "conv_bias_ub": 0,
+    "max_einsum_inputs": 16
+  },
+  "history_coverage": {
+    "loose_paths": 2407,
+    "unique_sha256": 148,
+    "task002_unique_sha256": 29,
+    "task088_unique_sha256": 39,
+    "task089_unique_sha256": 42,
+    "task191_unique_sha256": 38
+  },
+  "tasks": {
+    "2": {
+      "baseline_sha256": "20f024826fc233dd1a90e6e10052627cc6ea2847d337a7210c5173b84a6a6eb8",
+      "baseline_cost": 1286,
+      "private_zero_catalog": false,
+      "rule": "Fill generator pot interiors yellow, then perform the generator's single row-major surrounded-cell pass.",
+      "blocking_evidence": "Two valid parameterizations have byte-identical inputs but outputs differ at (1,1) and (1,2); an exact deterministic input-only ONNX is impossible.",
+      "best_clean_control": {
+        "path": "artifacts/handcrafted/task002.onnx",
+        "sha256": "15123ddd97b84e6975b4a1ff5066455a965e034d368a535ecdb30429a65f2d6c",
+        "static_cost": 1319,
+        "max_einsum_inputs": 66,
+        "reasons": ["not_strictly_cheaper", "giant_einsum"]
+      },
+      "decision": "REJECT_NO_CLEAN_CHEAPER_MODEL"
+    },
+    "88": {
+      "baseline_sha256": "40ce4f7849f7e5ea07f181b3e947d7a9528feef6b29ed7e9d3e836c9515be4b3",
+      "baseline_cost": 902,
+      "private_zero_catalog": false,
+      "rule": "Locate the four marker-color rectangle corners, crop its interior sprite, and recolor every nonzero sprite cell to the marker color.",
+      "best_sound_control": {
+        "path": "scripts/golf/scratch/task088/candidate10.onnx",
+        "sha256": "de02351ede2d755b715cf48cd17d2a8f7eae69d80fd7650351e92c82fe36b405",
+        "cost": 5412,
+        "two_seed_reference_accuracy": [1.0, 1.0],
+        "reasons": ["not_strictly_cheaper"]
+      },
+      "micro_history_probe": {
+        "path": "scripts/golf/loop_8002_63/lane_task088_r02/task088.onnx",
+        "sha256": "2ebd9b4b16809924f89aedc98f910b3dd83f9e10e63e7b4fd258c32a7f40be3f",
+        "zero_input_profile_cost": 1026,
+        "fresh_dual": "5000/5000 in each ORT mode",
+        "reasons": ["not_strictly_cheaper", "declared_runtime_shape_mismatch"]
+      },
+      "decision": "REJECT_NO_CLEAN_CHEAPER_MODEL"
+    },
+    "89": {
+      "baseline_sha256": "8084c194af3721712a2d0340a9779ac0cd60a1b333ce9fe02b49afd20118ca48",
+      "baseline_cost": 1361,
+      "private_zero_catalog": false,
+      "rule": "Learn each complete 3x3 sprite from its red/green marker and stamp the omitted copies, horizontally mirroring only the red family.",
+      "best_sound_control": {
+        "path": "scripts/golf/scratch_claude/task089/rebuild.onnx",
+        "sha256": "c97fff30f5fa41cf8345791fbcd78b6ad0c0af4e6b25d9aed38258b952b6a683",
+        "cost": 2620,
+        "two_seed_reference_accuracy": [1.0, 1.0],
+        "reasons": ["not_strictly_cheaper"]
+      },
+      "cheaper_annotation_families": [
+        {
+          "sha256": "33db6c4a4422d8b070388418c755f6f30fcebd775436692ed5854feecc2bc85e",
+          "claimed_static_cost": 1184,
+          "reason": "unresolved/nontruthful CenterCropPad shape annotations"
+        },
+        {
+          "sha256": "36d0bb3602d0ff1a2f5333e4bc429cc0149a2d5c98407b8eb290afb1853cd630",
+          "claimed_static_cost": 1184,
+          "reason": "unresolved/nontruthful CenterCropPad shape annotations"
+        },
+        {
+          "sha256": "6b0a5edccfdc4748db93bbd571fa79695dd863d88b54cda9d48fbb6dfc8681dc",
+          "claimed_static_cost": 1298,
+          "reason": "unresolved/nontruthful CenterCropPad shape annotations; profiled cost not lower"
+        }
+      ],
+      "decision": "REJECT_NO_CLEAN_CHEAPER_MODEL"
+    },
+    "191": {
+      "baseline_sha256": "109928c1f7ec9fd2ca497bcc538bd0a7065cc5fda572855b0ac7a12299c3c115",
+      "baseline_cost": 897,
+      "private_zero_catalog": true,
+      "rule": "Decode the reference blue box pattern, match every one of its eight dihedral orientations across the 23x23 grid, box every match in blue, then redraw yellow.",
+      "best_sound_control": {
+        "path": "scripts/golf/scratch_claude/task191/rebuild.onnx",
+        "sha256": "2bbcc9a818a1e7212cc8f2d2a012beaeaaf9377d7e9e1e0db9bd527ec0bccdba",
+        "cost": 10829,
+        "two_seed_reference_accuracy": [1.0, 1.0],
+        "reasons": ["not_strictly_cheaper"]
+      },
+      "aggressive_history": [
+        {
+          "sha256": "93b0fc544bf0e1e3f901228cc1923c96197677a83f77fd2ecf1cda3ac4825470",
+          "claimed_static_cost": 634,
+          "reasons": ["nonstatic_shape", "dynamic_conv_bias", "private_zero_lineage"]
+        },
+        {
+          "sha256": "7432cc3f4b517aadc84d9b3ae0b4c0fdbc55005fd3cba17a9e015e9e77f3aa44",
+          "claimed_static_cost": 795,
+          "actual_cost_in_prior_full_profile": 3430,
+          "reasons": ["nonstatic_shape", "default_ort_session_failure", "private_zero_lineage"]
+        }
+      ],
+      "decision": "REJECT_PRIVATE_ZERO_NOT_GUARANTEED"
+    }
+  },
+  "evidence": [
+    "history_inventory.json",
+    "audit_results.json",
+    "focused_static.json",
+    "focused_runtime.json",
+    "reference_audit.json"
+  ]
+}

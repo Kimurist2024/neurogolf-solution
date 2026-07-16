@@ -1,0 +1,6159 @@
+{
+  "authority": "submission_base_8010.03.zip",
+  "tasks": [
+    {
+      "task": 6,
+      "cost": 45,
+      "sha256": "59125feea943ced2cbbee726987499aae04d47d4e73743c396b0453d629aec64",
+      "file_bytes": 719,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "G",
+            "G"
+          ],
+          "outputs": [
+            "a"
+          ],
+          "attributes": {
+            "epsilon": 9.999999747378752e-06,
+            "num_groups": 1
+          }
+        },
+        {
+          "index": 1,
+          "op": "CastLike",
+          "inputs": [
+            "a",
+            "W"
+          ],
+          "outputs": [
+            "x"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "QLinearConv",
+          "inputs": [
+            "x",
+            "s",
+            "z",
+            "x",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "q"
+          ],
+          "attributes": {
+            "dilations": [
+              31,
+              31
+            ],
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              60,
+              184,
+              899,
+              775
+            ],
+            "strides": [
+              30,
+              30
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "op": "QLinearConv",
+          "inputs": [
+            "q",
+            "s",
+            "z",
+            "q",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "f"
+          ],
+          "attributes": {
+            "dilations": [
+              3,
+              3
+            ],
+            "kernel_shape": [
+              3,
+              3
+            ],
+            "pads": [
+              4,
+              4,
+              4,
+              4
+            ],
+            "strides": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "op": "ConvInteger",
+          "inputs": [
+            "f",
+            "W"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "pads": [
+              0,
+              0,
+              27,
+              27
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "G",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -356.5299987792969,
+          "maximum": 626.1099853515625,
+          "unique": [
+            -356.5299987792969,
+            231.6999969482422,
+            626.1099853515625
+          ],
+          "values": [
+            -356.5299987792969,
+            626.1099853515625,
+            231.6999969482422,
+            231.6999969482422,
+            231.6999969482422,
+            231.6999969482422,
+            231.6999969482422,
+            231.6999969482422,
+            231.6999969482422,
+            231.6999969482422
+          ]
+        },
+        {
+          "name": "W",
+          "dtype": "int8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1,
+            0,
+            1
+          ],
+          "values": [
+            1,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "s",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 0.009999999776482582,
+          "maximum": 0.009999999776482582,
+          "unique": [
+            0.009999999776482582
+          ],
+          "values": [
+            0.009999999776482582
+          ]
+        },
+        {
+          "name": "z",
+          "dtype": "int8",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": -60.0,
+          "maximum": -60.0,
+          "unique": [
+            -60
+          ],
+          "values": [
+            -60
+          ]
+        }
+      ]
+    },
+    {
+      "task": 10,
+      "cost": 44,
+      "sha256": "bb411eba1f818dc1455f67aff936fd620a58d37ae1bde13edd38c9a3a7d8be34",
+      "file_bytes": 602,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "Sg",
+            "D",
+            "input",
+            "Sg",
+            "D",
+            "input",
+            "C",
+            "D",
+            "input",
+            "C",
+            "D",
+            "input",
+            "C",
+            "D",
+            "input",
+            "C",
+            "D",
+            "input",
+            "C",
+            "D",
+            "input",
+            "C",
+            "D",
+            "L1",
+            "D",
+            "L2",
+            "D"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "bihw,pA,Ai,bjtw,pB,Bj,bctu,pC,Cc,bdtv,pE,Ed,bftx,pF,Ff,bgty,pG,Gg,bktz,pH,Hk,bltq,pI,Il,pJ,Jo,pK,Ko->bohw"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "D",
+          "dtype": "float32",
+          "shape": [
+            2,
+            10
+          ],
+          "elements": 20,
+          "finite": true,
+          "minimum": -4.0,
+          "maximum": 5.0,
+          "unique": [
+            -4.0,
+            -3.0,
+            -2.0,
+            -1.0,
+            0.0,
+            1.0,
+            2.0,
+            3.0,
+            4.0,
+            5.0
+          ],
+          "values": [
+            0.0,
+            -4.0,
+            -3.0,
+            -2.0,
+            -1.0,
+            1.0,
+            2.0,
+            3.0,
+            4.0,
+            5.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Sg",
+          "dtype": "float32",
+          "shape": [
+            3,
+            2
+          ],
+          "elements": 6,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "unique": [
+            0.0,
+            1.0
+          ],
+          "values": [
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "C",
+          "dtype": "float32",
+          "shape": [
+            3,
+            2
+          ],
+          "elements": 6,
+          "finite": true,
+          "minimum": -0.5088741183280945,
+          "maximum": 1.0,
+          "unique": [
+            -0.5088741183280945,
+            -0.4355829954147339,
+            0.0,
+            1.0
+          ],
+          "values": [
+            1.0,
+            -0.5088741183280945,
+            1.0,
+            -0.4355829954147339,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "L1",
+          "dtype": "float32",
+          "shape": [
+            3,
+            2
+          ],
+          "elements": 6,
+          "finite": true,
+          "minimum": -257.1479797363281,
+          "maximum": 512.00244140625,
+          "unique": [
+            -257.1479797363281,
+            -85.6136474609375,
+            -1.9685851384565467e-06,
+            -1.8423064602757222e-06,
+            170.50572204589844,
+            512.00244140625
+          ],
+          "values": [
+            -85.6136474609375,
+            -257.1479797363281,
+            170.50572204589844,
+            512.00244140625,
+            -1.9685851384565467e-06,
+            -1.8423064602757222e-06
+          ]
+        },
+        {
+          "name": "L2",
+          "dtype": "float32",
+          "shape": [
+            3,
+            2
+          ],
+          "elements": 6,
+          "finite": true,
+          "minimum": -3.0028460025787354,
+          "maximum": 1.0,
+          "unique": [
+            -3.0028460025787354,
+            -0.6556642651557922,
+            0.6932505965232849,
+            1.0
+          ],
+          "values": [
+            1.0,
+            0.6932505965232849,
+            1.0,
+            -3.0028460025787354,
+            1.0,
+            -0.6556642651557922
+          ]
+        }
+      ]
+    },
+    {
+      "task": 24,
+      "cost": 30,
+      "sha256": "fdb0890b757e89c80d05accecd1875d7148f4870ac910693e6a46534538cd21a",
+      "file_bytes": 321,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 12
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "input",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "ndhx,nbyw,rd,rb,rk,sb,sq,tb,tu->nkhw"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "A",
+          "dtype": "float32",
+          "shape": [
+            3,
+            10
+          ],
+          "elements": 30,
+          "finite": true,
+          "minimum": -10.91866683959961,
+          "maximum": 4.863290309906006,
+          "unique": [
+            -10.91866683959961,
+            -6.685258865356445,
+            -5.489435195922852,
+            -2.3661093711853027,
+            -1.4504245519638062,
+            -1.212432622909546,
+            -0.5544516444206238,
+            -0.26345744729042053,
+            0.2559143304824829,
+            0.3910214900970459,
+            0.5156245231628418,
+            0.750981330871582,
+            1.5492528676986694,
+            3.14251446723938,
+            4.863290309906006
+          ],
+          "values": [
+            0.5156245231628418,
+            -10.91866683959961,
+            0.2559143304824829,
+            4.863290309906006,
+            0.750981330871582,
+            0.750981330871582,
+            0.750981330871582,
+            0.750981330871582,
+            0.750981330871582,
+            0.750981330871582,
+            0.3910214900970459,
+            -1.4504245519638062,
+            1.5492528676986694,
+            -6.685258865356445,
+            3.14251446723938,
+            3.14251446723938,
+            3.14251446723938,
+            3.14251446723938,
+            3.14251446723938,
+            3.14251446723938,
+            -0.5544516444206238,
+            -0.26345744729042053,
+            -1.212432622909546,
+            -2.3661093711853027,
+            -5.489435195922852,
+            -5.489435195922852,
+            -5.489435195922852,
+            -5.489435195922852,
+            -5.489435195922852,
+            -5.489435195922852
+          ]
+        }
+      ]
+    },
+    {
+      "task": 38,
+      "cost": 31,
+      "sha256": "40c66a303cb7e46e2f8f718ccf3d3d6400a1d51525813ed9fe2d302706757c38",
+      "file_bytes": 915,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "p",
+            "p"
+          ],
+          "outputs": [
+            "fa"
+          ],
+          "attributes": {
+            "epsilon": 102000.0,
+            "num_groups": 10
+          }
+        },
+        {
+          "index": 1,
+          "op": "CastLike",
+          "inputs": [
+            "fa",
+            "z"
+          ],
+          "outputs": [
+            "ga"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "QLinearConv",
+          "inputs": [
+            "ga",
+            "p",
+            "z",
+            "ga",
+            "p",
+            "z",
+            "p",
+            "z"
+          ],
+          "outputs": [
+            "ha"
+          ],
+          "attributes": {
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              0,
+              1,
+              29,
+              28
+            ],
+            "strides": [
+              30,
+              30
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "p",
+            "p"
+          ],
+          "outputs": [
+            "fr"
+          ],
+          "attributes": {
+            "epsilon": 105000.0,
+            "num_groups": 5
+          }
+        },
+        {
+          "index": 4,
+          "op": "CastLike",
+          "inputs": [
+            "fr",
+            "z"
+          ],
+          "outputs": [
+            "gr"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 5,
+          "op": "QLinearConv",
+          "inputs": [
+            "gr",
+            "p",
+            "z",
+            "gr",
+            "p",
+            "z",
+            "p",
+            "z"
+          ],
+          "outputs": [
+            "hr"
+          ],
+          "attributes": {
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              0,
+              1,
+              29,
+              28
+            ],
+            "strides": [
+              30,
+              30
+            ]
+          }
+        },
+        {
+          "index": 6,
+          "op": "Sub",
+          "inputs": [
+            "ha",
+            "hr"
+          ],
+          "outputs": [
+            "hb"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 7,
+          "op": "Squeeze",
+          "inputs": [
+            "hb"
+          ],
+          "outputs": [
+            "q"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 8,
+          "op": "ConvInteger",
+          "inputs": [
+            "d",
+            "w",
+            "q"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "kernel_shape": [
+              1,
+              1
+            ],
+            "pads": [
+              0,
+              0,
+              29,
+              25
+            ],
+            "strides": [
+              1,
+              1
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "p",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 0.996999979019165,
+          "maximum": 0.996999979019165,
+          "unique": [
+            0.996999979019165
+          ],
+          "values": [
+            0.996999979019165
+          ]
+        },
+        {
+          "name": "z",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "unique": [
+            0
+          ],
+          "values": [
+            0
+          ]
+        },
+        {
+          "name": "d",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            1,
+            5
+          ],
+          "elements": 5,
+          "finite": true,
+          "minimum": 1.0,
+          "maximum": 9.0,
+          "unique": [
+            1,
+            3,
+            5,
+            7,
+            9
+          ],
+          "values": [
+            1,
+            3,
+            5,
+            7,
+            9
+          ]
+        },
+        {
+          "name": "w",
+          "dtype": "int8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1,
+            0,
+            1
+          ],
+          "values": [
+            1,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 39,
+      "cost": 42,
+      "sha256": "bf56afdd9be313f34951cf8b9b92bb755316fe157c63a55bd5add7cfce47c8e7",
+      "file_bytes": 1166,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Conv",
+          "inputs": [
+            "input",
+            "input",
+            "bias"
+          ],
+          "outputs": [
+            "bg_r"
+          ],
+          "attributes": {
+            "dilations": [
+              10,
+              2
+            ],
+            "pads": [
+              61,
+              3,
+              200,
+              26
+            ],
+            "strides": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "op": "Conv",
+          "inputs": [
+            "input",
+            "input",
+            "bias"
+          ],
+          "outputs": [
+            "bg_c"
+          ],
+          "attributes": {
+            "dilations": [
+              2,
+              10
+            ],
+            "pads": [
+              3,
+              61,
+              26,
+              200
+            ],
+            "strides": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "op": "Cast",
+          "inputs": [
+            "bg_r"
+          ],
+          "outputs": [
+            "q_r"
+          ],
+          "attributes": {
+            "to": 2
+          }
+        },
+        {
+          "index": 3,
+          "op": "Cast",
+          "inputs": [
+            "bg_c"
+          ],
+          "outputs": [
+            "q_c"
+          ],
+          "attributes": {
+            "to": 2
+          }
+        },
+        {
+          "index": 4,
+          "op": "Concat",
+          "inputs": [
+            "q_r",
+            "q_c"
+          ],
+          "outputs": [
+            "sizes4"
+          ],
+          "attributes": {
+            "axis": 0
+          }
+        },
+        {
+          "index": 5,
+          "op": "Squeeze",
+          "inputs": [
+            "sizes4"
+          ],
+          "outputs": [
+            "sizes8"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 6,
+          "op": "Cast",
+          "inputs": [
+            "sizes8"
+          ],
+          "outputs": [
+            "sizes"
+          ],
+          "attributes": {
+            "to": 7
+          }
+        },
+        {
+          "index": 7,
+          "op": "CenterCropPad",
+          "inputs": [
+            "input",
+            "sizes"
+          ],
+          "outputs": [
+            "src"
+          ],
+          "attributes": {
+            "axes": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "index": 8,
+          "op": "Equal",
+          "inputs": [
+            "bg_r",
+            "bg_c"
+          ],
+          "outputs": [
+            "keep_bg_equal"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 9,
+          "op": "Resize",
+          "inputs": [
+            "src",
+            "roi",
+            "",
+            "s30"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "axes": [
+              2,
+              3
+            ],
+            "coordinate_transformation_mode": "tf_crop_and_resize",
+            "extrapolation_value": 0.0,
+            "mode": "nearest",
+            "nearest_mode": "floor"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "s30",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "finite": true,
+          "minimum": 30.0,
+          "maximum": 30.0,
+          "unique": [
+            30
+          ],
+          "values": [
+            30,
+            30
+          ]
+        },
+        {
+          "name": "roi",
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "finite": true,
+          "minimum": -1.440000057220459,
+          "maximum": 0.14000000059604645,
+          "unique": [
+            -1.440000057220459,
+            -1.222000002861023,
+            0.12999999523162842,
+            0.14000000059604645
+          ],
+          "values": [
+            0.12999999523162842,
+            0.14000000059604645,
+            -1.440000057220459,
+            -1.222000002861023
+          ]
+        },
+        {
+          "name": "bias",
+          "dtype": "float32",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 16.0,
+          "maximum": 16.0,
+          "unique": [
+            16.0
+          ],
+          "values": [
+            16.0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 98,
+      "cost": 37,
+      "sha256": "d4593edb4b8f56dbc19d2533670c572155951af869526121f0b3aca8a533fdde",
+      "file_bytes": 347,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 11
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "ConvTranspose",
+          "inputs": [
+            "k",
+            "input",
+            "b"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "pads": [
+              1,
+              7,
+              1,
+              1
+            ],
+            "strides": [
+              1,
+              1
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "k",
+          "dtype": "float32",
+          "shape": [
+            1,
+            1,
+            3,
+            9
+          ],
+          "elements": 27,
+          "finite": true,
+          "minimum": -14.0,
+          "maximum": 30.0,
+          "unique": [
+            -14.0,
+            -12.0,
+            -2.0,
+            -0.0,
+            2.0,
+            4.0,
+            30.0
+          ],
+          "values": [
+            2.0,
+            -2.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            -14.0,
+            -0.0,
+            -0.0,
+            -0.0,
+            4.0,
+            2.0,
+            2.0,
+            2.0,
+            -0.0,
+            0.0,
+            30.0,
+            -0.0,
+            -0.0,
+            -0.0,
+            -0.0,
+            -0.0,
+            -0.0,
+            2.0,
+            -0.0,
+            -2.0,
+            -12.0
+          ]
+        },
+        {
+          "name": "b",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -15.0,
+          "maximum": -1.0,
+          "unique": [
+            -15.0,
+            -13.0,
+            -1.0
+          ],
+          "values": [
+            -1.0,
+            -15.0,
+            -13.0,
+            -15.0,
+            -15.0,
+            -13.0,
+            -13.0,
+            -13.0,
+            -13.0,
+            -13.0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 113,
+      "cost": 30,
+      "sha256": "356a5f1e2200cf2560f6c836ce7d21eca6b6cad9e68015c2ae31639613ef9b09",
+      "file_bytes": 499,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 12
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Gather",
+          "inputs": [
+            "input",
+            "idx"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "axis": 2
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "idx",
+          "dtype": "int64",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 10.0,
+          "unique": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            10
+          ],
+          "values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            4,
+            3,
+            2,
+            1,
+            0,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "task": 139,
+      "cost": 50,
+      "sha256": "9603e8c0f0d1b89774d4c04837a50da0feeeed2f4111131a01d81491f638a776",
+      "file_bytes": 476,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 12
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "B",
+            "B",
+            "B",
+            "B",
+            "B",
+            "B",
+            "B",
+            "B",
+            "input",
+            "C",
+            "B",
+            "input",
+            "B",
+            "input",
+            "C"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "bahw,pa,pa,po,po,po,po,po,qc,bchj,j,qd,bdiw,qe,beik,k->bohw"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "B",
+          "dtype": "float32",
+          "shape": [
+            2,
+            10
+          ],
+          "elements": 20,
+          "finite": true,
+          "minimum": -4.0,
+          "maximum": 1.0,
+          "unique": [
+            -4.0,
+            -1.0,
+            0.0,
+            0.03125,
+            1.0
+          ],
+          "values": [
+            0.03125,
+            0.0,
+            0.0,
+            0.0,
+            -4.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "C",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1.0,
+            1.0
+          ],
+          "values": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0,
+            -1.0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 144,
+      "cost": 49,
+      "sha256": "8a7d383d5ce61b6c63908cecc9eb76b96404ab247b2ddc6c2a001ab4cef99a3a",
+      "file_bytes": 674,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "s",
+            "s"
+          ],
+          "outputs": [
+            "g"
+          ],
+          "attributes": {
+            "epsilon": -0.0039832754991948605,
+            "num_groups": 1
+          }
+        },
+        {
+          "index": 1,
+          "op": "CastLike",
+          "inputs": [
+            "g",
+            "W"
+          ],
+          "outputs": [
+            "x"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "QLinearConv",
+          "inputs": [
+            "x",
+            "s",
+            "z",
+            "x",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "q"
+          ],
+          "attributes": {
+            "dilations": [
+              31,
+              31
+            ],
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              245,
+              90,
+              744,
+              899
+            ],
+            "strides": [
+              30,
+              30
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "op": "QLinearConv",
+          "inputs": [
+            "q",
+            "s",
+            "z",
+            "q",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "f"
+          ],
+          "attributes": {
+            "dilations": [
+              5,
+              5
+            ],
+            "kernel_shape": [
+              4,
+              4
+            ],
+            "pads": [
+              12,
+              12,
+              12,
+              12
+            ],
+            "strides": [
+              4,
+              4
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "op": "ConvInteger",
+          "inputs": [
+            "f",
+            "W"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "kernel_shape": [
+              1,
+              1
+            ],
+            "pads": [
+              0,
+              0,
+              26,
+              26
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "W",
+          "dtype": "int8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1,
+            0,
+            1
+          ],
+          "values": [
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "s",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 3.0,
+          "maximum": 3.0,
+          "unique": [
+            3.0
+          ],
+          "values": [
+            3.0
+          ]
+        },
+        {
+          "name": "z",
+          "dtype": "int8",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": -11.0,
+          "maximum": -11.0,
+          "unique": [
+            -11
+          ],
+          "values": [
+            -11
+          ]
+        }
+      ]
+    },
+    {
+      "task": 146,
+      "cost": 40,
+      "sha256": "0232e2fff6e2c29558f4a178298e5ff9627c8372fc5c52c1cbb28ce82785afd3",
+      "file_bytes": 705,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Conv",
+          "inputs": [
+            "input",
+            "input"
+          ],
+          "outputs": [
+            "p0"
+          ],
+          "attributes": {
+            "dilations": [
+              9,
+              3
+            ],
+            "pads": [
+              23,
+              3,
+              209,
+              55
+            ],
+            "strides": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "op": "Conv",
+          "inputs": [
+            "input",
+            "input"
+          ],
+          "outputs": [
+            "p1"
+          ],
+          "attributes": {
+            "dilations": [
+              9,
+              3
+            ],
+            "pads": [
+              22,
+              6,
+              210,
+              52
+            ],
+            "strides": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "op": "Conv",
+          "inputs": [
+            "input",
+            "input"
+          ],
+          "outputs": [
+            "p2"
+          ],
+          "attributes": {
+            "dilations": [
+              9,
+              3
+            ],
+            "pads": [
+              31,
+              5,
+              201,
+              53
+            ],
+            "strides": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "input",
+            "p0",
+            "p1",
+            "p2"
+          ],
+          "outputs": [
+            "q0"
+          ],
+          "attributes": {
+            "equation": "nchw,ncwh,abcd,efgh,ijkl->"
+          }
+        },
+        {
+          "index": 4,
+          "op": "HardSigmoid",
+          "inputs": [
+            "q0"
+          ],
+          "outputs": [
+            "den"
+          ],
+          "attributes": {
+            "alpha": 0.015625,
+            "beta": 0.5
+          }
+        },
+        {
+          "index": 5,
+          "op": "Mod",
+          "inputs": [
+            "cvec",
+            "den"
+          ],
+          "outputs": [
+            "X"
+          ],
+          "attributes": {
+            "fmod": 1
+          }
+        },
+        {
+          "index": 6,
+          "op": "ConvTranspose",
+          "inputs": [
+            "X",
+            "input"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "dilations": [
+              1,
+              1
+            ],
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              6,
+              0,
+              3,
+              0
+            ],
+            "strides": [
+              3,
+              1
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "cvec",
+          "dtype": "float32",
+          "shape": [
+            1,
+            1,
+            4,
+            1
+          ],
+          "elements": 4,
+          "finite": false,
+          "minimum": 20.5,
+          "maximum": 32354.765625,
+          "unique": [
+            20.5,
+            25252.5,
+            32354.765625,
+            NaN
+          ],
+          "values": [
+            25252.5,
+            32354.765625,
+            20.5,
+            NaN
+          ]
+        }
+      ]
+    },
+    {
+      "task": 167,
+      "cost": 34,
+      "sha256": "ae201828c20e3943f5130795853a677d29f73e271863dd7a66485a38dfa8effb",
+      "file_bytes": 448,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "input",
+            "input",
+            "input"
+          ],
+          "outputs": [
+            "p"
+          ],
+          "attributes": {
+            "equation": "nchw,mcxy,ncab,mcij->nm"
+          }
+        },
+        {
+          "index": 1,
+          "op": "QuantizeLinear",
+          "inputs": [
+            "p",
+            "q_scale"
+          ],
+          "outputs": [
+            "classbit"
+          ],
+          "attributes": {
+            "output_dtype": 3
+          }
+        },
+        {
+          "index": 2,
+          "op": "Mul",
+          "inputs": [
+            "classbit",
+            "pattern_mul"
+          ],
+          "outputs": [
+            "q_enc"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 3,
+          "op": "ConvInteger",
+          "inputs": [
+            "q_enc",
+            "q_W"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "pads": [
+              0,
+              0,
+              27,
+              27
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "q_scale",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 76.30000305175781,
+          "maximum": 76.30000305175781,
+          "unique": [
+            76.30000305175781
+          ],
+          "values": [
+            76.30000305175781
+          ]
+        },
+        {
+          "name": "pattern_mul",
+          "dtype": "int8",
+          "shape": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "elements": 9,
+          "finite": true,
+          "minimum": -127.0,
+          "maximum": 127.0,
+          "unique": [
+            -127,
+            -126,
+            -2,
+            -1,
+            2,
+            126,
+            127
+          ],
+          "values": [
+            -127,
+            -2,
+            126,
+            -1,
+            2,
+            -1,
+            127,
+            -1,
+            -126
+          ]
+        },
+        {
+          "name": "q_W",
+          "dtype": "int8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1,
+            0,
+            1
+          ],
+          "values": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 171,
+      "cost": 50,
+      "sha256": "56eab810a3d0e18e0ae4860b7501f3a9aa87753726ea5f1b522c3c1fabc9a8a4",
+      "file_bytes": 955,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "ConstantOfShape",
+          "inputs": [
+            "s1"
+          ],
+          "outputs": [
+            "n26"
+          ],
+          "attributes": {
+            "value": {
+              "dtype": "INT64",
+              "shape": [
+                1
+              ],
+              "values": [
+                26
+              ]
+            }
+          }
+        },
+        {
+          "index": 1,
+          "op": "ConstantOfShape",
+          "inputs": [
+            "s1"
+          ],
+          "outputs": [
+            "n27"
+          ],
+          "attributes": {
+            "value": {
+              "dtype": "INT64",
+              "shape": [
+                1
+              ],
+              "values": [
+                27
+              ]
+            }
+          }
+        },
+        {
+          "index": 2,
+          "op": "ConstantOfShape",
+          "inputs": [
+            "s1"
+          ],
+          "outputs": [
+            "n30"
+          ],
+          "attributes": {
+            "value": {
+              "dtype": "INT64",
+              "shape": [
+                1
+              ],
+              "values": [
+                30
+              ]
+            }
+          }
+        },
+        {
+          "index": 3,
+          "op": "CenterCropPad",
+          "inputs": [
+            "input",
+            "n30"
+          ],
+          "outputs": [
+            "xc"
+          ],
+          "attributes": {
+            "axes": [
+              2
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "op": "CastLike",
+          "inputs": [
+            "xc",
+            "border"
+          ],
+          "outputs": [
+            "x"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 5,
+          "op": "ReduceL1",
+          "inputs": [
+            "x",
+            "s1"
+          ],
+          "outputs": [
+            "m"
+          ],
+          "attributes": {
+            "keepdims": 1
+          }
+        },
+        {
+          "index": 6,
+          "op": "CenterCropPad",
+          "inputs": [
+            "m",
+            "n26"
+          ],
+          "outputs": [
+            "e0"
+          ],
+          "attributes": {
+            "axes": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "index": 7,
+          "op": "CenterCropPad",
+          "inputs": [
+            "e0",
+            "n27"
+          ],
+          "outputs": [
+            "e1"
+          ],
+          "attributes": {
+            "axes": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "index": 8,
+          "op": "CenterCropPad",
+          "inputs": [
+            "e1",
+            "n30"
+          ],
+          "outputs": [
+            "inter"
+          ],
+          "attributes": {
+            "axes": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "index": 9,
+          "op": "LessOrEqual",
+          "inputs": [
+            "m",
+            "inter"
+          ],
+          "outputs": [
+            "keep"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 10,
+          "op": "Where",
+          "inputs": [
+            "keep",
+            "x",
+            "border"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {}
+        }
+      ],
+      "initializers": [
+        {
+          "name": "s1",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 1.0,
+          "maximum": 1.0,
+          "unique": [
+            1
+          ],
+          "values": [
+            1
+          ]
+        },
+        {
+          "name": "border",
+          "dtype": "float16",
+          "shape": [
+            10,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "unique": [
+            0.0,
+            1.0
+          ],
+          "values": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 188,
+      "cost": 46,
+      "sha256": "c4d2153bae81a555a874199300852abe79292814c659be70fccdc6eaea32a9cc",
+      "file_bytes": 778,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input"
+          ],
+          "outputs": [
+            "area"
+          ],
+          "attributes": {
+            "equation": "nchw->n"
+          }
+        },
+        {
+          "index": 1,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "input"
+          ],
+          "outputs": [
+            "col_pairs"
+          ],
+          "attributes": {
+            "equation": "nchw,ndkw->n"
+          }
+        },
+        {
+          "index": 2,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "scale"
+          ],
+          "outputs": [
+            "hs"
+          ],
+          "attributes": {
+            "equation": "ncha,nchb,ndka,ndkb,nehm,z->n"
+          }
+        },
+        {
+          "index": 3,
+          "op": "Less",
+          "inputs": [
+            "hs",
+            "col_pairs"
+          ],
+          "outputs": [
+            "tie_vertical"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 4,
+          "op": "QuantizeLinear",
+          "inputs": [
+            "col_pairs",
+            "area"
+          ],
+          "outputs": [
+            "H8"
+          ],
+          "attributes": {
+            "output_dtype": 3
+          }
+        },
+        {
+          "index": 5,
+          "op": "Cast",
+          "inputs": [
+            "area"
+          ],
+          "outputs": [
+            "A8"
+          ],
+          "attributes": {
+            "to": 3
+          }
+        },
+        {
+          "index": 6,
+          "op": "Div",
+          "inputs": [
+            "A8",
+            "H8"
+          ],
+          "outputs": [
+            "W8"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 7,
+          "op": "Greater",
+          "inputs": [
+            "H8",
+            "W8"
+          ],
+          "outputs": [
+            "hgt"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 8,
+          "op": "Max",
+          "inputs": [
+            "H8",
+            "W8"
+          ],
+          "outputs": [
+            "D8"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 9,
+          "op": "Or",
+          "inputs": [
+            "hgt",
+            "tie_vertical"
+          ],
+          "outputs": [
+            "vertical"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 10,
+          "op": "Div",
+          "inputs": [
+            "D8",
+            "divs"
+          ],
+          "outputs": [
+            "pads8"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 11,
+          "op": "Cast",
+          "inputs": [
+            "pads8"
+          ],
+          "outputs": [
+            "pads"
+          ],
+          "attributes": {
+            "to": 7
+          }
+        },
+        {
+          "index": 12,
+          "op": "Where",
+          "inputs": [
+            "vertical",
+            "axis2",
+            "axis3"
+          ],
+          "outputs": [
+            "axis"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 13,
+          "op": "Pad",
+          "inputs": [
+            "input",
+            "pads",
+            "",
+            "axis"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "mode": "constant"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "scale",
+          "dtype": "float32",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 0.125,
+          "maximum": 0.125,
+          "unique": [
+            0.125
+          ],
+          "values": [
+            0.125
+          ]
+        },
+        {
+          "name": "divs",
+          "dtype": "int8",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "finite": true,
+          "minimum": -2.0,
+          "maximum": 2.0,
+          "unique": [
+            -2,
+            2
+          ],
+          "values": [
+            -2,
+            2
+          ]
+        },
+        {
+          "name": "axis2",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 2.0,
+          "maximum": 2.0,
+          "unique": [
+            2
+          ],
+          "values": [
+            2
+          ]
+        },
+        {
+          "name": "axis3",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 3.0,
+          "maximum": 3.0,
+          "unique": [
+            3
+          ],
+          "values": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "task": 202,
+      "cost": 48,
+      "sha256": "12c2f62bc5097af89a7130860a29fd180731786c241aad7ca2563327642708ad",
+      "file_bytes": 626,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 12
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "A",
+            "A",
+            "Q",
+            "F",
+            "A",
+            "A",
+            "Q",
+            "F",
+            "input",
+            "input",
+            "input",
+            "A",
+            "A",
+            "Q",
+            "F",
+            "A",
+            "A",
+            "Q",
+            "F",
+            "input",
+            "input",
+            "input",
+            "input",
+            "F"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "npra,npbc,npsd,nksc,nqse,pz,qg,gzA,pA,pm,qx,xmj,kj,npft,nlrt,nvit,py,vh,hyB,pB,pD,vE,EDw,lw,noUM,npUX,noYV,npZV,oJ->norc"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "A",
+          "dtype": "float32",
+          "shape": [
+            10,
+            2
+          ],
+          "elements": 20,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 9.0,
+          "unique": [
+            0.0,
+            1.0,
+            2.0,
+            3.0,
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0,
+            9.0
+          ],
+          "values": [
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            2.0,
+            1.0,
+            3.0,
+            1.0,
+            4.0,
+            1.0,
+            5.0,
+            1.0,
+            6.0,
+            1.0,
+            7.0,
+            1.0,
+            8.0,
+            1.0,
+            9.0
+          ]
+        },
+        {
+          "name": "F",
+          "dtype": "float32",
+          "shape": [
+            10,
+            2
+          ],
+          "elements": 20,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1.0,
+            0.0,
+            1.0
+          ],
+          "values": [
+            0.0,
+            -1.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Q",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2
+          ],
+          "elements": 8,
+          "finite": true,
+          "minimum": -12.199999809265137,
+          "maximum": 12.199999809265137,
+          "unique": [
+            -12.199999809265137,
+            -2.0,
+            0.0,
+            1.0,
+            2.0,
+            12.0,
+            12.199999809265137
+          ],
+          "values": [
+            1.0,
+            12.0,
+            2.0,
+            -12.199999809265137,
+            -2.0,
+            12.199999809265137,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 227,
+      "cost": 49,
+      "sha256": "f4310e4d1d2229cd06ad77f5e2da9ba9cd8debd8409cffa4c9e55421d94e1d14",
+      "file_bytes": 592,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "g",
+            "g"
+          ],
+          "outputs": [
+            "gn"
+          ],
+          "attributes": {
+            "epsilon": 9.999999747378752e-06,
+            "num_groups": 1
+          }
+        },
+        {
+          "index": 1,
+          "op": "CastLike",
+          "inputs": [
+            "gn",
+            "W"
+          ],
+          "outputs": [
+            "x"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "QLinearConv",
+          "inputs": [
+            "x",
+            "g",
+            "z",
+            "x",
+            "g",
+            "z",
+            "g",
+            "z"
+          ],
+          "outputs": [
+            "q"
+          ],
+          "attributes": {
+            "dilations": [
+              31,
+              31
+            ],
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              86,
+              90,
+              903,
+              899
+            ],
+            "strides": [
+              30,
+              30
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "op": "QLinearConv",
+          "inputs": [
+            "q",
+            "g",
+            "z",
+            "q",
+            "g",
+            "z",
+            "g",
+            "z"
+          ],
+          "outputs": [
+            "f"
+          ],
+          "attributes": {
+            "dilations": [
+              5,
+              5
+            ],
+            "kernel_shape": [
+              4,
+              4
+            ],
+            "pads": [
+              12,
+              12,
+              12,
+              12
+            ],
+            "strides": [
+              4,
+              4
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "op": "ConvInteger",
+          "inputs": [
+            "f",
+            "W"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "kernel_shape": [
+              1,
+              1
+            ],
+            "pads": [
+              0,
+              0,
+              26,
+              26
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "g",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 9.0,
+          "maximum": 9.0,
+          "unique": [
+            9.0
+          ],
+          "values": [
+            9.0
+          ]
+        },
+        {
+          "name": "z",
+          "dtype": "int8",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": -13.0,
+          "maximum": -13.0,
+          "unique": [
+            -13
+          ],
+          "values": [
+            -13
+          ]
+        },
+        {
+          "name": "W",
+          "dtype": "int8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1,
+            0,
+            1
+          ],
+          "values": [
+            -1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 229,
+      "cost": 40,
+      "sha256": "fe0544ed39e350c0e574809b92701c3d259bf1d089e5ed739a90e7b4105008fd",
+      "file_bytes": 559,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 12
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "A",
+            "A",
+            "A",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input",
+            "input"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "ro,rc,rd,nchw,ndab,ndef,ndgi,ndjk,ndlm,ndpq,ndst,nduv,ndxy,ndzA,ndBC,ndDE,ndFG,ndHI,ndJK,ndLM,ndNO->nohw"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "A",
+          "dtype": "float32",
+          "shape": [
+            4,
+            10
+          ],
+          "elements": 40,
+          "finite": true,
+          "minimum": -4.329395294189453,
+          "maximum": 4.099020481109619,
+          "unique": [
+            -4.329395294189453,
+            -4.003410816192627,
+            -3.4987635612487793,
+            -3.2679290771484375,
+            -2.9689888954162598,
+            -2.9169492721557617,
+            -2.908938407897949,
+            -2.382272720336914,
+            -2.29803729057312,
+            -2.116948127746582,
+            -1.739872694015503,
+            -1.409212589263916,
+            -1.3037558794021606,
+            -1.0871384143829346,
+            -0.942450761795044,
+            -0.7443363070487976,
+            -0.6299598813056946,
+            -0.5125420689582825,
+            -0.21776476502418518,
+            -0.12899725139141083,
+            -0.036910489201545715,
+            0.08852045238018036,
+            0.29906773567199707,
+            0.3100357949733734,
+            1.3374236822128296,
+            1.620036244392395,
+            1.9235512018203735,
+            1.92946457862854,
+            1.998490333557129,
+            2.0724828243255615,
+            2.2885048389434814,
+            2.472834348678589,
+            2.4820053577423096,
+            2.5664286613464355,
+            2.591977119445801,
+            2.907912254333496,
+            3.035316228866577,
+            3.3410048484802246,
+            4.077264785766602,
+            4.099020481109619
+          ],
+          "values": [
+            -1.409212589263916,
+            -2.908938407897949,
+            -2.9169492721557617,
+            -3.2679290771484375,
+            -2.9689888954162598,
+            2.2885048389434814,
+            -4.003410816192627,
+            -3.4987635612487793,
+            -4.329395294189453,
+            -2.382272720336914,
+            -0.12899725139141083,
+            2.907912254333496,
+            2.0724828243255615,
+            2.472834348678589,
+            0.08852045238018036,
+            -1.739872694015503,
+            -0.21776476502418518,
+            1.9235512018203735,
+            4.099020481109619,
+            -0.5125420689582825,
+            0.3100357949733734,
+            1.3374236822128296,
+            2.591977119445801,
+            1.620036244392395,
+            3.035316228866577,
+            -2.29803729057312,
+            -1.3037558794021606,
+            -0.6299598813056946,
+            -1.0871384143829346,
+            1.998490333557129,
+            -0.036910489201545715,
+            -0.942450761795044,
+            0.29906773567199707,
+            2.5664286613464355,
+            -0.7443363070487976,
+            -2.116948127746582,
+            4.077264785766602,
+            3.3410048484802246,
+            2.4820053577423096,
+            1.92946457862854
+          ]
+        }
+      ]
+    },
+    {
+      "task": 244,
+      "cost": 41,
+      "sha256": "8b126c011293d94d8a846f47b71273f9f78a8f514fc2e078c995b0332aa9fa01",
+      "file_bytes": 520,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 17
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Conv",
+          "inputs": [
+            "input",
+            "input"
+          ],
+          "outputs": [
+            "hp"
+          ],
+          "attributes": {
+            "dilations": [
+              30,
+              1
+            ],
+            "pads": [
+              0,
+              0,
+              841,
+              1
+            ],
+            "strides": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "op": "Softmax",
+          "inputs": [
+            "hp"
+          ],
+          "outputs": [
+            "sm"
+          ],
+          "attributes": {
+            "axis": 3
+          }
+        },
+        {
+          "index": 2,
+          "op": "Einsum",
+          "inputs": [
+            "hp",
+            "sm",
+            "W"
+          ],
+          "outputs": [
+            "roi"
+          ],
+          "attributes": {
+            "equation": "bcij,bcij,jk->bk"
+          }
+        },
+        {
+          "index": 3,
+          "op": "RoiAlign",
+          "inputs": [
+            "input",
+            "roi",
+            "batch"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "coordinate_transformation_mode": "half_pixel",
+            "mode": "avg",
+            "output_height": 30,
+            "output_width": 30,
+            "sampling_ratio": 1,
+            "spatial_scale": 1.0199999809265137
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "W",
+          "dtype": "float32",
+          "shape": [
+            2,
+            4
+          ],
+          "elements": 8,
+          "finite": true,
+          "minimum": -680.333251953125,
+          "maximum": 660.2689208984375,
+          "unique": [
+            -680.333251953125,
+            -8.494989395141602,
+            -6.815790176391602,
+            -0.00837387703359127,
+            0.9901376366615295,
+            7.7974677085876465,
+            11.733375549316406,
+            660.2689208984375
+          ],
+          "values": [
+            0.9901376366615295,
+            -0.00837387703359127,
+            -6.815790176391602,
+            7.7974677085876465,
+            -8.494989395141602,
+            11.733375549316406,
+            -680.333251953125,
+            660.2689208984375
+          ]
+        },
+        {
+          "name": "batch",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "unique": [
+            0
+          ],
+          "values": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 249,
+      "cost": 41,
+      "sha256": "102f9100237176097fc57d6edb012a92e7ecd808ba60d819fa397b136b072cfe",
+      "file_bytes": 468,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 12
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "input",
+            "input"
+          ],
+          "outputs": [
+            "P"
+          ],
+          "attributes": {
+            "equation": "nchw,ndhv,nehx->"
+          }
+        },
+        {
+          "index": 1,
+          "op": "Less",
+          "inputs": [
+            "P",
+            "lo"
+          ],
+          "outputs": [
+            "b3"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "Greater",
+          "inputs": [
+            "P",
+            "hi"
+          ],
+          "outputs": [
+            "b5"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 3,
+          "op": "Equal",
+          "inputs": [
+            "b3",
+            "b5"
+          ],
+          "outputs": [
+            "b4"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 4,
+          "op": "Concat",
+          "inputs": [
+            "tru",
+            "fal",
+            "fal",
+            "b3",
+            "b4",
+            "b5"
+          ],
+          "outputs": [
+            "impb"
+          ],
+          "attributes": {
+            "axis": 3
+          }
+        },
+        {
+          "index": 5,
+          "op": "Cast",
+          "inputs": [
+            "impb"
+          ],
+          "outputs": [
+            "imp"
+          ],
+          "attributes": {
+            "to": 1
+          }
+        },
+        {
+          "index": 6,
+          "op": "ConvTranspose",
+          "inputs": [
+            "imp",
+            "input"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              0,
+              0,
+              0,
+              5
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "lo",
+          "dtype": "float32",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 160.0,
+          "maximum": 160.0,
+          "unique": [
+            160.0
+          ],
+          "values": [
+            160.0
+          ]
+        },
+        {
+          "name": "hi",
+          "dtype": "float32",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 350.0,
+          "maximum": 350.0,
+          "unique": [
+            350.0
+          ],
+          "values": [
+            350.0
+          ]
+        },
+        {
+          "name": "tru",
+          "dtype": "bool",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 1.0,
+          "maximum": 1.0,
+          "unique": [
+            true
+          ],
+          "values": [
+            true
+          ]
+        },
+        {
+          "name": "fal",
+          "dtype": "bool",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "unique": [
+            false
+          ],
+          "values": [
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "task": 254,
+      "cost": 42,
+      "sha256": "814ece451a8f8eda8e9221d58e2f4fb3359fa396dfe971f6ad97693f453b15f8",
+      "file_bytes": 652,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "V",
+            "input",
+            "V",
+            "Ccoef",
+            "S0",
+            "S0",
+            "S1",
+            "S1",
+            "input",
+            "V",
+            "input",
+            "V",
+            "input",
+            "V",
+            "Ccoef",
+            "S0",
+            "S0",
+            "S1",
+            "S1",
+            "input",
+            "V",
+            "Ccoef",
+            "S0",
+            "S0",
+            "S1",
+            "S1",
+            "V",
+            "V",
+            "A",
+            "B",
+            "V",
+            "V"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "akmn,Ak,almd,Bl,g,gA,gA,gB,ge,aopu,Co,aqrd,Dq,atru,Et,h,hC,hD,hE,hf,aicd,ji,s,se,sf,sj,sj,PZ,Pb,eX,efY,Xb,Yb->abcd"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "V",
+          "dtype": "float32",
+          "shape": [
+            2,
+            10
+          ],
+          "elements": 20,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1.0,
+            -0.1111111119389534,
+            0.0,
+            0.1111111119389534,
+            1.0
+          ],
+          "values": [
+            0.0,
+            1.0,
+            -1.0,
+            -0.1111111119389534,
+            0.0,
+            0.1111111119389534,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1111111119389534,
+            0.1111111119389534,
+            0.1111111119389534,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Ccoef",
+          "dtype": "float32",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "finite": true,
+          "minimum": -1458.0,
+          "maximum": 1.0,
+          "unique": [
+            -1458.0,
+            1.0
+          ],
+          "values": [
+            1.0,
+            -1458.0
+          ]
+        },
+        {
+          "name": "S0",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2
+          ],
+          "elements": 4,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "unique": [
+            0.0,
+            1.0
+          ],
+          "values": [
+            1.0,
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "name": "S1",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2
+          ],
+          "elements": 4,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "unique": [
+            0.0,
+            1.0
+          ],
+          "values": [
+            1.0,
+            1.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "A",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2
+          ],
+          "elements": 4,
+          "finite": true,
+          "minimum": -10.19946002960205,
+          "maximum": 17.010103225708008,
+          "unique": [
+            -10.19946002960205,
+            -7.273904323577881,
+            2.8773410320281982,
+            17.010103225708008
+          ],
+          "values": [
+            -10.19946002960205,
+            -7.273904323577881,
+            2.8773410320281982,
+            17.010103225708008
+          ]
+        },
+        {
+          "name": "B",
+          "dtype": "float32",
+          "shape": [
+            2,
+            2,
+            2
+          ],
+          "elements": 8,
+          "finite": true,
+          "minimum": -14.350164413452148,
+          "maximum": 43.34586715698242,
+          "unique": [
+            -14.350164413452148,
+            -5.334202289581299,
+            -3.6239447593688965,
+            -0.5865983963012695,
+            2.5593435764312744,
+            20.144168853759766,
+            31.143877029418945,
+            43.34586715698242
+          ],
+          "values": [
+            -3.6239447593688965,
+            31.143877029418945,
+            -0.5865983963012695,
+            20.144168853759766,
+            2.5593435764312744,
+            -14.350164413452148,
+            -5.334202289581299,
+            43.34586715698242
+          ]
+        }
+      ]
+    },
+    {
+      "task": 262,
+      "cost": 31,
+      "sha256": "9d6f5e4d366a7f566b881f73546b822bb6b9ecb41004b872094b351c6d9cff26",
+      "file_bytes": 560,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 17
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Identity",
+          "inputs": [
+            "size"
+          ],
+          "outputs": [
+            "win_shape"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 1,
+          "op": "HannWindow",
+          "inputs": [
+            "win_shape"
+          ],
+          "outputs": [
+            "pos16"
+          ],
+          "attributes": {
+            "output_datatype": 10,
+            "periodic": 0
+          }
+        },
+        {
+          "index": 2,
+          "op": "CastLike",
+          "inputs": [
+            "pos16",
+            "input"
+          ],
+          "outputs": [
+            "pos"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 3,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "code",
+            "pos",
+            "input",
+            "code",
+            "pos",
+            "input",
+            "code",
+            "pos",
+            "code",
+            "code",
+            "code",
+            "code",
+            "input"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "bdrk,de,k,bgrl,ge,l,bhrm,hn,m,ce,cn,cn,cp,bfrw->bcrw"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "code",
+          "dtype": "float32",
+          "shape": [
+            10,
+            2
+          ],
+          "elements": 20,
+          "finite": true,
+          "minimum": -21.78111457824707,
+          "maximum": 11.709792137145996,
+          "unique": [
+            -21.78111457824707,
+            -11.896915435791016,
+            -9.123908996582031,
+            -7.055467128753662,
+            -6.471527099609375,
+            -3.998430013656616,
+            -1.1618428230285645,
+            0.0,
+            6.877012252807617,
+            9.845145225524902,
+            11.709792137145996
+          ],
+          "values": [
+            -7.055467128753662,
+            -9.123908996582031,
+            0.0,
+            0.0,
+            -11.896915435791016,
+            9.845145225524902,
+            -1.1618428230285645,
+            -6.471527099609375,
+            -3.998430013656616,
+            6.877012252807617,
+            -21.78111457824707,
+            11.709792137145996,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "size",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 30.0,
+          "maximum": 30.0,
+          "unique": [
+            30
+          ],
+          "values": [
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "task": 267,
+      "cost": 30,
+      "sha256": "4ca7f921c34f87ef71512a8b680de7c984a2b42cd55b338b57aaabc012321387",
+      "file_bytes": 649,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "p",
+            "input",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "input",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "p",
+            "input"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "borc,r,bouv,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,u,bdst,s,s,s,s,s,s,s,bdhw->bohw"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "p",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "finite": true,
+          "minimum": -1.5,
+          "maximum": 1.2000000476837158,
+          "unique": [
+            -1.5,
+            0.0,
+            0.05000000074505806,
+            1.2000000476837158
+          ],
+          "values": [
+            1.2000000476837158,
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806,
+            0.05000000074505806,
+            -1.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 269,
+      "cost": 31,
+      "sha256": "4b76e4e0339b59c00192cf6028ab7828b813794fb3d269d0f9851db2db3a10ac",
+      "file_bytes": 808,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Identity",
+          "inputs": [
+            "crop_dim"
+          ],
+          "outputs": [
+            "crop_shape"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 1,
+          "op": "CenterCropPad",
+          "inputs": [
+            "input",
+            "crop_shape"
+          ],
+          "outputs": [
+            "src31"
+          ],
+          "attributes": {
+            "axes": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "op": "Cast",
+          "inputs": [
+            "src31"
+          ],
+          "outputs": [
+            "src16"
+          ],
+          "attributes": {
+            "to": 10
+          }
+        },
+        {
+          "index": 3,
+          "op": "Einsum",
+          "inputs": [
+            "src16",
+            "src16"
+          ],
+          "outputs": [
+            "s2"
+          ],
+          "attributes": {
+            "equation": "bchw,bcij->b"
+          }
+        },
+        {
+          "index": 4,
+          "op": "HardSigmoid",
+          "inputs": [
+            "s2"
+          ],
+          "outputs": [
+            "z"
+          ],
+          "attributes": {
+            "alpha": 0.011590945534408092,
+            "beta": -0.004363189917057753
+          }
+        },
+        {
+          "index": 5,
+          "op": "Log",
+          "inputs": [
+            "z"
+          ],
+          "outputs": [
+            "lz"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 6,
+          "op": "Reciprocal",
+          "inputs": [
+            "lz"
+          ],
+          "outputs": [
+            "ilz"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 7,
+          "op": "PRelu",
+          "inputs": [
+            "ilz",
+            "slope"
+          ],
+          "outputs": [
+            "roi"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 8,
+          "op": "Resize",
+          "inputs": [
+            "src16",
+            "roi",
+            "",
+            "out_size"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "axes": [
+              2,
+              3
+            ],
+            "coordinate_transformation_mode": "tf_crop_and_resize",
+            "mode": "nearest",
+            "nearest_mode": "floor"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "crop_dim",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 31.0,
+          "maximum": 31.0,
+          "unique": [
+            31
+          ],
+          "values": [
+            31
+          ]
+        },
+        {
+          "name": "slope",
+          "dtype": "float16",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "finite": true,
+          "minimum": -0.2900390625,
+          "maximum": 0.0,
+          "unique": [
+            -0.2900390625,
+            0.0
+          ],
+          "values": [
+            0.0,
+            0.0,
+            -0.2900390625,
+            -0.2900390625
+          ]
+        },
+        {
+          "name": "out_size",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "finite": true,
+          "minimum": 30.0,
+          "maximum": 30.0,
+          "unique": [
+            30
+          ],
+          "values": [
+            30,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "task": 289,
+      "cost": 32,
+      "sha256": "d6098659b327d3f0c5f1fb8179686fb687d36fa52ced063ed45bb49561ae7408",
+      "file_bytes": 913,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Identity",
+          "inputs": [
+            "crop_dim"
+          ],
+          "outputs": [
+            "shape_dyn"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 1,
+          "op": "CenterCropPad",
+          "inputs": [
+            "input",
+            "shape_dyn"
+          ],
+          "outputs": [
+            "src31"
+          ],
+          "attributes": {
+            "axes": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "op": "Cast",
+          "inputs": [
+            "src31"
+          ],
+          "outputs": [
+            "src16"
+          ],
+          "attributes": {
+            "to": 10
+          }
+        },
+        {
+          "index": 3,
+          "op": "Einsum",
+          "inputs": [
+            "src16",
+            "src16",
+            "src16",
+            "src16",
+            "src16",
+            "src16"
+          ],
+          "outputs": [
+            "s6"
+          ],
+          "attributes": {
+            "equation": "bchw,bcij,bckl,bcmn,bcop,bcqr->b"
+          }
+        },
+        {
+          "index": 4,
+          "op": "Mod",
+          "inputs": [
+            "s6",
+            "seven"
+          ],
+          "outputs": [
+            "mod7"
+          ],
+          "attributes": {
+            "fmod": 1
+          }
+        },
+        {
+          "index": 5,
+          "op": "HardSigmoid",
+          "inputs": [
+            "mod7"
+          ],
+          "outputs": [
+            "z"
+          ],
+          "attributes": {
+            "alpha": 0.10100000351667404,
+            "beta": -0.19832344353199005
+          }
+        },
+        {
+          "index": 6,
+          "op": "Log",
+          "inputs": [
+            "z"
+          ],
+          "outputs": [
+            "lz"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 7,
+          "op": "PRelu",
+          "inputs": [
+            "lz",
+            "slope"
+          ],
+          "outputs": [
+            "roi"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 8,
+          "op": "Resize",
+          "inputs": [
+            "src16",
+            "roi",
+            "",
+            "sizes2"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "axes": [
+              2,
+              3
+            ],
+            "coordinate_transformation_mode": "tf_crop_and_resize",
+            "extrapolation_value": 0.0,
+            "mode": "nearest",
+            "nearest_mode": "floor"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "sizes2",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "finite": true,
+          "minimum": 30.0,
+          "maximum": 30.0,
+          "unique": [
+            30
+          ],
+          "values": [
+            30,
+            30
+          ]
+        },
+        {
+          "name": "crop_dim",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 31.0,
+          "maximum": 31.0,
+          "unique": [
+            31
+          ],
+          "values": [
+            31
+          ]
+        },
+        {
+          "name": "seven",
+          "dtype": "float16",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 7.0,
+          "maximum": 7.0,
+          "unique": [
+            7.0
+          ],
+          "values": [
+            7.0
+          ]
+        },
+        {
+          "name": "slope",
+          "dtype": "float16",
+          "shape": [
+            4
+          ],
+          "elements": 4,
+          "finite": true,
+          "minimum": -0.2176513671875,
+          "maximum": 0.0,
+          "unique": [
+            -0.2176513671875,
+            0.0
+          ],
+          "values": [
+            0.0,
+            0.0,
+            -0.2176513671875,
+            -0.2176513671875
+          ]
+        }
+      ]
+    },
+    {
+      "task": 291,
+      "cost": 40,
+      "sha256": "320f83da6c7eda200e32bf257d94312fc4536f3ce04f004e641986cba8ed9b58",
+      "file_bytes": 399,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 12
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "input",
+            "input",
+            "sign",
+            "sign",
+            "sign",
+            "edge",
+            "edge"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "abrd,abec,afrc,b,f,g,x,y->abxy"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "sign",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -81.0,
+          "maximum": 1.0,
+          "unique": [
+            -81.0,
+            1.0
+          ],
+          "values": [
+            -81.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "edge",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "unique": [
+            0.0,
+            1.0
+          ],
+          "values": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 296,
+      "cost": 28,
+      "sha256": "0380e569b52e7fc285ba0b6f969b9bfbe96875bf415e26eccd3705bda1d55e1a",
+      "file_bytes": 329,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 11
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "ConvTranspose",
+          "inputs": [
+            "selector",
+            "input",
+            "bias"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "pads": [
+              2,
+              4,
+              3,
+              4
+            ],
+            "strides": [
+              1,
+              4
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "selector",
+          "dtype": "float32",
+          "shape": [
+            1,
+            1,
+            6,
+            3
+          ],
+          "elements": 18,
+          "finite": false,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "unique": [
+            0.0,
+            1.0,
+            NaN
+          ],
+          "values": [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            NaN,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            NaN,
+            0.0
+          ]
+        },
+        {
+          "name": "bias",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -3.5,
+          "maximum": 0.0,
+          "unique": [
+            -3.5,
+            0.0
+          ],
+          "values": [
+            -3.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 303,
+      "cost": 39,
+      "sha256": "dfe6d9f2300ba8496331af55f988d8ec5dc4e2c473fba425b048247d60a49042",
+      "file_bytes": 391,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 14
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "E",
+            "E",
+            "D",
+            "E",
+            "E",
+            "input",
+            "input"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "nchw,or,cr,rk,ak,bk,nahj,nbiw->nohw"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "E",
+          "dtype": "float32",
+          "shape": [
+            10,
+            3
+          ],
+          "elements": 30,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1.0,
+            -0.9510565400123596,
+            -0.80901700258255,
+            -0.5877852439880371,
+            -0.30901700258255005,
+            6.123234262925839e-17,
+            0.30901700258255005,
+            0.5877852439880371,
+            0.80901700258255,
+            0.9510565400123596,
+            1.0
+          ],
+          "values": [
+            1.0,
+            6.123234262925839e-17,
+            -1.0,
+            1.0,
+            0.5877852439880371,
+            -0.80901700258255,
+            1.0,
+            6.123234262925839e-17,
+            1.0,
+            1.0,
+            0.9510565400123596,
+            -0.30901700258255005,
+            1.0,
+            0.9510565400123596,
+            0.30901700258255005,
+            1.0,
+            0.5877852439880371,
+            0.80901700258255,
+            1.0,
+            -0.5877852439880371,
+            0.80901700258255,
+            1.0,
+            -0.9510565400123596,
+            0.30901700258255005,
+            1.0,
+            -0.9510565400123596,
+            -0.30901700258255005,
+            1.0,
+            -0.5877852439880371,
+            -0.80901700258255
+          ]
+        },
+        {
+          "name": "D",
+          "dtype": "float32",
+          "shape": [
+            3,
+            3
+          ],
+          "elements": 9,
+          "finite": true,
+          "minimum": -3686.39990234375,
+          "maximum": 4096.0,
+          "unique": [
+            -3686.39990234375,
+            -0.04095999896526337,
+            -0.03686399757862091,
+            0.0,
+            4096.0
+          ],
+          "values": [
+            -0.03686399757862091,
+            -3686.39990234375,
+            0.0,
+            0.0,
+            4096.0,
+            0.0,
+            -0.04095999896526337,
+            4096.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 318,
+      "cost": 49,
+      "sha256": "b5869143ce2fbd7d7cf3fc49de3eaec4555331ee5f17fecaab5159cf3eaa65bf",
+      "file_bytes": 587,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "s",
+            "s"
+          ],
+          "outputs": [
+            "g"
+          ],
+          "attributes": {
+            "epsilon": -0.0039832754991948605,
+            "num_groups": 1
+          }
+        },
+        {
+          "index": 1,
+          "op": "CastLike",
+          "inputs": [
+            "g",
+            "W"
+          ],
+          "outputs": [
+            "x"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "QLinearConv",
+          "inputs": [
+            "x",
+            "s",
+            "z",
+            "x",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "q"
+          ],
+          "attributes": {
+            "dilations": [
+              31,
+              31
+            ],
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              245,
+              90,
+              744,
+              899
+            ],
+            "strides": [
+              30,
+              30
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "op": "QLinearConv",
+          "inputs": [
+            "q",
+            "s",
+            "z",
+            "q",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "f"
+          ],
+          "attributes": {
+            "dilations": [
+              5,
+              5
+            ],
+            "kernel_shape": [
+              4,
+              4
+            ],
+            "pads": [
+              12,
+              12,
+              12,
+              12
+            ],
+            "strides": [
+              4,
+              4
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "op": "ConvInteger",
+          "inputs": [
+            "f",
+            "W"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "kernel_shape": [
+              1,
+              1
+            ],
+            "pads": [
+              0,
+              0,
+              26,
+              26
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "W",
+          "dtype": "int8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1,
+            0,
+            1
+          ],
+          "values": [
+            1,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "s",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 3.0,
+          "maximum": 3.0,
+          "unique": [
+            3.0
+          ],
+          "values": [
+            3.0
+          ]
+        },
+        {
+          "name": "z",
+          "dtype": "int8",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": -11.0,
+          "maximum": -11.0,
+          "unique": [
+            -11
+          ],
+          "values": [
+            -11
+          ]
+        }
+      ]
+    },
+    {
+      "task": 332,
+      "cost": 49,
+      "sha256": "aac601d6658a8080930a969b857ca58aeb1a2f10f6a03e5b2bd7c1271a9d5268",
+      "file_bytes": 561,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "sb",
+            "sb"
+          ],
+          "outputs": [
+            "data"
+          ],
+          "attributes": {
+            "epsilon": 9.999999747378752e-06,
+            "num_groups": 1
+          }
+        },
+        {
+          "index": 1,
+          "op": "CastLike",
+          "inputs": [
+            "data",
+            "C"
+          ],
+          "outputs": [
+            "x32"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "Einsum",
+          "inputs": [
+            "x32",
+            "x32",
+            "C",
+            "C",
+            "P",
+            "P"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "nkrc,nlsd,k,o,c,d->norc"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "sb",
+          "dtype": "float32",
+          "shape": [
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 1.0,
+          "maximum": 1.0,
+          "unique": [
+            1.0
+          ],
+          "values": [
+            1.0
+          ]
+        },
+        {
+          "name": "C",
+          "dtype": "int32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -923020252.0,
+          "maximum": 0.0,
+          "unique": [
+            -923020252,
+            -347019853,
+            -56646272,
+            0
+          ],
+          "values": [
+            -56646272,
+            0,
+            0,
+            -923020252,
+            0,
+            -347019853,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "P",
+          "dtype": "int32",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 3.0,
+          "unique": [
+            -1,
+            3
+          ],
+          "values": [
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1,
+            3,
+            -1
+          ]
+        }
+      ]
+    },
+    {
+      "task": 334,
+      "cost": 43,
+      "sha256": "297481dfc097dbfad231596ef076967f560342841f17c5ee754b49bda4b040e2",
+      "file_bytes": 358,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 14
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "w"
+          ],
+          "outputs": [
+            "score"
+          ],
+          "attributes": {
+            "equation": "nchw,c->n"
+          }
+        },
+        {
+          "index": 1,
+          "op": "Cast",
+          "inputs": [
+            "score"
+          ],
+          "outputs": [
+            "code"
+          ],
+          "attributes": {
+            "to": 3
+          }
+        },
+        {
+          "index": 2,
+          "op": "Mul",
+          "inputs": [
+            "P",
+            "code"
+          ],
+          "outputs": [
+            "enc"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 3,
+          "op": "ConvInteger",
+          "inputs": [
+            "enc",
+            "W"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "pads": [
+              0,
+              0,
+              27,
+              27
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "w",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -4.980000019073486,
+          "maximum": 0.0,
+          "unique": [
+            -4.980000019073486,
+            -4.900000095367432,
+            -4.882500171661377,
+            -4.820000171661377,
+            0.0
+          ],
+          "values": [
+            -4.900000095367432,
+            -4.980000019073486,
+            -4.820000171661377,
+            -4.882500171661377,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "P",
+          "dtype": "int8",
+          "shape": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "elements": 9,
+          "finite": true,
+          "minimum": -118.0,
+          "maximum": 118.0,
+          "unique": [
+            -118,
+            -22,
+            -20,
+            -1,
+            20,
+            22,
+            118
+          ],
+          "values": [
+            -20,
+            118,
+            -22,
+            22,
+            118,
+            20,
+            -118,
+            -1,
+            -118
+          ]
+        },
+        {
+          "name": "W",
+          "dtype": "int8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1,
+            0,
+            1
+          ],
+          "values": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 346,
+      "cost": 50,
+      "sha256": "b882fabd270a30bd4200ca8c767d7ecd5ce38fcee43004350ceeebb2bc0203ec",
+      "file_bytes": 631,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "b",
+            "b"
+          ],
+          "outputs": [
+            "fa"
+          ],
+          "attributes": {
+            "epsilon": 0.5,
+            "num_groups": 10
+          }
+        },
+        {
+          "index": 1,
+          "op": "CastLike",
+          "inputs": [
+            "fa",
+            "it"
+          ],
+          "outputs": [
+            "u"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "CastLike",
+          "inputs": [
+            "u",
+            "hf"
+          ],
+          "outputs": [
+            "f"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 3,
+          "op": "Einsum",
+          "inputs": [
+            "f",
+            "f",
+            "f",
+            "f",
+            "hf"
+          ],
+          "outputs": [
+            "rect"
+          ],
+          "attributes": {
+            "equation": "nchw,nchx,ncyw,ncyx,ab->ncab"
+          }
+        },
+        {
+          "index": 4,
+          "op": "ReduceMin",
+          "inputs": [
+            "rect"
+          ],
+          "outputs": [
+            "mn"
+          ],
+          "attributes": {
+            "keepdims": 1
+          }
+        },
+        {
+          "index": 5,
+          "op": "Equal",
+          "inputs": [
+            "rect",
+            "mn"
+          ],
+          "outputs": [
+            "eq"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 6,
+          "op": "Pad",
+          "inputs": [
+            "eq",
+            "pads"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "mode": "constant"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "b",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 1.000100016593933,
+          "maximum": 1.000100016593933,
+          "unique": [
+            1.000100016593933
+          ],
+          "values": [
+            1.000100016593933
+          ]
+        },
+        {
+          "name": "hf",
+          "dtype": "float16",
+          "shape": [
+            1,
+            1
+          ],
+          "elements": 1,
+          "finite": true,
+          "minimum": 1.0,
+          "maximum": 1.0,
+          "unique": [
+            1.0
+          ],
+          "values": [
+            1.0
+          ]
+        },
+        {
+          "name": "it",
+          "dtype": "int8",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 0.0,
+          "unique": [
+            0
+          ],
+          "values": [
+            0
+          ]
+        },
+        {
+          "name": "pads",
+          "dtype": "int64",
+          "shape": [
+            8
+          ],
+          "elements": 8,
+          "finite": true,
+          "minimum": 0.0,
+          "maximum": 29.0,
+          "unique": [
+            0,
+            29
+          ],
+          "values": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            29,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "task": 347,
+      "cost": 41,
+      "sha256": "4cd97cf3c8d39172afe89f9f5dedb71b41643415be1f4606ffa9f457624980e7",
+      "file_bytes": 680,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "s",
+            "s"
+          ],
+          "outputs": [
+            "g"
+          ],
+          "attributes": {
+            "epsilon": -0.00199581659398973,
+            "num_groups": 1
+          }
+        },
+        {
+          "index": 1,
+          "op": "CastLike",
+          "inputs": [
+            "g",
+            "W"
+          ],
+          "outputs": [
+            "x"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "QLinearConv",
+          "inputs": [
+            "x",
+            "s",
+            "z",
+            "x",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "q"
+          ],
+          "attributes": {
+            "dilations": [
+              31,
+              31
+            ],
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              60,
+              153,
+              899,
+              806
+            ],
+            "strides": [
+              30,
+              30
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "op": "Slice",
+          "inputs": [
+            "q",
+            "ss",
+            "ends",
+            "axes",
+            "ss"
+          ],
+          "outputs": [
+            "qf"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 4,
+          "op": "ConvInteger",
+          "inputs": [
+            "qf",
+            "W"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "kernel_shape": [
+              1,
+              1
+            ],
+            "pads": [
+              0,
+              0,
+              27,
+              27
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "s",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 3.0,
+          "maximum": 3.0,
+          "unique": [
+            3.0
+          ],
+          "values": [
+            3.0
+          ]
+        },
+        {
+          "name": "z",
+          "dtype": "int8",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": -11.0,
+          "maximum": -11.0,
+          "unique": [
+            -11
+          ],
+          "values": [
+            -11
+          ]
+        },
+        {
+          "name": "W",
+          "dtype": "int8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1,
+            0,
+            1
+          ],
+          "values": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "ss",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": -1.0,
+          "unique": [
+            -1
+          ],
+          "values": [
+            -1,
+            -1
+          ]
+        },
+        {
+          "name": "ends",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "finite": true,
+          "minimum": -4.0,
+          "maximum": -4.0,
+          "unique": [
+            -4
+          ],
+          "values": [
+            -4,
+            -4
+          ]
+        },
+        {
+          "name": "axes",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2,
+          "finite": true,
+          "minimum": 2.0,
+          "maximum": 3.0,
+          "unique": [
+            2,
+            3
+          ],
+          "values": [
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "task": 385,
+      "cost": 30,
+      "sha256": "629a5673b6a8e745a4c5b1b5afcf3c5e7214f2fd7c54d7f5da27eb3e788ea5d1",
+      "file_bytes": 175,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 10
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Gather",
+          "inputs": [
+            "input",
+            "v0"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "axis": 2
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "v0",
+          "dtype": "int64",
+          "shape": [
+            30
+          ],
+          "elements": 30,
+          "finite": true,
+          "minimum": 5.0,
+          "maximum": 29.0,
+          "unique": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "values": [
+            9,
+            8,
+            7,
+            6,
+            5,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "task": 386,
+      "cost": 41,
+      "sha256": "e49063715d78b04aba839021b6327765c2943622b2b74a55368dd73045e3f285",
+      "file_bytes": 587,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "s",
+            "s"
+          ],
+          "outputs": [
+            "g"
+          ],
+          "attributes": {
+            "epsilon": -0.003100987756624818,
+            "num_groups": 1
+          }
+        },
+        {
+          "index": 1,
+          "op": "CastLike",
+          "inputs": [
+            "g",
+            "W"
+          ],
+          "outputs": [
+            "x"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "QLinearConv",
+          "inputs": [
+            "x",
+            "s",
+            "z",
+            "x",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "q"
+          ],
+          "attributes": {
+            "dilations": [
+              31,
+              31
+            ],
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              90,
+              56,
+              899,
+              903
+            ],
+            "strides": [
+              30,
+              30
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "op": "QLinearConv",
+          "inputs": [
+            "q",
+            "s",
+            "z",
+            "q",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "f"
+          ],
+          "attributes": {
+            "dilations": [
+              5,
+              4
+            ],
+            "kernel_shape": [
+              4,
+              3
+            ],
+            "pads": [
+              12,
+              6,
+              12,
+              6
+            ],
+            "strides": [
+              4,
+              3
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "op": "ConvInteger",
+          "inputs": [
+            "f",
+            "W"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "kernel_shape": [
+              1,
+              1
+            ],
+            "pads": [
+              0,
+              0,
+              26,
+              27
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "s",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 3.0,
+          "maximum": 3.0,
+          "unique": [
+            3.0
+          ],
+          "values": [
+            3.0
+          ]
+        },
+        {
+          "name": "z",
+          "dtype": "int8",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": -11.0,
+          "maximum": -11.0,
+          "unique": [
+            -11
+          ],
+          "values": [
+            -11
+          ]
+        },
+        {
+          "name": "W",
+          "dtype": "int8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1,
+            0,
+            1
+          ],
+          "values": [
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "task": 389,
+      "cost": 30,
+      "sha256": "02c5c9d00cc3805193b2ebbdb1a4c6579af58cca27190f97d882622a18076d58",
+      "file_bytes": 355,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "inputs": [
+            "input",
+            "input",
+            "B",
+            "B",
+            "B",
+            "B",
+            "B"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "equation": "bxhw,beij,xa,qa,qk,ek,ok->bohw"
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "B",
+          "dtype": "float32",
+          "shape": [
+            10,
+            3
+          ],
+          "elements": 30,
+          "finite": true,
+          "minimum": -2.2409913539886475,
+          "maximum": 2.015576124191284,
+          "unique": [
+            -2.2409913539886475,
+            -2.193720579147339,
+            -2.1636946201324463,
+            -2.1385915279388428,
+            -2.0968034267425537,
+            -2.0963199138641357,
+            -2.031320333480835,
+            -2.012340784072876,
+            -1.9470911026000977,
+            -1.8571029901504517,
+            -1.7978339195251465,
+            -1.7187508344650269,
+            -1.715682029724121,
+            -1.6342755556106567,
+            -1.3688243627548218,
+            -1.2152446508407593,
+            -1.0635689496994019,
+            -1.0049632787704468,
+            -0.6168814897537231,
+            -0.14284461736679077,
+            0.12983427941799164,
+            0.14647461473941803,
+            0.1507691890001297,
+            0.3988632559776306,
+            1.1875776052474976,
+            1.5129108428955078,
+            1.7936204671859741,
+            1.7966690063476562,
+            2.0076324939727783,
+            2.015576124191284
+          ],
+          "values": [
+            -1.3688243627548218,
+            1.7966690063476562,
+            2.0076324939727783,
+            -1.8571029901504517,
+            -1.715682029724121,
+            1.1875776052474976,
+            -1.7187508344650269,
+            1.7936204671859741,
+            -0.6168814897537231,
+            -2.193720579147339,
+            -2.2409913539886475,
+            -1.2152446508407593,
+            -1.7978339195251465,
+            -2.0963199138641357,
+            0.12983427941799164,
+            -0.14284461736679077,
+            0.14647461473941803,
+            0.1507691890001297,
+            -2.012340784072876,
+            1.5129108428955078,
+            -1.6342755556106567,
+            -2.031320333480835,
+            -1.0635689496994019,
+            -2.1385915279388428,
+            -2.0968034267425537,
+            -1.0049632787704468,
+            2.015576124191284,
+            -1.9470911026000977,
+            0.3988632559776306,
+            -2.1636946201324463
+          ]
+        }
+      ]
+    },
+    {
+      "task": 395,
+      "cost": 35,
+      "sha256": "1fcc0253659bf6a6fe2cd5783d515884d5ea419bfd73a836c3f2dab1b2c3886d",
+      "file_bytes": 665,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "nodes": [
+        {
+          "index": 0,
+          "op": "GroupNormalization",
+          "inputs": [
+            "input",
+            "s",
+            "s"
+          ],
+          "outputs": [
+            "g"
+          ],
+          "attributes": {
+            "epsilon": -0.00199581659398973,
+            "num_groups": 1
+          }
+        },
+        {
+          "index": 1,
+          "op": "CastLike",
+          "inputs": [
+            "g",
+            "W"
+          ],
+          "outputs": [
+            "x"
+          ],
+          "attributes": {}
+        },
+        {
+          "index": 2,
+          "op": "QLinearConv",
+          "inputs": [
+            "x",
+            "s",
+            "z",
+            "x",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "q"
+          ],
+          "attributes": {
+            "dilations": [
+              31,
+              31
+            ],
+            "kernel_shape": [
+              30,
+              30
+            ],
+            "pads": [
+              153,
+              60,
+              806,
+              899
+            ],
+            "strides": [
+              30,
+              30
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "op": "QLinearConv",
+          "inputs": [
+            "q",
+            "s",
+            "z",
+            "q",
+            "s",
+            "z",
+            "s",
+            "z"
+          ],
+          "outputs": [
+            "f"
+          ],
+          "attributes": {
+            "dilations": [
+              3,
+              3
+            ],
+            "kernel_shape": [
+              3,
+              3
+            ],
+            "pads": [
+              4,
+              4,
+              4,
+              4
+            ],
+            "strides": [
+              2,
+              2
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "op": "ConvInteger",
+          "inputs": [
+            "f",
+            "W"
+          ],
+          "outputs": [
+            "output"
+          ],
+          "attributes": {
+            "kernel_shape": [
+              1,
+              1
+            ],
+            "pads": [
+              0,
+              0,
+              27,
+              27
+            ]
+          }
+        }
+      ],
+      "initializers": [
+        {
+          "name": "W",
+          "dtype": "int8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10,
+          "finite": true,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "unique": [
+            -1,
+            0,
+            1
+          ],
+          "values": [
+            -1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "s",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": 3.0,
+          "maximum": 3.0,
+          "unique": [
+            3.0
+          ],
+          "values": [
+            3.0
+          ]
+        },
+        {
+          "name": "z",
+          "dtype": "int8",
+          "shape": [],
+          "elements": 1,
+          "finite": true,
+          "minimum": -11.0,
+          "maximum": -11.0,
+          "unique": [
+            -11
+          ],
+          "values": [
+            -11
+          ]
+        }
+      ]
+    }
+  ]
+}

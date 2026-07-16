@@ -1,0 +1,24 @@
+{
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "methods": [
+    "dead-node and unused-initializer pruning",
+    "identical/permuted initializer aliasing",
+    "identity and no-op elimination",
+    "common-subexpression cleanup",
+    "exact rank-1/dictionary factor inspection",
+    "manual Einsum polynomial-factor inspection"
+  ],
+  "tasks": {
+    "190": {"authority_cost": 153, "strict_lower_safe_rewrites": 0, "reason": "all tensors live; numeric shaves change TfIdf lookup buckets and fail known data; source structure is policy-banned"},
+    "195": {"authority_cost": 150, "strict_lower_safe_rewrites": 0, "reason": "all 21 initializer elements live; shorter selector/crop and optional-zero-point shaves were already exhausted; truthful rebuild costs more"},
+    "243": {"authority_cost": 147, "strict_lower_safe_rewrites": 0, "reason": "strict data propagation already fails and no exact duplicate/identity initializer exists; cleanup cannot legalize the hidden 30/10 dimensions"},
+    "358": {"authority_cost": 155, "strict_lower_safe_rewrites": 0, "reason": "no dead/duplicate/identity/rank1/permuted initializer remains after the exact R2/R3 fusion"}
+  },
+  "strict_lower_candidates": 0,
+  "errors": [],
+  "provenance": [
+    "scripts/golf/loop_7999_13/lane_c28/REPORT.md",
+    "scripts/golf/loop_8004_42_plus20/agent_algebraic20_83/result.json",
+    "scripts/golf/loop_7999_13/lane_b26/build_manifest.json"
+  ]
+}

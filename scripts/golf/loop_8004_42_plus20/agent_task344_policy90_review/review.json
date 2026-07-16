@@ -1,0 +1,244 @@
+{
+  "task": 344,
+  "verdict": "ADMIT_POLICY90",
+  "admission_class": "NORMAL_TASK_POLICY90_NONEXACT",
+  "exact": false,
+  "policy_threshold": 0.9,
+  "authority": {
+    "archive": "submission_base_8009.46.zip",
+    "archive_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "member_sha256": "05bedf3ca834aadfc973c00fc91cafdb4d0ae1aaab374115d924e2e33fb1bf6c",
+    "bytes": 1205,
+    "lb_white": true,
+    "official_profile": {
+      "memory": 0,
+      "params": 137,
+      "cost": 137,
+      "score": 20.080019074171876,
+      "known_correct": true
+    }
+  },
+  "candidate": {
+    "source": "others/71407/PROBE_ONLY_DO_NOT_MERGE/task344_cost132.onnx.quarantine",
+    "sha256": "c5272a42bee419008a15d14bea734a6fb15956a863ad8e702deac0f02fcea5f6",
+    "bytes": 1203,
+    "official_profile": {
+      "memory": 0,
+      "params": 132,
+      "cost": 132,
+      "score": 20.11719807741363,
+      "known_correct": true
+    }
+  },
+  "gain": {
+    "cost_delta": 5,
+    "score_delta": 0.03717900324175403,
+    "formula": "ln(137/132)"
+  },
+  "generator": {
+    "path": "inputs/arc-gen-repo/tasks/task_d90796e8.py",
+    "sha256": "e755ebf0dcebb7cbe7587615e6a0592c19a7974119365fde5869c91dea86aabf",
+    "raw_solver_path": "inputs/sakana-gcg-2025/raw/task344.py",
+    "raw_solver_sha256": "224f92da3fa0c6d40111104cbe4580655002467957901404113ce11398185d92",
+    "known_json_sha256": "c3362eda17acc031a80148b58716b8c2219a8cb0c127c3170c86a95a91baf3fa",
+    "width_range_inclusive": [3, 10],
+    "height_range_inclusive": [3, 10],
+    "supported_colors": [0, 2, 3, 5],
+    "semantics": "On generator support, green 3 with orthogonally adjacent red 2 becomes cyan 8; that red 2 becomes black 0; all other cells are unchanged.",
+    "support_reason": "Padded red centers are greedily spaced at Manhattan distance greater than 2 and receive at most one cardinal green decoration, so visible red/green adjacency pairs do not overlap.",
+    "known_rule_checks": {
+      "examples": 266,
+      "generator_loop_mismatches": 0,
+      "raw_solver_mismatches": 0,
+      "simultaneous_local_rule_mismatches": 0,
+      "pair_degree_violations": 0
+    },
+    "fresh_rule_checks": {
+      "examples": 20000,
+      "generator_loop_mismatches": 0,
+      "raw_solver_mismatches": 0,
+      "simultaneous_local_rule_mismatches": 0,
+      "pair_degree_violations": 0
+    }
+  },
+  "private_zero_lookup_cloak": {
+    "private_zero_catalog": "docs/golf/private_zero_tasks.md",
+    "task344_in_catalog": false,
+    "confirmed_private_zero": false,
+    "authority_is_lb_white": true,
+    "candidate_is_normal_policy90": true,
+    "lookup_ops": [],
+    "shape_cloak": false,
+    "fixture_or_coordinate_lookup": false
+  },
+  "structure": {
+    "full_checker": "PASS",
+    "strict_shape_inference_data_prop": "PASS",
+    "standard_domain_only": true,
+    "ir_version": 10,
+    "opset": 12,
+    "nodes": 1,
+    "ops": ["Einsum"],
+    "einsum_input_count": 71,
+    "initializers": {
+      "V": {"dtype": "FLOAT", "shape": [4, 10], "elements": 40},
+      "B": {"dtype": "FLOAT", "shape": [2, 30], "elements": 60},
+      "G": {"dtype": "FLOAT", "shape": [4, 4], "elements": 16},
+      "M": {"dtype": "FLOAT", "shape": [4, 4], "elements": 16}
+    },
+    "initializer_nonfinite": 0,
+    "declared_input": {"dtype": "FLOAT", "shape": [1, 10, 30, 30]},
+    "declared_output": {"dtype": "FLOAT", "shape": [1, 10, 30, 30]},
+    "intermediate_node_outputs": 0,
+    "runtime_shapes": [[1, 10, 30, 30]],
+    "runtime_shape_mismatches": 0,
+    "functions": 0,
+    "subgraphs": 0,
+    "sparse_initializers": 0,
+    "custom_domains": 0,
+    "banned_ops": [],
+    "conv_bias_ub_findings": 0,
+    "other_identified_ub_findings": 0
+  },
+  "environment": {
+    "python": "3.12.7",
+    "onnx": "1.21.0",
+    "onnxruntime": "1.24.4",
+    "provider": "CPUExecutionProvider",
+    "intra_op_threads": 1,
+    "inter_op_threads": 1,
+    "configurations": ["ORT_DISABLE_ALL", "ORT_ENABLE_BASIC", "ORT_ENABLE_EXTENDED", "ORT_ENABLE_ALL"]
+  },
+  "validation": {
+    "all_four_configurations_identical": true,
+    "known": {
+      "train": 3,
+      "test": 1,
+      "arc_gen": 262,
+      "total": 266,
+      "candidate_right": 266,
+      "authority_right": 266,
+      "candidate_wrong_cells": 0,
+      "authority_wrong_cells": 0,
+      "candidate_authority_sign_divergence_cells": 0,
+      "runtime_errors": 0,
+      "nonfinite_outputs": 0
+    },
+    "fresh": [
+      {
+        "seed": 344902091,
+        "historically_unused": true,
+        "total": 10000,
+        "candidate_right": 9981,
+        "candidate_wrong": 19,
+        "candidate_accuracy": 0.9981,
+        "candidate_wrong_cells": 38,
+        "authority_right": 9981,
+        "authority_wrong": 19,
+        "authority_accuracy": 0.9981,
+        "authority_wrong_cells": 38,
+        "candidate_authority_sign_divergence_cells": 0,
+        "candidate_max_abs_raw_delta_vs_authority": 0.006591796875,
+        "runtime_errors": 0,
+        "nonfinite_outputs": 0,
+        "candidate_margin": {
+          "min_positive_true_channel": 17.139474868774414,
+          "min_true_channel": -187.3176727294922,
+          "max_false_channel": 163.94186401367188,
+          "min_abs_nonzero": 1.5942587852478027,
+          "positive_values_below_0_25": 0
+        }
+      },
+      {
+        "seed": 344902173,
+        "historically_unused": true,
+        "total": 10000,
+        "candidate_right": 9981,
+        "candidate_wrong": 19,
+        "candidate_accuracy": 0.9981,
+        "candidate_wrong_cells": 37,
+        "authority_right": 9981,
+        "authority_wrong": 19,
+        "authority_accuracy": 0.9981,
+        "authority_wrong_cells": 37,
+        "candidate_authority_sign_divergence_cells": 0,
+        "candidate_max_abs_raw_delta_vs_authority": 0.0068359375,
+        "runtime_errors": 0,
+        "nonfinite_outputs": 0,
+        "candidate_margin": {
+          "min_positive_true_channel": 2.487578868865967,
+          "min_true_channel": -171.22952270507812,
+          "max_false_channel": 164.98739624023438,
+          "min_abs_nonzero": 0.8139156699180603,
+          "positive_values_below_0_25": 0
+        }
+      }
+    ],
+    "fresh_combined": {
+      "total": 20000,
+      "candidate_right": 19962,
+      "candidate_wrong": 38,
+      "candidate_accuracy": 0.9981,
+      "candidate_wrong_cells": 75,
+      "authority_right": 19962,
+      "authority_wrong": 38,
+      "authority_accuracy": 0.9981,
+      "authority_wrong_cells": 75,
+      "candidate_authority_sign_divergence_cells": 0,
+      "wilson_95_interval": [0.9973933437444168, 0.9986153499364917]
+    },
+    "known_candidate_margin": {
+      "min_positive_true_channel": 17.6396484375,
+      "min_true_channel": 17.6396484375,
+      "max_false_channel": 0.0,
+      "min_abs_nonzero": 3.4159622192382812,
+      "positive_values_below_0_25": 0
+    },
+    "determinism": {
+      "cases": 6,
+      "repeats_per_case_model_configuration": 5,
+      "within_configuration_unique_raw_hashes_per_case": 1,
+      "across_configuration_unique_raw_hashes_per_case": 1,
+      "candidate": "PASS",
+      "authority": "PASS"
+    }
+  },
+  "counterexamples": {
+    "candidate_truth": {
+      "seed": 344902091,
+      "index": 368,
+      "input_shape": [10, 10],
+      "cell": [9, 0],
+      "truth_color": 2,
+      "candidate_predicted_color": 0,
+      "candidate_mismatch_indices": [[0, 0, 9, 0], [0, 2, 9, 0]],
+      "candidate_raw": {"channel_0": 152.56761169433594, "channel_2": -150.19931030273438},
+      "authority_raw": {"channel_0": 152.56747436523438, "channel_2": -150.19915771484375},
+      "reproduces_in_all_four_configurations": true,
+      "candidate_and_authority_both_wrong": true
+    },
+    "reachable_authority_candidate_divergence": {
+      "cell_and_channel": [5, 5, 8],
+      "authority_raw": 0.00024549689260311425,
+      "candidate_raw": -0.0001138478473876603,
+      "truth_channel_8": false,
+      "authority_wrong": true,
+      "candidate_correct": true,
+      "generator_support_probability_strictly_positive": true,
+      "reproduces_in_all_four_configurations": true
+    }
+  },
+  "safety": {
+    "runtime_errors": 0,
+    "nonfinite_outputs": 0,
+    "shape_issues": 0,
+    "undefined_behavior_findings": 0,
+    "private_zero_rejection_triggered": false,
+    "error_task_rejection_triggered": false,
+    "exact_claim": false
+  },
+  "decision_reason": "task344 is a normal LB-white task, the candidate is structurally and operationally safe, and its independently measured exact-example accuracy is 99.81% in every requested ORT configuration. Reachable counterexamples prevent exact/SOUND admission but do not prevent the explicitly authorized POLICY90 admission.",
+  "staged": false,
+  "merged": false,
+  "protected_files_modified": false
+}

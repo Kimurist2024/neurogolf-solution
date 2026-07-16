@@ -1,0 +1,57 @@
+{
+  "lane": "a17",
+  "baseline": {
+    "zip": "submission_base_7999.13.zip",
+    "zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+    "score": 7999.13
+  },
+  "tasks": [29, 51, 195, 397, 400],
+  "baseline_costs": {
+    "29": 270,
+    "51": 283,
+    "195": 150,
+    "397": 364,
+    "400": 164
+  },
+  "coverage": {
+    "target_retained_candidates": 1,
+    "target_loose_exact_byte_distinct_models_screened": 139,
+    "archive_inventory_global": {
+      "zips_seen": 1195,
+      "zip_members_seen": 224111,
+      "loose_observations_seen": 118938,
+      "unique_different_models": 9572
+    }
+  },
+  "task051_exact_factor_probe": {
+    "identity": "J2 = J1 @ J12_transform",
+    "known_correct": true,
+    "baseline_cost": 283,
+    "candidate_cost": 280,
+    "cost_delta": -3,
+    "structure_gate": "giant_einsum:65",
+    "decision": "reject_structure",
+    "existing_label_absorption_parameter_delta": 15,
+    "existing_label_absorption_decision": "reject_not_cheaper"
+  },
+  "outcomes": {
+    "29": "The sole retained static-267 model is unscorable because its Max operands have incompatible int64/int32 types. Of 31 other loose models, 30 screen at or above 270 and one is unscorable.",
+    "51": "The exact J2/J1 factorization reduces actual cost 283 to 280 and passes known examples, but the final operation remains a forbidden 65-input Einsum. Absorption into the only adjacent rank-3 carrier would add 15 parameters and is not cheaper.",
+    "195": "Of 24 non-baseline loose models, 23 screen at or above 150 and one is structurally rejected.",
+    "397": "Of 35 non-baseline loose models, 32 screen at or above 364, two are unscorable, and one is structurally rejected. The exact baseline itself fails strict data-propagating shape inference at Gather and was not treated as a reusable candidate.",
+    "400": "All 21 non-baseline loose models screen at or above cost 164."
+  },
+  "winners": [],
+  "verified_gain": 0.0,
+  "fresh5000_run": false,
+  "fresh5000_skip_reason": "No candidate survived both the strictly-cheaper and structural-safety gates.",
+  "root_artifacts_modified": false,
+  "root_submission_created": false,
+  "evidence": [
+    "scripts/golf/loop_7999_13/lane_a17/model_manifest.json",
+    "scripts/golf/loop_7999_13/lane_a17/current_model_audit.json",
+    "scripts/golf/loop_7999_13/lane_a17/retained_scan.json",
+    "scripts/golf/loop_7999_13/lane_a17/loose_history_scan.json",
+    "scripts/golf/loop_7999_13/lane_a17/task051_factor_audit.json"
+  ]
+}

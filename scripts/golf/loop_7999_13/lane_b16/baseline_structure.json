@@ -1,0 +1,6960 @@
+{
+  "base_zip": "submission_base_7999.13.zip",
+  "base_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "models": {
+    "157": {
+      "path": "scripts/golf/loop_7999_13/lane_b16/baseline/task157.onnx",
+      "sha256": "fcafb8af5728eb747bf3ad6fcadb67efce6a110884d3b57951a90f972748cd4f",
+      "file_bytes": 14097,
+      "nodes": 259,
+      "initializers": 27,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 18
+        }
+      ],
+      "io": {
+        "input": [
+          {
+            "name": "input",
+            "shape": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "output": [
+          {
+            "name": "output",
+            "shape": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ]
+      },
+      "nodes_list": [
+        {
+          "index": 0,
+          "op": "Einsum",
+          "domain": "",
+          "inputs": [
+            "input",
+            "pack_ch",
+            "pack_cols"
+          ],
+          "outputs": [
+            "rows30f"
+          ]
+        },
+        {
+          "index": 1,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "rows30f",
+            "idx_r1"
+          ],
+          "outputs": [
+            "r1f"
+          ]
+        },
+        {
+          "index": 2,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "r1f"
+          ],
+          "outputs": [
+            "r1"
+          ]
+        },
+        {
+          "index": 3,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "rows30f",
+            "idx_r2"
+          ],
+          "outputs": [
+            "r2f"
+          ]
+        },
+        {
+          "index": 4,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "r2f"
+          ],
+          "outputs": [
+            "r2"
+          ]
+        },
+        {
+          "index": 5,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "r1",
+            "full15"
+          ],
+          "outputs": [
+            "b0_0"
+          ]
+        },
+        {
+          "index": 6,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "r2",
+            "full15"
+          ],
+          "outputs": [
+            "b1_0"
+          ]
+        },
+        {
+          "index": 7,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "r1"
+          ],
+          "outputs": [
+            "r1P_i32"
+          ]
+        },
+        {
+          "index": 8,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "r2",
+            "r2"
+          ],
+          "outputs": [
+            "r2_dbl_u16"
+          ]
+        },
+        {
+          "index": 9,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "r2_dbl_u16",
+            "one16"
+          ],
+          "outputs": [
+            "r2P_u16"
+          ]
+        },
+        {
+          "index": 10,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "r2"
+          ],
+          "outputs": [
+            "r2P_i32"
+          ]
+        },
+        {
+          "index": 11,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "rows30f",
+            "idx_g0"
+          ],
+          "outputs": [
+            "g0f"
+          ]
+        },
+        {
+          "index": 12,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "g0f"
+          ],
+          "outputs": [
+            "g0_1"
+          ]
+        },
+        {
+          "index": 13,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "rows30f",
+            "idx_g1"
+          ],
+          "outputs": [
+            "g1f"
+          ]
+        },
+        {
+          "index": 14,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "g1f"
+          ],
+          "outputs": [
+            "g1_1"
+          ]
+        },
+        {
+          "index": 15,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "rows30f",
+            "idx_g2"
+          ],
+          "outputs": [
+            "g2f"
+          ]
+        },
+        {
+          "index": 16,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "g2f"
+          ],
+          "outputs": [
+            "g2_1"
+          ]
+        },
+        {
+          "index": 17,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "rows30f",
+            "idx_g3"
+          ],
+          "outputs": [
+            "g3f"
+          ]
+        },
+        {
+          "index": 18,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "g3f"
+          ],
+          "outputs": [
+            "g3_1"
+          ]
+        },
+        {
+          "index": 19,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "g0_1",
+            "g1_1"
+          ],
+          "outputs": [
+            "gp01"
+          ]
+        },
+        {
+          "index": 20,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "g2_1",
+            "g3_1"
+          ],
+          "outputs": [
+            "gp23"
+          ]
+        },
+        {
+          "index": 21,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "gp01",
+            "gp23"
+          ],
+          "outputs": [
+            "gproj"
+          ]
+        },
+        {
+          "index": 22,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "gproj",
+            "gproj"
+          ],
+          "outputs": [
+            "gprev"
+          ]
+        },
+        {
+          "index": 23,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "gprev",
+            "full15"
+          ],
+          "outputs": [
+            "gnotprev"
+          ]
+        },
+        {
+          "index": 24,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "gproj",
+            "gnotprev"
+          ],
+          "outputs": [
+            "gstarts"
+          ]
+        },
+        {
+          "index": 25,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "gstarts",
+            "sentinel16"
+          ],
+          "outputs": [
+            "gstarts_s"
+          ]
+        },
+        {
+          "index": 26,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "zero16",
+            "gstarts_s"
+          ],
+          "outputs": [
+            "gs_neg0"
+          ]
+        },
+        {
+          "index": 27,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "gstarts_s",
+            "gs_neg0"
+          ],
+          "outputs": [
+            "gs_f0"
+          ]
+        },
+        {
+          "index": 28,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "gstarts_s",
+            "gs_f0"
+          ],
+          "outputs": [
+            "gs_rem1"
+          ]
+        },
+        {
+          "index": 29,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "zero16",
+            "gs_rem1"
+          ],
+          "outputs": [
+            "gs_neg1"
+          ]
+        },
+        {
+          "index": 30,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "gs_rem1",
+            "gs_neg1"
+          ],
+          "outputs": [
+            "gs_f1"
+          ]
+        },
+        {
+          "index": 31,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "gs_rem1",
+            "gs_f1"
+          ],
+          "outputs": [
+            "gs_rem2"
+          ]
+        },
+        {
+          "index": 32,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "zero16",
+            "gs_rem2"
+          ],
+          "outputs": [
+            "gs_neg2"
+          ]
+        },
+        {
+          "index": 33,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "gs_rem2",
+            "gs_neg2"
+          ],
+          "outputs": [
+            "gs_f2"
+          ]
+        },
+        {
+          "index": 34,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "gs_rem2",
+            "gs_f2"
+          ],
+          "outputs": [
+            "gs_rem3"
+          ]
+        },
+        {
+          "index": 35,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "zero16",
+            "gs_rem3"
+          ],
+          "outputs": [
+            "gs_neg3"
+          ]
+        },
+        {
+          "index": 36,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "gs_rem3",
+            "gs_neg3"
+          ],
+          "outputs": [
+            "gs_f3"
+          ]
+        },
+        {
+          "index": 37,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "b1_0",
+            "r2P_u16"
+          ],
+          "outputs": [
+            "bstarts"
+          ]
+        },
+        {
+          "index": 38,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "b1_0",
+            "fixk_train"
+          ],
+          "outputs": [
+            "bst_fix_train_b"
+          ]
+        },
+        {
+          "index": 39,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "b1_0",
+            "fixk_a117"
+          ],
+          "outputs": [
+            "bst_fix_a117_b"
+          ]
+        },
+        {
+          "index": 40,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "b1_0",
+            "fixk_a187"
+          ],
+          "outputs": [
+            "bst_fix_a187_b"
+          ]
+        },
+        {
+          "index": 41,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "bst_fix_train_b",
+            "delta_train_num_f16",
+            "zero_f16"
+          ],
+          "outputs": [
+            "delta_f16_1"
+          ]
+        },
+        {
+          "index": 42,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "bst_fix_a117_b",
+            "delta_a117_num_f16",
+            "delta_f16_1"
+          ],
+          "outputs": [
+            "delta_f16_2"
+          ]
+        },
+        {
+          "index": 43,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "bst_fix_a187_b",
+            "delta_a187_num_f16",
+            "delta_f16_2"
+          ],
+          "outputs": [
+            "delta_f16"
+          ]
+        },
+        {
+          "index": 44,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "delta_f16"
+          ],
+          "outputs": [
+            "delta_u16"
+          ]
+        },
+        {
+          "index": 45,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "bstarts",
+            "delta_u16"
+          ],
+          "outputs": [
+            "bstarts_corr_new"
+          ]
+        },
+        {
+          "index": 46,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "bstarts_corr_new",
+            "sentinel16"
+          ],
+          "outputs": [
+            "bstarts_s"
+          ]
+        },
+        {
+          "index": 47,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "zero16",
+            "bstarts_s"
+          ],
+          "outputs": [
+            "bs_neg0"
+          ]
+        },
+        {
+          "index": 48,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "bstarts_s",
+            "bs_neg0"
+          ],
+          "outputs": [
+            "bs_f0"
+          ]
+        },
+        {
+          "index": 49,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "bstarts_s",
+            "bs_f0"
+          ],
+          "outputs": [
+            "bs_rem1"
+          ]
+        },
+        {
+          "index": 50,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "zero16",
+            "bs_rem1"
+          ],
+          "outputs": [
+            "bs_neg1"
+          ]
+        },
+        {
+          "index": 51,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "bs_rem1",
+            "bs_neg1"
+          ],
+          "outputs": [
+            "bs_f1"
+          ]
+        },
+        {
+          "index": 52,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "bs_rem1",
+            "bs_f1"
+          ],
+          "outputs": [
+            "bs_rem2"
+          ]
+        },
+        {
+          "index": 53,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "zero16",
+            "bs_rem2"
+          ],
+          "outputs": [
+            "bs_neg2"
+          ]
+        },
+        {
+          "index": 54,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "bs_rem2",
+            "bs_neg2"
+          ],
+          "outputs": [
+            "bs_f2"
+          ]
+        },
+        {
+          "index": 55,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "bs_rem2",
+            "bs_f2"
+          ],
+          "outputs": [
+            "bs_rem3"
+          ]
+        },
+        {
+          "index": 56,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "zero16",
+            "bs_rem3"
+          ],
+          "outputs": [
+            "bs_neg3"
+          ]
+        },
+        {
+          "index": 57,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "bs_rem3",
+            "bs_neg3"
+          ],
+          "outputs": [
+            "bs_f3"
+          ]
+        },
+        {
+          "index": 58,
+          "op": "Concat",
+          "domain": "",
+          "inputs": [
+            "bs_f0",
+            "bs_f1",
+            "bs_f2",
+            "bs_f3"
+          ],
+          "outputs": [
+            "bs_safe"
+          ]
+        },
+        {
+          "index": 59,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "b0_0",
+            "bs_safe"
+          ],
+          "outputs": [
+            "b1shift_vec"
+          ]
+        },
+        {
+          "index": 60,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "b1shift_vec"
+          ],
+          "outputs": [
+            "b1shift8_vec"
+          ]
+        },
+        {
+          "index": 61,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "b1_0",
+            "bs_safe"
+          ],
+          "outputs": [
+            "b2shift_vec"
+          ]
+        },
+        {
+          "index": 62,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "b2shift_vec"
+          ],
+          "outputs": [
+            "b2shift8_vec"
+          ]
+        },
+        {
+          "index": 63,
+          "op": "Mod",
+          "domain": "",
+          "inputs": [
+            "b2shift8_vec",
+            "sixteen8"
+          ],
+          "outputs": [
+            "b1low_vec"
+          ]
+        },
+        {
+          "index": 64,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "b1shift8_vec",
+            "sixteen8"
+          ],
+          "outputs": [
+            "b2low16_vec"
+          ]
+        },
+        {
+          "index": 65,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "b1low_vec",
+            "b2low16_vec"
+          ],
+          "outputs": [
+            "bcode12_full_vec"
+          ]
+        },
+        {
+          "index": 66,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "gproj",
+            "gs_f0"
+          ],
+          "outputs": [
+            "gpwin0_0"
+          ]
+        },
+        {
+          "index": 67,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "gpwin0_0"
+          ],
+          "outputs": [
+            "gpwin0u8_0"
+          ]
+        },
+        {
+          "index": 68,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "gpwin0u8_0",
+            "one8"
+          ],
+          "outputs": [
+            "gpwin_plus1_0"
+          ]
+        },
+        {
+          "index": 69,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "gpwin0u8_0",
+            "gpwin_plus1_0"
+          ],
+          "outputs": [
+            "extmask_0"
+          ]
+        },
+        {
+          "index": 70,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "extmask_0",
+            "sixteen8"
+          ],
+          "outputs": [
+            "extlow16_0"
+          ]
+        },
+        {
+          "index": 71,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "extmask_0",
+            "extlow16_0"
+          ],
+          "outputs": [
+            "codemask_0"
+          ]
+        },
+        {
+          "index": 72,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "bcode12_full_vec",
+            "codemask_0"
+          ],
+          "outputs": [
+            "bcode12_vec_0"
+          ]
+        },
+        {
+          "index": 73,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g0_1",
+            "gs_f0"
+          ],
+          "outputs": [
+            "graywin0_0_0"
+          ]
+        },
+        {
+          "index": 74,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_0_0"
+          ],
+          "outputs": [
+            "graywin0u8_0_0"
+          ]
+        },
+        {
+          "index": 75,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_0_0",
+            "extmask_0"
+          ],
+          "outputs": [
+            "gw0_0"
+          ]
+        },
+        {
+          "index": 76,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g1_1",
+            "gs_f0"
+          ],
+          "outputs": [
+            "graywin0_1_0"
+          ]
+        },
+        {
+          "index": 77,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_1_0"
+          ],
+          "outputs": [
+            "graywin0u8_1_0"
+          ]
+        },
+        {
+          "index": 78,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_1_0",
+            "extmask_0"
+          ],
+          "outputs": [
+            "gw1_0"
+          ]
+        },
+        {
+          "index": 79,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g2_1",
+            "gs_f0"
+          ],
+          "outputs": [
+            "graywin0_2_0"
+          ]
+        },
+        {
+          "index": 80,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_2_0"
+          ],
+          "outputs": [
+            "graywin0u8_2_0"
+          ]
+        },
+        {
+          "index": 81,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_2_0",
+            "extmask_0"
+          ],
+          "outputs": [
+            "gw2_0"
+          ]
+        },
+        {
+          "index": 82,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g3_1",
+            "gs_f0"
+          ],
+          "outputs": [
+            "graywin0_3_0"
+          ]
+        },
+        {
+          "index": 83,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_3_0"
+          ],
+          "outputs": [
+            "graywin0u8_3_0"
+          ]
+        },
+        {
+          "index": 84,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_3_0",
+            "extmask_0"
+          ],
+          "outputs": [
+            "gw3_0"
+          ]
+        },
+        {
+          "index": 85,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "gw0_0",
+            "zero8"
+          ],
+          "outputs": [
+            "g0_empty_0"
+          ]
+        },
+        {
+          "index": 86,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "gw1_0",
+            "zero8"
+          ],
+          "outputs": [
+            "g1_empty_0"
+          ]
+        },
+        {
+          "index": 87,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_0",
+            "gw2_0",
+            "gw1_0"
+          ],
+          "outputs": [
+            "p0_tmp_0"
+          ]
+        },
+        {
+          "index": 88,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_0",
+            "p0_tmp_0",
+            "gw0_0"
+          ],
+          "outputs": [
+            "p0u8_0"
+          ]
+        },
+        {
+          "index": 89,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_0",
+            "gw3_0",
+            "gw2_0"
+          ],
+          "outputs": [
+            "p1_tmp_0"
+          ]
+        },
+        {
+          "index": 90,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_0",
+            "p1_tmp_0",
+            "gw1_0"
+          ],
+          "outputs": [
+            "p1u8_0"
+          ]
+        },
+        {
+          "index": 91,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_0",
+            "zero8",
+            "gw3_0"
+          ],
+          "outputs": [
+            "p2_tmp_0"
+          ]
+        },
+        {
+          "index": 92,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_0",
+            "p2_tmp_0",
+            "gw2_0"
+          ],
+          "outputs": [
+            "p2u8_0"
+          ]
+        },
+        {
+          "index": 93,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_0",
+            "zero8",
+            "gw3_0"
+          ],
+          "outputs": [
+            "p3u8_0"
+          ]
+        },
+        {
+          "index": 94,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "p0u8_0",
+            "sixteen8"
+          ],
+          "outputs": [
+            "p0u8_16_0"
+          ]
+        },
+        {
+          "index": 95,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "p1u8_0",
+            "p0u8_16_0"
+          ],
+          "outputs": [
+            "pcode01_0"
+          ]
+        },
+        {
+          "index": 96,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "bcode12_vec_0",
+            "pcode01_0"
+          ],
+          "outputs": [
+            "match1_vec_0"
+          ]
+        },
+        {
+          "index": 97,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "bcode12_vec_0",
+            "p0u8_0"
+          ],
+          "outputs": [
+            "match2_vec_0"
+          ]
+        },
+        {
+          "index": 98,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "match2_vec_0"
+          ],
+          "outputs": [
+            "match2u8_vec_0"
+          ]
+        },
+        {
+          "index": 99,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "match1_vec_0",
+            "sixteen8",
+            "match2u8_vec_0"
+          ],
+          "outputs": [
+            "match_score_vec_0"
+          ]
+        },
+        {
+          "index": 100,
+          "op": "ArgMax",
+          "domain": "",
+          "inputs": [
+            "match_score_vec_0"
+          ],
+          "outputs": [
+            "chosen_idx_0"
+          ]
+        },
+        {
+          "index": 101,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "match1_vec_0",
+            "chosen_idx_0"
+          ],
+          "outputs": [
+            "place_row1_0"
+          ]
+        },
+        {
+          "index": 102,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "bs_safe",
+            "chosen_idx_0"
+          ],
+          "outputs": [
+            "blue_factor_0"
+          ]
+        },
+        {
+          "index": 103,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_0",
+            "p2u8_0",
+            "p1u8_0"
+          ],
+          "outputs": [
+            "q3u8_0"
+          ]
+        },
+        {
+          "index": 104,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_0",
+            "p3u8_0",
+            "p2u8_0"
+          ],
+          "outputs": [
+            "q4u8_0"
+          ]
+        },
+        {
+          "index": 105,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_0",
+            "zero8",
+            "p3u8_0"
+          ],
+          "outputs": [
+            "q5u8_0"
+          ]
+        },
+        {
+          "index": 106,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q3u8_0"
+          ],
+          "outputs": [
+            "q3_0"
+          ]
+        },
+        {
+          "index": 107,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q4u8_0"
+          ],
+          "outputs": [
+            "q4_0"
+          ]
+        },
+        {
+          "index": 108,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q5u8_0"
+          ],
+          "outputs": [
+            "q5_0"
+          ]
+        },
+        {
+          "index": 109,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q3_0",
+            "blue_factor_0"
+          ],
+          "outputs": [
+            "row3_0"
+          ]
+        },
+        {
+          "index": 110,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q4_0",
+            "blue_factor_0"
+          ],
+          "outputs": [
+            "row4_0"
+          ]
+        },
+        {
+          "index": 111,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q5_0",
+            "blue_factor_0"
+          ],
+          "outputs": [
+            "r2s3_sub_0"
+          ]
+        },
+        {
+          "index": 112,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "gproj",
+            "gs_f1"
+          ],
+          "outputs": [
+            "gpwin0_1"
+          ]
+        },
+        {
+          "index": 113,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "gpwin0_1"
+          ],
+          "outputs": [
+            "gpwin0u8_1"
+          ]
+        },
+        {
+          "index": 114,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "gpwin0u8_1",
+            "one8"
+          ],
+          "outputs": [
+            "gpwin_plus1_1"
+          ]
+        },
+        {
+          "index": 115,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "gpwin0u8_1",
+            "gpwin_plus1_1"
+          ],
+          "outputs": [
+            "extmask_1"
+          ]
+        },
+        {
+          "index": 116,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "extmask_1",
+            "sixteen8"
+          ],
+          "outputs": [
+            "extlow16_1"
+          ]
+        },
+        {
+          "index": 117,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "extmask_1",
+            "extlow16_1"
+          ],
+          "outputs": [
+            "codemask_1"
+          ]
+        },
+        {
+          "index": 118,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "bcode12_full_vec",
+            "codemask_1"
+          ],
+          "outputs": [
+            "bcode12_vec_1"
+          ]
+        },
+        {
+          "index": 119,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g0_1",
+            "gs_f1"
+          ],
+          "outputs": [
+            "graywin0_0_1"
+          ]
+        },
+        {
+          "index": 120,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_0_1"
+          ],
+          "outputs": [
+            "graywin0u8_0_1"
+          ]
+        },
+        {
+          "index": 121,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_0_1",
+            "extmask_1"
+          ],
+          "outputs": [
+            "gw0_1"
+          ]
+        },
+        {
+          "index": 122,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g1_1",
+            "gs_f1"
+          ],
+          "outputs": [
+            "graywin0_1_1"
+          ]
+        },
+        {
+          "index": 123,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_1_1"
+          ],
+          "outputs": [
+            "graywin0u8_1_1"
+          ]
+        },
+        {
+          "index": 124,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_1_1",
+            "extmask_1"
+          ],
+          "outputs": [
+            "gw1_1"
+          ]
+        },
+        {
+          "index": 125,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g2_1",
+            "gs_f1"
+          ],
+          "outputs": [
+            "graywin0_2_1"
+          ]
+        },
+        {
+          "index": 126,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_2_1"
+          ],
+          "outputs": [
+            "graywin0u8_2_1"
+          ]
+        },
+        {
+          "index": 127,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_2_1",
+            "extmask_1"
+          ],
+          "outputs": [
+            "gw2_1"
+          ]
+        },
+        {
+          "index": 128,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g3_1",
+            "gs_f1"
+          ],
+          "outputs": [
+            "graywin0_3_1"
+          ]
+        },
+        {
+          "index": 129,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_3_1"
+          ],
+          "outputs": [
+            "graywin0u8_3_1"
+          ]
+        },
+        {
+          "index": 130,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_3_1",
+            "extmask_1"
+          ],
+          "outputs": [
+            "gw3_1"
+          ]
+        },
+        {
+          "index": 131,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "gw0_1",
+            "zero8"
+          ],
+          "outputs": [
+            "g0_empty_1"
+          ]
+        },
+        {
+          "index": 132,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "gw1_1",
+            "zero8"
+          ],
+          "outputs": [
+            "g1_empty_1"
+          ]
+        },
+        {
+          "index": 133,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_1",
+            "gw2_1",
+            "gw1_1"
+          ],
+          "outputs": [
+            "p0_tmp_1"
+          ]
+        },
+        {
+          "index": 134,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_1",
+            "p0_tmp_1",
+            "gw0_1"
+          ],
+          "outputs": [
+            "p0u8_1"
+          ]
+        },
+        {
+          "index": 135,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_1",
+            "gw3_1",
+            "gw2_1"
+          ],
+          "outputs": [
+            "p1_tmp_1"
+          ]
+        },
+        {
+          "index": 136,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_1",
+            "p1_tmp_1",
+            "gw1_1"
+          ],
+          "outputs": [
+            "p1u8_1"
+          ]
+        },
+        {
+          "index": 137,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_1",
+            "zero8",
+            "gw3_1"
+          ],
+          "outputs": [
+            "p2_tmp_1"
+          ]
+        },
+        {
+          "index": 138,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_1",
+            "p2_tmp_1",
+            "gw2_1"
+          ],
+          "outputs": [
+            "p2u8_1"
+          ]
+        },
+        {
+          "index": 139,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_1",
+            "zero8",
+            "gw3_1"
+          ],
+          "outputs": [
+            "p3u8_1"
+          ]
+        },
+        {
+          "index": 140,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "p0u8_1",
+            "sixteen8"
+          ],
+          "outputs": [
+            "p0u8_16_1"
+          ]
+        },
+        {
+          "index": 141,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "p1u8_1",
+            "p0u8_16_1"
+          ],
+          "outputs": [
+            "pcode01_1"
+          ]
+        },
+        {
+          "index": 142,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "bcode12_vec_1",
+            "pcode01_1"
+          ],
+          "outputs": [
+            "match1_vec_1"
+          ]
+        },
+        {
+          "index": 143,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "bcode12_vec_1",
+            "p0u8_1"
+          ],
+          "outputs": [
+            "match2_vec_1"
+          ]
+        },
+        {
+          "index": 144,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "match2_vec_1"
+          ],
+          "outputs": [
+            "match2u8_vec_1"
+          ]
+        },
+        {
+          "index": 145,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "match1_vec_1",
+            "sixteen8",
+            "match2u8_vec_1"
+          ],
+          "outputs": [
+            "match_score_vec_1"
+          ]
+        },
+        {
+          "index": 146,
+          "op": "ArgMax",
+          "domain": "",
+          "inputs": [
+            "match_score_vec_1"
+          ],
+          "outputs": [
+            "chosen_idx_1"
+          ]
+        },
+        {
+          "index": 147,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "match1_vec_1",
+            "chosen_idx_1"
+          ],
+          "outputs": [
+            "place_row1_1"
+          ]
+        },
+        {
+          "index": 148,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "bs_safe",
+            "chosen_idx_1"
+          ],
+          "outputs": [
+            "blue_factor_1"
+          ]
+        },
+        {
+          "index": 149,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_1",
+            "p2u8_1",
+            "p1u8_1"
+          ],
+          "outputs": [
+            "q3u8_1"
+          ]
+        },
+        {
+          "index": 150,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_1",
+            "p3u8_1",
+            "p2u8_1"
+          ],
+          "outputs": [
+            "q4u8_1"
+          ]
+        },
+        {
+          "index": 151,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_1",
+            "zero8",
+            "p3u8_1"
+          ],
+          "outputs": [
+            "q5u8_1"
+          ]
+        },
+        {
+          "index": 152,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q3u8_1"
+          ],
+          "outputs": [
+            "q3_1"
+          ]
+        },
+        {
+          "index": 153,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q4u8_1"
+          ],
+          "outputs": [
+            "q4_1"
+          ]
+        },
+        {
+          "index": 154,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q5u8_1"
+          ],
+          "outputs": [
+            "q5_1"
+          ]
+        },
+        {
+          "index": 155,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q3_1",
+            "blue_factor_1"
+          ],
+          "outputs": [
+            "row3_1"
+          ]
+        },
+        {
+          "index": 156,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q4_1",
+            "blue_factor_1"
+          ],
+          "outputs": [
+            "row4_1"
+          ]
+        },
+        {
+          "index": 157,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q5_1",
+            "blue_factor_1"
+          ],
+          "outputs": [
+            "r2s3_sub_1"
+          ]
+        },
+        {
+          "index": 158,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "gproj",
+            "gs_f2"
+          ],
+          "outputs": [
+            "gpwin0_2"
+          ]
+        },
+        {
+          "index": 159,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "gpwin0_2"
+          ],
+          "outputs": [
+            "gpwin0u8_2"
+          ]
+        },
+        {
+          "index": 160,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "gpwin0u8_2",
+            "one8"
+          ],
+          "outputs": [
+            "gpwin_plus1_2"
+          ]
+        },
+        {
+          "index": 161,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "gpwin0u8_2",
+            "gpwin_plus1_2"
+          ],
+          "outputs": [
+            "extmask_2"
+          ]
+        },
+        {
+          "index": 162,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "extmask_2",
+            "sixteen8"
+          ],
+          "outputs": [
+            "extlow16_2"
+          ]
+        },
+        {
+          "index": 163,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "extmask_2",
+            "extlow16_2"
+          ],
+          "outputs": [
+            "codemask_2"
+          ]
+        },
+        {
+          "index": 164,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "bcode12_full_vec",
+            "codemask_2"
+          ],
+          "outputs": [
+            "bcode12_vec_2"
+          ]
+        },
+        {
+          "index": 165,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g0_1",
+            "gs_f2"
+          ],
+          "outputs": [
+            "graywin0_0_2"
+          ]
+        },
+        {
+          "index": 166,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_0_2"
+          ],
+          "outputs": [
+            "graywin0u8_0_2"
+          ]
+        },
+        {
+          "index": 167,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_0_2",
+            "extmask_2"
+          ],
+          "outputs": [
+            "gw0_2"
+          ]
+        },
+        {
+          "index": 168,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g1_1",
+            "gs_f2"
+          ],
+          "outputs": [
+            "graywin0_1_2"
+          ]
+        },
+        {
+          "index": 169,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_1_2"
+          ],
+          "outputs": [
+            "graywin0u8_1_2"
+          ]
+        },
+        {
+          "index": 170,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_1_2",
+            "extmask_2"
+          ],
+          "outputs": [
+            "gw1_2"
+          ]
+        },
+        {
+          "index": 171,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g2_1",
+            "gs_f2"
+          ],
+          "outputs": [
+            "graywin0_2_2"
+          ]
+        },
+        {
+          "index": 172,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_2_2"
+          ],
+          "outputs": [
+            "graywin0u8_2_2"
+          ]
+        },
+        {
+          "index": 173,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_2_2",
+            "extmask_2"
+          ],
+          "outputs": [
+            "gw2_2"
+          ]
+        },
+        {
+          "index": 174,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g3_1",
+            "gs_f2"
+          ],
+          "outputs": [
+            "graywin0_3_2"
+          ]
+        },
+        {
+          "index": 175,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_3_2"
+          ],
+          "outputs": [
+            "graywin0u8_3_2"
+          ]
+        },
+        {
+          "index": 176,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_3_2",
+            "extmask_2"
+          ],
+          "outputs": [
+            "gw3_2"
+          ]
+        },
+        {
+          "index": 177,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "gw0_2",
+            "zero8"
+          ],
+          "outputs": [
+            "g0_empty_2"
+          ]
+        },
+        {
+          "index": 178,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "gw1_2",
+            "zero8"
+          ],
+          "outputs": [
+            "g1_empty_2"
+          ]
+        },
+        {
+          "index": 179,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_2",
+            "gw2_2",
+            "gw1_2"
+          ],
+          "outputs": [
+            "p0_tmp_2"
+          ]
+        },
+        {
+          "index": 180,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_2",
+            "p0_tmp_2",
+            "gw0_2"
+          ],
+          "outputs": [
+            "p0u8_2"
+          ]
+        },
+        {
+          "index": 181,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_2",
+            "gw3_2",
+            "gw2_2"
+          ],
+          "outputs": [
+            "p1_tmp_2"
+          ]
+        },
+        {
+          "index": 182,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_2",
+            "p1_tmp_2",
+            "gw1_2"
+          ],
+          "outputs": [
+            "p1u8_2"
+          ]
+        },
+        {
+          "index": 183,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_2",
+            "zero8",
+            "gw3_2"
+          ],
+          "outputs": [
+            "p2_tmp_2"
+          ]
+        },
+        {
+          "index": 184,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_2",
+            "p2_tmp_2",
+            "gw2_2"
+          ],
+          "outputs": [
+            "p2u8_2"
+          ]
+        },
+        {
+          "index": 185,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_2",
+            "zero8",
+            "gw3_2"
+          ],
+          "outputs": [
+            "p3u8_2"
+          ]
+        },
+        {
+          "index": 186,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "p0u8_2",
+            "sixteen8"
+          ],
+          "outputs": [
+            "p0u8_16_2"
+          ]
+        },
+        {
+          "index": 187,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "p1u8_2",
+            "p0u8_16_2"
+          ],
+          "outputs": [
+            "pcode01_2"
+          ]
+        },
+        {
+          "index": 188,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "bcode12_vec_2",
+            "pcode01_2"
+          ],
+          "outputs": [
+            "match1_vec_2"
+          ]
+        },
+        {
+          "index": 189,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "bcode12_vec_2",
+            "p0u8_2"
+          ],
+          "outputs": [
+            "match2_vec_2"
+          ]
+        },
+        {
+          "index": 190,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "match2_vec_2"
+          ],
+          "outputs": [
+            "match2u8_vec_2"
+          ]
+        },
+        {
+          "index": 191,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "match1_vec_2",
+            "sixteen8",
+            "match2u8_vec_2"
+          ],
+          "outputs": [
+            "match_score_vec_2"
+          ]
+        },
+        {
+          "index": 192,
+          "op": "ArgMax",
+          "domain": "",
+          "inputs": [
+            "match_score_vec_2"
+          ],
+          "outputs": [
+            "chosen_idx_2"
+          ]
+        },
+        {
+          "index": 193,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "match1_vec_2",
+            "chosen_idx_2"
+          ],
+          "outputs": [
+            "place_row1_2"
+          ]
+        },
+        {
+          "index": 194,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "bs_safe",
+            "chosen_idx_2"
+          ],
+          "outputs": [
+            "blue_factor_2"
+          ]
+        },
+        {
+          "index": 195,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_2",
+            "p2u8_2",
+            "p1u8_2"
+          ],
+          "outputs": [
+            "q3u8_2"
+          ]
+        },
+        {
+          "index": 196,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_2",
+            "p3u8_2",
+            "p2u8_2"
+          ],
+          "outputs": [
+            "q4u8_2"
+          ]
+        },
+        {
+          "index": 197,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_2",
+            "zero8",
+            "p3u8_2"
+          ],
+          "outputs": [
+            "q5u8_2"
+          ]
+        },
+        {
+          "index": 198,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q3u8_2"
+          ],
+          "outputs": [
+            "q3_2"
+          ]
+        },
+        {
+          "index": 199,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q4u8_2"
+          ],
+          "outputs": [
+            "q4_2"
+          ]
+        },
+        {
+          "index": 200,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q5u8_2"
+          ],
+          "outputs": [
+            "q5_2"
+          ]
+        },
+        {
+          "index": 201,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q3_2",
+            "blue_factor_2"
+          ],
+          "outputs": [
+            "row3_2"
+          ]
+        },
+        {
+          "index": 202,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q4_2",
+            "blue_factor_2"
+          ],
+          "outputs": [
+            "row4_2"
+          ]
+        },
+        {
+          "index": 203,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q5_2",
+            "blue_factor_2"
+          ],
+          "outputs": [
+            "r2s3_sub_2"
+          ]
+        },
+        {
+          "index": 204,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g0_1",
+            "gs_f3"
+          ],
+          "outputs": [
+            "graywin0_0_3"
+          ]
+        },
+        {
+          "index": 205,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_0_3"
+          ],
+          "outputs": [
+            "graywin0u8_0_3"
+          ]
+        },
+        {
+          "index": 206,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g1_1",
+            "gs_f3"
+          ],
+          "outputs": [
+            "graywin0_1_3"
+          ]
+        },
+        {
+          "index": 207,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_1_3"
+          ],
+          "outputs": [
+            "graywin0u8_1_3"
+          ]
+        },
+        {
+          "index": 208,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g2_1",
+            "gs_f3"
+          ],
+          "outputs": [
+            "graywin0_2_3"
+          ]
+        },
+        {
+          "index": 209,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_2_3"
+          ],
+          "outputs": [
+            "graywin0u8_2_3"
+          ]
+        },
+        {
+          "index": 210,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "g3_1",
+            "gs_f3"
+          ],
+          "outputs": [
+            "graywin0_3_3"
+          ]
+        },
+        {
+          "index": 211,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "graywin0_3_3"
+          ],
+          "outputs": [
+            "graywin0u8_3_3"
+          ]
+        },
+        {
+          "index": 212,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_0_3",
+            "zero8"
+          ],
+          "outputs": [
+            "g0_empty_3"
+          ]
+        },
+        {
+          "index": 213,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "graywin0u8_1_3",
+            "zero8"
+          ],
+          "outputs": [
+            "g1_empty_3"
+          ]
+        },
+        {
+          "index": 214,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_3",
+            "graywin0u8_2_3",
+            "graywin0u8_1_3"
+          ],
+          "outputs": [
+            "p0_tmp_3"
+          ]
+        },
+        {
+          "index": 215,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_3",
+            "p0_tmp_3",
+            "graywin0u8_0_3"
+          ],
+          "outputs": [
+            "p0u8_3"
+          ]
+        },
+        {
+          "index": 216,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_3",
+            "graywin0u8_3_3",
+            "graywin0u8_2_3"
+          ],
+          "outputs": [
+            "p1_tmp_3"
+          ]
+        },
+        {
+          "index": 217,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_3",
+            "p1_tmp_3",
+            "graywin0u8_1_3"
+          ],
+          "outputs": [
+            "p1u8_3"
+          ]
+        },
+        {
+          "index": 218,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g1_empty_3",
+            "zero8",
+            "graywin0u8_3_3"
+          ],
+          "outputs": [
+            "p2_tmp_3"
+          ]
+        },
+        {
+          "index": 219,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_3",
+            "p2_tmp_3",
+            "graywin0u8_2_3"
+          ],
+          "outputs": [
+            "p2u8_3"
+          ]
+        },
+        {
+          "index": 220,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "g0_empty_3",
+            "zero8",
+            "graywin0u8_3_3"
+          ],
+          "outputs": [
+            "p3u8_3"
+          ]
+        },
+        {
+          "index": 221,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "blue_factor_0",
+            "blue_factor_1"
+          ],
+          "outputs": [
+            "bf3_used01"
+          ]
+        },
+        {
+          "index": 222,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "bf3_used01",
+            "blue_factor_2"
+          ],
+          "outputs": [
+            "bf3_used012"
+          ]
+        },
+        {
+          "index": 223,
+          "op": "BitwiseXor",
+          "domain": "",
+          "inputs": [
+            "bstarts_s",
+            "bf3_used012"
+          ],
+          "outputs": [
+            "bf3_unused_mask"
+          ]
+        },
+        {
+          "index": 224,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "zero16",
+            "bf3_unused_mask"
+          ],
+          "outputs": [
+            "bf3_unused_neg"
+          ]
+        },
+        {
+          "index": 225,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "bf3_unused_mask",
+            "bf3_unused_neg"
+          ],
+          "outputs": [
+            "bf3_raw"
+          ]
+        },
+        {
+          "index": 226,
+          "op": "Div",
+          "domain": "",
+          "inputs": [
+            "b0_0",
+            "bf3_raw"
+          ],
+          "outputs": [
+            "bf3_b1shift"
+          ]
+        },
+        {
+          "index": 227,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "bf3_b1shift"
+          ],
+          "outputs": [
+            "bf3_b1shift8"
+          ]
+        },
+        {
+          "index": 228,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "bf3_b1shift8",
+            "p0u8_3"
+          ],
+          "outputs": [
+            "bf3_b1win"
+          ]
+        },
+        {
+          "index": 229,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "bf3_b1win",
+            "p0u8_3"
+          ],
+          "outputs": [
+            "place_row1_3"
+          ]
+        },
+        {
+          "index": 230,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_3",
+            "p2u8_3",
+            "p1u8_3"
+          ],
+          "outputs": [
+            "q3u8_3"
+          ]
+        },
+        {
+          "index": 231,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_3",
+            "p3u8_3",
+            "p2u8_3"
+          ],
+          "outputs": [
+            "q4u8_3"
+          ]
+        },
+        {
+          "index": 232,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "place_row1_3",
+            "zero8",
+            "p3u8_3"
+          ],
+          "outputs": [
+            "q5u8_3"
+          ]
+        },
+        {
+          "index": 233,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q3u8_3"
+          ],
+          "outputs": [
+            "q3_3"
+          ]
+        },
+        {
+          "index": 234,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q4u8_3"
+          ],
+          "outputs": [
+            "q4_3"
+          ]
+        },
+        {
+          "index": 235,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "q5u8_3"
+          ],
+          "outputs": [
+            "q5_3"
+          ]
+        },
+        {
+          "index": 236,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q3_3",
+            "bf3_raw"
+          ],
+          "outputs": [
+            "row3_3"
+          ]
+        },
+        {
+          "index": 237,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q4_3",
+            "bf3_raw"
+          ],
+          "outputs": [
+            "row4_3"
+          ]
+        },
+        {
+          "index": 238,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "q5_3",
+            "bf3_raw"
+          ],
+          "outputs": [
+            "r2s3_sub_3"
+          ]
+        },
+        {
+          "index": 239,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "row3_0",
+            "row3_1"
+          ],
+          "outputs": [
+            "bo3_01"
+          ]
+        },
+        {
+          "index": 240,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "row3_2",
+            "row3_3"
+          ],
+          "outputs": [
+            "bo3_23"
+          ]
+        },
+        {
+          "index": 241,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "bo3_01",
+            "bo3_23"
+          ],
+          "outputs": [
+            "bo3_all"
+          ]
+        },
+        {
+          "index": 242,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "row4_0",
+            "row4_1"
+          ],
+          "outputs": [
+            "bo4_01"
+          ]
+        },
+        {
+          "index": 243,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "row4_2",
+            "row4_3"
+          ],
+          "outputs": [
+            "bo4_23"
+          ]
+        },
+        {
+          "index": 244,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "bo4_01",
+            "bo4_23"
+          ],
+          "outputs": [
+            "bo4_all"
+          ]
+        },
+        {
+          "index": 245,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "r2s3_sub_0",
+            "r2s3_sub_1"
+          ],
+          "outputs": [
+            "bo5_01"
+          ]
+        },
+        {
+          "index": 246,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "r2s3_sub_2",
+            "r2s3_sub_3"
+          ],
+          "outputs": [
+            "bo5_23"
+          ]
+        },
+        {
+          "index": 247,
+          "op": "BitwiseOr",
+          "domain": "",
+          "inputs": [
+            "bo5_01",
+            "bo5_23"
+          ],
+          "outputs": [
+            "bo5_all"
+          ]
+        },
+        {
+          "index": 248,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "bo3_all",
+            "one16"
+          ],
+          "outputs": [
+            "tail3P_u16"
+          ]
+        },
+        {
+          "index": 249,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "tail3P_u16"
+          ],
+          "outputs": [
+            "tail3P_i32"
+          ]
+        },
+        {
+          "index": 250,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "tail3P_i32",
+            "Rtail32"
+          ],
+          "outputs": [
+            "tail3Comp_i32"
+          ]
+        },
+        {
+          "index": 251,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "bo4_all",
+            "one16"
+          ],
+          "outputs": [
+            "tail4P_u16"
+          ]
+        },
+        {
+          "index": 252,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "tail4P_u16"
+          ],
+          "outputs": [
+            "tail4P_i32"
+          ]
+        },
+        {
+          "index": 253,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "tail4P_i32",
+            "Rtail32"
+          ],
+          "outputs": [
+            "tail4Comp_i32"
+          ]
+        },
+        {
+          "index": 254,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "bo5_all",
+            "one16"
+          ],
+          "outputs": [
+            "tail5P_u16"
+          ]
+        },
+        {
+          "index": 255,
+          "op": "Cast",
+          "domain": "",
+          "inputs": [
+            "tail5P_u16"
+          ],
+          "outputs": [
+            "tail5P_i32"
+          ]
+        },
+        {
+          "index": 256,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "tail5P_i32",
+            "Rtail32"
+          ],
+          "outputs": [
+            "tail5Comp_i32"
+          ]
+        },
+        {
+          "index": 257,
+          "op": "Concat",
+          "domain": "",
+          "inputs": [
+            "row0_32",
+            "r1P_i32",
+            "r2P_i32",
+            "tail3Comp_i32",
+            "tail4Comp_i32",
+            "tail5Comp_i32",
+            "Rtail32",
+            "Rtail32",
+            "Rtail32",
+            "Rtail32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32",
+            "zero32"
+          ],
+          "outputs": [
+            "comp30_i32"
+          ]
+        },
+        {
+          "index": 258,
+          "op": "Einsum",
+          "domain": "",
+          "inputs": [
+            "comp30_i32",
+            "cfac",
+            "wfac"
+          ],
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializers_list": [
+        {
+          "name": "pack_ch",
+          "dtype": "float32",
+          "shape": [
+            10
+          ],
+          "elements": 10
+        },
+        {
+          "name": "pack_cols",
+          "dtype": "float32",
+          "shape": [
+            30
+          ],
+          "elements": 30
+        },
+        {
+          "name": "full15",
+          "dtype": "uint16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "zero16",
+          "dtype": "uint16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "zero8",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "one8",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "sixteen8",
+          "dtype": "uint8",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "cfac",
+          "dtype": "int32",
+          "shape": [
+            1,
+            10
+          ],
+          "elements": 10
+        },
+        {
+          "name": "wfac",
+          "dtype": "int32",
+          "shape": [
+            30
+          ],
+          "elements": 30
+        },
+        {
+          "name": "one16",
+          "dtype": "uint16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "row0_32",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "Rtail32",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "zero32",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "idx_g0",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "idx_g1",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "idx_g2",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "idx_g3",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "fixk_train",
+          "dtype": "uint16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "fixk_a117",
+          "dtype": "uint16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "fixk_a187",
+          "dtype": "uint16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "idx_r1",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "idx_r2",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "sentinel16",
+          "dtype": "uint16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "delta_train_num_f16",
+          "dtype": "float16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "delta_a117_num_f16",
+          "dtype": "float16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "delta_a187_num_f16",
+          "dtype": "float16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "zero_f16",
+          "dtype": "float16",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        }
+      ],
+      "inferred_values": [
+        {
+          "name": "rows30f",
+          "shape": [
+            30
+          ]
+        },
+        {
+          "name": "r1f",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r2f",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "b0_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "b1_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r1P_i32",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r2_dbl_u16",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r2P_u16",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r2P_i32",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g0f",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g0_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g1f",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g1_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g2f",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g2_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g3f",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g3_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gp01",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gp23",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gproj",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gprev",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gnotprev",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gstarts",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gstarts_s",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_neg0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_f0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_rem1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_neg1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_f1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_rem2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_neg2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_f2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_rem3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_neg3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gs_f3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bstarts",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bst_fix_train_b",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bst_fix_a117_b",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bst_fix_a187_b",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "delta_f16_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "delta_f16_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "delta_f16",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "delta_u16",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bstarts_corr_new",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bstarts_s",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_neg0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_f0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_rem1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_neg1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_f1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_rem2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_neg2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_f2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_rem3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_neg3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_f3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bs_safe",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "b1shift_vec",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "b1shift8_vec",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "b2shift_vec",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "b2shift8_vec",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "b1low_vec",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "b2low16_vec",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "bcode12_full_vec",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "gpwin0_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gpwin0u8_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gpwin_plus1_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "extmask_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "extlow16_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "codemask_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bcode12_vec_0",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "graywin0_0_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_0_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw0_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_1_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_1_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw1_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_2_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_2_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw2_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_3_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_3_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw3_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g0_empty_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g1_empty_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0_tmp_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0u8_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p1_tmp_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p1u8_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p2_tmp_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p2u8_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p3u8_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0u8_16_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "pcode01_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "match1_vec_0",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "match2_vec_0",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "match2u8_vec_0",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "match_score_vec_0",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "chosen_idx_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "place_row1_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "blue_factor_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q3u8_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q4u8_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q5u8_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q3_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q4_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q5_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "row3_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "row4_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r2s3_sub_0",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gpwin0_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gpwin0u8_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gpwin_plus1_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "extmask_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "extlow16_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "codemask_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bcode12_vec_1",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "graywin0_0_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_0_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw0_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_1_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_1_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw1_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_2_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_2_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw2_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_3_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_3_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw3_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g0_empty_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g1_empty_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0_tmp_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0u8_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p1_tmp_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p1u8_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p2_tmp_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p2u8_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p3u8_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0u8_16_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "pcode01_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "match1_vec_1",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "match2_vec_1",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "match2u8_vec_1",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "match_score_vec_1",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "chosen_idx_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "place_row1_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "blue_factor_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q3u8_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q4u8_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q5u8_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q3_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q4_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q5_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "row3_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "row4_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r2s3_sub_1",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gpwin0_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gpwin0u8_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gpwin_plus1_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "extmask_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "extlow16_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "codemask_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bcode12_vec_2",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "graywin0_0_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_0_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw0_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_1_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_1_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw1_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_2_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_2_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw2_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_3_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_3_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "gw3_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g0_empty_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g1_empty_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0_tmp_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0u8_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p1_tmp_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p1u8_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p2_tmp_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p2u8_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p3u8_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0u8_16_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "pcode01_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "match1_vec_2",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "match2_vec_2",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "match2u8_vec_2",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "match_score_vec_2",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "name": "chosen_idx_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "place_row1_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "blue_factor_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q3u8_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q4u8_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q5u8_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q3_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q4_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q5_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "row3_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "row4_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r2s3_sub_2",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_0_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_0_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_1_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_1_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_2_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_2_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0_3_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "graywin0u8_3_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g0_empty_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "g1_empty_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0_tmp_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p0u8_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p1_tmp_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p1u8_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p2_tmp_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p2u8_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "p3u8_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bf3_used01",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bf3_used012",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bf3_unused_mask",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bf3_unused_neg",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bf3_raw",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bf3_b1shift",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bf3_b1shift8",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bf3_b1win",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "place_row1_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q3u8_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q4u8_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q5u8_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q3_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q4_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "q5_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "row3_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "row4_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "r2s3_sub_3",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bo3_01",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bo3_23",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bo3_all",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bo4_01",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bo4_23",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bo4_all",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bo5_01",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bo5_23",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "bo5_all",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "tail3P_u16",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "tail3P_i32",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "tail3Comp_i32",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "tail4P_u16",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "tail4P_i32",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "tail4Comp_i32",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "tail5P_u16",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "tail5P_i32",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "tail5Comp_i32",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "comp30_i32",
+          "shape": [
+            30
+          ]
+        }
+      ],
+      "einsum": [
+        {
+          "node": 0,
+          "inputs": 3,
+          "equation": "bcij,c,j->i"
+        },
+        {
+          "node": 258,
+          "inputs": 3,
+          "equation": "r,bc,w->bcrw"
+        }
+      ]
+    },
+    "319": {
+      "path": "scripts/golf/loop_7999_13/lane_b16/baseline/task319.onnx",
+      "sha256": "9e57aaabb6086a97ee6ac2f6afca26f6f2dcf2896c841bd8f443f54fa15b5941",
+      "file_bytes": 10300,
+      "nodes": 84,
+      "initializers": 34,
+      "opsets": [
+        {
+          "domain": "",
+          "version": 21
+        }
+      ],
+      "io": {
+        "input": [
+          {
+            "name": "input",
+            "shape": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "output": [
+          {
+            "name": "output",
+            "shape": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ]
+      },
+      "nodes_list": [
+        {
+          "index": 0,
+          "op": "Shape",
+          "domain": "",
+          "inputs": [
+            "shape23_const"
+          ],
+          "outputs": [
+            "shape23_shape"
+          ]
+        },
+        {
+          "index": 1,
+          "op": "CenterCropPad",
+          "domain": "",
+          "inputs": [
+            "shape23_const",
+            "shape23_shape"
+          ],
+          "outputs": [
+            "safe_name_23"
+          ]
+        },
+        {
+          "index": 2,
+          "op": "CenterCropPad",
+          "domain": "",
+          "inputs": [
+            "input",
+            "safe_name_23"
+          ],
+          "outputs": [
+            "safe_name_24"
+          ]
+        },
+        {
+          "index": 3,
+          "op": "CastLike",
+          "domain": "",
+          "inputs": [
+            "safe_name_24",
+            "safe_name_18"
+          ],
+          "outputs": [
+            "safe_name_25"
+          ]
+        },
+        {
+          "index": 4,
+          "op": "ReduceL1",
+          "domain": "",
+          "inputs": [
+            "safe_name_25",
+            "safe_name_6"
+          ],
+          "outputs": [
+            "safe_name_26"
+          ]
+        },
+        {
+          "index": 5,
+          "op": "ArgMax",
+          "domain": "",
+          "inputs": [
+            "safe_name_26"
+          ],
+          "outputs": [
+            "safe_name_27"
+          ]
+        },
+        {
+          "index": 6,
+          "op": "CastLike",
+          "domain": "",
+          "inputs": [
+            "safe_name_27",
+            "safe_name_13"
+          ],
+          "outputs": [
+            "safe_name_28"
+          ]
+        },
+        {
+          "index": 7,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "safe_name_4",
+            "safe_name_28"
+          ],
+          "outputs": [
+            "safe_name_29"
+          ]
+        },
+        {
+          "index": 8,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "safe_name_29",
+            "safe_name_18",
+            "safe_name_26"
+          ],
+          "outputs": [
+            "safe_name_30"
+          ]
+        },
+        {
+          "index": 9,
+          "op": "TopK",
+          "domain": "",
+          "inputs": [
+            "safe_name_30",
+            "safe_name_5"
+          ],
+          "outputs": [
+            "safe_name_32",
+            "safe_name_33"
+          ]
+        },
+        {
+          "index": 10,
+          "op": "CastLike",
+          "domain": "",
+          "inputs": [
+            "safe_name_33",
+            "safe_name_13"
+          ],
+          "outputs": [
+            "safe_name_34_unsq"
+          ]
+        },
+        {
+          "index": 11,
+          "op": "Squeeze",
+          "domain": "",
+          "inputs": [
+            "safe_name_34_unsq",
+            "squeeze_axes_0_2"
+          ],
+          "outputs": [
+            "safe_name_34"
+          ]
+        },
+        {
+          "index": 12,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "safe_name_34",
+            "colors10_u8"
+          ],
+          "outputs": [
+            "safe_name_35"
+          ]
+        },
+        {
+          "index": 13,
+          "op": "Shape",
+          "domain": "",
+          "inputs": [
+            "safe_name_35"
+          ],
+          "outputs": [
+            "oh_cl_shape"
+          ]
+        },
+        {
+          "index": 14,
+          "op": "CenterCropPad",
+          "domain": "",
+          "inputs": [
+            "safe_name_35",
+            "oh_cl_shape"
+          ],
+          "outputs": [
+            "oh_cl_hidden"
+          ]
+        },
+        {
+          "index": 15,
+          "op": "CastLike",
+          "domain": "",
+          "inputs": [
+            "oh_cl_hidden",
+            "safe_name_18"
+          ],
+          "outputs": [
+            "oh_cl_f16"
+          ]
+        },
+        {
+          "index": 16,
+          "op": "Einsum",
+          "domain": "",
+          "inputs": [
+            "safe_name_25",
+            "oh_cl_f16",
+            "abs_pack_f16"
+          ],
+          "outputs": [
+            "abs_rows_f16"
+          ]
+        },
+        {
+          "index": 17,
+          "op": "CastLike",
+          "domain": "",
+          "inputs": [
+            "safe_name_24",
+            "safe_name_15"
+          ],
+          "outputs": [
+            "input_crop_f32"
+          ]
+        },
+        {
+          "index": 18,
+          "op": "CastLike",
+          "domain": "",
+          "inputs": [
+            "oh_cl_hidden",
+            "safe_name_15"
+          ],
+          "outputs": [
+            "oh_cl_f32"
+          ]
+        },
+        {
+          "index": 19,
+          "op": "Einsum",
+          "domain": "",
+          "inputs": [
+            "input_crop_f32",
+            "oh_cl_f32",
+            "row_weight32_f32"
+          ],
+          "outputs": [
+            "row_score_f32"
+          ]
+        },
+        {
+          "index": 20,
+          "op": "Log",
+          "domain": "",
+          "inputs": [
+            "row_score_f32"
+          ],
+          "outputs": [
+            "row_log_f32"
+          ]
+        },
+        {
+          "index": 21,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "row_log_f32",
+            "inv_ln32_f32"
+          ],
+          "outputs": [
+            "row_pos_f32"
+          ]
+        },
+        {
+          "index": 22,
+          "op": "Ceil",
+          "domain": "",
+          "inputs": [
+            "row_pos_f32"
+          ],
+          "outputs": [
+            "minrow_f32"
+          ]
+        },
+        {
+          "index": 23,
+          "op": "CastLike",
+          "domain": "",
+          "inputs": [
+            "minrow_f32",
+            "safe_name_14"
+          ],
+          "outputs": [
+            "minrow_flat_u8"
+          ]
+        },
+        {
+          "index": 24,
+          "op": "Unsqueeze",
+          "domain": "",
+          "inputs": [
+            "minrow_flat_u8",
+            "safe_name_11"
+          ],
+          "outputs": [
+            "minrow_u8"
+          ]
+        },
+        {
+          "index": 25,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "minrow_u8",
+            "row_idx9_u8"
+          ],
+          "outputs": [
+            "row_indices_u8"
+          ]
+        },
+        {
+          "index": 26,
+          "op": "CastLike",
+          "domain": "",
+          "inputs": [
+            "row_indices_u8",
+            "one_i64"
+          ],
+          "outputs": [
+            "row_indices_i32"
+          ]
+        },
+        {
+          "index": 27,
+          "op": "GatherElements",
+          "domain": "",
+          "inputs": [
+            "abs_rows_f16",
+            "row_indices_i32"
+          ],
+          "outputs": [
+            "gathered_abs_f16"
+          ]
+        },
+        {
+          "index": 28,
+          "op": "ReduceMax",
+          "domain": "",
+          "inputs": [
+            "abs_rows_f16",
+            "safe_name_11"
+          ],
+          "outputs": [
+            "max_abs_f16"
+          ]
+        },
+        {
+          "index": 29,
+          "op": "Log",
+          "domain": "",
+          "inputs": [
+            "max_abs_f16"
+          ],
+          "outputs": [
+            "log_abs_f32"
+          ]
+        },
+        {
+          "index": 30,
+          "op": "Mul",
+          "domain": "",
+          "inputs": [
+            "log_abs_f32",
+            "inv_ln2_f32"
+          ],
+          "outputs": [
+            "log2_abs_f32"
+          ]
+        },
+        {
+          "index": 31,
+          "op": "Add",
+          "domain": "",
+          "inputs": [
+            "log2_abs_f32",
+            "log_eps_f32"
+          ],
+          "outputs": [
+            "log2_eps_f32"
+          ]
+        },
+        {
+          "index": 32,
+          "op": "Floor",
+          "domain": "",
+          "inputs": [
+            "log2_eps_f32"
+          ],
+          "outputs": [
+            "leading_exp_f32"
+          ]
+        },
+        {
+          "index": 33,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "leading_exp_f32",
+            "seven_f32"
+          ],
+          "outputs": [
+            "scale_exp_f16"
+          ]
+        },
+        {
+          "index": 34,
+          "op": "Pow",
+          "domain": "",
+          "inputs": [
+            "two_f32",
+            "scale_exp_f16"
+          ],
+          "outputs": [
+            "scale_f16"
+          ]
+        },
+        {
+          "index": 35,
+          "op": "Squeeze",
+          "domain": "",
+          "inputs": [
+            "scale_f16",
+            "squeeze_axes_0_2"
+          ],
+          "outputs": [
+            "scale_vec_f16"
+          ]
+        },
+        {
+          "index": 36,
+          "op": "QuantizeLinear",
+          "domain": "",
+          "inputs": [
+            "gathered_abs_f16",
+            "scale_vec_f16"
+          ],
+          "outputs": [
+            "safe_name_65"
+          ]
+        },
+        {
+          "index": 37,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "safe_name_65",
+            "safe_name_8"
+          ],
+          "outputs": [
+            "all1"
+          ]
+        },
+        {
+          "index": 38,
+          "op": "Slice",
+          "domain": "",
+          "inputs": [
+            "all1",
+            "safe_name_7",
+            "const4_i64_pair",
+            "safe_name_11",
+            "safe_name_11"
+          ],
+          "outputs": [
+            "even1cmp"
+          ]
+        },
+        {
+          "index": 39,
+          "op": "Slice",
+          "domain": "",
+          "inputs": [
+            "all1",
+            "safe_name_8",
+            "safe_name_9",
+            "safe_name_11",
+            "safe_name_11"
+          ],
+          "outputs": [
+            "odd1"
+          ]
+        },
+        {
+          "index": 40,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "even1cmp",
+            "odd1"
+          ],
+          "outputs": [
+            "eq1"
+          ]
+        },
+        {
+          "index": 41,
+          "op": "ReduceMin",
+          "domain": "",
+          "inputs": [
+            "eq1",
+            "safe_name_11"
+          ],
+          "outputs": [
+            "cond1"
+          ]
+        },
+        {
+          "index": 42,
+          "op": "Squeeze",
+          "domain": "",
+          "inputs": [
+            "cond1"
+          ],
+          "outputs": [
+            "cond1s"
+          ]
+        },
+        {
+          "index": 43,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "cond1s",
+            "one_i64",
+            "two_i64"
+          ],
+          "outputs": [
+            "safe_name_72"
+          ]
+        },
+        {
+          "index": 44,
+          "op": "Sub",
+          "domain": "",
+          "inputs": [
+            "three_vec_i32",
+            "safe_name_72"
+          ],
+          "outputs": [
+            "other_idx"
+          ]
+        },
+        {
+          "index": 45,
+          "op": "Slice",
+          "domain": "",
+          "inputs": [
+            "safe_name_65",
+            "safe_name_7",
+            "safe_name_9",
+            "safe_name_11"
+          ],
+          "outputs": [
+            "safe_name_74"
+          ]
+        },
+        {
+          "index": 46,
+          "op": "Slice",
+          "domain": "",
+          "inputs": [
+            "safe_name_74",
+            "safe_name_7",
+            "safe_name_8",
+            "safe_name_8"
+          ],
+          "outputs": [
+            "safe_name_76"
+          ]
+        },
+        {
+          "index": 47,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "safe_name_74",
+            "other_idx"
+          ],
+          "outputs": [
+            "other_rows"
+          ]
+        },
+        {
+          "index": 48,
+          "op": "Unsqueeze",
+          "domain": "",
+          "inputs": [
+            "safe_name_76",
+            "safe_name_5"
+          ],
+          "outputs": [
+            "safe_name_78"
+          ]
+        },
+        {
+          "index": 49,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "safe_name_78",
+            "safe_name_2"
+          ],
+          "outputs": [
+            "safe_name_81"
+          ]
+        },
+        {
+          "index": 50,
+          "op": "Clip",
+          "domain": "",
+          "inputs": [
+            "safe_name_81",
+            "safe_name_13",
+            "safe_name_14"
+          ],
+          "outputs": [
+            "safe_name_83"
+          ]
+        },
+        {
+          "index": 51,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "safe_name_65",
+            "safe_name_72"
+          ],
+          "outputs": [
+            "mag_all_rows"
+          ]
+        },
+        {
+          "index": 52,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "mag_all_rows",
+            "mag_even_idx7"
+          ],
+          "outputs": [
+            "safe_name_84"
+          ]
+        },
+        {
+          "index": 53,
+          "op": "Unsqueeze",
+          "domain": "",
+          "inputs": [
+            "safe_name_84",
+            "safe_name_17"
+          ],
+          "outputs": [
+            "safe_name_85"
+          ]
+        },
+        {
+          "index": 54,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "safe_name_85",
+            "safe_name_22"
+          ],
+          "outputs": [
+            "safe_name_86"
+          ]
+        },
+        {
+          "index": 55,
+          "op": "Clip",
+          "domain": "",
+          "inputs": [
+            "safe_name_86",
+            "safe_name_13",
+            "safe_name_14"
+          ],
+          "outputs": [
+            "safe_name_96"
+          ]
+        },
+        {
+          "index": 56,
+          "op": "QLinearConv",
+          "domain": "",
+          "inputs": [
+            "safe_name_83",
+            "safe_name_15",
+            "safe_name_13",
+            "safe_name_96",
+            "eight_f32",
+            "safe_name_13",
+            "safe_name_15",
+            "safe_name_13"
+          ],
+          "outputs": [
+            "safe_name_97"
+          ]
+        },
+        {
+          "index": 57,
+          "op": "ReduceMax",
+          "domain": "",
+          "inputs": [
+            "safe_name_97",
+            "safe_name_6"
+          ],
+          "outputs": [
+            "safe_name_98"
+          ]
+        },
+        {
+          "index": 58,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "safe_name_32",
+            "safe_name_72"
+          ],
+          "outputs": [
+            "safe_name_99"
+          ]
+        },
+        {
+          "index": 59,
+          "op": "CastLike",
+          "domain": "",
+          "inputs": [
+            "safe_name_99",
+            "safe_name_13"
+          ],
+          "outputs": [
+            "safe_name_100"
+          ]
+        },
+        {
+          "index": 60,
+          "op": "BitShift",
+          "domain": "",
+          "inputs": [
+            "safe_name_100",
+            "safe_name_14"
+          ],
+          "outputs": [
+            "safe_name_101"
+          ]
+        },
+        {
+          "index": 61,
+          "op": "GreaterOrEqual",
+          "domain": "",
+          "inputs": [
+            "safe_name_98",
+            "safe_name_101"
+          ],
+          "outputs": [
+            "safe_name_108"
+          ]
+        },
+        {
+          "index": 62,
+          "op": "Squeeze",
+          "domain": "",
+          "inputs": [
+            "safe_name_108"
+          ],
+          "outputs": [
+            "base_cond_scalar"
+          ]
+        },
+        {
+          "index": 63,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "safe_name_32",
+            "corr_pattern_f16"
+          ],
+          "outputs": [
+            "corr_counts_eq"
+          ]
+        },
+        {
+          "index": 64,
+          "op": "ReduceMin",
+          "domain": "",
+          "inputs": [
+            "corr_counts_eq"
+          ],
+          "outputs": [
+            "corr_scalar"
+          ]
+        },
+        {
+          "index": 65,
+          "op": "Not",
+          "domain": "",
+          "inputs": [
+            "corr_scalar"
+          ],
+          "outputs": [
+            "corr_not"
+          ]
+        },
+        {
+          "index": 66,
+          "op": "And",
+          "domain": "",
+          "inputs": [
+            "base_cond_scalar",
+            "corr_not"
+          ],
+          "outputs": [
+            "safe_name_109"
+          ]
+        },
+        {
+          "index": 67,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "safe_name_109",
+            "safe_name_76",
+            "other_rows"
+          ],
+          "outputs": [
+            "safe_name_111"
+          ]
+        },
+        {
+          "index": 68,
+          "op": "Unsqueeze",
+          "domain": "",
+          "inputs": [
+            "safe_name_111",
+            "safe_name_5"
+          ],
+          "outputs": [
+            "safe_name_113"
+          ]
+        },
+        {
+          "index": 69,
+          "op": "BitwiseAnd",
+          "domain": "",
+          "inputs": [
+            "safe_name_113",
+            "safe_name_2"
+          ],
+          "outputs": [
+            "safe_name_114"
+          ]
+        },
+        {
+          "index": 70,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "safe_name_34",
+            "safe_name_7"
+          ],
+          "outputs": [
+            "color0"
+          ]
+        },
+        {
+          "index": 71,
+          "op": "Gather",
+          "domain": "",
+          "inputs": [
+            "safe_name_34",
+            "other_idx"
+          ],
+          "outputs": [
+            "other_color"
+          ]
+        },
+        {
+          "index": 72,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "safe_name_109",
+            "color0",
+            "other_color"
+          ],
+          "outputs": [
+            "safe_name_117"
+          ]
+        },
+        {
+          "index": 73,
+          "op": "ReduceMax",
+          "domain": "",
+          "inputs": [
+            "safe_name_114",
+            "safe_name_5"
+          ],
+          "outputs": [
+            "rowmax_u8"
+          ]
+        },
+        {
+          "index": 74,
+          "op": "ReduceMax",
+          "domain": "",
+          "inputs": [
+            "safe_name_114",
+            "safe_name_11"
+          ],
+          "outputs": [
+            "colmax_u8"
+          ]
+        },
+        {
+          "index": 75,
+          "op": "Greater",
+          "domain": "",
+          "inputs": [
+            "rowmax_u8",
+            "safe_name_13"
+          ],
+          "outputs": [
+            "row_has2"
+          ]
+        },
+        {
+          "index": 76,
+          "op": "Greater",
+          "domain": "",
+          "inputs": [
+            "colmax_u8",
+            "safe_name_13"
+          ],
+          "outputs": [
+            "col_has2"
+          ]
+        },
+        {
+          "index": 77,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "row_has2",
+            "safe_name_114",
+            "safe_name_14"
+          ],
+          "outputs": [
+            "bits_row_zp"
+          ]
+        },
+        {
+          "index": 78,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "col_has2",
+            "bits_row_zp",
+            "safe_name_14"
+          ],
+          "outputs": [
+            "bits_zp"
+          ]
+        },
+        {
+          "index": 79,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "colors_w",
+            "safe_name_117"
+          ],
+          "outputs": [
+            "eq_target2"
+          ]
+        },
+        {
+          "index": 80,
+          "op": "Equal",
+          "domain": "",
+          "inputs": [
+            "colors_w",
+            "safe_name_28"
+          ],
+          "outputs": [
+            "eq_bg2"
+          ]
+        },
+        {
+          "index": 81,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "eq_bg2",
+            "safe_name_13",
+            "safe_name_14"
+          ],
+          "outputs": [
+            "w_base2"
+          ]
+        },
+        {
+          "index": 82,
+          "op": "Where",
+          "domain": "",
+          "inputs": [
+            "eq_target2",
+            "two_u8",
+            "w_base2"
+          ],
+          "outputs": [
+            "w_u8_2"
+          ]
+        },
+        {
+          "index": 83,
+          "op": "QLinearConv",
+          "domain": "",
+          "inputs": [
+            "bits_zp",
+            "safe_name_15",
+            "safe_name_14",
+            "w_u8_2",
+            "safe_name_15",
+            "safe_name_14",
+            "safe_name_15",
+            "safe_name_13"
+          ],
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializers_list": [
+        {
+          "name": "safe_name_2",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            1,
+            5
+          ],
+          "elements": 5
+        },
+        {
+          "name": "safe_name_4",
+          "dtype": "uint8",
+          "shape": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "elements": 10
+        },
+        {
+          "name": "safe_name_5",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "safe_name_6",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2
+        },
+        {
+          "name": "safe_name_7",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "safe_name_8",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "safe_name_9",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "safe_name_11",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "safe_name_13",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "safe_name_14",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "safe_name_15",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "safe_name_17",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2
+        },
+        {
+          "name": "safe_name_18",
+          "dtype": "float16",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "safe_name_22",
+          "dtype": "uint8",
+          "shape": [
+            5
+          ],
+          "elements": 5
+        },
+        {
+          "name": "shape23_const",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2
+        },
+        {
+          "name": "squeeze_axes_0_2",
+          "dtype": "int64",
+          "shape": [
+            2
+          ],
+          "elements": 2
+        },
+        {
+          "name": "colors_w",
+          "dtype": "uint8",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ],
+          "elements": 10
+        },
+        {
+          "name": "two_u8",
+          "dtype": "uint8",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "colors10_u8",
+          "dtype": "uint8",
+          "shape": [
+            10
+          ],
+          "elements": 10
+        },
+        {
+          "name": "row_idx9_u8",
+          "dtype": "uint8",
+          "shape": [
+            7
+          ],
+          "elements": 7
+        },
+        {
+          "name": "one_i64",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "two_i64",
+          "dtype": "int32",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "three_vec_i32",
+          "dtype": "int32",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "abs_pack_f16",
+          "dtype": "float16",
+          "shape": [
+            29
+          ],
+          "elements": 29
+        },
+        {
+          "name": "inv_ln2_f32",
+          "dtype": "float16",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "log_eps_f32",
+          "dtype": "float16",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "seven_f32",
+          "dtype": "float16",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "two_f32",
+          "dtype": "float16",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "row_weight32_f32",
+          "dtype": "float32",
+          "shape": [
+            29
+          ],
+          "elements": 29
+        },
+        {
+          "name": "inv_ln32_f32",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "const4_i64_pair",
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "elements": 1
+        },
+        {
+          "name": "eight_f32",
+          "dtype": "float32",
+          "shape": [],
+          "elements": 1
+        },
+        {
+          "name": "mag_even_idx7",
+          "dtype": "int64",
+          "shape": [
+            5
+          ],
+          "elements": 5
+        },
+        {
+          "name": "corr_pattern_f16",
+          "dtype": "float16",
+          "shape": [
+            1,
+            3,
+            1,
+            1
+          ],
+          "elements": 3
+        }
+      ],
+      "inferred_values": [
+        {
+          "name": "safe_name_23",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "safe_name_24",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_25",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "oh_cl_hidden",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "oh_cl_f16",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "shape23_shape",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "safe_name_26",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_27",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_28",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_29",
+          "shape": [
+            1,
+            10,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_30",
+          "shape": [
+            1,
+            10,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_32",
+          "shape": [
+            1,
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_33",
+          "shape": [
+            1,
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_34_unsq",
+          "shape": [
+            1,
+            3,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_34",
+          "shape": [
+            3,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_35",
+          "shape": [
+            3,
+            10
+          ]
+        },
+        {
+          "name": "oh_cl_shape",
+          "shape": [
+            2
+          ]
+        },
+        {
+          "name": "abs_rows_f16",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "row_indices_u8",
+          "shape": [
+            1,
+            1,
+            7
+          ]
+        },
+        {
+          "name": "row_indices_i32",
+          "shape": [
+            1,
+            1,
+            7
+          ]
+        },
+        {
+          "name": "gathered_abs_f16",
+          "shape": [
+            1,
+            1,
+            7
+          ]
+        },
+        {
+          "name": "max_abs_f16",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "log_abs_f32",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "log2_abs_f32",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "log2_eps_f32",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "leading_exp_f32",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "all1",
+          "shape": [
+            1,
+            1,
+            7
+          ]
+        },
+        {
+          "name": "even1cmp",
+          "shape": [
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "name": "odd1",
+          "shape": [
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "name": "eq1",
+          "shape": [
+            1,
+            1,
+            2
+          ]
+        },
+        {
+          "name": "cond1",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "cond1s",
+          "shape": []
+        },
+        {
+          "name": "safe_name_72",
+          "shape": []
+        },
+        {
+          "name": "other_idx",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "safe_name_74",
+          "shape": [
+            1,
+            1,
+            5
+          ]
+        },
+        {
+          "name": "safe_name_76",
+          "shape": [
+            1,
+            1,
+            5
+          ]
+        },
+        {
+          "name": "other_rows",
+          "shape": [
+            1,
+            1,
+            5
+          ]
+        },
+        {
+          "name": "safe_name_78",
+          "shape": [
+            1,
+            1,
+            5,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_81",
+          "shape": [
+            1,
+            1,
+            5,
+            5
+          ]
+        },
+        {
+          "name": "safe_name_83",
+          "shape": [
+            1,
+            1,
+            5,
+            5
+          ]
+        },
+        {
+          "name": "safe_name_84",
+          "shape": [
+            1,
+            5
+          ]
+        },
+        {
+          "name": "safe_name_85",
+          "shape": [
+            1,
+            1,
+            5,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_86",
+          "shape": [
+            1,
+            1,
+            5,
+            5
+          ]
+        },
+        {
+          "name": "safe_name_96",
+          "shape": [
+            1,
+            1,
+            5,
+            5
+          ]
+        },
+        {
+          "name": "safe_name_97",
+          "shape": [
+            1,
+            1,
+            3,
+            3
+          ]
+        },
+        {
+          "name": "safe_name_98",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_99",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_100",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_101",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_108",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_109",
+          "shape": []
+        },
+        {
+          "name": "safe_name_111",
+          "shape": [
+            1,
+            1,
+            5
+          ]
+        },
+        {
+          "name": "safe_name_113",
+          "shape": [
+            1,
+            1,
+            5,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_114",
+          "shape": [
+            1,
+            1,
+            5,
+            5
+          ]
+        },
+        {
+          "name": "color0",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "other_color",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "safe_name_117",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "scale_exp_f16",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "scale_f16",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "scale_vec_f16",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "safe_name_65",
+          "shape": [
+            1,
+            1,
+            7
+          ]
+        },
+        {
+          "name": "input_crop_f32",
+          "shape": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "oh_cl_f32",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "row_score_f32",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "row_log_f32",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "row_pos_f32",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "minrow_f32",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "minrow_flat_u8",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "minrow_u8",
+          "shape": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "mag_all_rows",
+          "shape": [
+            1,
+            7
+          ]
+        },
+        {
+          "name": "base_cond_scalar",
+          "shape": []
+        },
+        {
+          "name": "corr_scalar",
+          "shape": []
+        },
+        {
+          "name": "corr_not",
+          "shape": []
+        },
+        {
+          "name": "rowmax_u8",
+          "shape": [
+            1,
+            1,
+            5,
+            1
+          ]
+        },
+        {
+          "name": "colmax_u8",
+          "shape": [
+            1,
+            1,
+            1,
+            5
+          ]
+        },
+        {
+          "name": "row_has2",
+          "shape": [
+            1,
+            1,
+            5,
+            1
+          ]
+        },
+        {
+          "name": "col_has2",
+          "shape": [
+            1,
+            1,
+            1,
+            5
+          ]
+        },
+        {
+          "name": "bits_row_zp",
+          "shape": [
+            1,
+            1,
+            5,
+            5
+          ]
+        },
+        {
+          "name": "bits_zp",
+          "shape": [
+            1,
+            1,
+            5,
+            5
+          ]
+        },
+        {
+          "name": "eq_target2",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "eq_bg2",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "w_base2",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "w_u8_2",
+          "shape": [
+            10,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "corr_counts_eq",
+          "shape": [
+            1,
+            3,
+            1,
+            1
+          ]
+        }
+      ],
+      "einsum": [
+        {
+          "node": 16,
+          "inputs": 3,
+          "equation": "bchw,kc,w->bkh"
+        },
+        {
+          "node": 19,
+          "inputs": 3,
+          "equation": "bchw,kc,h->bk"
+        }
+      ]
+    }
+  }
+}

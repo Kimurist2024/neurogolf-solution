@@ -1,0 +1,20 @@
+<
+   ir_version: 8,
+   opset_import: ["" : 14]
+>
+g (float[1,10,30,30] input) => (uint8[1,10,30,30] output) 
+   <int64[1] K =  {5}, uint8[1,1,12,1] rows = ..., uint8 B127 = ..., uint8 zero8 = ..., uint8[2,10] emb = ..., uint8[10,2,1,1] qW = ..., float s =  {-4.997e-05}, float[1,10] counts, float[1,5] topv, int64[1,5] topi, uint8[1,5] n8, bool[1,5] active, uint8[1,1] maxcount, uint8[1,1,12,1] dist, uint8[1,5] barbase, bool[1,1,12,5] bar, uint8[2,1,5] truefeat, uint8[2,1,5] safe_truefeat, uint8[1,2,12,5] feat>
+{
+   [counts] counts = Einsum <equation: string = "abcd->ab"> (input)
+   [topv] topv, topi = TopK <axis: int = 1, largest: int = 1, sorted: int = 1> (counts, K)
+   [n8] n8 = Cast <to: int = 2> (topv)
+   [active] active = Greater (n8, zero8)
+   [maxcount] maxcount = ReduceMax <axes: ints = [1], keepdims: int = 1> (n8)
+   [dist] dist = Sub (rows, maxcount)
+   [barbase] barbase = Where (active, n8, B127)
+   [bar] bar = Greater (barbase, rows)
+   [truefeat] truefeat = Gather <axis: int = 1> (emb, topi)
+   [safe_truefeat] safe_truefeat = Where (active, truefeat, zero8)
+   [feat] feat = Where (bar, safe_truefeat, dist)
+   [output] output = QLinearConv <pads: ints = [0, 0, 18, 25]> (feat, s, zero8, qW, s, B127, s, zero8)
+}

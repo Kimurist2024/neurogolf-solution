@@ -1,0 +1,111 @@
+{
+  "baseline": {
+    "zip": "scripts/golf/loop_8004_42/submission_8004.42_fixed_rebase_meta.zip",
+    "sha256": "dc64ef5ac672fd7cc67418318e70f94cafd5396af8e25ad2939cdcd4eb1e0149",
+    "leaderboard_base": 8004.42
+  },
+  "protected_fixed_tasks": [
+    13, 15, 20, 31, 68, 71, 79, 88, 105, 109, 132, 158, 174, 183, 189,
+    206, 221, 240, 243, 259, 300, 302, 344, 349, 358, 379, 398
+  ],
+  "runtime_shape_error_rejections": [
+    {
+      "task": 39,
+      "rewrite": "remove output-unreachable Equal",
+      "strict_shape_inference": "PASS",
+      "verdict": "REJECT",
+      "reason": "candidate produced ORT Slice buffer-reuse shape errors"
+    },
+    {
+      "task": 89,
+      "rewrite": "remove output-unreachable ReduceMax",
+      "strict_shape_inference": "PASS",
+      "verdict": "REJECT",
+      "reason": "candidate produced ORT Slice buffer-reuse shape errors"
+    },
+    {
+      "task": 111,
+      "rewrite": "remove output-unreachable CenterCropPad",
+      "strict_shape_inference": "PASS",
+      "verdict": "REJECT",
+      "reason": "candidate produced ORT Slice buffer-reuse shape errors"
+    },
+    {
+      "task": 122,
+      "rewrite": "remove output-unreachable GreaterOrEqual",
+      "strict_shape_inference": "PASS",
+      "verdict": "REJECT",
+      "reason": "candidate produced ORT Slice buffer-reuse shape errors"
+    },
+    {
+      "task": 165,
+      "rewrite": "exact duplicate CastLike producer elimination",
+      "candidate": "scripts/golf/loop_8004_42/agent_exact_safe/models/task165.onnx",
+      "candidate_sha256": "60b720142245a29e2939f3da7e415549be695d74664d531dbefc5cc7d3c634ee",
+      "strict_shape_inference": "PASS",
+      "verdict": "REJECT",
+      "reason": "candidate produced ORT Slice buffer-reuse shape errors"
+    },
+    {
+      "task": 169,
+      "rewrite": "exact duplicate Selu producer elimination",
+      "candidate": "scripts/golf/loop_8004_42/agent_exact_safe/models/task169.onnx",
+      "candidate_sha256": "281e63bcb56e16acdc05af0c7f3d84efea3f5dbdaa098af76555df02a7dcbff4",
+      "strict_shape_inference": "PASS",
+      "verdict": "REJECT",
+      "reason": "candidate produced ORT Slice buffer-reuse shape errors"
+    }
+  ],
+  "task233": {
+    "candidate": "scripts/golf/loop_8004_42/agent_exact_safe/models/task233.onnx",
+    "baseline_sha256": "941a95b0af623a5e0596147b66200b3ae645f997ec8cbfd2cdbd53d6d484bccb",
+    "candidate_sha256": "94cb98f706b7117336640949ca34ba92dc49c58a3bebd5708d90799ed160b123",
+    "rewrite": "replace audit_one_i16 with byte-identical one_i8 initializer",
+    "cost_before": 7432,
+    "cost_after": 7431,
+    "cost_reduction": 1,
+    "projected_gain": 0.0001345623362034587,
+    "known": {
+      "right": 266,
+      "total": 266,
+      "runtime_errors": 0,
+      "source": "scripts/golf/loop_8003_40/agent_exact_resume/FINAL_REPORT.json"
+    },
+    "fresh_dual_probe": {
+      "count": 10,
+      "ort_disable_all_candidate_right": 10,
+      "ort_disable_all_raw_bitwise_equal": 10,
+      "ort_disable_all_runtime_errors": 0,
+      "default_candidate_right": 1,
+      "default_raw_bitwise_equal": 10,
+      "default_runtime_errors": 0,
+      "max_abs_raw_difference_both_modes": 0.0,
+      "evidence": "scripts/golf/loop_8004_42/agent_exact_safe/task233_fresh10.json"
+    },
+    "structural_gate": {
+      "checker": "PASS",
+      "strict_shape_inference": "PASS",
+      "static_shapes": true,
+      "banned_ops": [],
+      "nested_graphs": [],
+      "conv_bias_ub": [],
+      "pass": true
+    },
+    "verdict": "REJECT",
+    "reasons": [
+      "the required 2000-3000 fresh adoption gate was not completed",
+      "default ORT fresh ground-truth accuracy was 1/10 even though candidate remained bitwise identical to baseline",
+      "highest-risk monitored task and dust-sized gain of only +0.000134562"
+    ]
+  },
+  "latent_axis_screen": {
+    "tasks": [10, 28, 60, 163, 175, 199, 229, 232, 304, 315],
+    "verdict": "REJECT_ALL",
+    "reason": "representative component-removal candidates failed the known-complete verifier"
+  },
+  "accepted": [],
+  "projected_gain_accepted": 0.0,
+  "zip_merge_performed": false,
+  "protected_files_changed": false,
+  "verdict": "NO_SAFE_EXACT_CANDIDATE"
+}

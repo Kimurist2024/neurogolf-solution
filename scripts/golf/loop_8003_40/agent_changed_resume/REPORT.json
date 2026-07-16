@@ -1,0 +1,98 @@
+{
+  "baseline": "submission_base_8003.40.zip",
+  "baseline_sha256": "9bb795b4a2945882e98071350ee8333a914f27552ac8935570a20e2a57afd36f",
+  "target_tasks": [
+    73,
+    111,
+    122,
+    260,
+    271,
+    285,
+    289,
+    359
+  ],
+  "baseline_models": [
+    {
+      "task": 73,
+      "cost": 12,
+      "sha256": "d34dbd087d8d90c6b1f9d28be2786790b8eef44bccadd0a1225ec949f52b12a7",
+      "conv_bias": "PASS"
+    },
+    {
+      "task": 111,
+      "cost": 89,
+      "sha256": "6af4011ea696c39460f4bbef5ead6ee6c7a80780ffca1a5b50e8e4534ad8fcf2",
+      "conv_bias": "PASS"
+    },
+    {
+      "task": 122,
+      "cost": 101,
+      "sha256": "90c12806b6712f409a41b61b64a8b8256038a1c0b6707230b4d8bdc6cbce67e1",
+      "conv_bias": "PASS"
+    },
+    {
+      "task": 260,
+      "cost": 100,
+      "sha256": "f334140ad26c60234be67f30da57e0974d185496246de46e10171cdc63453577",
+      "conv_bias": "PASS"
+    },
+    {
+      "task": 271,
+      "cost": 135,
+      "sha256": "31394a849c0861a1dc2cc47e51aa287b9ab93cd5f64fafaee06b61651f4ad2df",
+      "conv_bias": "PASS"
+    },
+    {
+      "task": 285,
+      "cost": 8623,
+      "sha256": "366212e29105fde0295030f3ec3bb014bd300f23aa8259ccd79da2eea720b9e2",
+      "conv_bias": "PASS"
+    },
+    {
+      "task": 289,
+      "cost": 32,
+      "sha256": "d6098659b327d3f0c5f1fb8179686fb687d36fa52ced063ed45bb49561ae7408",
+      "conv_bias": "PASS"
+    },
+    {
+      "task": 359,
+      "cost": 24,
+      "sha256": "0ac154453af9835deab6d1a8e9e217648b24dc3ec00f2f8e0c9b322a1ac5c0c4",
+      "conv_bias": "PASS"
+    }
+  ],
+  "audited_candidates": 34,
+  "accepted_candidates": 0,
+  "fresh_runs": 0,
+  "reason_fresh_not_run": "every executable candidate failed the known-complete gate",
+  "not_retried": {
+    "task285": "known shape-cloak/private-risk lineage; instructed not to retry",
+    "task289": "known shape-cloak/private-risk lineage; instructed not to retry"
+  },
+  "sparse_probe": [
+    {
+      "task": 73,
+      "candidate": null,
+      "verdict": "REJECT",
+      "reason": "sparse initializer is not accepted as a dense tensor input",
+      "error": "InferenceError('[ShapeInferenceError] (op_type:ConvTranspose): X typestr: T, has unsupported type: sparse_tensor(float)')"
+    },
+    {
+      "task": 260,
+      "candidate": null,
+      "verdict": "REJECT",
+      "reason": "sparse initializer is not accepted as a dense tensor input",
+      "error": "InferenceError('[ShapeInferenceError] Inference error(s): (op_type:Einsum, node name: output): [ShapeInferenceError] Rank of input 0 (0) does not match the equation indices (2).\\n')"
+    },
+    {
+      "task": 271,
+      "candidate": null,
+      "verdict": "REJECT",
+      "reason": "sparse initializer is not accepted as a dense tensor input",
+      "error": "InferenceError('[ShapeInferenceError] Inference error(s): (op_type:QLinearConv): [TypeInferenceError] inputs are expected to have tensor type in node QLinearConv.\\n')"
+    }
+  ],
+  "rejections_csv": "scripts/golf/loop_8003_40/agent_changed_resume/REJECTIONS.csv",
+  "root_files_modified": [],
+  "merged_into_zip": false
+}

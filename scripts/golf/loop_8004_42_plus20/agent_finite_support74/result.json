@@ -1,0 +1,422 @@
+{
+  "baseline_zip": "submission_base_8005.17.zip",
+  "baseline_zip_sha256": "c48fa65401a5bd26d3ed1c556eee8f85c0a2063db313be6b96c73e86159b0a04",
+  "baseline_task013_sha256": "d0d2eea63b192eb7d9258f8408d00a72229dfbaef130887f64b708aef3536a2d",
+  "baseline_profile": {
+    "memory": 488,
+    "params": 150,
+    "cost": 638
+  },
+  "historical_cross_scan": {
+    "report_result_winner_files_seen": 1136,
+    "gain_ranked_tasks_revisited": [
+      13,
+      51,
+      64,
+      70,
+      199,
+      202,
+      328,
+      333,
+      379
+    ],
+    "excluded_as_requested": [
+      9,
+      36,
+      48,
+      158,
+      198,
+      226,
+      254,
+      267,
+      323,
+      328,
+      365
+    ],
+    "candidate_files_audited_in_this_lane": 8
+  },
+  "accepted": [
+    {
+      "task": 13,
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r001.onnx",
+      "sha256": "ad4eb35978f3e38d1d3e2afdd55e55db871962cc2ea4c989675d9d583434103b",
+      "baseline_cost": 638,
+      "candidate_cost": 636,
+      "profile": {
+        "memory": 488,
+        "params": 148,
+        "cost": 636
+      },
+      "projected_gain": 0.0031397200046678463,
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        }
+      },
+      "static": {
+        "serialized_bytes": 3694,
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "reasons": [
+          "giant_einsum"
+        ],
+        "node_count": 55,
+        "initializer_count": 11,
+        "op_histogram": {
+          "Add": 4,
+          "And": 1,
+          "Cast": 16,
+          "Concat": 4,
+          "Div": 1,
+          "Einsum": 8,
+          "Greater": 2,
+          "Mod": 1,
+          "Mul": 4,
+          "Not": 1,
+          "Pad": 1,
+          "Sqrt": 2,
+          "Sub": 7,
+          "Where": 3
+        },
+        "max_einsum_inputs": 51,
+        "giant_einsum": true,
+        "giant_initializers": [],
+        "lookup": false,
+        "nested_graph_count": 0,
+        "functions_count": 0,
+        "sparse_initializer_count": 0,
+        "banned_ops": [],
+        "finite_initializers": true,
+        "nonstatic_node_outputs": [],
+        "static_memory": 488,
+        "params": 148,
+        "static_cost": 636,
+        "conv_bias_findings": [],
+        "pre_runtime_structural_pass": false
+      },
+      "runtime_shapes": {
+        "model": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r001.onnx",
+        "node_outputs_traced": 55,
+        "mismatch_count": 0,
+        "mismatches": [],
+        "nonfinite_output_count": 0,
+        "nonfinite_outputs": [],
+        "truthful": true
+      },
+      "exact_rewrite_proof": {
+        "target_vector": [
+          1.0,
+          0.0
+        ],
+        "qor_finite": true,
+        "qor_unique": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "changed_nodes": 4,
+        "unchanged_nodes": 51,
+        "other_initializers_byte_identical_and_only_tzero_removed": true,
+        "uses": [
+          {
+            "node_index": 4,
+            "before_equation": "bchw,ac,a->b",
+            "after_equation": "bchw,ac,aaaaa->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaaaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 5,
+            "before_equation": "bchw,ac,a,h->b",
+            "after_equation": "bchw,ac,aaaaa,h->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaaaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 6,
+            "before_equation": "bchw,ac,a,w->b",
+            "after_equation": "bchw,ac,aaaaa,w->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaaaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 54,
+            "before_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,U,GTU,Vk,W,GVW,EFG->bkhw",
+            "after_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,UUUUU,GTU,Vk,WWWWW,GVW,EFG->bkhw",
+            "replacements": [
+              {
+                "operand": 45,
+                "old_subscript": "U",
+                "new_subscript": "UUUUU",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              },
+              {
+                "operand": 48,
+                "old_subscript": "W",
+                "new_subscript": "WWWWW",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          }
+        ],
+        "real_semantics_equal_for_every_input_tensor": true
+      },
+      "colour_equivalence_proof": {
+        "task": 13,
+        "proved": true,
+        "ordered_distinct_nonzero_colour_pairs": 72,
+        "colour_selector_checks": 90,
+        "colour_recovery_checks": 48600,
+        "minimum_colour_selector_absolute_margin": 0.25,
+        "identities": {
+          "marker_colour_feature": "[1, k-c]",
+          "marker_colour_selector": "[0.25-(k-c)^2, -1]",
+          "marker_positive_iff": "k=c for integer channels k,c in 0..9",
+          "background_feature": "[1,k]",
+          "background_E0_F0_score": "0.0625-1000000*k^2",
+          "background_positive_iff": "k=0",
+          "recovery": "S=c0+c1; T=c0*p0+c1*(p0+d); (T-S*p0)/d=c1; S-c1=c0"
+        },
+        "colour_independent_geometry": "All geometry moments use nz_f=[0,1,...,1], so they depend on marker occupancy/positions but not nonzero colour IDs. Colours enter only through the proved recovery and selector identities.",
+        "reduction": "Executing all 37,800 structural states with canonical colours [1,2] covers all 72 ordered distinct nonzero colour pairs because changing colours only relocates the exactly-positive output channel selectors."
+      },
+      "full_reachable_support": {
+        "generator_hash": "0a938d79",
+        "structural_state_formula": "sum(width//2,width=20..30)*7*5*4*2",
+        "structural_states_per_config": 37800,
+        "executed_platform_inferences": 151200,
+        "ordered_distinct_nonzero_colour_pairs": 72,
+        "full_generator_support_states": 2721600,
+        "colour_equivalence_proved": true,
+        "configs": {
+          "disable_all_threads1": {
+            "right": 37800,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "near_positive_values": 0,
+            "min_positive": 4.67578125,
+            "max_abs_raw": 6268939927552.0,
+            "first_failure": null,
+            "total": 37800,
+            "perfect": true
+          },
+          "disable_all_threads4": {
+            "right": 37800,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "near_positive_values": 0,
+            "min_positive": 4.67578125,
+            "max_abs_raw": 6268939927552.0,
+            "first_failure": null,
+            "total": 37800,
+            "perfect": true
+          },
+          "default_threads1": {
+            "right": 37800,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "near_positive_values": 0,
+            "min_positive": 4.67578125,
+            "max_abs_raw": 6268939927552.0,
+            "first_failure": null,
+            "total": 37800,
+            "perfect": true
+          },
+          "default_threads4": {
+            "right": 37800,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "nonfinite_values": 0,
+            "near_positive_values": 0,
+            "min_positive": 4.67578125,
+            "max_abs_raw": 6268939927552.0,
+            "first_failure": null,
+            "total": 37800,
+            "perfect": true
+          }
+        },
+        "complete": true
+      },
+      "accepted": true
+    }
+  ],
+  "accepted_count": 1,
+  "alternates": [
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r002.onnx",
+      "sha256": "a8577f8053f65aa3b22f0b7977daeae7af441803f28cc00b731662caac694986",
+      "cost": 636,
+      "known_perfect_all_configs": true,
+      "exact_real_semantics": true,
+      "decision": "audited_alternate_not_selected_same_task_same_cost_no_duplicate_gain"
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r003.onnx",
+      "sha256": "379452bc9d1914d57b38c671116cb2caf66b800f5e3ffe56c8ee68ba08fbeb4f",
+      "cost": 636,
+      "known_perfect_all_configs": true,
+      "exact_real_semantics": true,
+      "decision": "audited_alternate_not_selected_same_task_same_cost_no_duplicate_gain"
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r004.onnx",
+      "sha256": "b22924f95f7ddc6a1799059c454fb99ed80ff341f930b43e5a291f26075f3c6b",
+      "cost": 636,
+      "known_perfect_all_configs": true,
+      "exact_real_semantics": true,
+      "decision": "audited_alternate_not_selected_same_task_same_cost_no_duplicate_gain"
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r005.onnx",
+      "sha256": "dc1d4ccb3722a22956527df6a5223bdb0587b9719b76346d608f95d542323c0a",
+      "cost": 636,
+      "known_perfect_all_configs": true,
+      "exact_real_semantics": true,
+      "decision": "audited_alternate_not_selected_same_task_same_cost_no_duplicate_gain"
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r006.onnx",
+      "sha256": "5fb80b2bd47a42950cc7c7741c414e9c27538a3a8f9fcdf0989e04dd617e4489",
+      "cost": 636,
+      "known_perfect_all_configs": true,
+      "exact_real_semantics": true,
+      "decision": "audited_alternate_not_selected_same_task_same_cost_no_duplicate_gain"
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r009.onnx",
+      "sha256": "e99aaf228a00ec3072dbbe5801bfdfa966765ed45c1f0f5f995e9f282ddc461e",
+      "cost": 636,
+      "known_perfect_all_configs": true,
+      "exact_real_semantics": true,
+      "decision": "audited_alternate_not_selected_same_task_same_cost_no_duplicate_gain"
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r010.onnx",
+      "sha256": "3ed3d20fb0c53a406d938b9894902273272bf4526b09abd6e94011119555601c",
+      "cost": 636,
+      "known_perfect_all_configs": true,
+      "exact_real_semantics": true,
+      "decision": "audited_alternate_not_selected_same_task_same_cost_no_duplicate_gain"
+    }
+  ],
+  "aggregate_projected_gain": 0.0031397200046678463,
+  "policy": {
+    "strictly_lower_actual_cost": true,
+    "known_required": 1.0,
+    "runtime_errors": 0,
+    "giant_einsum_requires_full_reachable_support_four_configs": true,
+    "colour_reduction_requires_algebraic_equivalence_proof": true,
+    "truthful_strict_data_prop_standard_ub0_lookup0_cloak0": true
+  },
+  "no_zip_or_protected_root_file_modified": true,
+  "max_parallel_support_elapsed_seconds": 1541.8102819919586
+}

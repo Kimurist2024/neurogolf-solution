@@ -1,0 +1,65 @@
+{
+  "task": 124,
+  "sha256": "2df7617db09373acc416cbf505fff79823fabb22194d7f5c554c56975f43625a",
+  "current_scan_row": {
+    "task": 124,
+    "sha256": "2df7617db09373acc416cbf505fff79823fabb22194d7f5c554c56975f43625a",
+    "bytes": 2940,
+    "sources": [
+      "scripts/golf/loop_7999_13/lane_a39/rejected_multi_output_probes/task124_Split_variadic_middle.onnx",
+      "scripts/golf/loop_7999_13/lane_archive_all400/task124_r01_static246.onnx",
+      "scripts/golf/loop_7999_13/lane_archive_top200/task124_r01_static246.onnx",
+      "scripts/golf/loop_8004_42_plus20/agent_exact_wave2/candidates/task124_optional_005_3.onnx",
+      "scripts/golf/scratch_codex_7991/lane19/task124_empty_split_output.onnx"
+    ],
+    "source_kinds": [
+      "loose"
+    ],
+    "current_sha256": "3703bae38460933f42782ac22c29161fb2073eb72d21644550418d015332f6bf",
+    "current_actual_cost": 265,
+    "static_floor": 246,
+    "strict_detail": {
+      "strict_data_prop": true,
+      "nonstatic": [],
+      "ops": {
+        "GroupNormalization": 1,
+        "CastLike": 1,
+        "Resize": 1,
+        "MaxPool": 1,
+        "QLinearConv": 3,
+        "Split": 1,
+        "Equal": 3,
+        "BitShift": 5,
+        "Where": 5,
+        "Concat": 1,
+        "BitwiseAnd": 1,
+        "Transpose": 1
+      },
+      "max_einsum_inputs": 0,
+      "giant_initializers": [],
+      "private_lineage_sources": [],
+      "negative_conv_pads": []
+    },
+    "stage": "actual_pending",
+    "reasons": []
+  },
+  "prior_isolated_reproduction": {
+    "task": 124,
+    "baseline": "scripts/golf/loop_8004_42_plus20/agent_exact_wave2/base/task124.onnx",
+    "candidate": "scripts/golf/loop_8004_42_plus20/agent_exact_wave2/candidates/task124_optional_005_3.onnx",
+    "command": "ngolf_validator.py validate-task --task 124 --random-cases 2000 --seed 80045124",
+    "exit_code": 139,
+    "signal": "SIGSEGV",
+    "candidate_static_cost_reduction": 1,
+    "runtime_gate": "FAIL",
+    "observed_messages": [
+      "ORT shape merge warning: source {1,10,30,30}, target {1,1,1,1}",
+      "ORT allocator buffer-reuse shape mismatch: {1,10,30,30} != {1,1,1,1}",
+      "ORT allocator buffer-reuse shape mismatch: {1,10,1,1} != {1,1,1,1}"
+    ],
+    "verdict": "REJECT_DO_NOT_MERGE",
+    "reason": "Omitting the unused Split output changes allocator/liveness behavior and crashes the validation process."
+  },
+  "decision": "REJECT_RUNTIME_CRASH",
+  "reason": "Omitting the unused variadic Split output reproducibly exits validation with SIGSEGV/139."
+}

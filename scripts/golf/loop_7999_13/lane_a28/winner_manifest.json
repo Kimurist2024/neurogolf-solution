@@ -1,0 +1,38 @@
+{
+  "lane": "A28",
+  "baseline_zip": "scripts/golf/loop_7999_13/submission_7999.13_wave12_candidate_meta.zip",
+  "tasks": [250, 374],
+  "accepted": [],
+  "verified_gain": 0.0,
+  "rejected": [
+    {
+      "task": 250,
+      "path": "scripts/golf/loop_7999_13/lane_a28/candidates/task250_conv_integer.onnx",
+      "sha256": "b0142d2116d327010b6771d0f0e4cb3bee5573d774d1965777c937fc8f25d6ed",
+      "baseline_cost": 468,
+      "candidate_cost": 467,
+      "reason": "Both ORT modes are 0/265 known-correct: removing output requantization exposes small positive accumulators as false cells."
+    },
+    {
+      "task": 250,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task250_r01_static452.onnx",
+      "baseline_cost": 468,
+      "candidate_cost": 452,
+      "reason": "Resize float16 ROI type mismatch causes 265/265 runtime errors in both ORT modes."
+    },
+    {
+      "task": 250,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task250_r02_static466.onnx",
+      "baseline_cost": 468,
+      "candidate_cost": 466,
+      "reason": "ORT_DISABLE_ALL has 265/265 runtime errors and runtime tracing finds false declarations; default-only success is ineligible."
+    },
+    {
+      "task": 374,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task374_r01_static480.onnx",
+      "baseline_cost": 481,
+      "candidate_cost": 876,
+      "reason": "CastLike-to-Cast saves one parameter but exposes the real 10x10 carrier; actual cost is 876, and nine declared/runtime shape mismatches remain."
+    }
+  ]
+}

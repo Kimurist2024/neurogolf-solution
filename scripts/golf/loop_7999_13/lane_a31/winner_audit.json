@@ -1,0 +1,435 @@
+{
+  "task": 306,
+  "base": {
+    "path": "scripts/golf/loop_7999_13/lane_a31/task306_base.onnx",
+    "sha256": "c8aad29a01fda297893bddf3975d542246c60b692eaa08c823cbc79b53372b97",
+    "bytes": 1193,
+    "ir_version": 7,
+    "opsets": [
+      [
+        "",
+        13
+      ]
+    ],
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "checker_full": true,
+    "strict_shape_inference": true,
+    "strict_value_info_count": 0,
+    "nodes": 1,
+    "op_histogram": {
+      "Einsum": 1
+    },
+    "einsum_operand_count": 69,
+    "initializer_names": [
+      "H",
+      "Dp0",
+      "Dp1",
+      "X",
+      "S"
+    ],
+    "params": 131,
+    "functions": 0,
+    "sparse_initializers": 0,
+    "nested_graphs": 0,
+    "foreign_domains": [],
+    "bad_ops": []
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_7999_13/lane_a31/task306_reuse_dp0_diag_for_s.onnx",
+    "sha256": "3d916fde816b0d5e457bd265734b9a00c0294ed2cee5e63f947bf241d4327bb1",
+    "bytes": 1206,
+    "ir_version": 7,
+    "opsets": [
+      [
+        "",
+        13
+      ]
+    ],
+    "input_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "output_shape": [
+      1,
+      10,
+      30,
+      30
+    ],
+    "checker_full": true,
+    "strict_shape_inference": true,
+    "strict_value_info_count": 0,
+    "nodes": 1,
+    "op_histogram": {
+      "Einsum": 1
+    },
+    "einsum_operand_count": 69,
+    "initializer_names": [
+      "H",
+      "Dp0",
+      "Dp1",
+      "X"
+    ],
+    "params": 128,
+    "functions": 0,
+    "sparse_initializers": 0,
+    "nested_graphs": 0,
+    "foreign_domains": [],
+    "bad_ops": []
+  },
+  "removed_initializers": [
+    "S"
+  ],
+  "added_initializers": [],
+  "algebra": {
+    "scale": [
+      -1.0,
+      -1.0,
+      -2.0
+    ],
+    "inverse_scale": [
+      -1.0,
+      -1.0,
+      -0.5
+    ],
+    "identity": "Dp'[:,q]=Dp[:,q]*c[q] and X'[q,:]=X[q,:]/c[q], so every pointwise Dp-X factor is unchanged; diag(Dp0')=S permits S[q] -> Dp0'[q,q].",
+    "float32_dyadic_scaling": true,
+    "dp0_x_products_bit_equal": true,
+    "dp1_x_products_bit_equal": true,
+    "candidate_dp0_diagonal_equals_base_s": true,
+    "s_operand_rewrites": [
+      {
+        "operand": 6,
+        "base": [
+          "S",
+          "a"
+        ],
+        "candidate": [
+          "Dp0",
+          "aa"
+        ]
+      },
+      {
+        "operand": 9,
+        "base": [
+          "S",
+          "b"
+        ],
+        "candidate": [
+          "Dp0",
+          "bb"
+        ]
+      },
+      {
+        "operand": 16,
+        "base": [
+          "S",
+          "d"
+        ],
+        "candidate": [
+          "Dp0",
+          "dd"
+        ]
+      },
+      {
+        "operand": 19,
+        "base": [
+          "S",
+          "e"
+        ],
+        "candidate": [
+          "Dp0",
+          "ee"
+        ]
+      },
+      {
+        "operand": 27,
+        "base": [
+          "S",
+          "f"
+        ],
+        "candidate": [
+          "Dp0",
+          "ff"
+        ]
+      },
+      {
+        "operand": 30,
+        "base": [
+          "S",
+          "g"
+        ],
+        "candidate": [
+          "Dp0",
+          "gg"
+        ]
+      },
+      {
+        "operand": 37,
+        "base": [
+          "S",
+          "U"
+        ],
+        "candidate": [
+          "Dp0",
+          "UU"
+        ]
+      },
+      {
+        "operand": 40,
+        "base": [
+          "S",
+          "V"
+        ],
+        "candidate": [
+          "Dp0",
+          "VV"
+        ]
+      },
+      {
+        "operand": 50,
+        "base": [
+          "S",
+          "W"
+        ],
+        "candidate": [
+          "Dp0",
+          "WW"
+        ]
+      },
+      {
+        "operand": 53,
+        "base": [
+          "S",
+          "X"
+        ],
+        "candidate": [
+          "Dp0",
+          "XX"
+        ]
+      },
+      {
+        "operand": 60,
+        "base": [
+          "S",
+          "Y"
+        ],
+        "candidate": [
+          "Dp0",
+          "YY"
+        ]
+      },
+      {
+        "operand": 63,
+        "base": [
+          "S",
+          "Z"
+        ],
+        "candidate": [
+          "Dp0",
+          "ZZ"
+        ]
+      }
+    ],
+    "s_rewrite_count": 12,
+    "all_other_operands_and_terms_equal": true,
+    "exact": true
+  },
+  "known_raw_equivalence": {
+    "disable_all": {
+      "total": 265,
+      "raw_equal": 265,
+      "threshold_equal": 265,
+      "errors": 0,
+      "nonfinite_values": 0,
+      "minimum_positive": 4096.0,
+      "maximum_nonpositive": 0.0,
+      "perfect_raw_equivalence": true
+    },
+    "default": {
+      "total": 265,
+      "raw_equal": 265,
+      "threshold_equal": 265,
+      "errors": 0,
+      "nonfinite_values": 0,
+      "minimum_positive": 4096.0,
+      "maximum_nonpositive": 0.0,
+      "perfect_raw_equivalence": true
+    }
+  },
+  "fresh5000": {
+    "task": 306,
+    "path": "scripts/golf/loop_7999_13/lane_a31/task306_reuse_dp0_diag_for_s.onnx",
+    "disable_all": {
+      "right": 5000,
+      "wrong": 0,
+      "runtime_or_output_failures": 0,
+      "perfect": true
+    },
+    "default": {
+      "right": 5000,
+      "wrong": 0,
+      "runtime_or_output_failures": 0,
+      "perfect": true
+    },
+    "generated": 5000,
+    "generation_errors": 0,
+    "perfect": true
+  },
+  "external500": {
+    "candidate": {
+      "task": 306,
+      "source": "candidate",
+      "sha256": "3d916fde816b0d5e457bd265734b9a00c0294ed2cee5e63f947bf241d4327bb1",
+      "serialized_size": 1206,
+      "valid": true,
+      "preflight_ok": true,
+      "known": {
+        "right": 265,
+        "wrong": 0,
+        "skipped": 0,
+        "errors": 0,
+        "total_seen": 265
+      },
+      "memory": 0,
+      "params": 128,
+      "cost": 128,
+      "score": 20.147969736080384,
+      "node_count": 1,
+      "initializer_count": 4,
+      "error": "",
+      "warnings": [
+        "IR version is 7; competition baseline often uses 10"
+      ]
+    },
+    "known_failures": [],
+    "baseline": {
+      "task": 306,
+      "source": "baseline",
+      "sha256": "c8aad29a01fda297893bddf3975d542246c60b692eaa08c823cbc79b53372b97",
+      "serialized_size": 1193,
+      "valid": true,
+      "preflight_ok": true,
+      "known": {
+        "right": 265,
+        "wrong": 0,
+        "skipped": 0,
+        "errors": 0,
+        "total_seen": 265
+      },
+      "memory": 0,
+      "params": 131,
+      "cost": 131,
+      "score": 20.12480267679885,
+      "node_count": 1,
+      "initializer_count": 5,
+      "error": "",
+      "warnings": [
+        "IR version is 7; competition baseline often uses 10"
+      ]
+    },
+    "baseline_failures": [],
+    "differential": {
+      "requested": 500,
+      "executable": 500,
+      "raw_equal": 500,
+      "threshold_equal": 500,
+      "mismatches": 0,
+      "skipped_both_failed": 0,
+      "skipped_one_failed": 0,
+      "max_abs_difference": 0.0,
+      "first_mismatch": null
+    },
+    "decision": {
+      "task": 306,
+      "baseline": {
+        "task": 306,
+        "source": "baseline",
+        "sha256": "c8aad29a01fda297893bddf3975d542246c60b692eaa08c823cbc79b53372b97",
+        "serialized_size": 1193,
+        "valid": true,
+        "preflight_ok": true,
+        "known": {
+          "right": 265,
+          "wrong": 0,
+          "skipped": 0,
+          "errors": 0,
+          "total_seen": 265
+        },
+        "memory": 0,
+        "params": 131,
+        "cost": 131,
+        "score": 20.12480267679885,
+        "node_count": 1,
+        "initializer_count": 5,
+        "error": "",
+        "warnings": [
+          "IR version is 7; competition baseline often uses 10"
+        ]
+      },
+      "candidate": {
+        "task": 306,
+        "source": "candidate",
+        "sha256": "3d916fde816b0d5e457bd265734b9a00c0294ed2cee5e63f947bf241d4327bb1",
+        "serialized_size": 1206,
+        "valid": true,
+        "preflight_ok": true,
+        "known": {
+          "right": 265,
+          "wrong": 0,
+          "skipped": 0,
+          "errors": 0,
+          "total_seen": 265
+        },
+        "memory": 0,
+        "params": 128,
+        "cost": 128,
+        "score": 20.147969736080384,
+        "node_count": 1,
+        "initializer_count": 4,
+        "error": "",
+        "warnings": [
+          "IR version is 7; competition baseline often uses 10"
+        ]
+      },
+      "differential": {
+        "requested": 500,
+        "executable": 500,
+        "raw_equal": 500,
+        "threshold_equal": 500,
+        "mismatches": 0,
+        "skipped_both_failed": 0,
+        "skipped_one_failed": 0,
+        "max_abs_difference": 0.0,
+        "first_mismatch": null
+      },
+      "cost_reduction": 3,
+      "projected_gain": 0.023167059281533398,
+      "verdict": "ACCEPT_STRICT",
+      "reasons": []
+    }
+  },
+  "cost": {
+    "base_memory": 0,
+    "base_params": 131,
+    "base_cost": 131,
+    "candidate_memory": 0,
+    "candidate_params": 128,
+    "candidate_cost": 128,
+    "projected_gain": 0.02316705928153438
+  },
+  "conv_bias_ub_count_in_lane_zip": 0,
+  "pass": true
+}

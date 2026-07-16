@@ -1,0 +1,156 @@
+{
+  "lane": "agent_deep69",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00"
+  },
+  "targets": [349, 138, 76, 107],
+  "baselines": {
+    "349": {
+      "sha256": "f7ec94cbd38b44979a254b26f7cf670dbada27fffd954bf7e12554a6aa08cd7c",
+      "memory": 3225,
+      "params": 339,
+      "cost": 3564,
+      "known_disable_all": "267/267",
+      "known_default": "267/267",
+      "runtime_shape_mismatches": 0,
+      "private_guarantee": false,
+      "reason": "The relation-only model preserves the earlier halo-patch false positive at seed 349101 valid case 421."
+    },
+    "138": {
+      "sha256": "8a6400d6fa69c1088197a720cfe9efea03745390c6ec03b4e9e9e802e46e8d52",
+      "memory": 2525,
+      "params": 204,
+      "cost": 2729,
+      "known_disable_all": "266/266",
+      "known_default": "266/266",
+      "runtime_shape_mismatches": 36
+    },
+    "76": {
+      "sha256": "9d31114f8af80bf54b6c908ad61eadd6dbe4fb63f52b5b97ecb70f1f0fcce791",
+      "memory": 2498,
+      "params": 52,
+      "cost": 2550,
+      "known_disable_all": "266/266",
+      "known_default": "session error on all 266",
+      "runtime_shape_mismatches": 30
+    },
+    "107": {
+      "sha256": "b47fbb5396e88ce90d2bfecc98ea3e62b303a1cd51784a92b20f6ff7a961a071",
+      "memory": 470,
+      "params": 238,
+      "cost": 708,
+      "known_disable_all": "266/266",
+      "known_default": "266/266",
+      "runtime_shape_mismatches": 11,
+      "max_node_inputs": 58
+    }
+  },
+  "ground_up_and_exact_frontier": [
+    {
+      "task": 349,
+      "path": "scripts/golf/scratch_codex/task349/adjacent_affine_domain.onnx",
+      "kind": "generator-derived six-object adjacent-overlap interval renderer",
+      "memory": 3720,
+      "params": 302,
+      "cost": 4022,
+      "strictly_cheaper": false,
+      "known_disable_all": "267/267",
+      "known_default": "267/267",
+      "checker_full": true,
+      "strict_data_prop": true,
+      "runtime_shape_mismatches": 0,
+      "standard_domains": true,
+      "banned_ops": [],
+      "max_node_inputs": 12,
+      "fresh_not_run_reason": "Fails mandatory strict-lower pre-gate by +458 cost."
+    },
+    {
+      "task": 349,
+      "path": "scripts/golf/scratch_codex/task349/agent_alt_exact_opt.onnx",
+      "kind": "signature-free exact six-object subset-OR renderer",
+      "memory": 4259,
+      "params": 313,
+      "cost": 4572,
+      "strictly_cheaper": false,
+      "known_disable_all": "267/267",
+      "known_default": "267/267",
+      "checker_full": true,
+      "strict_data_prop": true,
+      "runtime_shape_mismatches": 0,
+      "standard_domains": true,
+      "banned_ops": [],
+      "max_node_inputs": 8,
+      "retained_fresh_evidence": "0/3001 failures including six-object seed 4064"
+    },
+    {
+      "task": 107,
+      "path": "scripts/golf/loop_8000_46/lane_optional_axes/task107.onnx",
+      "kind": "exact initializer-default shave",
+      "memory": 470,
+      "params": 236,
+      "cost": 706,
+      "strictly_cheaper": true,
+      "known_disable_all": "266/266",
+      "known_default": "266/266",
+      "checker_full": true,
+      "strict_data_prop": true,
+      "runtime_shape_mismatches": 11,
+      "max_node_inputs": 58,
+      "giant_einsum": true,
+      "lookup_ops": ["GatherND"],
+      "decision": "REJECT_SHAPE_CLOAK_GIANT_EINSUM"
+    },
+    {
+      "task": 107,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task107_r01_static638.onnx",
+      "kind": "historical contraction",
+      "memory": 356,
+      "params": 282,
+      "cost": 638,
+      "strictly_cheaper": true,
+      "known_disable_all": "266/266",
+      "known_default": "266/266",
+      "runtime_shape_mismatches": 13,
+      "max_node_inputs": 66,
+      "giant_einsum": true,
+      "lookup_ops": ["GatherND"],
+      "decision": "REJECT_SHAPE_CLOAK_GIANT_EINSUM"
+    },
+    {
+      "task": 138,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task138_r01_static2588.onnx",
+      "memory": 2533,
+      "params": 229,
+      "cost": 2762,
+      "strictly_cheaper": false,
+      "known_disable_all": "266/266",
+      "known_default": "266/266"
+    },
+    {
+      "task": 138,
+      "path": "scripts/golf/loop_7999_13/lane_archive_all400/task138_r02_static2648.onnx",
+      "memory": 2593,
+      "params": 229,
+      "cost": 2822,
+      "strictly_cheaper": false,
+      "known_disable_all": "266/266",
+      "known_default": "266/266"
+    }
+  ],
+  "task076_noninjective_proof": {
+    "source": "scripts/golf/scratch_codex/task076/spec_noninjective_proof.py",
+    "evidence": "scripts/golf/loop_7999_13/lane_c22/generator_analysis.json",
+    "input_sha256": "be1adb70ce87d233cb35a52b0c1f440ce11683aae693fafb2791a820acfc6bdf",
+    "valid_parameterizations": [
+      {"megarotates": [0, 3, 3]},
+      {"megarotates": [0, 1, 1]}
+    ],
+    "same_input": true,
+    "different_output_cells": 12,
+    "conclusion": "No deterministic input-only ONNX can be exact over the full generator distribution."
+  },
+  "decision": "NO_ADMISSIBLE_CANDIDATE",
+  "accepted": [],
+  "projected_gain": 0.0
+}

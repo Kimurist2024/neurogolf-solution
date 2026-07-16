@@ -1,0 +1,749 @@
+{
+  "review_scope": "independent fail-closed task192 selected-mask factorization",
+  "runtime_evidence_mode": "reclassified immediately preceding full independent run after immutable hash and config checks",
+  "paths": {
+    "authority": "submission_base_8008.14.zip",
+    "candidate": "scripts/golf/loop_8004_42_plus20/root_task192_exact111/task192_selected_masks.onnx",
+    "exact_poly": "scripts/golf/loop_8004_42_plus20/agent_sound192_344_93/candidates/task192_exact_poly.onnx"
+  },
+  "expected": {
+    "authority_zip_sha256": "50b3215030cf506f692af50e41203d805256a250bd29882cc777749767a350c6",
+    "authority_task192_sha256": "e7f9a11b93b611acfa4bba39e90e1ddf24223d50add4277fe9716f21f6ede10c",
+    "candidate_sha256": "40244ab462644481407ebb7200984dfdff1475c0d8e6ff731ba2d588ec92ea09",
+    "exact_poly_sha256": "c3cbaf44d962ca72e15514da1b32c121ee489d153ef39d38b7101f09576e92b6",
+    "authority_cost": 1609,
+    "candidate_cost": 1197,
+    "exact_poly_cost": 1307
+  },
+  "hashes": {
+    "authority_zip_sha256": "50b3215030cf506f692af50e41203d805256a250bd29882cc777749767a350c6",
+    "authority_task192_sha256": "e7f9a11b93b611acfa4bba39e90e1ddf24223d50add4277fe9716f21f6ede10c",
+    "candidate_sha256": "40244ab462644481407ebb7200984dfdff1475c0d8e6ff731ba2d588ec92ea09",
+    "exact_poly_sha256": "c3cbaf44d962ca72e15514da1b32c121ee489d153ef39d38b7101f09576e92b6"
+  },
+  "costs": {
+    "authority": {
+      "memory": 88,
+      "params": 1521,
+      "cost": 1609
+    },
+    "exact_poly": {
+      "memory": 168,
+      "params": 1139,
+      "cost": 1307
+    },
+    "candidate": {
+      "memory": 248,
+      "params": 949,
+      "cost": 1197
+    }
+  },
+  "cost_reduction_vs_authority": 412,
+  "cost_reduction_vs_exact_poly": 110,
+  "static": {
+    "candidate": {
+      "full_check": true,
+      "strict_data_prop": true,
+      "truthful_declared_output": true,
+      "standard_domains": true,
+      "finite_initializers": true,
+      "conv_bias_ub0": true,
+      "node_count": 6,
+      "initializer_count": 8,
+      "op_histogram": {
+        "ArgMax": 1,
+        "Concat": 2,
+        "Einsum": 2,
+        "OneHot": 1
+      },
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nonstatic_node_outputs": [],
+      "all_node_outputs_static_positive": true,
+      "declared_output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "conv_bias_findings": [],
+      "pass": true
+    },
+    "exact_poly": {
+      "full_check": true,
+      "strict_data_prop": true,
+      "truthful_declared_output": true,
+      "standard_domains": true,
+      "finite_initializers": true,
+      "conv_bias_ub0": true,
+      "node_count": 5,
+      "initializer_count": 8,
+      "op_histogram": {
+        "ArgMax": 1,
+        "Concat": 1,
+        "Einsum": 2,
+        "OneHot": 1
+      },
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nonstatic_node_outputs": [],
+      "all_node_outputs_static_positive": true,
+      "declared_output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "conv_bias_findings": [],
+      "pass": true
+    },
+    "authority": {
+      "full_check": true,
+      "strict_data_prop": true,
+      "truthful_declared_output": true,
+      "standard_domains": true,
+      "finite_initializers": true,
+      "conv_bias_ub0": true,
+      "node_count": 4,
+      "initializer_count": 4,
+      "op_histogram": {
+        "ArgMax": 1,
+        "Conv": 1,
+        "Einsum": 1,
+        "ScatterElements": 1
+      },
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nonstatic_node_outputs": [],
+      "all_node_outputs_static_positive": true,
+      "declared_output_shape": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "conv_bias_findings": [],
+      "pass": true
+    }
+  },
+  "factorization": {
+    "identity": "For selected one-hot s, sum_a relation[0,d,a]*s[a] = sum_a s[a] = 1, while sum_a relation[1,d,a]*s[a] = sum_a I[d,a]*s[a] = s[d]. Thus contracting relation with selected is exactly Concat(all_colors, selected).",
+    "relation_shape": [
+      2,
+      10,
+      10
+    ],
+    "all_colors_shape": [
+      1,
+      10
+    ],
+    "all_ten_onehot_selections": [
+      {
+        "selected_color": 0,
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "selected_color": 1,
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "selected_color": 2,
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "selected_color": 3,
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "selected_color": 4,
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "selected_color": 5,
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "selected_color": 6,
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "selected_color": 7,
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "selected_color": 8,
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "selected_color": 9,
+        "equal": true,
+        "max_abs_difference": 0.0
+      }
+    ],
+    "all_onehot_equal": true,
+    "shared_initializer_equal": {
+      "adj": true,
+      "color_masks": true,
+      "hist_select": true,
+      "route": true,
+      "background": true,
+      "depth": true,
+      "onehot_values": true
+    },
+    "graph_contract": {
+      "exact_equation": "bchw,rc,bdhq,rda,za,qw,bepw,ref,zf,ph,ru,uo->bohw",
+      "candidate_equation": "bchw,rc,bdhq,rd,qw,bepw,re,ph,ru,uo->bohw",
+      "exact_relation_used_twice": true,
+      "exact_selected_used_twice": true,
+      "candidate_selected_masks_used_twice": true,
+      "concat_inputs": [
+        "all_colors",
+        "selected"
+      ],
+      "concat_axis": 0,
+      "relation_removed": true,
+      "all_colors_added": true,
+      "pass": true
+    },
+    "pass": true
+  },
+  "known_four_configs": {
+    "known_total": 265,
+    "configs": {
+      "disable_all_threads1": {
+        "total": 265,
+        "candidate_right": 265,
+        "exact_poly_right": 265,
+        "authority_right": 265,
+        "reference_rule_right": 265,
+        "runtime_errors": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "nonfinite_values": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "candidate_vs_exact_raw_equal": 265,
+        "candidate_vs_exact_threshold_equal": 265,
+        "candidate_vs_authority_raw_equal": 0,
+        "candidate_vs_authority_threshold_equal": 265,
+        "candidate_vs_exact_max_abs_difference": 0.0,
+        "candidate_vs_authority_max_abs_difference": 10012687.0,
+        "candidate_min_positive": 1.0,
+        "candidate_max_nonpositive": 0.0,
+        "output_shapes": {
+          "candidate": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "exact_poly": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "authority": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "first_failure": null,
+        "runtime_errors_total": 0,
+        "nonfinite_values_total": 0,
+        "perfect": true
+      },
+      "disable_all_threads4": {
+        "total": 265,
+        "candidate_right": 265,
+        "exact_poly_right": 265,
+        "authority_right": 265,
+        "reference_rule_right": 265,
+        "runtime_errors": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "nonfinite_values": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "candidate_vs_exact_raw_equal": 265,
+        "candidate_vs_exact_threshold_equal": 265,
+        "candidate_vs_authority_raw_equal": 0,
+        "candidate_vs_authority_threshold_equal": 265,
+        "candidate_vs_exact_max_abs_difference": 0.0,
+        "candidate_vs_authority_max_abs_difference": 10012687.0,
+        "candidate_min_positive": 1.0,
+        "candidate_max_nonpositive": 0.0,
+        "output_shapes": {
+          "candidate": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "exact_poly": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "authority": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "first_failure": null,
+        "runtime_errors_total": 0,
+        "nonfinite_values_total": 0,
+        "perfect": true
+      },
+      "default_threads1": {
+        "total": 265,
+        "candidate_right": 265,
+        "exact_poly_right": 265,
+        "authority_right": 265,
+        "reference_rule_right": 265,
+        "runtime_errors": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "nonfinite_values": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "candidate_vs_exact_raw_equal": 265,
+        "candidate_vs_exact_threshold_equal": 265,
+        "candidate_vs_authority_raw_equal": 0,
+        "candidate_vs_authority_threshold_equal": 265,
+        "candidate_vs_exact_max_abs_difference": 0.0,
+        "candidate_vs_authority_max_abs_difference": 10012687.0,
+        "candidate_min_positive": 1.0,
+        "candidate_max_nonpositive": 0.0,
+        "output_shapes": {
+          "candidate": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "exact_poly": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "authority": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "first_failure": null,
+        "runtime_errors_total": 0,
+        "nonfinite_values_total": 0,
+        "perfect": true
+      },
+      "default_threads4": {
+        "total": 265,
+        "candidate_right": 265,
+        "exact_poly_right": 265,
+        "authority_right": 265,
+        "reference_rule_right": 265,
+        "runtime_errors": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "nonfinite_values": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "candidate_vs_exact_raw_equal": 265,
+        "candidate_vs_exact_threshold_equal": 265,
+        "candidate_vs_authority_raw_equal": 0,
+        "candidate_vs_authority_threshold_equal": 265,
+        "candidate_vs_exact_max_abs_difference": 0.0,
+        "candidate_vs_authority_max_abs_difference": 10012687.0,
+        "candidate_min_positive": 1.0,
+        "candidate_max_nonpositive": 0.0,
+        "output_shapes": {
+          "candidate": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "exact_poly": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "authority": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "first_failure": null,
+        "runtime_errors_total": 0,
+        "nonfinite_values_total": 0,
+        "perfect": true
+      }
+    },
+    "pass": true
+  },
+  "fresh": {
+    "seeds": [
+      112192071,
+      112192072
+    ],
+    "count_per_seed_per_mode": 2000,
+    "prior_audit_seeds_excluded": [
+      192800661,
+      192930007
+    ],
+    "rows": [
+      {
+        "total": 2000,
+        "candidate_right": 2000,
+        "exact_poly_right": 2000,
+        "authority_right": 1904,
+        "reference_rule_right": 2000,
+        "runtime_errors": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "nonfinite_values": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "candidate_vs_exact_raw_equal": 2000,
+        "candidate_vs_exact_threshold_equal": 2000,
+        "candidate_vs_authority_raw_equal": 0,
+        "candidate_vs_authority_threshold_equal": 1904,
+        "candidate_vs_exact_max_abs_difference": 0.0,
+        "candidate_vs_authority_max_abs_difference": 10012059.0,
+        "candidate_min_positive": 1.0,
+        "candidate_max_nonpositive": 0.0,
+        "output_shapes": {
+          "candidate": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "exact_poly": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "authority": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "first_failure": null,
+        "seed": 112192071,
+        "mode": "disable_all",
+        "runtime_errors_total": 0,
+        "nonfinite_values_total": 0,
+        "perfect": true,
+        "first_authority_threshold_difference": {
+          "index": 51,
+          "comparison": "candidate_vs_authority_threshold"
+        }
+      },
+      {
+        "total": 2000,
+        "candidate_right": 2000,
+        "exact_poly_right": 2000,
+        "authority_right": 1904,
+        "reference_rule_right": 2000,
+        "runtime_errors": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "nonfinite_values": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "candidate_vs_exact_raw_equal": 2000,
+        "candidate_vs_exact_threshold_equal": 2000,
+        "candidate_vs_authority_raw_equal": 0,
+        "candidate_vs_authority_threshold_equal": 1904,
+        "candidate_vs_exact_max_abs_difference": 0.0,
+        "candidate_vs_authority_max_abs_difference": 10012059.0,
+        "candidate_min_positive": 1.0,
+        "candidate_max_nonpositive": 0.0,
+        "output_shapes": {
+          "candidate": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "exact_poly": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "authority": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "first_failure": null,
+        "seed": 112192071,
+        "mode": "default",
+        "runtime_errors_total": 0,
+        "nonfinite_values_total": 0,
+        "perfect": true,
+        "first_authority_threshold_difference": {
+          "index": 51,
+          "comparison": "candidate_vs_authority_threshold"
+        }
+      },
+      {
+        "total": 2000,
+        "candidate_right": 2000,
+        "exact_poly_right": 2000,
+        "authority_right": 1906,
+        "reference_rule_right": 2000,
+        "runtime_errors": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "nonfinite_values": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "candidate_vs_exact_raw_equal": 2000,
+        "candidate_vs_exact_threshold_equal": 2000,
+        "candidate_vs_authority_raw_equal": 0,
+        "candidate_vs_authority_threshold_equal": 1906,
+        "candidate_vs_exact_max_abs_difference": 0.0,
+        "candidate_vs_authority_max_abs_difference": 10012558.0,
+        "candidate_min_positive": 1.0,
+        "candidate_max_nonpositive": 0.0,
+        "output_shapes": {
+          "candidate": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "exact_poly": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "authority": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "first_failure": null,
+        "seed": 112192072,
+        "mode": "disable_all",
+        "runtime_errors_total": 0,
+        "nonfinite_values_total": 0,
+        "perfect": true,
+        "first_authority_threshold_difference": {
+          "index": 43,
+          "comparison": "candidate_vs_authority_threshold"
+        }
+      },
+      {
+        "total": 2000,
+        "candidate_right": 2000,
+        "exact_poly_right": 2000,
+        "authority_right": 1906,
+        "reference_rule_right": 2000,
+        "runtime_errors": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "nonfinite_values": {
+          "candidate": 0,
+          "exact_poly": 0,
+          "authority": 0
+        },
+        "candidate_vs_exact_raw_equal": 2000,
+        "candidate_vs_exact_threshold_equal": 2000,
+        "candidate_vs_authority_raw_equal": 0,
+        "candidate_vs_authority_threshold_equal": 1906,
+        "candidate_vs_exact_max_abs_difference": 0.0,
+        "candidate_vs_authority_max_abs_difference": 10012558.0,
+        "candidate_min_positive": 1.0,
+        "candidate_max_nonpositive": 0.0,
+        "output_shapes": {
+          "candidate": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "exact_poly": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "authority": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ]
+        },
+        "first_failure": null,
+        "seed": 112192072,
+        "mode": "default",
+        "runtime_errors_total": 0,
+        "nonfinite_values_total": 0,
+        "perfect": true,
+        "first_authority_threshold_difference": {
+          "index": 43,
+          "comparison": "candidate_vs_authority_threshold"
+        }
+      }
+    ],
+    "pass": true
+  },
+  "runtime_shape_trace": {
+    "traced": 6,
+    "traced_shapes": {
+      "hist": [
+        10
+      ],
+      "selected_i64": [
+        1
+      ],
+      "selected": [
+        1,
+        10
+      ],
+      "selected_masks": [
+        2,
+        10
+      ],
+      "output_basis": [
+        2,
+        10
+      ],
+      "output": [
+        1,
+        10,
+        30,
+        30
+      ]
+    },
+    "mismatches": [],
+    "mismatch_count": 0,
+    "nonfinite_values": 0,
+    "truthful": true
+  },
+  "gates": {
+    "immutable_hashes": true,
+    "official_costs": true,
+    "candidate_static": true,
+    "exact_poly_static_control": true,
+    "factorization_math_and_graph": true,
+    "known_four_configs": true,
+    "fresh_two_new_seeds_dual_ort": true,
+    "runtime_shape_truthful": true
+  },
+  "verdict": "PASS",
+  "accepted": true,
+  "authority_equivalence_note": "Candidate-vs-authority raw and threshold equality are informational because the authority is an approximate prior implementation. Candidate-vs-exact-poly raw and threshold equality, generator/reference correctness, zero runtime errors, and finite outputs are mandatory."
+}

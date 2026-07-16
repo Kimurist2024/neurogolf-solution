@@ -1,0 +1,83 @@
+{
+  "lane": "headroom",
+  "baseline": {
+    "path": "submission_base_7999.13.zip",
+    "reported_score": 7999.13,
+    "sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1"
+  },
+  "scan": {
+    "tasks": [2, 5, 12, 13, 80, 89, 107, 125, 131, 280, 340, 349, 364, 367, 370, 382],
+    "task_count": 16,
+    "raw_candidate_references": 14610,
+    "unique_models": 1280,
+    "collection_errors": 0,
+    "row_statuses": {
+      "static_cost_floor_reject": 973,
+      "scored": 151,
+      "static_reject": 126,
+      "base_identical": 16,
+      "unscorable": 14
+    },
+    "strictly_cheaper_visible_pass_candidates": 2,
+    "fresh_approved_candidates": 1
+  },
+  "approved": [
+    {
+      "task": 382,
+      "candidate": "scripts/golf/loop_7999_13/lane_headroom/candidates/task382.onnx",
+      "sha256": "ac0d47cfa37effc8453f77a8498a0a8516ef63ab610ed6e4fb49afef485dee29",
+      "base_cost": 820,
+      "candidate_cost": 814,
+      "score_gain": 0.007343974255758505,
+      "visible": {
+        "correct": 266,
+        "total": 266,
+        "lib_gold": true,
+        "official_gold": true,
+        "minimum_nonzero_margin": 0.99462890625
+      },
+      "fresh": {
+        "candidate_correct": 3000,
+        "candidate_total": 3000,
+        "candidate_mismatches": 0,
+        "baseline_correct": 2854,
+        "baseline_total": 3000,
+        "baseline_mismatches": 146
+      },
+      "structure": {
+        "onnx_checker_full": "pass",
+        "strict_shape_inference": "pass",
+        "static_declared_shapes": "pass",
+        "foreign_domains": [],
+        "banned_ops": [],
+        "nested_graphs": 0,
+        "functions": 0,
+        "sparse_initializers": 0,
+        "conv_bias_ub": 0,
+        "warning": "Declared output is [1,10,1,1], while ORT runtime output is [1,10,30,30]."
+      },
+      "disposition": "isolated_only",
+      "isolated_zip": "scripts/golf/loop_7999_13/lane_headroom/submission_7999.13_task382_isolated.zip",
+      "isolated_zip_sha256": "6400d01af82d3a6b5d124eed2935580ae8972c5039800991b09050f98d0d3ae0"
+    }
+  ],
+  "rejected": [
+    {
+      "task": 131,
+      "candidate": "scripts/golf/loop_7999_13/lane_headroom/candidates/task131.onnx",
+      "sha256": "a13e6337acc30ddc9bc7f3276f3e464cc8144c12d40577bdd625d721ab1db182",
+      "base_cost": 746,
+      "candidate_cost": 596,
+      "visible_correct": 266,
+      "visible_total": 266,
+      "fresh_correct": 895,
+      "fresh_total": 3000,
+      "fresh_mismatches": 2105,
+      "runtime_failure": "ScatterND invalid indice=255",
+      "historical_evidence": "Candidate appeared in submission_1200merge.zip but was reverted before submission_1200merge2.zip and submission_1200final.zip.",
+      "disposition": "reject_do_not_merge"
+    }
+  ],
+  "predicted_reported_score_if_task382_is_accepted": 7999.137343974256,
+  "root_files_modified": []
+}

@@ -1,0 +1,2954 @@
+{
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "rows": [
+    {
+      "task": 165,
+      "label": "duplicate_castlike_cse",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high125_165_268_135/rejected_probes/task165_duplicate_castlike_cse_455c05527d91.onnx",
+      "sha256": "455c05527d915d588eb63962a5247ac3049290f4804dfd24fabff404b4e6c8ae",
+      "baseline_sha256": "d6d40c11204c80f595910e7620858eb04db5c43b316033b0bf5b2cb1c9262adf",
+      "proof": {
+        "kind": "identical_pure_node_CSE",
+        "all_valid_inputs": "two CastLike nodes have byte-identical op/domain/inputs/attributes; output replacement is algebraically exact",
+        "runtime_caveat": "allocator behavior can differ after removing the duplicate node and is independently gated"
+      },
+      "baseline_official_profile": {
+        "memory": 517,
+        "params": 70,
+        "cost": 587,
+        "score": 18.6249751801719,
+        "correct": true
+      },
+      "official_profile": {
+        "memory": 477,
+        "params": 70,
+        "cost": 547,
+        "score": 18.69555119757802,
+        "correct": false
+      },
+      "strict_lower": true,
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 141,
+        "initializer_count": 16,
+        "value_info_count": 135,
+        "op_histogram": {
+          "Add": 4,
+          "ArgMax": 2,
+          "ArgMin": 2,
+          "Cast": 7,
+          "CastLike": 3,
+          "CenterCropPad": 80,
+          "Concat": 1,
+          "ConstantOfShape": 7,
+          "Div": 2,
+          "Einsum": 2,
+          "Equal": 2,
+          "Gather": 5,
+          "Greater": 5,
+          "Less": 1,
+          "Mod": 2,
+          "ReduceSumSquare": 1,
+          "Reshape": 2,
+          "Slice": 1,
+          "Sub": 3,
+          "Where": 9
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            1,
+            1
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 141,
+        "actual_shapes": {
+          "s31_shift": [
+            1
+          ],
+          "s29_shift": [
+            1
+          ],
+          "s30_shift": [
+            1
+          ],
+          "__sp_hid": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "__sp_low": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "s9_ch": [
+            1
+          ],
+          "s10_ch": [
+            1
+          ],
+          "s11_ch": [
+            1
+          ],
+          "__sp_cnt_c11": [
+            1,
+            11,
+            30,
+            30
+          ],
+          "__sp_cnt_c9": [
+            1,
+            9,
+            30,
+            30
+          ],
+          "__sp_f16_c9": [
+            1,
+            9,
+            30,
+            30
+          ],
+          "counts": [
+            9
+          ],
+          "row_sum": [
+            9
+          ],
+          "col_sum": [
+            9
+          ],
+          "count_good": [
+            9
+          ],
+          "good_u8": [
+            9
+          ],
+          "low_idx": [],
+          "high_idx": [],
+          "col_high": [],
+          "col_low": [],
+          "row_low": [],
+          "row_high": [],
+          "col_high_u8": [],
+          "col_low_u8": [],
+          "row_low_u8": [],
+          "row_high_u8": [],
+          "col_high_mod_u8": [],
+          "col_high_good": [
+            1
+          ],
+          "kite_row_u8": [
+            1
+          ],
+          "kite_col_u8": [
+            1
+          ],
+          "kite_row_i64": [
+            1
+          ],
+          "kite_col_i64": [
+            1
+          ],
+          "left_s_2d": [
+            1
+          ],
+          "s18_row": [
+            1
+          ],
+          "d_shift": [
+            1
+          ],
+          "cond4": [
+            1
+          ],
+          "d_minus4": [
+            1
+          ],
+          "rem4": [
+            1
+          ],
+          "cond3": [
+            1
+          ],
+          "cond2": [
+            1
+          ],
+          "rem2b": [
+            1
+          ],
+          "cond1": [
+            1
+          ],
+          "shift_blk4": [
+            1
+          ],
+          "shift_blk3": [
+            1
+          ],
+          "shift_blk2": [
+            1
+          ],
+          "shift_blk1": [
+            1
+          ],
+          "bg_ch0_a": [
+            1,
+            9,
+            30,
+            30
+          ],
+          "bg_ch0_b": [
+            1,
+            11,
+            30,
+            30
+          ],
+          "bg_ch0_c": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "bg_ch1_a": [
+            1,
+            9,
+            30,
+            30
+          ],
+          "bg_ch1_b": [
+            1,
+            11,
+            30,
+            30
+          ],
+          "bg_ch1_c": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "bg_ch2_a": [
+            1,
+            9,
+            30,
+            30
+          ],
+          "bg_ch2_b": [
+            1,
+            11,
+            30,
+            30
+          ],
+          "bg_ch2_c": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "bg_ch3_a": [
+            1,
+            9,
+            30,
+            30
+          ],
+          "bg_ch3_b": [
+            1,
+            11,
+            30,
+            30
+          ],
+          "bg_ch3_c": [
+            1,
+            10,
+            30,
+            30
+          ],
+          "bg_ch0": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "bg_pair0_ra": [
+            1,
+            1,
+            29,
+            30
+          ],
+          "bg_pair0_ha": [
+            1,
+            1,
+            29,
+            29
+          ],
+          "bg_pair0_b": [
+            1,
+            1,
+            31,
+            31
+          ],
+          "bg_pair0_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "bg_pair1_ra": [
+            1,
+            1,
+            29,
+            30
+          ],
+          "bg_pair1_ha": [
+            1,
+            1,
+            29,
+            29
+          ],
+          "bg_pair1_b": [
+            1,
+            1,
+            31,
+            31
+          ],
+          "bg_pair1_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "bg_pair2_ra": [
+            1,
+            1,
+            29,
+            30
+          ],
+          "bg_pair2_ha": [
+            1,
+            1,
+            29,
+            29
+          ],
+          "bg_pair2_b": [
+            1,
+            1,
+            31,
+            31
+          ],
+          "bg_pair2_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "bg_row3_a": [
+            1,
+            1,
+            29,
+            30
+          ],
+          "bg_row18": [
+            1,
+            1,
+            18,
+            30
+          ],
+          "bg_b3_a": [
+            1,
+            1,
+            18,
+            29
+          ],
+          "bg_b3_b": [
+            1,
+            1,
+            18,
+            31
+          ],
+          "bg_b3_c": [
+            1,
+            1,
+            18,
+            30
+          ],
+          "bg_b4_a": [
+            1,
+            1,
+            18,
+            31
+          ],
+          "bg_b4_b": [
+            1,
+            1,
+            18,
+            31
+          ],
+          "bg_b4_c": [
+            1,
+            1,
+            18,
+            30
+          ],
+          "bg_b5_a": [
+            1,
+            1,
+            18,
+            31
+          ],
+          "bg_b5_b": [
+            1,
+            1,
+            18,
+            31
+          ],
+          "bg_b5_c": [
+            1,
+            1,
+            18,
+            30
+          ],
+          "bg_b7_a": [
+            1,
+            1,
+            18,
+            31
+          ],
+          "bg_b7_b": [
+            1,
+            1,
+            18,
+            31
+          ],
+          "bg_b7_c": [
+            1,
+            1,
+            18,
+            30
+          ],
+          "bg_b8_a": [
+            1,
+            1,
+            18,
+            31
+          ],
+          "bg_b8_b": [
+            1,
+            1,
+            18,
+            31
+          ],
+          "bg_b8_c": [
+            1,
+            1,
+            18,
+            30
+          ],
+          "bg_b9_a": [
+            1,
+            1,
+            18,
+            29
+          ],
+          "bg_b9_b": [
+            1,
+            1,
+            18,
+            31
+          ],
+          "bg_b9_c": [
+            1,
+            1,
+            18,
+            30
+          ],
+          "bg7": [
+            1,
+            1,
+            18,
+            7
+          ],
+          "elig_threshold": [
+            1,
+            1,
+            1,
+            7
+          ],
+          "btm_idx": [
+            1,
+            1,
+            1,
+            7
+          ],
+          "btm_i8": [
+            1,
+            1,
+            1,
+            7
+          ],
+          "actb": [
+            1,
+            1,
+            1,
+            7
+          ],
+          "fill_threshold": [
+            1,
+            1,
+            1,
+            7
+          ],
+          "scol_arg": [
+            1,
+            1,
+            1
+          ],
+          "scol_arg_u8": [
+            1,
+            1,
+            1
+          ],
+          "scol_u8": [
+            1
+          ],
+          "srow_raw": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "fillbase7": [
+            1,
+            1,
+            17,
+            7
+          ],
+          "fb0": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "pair0_a": [
+            1,
+            1,
+            31,
+            31
+          ],
+          "pair0_vb": [
+            1,
+            1,
+            29,
+            31
+          ],
+          "pair0_hb": [
+            1,
+            1,
+            29,
+            29
+          ],
+          "pair0_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "pair1_a": [
+            1,
+            1,
+            31,
+            31
+          ],
+          "pair1_vb": [
+            1,
+            1,
+            29,
+            31
+          ],
+          "pair1_hb": [
+            1,
+            1,
+            29,
+            29
+          ],
+          "pair1_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "pair2_a": [
+            1,
+            1,
+            31,
+            31
+          ],
+          "pair2_vb": [
+            1,
+            1,
+            29,
+            31
+          ],
+          "pair2_hb": [
+            1,
+            1,
+            29,
+            29
+          ],
+          "pair2_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "fh_b3_a": [
+            1,
+            1,
+            30,
+            31
+          ],
+          "fh_b3_b": [
+            1,
+            1,
+            30,
+            29
+          ],
+          "fh_b3_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "fh_b4_a": [
+            1,
+            1,
+            30,
+            31
+          ],
+          "fh_b4_b": [
+            1,
+            1,
+            30,
+            31
+          ],
+          "fh_b4_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "fh_b5_a": [
+            1,
+            1,
+            30,
+            31
+          ],
+          "fh_b5_b": [
+            1,
+            1,
+            30,
+            31
+          ],
+          "fh_b5_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "fh_b7_a": [
+            1,
+            1,
+            30,
+            31
+          ],
+          "fh_b7_b": [
+            1,
+            1,
+            30,
+            31
+          ],
+          "fh_b7_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "fh_b8_a": [
+            1,
+            1,
+            30,
+            31
+          ],
+          "fh_b8_b": [
+            1,
+            1,
+            30,
+            31
+          ],
+          "fh_b8_c": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "fh_b9_a": [
+            1,
+            1,
+            30,
+            31
+          ],
+          "fh_b9_b": [
+            1,
+            1,
+            30,
+            29
+          ],
+          "fill30_dyn": [
+            1,
+            1,
+            30,
+            30
+          ],
+          "srow": [
+            1
+          ],
+          "absrow_u8": [
+            1
+          ],
+          "abscol_u8": [
+            1
+          ],
+          "cstarts_u8": [
+            2
+          ],
+          "cstarts": [
+            2
+          ],
+          "cends": [
+            2
+          ],
+          "source": [
+            1,
+            10,
+            1,
+            1
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 88,
+        "mismatches": [
+          {
+            "name": "__sp_hid",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "__sp_low",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "__sp_cnt_c11",
+            "declared": [],
+            "actual": [
+              1,
+              11,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "__sp_cnt_c9",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              9,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "__sp_f16_c9",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              9,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "counts",
+            "declared": [
+              1
+            ],
+            "actual": [
+              9
+            ]
+          },
+          {
+            "name": "row_sum",
+            "declared": [
+              1
+            ],
+            "actual": [
+              9
+            ]
+          },
+          {
+            "name": "col_sum",
+            "declared": [
+              1
+            ],
+            "actual": [
+              9
+            ]
+          },
+          {
+            "name": "count_good",
+            "declared": [
+              1
+            ],
+            "actual": [
+              9
+            ]
+          },
+          {
+            "name": "good_u8",
+            "declared": [
+              1
+            ],
+            "actual": [
+              9
+            ]
+          },
+          {
+            "name": "bg_ch0_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              9,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch0_b",
+            "declared": [],
+            "actual": [
+              1,
+              11,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch0_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch1_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              9,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch1_b",
+            "declared": [],
+            "actual": [
+              1,
+              11,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch1_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch2_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              9,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch2_b",
+            "declared": [],
+            "actual": [
+              1,
+              11,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch2_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch3_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              9,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch3_b",
+            "declared": [],
+            "actual": [
+              1,
+              11,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch3_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_ch0",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_pair0_ra",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              30
+            ]
+          },
+          {
+            "name": "bg_pair0_ha",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          },
+          {
+            "name": "bg_pair0_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              31
+            ]
+          },
+          {
+            "name": "bg_pair0_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_pair1_ra",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              30
+            ]
+          },
+          {
+            "name": "bg_pair1_ha",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          },
+          {
+            "name": "bg_pair1_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              31
+            ]
+          },
+          {
+            "name": "bg_pair1_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_pair2_ra",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              30
+            ]
+          },
+          {
+            "name": "bg_pair2_ha",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          },
+          {
+            "name": "bg_pair2_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              31
+            ]
+          },
+          {
+            "name": "bg_pair2_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "bg_row3_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              30
+            ]
+          },
+          {
+            "name": "bg_row18",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              30
+            ]
+          },
+          {
+            "name": "bg_b3_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              29
+            ]
+          },
+          {
+            "name": "bg_b3_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              31
+            ]
+          },
+          {
+            "name": "bg_b3_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              30
+            ]
+          },
+          {
+            "name": "bg_b4_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              31
+            ]
+          },
+          {
+            "name": "bg_b4_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              31
+            ]
+          },
+          {
+            "name": "bg_b4_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              30
+            ]
+          },
+          {
+            "name": "bg_b5_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              31
+            ]
+          },
+          {
+            "name": "bg_b5_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              31
+            ]
+          },
+          {
+            "name": "bg_b5_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              30
+            ]
+          },
+          {
+            "name": "bg_b7_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              31
+            ]
+          },
+          {
+            "name": "bg_b7_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              31
+            ]
+          },
+          {
+            "name": "bg_b7_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              30
+            ]
+          },
+          {
+            "name": "bg_b8_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              31
+            ]
+          },
+          {
+            "name": "bg_b8_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              31
+            ]
+          },
+          {
+            "name": "bg_b8_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              30
+            ]
+          },
+          {
+            "name": "bg_b9_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              29
+            ]
+          },
+          {
+            "name": "bg_b9_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              31
+            ]
+          },
+          {
+            "name": "bg_b9_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              30
+            ]
+          },
+          {
+            "name": "bg7",
+            "declared": [
+              1,
+              1,
+              1,
+              7
+            ],
+            "actual": [
+              1,
+              1,
+              18,
+              7
+            ]
+          },
+          {
+            "name": "fb0",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "pair0_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              31
+            ]
+          },
+          {
+            "name": "pair0_vb",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              31
+            ]
+          },
+          {
+            "name": "pair0_hb",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          },
+          {
+            "name": "pair0_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "pair1_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              31
+            ]
+          },
+          {
+            "name": "pair1_vb",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              31
+            ]
+          },
+          {
+            "name": "pair1_hb",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          },
+          {
+            "name": "pair1_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "pair2_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              31,
+              31
+            ]
+          },
+          {
+            "name": "pair2_vb",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              31
+            ]
+          },
+          {
+            "name": "pair2_hb",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              29,
+              29
+            ]
+          },
+          {
+            "name": "pair2_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fh_b3_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              31
+            ]
+          },
+          {
+            "name": "fh_b3_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              29
+            ]
+          },
+          {
+            "name": "fh_b3_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fh_b4_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              31
+            ]
+          },
+          {
+            "name": "fh_b4_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              31
+            ]
+          },
+          {
+            "name": "fh_b4_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fh_b5_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              31
+            ]
+          },
+          {
+            "name": "fh_b5_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              31
+            ]
+          },
+          {
+            "name": "fh_b5_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fh_b7_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              31
+            ]
+          },
+          {
+            "name": "fh_b7_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              31
+            ]
+          },
+          {
+            "name": "fh_b7_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fh_b8_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              31
+            ]
+          },
+          {
+            "name": "fh_b8_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              31
+            ]
+          },
+          {
+            "name": "fh_b8_c",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "fh_b9_a",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              31
+            ]
+          },
+          {
+            "name": "fh_b9_b",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              29
+            ]
+          },
+          {
+            "name": "fill30_dyn",
+            "declared": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              1,
+              30,
+              30
+            ]
+          },
+          {
+            "name": "output",
+            "declared": [
+              1,
+              10,
+              1,
+              1
+            ],
+            "actual": [
+              1,
+              10,
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "total": 265,
+          "candidate_right": 0,
+          "baseline_right": 265,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 265,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "model": "candidate",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,9,30,30} != {1,10,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "runtime_errors_total": 265,
+          "nonfinite_values_total": 0,
+          "perfect": false
+        },
+        "disable_all_threads4": {
+          "total": 265,
+          "candidate_right": 0,
+          "baseline_right": 265,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 265,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": {
+            "split": "train",
+            "index": 0,
+            "model": "candidate",
+            "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,9,30,30} != {1,10,30,30}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+          },
+          "runtime_errors_total": 265,
+          "nonfinite_values_total": 0,
+          "perfect": false
+        },
+        "default_threads1": {
+          "total": 265,
+          "candidate_right": 0,
+          "baseline_right": 0,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [],
+          "first_failure": null,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_19) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+          "perfect": false
+        },
+        "default_threads4": {
+          "total": 265,
+          "candidate_right": 0,
+          "baseline_right": 0,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [],
+          "first_failure": null,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_19) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+          "perfect": false
+        }
+      },
+      "fresh": {
+        "status": "not_run_before_mandatory_gates"
+      },
+      "accepted": false,
+      "reasons": [
+        "runtime_shape_witness",
+        "known4_or_runtime_error"
+      ]
+    },
+    {
+      "task": 268,
+      "label": "final_bool_cast_attribute",
+      "path": "scripts/golf/loop_8004_42_plus20/agent_high125_165_268_135/rejected_probes/task268_final_bool_cast_attribute_283ef02b7ace.onnx",
+      "sha256": "283ef02b7ace742cc5f807fa3448a867cc04d4bbc15e5803d386e8e802a5063b",
+      "baseline_sha256": "4c8ec91a517e5c3ba63c816f489aee1782a6de7ba75f49f3b638c7923e189a12",
+      "proof": {
+        "kind": "castlike_to_cast_and_remove_type_initializer",
+        "all_valid_inputs": "ONNX CastLike(x, bool_scalar) delegates to Cast(x,to=BOOL); _bool_like has no other consumer",
+        "floating_associativity": "none",
+        "rounding": "identical Cast conversion",
+        "overflow": "not applicable for BOOL cast"
+      },
+      "baseline_official_profile": {
+        "memory": 373,
+        "params": 47,
+        "cost": 420,
+        "score": 18.959745288722587,
+        "correct": true
+      },
+      "official_profile": {
+        "memory": 1272,
+        "params": 46,
+        "cost": 1318,
+        "score": 17.816129284937546,
+        "correct": true
+      },
+      "strict_lower": false,
+      "structural": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "finite_initializers": true,
+        "conv_bias_ub0": true,
+        "reasons": [],
+        "node_count": 49,
+        "initializer_count": 4,
+        "value_info_count": 48,
+        "op_histogram": {
+          "BitwiseAnd": 2,
+          "Cast": 2,
+          "CastLike": 2,
+          "CenterCropPad": 33,
+          "Concat": 1,
+          "ConstantOfShape": 3,
+          "Einsum": 1,
+          "Shape": 2,
+          "TfIdfVectorizer": 2,
+          "Where": 1
+        },
+        "nested_graph_count": 0,
+        "function_count": 0,
+        "sparse_initializer_count": 0,
+        "nonstatic_node_outputs": [],
+        "declared_output_shapes": {
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "conv_bias_findings": [],
+        "pass": true
+      },
+      "runtime_shape_trace": {
+        "traced": 49,
+        "actual_shapes": {
+          "_code_f": [
+            1
+          ],
+          "_code": [
+            1
+          ],
+          "_tok_shape": [
+            1
+          ],
+          "_tokens": [
+            30
+          ],
+          "_digits0_f": [
+            10
+          ],
+          "_digits_shape10": [
+            1
+          ],
+          "_digits0_f_h": [
+            10
+          ],
+          "_digits0_u8": [
+            10
+          ],
+          "_digits1_f": [
+            10
+          ],
+          "_digits1_f_h": [
+            10
+          ],
+          "_digits1_u8": [
+            10
+          ],
+          "_bits0_u8": [
+            5,
+            10
+          ],
+          "_bits1_u8": [
+            5,
+            10
+          ],
+          "_bits_u8": [
+            10,
+            10
+          ],
+          "_s31x2": [
+            1
+          ],
+          "_s29x2": [
+            1
+          ],
+          "_s30x2": [
+            1
+          ],
+          "_csp_0_31": [
+            31,
+            31
+          ],
+          "_csp_0_29": [
+            29,
+            29
+          ],
+          "_csp_0_30": [
+            30,
+            30
+          ],
+          "_csp_1_31": [
+            31,
+            31
+          ],
+          "_csp_1_29": [
+            29,
+            29
+          ],
+          "_csp_1_30": [
+            30,
+            30
+          ],
+          "_csp_2_31": [
+            31,
+            31
+          ],
+          "_csp_2_29": [
+            29,
+            29
+          ],
+          "_csp_2_30": [
+            30,
+            30
+          ],
+          "_csp_3_31": [
+            31,
+            31
+          ],
+          "_csp_3_29": [
+            29,
+            29
+          ],
+          "_csp_3_30": [
+            30,
+            30
+          ],
+          "_csp_4_31": [
+            31,
+            31
+          ],
+          "_csp_4_29": [
+            29,
+            29
+          ],
+          "_csp_4_30": [
+            30,
+            30
+          ],
+          "_csp_5_31": [
+            31,
+            31
+          ],
+          "_csp_5_29": [
+            29,
+            29
+          ],
+          "_csp_5_30": [
+            30,
+            30
+          ],
+          "_csp_6_31": [
+            31,
+            31
+          ],
+          "_csp_6_29": [
+            29,
+            29
+          ],
+          "_csp_6_30": [
+            30,
+            30
+          ],
+          "_csp_7_31": [
+            31,
+            31
+          ],
+          "_csp_7_29": [
+            29,
+            29
+          ],
+          "_csp_7_30": [
+            30,
+            30
+          ],
+          "_csp_8_31": [
+            31,
+            31
+          ],
+          "_csp_8_29": [
+            29,
+            29
+          ],
+          "_csp_8_30": [
+            30,
+            30
+          ],
+          "_csp_9_31": [
+            31,
+            31
+          ],
+          "_csp_9_29": [
+            29,
+            29
+          ],
+          "_csp_9_30": [
+            30,
+            30
+          ],
+          "_cond30_bool": [
+            30,
+            30
+          ],
+          "output": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        "mismatch_count": 39,
+        "mismatches": [
+          {
+            "name": "_tokens",
+            "declared": [
+              1
+            ],
+            "actual": [
+              30
+            ]
+          },
+          {
+            "name": "_digits0_f_h",
+            "declared": [
+              1
+            ],
+            "actual": [
+              10
+            ]
+          },
+          {
+            "name": "_digits0_u8",
+            "declared": [
+              1
+            ],
+            "actual": [
+              10
+            ]
+          },
+          {
+            "name": "_digits1_f_h",
+            "declared": [
+              1
+            ],
+            "actual": [
+              10
+            ]
+          },
+          {
+            "name": "_digits1_u8",
+            "declared": [
+              1
+            ],
+            "actual": [
+              10
+            ]
+          },
+          {
+            "name": "_bits0_u8",
+            "declared": [
+              5,
+              1
+            ],
+            "actual": [
+              5,
+              10
+            ]
+          },
+          {
+            "name": "_bits1_u8",
+            "declared": [
+              5,
+              1
+            ],
+            "actual": [
+              5,
+              10
+            ]
+          },
+          {
+            "name": "_bits_u8",
+            "declared": [
+              10,
+              1
+            ],
+            "actual": [
+              10,
+              10
+            ]
+          },
+          {
+            "name": "_csp_0_31",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              31,
+              31
+            ]
+          },
+          {
+            "name": "_csp_0_29",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              29,
+              29
+            ]
+          },
+          {
+            "name": "_csp_0_30",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          },
+          {
+            "name": "_csp_1_31",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              31,
+              31
+            ]
+          },
+          {
+            "name": "_csp_1_29",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              29,
+              29
+            ]
+          },
+          {
+            "name": "_csp_1_30",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          },
+          {
+            "name": "_csp_2_31",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              31,
+              31
+            ]
+          },
+          {
+            "name": "_csp_2_29",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              29,
+              29
+            ]
+          },
+          {
+            "name": "_csp_2_30",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          },
+          {
+            "name": "_csp_3_31",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              31,
+              31
+            ]
+          },
+          {
+            "name": "_csp_3_29",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              29,
+              29
+            ]
+          },
+          {
+            "name": "_csp_3_30",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          },
+          {
+            "name": "_csp_4_31",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              31,
+              31
+            ]
+          },
+          {
+            "name": "_csp_4_29",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              29,
+              29
+            ]
+          },
+          {
+            "name": "_csp_4_30",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          },
+          {
+            "name": "_csp_5_31",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              31,
+              31
+            ]
+          },
+          {
+            "name": "_csp_5_29",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              29,
+              29
+            ]
+          },
+          {
+            "name": "_csp_5_30",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          },
+          {
+            "name": "_csp_6_31",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              31,
+              31
+            ]
+          },
+          {
+            "name": "_csp_6_29",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              29,
+              29
+            ]
+          },
+          {
+            "name": "_csp_6_30",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          },
+          {
+            "name": "_csp_7_31",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              31,
+              31
+            ]
+          },
+          {
+            "name": "_csp_7_29",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              29,
+              29
+            ]
+          },
+          {
+            "name": "_csp_7_30",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          },
+          {
+            "name": "_csp_8_31",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              31,
+              31
+            ]
+          },
+          {
+            "name": "_csp_8_29",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              29,
+              29
+            ]
+          },
+          {
+            "name": "_csp_8_30",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          },
+          {
+            "name": "_csp_9_31",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              31,
+              31
+            ]
+          },
+          {
+            "name": "_csp_9_29",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              29,
+              29
+            ]
+          },
+          {
+            "name": "_csp_9_30",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          },
+          {
+            "name": "_cond30_bool",
+            "declared": [
+              1,
+              1
+            ],
+            "actual": [
+              30,
+              30
+            ]
+          }
+        ],
+        "nonfinite_values": 0,
+        "truthful": false
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "total": 266,
+          "candidate_right": 266,
+          "baseline_right": 266,
+          "raw_equal": 266,
+          "threshold_equal": 266,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "baseline_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null,
+          "runtime_errors_total": 0,
+          "nonfinite_values_total": 0,
+          "perfect": true
+        },
+        "default_threads1": {
+          "total": 266,
+          "candidate_right": 0,
+          "baseline_right": 0,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [],
+          "first_failure": null,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_21) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+          "perfect": false
+        },
+        "default_threads4": {
+          "total": 266,
+          "candidate_right": 0,
+          "baseline_right": 0,
+          "raw_equal": 0,
+          "threshold_equal": 0,
+          "runtime_errors": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "nonfinite_values": {
+            "candidate": 0,
+            "baseline": 0
+          },
+          "candidate_shapes": [],
+          "baseline_shapes": [],
+          "first_failure": null,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_21) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2).",
+          "perfect": false
+        }
+      },
+      "fresh": {
+        "status": "not_run_before_mandatory_gates"
+      },
+      "accepted": false,
+      "reasons": [
+        "not_strict_lower",
+        "runtime_shape_witness",
+        "known4_or_runtime_error"
+      ]
+    }
+  ],
+  "winners": [],
+  "verdict": "NO_SAFE_TARGETED_CANDIDATE"
+}

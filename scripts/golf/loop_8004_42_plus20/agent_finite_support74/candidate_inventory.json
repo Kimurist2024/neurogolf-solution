@@ -1,0 +1,1781 @@
+{
+  "baseline_zip": "submission_base_8005.17.zip",
+  "baseline_zip_sha256": "c48fa65401a5bd26d3ed1c556eee8f85c0a2063db313be6b96c73e86159b0a04",
+  "baseline_task013_sha256": "d0d2eea63b192eb7d9258f8408d00a72229dfbaef130887f64b708aef3536a2d",
+  "baseline_profile": {
+    "memory": 488,
+    "params": 150,
+    "cost": 638
+  },
+  "candidate_count": 8,
+  "rows": [
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r001.onnx",
+      "sha256": "ad4eb35978f3e38d1d3e2afdd55e55db871962cc2ea4c989675d9d583434103b",
+      "profile": {
+        "memory": 488,
+        "params": 148,
+        "cost": 636
+      },
+      "strictly_lower": true,
+      "static": {
+        "serialized_bytes": 3694,
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "reasons": [
+          "giant_einsum"
+        ],
+        "node_count": 55,
+        "initializer_count": 11,
+        "op_histogram": {
+          "Add": 4,
+          "And": 1,
+          "Cast": 16,
+          "Concat": 4,
+          "Div": 1,
+          "Einsum": 8,
+          "Greater": 2,
+          "Mod": 1,
+          "Mul": 4,
+          "Not": 1,
+          "Pad": 1,
+          "Sqrt": 2,
+          "Sub": 7,
+          "Where": 3
+        },
+        "max_einsum_inputs": 51,
+        "giant_einsum": true,
+        "giant_initializers": [],
+        "lookup": false,
+        "nested_graph_count": 0,
+        "functions_count": 0,
+        "sparse_initializer_count": 0,
+        "banned_ops": [],
+        "finite_initializers": true,
+        "nonstatic_node_outputs": [],
+        "static_memory": 488,
+        "params": 148,
+        "static_cost": 636,
+        "conv_bias_findings": [],
+        "pre_runtime_structural_pass": false
+      },
+      "exact_rewrite_proof": {
+        "target_vector": [
+          1.0,
+          0.0
+        ],
+        "qor_finite": true,
+        "qor_unique": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "changed_nodes": 4,
+        "unchanged_nodes": 51,
+        "other_initializers_byte_identical_and_only_tzero_removed": true,
+        "uses": [
+          {
+            "node_index": 4,
+            "before_equation": "bchw,ac,a->b",
+            "after_equation": "bchw,ac,aaaaa->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaaaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 5,
+            "before_equation": "bchw,ac,a,h->b",
+            "after_equation": "bchw,ac,aaaaa,h->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaaaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 6,
+            "before_equation": "bchw,ac,a,w->b",
+            "after_equation": "bchw,ac,aaaaa,w->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaaaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 54,
+            "before_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,U,GTU,Vk,W,GVW,EFG->bkhw",
+            "after_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,UUUUU,GTU,Vk,WWWWW,GVW,EFG->bkhw",
+            "replacements": [
+              {
+                "operand": 45,
+                "old_subscript": "U",
+                "new_subscript": "UUUUU",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              },
+              {
+                "operand": 48,
+                "old_subscript": "W",
+                "new_subscript": "WWWWW",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          }
+        ],
+        "real_semantics_equal_for_every_input_tensor": true
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        }
+      },
+      "known_perfect_all_configs": true
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r002.onnx",
+      "sha256": "a8577f8053f65aa3b22f0b7977daeae7af441803f28cc00b731662caac694986",
+      "profile": {
+        "memory": 488,
+        "params": 148,
+        "cost": 636
+      },
+      "strictly_lower": true,
+      "static": {
+        "serialized_bytes": 3694,
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "reasons": [
+          "giant_einsum"
+        ],
+        "node_count": 55,
+        "initializer_count": 11,
+        "op_histogram": {
+          "Add": 4,
+          "And": 1,
+          "Cast": 16,
+          "Concat": 4,
+          "Div": 1,
+          "Einsum": 8,
+          "Greater": 2,
+          "Mod": 1,
+          "Mul": 4,
+          "Not": 1,
+          "Pad": 1,
+          "Sqrt": 2,
+          "Sub": 7,
+          "Where": 3
+        },
+        "max_einsum_inputs": 51,
+        "giant_einsum": true,
+        "giant_initializers": [],
+        "lookup": false,
+        "nested_graph_count": 0,
+        "functions_count": 0,
+        "sparse_initializer_count": 0,
+        "banned_ops": [],
+        "finite_initializers": true,
+        "nonstatic_node_outputs": [],
+        "static_memory": 488,
+        "params": 148,
+        "static_cost": 636,
+        "conv_bias_findings": [],
+        "pre_runtime_structural_pass": false
+      },
+      "exact_rewrite_proof": {
+        "target_vector": [
+          1.0,
+          0.0
+        ],
+        "qor_finite": true,
+        "qor_unique": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "changed_nodes": 4,
+        "unchanged_nodes": 51,
+        "other_initializers_byte_identical_and_only_tzero_removed": true,
+        "uses": [
+          {
+            "node_index": 4,
+            "before_equation": "bchw,ac,a->b",
+            "after_equation": "bchw,ac,aaada->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaada",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 5,
+            "before_equation": "bchw,ac,a,h->b",
+            "after_equation": "bchw,ac,aaada,h->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaada",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 6,
+            "before_equation": "bchw,ac,a,w->b",
+            "after_equation": "bchw,ac,aaada,w->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaada",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 54,
+            "before_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,U,GTU,Vk,W,GVW,EFG->bkhw",
+            "after_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,UUUXU,GTU,Vk,WWWYW,GVW,EFG->bkhw",
+            "replacements": [
+              {
+                "operand": 45,
+                "old_subscript": "U",
+                "new_subscript": "UUUXU",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              },
+              {
+                "operand": 48,
+                "old_subscript": "W",
+                "new_subscript": "WWWYW",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          }
+        ],
+        "real_semantics_equal_for_every_input_tensor": true
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        }
+      },
+      "known_perfect_all_configs": true
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r003.onnx",
+      "sha256": "379452bc9d1914d57b38c671116cb2caf66b800f5e3ffe56c8ee68ba08fbeb4f",
+      "profile": {
+        "memory": 488,
+        "params": 148,
+        "cost": 636
+      },
+      "strictly_lower": true,
+      "static": {
+        "serialized_bytes": 3694,
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "reasons": [
+          "giant_einsum"
+        ],
+        "node_count": 55,
+        "initializer_count": 11,
+        "op_histogram": {
+          "Add": 4,
+          "And": 1,
+          "Cast": 16,
+          "Concat": 4,
+          "Div": 1,
+          "Einsum": 8,
+          "Greater": 2,
+          "Mod": 1,
+          "Mul": 4,
+          "Not": 1,
+          "Pad": 1,
+          "Sqrt": 2,
+          "Sub": 7,
+          "Where": 3
+        },
+        "max_einsum_inputs": 51,
+        "giant_einsum": true,
+        "giant_initializers": [],
+        "lookup": false,
+        "nested_graph_count": 0,
+        "functions_count": 0,
+        "sparse_initializer_count": 0,
+        "banned_ops": [],
+        "finite_initializers": true,
+        "nonstatic_node_outputs": [],
+        "static_memory": 488,
+        "params": 148,
+        "static_cost": 636,
+        "conv_bias_findings": [],
+        "pre_runtime_structural_pass": false
+      },
+      "exact_rewrite_proof": {
+        "target_vector": [
+          1.0,
+          0.0
+        ],
+        "qor_finite": true,
+        "qor_unique": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "changed_nodes": 4,
+        "unchanged_nodes": 51,
+        "other_initializers_byte_identical_and_only_tzero_removed": true,
+        "uses": [
+          {
+            "node_index": 4,
+            "before_equation": "bchw,ac,a->b",
+            "after_equation": "bchw,ac,aaadd->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaadd",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 5,
+            "before_equation": "bchw,ac,a,h->b",
+            "after_equation": "bchw,ac,aaadd,h->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaadd",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 6,
+            "before_equation": "bchw,ac,a,w->b",
+            "after_equation": "bchw,ac,aaadd,w->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaadd",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 54,
+            "before_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,U,GTU,Vk,W,GVW,EFG->bkhw",
+            "after_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,UUUXX,GTU,Vk,WWWYY,GVW,EFG->bkhw",
+            "replacements": [
+              {
+                "operand": 45,
+                "old_subscript": "U",
+                "new_subscript": "UUUXX",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              },
+              {
+                "operand": 48,
+                "old_subscript": "W",
+                "new_subscript": "WWWYY",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          }
+        ],
+        "real_semantics_equal_for_every_input_tensor": true
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        }
+      },
+      "known_perfect_all_configs": true
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r004.onnx",
+      "sha256": "b22924f95f7ddc6a1799059c454fb99ed80ff341f930b43e5a291f26075f3c6b",
+      "profile": {
+        "memory": 488,
+        "params": 148,
+        "cost": 636
+      },
+      "strictly_lower": true,
+      "static": {
+        "serialized_bytes": 3694,
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "reasons": [
+          "giant_einsum"
+        ],
+        "node_count": 55,
+        "initializer_count": 11,
+        "op_histogram": {
+          "Add": 4,
+          "And": 1,
+          "Cast": 16,
+          "Concat": 4,
+          "Div": 1,
+          "Einsum": 8,
+          "Greater": 2,
+          "Mod": 1,
+          "Mul": 4,
+          "Not": 1,
+          "Pad": 1,
+          "Sqrt": 2,
+          "Sub": 7,
+          "Where": 3
+        },
+        "max_einsum_inputs": 51,
+        "giant_einsum": true,
+        "giant_initializers": [],
+        "lookup": false,
+        "nested_graph_count": 0,
+        "functions_count": 0,
+        "sparse_initializer_count": 0,
+        "banned_ops": [],
+        "finite_initializers": true,
+        "nonstatic_node_outputs": [],
+        "static_memory": 488,
+        "params": 148,
+        "static_cost": 636,
+        "conv_bias_findings": [],
+        "pre_runtime_structural_pass": false
+      },
+      "exact_rewrite_proof": {
+        "target_vector": [
+          1.0,
+          0.0
+        ],
+        "qor_finite": true,
+        "qor_unique": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "changed_nodes": 4,
+        "unchanged_nodes": 51,
+        "other_initializers_byte_identical_and_only_tzero_removed": true,
+        "uses": [
+          {
+            "node_index": 4,
+            "before_equation": "bchw,ac,a->b",
+            "after_equation": "bchw,ac,aadaa->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aadaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 5,
+            "before_equation": "bchw,ac,a,h->b",
+            "after_equation": "bchw,ac,aadaa,h->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aadaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 6,
+            "before_equation": "bchw,ac,a,w->b",
+            "after_equation": "bchw,ac,aadaa,w->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aadaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 54,
+            "before_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,U,GTU,Vk,W,GVW,EFG->bkhw",
+            "after_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,UUXUU,GTU,Vk,WWYWW,GVW,EFG->bkhw",
+            "replacements": [
+              {
+                "operand": 45,
+                "old_subscript": "U",
+                "new_subscript": "UUXUU",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              },
+              {
+                "operand": 48,
+                "old_subscript": "W",
+                "new_subscript": "WWYWW",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          }
+        ],
+        "real_semantics_equal_for_every_input_tensor": true
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        }
+      },
+      "known_perfect_all_configs": true
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r005.onnx",
+      "sha256": "dc1d4ccb3722a22956527df6a5223bdb0587b9719b76346d608f95d542323c0a",
+      "profile": {
+        "memory": 488,
+        "params": 148,
+        "cost": 636
+      },
+      "strictly_lower": true,
+      "static": {
+        "serialized_bytes": 3694,
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "reasons": [
+          "giant_einsum"
+        ],
+        "node_count": 55,
+        "initializer_count": 11,
+        "op_histogram": {
+          "Add": 4,
+          "And": 1,
+          "Cast": 16,
+          "Concat": 4,
+          "Div": 1,
+          "Einsum": 8,
+          "Greater": 2,
+          "Mod": 1,
+          "Mul": 4,
+          "Not": 1,
+          "Pad": 1,
+          "Sqrt": 2,
+          "Sub": 7,
+          "Where": 3
+        },
+        "max_einsum_inputs": 51,
+        "giant_einsum": true,
+        "giant_initializers": [],
+        "lookup": false,
+        "nested_graph_count": 0,
+        "functions_count": 0,
+        "sparse_initializer_count": 0,
+        "banned_ops": [],
+        "finite_initializers": true,
+        "nonstatic_node_outputs": [],
+        "static_memory": 488,
+        "params": 148,
+        "static_cost": 636,
+        "conv_bias_findings": [],
+        "pre_runtime_structural_pass": false
+      },
+      "exact_rewrite_proof": {
+        "target_vector": [
+          1.0,
+          0.0
+        ],
+        "qor_finite": true,
+        "qor_unique": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "changed_nodes": 4,
+        "unchanged_nodes": 51,
+        "other_initializers_byte_identical_and_only_tzero_removed": true,
+        "uses": [
+          {
+            "node_index": 4,
+            "before_equation": "bchw,ac,a->b",
+            "after_equation": "bchw,ac,aadad->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aadad",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 5,
+            "before_equation": "bchw,ac,a,h->b",
+            "after_equation": "bchw,ac,aadad,h->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aadad",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 6,
+            "before_equation": "bchw,ac,a,w->b",
+            "after_equation": "bchw,ac,aadad,w->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aadad",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 54,
+            "before_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,U,GTU,Vk,W,GVW,EFG->bkhw",
+            "after_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,UUXUX,GTU,Vk,WWYWY,GVW,EFG->bkhw",
+            "replacements": [
+              {
+                "operand": 45,
+                "old_subscript": "U",
+                "new_subscript": "UUXUX",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              },
+              {
+                "operand": 48,
+                "old_subscript": "W",
+                "new_subscript": "WWYWY",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          }
+        ],
+        "real_semantics_equal_for_every_input_tensor": true
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        }
+      },
+      "known_perfect_all_configs": true
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r006.onnx",
+      "sha256": "5fb80b2bd47a42950cc7c7741c414e9c27538a3a8f9fcdf0989e04dd617e4489",
+      "profile": {
+        "memory": 488,
+        "params": 148,
+        "cost": 636
+      },
+      "strictly_lower": true,
+      "static": {
+        "serialized_bytes": 3694,
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "reasons": [
+          "giant_einsum"
+        ],
+        "node_count": 55,
+        "initializer_count": 11,
+        "op_histogram": {
+          "Add": 4,
+          "And": 1,
+          "Cast": 16,
+          "Concat": 4,
+          "Div": 1,
+          "Einsum": 8,
+          "Greater": 2,
+          "Mod": 1,
+          "Mul": 4,
+          "Not": 1,
+          "Pad": 1,
+          "Sqrt": 2,
+          "Sub": 7,
+          "Where": 3
+        },
+        "max_einsum_inputs": 51,
+        "giant_einsum": true,
+        "giant_initializers": [],
+        "lookup": false,
+        "nested_graph_count": 0,
+        "functions_count": 0,
+        "sparse_initializer_count": 0,
+        "banned_ops": [],
+        "finite_initializers": true,
+        "nonstatic_node_outputs": [],
+        "static_memory": 488,
+        "params": 148,
+        "static_cost": 636,
+        "conv_bias_findings": [],
+        "pre_runtime_structural_pass": false
+      },
+      "exact_rewrite_proof": {
+        "target_vector": [
+          1.0,
+          0.0
+        ],
+        "qor_finite": true,
+        "qor_unique": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "changed_nodes": 4,
+        "unchanged_nodes": 51,
+        "other_initializers_byte_identical_and_only_tzero_removed": true,
+        "uses": [
+          {
+            "node_index": 4,
+            "before_equation": "bchw,ac,a->b",
+            "after_equation": "bchw,ac,aaddd->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaddd",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 5,
+            "before_equation": "bchw,ac,a,h->b",
+            "after_equation": "bchw,ac,aaddd,h->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaddd",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 6,
+            "before_equation": "bchw,ac,a,w->b",
+            "after_equation": "bchw,ac,aaddd,w->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "aaddd",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 54,
+            "before_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,U,GTU,Vk,W,GVW,EFG->bkhw",
+            "after_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,UUXXX,GTU,Vk,WWYYY,GVW,EFG->bkhw",
+            "replacements": [
+              {
+                "operand": 45,
+                "old_subscript": "U",
+                "new_subscript": "UUXXX",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              },
+              {
+                "operand": 48,
+                "old_subscript": "W",
+                "new_subscript": "WWYYY",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          }
+        ],
+        "real_semantics_equal_for_every_input_tensor": true
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        }
+      },
+      "known_perfect_all_configs": true
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r009.onnx",
+      "sha256": "e99aaf228a00ec3072dbbe5801bfdfa966765ed45c1f0f5f995e9f282ddc461e",
+      "profile": {
+        "memory": 488,
+        "params": 148,
+        "cost": 636
+      },
+      "strictly_lower": true,
+      "static": {
+        "serialized_bytes": 3694,
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "reasons": [
+          "giant_einsum"
+        ],
+        "node_count": 55,
+        "initializer_count": 11,
+        "op_histogram": {
+          "Add": 4,
+          "And": 1,
+          "Cast": 16,
+          "Concat": 4,
+          "Div": 1,
+          "Einsum": 8,
+          "Greater": 2,
+          "Mod": 1,
+          "Mul": 4,
+          "Not": 1,
+          "Pad": 1,
+          "Sqrt": 2,
+          "Sub": 7,
+          "Where": 3
+        },
+        "max_einsum_inputs": 51,
+        "giant_einsum": true,
+        "giant_initializers": [],
+        "lookup": false,
+        "nested_graph_count": 0,
+        "functions_count": 0,
+        "sparse_initializer_count": 0,
+        "banned_ops": [],
+        "finite_initializers": true,
+        "nonstatic_node_outputs": [],
+        "static_memory": 488,
+        "params": 148,
+        "static_cost": 636,
+        "conv_bias_findings": [],
+        "pre_runtime_structural_pass": false
+      },
+      "exact_rewrite_proof": {
+        "target_vector": [
+          1.0,
+          0.0
+        ],
+        "qor_finite": true,
+        "qor_unique": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "changed_nodes": 4,
+        "unchanged_nodes": 51,
+        "other_initializers_byte_identical_and_only_tzero_removed": true,
+        "uses": [
+          {
+            "node_index": 4,
+            "before_equation": "bchw,ac,a->b",
+            "after_equation": "bchw,ac,adaaa->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "adaaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 5,
+            "before_equation": "bchw,ac,a,h->b",
+            "after_equation": "bchw,ac,adaaa,h->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "adaaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 6,
+            "before_equation": "bchw,ac,a,w->b",
+            "after_equation": "bchw,ac,adaaa,w->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "adaaa",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 54,
+            "before_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,U,GTU,Vk,W,GVW,EFG->bkhw",
+            "after_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,UXUUU,GTU,Vk,WYWWW,GVW,EFG->bkhw",
+            "replacements": [
+              {
+                "operand": 45,
+                "old_subscript": "U",
+                "new_subscript": "UXUUU",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              },
+              {
+                "operand": 48,
+                "old_subscript": "W",
+                "new_subscript": "WYWWW",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          }
+        ],
+        "real_semantics_equal_for_every_input_tensor": true
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        }
+      },
+      "known_perfect_all_configs": true
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task013_r010.onnx",
+      "sha256": "3ed3d20fb0c53a406d938b9894902273272bf4526b09abd6e94011119555601c",
+      "profile": {
+        "memory": 488,
+        "params": 148,
+        "cost": 636
+      },
+      "strictly_lower": true,
+      "static": {
+        "serialized_bytes": 3694,
+        "full_check": true,
+        "strict_data_prop": true,
+        "all_node_outputs_static_positive": true,
+        "standard_domains": true,
+        "conv_bias_ub0": true,
+        "reasons": [
+          "giant_einsum"
+        ],
+        "node_count": 55,
+        "initializer_count": 11,
+        "op_histogram": {
+          "Add": 4,
+          "And": 1,
+          "Cast": 16,
+          "Concat": 4,
+          "Div": 1,
+          "Einsum": 8,
+          "Greater": 2,
+          "Mod": 1,
+          "Mul": 4,
+          "Not": 1,
+          "Pad": 1,
+          "Sqrt": 2,
+          "Sub": 7,
+          "Where": 3
+        },
+        "max_einsum_inputs": 51,
+        "giant_einsum": true,
+        "giant_initializers": [],
+        "lookup": false,
+        "nested_graph_count": 0,
+        "functions_count": 0,
+        "sparse_initializer_count": 0,
+        "banned_ops": [],
+        "finite_initializers": true,
+        "nonstatic_node_outputs": [],
+        "static_memory": 488,
+        "params": 148,
+        "static_cost": 636,
+        "conv_bias_findings": [],
+        "pre_runtime_structural_pass": false
+      },
+      "exact_rewrite_proof": {
+        "target_vector": [
+          1.0,
+          0.0
+        ],
+        "qor_finite": true,
+        "qor_unique": [
+          -1.0,
+          0.0,
+          1.0
+        ],
+        "changed_nodes": 4,
+        "unchanged_nodes": 51,
+        "other_initializers_byte_identical_and_only_tzero_removed": true,
+        "uses": [
+          {
+            "node_index": 4,
+            "before_equation": "bchw,ac,a->b",
+            "after_equation": "bchw,ac,adaad->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "adaad",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 5,
+            "before_equation": "bchw,ac,a,h->b",
+            "after_equation": "bchw,ac,adaad,h->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "adaad",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 6,
+            "before_equation": "bchw,ac,a,w->b",
+            "after_equation": "bchw,ac,adaad,w->b",
+            "replacements": [
+              {
+                "operand": 2,
+                "old_subscript": "a",
+                "new_subscript": "adaad",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          },
+          {
+            "node_index": 54,
+            "before_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,U,GTU,Vk,W,GVW,EFG->bkhw",
+            "after_equation": "bshw,o,dh,ew,adefo,gh,iw,agijo,lk,m,clm,nk,p,cnp,ac,th,uw,v,qtuvo,xh,yw,z,qxyzo,Ak,B,rAB,Ck,D,rCD,qr,Hh,Iw,EHIJo,Kh,Lw,EKLMo,Nh,Ow,P,FNOPo,Qh,Rw,S,FQRSo,Tk,UXUUX,GTU,Vk,WYWWY,GVW,EFG->bkhw",
+            "replacements": [
+              {
+                "operand": 45,
+                "old_subscript": "U",
+                "new_subscript": "UXUUX",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              },
+              {
+                "operand": 48,
+                "old_subscript": "W",
+                "new_subscript": "WYWWY",
+                "effective_vector": [
+                  1.0,
+                  0.0
+                ],
+                "target_vector": [
+                  1.0,
+                  0.0
+                ],
+                "exact_equal": true
+              }
+            ]
+          }
+        ],
+        "real_semantics_equal_for_every_input_tensor": true
+      },
+      "known_four_configs": {
+        "disable_all_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "disable_all_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads1": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        },
+        "default_threads4": {
+          "right": 267,
+          "wrong": 0,
+          "runtime_errors": 0,
+          "nonfinite_values": 0,
+          "near_positive_values": 0,
+          "min_positive": 9.59765625,
+          "max_abs_raw": 5051724070912.0,
+          "first_failure": null,
+          "total": 267,
+          "perfect": true
+        }
+      },
+      "known_perfect_all_configs": true
+    }
+  ]
+}

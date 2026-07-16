@@ -1,0 +1,244 @@
+{
+  "worker": 0,
+  "pid": 23554,
+  "tasks": [
+    2,
+    13,
+    19,
+    36,
+    54,
+    76,
+    92,
+    109,
+    125,
+    160,
+    184,
+    201,
+    225,
+    238,
+    250,
+    268,
+    280,
+    310,
+    330,
+    349,
+    367,
+    374,
+    387,
+    394
+  ],
+  "baseline_failures": [
+    {
+      "task": 13,
+      "canonical_io": "contract:output:10:(1, 10, 1, 1)"
+    },
+    {
+      "task": 19,
+      "canonical_io": "contract:output:3:(1, 10, 30, 30)"
+    },
+    {
+      "task": 36,
+      "canonical_io": "contract:output:6:(1, 10, 30, 30)"
+    },
+    {
+      "task": 54,
+      "canonical_io": "contract:output:10:(1, 1, 1, 1)"
+    },
+    {
+      "task": 76,
+      "canonical_io": "contract:output:3:(1, 1, 1, 1)"
+    },
+    {
+      "task": 92,
+      "canonical_io": "contract:output:10:(1, 10, 1, 1)"
+    },
+    {
+      "task": 109,
+      "canonical_io": "contract:output:6:(1, 10, 19, 19)"
+    },
+    {
+      "task": 125,
+      "canonical_io": "contract:output:3:(1, 1, 20, 20)"
+    },
+    {
+      "task": 160,
+      "canonical_io": "contract:output:3:(1, 10, 30, 30)"
+    },
+    {
+      "task": 184,
+      "canonical_io": "contract:output:10:(1, 10, 30, 30)"
+    },
+    {
+      "task": 201,
+      "canonical_io": "contract:output:6:(1, 10, 30, 30)"
+    },
+    {
+      "task": 225,
+      "canonical_io": "contract:output:3:(1, 10, 30, 30)"
+    },
+    {
+      "task": 238,
+      "canonical_io": "contract:output:2:(1, 1, 1, 1)"
+    },
+    {
+      "task": 250,
+      "canonical_io": "contract:output:2:(1, 10, 30, 30)"
+    },
+    {
+      "task": 330,
+      "canonical_io": "contract:output:3:(1, 10, 22, 22)"
+    },
+    {
+      "task": 349,
+      "canonical_io": "contract:output:6:(1, 10, 30, 30)"
+    },
+    {
+      "task": 367,
+      "canonical_io": "contract:output:13:(1, 1, 1, 1)"
+    },
+    {
+      "task": 374,
+      "canonical_io": "contract:output:1:(1, 1, 1, 1)"
+    },
+    {
+      "task": 387,
+      "canonical_io": "contract:output:6:(1, 1, 1, 1)"
+    },
+    {
+      "task": 394,
+      "canonical_io": "contract:output:10:(1, 1, 30, 30)"
+    }
+  ],
+  "rows": [
+    {
+      "task": 268,
+      "label": "opt_extract_constant_to_initializer",
+      "authority_sha256": "4c8ec91a517e5c3ba63c816f489aee1782a6de7ba75f49f3b638c7923e189a12",
+      "candidate_sha256": "3e2d7100972b3f4708d24aac03bc386b431f8d9d55eff9e78cb8c5ec552c60a0",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "extract_constant_to_initializer"
+        ]
+      },
+      "authority_static": {
+        "memory": 193,
+        "params": 47,
+        "cost": 240
+      },
+      "candidate_static": {
+        "memory": 193,
+        "params": 47,
+        "cost": 240
+      },
+      "authority_official_cost": 420,
+      "status": "not_static_lower"
+    },
+    {
+      "task": 268,
+      "label": "opt_eliminate_shape_op",
+      "authority_sha256": "4c8ec91a517e5c3ba63c816f489aee1782a6de7ba75f49f3b638c7923e189a12",
+      "candidate_sha256": "b3ea2553c67a9fc62146320d2168cd80fbebfb9c859387cb03f216e091248c06",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "eliminate_shape_op"
+        ]
+      },
+      "authority_static": {
+        "memory": 193,
+        "params": 47,
+        "cost": 240
+      },
+      "candidate_static": {
+        "memory": null,
+        "params": null,
+        "cost": null
+      },
+      "authority_official_cost": 420,
+      "status": "structural_reject",
+      "structural": {
+        "checker": false,
+        "strict_shape_data_prop": false,
+        "static_positive": false,
+        "banned_ops": [],
+        "nested_graphs": [],
+        "conv_bias_ub": [],
+        "errors": [
+          "checker_or_inference:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (30) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (10) vs (1)\n(op_type:CenterCropPad): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (10) vs (1)\n"
+        ],
+        "cost": null
+      }
+    },
+    {
+      "task": 280,
+      "label": "opt_extract_constant_to_initializer",
+      "authority_sha256": "4169f7910456b0cc5cbf539e3b9b0407dfe8c574084474967dbaec12e5f5ff07",
+      "candidate_sha256": "a7a5bab1ef456e8b179e908d5c1c3a0e549c16a9cc642cc833658ae08b525324",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "extract_constant_to_initializer"
+        ]
+      },
+      "authority_static": {
+        "memory": 530,
+        "params": 202,
+        "cost": 732
+      },
+      "candidate_static": {
+        "memory": 530,
+        "params": 202,
+        "cost": 732
+      },
+      "authority_official_cost": 732,
+      "status": "not_static_lower"
+    },
+    {
+      "task": 280,
+      "label": "opt_eliminate_shape_op",
+      "authority_sha256": "4169f7910456b0cc5cbf539e3b9b0407dfe8c574084474967dbaec12e5f5ff07",
+      "candidate_sha256": "eec05cd28b20d7cbcbd43a12fad7d4d1fa7d2a4c61bc8b196ff323dd9f5b838f",
+      "detail": {
+        "seed": {},
+        "kind": "onnxoptimizer",
+        "passes": [
+          "eliminate_shape_op"
+        ]
+      },
+      "authority_static": {
+        "memory": 530,
+        "params": 202,
+        "cost": 732
+      },
+      "candidate_static": {
+        "memory": null,
+        "params": null,
+        "cost": null
+      },
+      "authority_official_cost": 732,
+      "status": "structural_reject",
+      "structural": {
+        "checker": false,
+        "strict_shape_data_prop": false,
+        "static_positive": false,
+        "banned_ops": [],
+        "nested_graphs": [],
+        "conv_bias_ub": [],
+        "errors": [
+          "checker_or_inference:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: up): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: down): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (30) vs (1)\n(op_type:CenterCropPad, node name: left): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: right): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 3: (30) vs (1)\n(op_type:CenterCropPad, node name: Ubasis_fast31_n2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (6) vs (3)\n(op_type:CenterCropPad, node name: Ubasis_fast31_n5): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (6) vs (3)\n(op_type:CenterCropPad, node name: Ubasis_fast31_n8): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (6) vs (3)\n(op_type:CenterCropPad, node name: Ubasis_fast31_n11): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (6) vs (3)\n(op_type:CenterCropPad, node name: Rhid30): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (6) vs (3)\n(op_type:CenterCropPad, node name: Vbasis_fast31_n2): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (6) vs (3)\n(op_type:CenterCropPad, node name: Vbasis_fast31_n5): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (6) vs (3)\n(op_type:CenterCropPad, node name: Vbasis_fast31_n8): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (6) vs (3)\n(op_type:CenterCropPad, node name: Vbasis_fast31_n11): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (6) vs (3)\n(op_type:CenterCropPad, node name: Chid30): [ShapeInferenceError] Inferred shape and existing shape differ in rank: (6) vs (3)\n"
+        ],
+        "cost": null
+      }
+    }
+  ],
+  "summary": {
+    "tasks": 24,
+    "baseline_failures": 20,
+    "variants": 4,
+    "finalists_known_exact": 0
+  }
+}

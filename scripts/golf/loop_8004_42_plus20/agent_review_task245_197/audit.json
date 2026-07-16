@@ -1,0 +1,1305 @@
+{
+  "authority": {
+    "zip": "submission_base_8009.46.zip",
+    "zip_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "member_sha256": "228b6ad9f24579bc6f5840da4e5a18f08343b76a26538f500e7e77d328d6e9d5",
+    "profile": {
+      "memory": 306,
+      "params": 79,
+      "cost": 385,
+      "correct": true
+    },
+    "structure": {
+      "nodes": 32,
+      "initializers": 9,
+      "params": 79,
+      "ops": {
+        "AffineGrid": 1,
+        "CastLike": 4,
+        "CenterCropPad": 8,
+        "Concat": 2,
+        "Div": 4,
+        "Einsum": 4,
+        "GatherND": 1,
+        "Log": 4,
+        "Mul": 1,
+        "ScatterND": 2,
+        "Shape": 1
+      },
+      "domains_standard": true,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nested_graphs": 0,
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "full_check": true,
+      "strict": true,
+      "strict_data_prop": false,
+      "strict_data_prop_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:AffineGrid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (2) vs (1)\n",
+      "pass_except_inherited_data_prop": true
+    },
+    "einsum_equations": {
+      "rr_code": "ncrs,c,r->",
+      "rc_code": "ncrs,c,s->",
+      "gr_code": "ncrs,r,abc->",
+      "gc_code": "ncrs,s,abc->"
+    }
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_8004_42_plus20/root_task245_regolf_196/task245_selu_cost384.onnx",
+    "sha256": "1b777a51c55fa98ed720fb993a9305bcca2218627592d23e46d8d5a6bce91ba9",
+    "profile": {
+      "memory": 306,
+      "params": 78,
+      "cost": 384,
+      "correct": true
+    },
+    "structure": {
+      "nodes": 32,
+      "initializers": 8,
+      "params": 78,
+      "ops": {
+        "AffineGrid": 1,
+        "CastLike": 4,
+        "CenterCropPad": 8,
+        "Concat": 2,
+        "Einsum": 4,
+        "GatherND": 1,
+        "Log": 4,
+        "Mul": 1,
+        "ScatterND": 2,
+        "Selu": 4,
+        "Shape": 1
+      },
+      "domains_standard": true,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "nested_graphs": 0,
+      "banned_ops": [],
+      "conv_bias_findings": [],
+      "full_check": true,
+      "strict": true,
+      "strict_data_prop": false,
+      "strict_data_prop_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:AffineGrid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (2) vs (1)\n",
+      "pass_except_inherited_data_prop": true
+    },
+    "einsum_equations": {
+      "rr_code": "ncrs,c,r->n",
+      "rc_code": "ncrs,c,s->n",
+      "gr_code": "ncrs,r,abc->n",
+      "gc_code": "ncrs,s,abc->n"
+    }
+  },
+  "graph_delta": {
+    "initializer_removed": [
+      "two_f16"
+    ],
+    "initializer_added": [],
+    "unchanged_initializers_bitwise": true,
+    "node_changes": [
+      {
+        "index": 9,
+        "base_op": "Einsum",
+        "candidate_op": "Einsum",
+        "base_inputs": [
+          "q4",
+          "red_sel_f16",
+          "pos_min_f16"
+        ],
+        "candidate_inputs": [
+          "q4",
+          "red_sel_f16",
+          "pos_min_f16"
+        ],
+        "output": [
+          "rr_code"
+        ],
+        "base_attrs": {
+          "equation": "b'ncrs,c,r->'"
+        },
+        "candidate_attrs": {
+          "equation": "b'ncrs,c,r->n'"
+        }
+      },
+      {
+        "index": 11,
+        "base_op": "Einsum",
+        "candidate_op": "Einsum",
+        "base_inputs": [
+          "q4",
+          "red_sel_f16",
+          "pos_min_f16"
+        ],
+        "candidate_inputs": [
+          "q4",
+          "red_sel_f16",
+          "pos_min_f16"
+        ],
+        "output": [
+          "rc_code"
+        ],
+        "base_attrs": {
+          "equation": "b'ncrs,c,s->'"
+        },
+        "candidate_attrs": {
+          "equation": "b'ncrs,c,s->n'"
+        }
+      },
+      {
+        "index": 13,
+        "base_op": "Einsum",
+        "candidate_op": "Einsum",
+        "base_inputs": [
+          "q4",
+          "pos_min_f16",
+          "theta_base_f16"
+        ],
+        "candidate_inputs": [
+          "q4",
+          "pos_min_f16",
+          "theta_base_f16"
+        ],
+        "output": [
+          "gr_code"
+        ],
+        "base_attrs": {
+          "equation": "b'ncrs,r,abc->'"
+        },
+        "candidate_attrs": {
+          "equation": "b'ncrs,r,abc->n'"
+        }
+      },
+      {
+        "index": 15,
+        "base_op": "Einsum",
+        "candidate_op": "Einsum",
+        "base_inputs": [
+          "q4",
+          "pos_min_f16",
+          "theta_base_f16"
+        ],
+        "candidate_inputs": [
+          "q4",
+          "pos_min_f16",
+          "theta_base_f16"
+        ],
+        "output": [
+          "gc_code"
+        ],
+        "base_attrs": {
+          "equation": "b'ncrs,s,abc->'"
+        },
+        "candidate_attrs": {
+          "equation": "b'ncrs,s,abc->n'"
+        }
+      },
+      {
+        "index": 17,
+        "base_op": "Div",
+        "candidate_op": "Selu",
+        "base_inputs": [
+          "rr_log",
+          "two_f16"
+        ],
+        "candidate_inputs": [
+          "rr_log"
+        ],
+        "output": [
+          "rr_f16"
+        ],
+        "base_attrs": {},
+        "candidate_attrs": {
+          "alpha": "1.0",
+          "gamma": "0.5"
+        }
+      },
+      {
+        "index": 18,
+        "base_op": "Div",
+        "candidate_op": "Selu",
+        "base_inputs": [
+          "rc_log",
+          "two_f16"
+        ],
+        "candidate_inputs": [
+          "rc_log"
+        ],
+        "output": [
+          "rc_f16"
+        ],
+        "base_attrs": {},
+        "candidate_attrs": {
+          "alpha": "1.0",
+          "gamma": "0.5"
+        }
+      },
+      {
+        "index": 19,
+        "base_op": "Div",
+        "candidate_op": "Selu",
+        "base_inputs": [
+          "gr_log",
+          "two_f16"
+        ],
+        "candidate_inputs": [
+          "gr_log"
+        ],
+        "output": [
+          "gr_f16"
+        ],
+        "base_attrs": {},
+        "candidate_attrs": {
+          "alpha": "1.0",
+          "gamma": "0.5"
+        }
+      },
+      {
+        "index": 20,
+        "base_op": "Div",
+        "candidate_op": "Selu",
+        "base_inputs": [
+          "gc_log",
+          "two_f16"
+        ],
+        "candidate_inputs": [
+          "gc_log"
+        ],
+        "output": [
+          "gc_f16"
+        ],
+        "base_attrs": {},
+        "candidate_attrs": {
+          "alpha": "1.0",
+          "gamma": "0.5"
+        }
+      }
+    ],
+    "value_info_changes": {
+      "gc_code": {
+        "base": [],
+        "candidate": [
+          1
+        ]
+      },
+      "gc_log": {
+        "base": [],
+        "candidate": [
+          1
+        ]
+      },
+      "gr_code": {
+        "base": [],
+        "candidate": [
+          1
+        ]
+      },
+      "gr_log": {
+        "base": [],
+        "candidate": [
+          1
+        ]
+      },
+      "rc_code": {
+        "base": [],
+        "candidate": [
+          1
+        ]
+      },
+      "rc_log": {
+        "base": [],
+        "candidate": [
+          1
+        ]
+      },
+      "rr_code": {
+        "base": [],
+        "candidate": [
+          1
+        ]
+      },
+      "rr_log": {
+        "base": [],
+        "candidate": [
+          1
+        ]
+      }
+    },
+    "whitelist_exact": true
+  },
+  "generator_proof": {
+    "hash": "a1570a43",
+    "sprite": "conway_sprite(5,5,14) starts with 25 cells and removes at most 14; no row/column may vanish",
+    "red_row": "a retained local row=4 cell maps to source row >=4; at least one other retained cell has a strictly positive exponential weight, so rr_code>1",
+    "red_col": "a retained local col=4 cell maps to source col >=4; at least one other retained cell has a strictly positive exponential weight, so rc_code>1",
+    "green_row": "green corners include row brow+6>=6; q4, pos_min, theta_base are nonnegative and theta_base has positive sum, so gr_code>1",
+    "green_col": "green corners include col bcol+6>=6; q4, pos_min, theta_base are nonnegative and theta_base has positive sum, so gc_code>1",
+    "log_consequence": "all four Log inputs are >1, hence all four Log outputs are strictly positive or +inf, never negative/zero/NaN"
+  },
+  "einsum_rank_proof": {
+    "batch_n": 1,
+    "authority": "each equation reduces n,c,r,s to a scalar; Div by two_f16[1] broadcasts it to shape[1]",
+    "candidate": "each equation retains n and reduces c,r,s directly to shape[1]",
+    "real_equivalence": "for static n=1 both contain exactly the same contraction terms and the downstream carrier is shape[1]",
+    "measured_code_log_bitwise": true
+  },
+  "operator_exhaustive_nonnegative_f16": {
+    "input_count": 31745,
+    "bit_range": [
+      "0x0000",
+      "0x7c00"
+    ],
+    "modes": {
+      "disable_all_threads1": {
+        "different_count": 0,
+        "bitwise_equal": true,
+        "includes_positive_infinity": true
+      },
+      "disable_all_threads4": {
+        "different_count": 0,
+        "bitwise_equal": true,
+        "includes_positive_infinity": true
+      },
+      "default_threads1": {
+        "different_count": 0,
+        "bitwise_equal": true,
+        "includes_positive_infinity": true
+      },
+      "default_threads4": {
+        "different_count": 0,
+        "bitwise_equal": true,
+        "includes_positive_infinity": true
+      }
+    },
+    "selu_cross_mode_bitwise_equal": true,
+    "pass": true
+  },
+  "evaluations": {
+    "known": {
+      "disable_all_threads1": {
+        "total": 267,
+        "valid": 267,
+        "candidate_right": 267,
+        "authority_right": 267,
+        "final_raw_equal": 267,
+        "final_threshold_equal": 267,
+        "code_log_bitwise_equal": 267,
+        "runtime_errors": {
+          "candidate": 0,
+          "authority": 0
+        },
+        "candidate_final_nonfinite": 0,
+        "first_failure": null,
+        "source_stats": {
+          "rr_code": {
+            "min": 63.4375,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          },
+          "rc_code": {
+            "min": 63.3125,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 13
+          },
+          "gr_code": {
+            "min": 441.5,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          },
+          "gc_code": {
+            "min": 441.5,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          }
+        },
+        "log_stats": {
+          "rr_log": {
+            "min": 4.1484375,
+            "max": 13.2421875,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "rc_log": {
+            "min": 4.1484375,
+            "max": 13.15625,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "gr_log": {
+            "min": 6.08984375,
+            "max": 12.2890625,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "gc_log": {
+            "min": 6.08984375,
+            "max": 12.2734375,
+            "le_zero": 0,
+            "nonfinite": 0
+          }
+        },
+        "runtime_errors_total": 0,
+        "pass": true
+      },
+      "disable_all_threads4": {
+        "total": 267,
+        "valid": 267,
+        "candidate_right": 267,
+        "authority_right": 267,
+        "final_raw_equal": 267,
+        "final_threshold_equal": 267,
+        "code_log_bitwise_equal": 267,
+        "runtime_errors": {
+          "candidate": 0,
+          "authority": 0
+        },
+        "candidate_final_nonfinite": 0,
+        "first_failure": null,
+        "source_stats": {
+          "rr_code": {
+            "min": 63.4375,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          },
+          "rc_code": {
+            "min": 63.3125,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 13
+          },
+          "gr_code": {
+            "min": 441.5,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          },
+          "gc_code": {
+            "min": 441.5,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          }
+        },
+        "log_stats": {
+          "rr_log": {
+            "min": 4.1484375,
+            "max": 13.2421875,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "rc_log": {
+            "min": 4.1484375,
+            "max": 13.15625,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "gr_log": {
+            "min": 6.08984375,
+            "max": 12.2890625,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "gc_log": {
+            "min": 6.08984375,
+            "max": 12.2734375,
+            "le_zero": 0,
+            "nonfinite": 0
+          }
+        },
+        "runtime_errors_total": 0,
+        "pass": true
+      },
+      "default_threads1": {
+        "total": 267,
+        "valid": 267,
+        "candidate_right": 267,
+        "authority_right": 267,
+        "final_raw_equal": 267,
+        "final_threshold_equal": 267,
+        "code_log_bitwise_equal": 267,
+        "runtime_errors": {
+          "candidate": 0,
+          "authority": 0
+        },
+        "candidate_final_nonfinite": 0,
+        "first_failure": null,
+        "source_stats": {
+          "rr_code": {
+            "min": 63.4375,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          },
+          "rc_code": {
+            "min": 63.3125,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 13
+          },
+          "gr_code": {
+            "min": 441.5,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          },
+          "gc_code": {
+            "min": 441.5,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          }
+        },
+        "log_stats": {
+          "rr_log": {
+            "min": 4.1484375,
+            "max": 13.2421875,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "rc_log": {
+            "min": 4.1484375,
+            "max": 13.15625,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "gr_log": {
+            "min": 6.08984375,
+            "max": 12.2890625,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "gc_log": {
+            "min": 6.08984375,
+            "max": 12.2734375,
+            "le_zero": 0,
+            "nonfinite": 0
+          }
+        },
+        "runtime_errors_total": 0,
+        "pass": true
+      },
+      "default_threads4": {
+        "total": 267,
+        "valid": 267,
+        "candidate_right": 267,
+        "authority_right": 267,
+        "final_raw_equal": 267,
+        "final_threshold_equal": 267,
+        "code_log_bitwise_equal": 267,
+        "runtime_errors": {
+          "candidate": 0,
+          "authority": 0
+        },
+        "candidate_final_nonfinite": 0,
+        "first_failure": null,
+        "source_stats": {
+          "rr_code": {
+            "min": 63.4375,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          },
+          "rc_code": {
+            "min": 63.3125,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 13
+          },
+          "gr_code": {
+            "min": 441.5,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          },
+          "gc_code": {
+            "min": 441.5,
+            "max": "+inf",
+            "le_one": 0,
+            "nonfinite": 15
+          }
+        },
+        "log_stats": {
+          "rr_log": {
+            "min": 4.1484375,
+            "max": 13.2421875,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "rc_log": {
+            "min": 4.1484375,
+            "max": 13.15625,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "gr_log": {
+            "min": 6.08984375,
+            "max": 12.2890625,
+            "le_zero": 0,
+            "nonfinite": 0
+          },
+          "gc_log": {
+            "min": 6.08984375,
+            "max": 12.2734375,
+            "le_zero": 0,
+            "nonfinite": 0
+          }
+        },
+        "runtime_errors_total": 0,
+        "pass": true
+      }
+    },
+    "fresh": [
+      {
+        "seed": 245197101,
+        "count": 3000,
+        "modes": {
+          "disable_all_threads1": {
+            "total": 3000,
+            "valid": 3000,
+            "candidate_right": 3000,
+            "authority_right": 3000,
+            "final_raw_equal": 3000,
+            "final_threshold_equal": 3000,
+            "code_log_bitwise_equal": 3000,
+            "runtime_errors": {
+              "candidate": 0,
+              "authority": 0
+            },
+            "candidate_final_nonfinite": 0,
+            "first_failure": null,
+            "source_stats": {
+              "rr_code": {
+                "min": 63.3125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 134
+              },
+              "rc_code": {
+                "min": 63.28125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 154
+              },
+              "gr_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 169
+              },
+              "gc_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 225
+              }
+            },
+            "log_stats": {
+              "rr_log": {
+                "min": 4.1484375,
+                "max": 13.4296875,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "rc_log": {
+                "min": 4.1484375,
+                "max": 13.4609375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gr_log": {
+                "min": 6.08984375,
+                "max": 12.328125,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gc_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              }
+            },
+            "runtime_errors_total": 0,
+            "pass": true
+          },
+          "disable_all_threads4": {
+            "total": 3000,
+            "valid": 3000,
+            "candidate_right": 3000,
+            "authority_right": 3000,
+            "final_raw_equal": 3000,
+            "final_threshold_equal": 3000,
+            "code_log_bitwise_equal": 3000,
+            "runtime_errors": {
+              "candidate": 0,
+              "authority": 0
+            },
+            "candidate_final_nonfinite": 0,
+            "first_failure": null,
+            "source_stats": {
+              "rr_code": {
+                "min": 63.3125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 134
+              },
+              "rc_code": {
+                "min": 63.28125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 154
+              },
+              "gr_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 169
+              },
+              "gc_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 225
+              }
+            },
+            "log_stats": {
+              "rr_log": {
+                "min": 4.1484375,
+                "max": 13.4296875,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "rc_log": {
+                "min": 4.1484375,
+                "max": 13.4609375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gr_log": {
+                "min": 6.08984375,
+                "max": 12.328125,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gc_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              }
+            },
+            "runtime_errors_total": 0,
+            "pass": true
+          },
+          "default_threads1": {
+            "total": 3000,
+            "valid": 3000,
+            "candidate_right": 3000,
+            "authority_right": 3000,
+            "final_raw_equal": 3000,
+            "final_threshold_equal": 3000,
+            "code_log_bitwise_equal": 3000,
+            "runtime_errors": {
+              "candidate": 0,
+              "authority": 0
+            },
+            "candidate_final_nonfinite": 0,
+            "first_failure": null,
+            "source_stats": {
+              "rr_code": {
+                "min": 63.3125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 134
+              },
+              "rc_code": {
+                "min": 63.28125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 154
+              },
+              "gr_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 169
+              },
+              "gc_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 225
+              }
+            },
+            "log_stats": {
+              "rr_log": {
+                "min": 4.1484375,
+                "max": 13.4296875,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "rc_log": {
+                "min": 4.1484375,
+                "max": 13.4609375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gr_log": {
+                "min": 6.08984375,
+                "max": 12.328125,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gc_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              }
+            },
+            "runtime_errors_total": 0,
+            "pass": true
+          },
+          "default_threads4": {
+            "total": 3000,
+            "valid": 3000,
+            "candidate_right": 3000,
+            "authority_right": 3000,
+            "final_raw_equal": 3000,
+            "final_threshold_equal": 3000,
+            "code_log_bitwise_equal": 3000,
+            "runtime_errors": {
+              "candidate": 0,
+              "authority": 0
+            },
+            "candidate_final_nonfinite": 0,
+            "first_failure": null,
+            "source_stats": {
+              "rr_code": {
+                "min": 63.3125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 134
+              },
+              "rc_code": {
+                "min": 63.28125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 154
+              },
+              "gr_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 169
+              },
+              "gc_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 225
+              }
+            },
+            "log_stats": {
+              "rr_log": {
+                "min": 4.1484375,
+                "max": 13.4296875,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "rc_log": {
+                "min": 4.1484375,
+                "max": 13.4609375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gr_log": {
+                "min": 6.08984375,
+                "max": 12.328125,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gc_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              }
+            },
+            "runtime_errors_total": 0,
+            "pass": true
+          }
+        }
+      },
+      {
+        "seed": 245197102,
+        "count": 3000,
+        "modes": {
+          "disable_all_threads1": {
+            "total": 3000,
+            "valid": 3000,
+            "candidate_right": 3000,
+            "authority_right": 3000,
+            "final_raw_equal": 3000,
+            "final_threshold_equal": 3000,
+            "code_log_bitwise_equal": 3000,
+            "runtime_errors": {
+              "candidate": 0,
+              "authority": 0
+            },
+            "candidate_final_nonfinite": 0,
+            "first_failure": null,
+            "source_stats": {
+              "rr_code": {
+                "min": 63.3125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 156
+              },
+              "rc_code": {
+                "min": 63.28125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 180
+              },
+              "gr_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 189
+              },
+              "gc_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 214
+              }
+            },
+            "log_stats": {
+              "rr_log": {
+                "min": 4.1484375,
+                "max": 13.453125,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "rc_log": {
+                "min": 4.1484375,
+                "max": 13.4609375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gr_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gc_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              }
+            },
+            "runtime_errors_total": 0,
+            "pass": true
+          },
+          "disable_all_threads4": {
+            "total": 3000,
+            "valid": 3000,
+            "candidate_right": 3000,
+            "authority_right": 3000,
+            "final_raw_equal": 3000,
+            "final_threshold_equal": 3000,
+            "code_log_bitwise_equal": 3000,
+            "runtime_errors": {
+              "candidate": 0,
+              "authority": 0
+            },
+            "candidate_final_nonfinite": 0,
+            "first_failure": null,
+            "source_stats": {
+              "rr_code": {
+                "min": 63.3125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 156
+              },
+              "rc_code": {
+                "min": 63.28125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 180
+              },
+              "gr_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 189
+              },
+              "gc_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 214
+              }
+            },
+            "log_stats": {
+              "rr_log": {
+                "min": 4.1484375,
+                "max": 13.453125,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "rc_log": {
+                "min": 4.1484375,
+                "max": 13.4609375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gr_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gc_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              }
+            },
+            "runtime_errors_total": 0,
+            "pass": true
+          },
+          "default_threads1": {
+            "total": 3000,
+            "valid": 3000,
+            "candidate_right": 3000,
+            "authority_right": 3000,
+            "final_raw_equal": 3000,
+            "final_threshold_equal": 3000,
+            "code_log_bitwise_equal": 3000,
+            "runtime_errors": {
+              "candidate": 0,
+              "authority": 0
+            },
+            "candidate_final_nonfinite": 0,
+            "first_failure": null,
+            "source_stats": {
+              "rr_code": {
+                "min": 63.3125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 156
+              },
+              "rc_code": {
+                "min": 63.28125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 180
+              },
+              "gr_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 189
+              },
+              "gc_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 214
+              }
+            },
+            "log_stats": {
+              "rr_log": {
+                "min": 4.1484375,
+                "max": 13.453125,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "rc_log": {
+                "min": 4.1484375,
+                "max": 13.4609375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gr_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gc_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              }
+            },
+            "runtime_errors_total": 0,
+            "pass": true
+          },
+          "default_threads4": {
+            "total": 3000,
+            "valid": 3000,
+            "candidate_right": 3000,
+            "authority_right": 3000,
+            "final_raw_equal": 3000,
+            "final_threshold_equal": 3000,
+            "code_log_bitwise_equal": 3000,
+            "runtime_errors": {
+              "candidate": 0,
+              "authority": 0
+            },
+            "candidate_final_nonfinite": 0,
+            "first_failure": null,
+            "source_stats": {
+              "rr_code": {
+                "min": 63.3125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 156
+              },
+              "rc_code": {
+                "min": 63.28125,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 180
+              },
+              "gr_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 189
+              },
+              "gc_code": {
+                "min": 441.5,
+                "max": "+inf",
+                "le_one": 0,
+                "nonfinite": 214
+              }
+            },
+            "log_stats": {
+              "rr_log": {
+                "min": 4.1484375,
+                "max": 13.453125,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "rc_log": {
+                "min": 4.1484375,
+                "max": 13.4609375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gr_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              },
+              "gc_log": {
+                "min": 6.08984375,
+                "max": 12.3359375,
+                "le_zero": 0,
+                "nonfinite": 0
+              }
+            },
+            "runtime_errors_total": 0,
+            "pass": true
+          }
+        }
+      }
+    ]
+  },
+  "domain_aggregate": {
+    "source_min": {
+      "rr_code": 63.3125,
+      "rc_code": 63.28125,
+      "gr_code": 441.5,
+      "gc_code": 441.5
+    },
+    "source_max": {
+      "rr_code": "+inf",
+      "rc_code": "+inf",
+      "gr_code": "+inf",
+      "gc_code": "+inf"
+    },
+    "source_le_one": {
+      "rr_code": 0,
+      "rc_code": 0,
+      "gr_code": 0,
+      "gc_code": 0
+    },
+    "source_nonfinite": {
+      "rr_code": 1220,
+      "rc_code": 1388,
+      "gr_code": 1492,
+      "gc_code": 1816
+    },
+    "log_min": {
+      "rr_log": 4.1484375,
+      "rc_log": 4.1484375,
+      "gr_log": 6.08984375,
+      "gc_log": 6.08984375
+    },
+    "log_max": {
+      "rr_log": 13.453125,
+      "rc_log": 13.4609375,
+      "gr_log": 12.3359375,
+      "gc_log": 12.3359375
+    },
+    "log_le_zero": {
+      "rr_log": 0,
+      "rc_log": 0,
+      "gr_log": 0,
+      "gc_log": 0
+    },
+    "log_nonfinite": {
+      "rr_log": 0,
+      "rc_log": 0,
+      "gr_log": 0,
+      "gc_log": 0
+    },
+    "strict_positive": true
+  },
+  "data_prop_inheritance": {
+    "same_error_text": true,
+    "authority_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:AffineGrid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (2) vs (1)\n",
+    "candidate_error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:AffineGrid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (2) vs (1)\n",
+    "new_structural_errors": 0
+  },
+  "summary": {
+    "strict_lower": true,
+    "cost_delta": 1,
+    "graph_delta_whitelisted": true,
+    "known_four_configs_pass": true,
+    "fresh_four_configs_pass": true,
+    "operator_pass": true,
+    "source_domain_pass": true,
+    "data_prop_inherited_only": true,
+    "runtime_errors_total": 0,
+    "candidate_final_nonfinite_total": 0,
+    "accepted": true
+  },
+  "integrity": {
+    "before": {
+      "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+      "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78",
+      "others/71407": "51c7d120dc3e6d65650288a7e9fbb02db92405ff17546f1df25d004e27210ae0"
+    },
+    "after": {
+      "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+      "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78",
+      "others/71407": "51c7d120dc3e6d65650288a7e9fbb02db92405ff17546f1df25d004e27210ae0"
+    },
+    "unchanged": true
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "lane": "b8",
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_score": 7999.13,
+  "decision": "NO_STRICT_WINNER",
+  "projected_score_gain": 0.0,
+  "failures": [
+    {
+      "task": 80,
+      "baseline_cost": 3051,
+      "baseline_sha256": "1e4d062972baa11072061b05f70bc2b4658b1413dd61940b7aabf3e86e75c400",
+      "baseline_fresh": {
+        "unique_seeds": [800801, 800802],
+        "valid_per_seed": 5000,
+        "disabled_all": "10000/10000, errors=0",
+        "default_ort": "10000/10000, errors=0"
+      },
+      "gate_reached": "structural_floor",
+      "reason": "No strictly cheaper generator-complete rewrite was found. The dominant 900-byte final label gather, 400-byte float Conv decode, 360-byte row Gather, and required 10x10 center/branch tensors are structural in the current rule engine. Prior broad and branch scans found only incorrect cheaper variants."
+    },
+    {
+      "task": 138,
+      "baseline_cost": 2731,
+      "baseline_sha256": "9fb018e474f80e3e60be93c263bdf764aa9bca084fffc61cfd4f0df8f905cdc9",
+      "baseline_fresh": {
+        "unique_seeds": [800801, 800802],
+        "valid_per_seed": 5000,
+        "disabled_all": "10000/10000, errors=0",
+        "default_ort": "10000/10000, errors=0"
+      },
+      "attempt": "Shape(qcol) constant fold",
+      "gate_reached": "full_checker",
+      "reason": "The apparent memory win depends on the incumbent's pre-existing CenterCropPad shape mismatch. Replacing the dynamic Shape with an honest one-axis initializer exposes the true channel dimension and full checker rejects the stale hidden output shape. No new shape cloak was introduced, and the attempt was rejected before scoring."
+    },
+    {
+      "task": 349,
+      "baseline_cost": 3964,
+      "baseline_sha256": "c43799655275fc2d5000c1ed35c5f5d3fccc9ece494784a0ff6200f9a61a3741",
+      "cheaper_candidates": [
+        {
+          "path": "scripts/golf/loop_7999_13/lane_b8/candidates/task349_radius_tables_len9.onnx",
+          "sha256": "7b0d24472211acd05037de7ea7784b31c969ae0f59c5cb3fe5babbabae6358d7",
+          "cost": 3956,
+          "delta": -8,
+          "known": "267/267",
+          "margin_min": 2.0
+        },
+        {
+          "path": "scripts/golf/loop_7999_13/lane_b8/candidates/task349_radius_tables_len9_top_relation.onnx",
+          "sha256": "462db4a37505681023ae186541c797b850290e8bd475b762eec1f7d150950f26",
+          "cost": 3954,
+          "delta": -10,
+          "known": "267/267",
+          "margin_min": 2.0
+        }
+      ],
+      "fresh_failure": {
+        "seed": 349101,
+        "valid_case": 421,
+        "wrong": 1,
+        "errors": 0,
+        "different_output_entries": 12,
+        "reproduced_by_exact_baseline": true,
+        "reproduced_by_prior_4861_nominal_sound_model": true,
+        "source": "task349_failure_case.json"
+      },
+      "gate_reached": "fresh_generator",
+      "reason": "REJECT: the exact 3964 incumbent contains a hardcoded patch keyed only by patch_sumR=495564. On the reproduced generator case that signature is a false positive; updates -24576/+24576 at rows 9/12 erase the green halo at rows 9..11, cols 13..14. Both cheaper variants preserve that failure, so neither is generator-complete."
+    }
+  ],
+  "root_mutations_by_lane": []
+}

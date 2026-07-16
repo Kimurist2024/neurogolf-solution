@@ -1,0 +1,164 @@
+{
+  "verdict": "PASS",
+  "admission": "SAFE_EXACT_PARENT_PASS_THROUGH",
+  "parent": {
+    "path": "others/71407/task066.onnx",
+    "sha256": "2e3bd402f667062b32858d3a11182d3e8050d833d2974d1d37fbadd688f4648b",
+    "memory": 346,
+    "params": 215,
+    "cost": 561,
+    "known_correct": true
+  },
+  "candidate": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_task066_residual_208/task066_residual_cost551.onnx",
+    "sha256": "622b3b28271806949bb18e8b9517335d49cb0383410caf36a19e064d95798dd3",
+    "memory": 346,
+    "params": 205,
+    "cost": 551,
+    "known_correct": true
+  },
+  "score_gain": 0.01798609636978192,
+  "graph_delta": {
+    "changed_node_indices": [22, 23],
+    "changed_outputs": ["Gv", "Gh"],
+    "removed_initializers": ["greenhalf10"],
+    "added_initializers": [],
+    "all_other_nodes_initializers_and_model_shell_proto_equal": true
+  },
+  "selector_proof": {
+    "left_contraction": "sum_aj Uchan[a,d]*Trow[a,j]*Tcol[a,j] = Uchan[0,d]",
+    "right_contraction": "sum_ek Vchan[e,d]*Tcol[e,k]*z1[k] = Vchan[2,d]",
+    "scalar_contraction": "sum_flm Uchan[f,l]*Vchan[f,l]*Tcol[f,m]*z1[m] = -1",
+    "product": "Uchan[0,d]*Vchan[2,d]*(-1) = e3[d]",
+    "factor_value_set": [-1, 0, 1],
+    "unique_nonzero_term": {
+      "a": 0,
+      "j": 0,
+      "e": 2,
+      "k": 1,
+      "f": 2,
+      "l": 0,
+      "m": 1,
+      "d": 3,
+      "value": 1
+    },
+    "unused_selector_entries": "numeric zero; offline contraction may spell them -0 instead of +0",
+    "rounding_bound": "0 <= Gv,Gh <= 2*(2**20-1) = 2097150 < 2**24",
+    "float32_exact": true
+  },
+  "inherited_support_proof": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_task066_selu_200/geometry_proof.json",
+    "sha256": "653bb75258ef8e80d9967d1b64ac8a61d75aff0400b38bdb524c1fae447c121f",
+    "S_geometry": 15336,
+    "U_geometry": 449928,
+    "with_flip_and_xpose": 1861056,
+    "counterexample": null,
+    "still_applicable": true,
+    "reason": "only Gv/Gh changed and the exact e3 reconstruction leaves their numeric result and the following uint32 carrier unchanged"
+  },
+  "full_pair_audit": {
+    "configs": [
+      "disable_all_threads1",
+      "disable_all_threads4",
+      "default_threads1",
+      "default_threads4"
+    ],
+    "trace": [
+      "Gv",
+      "Gh",
+      "Gf",
+      "G",
+      "Ov",
+      "Oh",
+      "O",
+      "aMask",
+      "bMask",
+      "selF",
+      "selLog",
+      "selQ",
+      "ti"
+    ],
+    "known": {
+      "cases_per_config": 266,
+      "candidate_gold_per_config": 266,
+      "final_raw_equal_per_config": 266,
+      "every_trace_raw_equal_per_config": 266
+    },
+    "fresh": [
+      {
+        "seed": 66212001,
+        "cases_per_config": 2000,
+        "candidate_gold_per_config": 1898,
+        "final_raw_equal_per_config": 2000,
+        "every_trace_raw_equal_per_config": 2000
+      },
+      {
+        "seed": 66212002,
+        "cases_per_config": 2000,
+        "candidate_gold_per_config": 1904,
+        "final_raw_equal_per_config": 2000,
+        "every_trace_raw_equal_per_config": 2000
+      }
+    ],
+    "case_config_pairs": 17064,
+    "runtime_errors": 0,
+    "first_difference": null,
+    "pass": true
+  },
+  "directed_Gv_Gh_audit": {
+    "cases_per_config": 804,
+    "families": [
+      "all-zero",
+      "misaligned zero",
+      "vertical exact maximum",
+      "horizontal exact maximum",
+      "all 20x20 cyan/green basis-coordinate pairs per orientation"
+    ],
+    "Gv_raw_equal_per_config": 804,
+    "Gh_raw_equal_per_config": 804,
+    "signed_zero_raw_differences_per_config": 0,
+    "Gv_Gh_nonfinite_per_config": 0,
+    "observed_max": 2097150,
+    "pass": true
+  },
+  "nonfinite_single_config": {
+    "known": {
+      "selF": 6,
+      "all_other_traced_tensors_and_final": 0
+    },
+    "fresh_66212001": {
+      "selF": 50,
+      "all_other_traced_tensors_and_final": 0
+    },
+    "fresh_66212002": {
+      "selF": 50,
+      "all_other_traced_tensors_and_final": 0
+    },
+    "interpretation": "selF +inf is inherited and raw-identical; selLog, selQ, ti and final remain finite"
+  },
+  "structural": {
+    "full_check": true,
+    "strict_shape_inference": true,
+    "strict_data_propagating_shape_inference": true,
+    "truthful_runtime_shapes_disable_all": true,
+    "truthful_runtime_shapes_default": true,
+    "nodes": 77,
+    "node_outputs": 79,
+    "initializers": 17,
+    "params": 205,
+    "largest_initializer_params": 60,
+    "standard_domains": true,
+    "functions": 0,
+    "nested_graphs": 0,
+    "sparse_initializers": 0,
+    "banned_ops": [],
+    "risky_lookup_ops": [],
+    "conv_family_short_bias_ub": [],
+    "unresolved_or_dynamic_node_outputs": []
+  },
+  "protected_root_hashes": {
+    "submission.zip": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "all_scores.csv": "8c99379ce1c77e6894d53b593ccb5ae10f01c3c70e5666f832b1b2454c709b78",
+    "staged_task066.onnx": "2e3bd402f667062b32858d3a11182d3e8050d833d2974d1d37fbadd688f4648b"
+  }
+}

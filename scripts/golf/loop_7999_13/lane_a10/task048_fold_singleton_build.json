@@ -1,0 +1,13 @@
+{
+  "candidate": "scripts/golf/loop_7999_13/lane_a10/task048_fold_singleton_axes.onnx",
+  "sha256": "992a2311e0d9f26e2d3b3f9b1cdf631dc1ca3dca8e6566fbf42edd0d24426737",
+  "proof": {
+    "before": "einsum(input[bchw], cw[c], ww[w], one[nm]) -> bnhm",
+    "after": "einsum(input[bchw], cw[nc], ww[wm]) -> bnhm",
+    "coefficient_values_unchanged": true,
+    "coefficient_element_counts_unchanged": true,
+    "removed": "einsum_nm=float32[1,1]=1"
+  },
+  "parameter_reduction": 1,
+  "node_delta": 0
+}

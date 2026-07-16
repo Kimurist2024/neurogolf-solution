@@ -1,0 +1,1935 @@
+{
+  "authority": "submission_base_8009.46.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "tasks": {
+    "159": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks159_199_259_301/current/task159.onnx",
+      "sha256": "713788f565b23b9bcae618295557b6cb298345b2591524901dcdd64a7338b934",
+      "profile": {
+        "memory": 146,
+        "params": 142,
+        "cost": 288
+      },
+      "nodes": 25,
+      "initializers": 17,
+      "structure": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "canonical_io": false,
+        "standard_domains": true,
+        "no_banned": true,
+        "no_lookup": true,
+        "no_shape_cloak": false,
+        "no_new_giant_einsum_note": "incumbent max Einsum arity=21; no new Einsum was built",
+        "conv_bias_ub0": true,
+        "ops": {
+          "Add": 1,
+          "Cast": 6,
+          "CastLike": 3,
+          "Concat": 3,
+          "Div": 3,
+          "Einsum": 5,
+          "GroupNormalization": 1,
+          "Log": 1,
+          "Resize": 1,
+          "Slice": 1
+        },
+        "runtime_shapes": {
+          "truthful": false,
+          "profiled_outputs": 20,
+          "mismatch_count": 3,
+          "mismatches": {
+            "safe_name_39": {
+              "declared": [
+                1,
+                1
+              ],
+              "runtime": [
+                2,
+                30
+              ]
+            },
+            "safe_name_33": {
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                1,
+                3,
+                3
+              ]
+            },
+            "output": {
+              "declared": [
+                1,
+                10,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          }
+        },
+        "errors": []
+      },
+      "mechanical": {
+        "dead_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializer_aliases": [],
+        "common_subexpressions": [],
+        "obvious_noops": [],
+        "initializer_axis_ranks": {
+          "K2feat": {
+            "shape": [
+              2,
+              10
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2
+            ]
+          },
+          "Kseed2d": {
+            "shape": [
+              2,
+              5
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2
+            ]
+          },
+          "S1": {
+            "shape": [
+              2,
+              3,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2,
+              2
+            ]
+          },
+          "S2": {
+            "shape": [
+              2,
+              3,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              3,
+              2
+            ]
+          },
+          "G": {
+            "shape": [
+              3,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2
+            ]
+          },
+          "Tmap": {
+            "shape": [
+              3,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2
+            ]
+          },
+          "EqA1": {
+            "shape": [
+              2,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2
+            ]
+          },
+          "Cmap": {
+            "shape": [
+              3,
+              2,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              3,
+              2,
+              2
+            ]
+          }
+        },
+        "consumer_counts": {
+          "Cmap": 2,
+          "EqA1": 1,
+          "G": 2,
+          "K2feat": 2,
+          "Kseed2d": 2,
+          "S1": 2,
+          "S2": 2,
+          "Tmap": 1,
+          "cEnd32": 1,
+          "color_power": 3,
+          "desc30": 2,
+          "gn_sb": 2,
+          "one16v": 4,
+          "red_mask": 1,
+          "slice_axes": 1,
+          "slice_sizes": 1,
+          "start_const": 1
+        }
+      },
+      "optimizer_scan": {
+        "profiles": 27,
+        "changed": 27,
+        "strict_lower": [],
+        "rows": [
+          {
+            "profile": "nop",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_cast",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_dropout",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_flatten",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_consecutive_idempotent_ops",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_pad",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_concat",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_split",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_expand",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_shape_gather",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_slice_after_shape",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_transpose",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_concats",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_reduce_unsqueeze",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_squeezes",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_transposes",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_reshape",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_with_unit",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_common_subexpression",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_unsqueezes",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_deadend",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_identity",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_shape_op",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_slices",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_unused_initializer",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_duplicate_initializer",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "all_safe",
+            "nodes": 25,
+            "initializers": 17,
+            "cost": {
+              "memory": 146,
+              "params": 142,
+              "cost": 288
+            },
+            "changed": true,
+            "strict_lower": false
+          }
+        ]
+      }
+    },
+    "199": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks159_199_259_301/current/task199.onnx",
+      "sha256": "d236c732d0df80270154b8ee593e17768dd54fc8dcec4aac93e752474651383e",
+      "profile": {
+        "memory": 0,
+        "params": 261,
+        "cost": 261
+      },
+      "nodes": 1,
+      "initializers": 8,
+      "structure": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "canonical_io": true,
+        "standard_domains": true,
+        "no_banned": true,
+        "no_lookup": true,
+        "no_shape_cloak": true,
+        "no_new_giant_einsum_note": "incumbent max Einsum arity=17; no new Einsum was built",
+        "conv_bias_ub0": true,
+        "ops": {
+          "Einsum": 1
+        },
+        "runtime_shapes": {
+          "truthful": true,
+          "profiled_outputs": 1,
+          "mismatch_count": 0,
+          "mismatches": {}
+        },
+        "errors": []
+      },
+      "mechanical": {
+        "dead_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializer_aliases": [],
+        "common_subexpressions": [],
+        "obvious_noops": [],
+        "initializer_axis_ranks": {
+          "C": {
+            "shape": [
+              4,
+              10
+            ],
+            "axis_unfolding_ranks": [
+              4,
+              4
+            ]
+          },
+          "K": {
+            "shape": [
+              4,
+              3
+            ],
+            "axis_unfolding_ranks": [
+              3,
+              3
+            ]
+          },
+          "A__R": {
+            "shape": [
+              3,
+              4,
+              3
+            ],
+            "axis_unfolding_ranks": [
+              3,
+              4,
+              3
+            ]
+          },
+          "P": {
+            "shape": [
+              4,
+              30
+            ],
+            "axis_unfolding_ranks": [
+              4,
+              4
+            ]
+          },
+          "BT": {
+            "shape": [
+              3,
+              3
+            ],
+            "axis_unfolding_ranks": [
+              3,
+              3
+            ]
+          },
+          "M": {
+            "shape": [
+              3,
+              3
+            ],
+            "axis_unfolding_ranks": [
+              3,
+              3
+            ]
+          },
+          "DU": {
+            "shape": [
+              4,
+              5
+            ],
+            "axis_unfolding_ranks": [
+              4,
+              4
+            ]
+          },
+          "DT": {
+            "shape": [
+              3,
+              5
+            ],
+            "axis_unfolding_ranks": [
+              3,
+              3
+            ]
+          }
+        },
+        "consumer_counts": {
+          "A__R": 1,
+          "BT": 1,
+          "C": 2,
+          "DT": 1,
+          "DU": 2,
+          "K": 3,
+          "M": 1,
+          "P": 4
+        }
+      },
+      "optimizer_scan": {
+        "profiles": 27,
+        "changed": 0,
+        "strict_lower": [],
+        "rows": [
+          {
+            "profile": "nop",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_cast",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_dropout",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_flatten",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_consecutive_idempotent_ops",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_pad",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_concat",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_split",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_expand",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_shape_gather",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_slice_after_shape",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_transpose",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_concats",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_reduce_unsqueeze",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_squeezes",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_transposes",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_reshape",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_with_unit",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_common_subexpression",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_unsqueezes",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_deadend",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_identity",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_shape_op",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_slices",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_unused_initializer",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_duplicate_initializer",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "all_safe",
+            "nodes": 1,
+            "initializers": 8,
+            "cost": {
+              "memory": 0,
+              "params": 261,
+              "cost": 261
+            },
+            "changed": false,
+            "strict_lower": false
+          }
+        ]
+      }
+    },
+    "259": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks159_199_259_301/current/task259.onnx",
+      "sha256": "ec0806a9cd6b934e59eee227c74de76881f37a4277ac7aa7bf5a88c6d0893ba6",
+      "profile": {
+        "memory": 134,
+        "params": 53,
+        "cost": 187
+      },
+      "nodes": 36,
+      "initializers": 7,
+      "structure": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "canonical_io": false,
+        "standard_domains": true,
+        "no_banned": true,
+        "no_lookup": false,
+        "no_shape_cloak": false,
+        "no_new_giant_einsum_note": "incumbent max Einsum arity=7; no new Einsum was built",
+        "conv_bias_ub0": true,
+        "ops": {
+          "Cast": 4,
+          "CastLike": 2,
+          "Ceil": 1,
+          "CenterCropPad": 1,
+          "Concat": 4,
+          "Div": 2,
+          "Einsum": 4,
+          "Floor": 1,
+          "Gather": 2,
+          "GroupNormalization": 1,
+          "LeakyRelu": 2,
+          "Log": 2,
+          "MatMul": 1,
+          "Max": 1,
+          "Min": 1,
+          "Mod": 1,
+          "Pow": 2,
+          "QuantizeLinear": 1,
+          "ReduceMax": 1,
+          "ScatterElements": 1,
+          "Shape": 1
+        },
+        "runtime_shapes": {
+          "truthful": false,
+          "profiled_outputs": 30,
+          "mismatch_count": 1,
+          "mismatches": {
+            "output": {
+              "declared": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "runtime": [
+                1,
+                10,
+                30,
+                30
+              ]
+            }
+          }
+        },
+        "errors": []
+      },
+      "mechanical": {
+        "dead_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializer_aliases": [],
+        "common_subexpressions": [],
+        "obvious_noops": [],
+        "initializer_axis_ranks": {
+          "u8_16": {
+            "shape": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "axis_unfolding_ranks": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "invT": {
+            "shape": [
+              1,
+              1,
+              3,
+              3,
+              1
+            ],
+            "axis_unfolding_ranks": [
+              1,
+              1,
+              3,
+              3,
+              1
+            ]
+          }
+        },
+        "consumer_counts": {
+          "base": 4,
+          "color": 4,
+          "idx2": 3,
+          "invT": 1,
+          "pos": 7,
+          "u16_256": 1,
+          "u8_16": 5
+        }
+      },
+      "optimizer_scan": {
+        "profiles": 27,
+        "changed": 25,
+        "strict_lower": [],
+        "rows": [
+          {
+            "profile": "nop",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_cast",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_dropout",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_flatten",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_consecutive_idempotent_ops",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_pad",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_concat",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_split",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_expand",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_shape_gather",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_slice_after_shape",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_transpose",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_concats",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_reduce_unsqueeze",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_squeezes",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_transposes",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_reshape",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_with_unit",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_common_subexpression",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_unsqueezes",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_deadend",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_identity",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_shape_op",
+            "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: digits_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (3) vs (1)\n"
+          },
+          {
+            "profile": "fuse_consecutive_slices",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_unused_initializer",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_duplicate_initializer",
+            "nodes": 36,
+            "initializers": 7,
+            "cost": {
+              "memory": 134,
+              "params": 53,
+              "cost": 187
+            },
+            "changed": true,
+            "strict_lower": false
+          },
+          {
+            "profile": "all_safe",
+            "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:CenterCropPad, node name: digits_hid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 2: (3) vs (1)\n"
+          }
+        ]
+      }
+    },
+    "301": {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_tasks159_199_259_301/current/task301.onnx",
+      "sha256": "f613c7078ca9e622061826376e4c628cb59e19bbba1d8ac208fc26ea0f2f4a0d",
+      "profile": {
+        "memory": 118,
+        "params": 122,
+        "cost": 240
+      },
+      "nodes": 11,
+      "initializers": 11,
+      "structure": {
+        "full_check": true,
+        "strict_data_prop": true,
+        "canonical_io": true,
+        "standard_domains": true,
+        "no_banned": true,
+        "no_lookup": true,
+        "no_shape_cloak": true,
+        "no_new_giant_einsum_note": "incumbent max Einsum arity=51; no new Einsum was built",
+        "conv_bias_ub0": true,
+        "ops": {
+          "Cast": 1,
+          "Div": 1,
+          "Einsum": 2,
+          "Gather": 1,
+          "Mul": 1,
+          "Pad": 3,
+          "ReduceMax": 1,
+          "Sum": 1
+        },
+        "runtime_shapes": {
+          "truthful": true,
+          "profiled_outputs": 11,
+          "mismatch_count": 0,
+          "mismatches": {}
+        },
+        "errors": []
+      },
+      "mechanical": {
+        "dead_nodes": [],
+        "unused_initializers": [],
+        "duplicate_initializer_aliases": [],
+        "common_subexpressions": [],
+        "obvious_noops": [],
+        "initializer_axis_ranks": {
+          "P": {
+            "shape": [
+              2,
+              30
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2
+            ]
+          },
+          "H": {
+            "shape": [
+              10,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2
+            ]
+          },
+          "W": {
+            "shape": [
+              2,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2
+            ]
+          },
+          "Srow": {
+            "shape": [
+              2,
+              2,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2,
+              2
+            ]
+          },
+          "Krow": {
+            "shape": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "Tkb2": {
+            "shape": [
+              2,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2
+            ]
+          },
+          "Tkc1": {
+            "shape": [
+              2,
+              2
+            ],
+            "axis_unfolding_ranks": [
+              2,
+              2
+            ]
+          }
+        },
+        "consumer_counts": {
+          "H": 1,
+          "Krow": 7,
+          "P": 7,
+          "Srow": 11,
+          "Tkb2": 9,
+          "Tkc1": 1,
+          "W": 1,
+          "axis_neg2": 4,
+          "neg_half_f16": 5,
+          "pad_feat": 3,
+          "vKcol2": 3
+        }
+      },
+      "optimizer_scan": {
+        "profiles": 27,
+        "changed": 0,
+        "strict_lower": [],
+        "rows": [
+          {
+            "profile": "nop",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_cast",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_dropout",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_flatten",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_consecutive_idempotent_ops",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_pad",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_concat",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_split",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_expand",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_shape_gather",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_slice_after_shape",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_transpose",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_concats",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_reduce_unsqueeze",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_squeezes",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_transposes",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_reshape",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_nop_with_unit",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_common_subexpression",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_unsqueezes",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_deadend",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_identity",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_shape_op",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "fuse_consecutive_slices",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_unused_initializer",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "eliminate_duplicate_initializer",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          },
+          {
+            "profile": "all_safe",
+            "nodes": 11,
+            "initializers": 11,
+            "cost": {
+              "memory": 118,
+              "params": 122,
+              "cost": 240
+            },
+            "changed": false,
+            "strict_lower": false
+          }
+        ]
+      }
+    }
+  },
+  "task301_rejected_candidate": {
+    "path": "scripts/golf/loop_8004_42_plus20/agent_tasks159_199_259_301/rejected/task301_cyan_max_exact_REJECT.onnx",
+    "sha256": "1e5e1242305eb6e396b13dcd11c27f72ae481ed31250858830ff8d56c96ea325",
+    "baseline_profile": {
+      "memory": 118,
+      "params": 122,
+      "cost": 240
+    },
+    "candidate_profile": {
+      "memory": 114,
+      "params": 122,
+      "cost": 236
+    },
+    "strict_lower": true,
+    "counterexample": {
+      "global_index": 0,
+      "split": "train",
+      "split_index": 0,
+      "channel_counts": [
+        42.0,
+        3.0,
+        2.0,
+        1.0,
+        4.0,
+        6.0,
+        5.0,
+        0.0,
+        7.0,
+        0.0
+      ],
+      "B_background_max": 42.0,
+      "n_cyan_channel8": 7.0,
+      "raw_different_elements": 287,
+      "decoded_different_elements": 217,
+      "baseline_correct": true,
+      "candidate_correct": false
+    },
+    "classification": "REJECT_KNOWN_RAW_AND_DECODED_MISMATCH",
+    "fresh_not_run": "known exact-equivalence gate failed on first example"
+  },
+  "winner": null,
+  "conclusion": "No strict-lower candidate passes the structural and exactness gates."
+}

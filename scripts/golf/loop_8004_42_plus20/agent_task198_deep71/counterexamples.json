@@ -1,0 +1,3562 @@
+{
+  "task": 198,
+  "generator_hash": "83302e8f",
+  "seed": 47000199,
+  "examples_generated": 1000,
+  "reference_correct": 1000,
+  "candidate_count": 16,
+  "cost_histogram": {
+    "554": 1,
+    "558": 1,
+    "562": 1,
+    "578": 1,
+    "589": 2,
+    "595": 6,
+    "598": 1,
+    "628": 1,
+    "645": 1,
+    "655": 1
+  },
+  "all_candidates_have_legal_counterexample": true,
+  "candidates": [
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r01_static554_fba9c56b94.onnx",
+      "sha256": "fba9c56b94eceb31067d2c07c7cb69be2e53c5a342304755d776c62d754277c2",
+      "official_like": {
+        "memory": 24,
+        "params": 530,
+        "cost": 554,
+        "score": 18.682835313252717,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ght->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ght,p,rz,rl,plt,cw,cx,pxt,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 6.153292393847043e-13,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 6,
+        "parameters": {
+          "size": 5,
+          "minisize": 5,
+          "period": 6,
+          "color": 8,
+          "height": 29,
+          "width": 29,
+          "hole_count": 13,
+          "allowed_hole_count_min": 10,
+          "allowed_hole_count_max": 25,
+          "holes": [
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              26
+            ],
+            [
+              11,
+              10
+            ],
+            [
+              11,
+              16
+            ],
+            [
+              17,
+              8
+            ],
+            [
+              17,
+              13
+            ],
+            [
+              17,
+              14
+            ],
+            [
+              17,
+              25
+            ],
+            [
+              17,
+              26
+            ],
+            [
+              23,
+              26
+            ],
+            [
+              27,
+              23
+            ],
+            [
+              28,
+              17
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 2,
+        "selector": {
+          "values": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "argmax": 2
+        },
+        "mismatch_bits": 4,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          10,
+          2
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 7216.5244140625,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 4903.421875,
+              "positive_max": 29051037696.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -91692.3125,
+              "expected_off_max": 75652.8046875
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 4903.421875,
+              "positive_max": 29051037696.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -91692.3125,
+              "expected_off_max": 75652.8046875
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 4903.421875,
+              "positive_max": 29051037696.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -91692.3125,
+              "expected_off_max": 75652.8046875
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 4903.421875,
+              "positive_max": 29051037696.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -91692.3125,
+              "expected_off_max": 75652.8046875
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r02_static558_a637286227.onnx",
+      "sha256": "a6372862272280259f36365cb5d2421c54abd124f200c104bdfd6c89f2193f15",
+      "official_like": {
+        "memory": 24,
+        "params": 534,
+        "cost": 558,
+        "score": 18.67564103761869,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 26,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 10,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ght,te,tf->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 26,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ght,te,tf,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 3.845807746154402e-14,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 6,
+        "parameters": {
+          "size": 5,
+          "minisize": 5,
+          "period": 6,
+          "color": 8,
+          "height": 29,
+          "width": 29,
+          "hole_count": 13,
+          "allowed_hole_count_min": 10,
+          "allowed_hole_count_max": 25,
+          "holes": [
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              26
+            ],
+            [
+              11,
+              10
+            ],
+            [
+              11,
+              16
+            ],
+            [
+              17,
+              8
+            ],
+            [
+              17,
+              13
+            ],
+            [
+              17,
+              14
+            ],
+            [
+              17,
+              25
+            ],
+            [
+              17,
+              26
+            ],
+            [
+              23,
+              26
+            ],
+            [
+              27,
+              23
+            ],
+            [
+              28,
+              17
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 2,
+        "selector": {
+          "values": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "argmax": 2
+        },
+        "mismatch_bits": 4,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          10,
+          2
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 6673.888671875,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 5099.3076171875,
+              "positive_max": 29051031552.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -91980.8046875,
+              "expected_off_max": 75890.8203125
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 5099.3076171875,
+              "positive_max": 29051031552.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -91980.8046875,
+              "expected_off_max": 75890.8203125
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 5099.3076171875,
+              "positive_max": 29051031552.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -91980.8046875,
+              "expected_off_max": 75890.8203125
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 5099.3076171875,
+              "positive_max": 29051031552.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -91980.8046875,
+              "expected_off_max": 75890.8203125
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r03_static562_5a3a82c897.onnx",
+      "sha256": "5a3a82c897a1ebbaffc078f00ccb2a5f2777f9e73b2690064894a41f3fb4600b",
+      "official_like": {
+        "memory": 24,
+        "params": 538,
+        "cost": 562,
+        "score": 18.66849815010631,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ghef,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 7.8639389687998e-35,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 3,
+        "parameters": {
+          "size": 5,
+          "minisize": 3,
+          "period": 4,
+          "color": 6,
+          "height": 19,
+          "width": 19,
+          "hole_count": 15,
+          "allowed_hole_count_min": 8,
+          "allowed_hole_count_max": 15,
+          "holes": [
+            [
+              3,
+              10
+            ],
+            [
+              5,
+              15
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              6,
+              15
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              9,
+              3
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              11,
+              17
+            ],
+            [
+              14,
+              11
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              15,
+              12
+            ],
+            [
+              15,
+              13
+            ],
+            [
+              16,
+              15
+            ],
+            [
+              18,
+              7
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 0,
+        "selector": {
+          "values": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "argmax": 0
+        },
+        "mismatch_bits": 4,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          17,
+          18
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 3327205.0,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 3327205.0,
+              "positive_max": 28484980178944.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -58061832.0,
+              "expected_off_max": 70371800.0
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 3327205.0,
+              "positive_max": 28484980178944.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -58061832.0,
+              "expected_off_max": 70371800.0
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 3327205.0,
+              "positive_max": 28484980178944.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -58061832.0,
+              "expected_off_max": 70371800.0
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 3327205.0,
+              "positive_max": 28484980178944.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -58061832.0,
+              "expected_off_max": 70371800.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r04_static578_c9d8aab3e9.onnx",
+      "sha256": "c9d8aab3e9c169446b0f744470c3468190fb484a91ad439be3bcdad68e62387d",
+      "official_like": {
+        "memory": 24,
+        "params": 554,
+        "cost": 578,
+        "score": 18.640426131327622,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ghef,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 3.845807746154402e-14,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 11,
+        "parameters": {
+          "size": 6,
+          "minisize": 4,
+          "period": 5,
+          "color": 6,
+          "height": 29,
+          "width": 29,
+          "hole_count": 21,
+          "allowed_hole_count_min": 10,
+          "allowed_hole_count_max": 24,
+          "holes": [
+            [
+              3,
+              14
+            ],
+            [
+              3,
+              24
+            ],
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              24
+            ],
+            [
+              8,
+              19
+            ],
+            [
+              9,
+              15
+            ],
+            [
+              9,
+              18
+            ],
+            [
+              10,
+              14
+            ],
+            [
+              12,
+              4
+            ],
+            [
+              12,
+              24
+            ],
+            [
+              13,
+              9
+            ],
+            [
+              14,
+              26
+            ],
+            [
+              14,
+              27
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              19,
+              0
+            ],
+            [
+              19,
+              4
+            ],
+            [
+              19,
+              5
+            ],
+            [
+              21,
+              24
+            ],
+            [
+              23,
+              9
+            ],
+            [
+              24,
+              0
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 1,
+        "selector": {
+          "values": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "argmax": 1
+        },
+        "mismatch_bits": 12,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          0,
+          15
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 92123384.0,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 12,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 217569.390625,
+              "positive_max": 46106473922560.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -76008464.0,
+              "expected_off_max": 92123384.0
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 12,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 217569.390625,
+              "positive_max": 46106473922560.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -76008464.0,
+              "expected_off_max": 92123384.0
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 12,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 217569.390625,
+              "positive_max": 46106473922560.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -76008464.0,
+              "expected_off_max": 92123384.0
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 12,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 217569.390625,
+              "positive_max": 46106473922560.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -76008464.0,
+              "expected_off_max": 92123384.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r05_static589_bdc0180ad1.onnx",
+      "sha256": "bdc0180ad1a9090e19375a77c7b99f6d6f94c6aececb03b4ca2474758eedf649",
+      "official_like": {
+        "memory": 24,
+        "params": 565,
+        "cost": 589,
+        "score": 18.621573816348413,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 9,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,tgh,t->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,tgh,p,rz,rl,plt,cw,cx,pxt,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 3.845807746154402e-14,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 3,
+        "parameters": {
+          "size": 5,
+          "minisize": 3,
+          "period": 4,
+          "color": 6,
+          "height": 19,
+          "width": 19,
+          "hole_count": 15,
+          "allowed_hole_count_min": 8,
+          "allowed_hole_count_max": 15,
+          "holes": [
+            [
+              3,
+              10
+            ],
+            [
+              5,
+              15
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              6,
+              15
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              9,
+              3
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              11,
+              17
+            ],
+            [
+              14,
+              11
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              15,
+              12
+            ],
+            [
+              15,
+              13
+            ],
+            [
+              16,
+              15
+            ],
+            [
+              18,
+              7
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 0,
+        "selector": {
+          "values": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "argmax": 0
+        },
+        "mismatch_bits": 2,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          17,
+          4
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 818438.8125,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 818438.8125,
+              "positive_max": 1722516897792.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -675271.25,
+              "expected_off_max": 818438.8125
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 818438.8125,
+              "positive_max": 1722516897792.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -675271.25,
+              "expected_off_max": 818438.8125
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 818438.8125,
+              "positive_max": 1722516897792.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -675271.25,
+              "expected_off_max": 818438.8125
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 818438.8125,
+              "positive_max": 1722516897792.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -675271.25,
+              "expected_off_max": 818438.8125
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r06_static589_efde3000fc.onnx",
+      "sha256": "efde3000fca5e969f530910c7bb8c2783236b62b2ee5f2a17270ffc37c180b1b",
+      "official_like": {
+        "memory": 24,
+        "params": 565,
+        "cost": 589,
+        "score": 18.621573816348413,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 9,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ght,t->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ght,p,rz,rl,plt,cw,cx,pxt,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 0.0006261490052565932,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 28,
+        "parameters": {
+          "size": 5,
+          "minisize": 5,
+          "period": 6,
+          "color": 8,
+          "height": 29,
+          "width": 29,
+          "hole_count": 25,
+          "allowed_hole_count_min": 10,
+          "allowed_hole_count_max": 25,
+          "holes": [
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              23
+            ],
+            [
+              6,
+              23
+            ],
+            [
+              8,
+              5
+            ],
+            [
+              11,
+              12
+            ],
+            [
+              11,
+              15
+            ],
+            [
+              11,
+              16
+            ],
+            [
+              11,
+              23
+            ],
+            [
+              13,
+              23
+            ],
+            [
+              14,
+              23
+            ],
+            [
+              17,
+              5
+            ],
+            [
+              17,
+              8
+            ],
+            [
+              17,
+              18
+            ],
+            [
+              17,
+              20
+            ],
+            [
+              18,
+              5
+            ],
+            [
+              18,
+              11
+            ],
+            [
+              20,
+              11
+            ],
+            [
+              22,
+              5
+            ],
+            [
+              22,
+              17
+            ],
+            [
+              23,
+              1
+            ],
+            [
+              23,
+              6
+            ],
+            [
+              23,
+              11
+            ],
+            [
+              23,
+              25
+            ],
+            [
+              24,
+              17
+            ],
+            [
+              24,
+              23
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 2,
+        "selector": {
+          "values": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "argmax": 2
+        },
+        "mismatch_bits": 14,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          9,
+          25
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 866832.0,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 14,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 168951.578125,
+              "positive_max": 75258404864.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -1856996.0,
+              "expected_off_max": 2250706.75
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 14,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 168951.578125,
+              "positive_max": 75258404864.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -1856996.0,
+              "expected_off_max": 2250706.75
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 14,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 168951.578125,
+              "positive_max": 75258404864.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -1856996.0,
+              "expected_off_max": 2250706.75
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 14,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 168951.578125,
+              "positive_max": 75258404864.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -1856996.0,
+              "expected_off_max": 2250706.75
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r07_static595_40c01ce0f9.onnx",
+      "sha256": "40c01ce0f9f86bc9720cf535996fcd7dda8b7e6528dc1bce3d90ff5c9e690c5c",
+      "official_like": {
+        "memory": 24,
+        "params": 571,
+        "cost": 595,
+        "score": 18.61143859445437,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ghef,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 1.1211910425009157e-15,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 3,
+        "parameters": {
+          "size": 5,
+          "minisize": 3,
+          "period": 4,
+          "color": 6,
+          "height": 19,
+          "width": 19,
+          "hole_count": 15,
+          "allowed_hole_count_min": 8,
+          "allowed_hole_count_max": 15,
+          "holes": [
+            [
+              3,
+              10
+            ],
+            [
+              5,
+              15
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              6,
+              15
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              9,
+              3
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              11,
+              17
+            ],
+            [
+              14,
+              11
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              15,
+              12
+            ],
+            [
+              15,
+              13
+            ],
+            [
+              16,
+              15
+            ],
+            [
+              18,
+              7
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 0,
+        "selector": {
+          "values": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "argmax": 0
+        },
+        "mismatch_bits": 2,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          17,
+          4
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 797076.1875,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 797076.1875,
+              "positive_max": 1722516111360.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -657645.625,
+              "expected_off_max": 797076.1875
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 797076.1875,
+              "positive_max": 1722516111360.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -657645.625,
+              "expected_off_max": 797076.1875
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 797076.1875,
+              "positive_max": 1722516111360.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -657645.625,
+              "expected_off_max": 797076.1875
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 797076.1875,
+              "positive_max": 1722516111360.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -657645.625,
+              "expected_off_max": 797076.1875
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r08_static595_4b6fe501d1.onnx",
+      "sha256": "4b6fe501d1979b0cf8784da71cbc4f497700d3af11491640cc5a3957cb5876ef",
+      "official_like": {
+        "memory": 24,
+        "params": 571,
+        "cost": 595,
+        "score": 18.61143859445437,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ghef,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 3.845807746154402e-14,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 6,
+        "parameters": {
+          "size": 5,
+          "minisize": 5,
+          "period": 6,
+          "color": 8,
+          "height": 29,
+          "width": 29,
+          "hole_count": 13,
+          "allowed_hole_count_min": 10,
+          "allowed_hole_count_max": 25,
+          "holes": [
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              26
+            ],
+            [
+              11,
+              10
+            ],
+            [
+              11,
+              16
+            ],
+            [
+              17,
+              8
+            ],
+            [
+              17,
+              13
+            ],
+            [
+              17,
+              14
+            ],
+            [
+              17,
+              25
+            ],
+            [
+              17,
+              26
+            ],
+            [
+              23,
+              26
+            ],
+            [
+              27,
+              23
+            ],
+            [
+              28,
+              17
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 2,
+        "selector": {
+          "values": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "argmax": 2
+        },
+        "mismatch_bits": 4,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          9,
+          1
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 596.69384765625,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 562.6414794921875,
+              "positive_max": 17065304064.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -2791.253662109375,
+              "expected_off_max": 3383.04052734375
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 562.6414794921875,
+              "positive_max": 17065304064.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -2791.253662109375,
+              "expected_off_max": 3383.04052734375
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 562.6414794921875,
+              "positive_max": 17065304064.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -2791.253662109375,
+              "expected_off_max": 3383.04052734375
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 562.6414794921875,
+              "positive_max": 17065304064.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -2791.253662109375,
+              "expected_off_max": 3383.04052734375
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r09_static595_7f8a80dae9.onnx",
+      "sha256": "7f8a80dae9b9feab2464d3dc3780005c0fb6832b8ab5775d9bdcccda123bf300",
+      "official_like": {
+        "memory": 24,
+        "params": 571,
+        "cost": 595,
+        "score": 18.61143859445437,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ghef,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 7.8639389687998e-35,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 4,
+        "parameters": {
+          "size": 6,
+          "minisize": 4,
+          "period": 5,
+          "color": 6,
+          "height": 29,
+          "width": 29,
+          "hole_count": 23,
+          "allowed_hole_count_min": 10,
+          "allowed_hole_count_max": 24,
+          "holes": [
+            [
+              2,
+              9
+            ],
+            [
+              3,
+              14
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              9,
+              10
+            ],
+            [
+              9,
+              14
+            ],
+            [
+              9,
+              20
+            ],
+            [
+              11,
+              14
+            ],
+            [
+              13,
+              9
+            ],
+            [
+              14,
+              5
+            ],
+            [
+              14,
+              6
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              15,
+              14
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              19,
+              15
+            ],
+            [
+              19,
+              24
+            ],
+            [
+              20,
+              9
+            ],
+            [
+              21,
+              4
+            ],
+            [
+              22,
+              4
+            ],
+            [
+              22,
+              14
+            ],
+            [
+              24,
+              7
+            ],
+            [
+              24,
+              9
+            ],
+            [
+              25,
+              19
+            ],
+            [
+              27,
+              9
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 1,
+        "selector": {
+          "values": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "argmax": 1
+        },
+        "mismatch_bits": 16,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          25,
+          12
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 636637.375,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 16,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 123584.1796875,
+              "positive_max": 233246425088.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -525271.9375,
+              "expected_off_max": 636637.375
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 16,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 123584.1796875,
+              "positive_max": 233246425088.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -525271.9375,
+              "expected_off_max": 636637.375
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 16,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 123584.1796875,
+              "positive_max": 233246425088.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -525271.9375,
+              "expected_off_max": 636637.375
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 16,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 123584.1796875,
+              "positive_max": 233246425088.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -525271.9375,
+              "expected_off_max": 636637.375
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r10_static595_80630eef77.onnx",
+      "sha256": "80630eef773af0e8e04484c8dfc2a76541939e0d5aff5968e5f97991f8c715c5",
+      "official_like": {
+        "memory": 24,
+        "params": 571,
+        "cost": 595,
+        "score": 18.61143859445437,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ghef,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 0.000316505174851045,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 4,
+        "parameters": {
+          "size": 6,
+          "minisize": 4,
+          "period": 5,
+          "color": 6,
+          "height": 29,
+          "width": 29,
+          "hole_count": 23,
+          "allowed_hole_count_min": 10,
+          "allowed_hole_count_max": 24,
+          "holes": [
+            [
+              2,
+              9
+            ],
+            [
+              3,
+              14
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              9,
+              10
+            ],
+            [
+              9,
+              14
+            ],
+            [
+              9,
+              20
+            ],
+            [
+              11,
+              14
+            ],
+            [
+              13,
+              9
+            ],
+            [
+              14,
+              5
+            ],
+            [
+              14,
+              6
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              15,
+              14
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              19,
+              15
+            ],
+            [
+              19,
+              24
+            ],
+            [
+              20,
+              9
+            ],
+            [
+              21,
+              4
+            ],
+            [
+              22,
+              4
+            ],
+            [
+              22,
+              14
+            ],
+            [
+              24,
+              7
+            ],
+            [
+              24,
+              9
+            ],
+            [
+              25,
+              19
+            ],
+            [
+              27,
+              9
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 1,
+        "selector": {
+          "values": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "argmax": 1
+        },
+        "mismatch_bits": 24,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          25,
+          11
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 150441296.0,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 24,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 54402536.0,
+              "positive_max": 33618950881280.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -565437952.0,
+              "expected_off_max": 685319104.0
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 24,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 54402536.0,
+              "positive_max": 33618950881280.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -565437952.0,
+              "expected_off_max": 685319104.0
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 24,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 54402536.0,
+              "positive_max": 33618950881280.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -565437952.0,
+              "expected_off_max": 685319104.0
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 24,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 54402536.0,
+              "positive_max": 33618950881280.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -565437952.0,
+              "expected_off_max": 685319104.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r11_static595_dc20b2b7e4.onnx",
+      "sha256": "dc20b2b7e48bf5f826f1538740774addccedce58f20f724d1f4846b2ef4c954f",
+      "official_like": {
+        "memory": 24,
+        "params": 571,
+        "cost": 595,
+        "score": 18.61143859445437,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ghef,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 1.1211910425009157e-15,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 3,
+        "parameters": {
+          "size": 5,
+          "minisize": 3,
+          "period": 4,
+          "color": 6,
+          "height": 19,
+          "width": 19,
+          "hole_count": 15,
+          "allowed_hole_count_min": 8,
+          "allowed_hole_count_max": 15,
+          "holes": [
+            [
+              3,
+              10
+            ],
+            [
+              5,
+              15
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              6,
+              15
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              9,
+              3
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              11,
+              17
+            ],
+            [
+              14,
+              11
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              15,
+              12
+            ],
+            [
+              15,
+              13
+            ],
+            [
+              16,
+              15
+            ],
+            [
+              18,
+              7
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 0,
+        "selector": {
+          "values": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "argmax": 0
+        },
+        "mismatch_bits": 2,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          17,
+          4
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 362745.125,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 362745.125,
+              "positive_max": 1900945211392.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -299291.03125,
+              "expected_off_max": 362745.125
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 362745.125,
+              "positive_max": 1900945211392.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -299291.03125,
+              "expected_off_max": 362745.125
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 362745.125,
+              "positive_max": 1900945211392.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -299291.03125,
+              "expected_off_max": 362745.125
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 362745.125,
+              "positive_max": 1900945211392.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -299291.03125,
+              "expected_off_max": 362745.125
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r12_static595_fd0f2d8314.onnx",
+      "sha256": "fd0f2d83141a96741507c6ce2fa67f5bc7f106b74f2fd24cd8154a33b312aaad",
+      "official_like": {
+        "memory": 24,
+        "params": 571,
+        "cost": 595,
+        "score": 18.61143859445437,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ghef,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 3.0771456015972725e-37,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 10,
+        "parameters": {
+          "size": 5,
+          "minisize": 4,
+          "period": 5,
+          "color": 8,
+          "height": 24,
+          "width": 24,
+          "hole_count": 15,
+          "allowed_hole_count_min": 9,
+          "allowed_hole_count_max": 20,
+          "holes": [
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              15
+            ],
+            [
+              4,
+              21
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              7,
+              14
+            ],
+            [
+              8,
+              14
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              12,
+              4
+            ],
+            [
+              14,
+              11
+            ],
+            [
+              15,
+              19
+            ],
+            [
+              16,
+              19
+            ],
+            [
+              17,
+              4
+            ],
+            [
+              23,
+              19
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 1,
+        "selector": {
+          "values": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "argmax": 1
+        },
+        "mismatch_bits": 14,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          16,
+          10
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 586267.1875,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 14,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 24686.521484375,
+              "positive_max": 246205792256.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -1956472.625,
+              "expected_off_max": 2371273.75
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 14,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 24686.521484375,
+              "positive_max": 246205792256.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -1956472.625,
+              "expected_off_max": 2371273.75
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 14,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 24686.521484375,
+              "positive_max": 246205792256.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -1956472.625,
+              "expected_off_max": 2371273.75
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 14,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 24686.521484375,
+              "positive_max": 246205792256.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -1956472.625,
+              "expected_off_max": 2371273.75
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r13_static598_d350da65b3.onnx",
+      "sha256": "d350da65b33f65baa073eb20475b2b99f08a13695fb911a2bda1361ff7325e5e",
+      "official_like": {
+        "memory": 24,
+        "params": 574,
+        "cost": 598,
+        "score": 18.606409246049367,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,gh->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,pghef,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 1.1425304875366943e-13,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 4,
+        "parameters": {
+          "size": 6,
+          "minisize": 4,
+          "period": 5,
+          "color": 6,
+          "height": 29,
+          "width": 29,
+          "hole_count": 23,
+          "allowed_hole_count_min": 10,
+          "allowed_hole_count_max": 24,
+          "holes": [
+            [
+              2,
+              9
+            ],
+            [
+              3,
+              14
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              9,
+              10
+            ],
+            [
+              9,
+              14
+            ],
+            [
+              9,
+              20
+            ],
+            [
+              11,
+              14
+            ],
+            [
+              13,
+              9
+            ],
+            [
+              14,
+              5
+            ],
+            [
+              14,
+              6
+            ],
+            [
+              14,
+              10
+            ],
+            [
+              15,
+              14
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              19,
+              15
+            ],
+            [
+              19,
+              24
+            ],
+            [
+              20,
+              9
+            ],
+            [
+              21,
+              4
+            ],
+            [
+              22,
+              4
+            ],
+            [
+              22,
+              14
+            ],
+            [
+              24,
+              7
+            ],
+            [
+              24,
+              9
+            ],
+            [
+              25,
+              19
+            ],
+            [
+              27,
+              9
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 1,
+        "selector": {
+          "values": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "argmax": 1
+        },
+        "mismatch_bits": 32,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          25,
+          10
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 7291950080.0,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 32,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 2188627456.0,
+              "positive_max": 282523082948608.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -20258637824.0,
+              "expected_off_max": 24553766912.0
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 32,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 2188627456.0,
+              "positive_max": 282523082948608.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -20258637824.0,
+              "expected_off_max": 24553766912.0
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 32,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 2188627456.0,
+              "positive_max": 282523082948608.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -20258637824.0,
+              "expected_off_max": 24553766912.0
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 32,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 2188627456.0,
+              "positive_max": 282523082948608.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -20258637824.0,
+              "expected_off_max": 24553766912.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r14_static628_bd14650247.onnx",
+      "sha256": "bd1465024742377d1b34351a777457cb807fb75467a2f19487854e6a8f34e678",
+      "official_like": {
+        "memory": 24,
+        "params": 604,
+        "cost": 628,
+        "score": 18.5574598335318,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 24,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 8,
+          "equation": "nbuv,bd,d,ui,pig,vj,pjh,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 24,
+          "equation": "nbuv,bd,d,uz,pz,ui,pig,vw,pw,vj,pjh,ghef,p,rz,rl,ple,cw,cx,pxf,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 3.0771456015972725e-37,
+        "max_abs": 100000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 89,
+        "parameters": {
+          "size": 4,
+          "minisize": 5,
+          "period": 6,
+          "color": 1,
+          "height": 23,
+          "width": 23,
+          "hole_count": 9,
+          "allowed_hole_count_min": 9,
+          "allowed_hole_count_max": 20,
+          "holes": [
+            [
+              3,
+              5
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              5,
+              21
+            ],
+            [
+              6,
+              17
+            ],
+            [
+              11,
+              4
+            ],
+            [
+              11,
+              7
+            ],
+            [
+              17,
+              16
+            ],
+            [
+              20,
+              11
+            ],
+            [
+              20,
+              17
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 2,
+        "selector": {
+          "values": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "argmax": 2
+        },
+        "mismatch_bits": 12,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          12,
+          12
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 9648.9326171875,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 12,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 545.6759643554688,
+              "positive_max": 20805683200.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -14620.65625,
+              "expected_off_max": 17720.453125
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 12,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 545.6759643554688,
+              "positive_max": 20805683200.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -14620.65625,
+              "expected_off_max": 17720.453125
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 12,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 545.6759643554688,
+              "positive_max": 20805683200.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -14620.65625,
+              "expected_off_max": 17720.453125
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 12,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 545.6759643554688,
+              "positive_max": 20805683200.0,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -14620.65625,
+              "expected_off_max": 17720.453125
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r15_static645_623b201dbc.onnx",
+      "sha256": "623b201dbc8d992b1aded35b917aa5ca933a68ef8fb496bd82ba1071b3ad95ed",
+      "official_like": {
+        "memory": 12,
+        "params": 633,
+        "cost": 645,
+        "score": 18.530749683204228,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2
+      },
+      "max_node_inputs": 57,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 10,
+          "equation": "nbuv,bd,d,ui,pi,gi,vj,pj,hj,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 57,
+          "equation": "nbuv,bd,d,uz,pz,ui,pi,gi,vw,pw,vj,pj,hj,ghef,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,rz,rl,pl,el,cw,cx,px,fx,qo,o,ao,qy,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 1.1211909752924909e-20,
+        "max_abs": 10000000000.0
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 14,
+        "parameters": {
+          "size": 5,
+          "minisize": 5,
+          "period": 6,
+          "color": 7,
+          "height": 29,
+          "width": 29,
+          "hole_count": 24,
+          "allowed_hole_count_min": 10,
+          "allowed_hole_count_max": 25,
+          "holes": [
+            [
+              0,
+              23
+            ],
+            [
+              1,
+              17
+            ],
+            [
+              3,
+              17
+            ],
+            [
+              3,
+              23
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              5,
+              25
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              7,
+              17
+            ],
+            [
+              9,
+              23
+            ],
+            [
+              10,
+              5
+            ],
+            [
+              10,
+              23
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              11,
+              4
+            ],
+            [
+              11,
+              11
+            ],
+            [
+              11,
+              22
+            ],
+            [
+              13,
+              11
+            ],
+            [
+              14,
+              11
+            ],
+            [
+              17,
+              3
+            ],
+            [
+              17,
+              7
+            ],
+            [
+              18,
+              17
+            ],
+            [
+              23,
+              9
+            ],
+            [
+              25,
+              11
+            ],
+            [
+              26,
+              17
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 2,
+        "selector": {
+          "values": [
+            0.8755049109458923,
+            0.9739181995391846,
+            2.709261417388916
+          ],
+          "argmax": 2
+        },
+        "mismatch_bits": 2,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          18,
+          18
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 7.091944058938982e+16,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 7.091944058938982e+16,
+              "positive_max": 6.026980031565436e+22,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -5.851367666299699e+16,
+              "expected_off_max": 7.091944058938982e+16
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 7.091944058938982e+16,
+              "positive_max": 6.026980031565436e+22,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -5.851367666299699e+16,
+              "expected_off_max": 7.091944058938982e+16
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 7.091944058938982e+16,
+              "positive_max": 6.026980031565436e+22,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -5.851367666299699e+16,
+              "expected_off_max": 7.091944058938982e+16
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 2,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 7.091944058938982e+16,
+              "positive_max": 6.026980031565436e+22,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -5.851367666299699e+16,
+              "expected_off_max": 7.091944058938982e+16
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "scripts/golf/loop_8004_42_plus20/agent_high47/candidates/task198_history_r16_static655_1e05856088.onnx",
+      "sha256": "1e058560880898fa75063e364bc7b5162a1af62ad19f4ccdce8254ee36fbb848",
+      "official_like": {
+        "memory": 24,
+        "params": 631,
+        "cost": 655,
+        "score": 18.515364764364747,
+        "correct": true
+      },
+      "known_disable_all_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "known_default_total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "full_check": true,
+      "strict_shape_data_prop": true,
+      "runtime_shape_mismatches": [],
+      "op_histogram": {
+        "Einsum": 2,
+        "Hardmax": 1
+      },
+      "max_node_inputs": 22,
+      "equations": [
+        {
+          "op": "Einsum",
+          "arity": 7,
+          "equation": "nbuv,bd,ui,pig,vj,pjh,ghef->p",
+          "outputs": [
+            "period_raw"
+          ]
+        },
+        {
+          "op": "Hardmax",
+          "arity": 1,
+          "equation": null,
+          "outputs": [
+            "period_gate"
+          ]
+        },
+        {
+          "op": "Einsum",
+          "arity": 22,
+          "equation": "nbuv,bd,uz,zp,ui,pig,vw,wp,vj,pjh,ghef,p,rz,rl,ple,cw,cx,pxf,qo,oy,ay,narc->nqrc",
+          "outputs": [
+            "output"
+          ]
+        }
+      ],
+      "initializer_numeric_range": {
+        "min_nonzero_abs": 1.1211910425009157e-15,
+        "max_abs": 100.00000762939453
+      },
+      "counterexample": {
+        "seed": 47000199,
+        "index": 5,
+        "parameters": {
+          "size": 4,
+          "minisize": 5,
+          "period": 6,
+          "color": 5,
+          "height": 23,
+          "width": 23,
+          "hole_count": 9,
+          "allowed_hole_count_min": 9,
+          "allowed_hole_count_max": 20,
+          "holes": [
+            [
+              0,
+              11
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              11,
+              5
+            ],
+            [
+              11,
+              18
+            ],
+            [
+              15,
+              5
+            ],
+            [
+              17,
+              1
+            ],
+            [
+              17,
+              10
+            ],
+            [
+              17,
+              16
+            ]
+          ],
+          "exact_regeneration": true
+        },
+        "expected_period_index": 2,
+        "selector": {
+          "values": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "argmax": 2
+        },
+        "mismatch_bits": 4,
+        "first_mismatch_nqrc": [
+          0,
+          3,
+          18,
+          14
+        ],
+        "first_expected": false,
+        "first_predicted": true,
+        "first_raw": 3.2495131492614746,
+        "configurations": {
+          "disable_all_threads1": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 1.5626801252365112,
+              "positive_max": 811860.9375,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -3.2495131492614746,
+              "expected_off_max": 3.2495131492614746
+            }
+          },
+          "default_threads1": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 1.5626801252365112,
+              "positive_max": 811860.9375,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -3.2495131492614746,
+              "expected_off_max": 3.2495131492614746
+            }
+          },
+          "disable_all_threads4": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 1.5626801252365112,
+              "positive_max": 811860.9375,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -3.2495131492614746,
+              "expected_off_max": 3.2495131492614746
+            }
+          },
+          "default_threads4": {
+            "correct": false,
+            "wrong_bits": 4,
+            "same_threshold_output_as_disabled_threads1": true,
+            "stats": {
+              "nonfinite": 0,
+              "near_positive_0_to_0_25": 0,
+              "positive_min": 1.5626801252365112,
+              "positive_max": 811860.9375,
+              "nonpositive_max": 0.0,
+              "expected_on_min": -3.2495131492614746,
+              "expected_off_max": 3.2495131492614746
+            }
+          }
+        }
+      }
+    }
+  ]
+}

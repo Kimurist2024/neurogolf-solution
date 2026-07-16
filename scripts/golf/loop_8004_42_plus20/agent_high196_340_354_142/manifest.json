@@ -1,0 +1,131 @@
+{
+  "authority": {
+    "lb": 8009.46,
+    "path": "submission.zip",
+    "sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "byte_identical_base": "submission_base_8009.46.zip"
+  },
+  "scope": [196, 340, 354],
+  "policy": {
+    "require_exact_equivalence_or_sound_true_rule": true,
+    "require_full_and_strict": true,
+    "require_official_actual_strict_lower_cost": true,
+    "require_conv_bias_ub0": true,
+    "require_truthful_runtime_shapes": true,
+    "known_configs": [
+      "disable_all_threads1",
+      "disable_all_threads4",
+      "default_threads1",
+      "default_threads4"
+    ],
+    "require_authority_raw_equivalence_for_local_rewrites": true,
+    "fresh": "two ORT modes and independent seeds, only after every earlier gate",
+    "reject": ["shape_cloak", "fixture_lookup", "private_zero", "runtime_failure"]
+  },
+  "current": {
+    "196": {
+      "sha256": "94e513b77cfce6a47ad2064a10c9c0c4ea545c46d1f3052b68d7e11f61fb3e7a",
+      "memory": 1049,
+      "params": 161,
+      "cost": 1210,
+      "runtime_shape_mismatches": 56,
+      "lb_white_sha_only": true,
+      "fresh_dual5000": "4789/5000 in each mode; 211 misses"
+    },
+    "340": {
+      "sha256": "d7454585167715648c3757cb52373a6c40363753f69cfbd5e28265c2f62413a5",
+      "memory": 1014,
+      "params": 159,
+      "cost": 1173,
+      "runtime_shape_mismatches": 0,
+      "inherited_fresh_proof": {
+        "source": "scripts/golf/loop_7999_13/lane_b19/task340_dual5000.json",
+        "sha_bound": true,
+        "disable_all": "5000/5000, errors=0",
+        "default": "5000/5000, errors=0"
+      }
+    },
+    "354": {
+      "sha256": "4ba066a4ccb09bb0c1b52834e4cf17a4cf6515fbe9af76363e4b9f5a98bfe92f",
+      "memory": 461,
+      "params": 75,
+      "cost": 536,
+      "runtime_shape_mismatches": 7,
+      "lb_white_sha_only": true,
+      "inherited_fresh_proof": {
+        "source": "scripts/golf/loop_8004_42_plus20/agent_71405_tail_99/audit/rows/task354_improved.json",
+        "sha_bound": true,
+        "seed_202607149901": "500/500 in both ORT modes",
+        "seed_202607149902": "500/500 in both ORT modes"
+      }
+    }
+  },
+  "mechanical_scan": {
+    "reduce_l1_or_sum_square_matches": 0,
+    "initializer_aliases": 0,
+    "unused_initializers": 0,
+    "strict_lower_exact_or_optimizer_candidates": 0,
+    "task196": "type-template Cast costs 1433; sound true-rule fallback costs 5573",
+    "task340": "no exact reuse/CSE/factorization candidate; ACTable rank factorization is larger",
+    "task354": "Cast attribute probes cost 536/1012/1012 and retain seven mismatches"
+  },
+  "archive_revalidation": {
+    "196": {
+      "unique": 5,
+      "actual_costs": [1495, 1518, 1773, 1773, 1774],
+      "strict_lower_survivors": 0
+    },
+    "340": {
+      "unique": 0,
+      "prior_historical_rows": 84,
+      "prior_floor": 1173,
+      "strict_lower_survivors": 0
+    },
+    "354": {
+      "unique": 1,
+      "minimum_actual_cost": 560,
+      "strict_lower_survivors": 0
+    }
+  },
+  "rejected": [
+    {
+      "task": 196,
+      "label": "g_bool_cast",
+      "cost": 1433,
+      "known_dual_raw_equal": "266/266",
+      "reason": "223 cost worse and exposes real intermediate memory"
+    },
+    {
+      "task": 196,
+      "label": "sound_bitset_u16",
+      "path": "scripts/golf/scratch_codex/task196/agent_bitset/candidate_bitset_u16.onnx",
+      "sha256": "9a5a4c6a4a9ddbf2f90dc416c61d0ee5320938aa650b69bea3e6c2157eca45c6",
+      "cost": 5573,
+      "fresh": "3000/3000",
+      "reason": "sound but 4363 cost above authority"
+    },
+    {
+      "task": 354,
+      "label": "shape12_cast",
+      "cost": 536,
+      "runtime_shape_mismatches": 7,
+      "reason": "not strictly lower"
+    },
+    {
+      "task": 354,
+      "label": "idx_i32_cast_or_both",
+      "cost": 1012,
+      "runtime_shape_mismatches": 7,
+      "reason": "476 memory worse"
+    }
+  ],
+  "fresh": {
+    "new_candidate_status": "not_run",
+    "reason": "no new candidate passed official strict-lower cost and truthful runtime-shape gates"
+  },
+  "winners": [],
+  "projected_gain": 0.0,
+  "verdict": "NO_SAFE_CANDIDATE",
+  "root_modified": false
+}
+

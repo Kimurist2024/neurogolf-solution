@@ -1,0 +1,214 @@
+{
+  "authority": "submission_base_8009.46.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "method": {
+    "pad_absorption": "static constant Pad, spatial nonnegative pads, implicit Conv pad value/zero-point equality",
+    "shape_absorption": "single-use Squeeze/Unsqueeze/Transpose with offline-static weight source only",
+    "input_output_dtype_changes": false,
+    "shape_cloak": false
+  },
+  "census": {
+    "authority_models": 400,
+    "pad_single_use_to_conv_family": 3,
+    "shape_single_use_to_conv_family": 8
+  },
+  "strict_inference_authority_failures": [
+    {
+      "task": 18,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Gather, node name: px_mv_i8): [ShapeInferenceError] indices must be in [-rank, rank-1].\n"
+    },
+    {
+      "task": 112,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:AffineGrid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n"
+    },
+    {
+      "task": 117,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:AffineGrid, node name: grid3): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n"
+    },
+    {
+      "task": 170,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Reshape, node name: sprite_starts_u8_dyn): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:Reshape, node name: sprite_ends_u8_dyn): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:Reshape, node name: sprite_steps_u8_dyn): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:Reshape, node name: box_starts_u8_dyn): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n(op_type:Reshape, node name: box_ends_u8_dyn): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (3) vs (1)\n"
+    },
+    {
+      "task": 243,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Reshape, node name: ): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (30) vs (1)\n"
+    },
+    {
+      "task": 245,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:AffineGrid): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (2) vs (1)\n"
+    },
+    {
+      "task": 397,
+      "error": "InferenceError: [ShapeInferenceError] Inference error(s): (op_type:Gather): [ShapeInferenceError] indices must be in [-rank, rank-1].\n"
+    }
+  ],
+  "pad_rows": [
+    {
+      "task": 36,
+      "pad_node_index": 33,
+      "conv_node_index": 34,
+      "conv_op": "ConvInteger",
+      "conv_input_slot": 0,
+      "mode": "constant",
+      "pad_input_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "pad_output_shape": [
+        1,
+        1,
+        5,
+        5
+      ],
+      "reason": "pads are dynamic"
+    },
+    {
+      "task": 62,
+      "pad_node_index": 55,
+      "conv_node_index": 57,
+      "conv_op": "ConvInteger",
+      "conv_input_slot": 0,
+      "mode": "constant",
+      "pad_input_shape": [
+        1,
+        1,
+        6,
+        6
+      ],
+      "pad_output_shape": [
+        1,
+        1,
+        10,
+        10
+      ],
+      "reason": "pads are dynamic"
+    },
+    {
+      "task": 382,
+      "pad_node_index": 30,
+      "conv_node_index": 31,
+      "conv_op": "QLinearConv",
+      "conv_input_slot": 0,
+      "mode": "constant",
+      "pad_input_shape": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "pad_output_shape": [
+        1,
+        1,
+        1,
+        5
+      ],
+      "reason": "pads are dynamic"
+    }
+  ],
+  "shape_rows": [
+    {
+      "task": 38,
+      "transform_node_index": 7,
+      "transform_op": "Squeeze",
+      "conv_node_index": 8,
+      "conv_op": "ConvInteger",
+      "conv_input_slot": 2,
+      "source": "hb",
+      "output": "q",
+      "reason": "transform does not feed the Conv-family weight slot"
+    },
+    {
+      "task": 57,
+      "transform_node_index": 14,
+      "transform_op": "Transpose",
+      "conv_node_index": 15,
+      "conv_op": "ConvInteger",
+      "conv_input_slot": 1,
+      "source": "presence",
+      "output": "weights",
+      "reason": "weight transform source is dynamic"
+    },
+    {
+      "task": 121,
+      "transform_node_index": 17,
+      "transform_op": "Transpose",
+      "conv_node_index": 18,
+      "conv_op": "QLinearConv",
+      "conv_input_slot": 3,
+      "source": "coloru",
+      "output": "w_i",
+      "reason": "weight transform source is dynamic"
+    },
+    {
+      "task": 124,
+      "transform_node_index": 22,
+      "transform_op": "Transpose",
+      "conv_node_index": 23,
+      "conv_op": "QLinearConv",
+      "conv_input_slot": 3,
+      "source": "channel_presence",
+      "output": "color_weights",
+      "reason": "weight transform source is dynamic"
+    },
+    {
+      "task": 185,
+      "transform_node_index": 6,
+      "transform_op": "Unsqueeze",
+      "conv_node_index": 7,
+      "conv_op": "QLinearConv",
+      "conv_input_slot": 0,
+      "source": "mch_i8_1d",
+      "output": "mch_i8",
+      "reason": "transform does not feed the Conv-family weight slot"
+    },
+    {
+      "task": 219,
+      "transform_node_index": 82,
+      "transform_op": "Unsqueeze",
+      "conv_node_index": 83,
+      "conv_op": "QLinearConv",
+      "conv_input_slot": 3,
+      "source": "kcode_rev",
+      "output": "kernel4u8",
+      "reason": "weight transform source is dynamic"
+    },
+    {
+      "task": 382,
+      "transform_node_index": 24,
+      "transform_op": "Unsqueeze",
+      "conv_node_index": 25,
+      "conv_op": "QLinearConv",
+      "conv_input_slot": 0,
+      "source": "count",
+      "output": "count_oriented",
+      "reason": "transform does not feed the Conv-family weight slot"
+    },
+    {
+      "task": 382,
+      "transform_node_index": 28,
+      "transform_op": "Unsqueeze",
+      "conv_node_index": 31,
+      "conv_op": "QLinearConv",
+      "conv_input_slot": 3,
+      "source": "W",
+      "output": "w_oriented",
+      "source_shape": [
+        5,
+        1,
+        5
+      ],
+      "axes": null,
+      "reason": "axes are dynamic",
+      "inferred_output_shape": [
+        5,
+        1,
+        1,
+        5
+      ]
+    }
+  ],
+  "errors": [],
+  "strict_lower": []
+}

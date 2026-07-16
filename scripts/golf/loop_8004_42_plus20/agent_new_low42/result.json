@@ -1,0 +1,726 @@
+{
+  "lane": "agent_new_low42",
+  "baseline": {
+    "path": "submission_base_8005.16.zip",
+    "sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+    "previous_path": "submission_base_8004.50.zip",
+    "previous_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac"
+  },
+  "policy": {
+    "normal": "strictly cheaper, known100 dual, two independent fresh seeds each >=90%, runtime0, checker full, strict/data_prop, truthful shapes, standard domains, no lookup/cloak/giant, Conv-bias UB0",
+    "private_zero": "decoded true-rule guarantee or exact LB-white lineage plus known/fresh100 dual and every normal structural/runtime gate",
+    "fail_closed": "fresh is not run when no strict-lower candidate passes the price and structure pre-gates"
+  },
+  "targets_requested": [
+    339,
+    126,
+    21,
+    171,
+    346,
+    227,
+    318,
+    332
+  ],
+  "targets_completed": 8,
+  "accepted": [],
+  "accepted_count": 0,
+  "projected_gain": 0.0,
+  "zip_integration": false,
+  "rows": [
+    {
+      "task": 339,
+      "rule_summary": "Flatten the 3x3 input, discard zero cells, and emit the remaining repeated color as one row.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task339.onnx",
+      "baseline_sha256": "4e87fd96583e859a9c56cbff5a8e01a285bf11b97d0cc3ebbc8134efc2c52751",
+      "baseline_cost": {
+        "memory": 34,
+        "params": 19,
+        "cost": 53
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 339,
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "private_zero_catalog": false,
+      "structure_observation": {
+        "ops": {
+          "Cast": 2,
+          "ConvInteger": 1,
+          "Div": 1,
+          "Einsum": 1,
+          "Equal": 1,
+          "Floor": 1,
+          "Neg": 1
+        },
+        "node_count": 8,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "truthful cost-53 incumbent; alternate history floors 53, 59, and 140",
+      "reason": "The complete archive has no below-53 graph and the exact rewrite scan found no alias, dead code, no-op, duplicate producer, or optional output. The compact true-rule graph already spends only 19 parameters and 34 bytes of declared intermediates; its count/color decode and int8 ramp are all live.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 126,
+      "rule_summary": "Keep all rows except the final empty row; on that final row place color 4 under each column belonging to a hollow monochrome 2x2 marker.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task126.onnx",
+      "baseline_sha256": "2b42a9b1c6e4390f29faece29888f7626ad4eb18b27c3362aa6fd1b8e75926e5",
+      "baseline_cost": {
+        "memory": 44,
+        "params": 8,
+        "cost": 52
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 126,
+        "disable_all": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 266,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 266,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "private_zero_catalog": false,
+      "structure_observation": {
+        "ops": {
+          "CastLike": 6,
+          "CenterCropPad": 2,
+          "GatherND": 1,
+          "LessOrEqual": 2,
+          "PRelu": 3,
+          "ReduceL1": 1,
+          "ReduceLogSumExp": 1,
+          "ScatterElements": 1,
+          "Selu": 2,
+          "Shape": 1
+        },
+        "node_count": 20,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter": [
+          "GatherND",
+          "ScatterElements"
+        ],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 19,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "history floors 61, 64, 66, 73, 79, 90, and 605 versus cost 52",
+      "reason": "No numeric lower lead exists. The incumbent has 19 declared/runtime shape contradictions plus GatherND/ScatterElements, so it cannot seed a truthful candidate; conventional true-rule history is already more expensive.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 21,
+      "rule_summary": "Output a solid rectangle in the background color: its height and width are the minimum row/column color frequencies of the separator pattern.",
+      "true_rule_known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0,
+        "total": 266,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task021.onnx",
+      "baseline_sha256": "32cf74fd73b1d43cc553934029fdfa39026f3233d77eb4690ed1e4b31818f245",
+      "baseline_cost": {
+        "memory": 48,
+        "params": 3,
+        "cost": 51
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 21,
+        "disable_all": {
+          "right": 77,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 189,
+          "total": 77,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 77,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 189,
+          "total": 77,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "private_zero_catalog": false,
+      "structure_observation": {
+        "ops": {
+          "Concat": 1,
+          "Conv": 2,
+          "Einsum": 2,
+          "Reciprocal": 2,
+          "RoiAlign": 1
+        },
+        "node_count": 8,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": false,
+        "runtime_shape_mismatches": 0,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "truthful cost-51 incumbent; only different harvested graph costs 177",
+      "reason": "No below-51 graph exists in the complete archive. The exact scan found no mechanical rewrite; both Conv/Einsum size probes, reciprocal coordinates, and the four-value RoiAlign descriptor are live.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 171,
+      "rule_summary": "For an all-zero rectangular input, draw a one-cell-thick color-8 border.",
+      "true_rule_known": {
+        "right": 54,
+        "wrong": 0,
+        "errors": 0,
+        "total": 54,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task171.onnx",
+      "baseline_sha256": "56eab810a3d0e18e0ae4860b7501f3a9aa87753726ea5f1b522c3c1fabc9a8a4",
+      "baseline_cost": {
+        "memory": 39,
+        "params": 11,
+        "cost": 50
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 171,
+        "disable_all": {
+          "right": 54,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 54,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 0,
+          "wrong": 0,
+          "errors": 54,
+          "total": 54,
+          "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_8) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+        }
+      },
+      "private_zero_catalog": false,
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "CenterCropPad": 4,
+          "ConstantOfShape": 3,
+          "LessOrEqual": 1,
+          "ReduceL1": 1,
+          "Where": 1
+        },
+        "node_count": 11,
+        "max_node_inputs": 3,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 8,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "history floors 78 and 414 versus cost 50",
+      "reason": "No numeric lower lead exists. The incumbent has eight runtime-shape contradictions and fails every known case in default ORT at session/runtime (0/54, 54 errors), so no safe derivation is possible.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 346,
+      "rule_summary": "Return the nonzero color with the fewest adjacent equal pairs across rows and columns (the isolated/noise color).",
+      "true_rule_known": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "total": 267,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task346.onnx",
+      "baseline_sha256": "b882fabd270a30bd4200ca8c767d7ecd5ce38fcee43004350ceeebb2bc0203ec",
+      "baseline_cost": {
+        "memory": 39,
+        "params": 11,
+        "cost": 50
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 346,
+        "disable_all": {
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "private_zero_catalog": true,
+      "structure_observation": {
+        "ops": {
+          "CastLike": 2,
+          "Einsum": 1,
+          "Equal": 1,
+          "GroupNormalization": 1,
+          "Pad": 1,
+          "ReduceMin": 1
+        },
+        "node_count": 7,
+        "max_node_inputs": 5,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 6,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "history floors 92, 109, 111, and 1254 versus cost 50",
+      "reason": "No below-50 graph exists. This task is in the explicit private-zero catalog and the incumbent has six runtime-shape contradictions; the guarantee exception therefore cannot apply to a derived dust rewrite.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 227,
+      "rule_summary": "Compare the upper and lower 4x4 binary patterns cellwise; emit color 2 where they are equal and zero otherwise.",
+      "true_rule_known": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "total": 267,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task227.onnx",
+      "baseline_sha256": "f4310e4d1d2229cd06ad77f5e2da9ba9cd8debd8409cffa4c9e55421d94e1d14",
+      "baseline_cost": {
+        "memory": 37,
+        "params": 12,
+        "cost": 49
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 227,
+        "disable_all": {
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "private_zero_catalog": false,
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "QLinearConv": 2
+        },
+        "node_count": 5,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 1,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "history floors 72 and 100 versus cost 49",
+      "reason": "No below-49 graph exists. The compact QLinearConv chain has a declared/runtime GroupNormalization shape contradiction, and the exact scan found no safe structural reduction.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 318,
+      "rule_summary": "Compare the upper and lower 4x4 patterns around the separator row; emit color 3 where either paired cell is nonzero.",
+      "true_rule_known": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "total": 267,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task318.onnx",
+      "baseline_sha256": "b5869143ce2fbd7d7cf3fc49de3eaec4555331ee5f17fecaab5159cf3eaa65bf",
+      "baseline_cost": {
+        "memory": 37,
+        "params": 12,
+        "cost": 49
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 318,
+        "disable_all": {
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "private_zero_catalog": false,
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "ConvInteger": 1,
+          "GroupNormalization": 1,
+          "QLinearConv": 2
+        },
+        "node_count": 5,
+        "max_node_inputs": 8,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 1,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "history floors 72 and 100 versus cost 49",
+      "reason": "No below-49 graph exists. The compact QLinearConv chain has a declared/runtime GroupNormalization shape contradiction, and the exact scan found no safe structural reduction.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    },
+    {
+      "task": 332,
+      "rule_summary": "Scan each row with a parity offset based on row width; replace alternating color-5 cells by color 3 while leaving other cells unchanged.",
+      "true_rule_known": {
+        "right": 267,
+        "wrong": 0,
+        "errors": 0,
+        "total": 267,
+        "perfect": true,
+        "first_failure": null
+      },
+      "baseline_member": "task332.onnx",
+      "baseline_sha256": "aac601d6658a8080930a969b857ca58aeb1a2f10f6a03e5b2bd7c1271a9d5268",
+      "baseline_cost": {
+        "memory": 8,
+        "params": 41,
+        "cost": 49
+      },
+      "unchanged_from_8004_50": true,
+      "baseline_known_dual": {
+        "task": 332,
+        "disable_all": {
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        },
+        "default": {
+          "right": 267,
+          "wrong": 0,
+          "errors": 0,
+          "skipped": 0,
+          "total": 267,
+          "near_margin_count": 0,
+          "output_shapes": [
+            [
+              1,
+              10,
+              30,
+              30
+            ]
+          ],
+          "first_failure": null
+        }
+      },
+      "private_zero_catalog": false,
+      "structure_observation": {
+        "ops": {
+          "CastLike": 1,
+          "Einsum": 1,
+          "GroupNormalization": 1
+        },
+        "node_count": 3,
+        "max_node_inputs": 6,
+        "giant_einsum": [],
+        "lookup_or_scatter": [],
+        "runtime_shape_cloak": true,
+        "runtime_shape_mismatches": 3,
+        "checker_full": true,
+        "strict_shape_data_prop": true,
+        "standard_domains": true,
+        "conv_bias_findings": []
+      },
+      "best_probe": "cost-49 historical tie and cost-80 alternate",
+      "reason": "Only a tie exists. The three-node incumbent has three runtime-shape contradictions, while the 41 live parameters already dominate its declared cost; no truthful strictly-lower graph appears in history or exact rewrites.",
+      "candidate": null,
+      "decision": "NO_SAFE_STRICTLY_CHEAPER_CANDIDATE",
+      "candidate_known_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_1_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_fresh_seed_2_dual": "NOT_RUN_NO_NUMERIC_LOWER_CANDIDATE",
+      "candidate_runtime_errors": "NO_CANDIDATE",
+      "candidate_conv_bias_ub0": "NO_CANDIDATE",
+      "projected_gain": 0.0
+    }
+  ],
+  "final_verdict": "NO_SAFE_CANDIDATE"
+}

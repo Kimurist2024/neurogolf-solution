@@ -1,0 +1,76 @@
+{
+  "source": "scripts/golf/loop_8003_40/base_models/task237.onnx",
+  "source_sha256": "d8ef7011cb912b1752d471535b55110c0d3474d517388d73e92e950abda58ff4",
+  "attempts": [
+    {
+      "task": 237,
+      "label": "remove_min",
+      "path": "scripts/golf/loop_8003_40/agent_high_cost_resume/attempts/task237_remove_min.onnx",
+      "sha256": "2912f043fab94e57e1358b33c898b69317a5d34a4215d8374274bf1624076e85",
+      "transforms": [
+        "remove_min"
+      ],
+      "baseline": {
+        "memory": 413,
+        "params": 116,
+        "cost": 529
+      },
+      "candidate": {
+        "memory": 404,
+        "params": 116,
+        "cost": 520
+      },
+      "cost_reduction": 9,
+      "checker_full": "PASS",
+      "strict_shape_inference_data_prop": "PASS",
+      "conv_bias_ub": []
+    },
+    {
+      "task": 237,
+      "label": "shift_shrink",
+      "path": "scripts/golf/loop_8003_40/agent_high_cost_resume/attempts/task237_shift_shrink.onnx",
+      "sha256": "4dd30e5cd6f4dd73a79d9386eeb4a8b0217953e7df9845a8e3444336c6bdb4b3",
+      "transforms": [
+        "remove_shrink_with_shift"
+      ],
+      "baseline": {
+        "memory": 413,
+        "params": 116,
+        "cost": 529
+      },
+      "candidate": {
+        "memory": 412,
+        "params": 116,
+        "cost": 528
+      },
+      "cost_reduction": 1,
+      "checker_full": "PASS",
+      "strict_shape_inference_data_prop": "PASS",
+      "conv_bias_ub": []
+    },
+    {
+      "task": 237,
+      "label": "combined",
+      "path": "scripts/golf/loop_8003_40/agent_high_cost_resume/attempts/task237_combined.onnx",
+      "sha256": "a6fe1609ed851f2ba91300e7cf8e2cded89af0dd34b555da11d9828a29c9f8a9",
+      "transforms": [
+        "remove_min",
+        "remove_shrink_with_shift"
+      ],
+      "baseline": {
+        "memory": 413,
+        "params": 116,
+        "cost": 529
+      },
+      "candidate": {
+        "memory": 403,
+        "params": 116,
+        "cost": 519
+      },
+      "cost_reduction": 10,
+      "checker_full": "PASS",
+      "strict_shape_inference_data_prop": "PASS",
+      "conv_bias_ub": []
+    }
+  ]
+}

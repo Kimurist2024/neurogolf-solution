@@ -1,0 +1,320 @@
+{
+  "baseline": {
+    "score": 8003.4,
+    "zip": "submission_base_8003.40.zip",
+    "sha256": "9bb795b4a2945882e98071350ee8333a914f27552ac8935570a20e2a57afd36f"
+  },
+  "ranking": {
+    "range": [
+      150,
+      400
+    ],
+    "count": 251,
+    "selected": [
+      {
+        "rank_150_400": 42,
+        "task": 156,
+        "memory": 330,
+        "params": 226,
+        "cost": 556,
+        "model": "scripts/golf/loop_8003_40/base_models/task156.onnx",
+        "model_sha256": "b5457e5da157641c13690ea0a3a0fc2664aeccf5f49e7c1bc233e11f5121c260",
+        "graph": {
+          "nodes": 18,
+          "max_einsum_inputs": 0,
+          "lookup_or_cloak_ops": []
+        },
+        "decision": "SELECT",
+        "reason": "classify two solid rectangles by their unequal extent; recolor interiors 1/2",
+        "classification": "A"
+      },
+      {
+        "rank_150_400": 44,
+        "task": 237,
+        "memory": 413,
+        "params": 116,
+        "cost": 529,
+        "model": "scripts/golf/loop_8003_40/base_models/task237.onnx",
+        "model_sha256": "d8ef7011cb912b1752d471535b55110c0d3474d517388d73e92e950abda58ff4",
+        "graph": {
+          "nodes": 22,
+          "max_einsum_inputs": 0,
+          "lookup_or_cloak_ops": []
+        },
+        "decision": "SELECT",
+        "reason": "extend each marker rightward and carry the latest marker down the last column",
+        "classification": "B"
+      },
+      {
+        "rank_150_400": 62,
+        "task": 345,
+        "memory": 248,
+        "params": 141,
+        "cost": 389,
+        "model": "scripts/golf/loop_8003_40/base_models/task345.onnx",
+        "model_sha256": "36b1e2be6488496ca637996552b505cf9b2742775b663c4210407d61b861d636",
+        "graph": {
+          "nodes": 34,
+          "max_einsum_inputs": 3,
+          "lookup_or_cloak_ops": []
+        },
+        "decision": "SELECT",
+        "reason": "unroll at most nine upward steps, turning right when gray blocks the next cell",
+        "classification": "B"
+      }
+    ],
+    "source": "ranking_selection.json"
+  },
+  "selected_task_reports": [
+    {
+      "task": 156,
+      "classification": "Type A with global two-component extent comparison",
+      "truth_rule": "Find the two solid yellow rectangles; the smaller-area rectangle gets interior color 1 and the larger-area rectangle gets interior color 2; yellow borders remain unchanged.",
+      "reference_fresh5000": {
+        "task": 156,
+        "generator_hash": "694f12f3",
+        "fresh_requested": 5000,
+        "right": 5000,
+        "wrong": 0,
+        "generation_or_reference_errors": 0,
+        "first_mismatch": null,
+        "perfect": true
+      },
+      "baseline": {
+        "memory": 330,
+        "params": 226,
+        "cost": 556
+      },
+      "clean_floor": {
+        "assessment": "AT_OR_BELOW_PRACTICAL_CLEAN_FLOOR",
+        "reason": "A conventional 10x10 float color decode already costs 400 bytes before component extent comparison and two interior masks. The incumbent performs the classification in 330 bytes total memory and emits the free output directly with a 180-parameter 2->10 QLinearConv. Replacing that final with a 30x30 label/condition tensor alone costs at least 900 bytes."
+      },
+      "candidate": null,
+      "verdict": "NO_CANDIDATE"
+    },
+    {
+      "task": 237,
+      "classification": "Type B bounded propagation (grid <=9)",
+      "truth_rule": "For each marker, paint its row from the marker to the right edge and carry the latest marker color down the last column.",
+      "reference_fresh5000": {
+        "task": 237,
+        "generator_hash": "99fa7670",
+        "fresh_requested": 5000,
+        "right": 5000,
+        "wrong": 0,
+        "generation_or_reference_errors": 0,
+        "first_mismatch": null,
+        "perfect": true
+      },
+      "baseline": {
+        "memory": 413,
+        "params": 116,
+        "cost": 529
+      },
+      "clean_floor": {
+        "assessment": "AT_OR_BELOW_PRACTICAL_CLEAN_FLOOR",
+        "reason": "A straightforward max-9 implementation needs a 9x9 float decode (324 bytes) and at least one second full propagation grid (another 324 bytes), exceeding the entire incumbent cost before parameters. The incumbent's packed scalar/uint8 representation is already substantially below that floor."
+      },
+      "built_attempts": [
+        {
+          "task": 237,
+          "label": "remove_min",
+          "path": "scripts/golf/loop_8003_40/agent_high_cost_resume/attempts/task237_remove_min.onnx",
+          "sha256": "2912f043fab94e57e1358b33c898b69317a5d34a4215d8374274bf1624076e85",
+          "transforms": [
+            "remove_min"
+          ],
+          "baseline": {
+            "memory": 413,
+            "params": 116,
+            "cost": 529
+          },
+          "candidate": {
+            "memory": 404,
+            "params": 116,
+            "cost": 520
+          },
+          "cost_reduction": 9,
+          "checker_full": "PASS",
+          "strict_shape_inference_data_prop": "PASS",
+          "conv_bias_ub": []
+        },
+        {
+          "task": 237,
+          "label": "shift_shrink",
+          "path": "scripts/golf/loop_8003_40/agent_high_cost_resume/attempts/task237_shift_shrink.onnx",
+          "sha256": "4dd30e5cd6f4dd73a79d9386eeb4a8b0217953e7df9845a8e3444336c6bdb4b3",
+          "transforms": [
+            "remove_shrink_with_shift"
+          ],
+          "baseline": {
+            "memory": 413,
+            "params": 116,
+            "cost": 529
+          },
+          "candidate": {
+            "memory": 412,
+            "params": 116,
+            "cost": 528
+          },
+          "cost_reduction": 1,
+          "checker_full": "PASS",
+          "strict_shape_inference_data_prop": "PASS",
+          "conv_bias_ub": []
+        },
+        {
+          "task": 237,
+          "label": "combined",
+          "path": "scripts/golf/loop_8003_40/agent_high_cost_resume/attempts/task237_combined.onnx",
+          "sha256": "a6fe1609ed851f2ba91300e7cf8e2cded89af0dd34b555da11d9828a29c9f8a9",
+          "transforms": [
+            "remove_min",
+            "remove_shrink_with_shift"
+          ],
+          "baseline": {
+            "memory": 413,
+            "params": 116,
+            "cost": 529
+          },
+          "candidate": {
+            "memory": 403,
+            "params": 116,
+            "cost": 519
+          },
+          "cost_reduction": 10,
+          "checker_full": "PASS",
+          "strict_shape_inference_data_prop": "PASS",
+          "conv_bias_ub": []
+        }
+      ],
+      "early_validation": [
+        {
+          "label": "remove_min",
+          "cost": 520,
+          "fresh_probe": {
+            "right": 3,
+            "wrong": 17,
+            "total": 20
+          },
+          "known_complete": false,
+          "verdict": "REJECT",
+          "reason": "Min clamps empty-row sentinel 9 to the active width; it is not redundant."
+        },
+        {
+          "label": "shift_shrink",
+          "cost": 528,
+          "fresh_probe": {
+            "right": 0,
+            "wrong": 20,
+            "total": 20
+          },
+          "known_complete": false,
+          "verdict": "REJECT",
+          "reason": "The unshifted width is also consumed by Min; moving 15 only into column indices is invalid."
+        },
+        {
+          "label": "combined",
+          "cost": 519,
+          "fresh_probe": {
+            "right": 0,
+            "wrong": 100,
+            "total": 100
+          },
+          "known_complete": false,
+          "verdict": "REJECT",
+          "reason": "Both required sentinel/width guards were removed."
+        }
+      ],
+      "candidate": null,
+      "verdict": "NO_CANDIDATE"
+    },
+    {
+      "task": 345,
+      "classification": "Type B bounded path unroll (9 steps)",
+      "truth_rule": "From each red start on the bottom row, move upward; if gray blocks the cell above, move right instead; paint every visited cell red.",
+      "reference_fresh5000": {
+        "task": 345,
+        "generator_hash": "d9f24cd1",
+        "fresh_requested": 5000,
+        "right": 5000,
+        "wrong": 0,
+        "generation_or_reference_errors": 0,
+        "first_mismatch": null,
+        "perfect": true
+      },
+      "baseline": {
+        "memory": 248,
+        "params": 141,
+        "cost": 389
+      },
+      "clean_floor": {
+        "assessment": "AT_OR_BELOW_PRACTICAL_CLEAN_FLOOR",
+        "reason": "A direct nine-step 10x10 boolean path unroll requires at least 900 bytes of step masks before decode. The incumbent represents all rows as scalar bitsets and uses only 248 bytes of intermediate memory. Its 100-element shared row kernel is dense under the official parameter counter; sparse_initializer is a known grader-risk and is forbidden."
+      },
+      "candidate": null,
+      "verdict": "NO_CANDIDATE"
+    }
+  ],
+  "serious_attempts": [
+    {
+      "task": 156,
+      "idea": "single encoded feature channel + grouped final conv",
+      "result": "REJECT_DESIGN",
+      "reason": "one affine channel cannot independently emit color1, color2, and the common yellow border"
+    },
+    {
+      "task": 156,
+      "idea": "split four active output channels then pad/permute",
+      "result": "REJECT_FLOOR",
+      "reason": "materializes at least 4x30x30=3600 bytes before the free output"
+    },
+    {
+      "task": 156,
+      "idea": "conventional float color decode and explicit masks",
+      "result": "REJECT_FLOOR",
+      "reason": "400-byte decode plus classification masks exceeds cost556"
+    },
+    {
+      "task": 237,
+      "idea": "remove generator-domain Min guard",
+      "result": "REJECT_TEST",
+      "reason": "3/20 fresh"
+    },
+    {
+      "task": 237,
+      "idea": "absorb Shrink bias into column indices",
+      "result": "REJECT_TEST",
+      "reason": "0/20 fresh"
+    },
+    {
+      "task": 237,
+      "idea": "combine both guard removals",
+      "result": "REJECT_TEST",
+      "reason": "0/100 fresh"
+    },
+    {
+      "task": 237,
+      "idea": "rank-3 factorization of the 10x8 packed kernel",
+      "result": "REJECT_FLOOR",
+      "reason": "dynamic reconstructed weight adds 320 bytes to save only 26 parameters"
+    },
+    {
+      "task": 345,
+      "idea": "float arithmetic to remove six scalar Cast outputs",
+      "result": "REJECT_SEMANTICS",
+      "reason": "BitwiseAnd on row bitsets cannot be replaced by Mul"
+    },
+    {
+      "task": 345,
+      "idea": "sparse Wpack initializer",
+      "result": "REJECT_POLICY",
+      "reason": "sparse_initializer is a known grader-error/risk lineage"
+    }
+  ],
+  "accepted": [],
+  "projected_gain": 0.0,
+  "verdict": "NO_CANDIDATE",
+  "merge_performed": false,
+  "protected_files_changed": false,
+  "stop_reason": "All three incumbents are already below the practical clean structural floor; all cheaper concrete task237 probes failed immediately."
+}

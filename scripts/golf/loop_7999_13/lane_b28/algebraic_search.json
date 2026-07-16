@@ -1,0 +1,120 @@
+{
+  "task": 347,
+  "baseline_cost": 41,
+  "allowed_families": {
+    "duplicate_initializer": {
+      "candidate_count": 0,
+      "evidence": [],
+      "reason": "no equal dtype/shape/value initializer pair exists"
+    },
+    "factor_or_gauge_reuse": {
+      "candidate_count": 0,
+      "reason": "s is already shared by GroupNormalization scale/bias and all four quantization scales; z is already shared by all four zero-point positions; no duplicated gauge factor remains"
+    },
+    "singleton_contraction": {
+      "candidate_count": 0,
+      "reason": "there is no Einsum, Gemm, or MatMul; final ConvInteger has the minimum ten output-channel coefficients required for channels 0 and 6, and the dynamic QLinearConv reuses x as both data and weight"
+    },
+    "common_subexpression": {
+      "candidate_count": 0,
+      "evidence": [],
+      "reason": "no duplicate node signature exists; g, x, s, z, W, and ss are already shared at every repeated use"
+    }
+  },
+  "initializer_inventory": {
+    "rows": [
+      {
+        "name": "s",
+        "dtype": 1,
+        "shape": [],
+        "params": 1,
+        "uses": 5,
+        "values": [
+          3.0
+        ]
+      },
+      {
+        "name": "z",
+        "dtype": 3,
+        "shape": [],
+        "params": 1,
+        "uses": 3,
+        "values": [
+          -11
+        ]
+      },
+      {
+        "name": "W",
+        "dtype": 3,
+        "shape": [
+          10,
+          1,
+          1,
+          1
+        ],
+        "params": 10,
+        "uses": 2,
+        "values": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "ss",
+        "dtype": 7,
+        "shape": [
+          2
+        ],
+        "params": 2,
+        "uses": 2,
+        "values": [
+          -1,
+          -1
+        ]
+      },
+      {
+        "name": "ends",
+        "dtype": 7,
+        "shape": [
+          2
+        ],
+        "params": 2,
+        "uses": 1,
+        "values": [
+          -4,
+          -4
+        ]
+      },
+      {
+        "name": "axes",
+        "dtype": 7,
+        "shape": [
+          2
+        ],
+        "params": 2,
+        "uses": 1,
+        "values": [
+          2,
+          3
+        ]
+      }
+    ],
+    "exact_duplicate_groups": []
+  },
+  "node_cse_inventory": {
+    "exact_duplicate_node_groups": []
+  },
+  "non_candidate_observation": {
+    "slice": "qf reverses both spatial axes of the 3x3 q tensor; positive Conv strides cannot absorb that reversal exactly without another tensor/operator",
+    "shape_floor": "truthfully declaring g and x exposes 45018 intermediate bytes before parameters"
+  },
+  "eligible_candidate_count": 0
+}

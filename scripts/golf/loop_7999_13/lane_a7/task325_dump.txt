@@ -1,0 +1,93 @@
+# task325.onnx
+
+## Initializers
+len1: int64 (1,) [1]
+selector: float16 (10,) [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0]
+negative_thresholds: float16 (1, 1, 1, 6) [[[[-0.0, -1.0, -2.0, -3.0, -4.0, -5.0]]]]
+indices: int64 (1, 1, 6, 6) [[[[7200, 1, 2, 3, 4, 5], [30, 7231, 32, 33, 34, 35], [60, 61, 7262, 63, 64, 65], [90, 91, 92, 7293, 94, 95], [120, 121, 122, 123, 7324, 125], [150, 151, 152, 153, 154, 7355]]]]
+output_shape: int64 (4,) [1, 10, 30, 30]
+
+## Value info
+s29: INT64 [1]
+s30: INT64 [1]
+s31: INT64 [1]
+hidden_input: FLOAT [1, 1, 1, 1]
+x: FLOAT16 [1, 1, 1, 1]
+right_0: FLOAT16 [1, 1, 1, 1]
+right_1: FLOAT16 [1, 1, 1, 1]
+right: FLOAT16 [1, 1, 1, 1]
+down_0: FLOAT16 []
+down_1: FLOAT16 [1, 1, 1, 1]
+down: FLOAT16 [1, 1, 1, 1]
+down_right_0: FLOAT16 [1, 1, 1, 1]
+down_right_1: FLOAT16 [1, 1, 1, 1]
+down_right: FLOAT16 [1, 1, 1, 1]
+down_right2_0: FLOAT16 [1, 1, 1, 1]
+down_right2_1: FLOAT16 [1, 1, 1, 1]
+down_right2: FLOAT16 [1, 1, 1, 1]
+down2_right_0: FLOAT16 [1, 1, 1, 1]
+down2_right_1: FLOAT16 [1, 1, 1, 1]
+down2_right: FLOAT16 [1, 1, 1, 1]
+down2_right2_0: FLOAT16 [1, 1, 1, 1]
+down2_right2_1: FLOAT16 [1, 1, 1, 1]
+down2_right2: FLOAT16 [1, 1, 1, 1]
+t0: FLOAT16 [1]
+t01: FLOAT16 [1]
+t03: FLOAT16 [1]
+t04: FLOAT16 [1]
+t014: FLOAT16 [1]
+t034: FLOAT16 [1]
+t13578: FLOAT16 [1]
+t134578: FLOAT16 [1]
+row: FLOAT16 [1, 1, 1, 6]
+col: FLOAT16 [1, 1, 6, 1]
+square: FLOAT16 [1, 1, 6, 6]
+
+## Nodes
+00 ConstantOfShape ['len1'] -> ['s29'] {'value': dims: 1
+data_type: 7
+name: "value_29"
+raw_data: "\035\000\000\000\000\000\000\000"
+}
+01 ConstantOfShape ['len1'] -> ['s30'] {'value': dims: 1
+data_type: 7
+name: "value_30"
+raw_data: "\036\000\000\000\000\000\000\000"
+}
+02 ConstantOfShape ['len1'] -> ['s31'] {'value': dims: 1
+data_type: 7
+name: "value_31"
+raw_data: "\037\000\000\000\000\000\000\000"
+}
+03 CenterCropPad ['input', 's30'] -> ['hidden_input'] {'axes': [2]}
+04 CastLike ['hidden_input', 'selector'] -> ['x'] {}
+05 CenterCropPad ['x', 's31'] -> ['right_0'] {'axes': [3]}
+06 CenterCropPad ['right_0', 's29'] -> ['right_1'] {'axes': [3]}
+07 CenterCropPad ['right_1', 's30'] -> ['right'] {'axes': [3]}
+08 CenterCropPad ['x', 's31'] -> ['down_0'] {'axes': [2]}
+09 CenterCropPad ['down_0', 's29'] -> ['down_1'] {'axes': [2]}
+10 CenterCropPad ['down_1', 's30'] -> ['down'] {'axes': [2]}
+11 CenterCropPad ['right', 's31'] -> ['down_right_0'] {'axes': [2]}
+12 CenterCropPad ['down_right_0', 's29'] -> ['down_right_1'] {'axes': [2]}
+13 CenterCropPad ['down_right_1', 's30'] -> ['down_right'] {'axes': [2]}
+14 CenterCropPad ['down_right', 's31'] -> ['down_right2_0'] {'axes': [3]}
+15 CenterCropPad ['down_right2_0', 's29'] -> ['down_right2_1'] {'axes': [3]}
+16 CenterCropPad ['down_right2_1', 's30'] -> ['down_right2'] {'axes': [3]}
+17 CenterCropPad ['down_right', 's31'] -> ['down2_right_0'] {'axes': [2]}
+18 CenterCropPad ['down2_right_0', 's29'] -> ['down2_right_1'] {'axes': [2]}
+19 CenterCropPad ['down2_right_1', 's30'] -> ['down2_right'] {'axes': [2]}
+20 CenterCropPad ['down_right2', 's31'] -> ['down2_right2_0'] {'axes': [2]}
+21 CenterCropPad ['down2_right2_0', 's29'] -> ['down2_right2_1'] {'axes': [2]}
+22 CenterCropPad ['down2_right2_1', 's30'] -> ['down2_right2'] {'axes': [2]}
+23 Einsum ['x', 'selector', 'selector'] -> ['t0'] {'equation': b'nchw,c,c->n'}
+24 Einsum ['x', 'right', 'selector'] -> ['t01'] {'equation': b'nchw,nchw,c->n'}
+25 Einsum ['x', 'down', 'selector'] -> ['t03'] {'equation': b'nchw,nchw,c->n'}
+26 Einsum ['x', 'down_right', 'selector'] -> ['t04'] {'equation': b'nchw,nchw,c->n'}
+27 Einsum ['x', 'right', 'down_right', 'selector', 'selector'] -> ['t014'] {'equation': b'nchw,nchw,nchw,c,c->n'}
+28 Einsum ['x', 'down', 'down_right', 'selector', 'selector'] -> ['t034'] {'equation': b'nchw,nchw,nchw,c,c->n'}
+29 Einsum ['right', 'down', 'down_right2', 'down2_right', 'down2_right2', 'selector', 'selector'] -> ['t13578'] {'equation': b'nchw,nchw,nchw,nchw,nchw,c,c->n'}
+30 Einsum ['right', 'down', 'down_right', 'down_right2', 'down2_right', 'down2_right2', 'selector'] -> ['t134578'] {'equation': b'nchw,nchw,nchw,nchw,nchw,nchw,c->n'}
+31 Sum ['t0', 't01', 't03', 't04', 't014', 't034', 't13578', 't134578', 'negative_thresholds'] -> ['row'] {}
+32 Transpose ['row'] -> ['col'] {'perm': [0, 1, 3, 2]}
+33 Min ['row', 'col'] -> ['square'] {}
+34 MaxUnpool ['square', 'indices', 'output_shape'] -> ['output'] {'kernel_shape': [1, 1], 'strides': [1, 1]}

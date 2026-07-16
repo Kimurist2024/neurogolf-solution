@@ -1,0 +1,92 @@
+[
+  {
+    "task": 206,
+    "path": "scripts/golf/loop_7999_13/lane_archive_top200/task206_r01_static144.onnx",
+    "exit_code": 1,
+    "result": {},
+    "runtime_exception": false,
+    "stdout": "Error: Unable to load ONNX model: [ONNXRuntimeError] : 1 : FAIL : Type Error: Type parameter (T) of Optype (Max) bound to different types (tensor(int64) and tensor(int32) in node ().\n",
+    "stderr_tail": "Traceback (most recent call last):\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/verify_fix.py\", line 161, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/verify_fix.py\", line 147, in main\n    verdicts = [verify_one(t, p, a.k, a.min_fresh_rate) for t, p in jobs]\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/verify_fix.py\", line 106, in verify_one\n    ftotal, ffail = fresh_audit(model, task, k)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/verify_fix.py\", line 68, in fresh_audit\n    sess = _raw_session(model)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/verify_fix.py\", line 53, in _raw_session\n    return onnxruntime.InferenceSession(san.SerializeToString(), opts)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/.venv/lib/python3.12/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py\", line 504, in __init__\n    self._create_inference_session(providers, provider_options, disabled_optimizers)\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/.venv/lib/python3.12/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py\", line 610, in _create_inference_session\n    sess.initialize_session(providers, provider_options, disabled_optimizers)\nonnxruntime.capi.onnxruntime_pybind11_state.Fail: [ONNXRuntimeError] : 1 : FAIL : Type Error: Type parameter (T) of Optype (Max) bound to different types (tensor(int64) and tensor(int32) in node ().\n",
+    "baseline_cost": 196,
+    "strictly_cheaper": false,
+    "projected_gain": 0.0
+  },
+  {
+    "task": 206,
+    "path": "scripts/golf/loop_7999_13/lane_archive_top200/task206_r02_static151.onnx",
+    "exit_code": 0,
+    "result": {
+      "task": 206,
+      "decision": "REJECT",
+      "cost": null,
+      "lib_gold": false,
+      "official_gold": false,
+      "margin_stable": false,
+      "margin_min": null,
+      "fresh_total": 100,
+      "fresh_fails": 79,
+      "fresh_rate": 0.21,
+      "min_fresh_rate": 1.0,
+      "fresh_ok": false,
+      "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_7999_13/lane_archive_top200/task206_r02_static151.onnx"
+    },
+    "runtime_exception": true,
+    "stdout": "Error: Traceback (most recent call last):\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/lib/scoring.py\", line 297, in verify_subset\n    user_output = run_network(session, benchmark[\"input\"])\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/lib/scoring.py\", line 284, in run_network\n    result = session.run([\"output\"], {\"input\": benchmark_input})\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/.venv/lib/python3.12/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py\", line 296, in run\n    return self._sess.run(output_names, input_feed, run_options)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nonnxruntime.capi.onnxruntime_pybind11_state.RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,2,17,3} != {1,2,17,13}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n\n\nError: Traceback (most recent call last):\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/lib/scoring.py\", line 297, in verify_subset\n    user_output = run_network(session, benchmark[\"input\"])\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/lib/scoring.py\", line 284, in run_network\n    result = session.run([\"output\"], {\"input\": benchmark_input})\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/.venv/lib/python3.12/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py\", line 296, in run\n    return self._sess.run(output_names, input_feed, run_options)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nonnxruntime.capi.onnxruntime_pybind11_state.RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,2,13,3} != {1,2,13,9}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n\n\nError: Traceback (most recent call last):\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/lib/scoring.py\", line 297, in verify_subset\n    user_output = run_network(session, benchmark[\"input\"])\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/lib/scoring.py\", line 284, in run_network\n    result = session.run([\"output\"], {\"input\": benchmark_input})\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/.venv/lib/python3.12/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py\", line 296, in run\n    return self._sess.run(output_names, input_feed, run_options)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nonnxruntime.capi.onnxruntime_pybind11_state.RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,2,11,3} != {1,2,11,5}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n\n\n[\n  {\n    \"task\": 206,\n    \"decision\": \"REJECT\",\n    \"cost\": null,\n    \"lib_gold\": false,\n    \"official_gold\": false,\n    \"margin_stable\": false,\n    \"margin_min\": null,\n    \"fresh_total\": 100,\n    \"fresh_fails\": 79,\n    \"fresh_rate\": 0.21,\n    \"min_fresh_rate\": 1.0,\n    \"fresh_ok\": false,\n    \"path\": \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_7999_13/lane_archive_top200/task206_r02_static151.onnx\"\n  }\n]\n",
+    "stderr_tail": "lidate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 03:31:50.948 python[62435:22498964] 2026-07-14 03:31:50.948443 [E:onnxruntime:, sequential_executor.cc:572 ExecuteKernel] Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,2,7,3} != {1,2,7,5}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 03:31:50.948 python[62435:22498964] 2026-07-14 03:31:50.948895 [E:onnxruntime:, sequential_executor.cc:572 ExecuteKernel] Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,2,19,3} != {1,2,19,5}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 03:31:50.949 python[62435:22498964] 2026-07-14 03:31:50.949192 [E:onnxruntime:, sequential_executor.cc:572 ExecuteKernel] Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,2,3,3} != {1,2,3,13}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 03:31:50.949 python[62435:22498964] 2026-07-14 03:31:50.949825 [E:onnxruntime:, sequential_executor.cc:572 ExecuteKernel] Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,2,5,3} != {1,2,5,11}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 03:31:50.950 python[62435:22498964] 2026-07-14 03:31:50.950239 [E:onnxruntime:, sequential_executor.cc:572 ExecuteKernel] Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,2,19,3} != {1,2,19,7}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n2026-07-14 03:31:50.950 python[62435:22498964] 2026-07-14 03:31:50.950567 [E:onnxruntime:, sequential_executor.cc:572 ExecuteKernel] Non-zero status code returned while running Slice node. Name:'' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,2,11,3} != {1,2,11,5}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n\nADOPT=0/1\n  task206: REJECT fresh=79/100 rate=0.21 threshold=1.0 lib=False off=False margin=None cost=None\n",
+    "baseline_cost": 196,
+    "strictly_cheaper": false,
+    "projected_gain": 0.0
+  },
+  {
+    "task": 206,
+    "path": "scripts/golf/loop_7999_13/lane_archive_top200/task206_r03_static151.onnx",
+    "exit_code": 0,
+    "result": {
+      "task": 206,
+      "decision": "ADOPT",
+      "cost": 199,
+      "lib_gold": true,
+      "official_gold": true,
+      "margin_stable": true,
+      "margin_min": 1.0,
+      "fresh_total": 100,
+      "fresh_fails": 0,
+      "fresh_rate": 1.0,
+      "min_fresh_rate": 1.0,
+      "fresh_ok": true,
+      "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_7999_13/lane_archive_top200/task206_r03_static151.onnx"
+    },
+    "runtime_exception": false,
+    "stdout": "[\n  {\n    \"task\": 206,\n    \"decision\": \"ADOPT\",\n    \"cost\": 199,\n    \"lib_gold\": true,\n    \"official_gold\": true,\n    \"margin_stable\": true,\n    \"margin_min\": 1.0,\n    \"fresh_total\": 100,\n    \"fresh_fails\": 0,\n    \"fresh_rate\": 1.0,\n    \"min_fresh_rate\": 1.0,\n    \"fresh_ok\": true,\n    \"path\": \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_7999_13/lane_archive_top200/task206_r03_static151.onnx\"\n  }\n]\n",
+    "stderr_tail": "\nADOPT=1/1\n  task206: ADOPT fresh=0/100 rate=1.0 threshold=1.0 lib=True off=True margin=1.0 cost=199\n",
+    "baseline_cost": 196,
+    "strictly_cheaper": false,
+    "projected_gain": 0.0
+  },
+  {
+    "task": 206,
+    "path": "scripts/golf/loop_7999_13/lane_archive_top200/task206_r04_static152.onnx",
+    "exit_code": 0,
+    "result": {
+      "task": 206,
+      "decision": "ADOPT",
+      "cost": 200,
+      "lib_gold": true,
+      "official_gold": true,
+      "margin_stable": true,
+      "margin_min": 1.0,
+      "fresh_total": 100,
+      "fresh_fails": 0,
+      "fresh_rate": 1.0,
+      "min_fresh_rate": 1.0,
+      "fresh_ok": true,
+      "path": "/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_7999_13/lane_archive_top200/task206_r04_static152.onnx"
+    },
+    "runtime_exception": false,
+    "stdout": "[\n  {\n    \"task\": 206,\n    \"decision\": \"ADOPT\",\n    \"cost\": 200,\n    \"lib_gold\": true,\n    \"official_gold\": true,\n    \"margin_stable\": true,\n    \"margin_min\": 1.0,\n    \"fresh_total\": 100,\n    \"fresh_fails\": 0,\n    \"fresh_rate\": 1.0,\n    \"min_fresh_rate\": 1.0,\n    \"fresh_ok\": true,\n    \"path\": \"/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf/scripts/golf/loop_7999_13/lane_archive_top200/task206_r04_static152.onnx\"\n  }\n]\n",
+    "stderr_tail": "\nADOPT=1/1\n  task206: ADOPT fresh=0/100 rate=1.0 threshold=1.0 lib=True off=True margin=1.0 cost=200\n",
+    "baseline_cost": 196,
+    "strictly_cheaper": false,
+    "projected_gain": 0.0
+  }
+]

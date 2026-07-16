@@ -1,0 +1,106 @@
+{
+  "baseline": "submission_base_8005.16.zip",
+  "baseline_sha256": "73073208ec8b5b296f1fc13300a7e4df871135f0a9edd4a682ac7b48077aba00",
+  "tasks": [
+    133,
+    145,
+    182,
+    187,
+    201,
+    204,
+    216,
+    233,
+    255,
+    319,
+    330,
+    349,
+    361,
+    367,
+    370
+  ],
+  "records": [
+    {
+      "task": 182,
+      "label": "baseline",
+      "status": "baseline_structural_reject",
+      "structural": {
+        "checker": true,
+        "strict_shape_data_prop": true,
+        "static_positive": true,
+        "banned_ops": [],
+        "nested_graphs": [],
+        "conv_bias_ub": [
+          {
+            "node": "match_u8_raw",
+            "op": "QLinearConv",
+            "reason": "unknown"
+          }
+        ],
+        "errors": [],
+        "cost": 419,
+        "memory": 361,
+        "params": 58,
+        "pass": false
+      }
+    },
+    {
+      "task": 187,
+      "label": "identity_007",
+      "detail": {
+        "index": 7,
+        "input": "seed_shape",
+        "output": "k4h",
+        "removed_initializers": []
+      },
+      "base_cost": 1566,
+      "structural": {
+        "checker": true,
+        "strict_shape_data_prop": true,
+        "static_positive": true,
+        "banned_ops": [],
+        "nested_graphs": [],
+        "conv_bias_ub": [],
+        "errors": [],
+        "cost": 1558,
+        "memory": 1417,
+        "params": 141,
+        "pass": true
+      },
+      "status": "emitted",
+      "candidate_cost": 1558,
+      "cost_reduction": 8,
+      "path": "scripts/golf/loop_8004_42_plus20/root_rebase_exact22/candidates/task187_identity_007.onnx",
+      "sha256": "0e719feb02b141c481043f2397d7cac1a8f0058779276b287c3fba0c54e72110"
+    },
+    {
+      "task": 216,
+      "label": "identity_011",
+      "detail": {
+        "index": 11,
+        "input": "sl18_i32",
+        "output": "sl20_dyn",
+        "removed_initializers": []
+      },
+      "base_cost": 751,
+      "structural": {
+        "checker": false,
+        "strict_shape_data_prop": false,
+        "static_positive": false,
+        "banned_ops": [],
+        "nested_graphs": [],
+        "conv_bias_ub": [],
+        "errors": [
+          "checker_or_inference:InferenceError:[ShapeInferenceError] Inference error(s): (op_type:Slice, node name: rowu): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (1) vs (17)\n(op_type:CenterCropPad, node name: prev): [ShapeInferenceError] Inferred shape and existing shape differ in dimension 0: (17) vs (1)\n"
+        ],
+        "cost": null
+      },
+      "status": "structural_reject"
+    }
+  ],
+  "summary": {
+    "tasks_scanned": 15,
+    "records": 3,
+    "emitted": 1,
+    "structural_rejects": 2
+  }
+}

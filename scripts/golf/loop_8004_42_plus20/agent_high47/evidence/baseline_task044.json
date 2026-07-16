@@ -1,0 +1,147 @@
+{
+  "label": "baseline_task044",
+  "task": 44,
+  "path": "scripts/golf/loop_8004_42_plus20/agent_high47/baselines/task044.onnx",
+  "sha256": "49a1d5459ca9ac177ca161c960a7cca98eb68524846204fcfa6f5c1b53023299",
+  "file_bytes": 4337,
+  "nodes": 44,
+  "initializers": 23,
+  "params": 199,
+  "op_histogram": {
+    "Mul": 8,
+    "QLinearMatMul": 6,
+    "Sub": 5,
+    "MaxPool": 3,
+    "QLinearConv": 3,
+    "Cast": 3,
+    "Resize": 2,
+    "MatMulInteger": 2,
+    "Where": 2,
+    "GroupNormalization": 1,
+    "CastLike": 1,
+    "Clip": 1,
+    "Einsum": 1,
+    "Equal": 1,
+    "Greater": 1,
+    "Mod": 1,
+    "DequantizeLinear": 1,
+    "Concat": 1,
+    "Max": 1
+  },
+  "max_node_inputs": 11,
+  "lookup_red_flags": {
+    "tfidf": 0,
+    "hardmax": 0,
+    "giant_einsum_nodes": 1,
+    "params_over_10000": false
+  },
+  "nonstandard_domains": [],
+  "banned_ops": [],
+  "nested_graph_attributes": 0,
+  "function_count": 0,
+  "sparse_initializer_count": 0,
+  "conv_bias_findings": [
+    {
+      "node": "output",
+      "op": "QLinearConv",
+      "bias": "b2",
+      "bias_is_initializer": true,
+      "bias_shape": [
+        10
+      ],
+      "expected_channels": 10,
+      "safe": true
+    }
+  ],
+  "full_check": true,
+  "strict_shape_data_prop": true,
+  "runtime_shape_trace": {
+    "runtime_tensors": 44,
+    "declared_tensors": 5,
+    "declared_actual_mismatches": [
+      {
+        "tensor": "gn",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "actual": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "u",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "actual": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ],
+    "undeclared_intermediate_count": 39,
+    "single_example_intermediate_bytes": 45882
+  },
+  "official_like_score": {
+    "memory": 887,
+    "params": 199,
+    "cost": 1086,
+    "score": 18.00974349950612,
+    "correct": true
+  },
+  "known_disable_all": {
+    "train": {
+      "right": 3,
+      "wrong": 0,
+      "errors": 0
+    },
+    "test": {
+      "right": 1,
+      "wrong": 0,
+      "errors": 0
+    },
+    "arc-gen": {
+      "right": 262,
+      "wrong": 0,
+      "errors": 0
+    },
+    "total": {
+      "right": 266,
+      "wrong": 0,
+      "errors": 0
+    }
+  },
+  "known_default": {
+    "train": {
+      "right": 3,
+      "wrong": 0,
+      "errors": 0
+    },
+    "test": {
+      "right": 1,
+      "wrong": 0,
+      "errors": 0
+    },
+    "arc-gen": {
+      "right": 262,
+      "wrong": 0,
+      "errors": 0
+    },
+    "total": {
+      "right": 266,
+      "wrong": 0,
+      "errors": 0
+    }
+  }
+}

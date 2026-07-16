@@ -1,0 +1,860 @@
+{
+  "base_task184": {
+    "label": "base_task184",
+    "task": 184,
+    "path": "scripts/golf/loop_7999_13/lane_c27/baseline/task184.onnx",
+    "sha256": "156fe12922d290876f63c210f9cec8252e308e1af0512e309cb2fc6fad8928fc",
+    "file_bytes": 2423,
+    "nodes": 26,
+    "initializers": 6,
+    "params": 32,
+    "op_histogram": {
+      "Cast": 6,
+      "ArgMin": 4,
+      "CenterCropPad": 2,
+      "Einsum": 2,
+      "Equal": 2,
+      "Where": 2,
+      "Shape": 1,
+      "CastLike": 1,
+      "Shrink": 1,
+      "Concat": 1,
+      "DequantizeLinear": 1,
+      "Gather": 1,
+      "GridSample": 1,
+      "Conv": 1
+    },
+    "max_node_inputs": 5,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 26,
+      "declared_tensors": 26,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "hid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "input16",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "rowhid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            23,
+            23
+          ]
+        },
+        {
+          "tensor": "br",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "bc",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "samp",
+          "declared": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "actual": [
+            1,
+            10,
+            3,
+            3
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 64961
+    },
+    "official_like_score": {
+      "memory": 389,
+      "params": 32,
+      "cost": 421,
+      "score": 18.957367166317617,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 165,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 169,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_10) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    }
+  },
+  "base_task377": {
+    "label": "base_task377",
+    "task": 377,
+    "path": "scripts/golf/loop_7999_13/lane_c27/baseline/task377.onnx",
+    "sha256": "ce349264110182cfdb5c8dbbefcd4bb36db5c1f83d143e38a4514f32d03c4318",
+    "file_bytes": 6031,
+    "nodes": 64,
+    "initializers": 11,
+    "params": 65,
+    "op_histogram": {
+      "CastLike": 17,
+      "GreaterOrEqual": 7,
+      "CenterCropPad": 5,
+      "Einsum": 4,
+      "Sub": 4,
+      "Equal": 4,
+      "Shape": 3,
+      "Slice": 3,
+      "Add": 3,
+      "Or": 2,
+      "ReduceL1": 1,
+      "Shrink": 1,
+      "ReduceMin": 1,
+      "Div": 1,
+      "Floor": 1,
+      "TopK": 1,
+      "GatherElements": 1,
+      "Concat": 1,
+      "ReduceSum": 1,
+      "Mod": 1,
+      "Where": 1,
+      "Unsqueeze": 1
+    },
+    "max_node_inputs": 7,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_c_ge1_f' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,5,1} != {1,5,10}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+    },
+    "official_like_score": {
+      "memory": 344,
+      "params": 65,
+      "cost": 409,
+      "score": 18.986284843957197,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 3
+      },
+      "test": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 1
+      },
+      "arc-gen": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 262
+      },
+      "total": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 266
+      }
+    }
+  },
+  "task184_sound422_r06": {
+    "label": "task184_sound422_r06",
+    "task": 184,
+    "path": "scripts/golf/loop_7999_13/lane_c27/candidates/task184_sound422_r06.onnx",
+    "sha256": "7efcba6624c7db34880aca58afa5a142ea72615de22c115d627432dde2126e5b",
+    "file_bytes": 2421,
+    "nodes": 26,
+    "initializers": 7,
+    "params": 33,
+    "op_histogram": {
+      "Cast": 6,
+      "ArgMin": 4,
+      "CenterCropPad": 2,
+      "Einsum": 2,
+      "Equal": 2,
+      "Where": 2,
+      "Shape": 1,
+      "CastLike": 1,
+      "Add": 1,
+      "Concat": 1,
+      "DequantizeLinear": 1,
+      "Gather": 1,
+      "GridSample": 1,
+      "Conv": 1
+    },
+    "max_node_inputs": 5,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 26,
+      "declared_tensors": 26,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "hid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "input16",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "rowhid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            23,
+            23
+          ]
+        },
+        {
+          "tensor": "br",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "bc",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "samp",
+          "declared": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "actual": [
+            1,
+            10,
+            3,
+            3
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 64961
+    },
+    "official_like_score": {
+      "memory": 389,
+      "params": 33,
+      "cost": 422,
+      "score": 18.95499468596399,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 165,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 169,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_11) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    }
+  },
+  "task184_sound422_r07": {
+    "label": "task184_sound422_r07",
+    "task": 184,
+    "path": "scripts/golf/loop_7999_13/lane_c27/candidates/task184_sound422_r07.onnx",
+    "sha256": "fc02326948c3c91e2fbb5167237404a106826092ccf159508d4643456d8a783a",
+    "file_bytes": 2421,
+    "nodes": 26,
+    "initializers": 7,
+    "params": 33,
+    "op_histogram": {
+      "Cast": 6,
+      "ArgMin": 4,
+      "CenterCropPad": 2,
+      "Einsum": 2,
+      "Equal": 2,
+      "Where": 2,
+      "Shape": 1,
+      "CastLike": 1,
+      "Add": 1,
+      "Concat": 1,
+      "DequantizeLinear": 1,
+      "Gather": 1,
+      "GridSample": 1,
+      "Conv": 1
+    },
+    "max_node_inputs": 5,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 26,
+      "declared_tensors": 26,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "hid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "input16",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "rowhid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            23,
+            23
+          ]
+        },
+        {
+          "tensor": "br",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "bc",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "samp",
+          "declared": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "actual": [
+            1,
+            10,
+            3,
+            3
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 64961
+    },
+    "official_like_score": {
+      "memory": 389,
+      "params": 33,
+      "cost": 422,
+      "score": 18.95499468596399,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 165,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 169,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_11) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    }
+  },
+  "task184_r06_shrink421": {
+    "label": "task184_r06_shrink421",
+    "task": 184,
+    "path": "scripts/golf/loop_7999_13/lane_c27/candidates/task184_r06_shrink421.onnx",
+    "sha256": "aab1858c9ef45ae67c8a21a148079470ae084e9b976786221c6b17fc30949a03",
+    "file_bytes": 2423,
+    "nodes": 26,
+    "initializers": 6,
+    "params": 32,
+    "op_histogram": {
+      "Cast": 6,
+      "ArgMin": 4,
+      "CenterCropPad": 2,
+      "Einsum": 2,
+      "Equal": 2,
+      "Where": 2,
+      "Shape": 1,
+      "CastLike": 1,
+      "Shrink": 1,
+      "Concat": 1,
+      "DequantizeLinear": 1,
+      "Gather": 1,
+      "GridSample": 1,
+      "Conv": 1
+    },
+    "max_node_inputs": 5,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "runtime_tensors": 26,
+      "declared_tensors": 26,
+      "declared_actual_mismatches": [
+        {
+          "tensor": "hid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "input16",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            30,
+            30
+          ]
+        },
+        {
+          "tensor": "rowhid",
+          "declared": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            10,
+            23,
+            23
+          ]
+        },
+        {
+          "tensor": "br",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "bc",
+          "declared": [
+            1,
+            1
+          ],
+          "actual": [
+            1,
+            23
+          ]
+        },
+        {
+          "tensor": "samp",
+          "declared": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "actual": [
+            1,
+            10,
+            3,
+            3
+          ]
+        }
+      ],
+      "undeclared_intermediate_count": 0,
+      "single_example_intermediate_bytes": 64961
+    },
+    "official_like_score": {
+      "memory": 389,
+      "params": 32,
+      "cost": 421,
+      "score": 18.957367166317617,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 165,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 169,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_10) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+    }
+  },
+  "task377_diff5_witness408": {
+    "label": "task377_diff5_witness408",
+    "task": 377,
+    "path": "scripts/golf/loop_7999_13/lane_c27/candidates/task377_diff5_witness408.onnx",
+    "sha256": "f10fe98f1f11c40a4e841c5311b62c4fb8efde89c620d4cc088aaccad4b70daf",
+    "file_bytes": 5915,
+    "nodes": 64,
+    "initializers": 10,
+    "params": 64,
+    "op_histogram": {
+      "CastLike": 17,
+      "GreaterOrEqual": 7,
+      "CenterCropPad": 5,
+      "Einsum": 4,
+      "Sub": 4,
+      "Equal": 4,
+      "Shape": 3,
+      "Slice": 3,
+      "Add": 3,
+      "Or": 2,
+      "ReduceL1": 1,
+      "Shrink": 1,
+      "ReduceMin": 1,
+      "Div": 1,
+      "Floor": 1,
+      "TopK": 1,
+      "GatherElements": 1,
+      "Concat": 1,
+      "ReduceSum": 1,
+      "Mod": 1,
+      "Where": 1,
+      "Unsqueeze": 1
+    },
+    "max_node_inputs": 7,
+    "lookup_red_flags": {
+      "tfidf": 0,
+      "hardmax": 0,
+      "giant_einsum_nodes": 0,
+      "params_over_10000": false
+    },
+    "nonstandard_domains": [],
+    "banned_ops": [],
+    "nested_graph_attributes": 0,
+    "function_count": 0,
+    "sparse_initializer_count": 0,
+    "conv_bias_findings": [],
+    "full_check": true,
+    "strict_shape_data_prop": true,
+    "runtime_shape_trace": {
+      "error": "RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Cast node. Name:'InsertedPrecisionFreeCast_c_ge1_f' Status Message: /Users/cloudtest/vss/_work/1/s/onnxruntime/core/framework/op_kernel.cc:83 virtual OrtValue *onnxruntime::OpKernelContext::OutputMLValue(int, const TensorShape &) status.IsOK() was false. Shape mismatch attempting to re-use buffer. {1,5,1} != {1,5,10}. Validate usage of dim_value (values should be > 0) and dim_param (all values with the same string should equate to the same size) in shapes in the model.\n"
+    },
+    "official_like_score": {
+      "memory": 344,
+      "params": 64,
+      "cost": 408,
+      "score": 18.98873282559584,
+      "correct": true
+    },
+    "known_disable_all": {
+      "train": {
+        "right": 3,
+        "wrong": 0,
+        "errors": 0
+      },
+      "test": {
+        "right": 1,
+        "wrong": 0,
+        "errors": 0
+      },
+      "arc-gen": {
+        "right": 262,
+        "wrong": 0,
+        "errors": 0
+      },
+      "total": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      }
+    },
+    "known_default": {
+      "train": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 3
+      },
+      "test": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 1
+      },
+      "arc-gen": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 262
+      },
+      "total": {
+        "right": 0,
+        "wrong": 0,
+        "errors": 266
+      }
+    }
+  }
+}

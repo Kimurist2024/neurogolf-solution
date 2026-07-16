@@ -1,0 +1,73 @@
+{
+  "baseline": {
+    "zip": "submission_base_8005.17.zip",
+    "sha256": "c48fa65401a5bd26d3ed1c556eee8f85c0a2063db313be6b96c73e86159b0a04",
+    "lb_score": 8005.17,
+    "task328_member_unchanged_from_8005_16": true
+  },
+  "source": {
+    "path": "scripts/golf/loop_8004_42_plus20/root_sweep29/reuse_contract/task328_r001.onnx",
+    "sha256": "4d0fc5264833fbf46609fde690ad8635e208a2cec381e749b5707ef828866cb2",
+    "memory": 200,
+    "params": 354,
+    "cost": 554,
+    "retained_min_true": 7.316870026530253e-11,
+    "retained_min_true_evidence": "scripts/golf/loop_7999_13/lane_b26/winner_manifest.json"
+  },
+  "finite_support": {
+    "full_generator_states": 71136,
+    "color_orbit_representatives": 143,
+    "orbit_reduction_proof": "MaxPool is channelwise, ReduceL2 is invariant under channel permutation, Ssel is the only initializer with a 10-color axis and its nonzero-color columns are identical; therefore every permutation of colors 1..9 is equivariant.",
+    "source_orbits_completed_before_impossibility_proof": 25,
+    "source_orbits_correct_in_all_four_configs": 25,
+    "source_high_witness": {
+      "orbit_case": 25,
+      "size": 8,
+      "corners": [[0, 0], [7, 7]],
+      "colors": [1, 2],
+      "max_abs": 1.4418113088011285e34,
+      "nonfinite": 0
+    }
+  },
+  "power_of_two_bound": {
+    "float32_max": 3.4028234663852886e38,
+    "minimum_exponent_for_true_raw_at_least_0_25": 32,
+    "minimum_exponent_for_true_raw_at_least_1": 34,
+    "maximum_exponent_allowed_by_observed_high_witness": 14,
+    "feasible_integer_exponent": false,
+    "conclusion": "No exact uniform positive power-of-two output scaling can satisfy margin >=0.25 and finite maxabs simultaneously."
+  },
+  "boundary_candidates": [
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_task328_robust76/task328_scale2p14.onnx",
+      "sha256": "4af3ec72f77db91792d9be0c474d594fb2d0c0be6719c64134c8ae0dee5d9d36",
+      "exponent": 14,
+      "scale": 16384,
+      "memory": 200,
+      "params": 354,
+      "cost": 554,
+      "four_config_witness": "seed328260000 case1 has 8 false positives; case3 has 7 true cells <=0, in disabled/default x threads1/4",
+      "nonfinite_values": 0,
+      "decision": "REJECT_SIGN_DESTROYED"
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_task328_robust76/task328_scale2p32.onnx",
+      "sha256": "b3c722042039166b8af2b3de2f000221ce9e9d92b5e28c940bd0fb759be9e04d",
+      "exponent": 32,
+      "scale": 4294967296,
+      "memory": 200,
+      "params": 354,
+      "cost": 554,
+      "four_config_witness": "legal orbit25 has 28 false positives and 28 true cells <=0, in disabled/default x threads1/4",
+      "nonfinite_values": 0,
+      "decision": "REJECT_SIGN_DESTROYED"
+    }
+  ],
+  "accepted": [],
+  "accepted_count": 0,
+  "aggregate_projected_gain": 0.0,
+  "full_support_and_known_not_run_reason": "Both boundary candidates fail legal generator witnesses in all four mandatory ORT configurations; downstream full-support and known gates cannot repair sign failure.",
+  "zip_modified": false,
+  "protected_files_modified": false,
+  "verdict": "NO_SAFE_MARGIN_REPAIR"
+}

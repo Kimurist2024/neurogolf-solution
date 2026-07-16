@@ -1,0 +1,873 @@
+{
+  "baseline_zip": "submission_base_8004.50.zip",
+  "baseline_zip_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+  "tasks": {
+    "330": {
+      "hash": "d2abd087",
+      "true_rule_known": {
+        "source": "inputs/sakana-gcg-2025/raw/task330.py",
+        "total": 266,
+        "right": 266,
+        "wrong": 0,
+        "first_wrong": null
+      },
+      "baseline": {
+        "source": "submission_base_8004.50.zip::task330.onnx",
+        "sha256": "06dcb5216cb441f6d760a28fa4a5b4affa678c9001504dbd8f4f80f3bbd2d5af",
+        "serialized_bytes": 4115,
+        "measured_memory": 730,
+        "measured_params": 167,
+        "measured_cost": 897,
+        "structure": {
+          "nodes": 44,
+          "params": 167,
+          "value_info_count": 43,
+          "op_histogram": {
+            "CastLike": 1,
+            "CenterCropPad": 31,
+            "Concat": 1,
+            "ConstantOfShape": 6,
+            "GroupNormalization": 1,
+            "Mod": 1,
+            "QLinearConv": 3
+          },
+          "input_shapes": {
+            "input": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "output_shapes": {
+            "output": [
+              1,
+              10,
+              22,
+              22
+            ]
+          },
+          "checker_full": true,
+          "checker_error": null,
+          "strict_data_prop": true,
+          "strict_error": null,
+          "banned_ops": [],
+          "giant_einsums": [],
+          "has_tfidf": false,
+          "has_hardmax": false,
+          "has_center_crop_pad": true,
+          "has_group_norm": true,
+          "conv_bias": [
+            {
+              "node": "q",
+              "op": "QLinearConv",
+              "out_channels": 3,
+              "bias_len": 3,
+              "ub": false
+            }
+          ],
+          "conv_bias_ub_count": 0
+        },
+        "known": [
+          {
+            "mode": "disable_all",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 1.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          },
+          {
+            "mode": "default",
+            "total": 266,
+            "right": 0,
+            "wrong": 0,
+            "runtime_errors": 266,
+            "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_21) Op (CenterCropPad) [ShapeInferenceError] Number of elements of input 'shape' (1) does not match the number of axes (2)."
+          }
+        ]
+      },
+      "truthful_control": {
+        "source": "scripts/golf/loop_7999_13/lane_a26/rule_references/task330_truthful_component_rect.onnx",
+        "sha256": "6268e9acdeb8a79af2c1dc2485bc843a54d0b599ec41be1de74faa75ac5c610d",
+        "serialized_bytes": 6134,
+        "measured_cost": 5525,
+        "structure": {
+          "nodes": 50,
+          "params": 1263,
+          "value_info_count": 0,
+          "op_histogram": {
+            "Cast": 12,
+            "Concat": 1,
+            "Equal": 11,
+            "Max": 1,
+            "Pad": 1,
+            "QLinearConv": 24
+          },
+          "input_shapes": {
+            "input": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "output_shapes": {
+            "output": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "checker_full": true,
+          "checker_error": null,
+          "strict_data_prop": true,
+          "strict_error": null,
+          "banned_ops": [],
+          "giant_einsums": [],
+          "has_tfidf": false,
+          "has_hardmax": false,
+          "has_center_crop_pad": false,
+          "has_group_norm": false,
+          "conv_bias": [
+            {
+              "node": "",
+              "op": "QLinearConv",
+              "out_channels": 4,
+              "bias_len": 4,
+              "ub": false
+            },
+            {
+              "node": "",
+              "op": "QLinearConv",
+              "out_channels": 10,
+              "bias_len": 10,
+              "ub": false
+            }
+          ],
+          "conv_bias_ub_count": 0
+        },
+        "known": [
+          {
+            "mode": "disable_all",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 1.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          },
+          {
+            "mode": "default",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 1.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          }
+        ],
+        "strictly_cheaper_than_baseline": false
+      }
+    },
+    "280": {
+      "hash": "b527c5c6",
+      "true_rule_known": {
+        "source": "inputs/sakana-gcg-2025/raw/task280.py",
+        "total": 267,
+        "right": 267,
+        "wrong": 0,
+        "first_wrong": null
+      },
+      "baseline": {
+        "source": "submission_base_8004.50.zip::task280.onnx",
+        "sha256": "19d38b7bff083fd7da14262714afa75345594b91e39d978ada0d25a912971793",
+        "serialized_bytes": 10179,
+        "measured_memory": 626,
+        "measured_params": 202,
+        "measured_cost": 828,
+        "structure": {
+          "nodes": 107,
+          "params": 202,
+          "value_info_count": 41,
+          "op_histogram": {
+            "Add": 2,
+            "BitShift": 8,
+            "BitwiseAnd": 4,
+            "BitwiseNot": 2,
+            "Cast": 12,
+            "CastLike": 2,
+            "CenterCropPad": 20,
+            "Concat": 2,
+            "Div": 6,
+            "Einsum": 15,
+            "Mean": 4,
+            "Mul": 2,
+            "QLinearConv": 4,
+            "ScatterElements": 4,
+            "Shape": 1,
+            "Sqrt": 1,
+            "Sub": 18
+          },
+          "input_shapes": {
+            "input": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "output_shapes": {
+            "output": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "checker_full": true,
+          "checker_error": null,
+          "strict_data_prop": true,
+          "strict_error": null,
+          "banned_ops": [],
+          "giant_einsums": [
+            {
+              "name": "det_a",
+              "inputs": 24
+            },
+            {
+              "name": "det_b",
+              "inputs": 24
+            },
+            {
+              "name": "row_a",
+              "inputs": 17
+            },
+            {
+              "name": "row_b",
+              "inputs": 17
+            },
+            {
+              "name": "col_a",
+              "inputs": 17
+            },
+            {
+              "name": "col_b",
+              "inputs": 17
+            },
+            {
+              "name": "row_code_a",
+              "inputs": 21
+            },
+            {
+              "name": "row_code_b",
+              "inputs": 21
+            },
+            {
+              "name": "col_code_a",
+              "inputs": 21
+            },
+            {
+              "name": "col_code_b",
+              "inputs": 21
+            }
+          ],
+          "has_tfidf": false,
+          "has_hardmax": false,
+          "has_center_crop_pad": true,
+          "has_group_norm": false,
+          "conv_bias": [
+            {
+              "node": "hband",
+              "op": "QLinearConv",
+              "out_channels": 1,
+              "bias_len": 1,
+              "ub": false
+            },
+            {
+              "node": "hhalfline",
+              "op": "QLinearConv",
+              "out_channels": 1,
+              "bias_len": 1,
+              "ub": false
+            },
+            {
+              "node": "vband",
+              "op": "QLinearConv",
+              "out_channels": 1,
+              "bias_len": 1,
+              "ub": false
+            },
+            {
+              "node": "vhalfline",
+              "op": "QLinearConv",
+              "out_channels": 1,
+              "bias_len": 1,
+              "ub": false
+            }
+          ],
+          "conv_bias_ub_count": 0
+        },
+        "known": [
+          {
+            "mode": "disable_all",
+            "total": 267,
+            "right": 267,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 1.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          },
+          {
+            "mode": "default",
+            "total": 267,
+            "right": 0,
+            "wrong": 0,
+            "runtime_errors": 267,
+            "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (output) Op (Einsum) [ShapeInferenceError] Rank of input 5 (6) does not match the equation indices (3)."
+          }
+        ]
+      },
+      "truthful_control": {
+        "source": "scripts/golf/loop_7999_13/lane_b17/candidate_task280_truthful.onnx",
+        "sha256": "7922cea4b2789ed175357f6c5e3855b4b19521ea90bd6dbd2c24abd5f2373b7c",
+        "serialized_bytes": 8103,
+        "measured_cost": 2161,
+        "structure": {
+          "nodes": 119,
+          "params": 299,
+          "value_info_count": 4,
+          "op_histogram": {
+            "Add": 6,
+            "BitShift": 6,
+            "BitwiseAnd": 2,
+            "BitwiseNot": 2,
+            "Cast": 23,
+            "CastLike": 2,
+            "Concat": 3,
+            "Div": 7,
+            "Einsum": 18,
+            "Mod": 4,
+            "Mul": 9,
+            "Pad": 2,
+            "QLinearConv": 4,
+            "ScatterElements": 4,
+            "Shape": 1,
+            "Sqrt": 1,
+            "Sub": 17,
+            "Unsqueeze": 8
+          },
+          "input_shapes": {
+            "input": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "output_shapes": {
+            "output": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "checker_full": true,
+          "checker_error": null,
+          "strict_data_prop": true,
+          "strict_error": null,
+          "banned_ops": [],
+          "giant_einsums": [],
+          "has_tfidf": false,
+          "has_hardmax": false,
+          "has_center_crop_pad": false,
+          "has_group_norm": false,
+          "conv_bias": [
+            {
+              "node": "hband",
+              "op": "QLinearConv",
+              "out_channels": 1,
+              "bias_len": 1,
+              "ub": false
+            },
+            {
+              "node": "vband",
+              "op": "QLinearConv",
+              "out_channels": 1,
+              "bias_len": 1,
+              "ub": false
+            }
+          ],
+          "conv_bias_ub_count": 0
+        },
+        "known": [
+          {
+            "mode": "disable_all",
+            "total": 267,
+            "right": 267,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 1.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          },
+          {
+            "mode": "default",
+            "total": 267,
+            "right": 267,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 1.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          }
+        ],
+        "strictly_cheaper_than_baseline": false
+      }
+    },
+    "364": {
+      "hash": "e509e548",
+      "true_rule_known": {
+        "source": "inputs/sakana-gcg-2025/raw/task364.py",
+        "total": 266,
+        "right": 266,
+        "wrong": 0,
+        "first_wrong": null
+      },
+      "baseline": {
+        "source": "submission_base_8004.50.zip::task364.onnx",
+        "sha256": "2ba1bb84e800b98cdcac9e4d8cb8970d08e532fadf84b64f1b3d88d21ab2a3db",
+        "serialized_bytes": 60789,
+        "measured_memory": 683,
+        "measured_params": 2,
+        "measured_cost": 685,
+        "structure": {
+          "nodes": 468,
+          "params": 2,
+          "value_info_count": 467,
+          "op_histogram": {
+            "Add": 1,
+            "CastLike": 126,
+            "CenterCropPad": 196,
+            "Concat": 1,
+            "GreaterOrEqual": 57,
+            "HardSigmoid": 60,
+            "LessOrEqual": 24,
+            "Shape": 2,
+            "Sub": 1
+          },
+          "input_shapes": {
+            "input": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "output_shapes": {
+            "output": [
+              1,
+              10,
+              1,
+              1
+            ]
+          },
+          "checker_full": true,
+          "checker_error": null,
+          "strict_data_prop": true,
+          "strict_error": null,
+          "banned_ops": [],
+          "giant_einsums": [],
+          "has_tfidf": false,
+          "has_hardmax": false,
+          "has_center_crop_pad": true,
+          "has_group_norm": false,
+          "conv_bias": [],
+          "conv_bias_ub_count": 0
+        },
+        "known": [
+          {
+            "mode": "disable_all",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 1.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          },
+          {
+            "mode": "default",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 1.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          }
+        ]
+      },
+      "truthful_control": {
+        "source": "scripts/golf/scratch/task364/cand8.onnx",
+        "sha256": "a9876c1abbb330049d793ec1362b2136be51353326784d27224cf21025db0344",
+        "serialized_bytes": 5990,
+        "measured_cost": 46741,
+        "structure": {
+          "nodes": 53,
+          "params": 953,
+          "value_info_count": 0,
+          "op_histogram": {
+            "Add": 1,
+            "And": 3,
+            "Cast": 2,
+            "Conv": 2,
+            "Equal": 3,
+            "Gather": 1,
+            "Greater": 5,
+            "MaxPool": 11,
+            "Pad": 1,
+            "ScatterND": 1,
+            "Slice": 2,
+            "Squeeze": 1,
+            "Unsqueeze": 1,
+            "Where": 19
+          },
+          "input_shapes": {
+            "input": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "output_shapes": {
+            "output": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "checker_full": true,
+          "checker_error": null,
+          "strict_data_prop": true,
+          "strict_error": null,
+          "banned_ops": [],
+          "giant_einsums": [],
+          "has_tfidf": false,
+          "has_hardmax": false,
+          "has_center_crop_pad": false,
+          "has_group_norm": false,
+          "conv_bias": [],
+          "conv_bias_ub_count": 0
+        },
+        "known": [
+          {
+            "mode": "disable_all",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 1.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          },
+          {
+            "mode": "default",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 1.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          }
+        ],
+        "strictly_cheaper_than_baseline": false
+      }
+    },
+    "310": {
+      "hash": "c909285e",
+      "true_rule_known": {
+        "source": "inputs/sakana-gcg-2025/raw/task310.py",
+        "total": 266,
+        "right": 266,
+        "wrong": 0,
+        "first_wrong": null
+      },
+      "baseline": {
+        "source": "submission_base_8004.50.zip::task310.onnx",
+        "sha256": "f7ad4fb86c5aa78aeb9e3ea8239bf0ba52af1249988a5065992a4e8c58861d79",
+        "serialized_bytes": 3638,
+        "measured_memory": 202,
+        "measured_params": 364,
+        "measured_cost": 566,
+        "structure": {
+          "nodes": 19,
+          "params": 364,
+          "value_info_count": 0,
+          "op_histogram": {
+            "Cast": 3,
+            "Div": 2,
+            "Einsum": 5,
+            "Equal": 1,
+            "Less": 1,
+            "Or": 1,
+            "Sub": 2,
+            "TfIdfVectorizer": 4
+          },
+          "input_shapes": {
+            "input": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "output_shapes": {
+            "output": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "checker_full": true,
+          "checker_error": null,
+          "strict_data_prop": true,
+          "strict_error": null,
+          "banned_ops": [],
+          "giant_einsums": [
+            {
+              "name": "",
+              "inputs": 23
+            }
+          ],
+          "has_tfidf": true,
+          "has_hardmax": false,
+          "has_center_crop_pad": false,
+          "has_group_norm": false,
+          "conv_bias": [],
+          "conv_bias_ub_count": 0
+        },
+        "known": [
+          {
+            "mode": "disable_all",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 4.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          },
+          {
+            "mode": "default",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 4.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          }
+        ]
+      },
+      "truthful_control": {
+        "source": "scripts/golf/loop_7999_13/lane_c9/task310_safe_linear_selector.onnx",
+        "sha256": "ad81c541e1164adc0e6a7971ae62a013b79e3bd6a1a3efcbca93b4400084c496",
+        "serialized_bytes": 4168,
+        "measured_cost": 633,
+        "structure": {
+          "nodes": 20,
+          "params": 393,
+          "value_info_count": 0,
+          "op_histogram": {
+            "ArgMin": 1,
+            "Cast": 3,
+            "Div": 2,
+            "Einsum": 6,
+            "Sub": 3,
+            "TfIdfVectorizer": 5
+          },
+          "input_shapes": {
+            "input": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "output_shapes": {
+            "output": [
+              1,
+              10,
+              30,
+              30
+            ]
+          },
+          "checker_full": true,
+          "checker_error": null,
+          "strict_data_prop": true,
+          "strict_error": null,
+          "banned_ops": [],
+          "giant_einsums": [
+            {
+              "name": "",
+              "inputs": 23
+            }
+          ],
+          "has_tfidf": true,
+          "has_hardmax": false,
+          "has_center_crop_pad": false,
+          "has_group_norm": false,
+          "conv_bias": [],
+          "conv_bias_ub_count": 0
+        },
+        "known": [
+          {
+            "mode": "disable_all",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 4.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          },
+          {
+            "mode": "default",
+            "total": 266,
+            "right": 266,
+            "wrong": 0,
+            "runtime_errors": 0,
+            "session_error": null,
+            "margin_min_positive": 4.0,
+            "margin_mid_count": 0,
+            "runtime_output_shapes": [
+              [
+                1,
+                10,
+                30,
+                30
+              ]
+            ]
+          }
+        ],
+        "strictly_cheaper_than_baseline": false
+      }
+    }
+  }
+}

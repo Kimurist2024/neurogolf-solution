@@ -1,0 +1,89 @@
+{
+  "lane": "root_linear_output_affine_absorb_267",
+  "decision": "NO_PROMOTION",
+  "authority": "submission_base_8009.46.zip",
+  "authority_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+  "tasks_scanned": 400,
+  "linear_to_arithmetic_single_use_sites": 67,
+  "scalar_operand_sites": 50,
+  "operator_pair_census": {
+    "Einsum->Add": 5,
+    "Einsum->Div": 20,
+    "Einsum->Mul": 2,
+    "Einsum->Sub": 21,
+    "QLinearConv->Add": 4,
+    "QLinearConv->Mul": 1,
+    "QLinearConv->Sub": 7,
+    "QLinearMatMul->Add": 2,
+    "QLinearMatMul->Mul": 2,
+    "QLinearMatMul->Sub": 3
+  },
+  "eligibility_census": {
+    "einsum_operand_fuse": 2,
+    "offline_constant_probe": 0,
+    "dynamic_sub_without_supported_slot": 25,
+    "dynamic_div_without_supported_slot": 15,
+    "dynamic_add_without_supported_slot": 3,
+    "scalar_divided_by_linear_is_nonlinear": 5,
+    "other_operand_not_scalar": 17
+  },
+  "constant_coefficient_policy": {
+    "offline_absorption_candidates": 0,
+    "serialized_dtype_roundtrip_attempts": 0,
+    "inexact_coefficients_accepted": 0,
+    "shared_weight_or_scalar_mutations": 0
+  },
+  "candidate_summary": [
+    {
+      "task": 54,
+      "rewrite": "append bcount as an Einsum operand and remove the following Mul",
+      "baseline": {"memory": 2008, "params": 250, "cost": 2258},
+      "candidate": {"memory": 2006, "params": 250, "cost": 2256},
+      "official_correct": true,
+      "official_cost": 2256,
+      "static_pass": true,
+      "truthful_runtime_shapes": false,
+      "runtime_outputs_traced": 124,
+      "runtime_shape_mismatches": 67,
+      "known4_run": false,
+      "fresh_2x1000_run": false,
+      "accepted": false,
+      "reason": "known task054 shape cloak failed the truthful runtime-shape gate"
+    },
+    {
+      "task": 117,
+      "rewrite": "append N as an Einsum operand and remove the following Mul",
+      "baseline": {"memory": 496, "params": 109, "cost": 605},
+      "static_pass": false,
+      "accepted": false,
+      "reason": "strict data propagation failed at AffineGrid grid3: inferred dimension 3 versus declared 1"
+    }
+  ],
+  "known_shape_cloak_fail_closed": [
+    {
+      "task": 54,
+      "authority_runtime_outputs_traced": 125,
+      "authority_runtime_shape_mismatches": 67,
+      "authority_nonfinite_elements": 0
+    },
+    {
+      "task": 367,
+      "authority_runtime_outputs_traced": 74,
+      "authority_runtime_shape_mismatches": 65,
+      "authority_nonfinite_elements": 33,
+      "linear_output_G_uses": 7,
+      "single_use_gate": false
+    }
+  ],
+  "raw_equivalence_policy": {
+    "known_configs": ["disable_t1", "disable_t4", "enable_t1", "enable_t4"],
+    "fresh_base_seeds": [267000001, 267000002],
+    "fresh_cases_per_seed": 1000,
+    "executed": false,
+    "reason": "no candidate survived strict and truthful runtime-shape gates"
+  },
+  "accepted_tasks": [],
+  "promotion": null,
+  "root_submission_modified": false,
+  "other_lanes_modified": false
+}

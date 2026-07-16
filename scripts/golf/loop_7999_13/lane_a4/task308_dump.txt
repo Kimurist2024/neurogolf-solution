@@ -1,0 +1,101 @@
+# task308.onnx
+
+## I/O
+name: "input"
+type {
+  tensor_type {
+    elem_type: 1
+    shape {
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 10
+      }
+      dim {
+        dim_value: 30
+      }
+      dim {
+        dim_value: 30
+      }
+    }
+  }
+}
+name: "output"
+type {
+  tensor_type {
+    elem_type: 2
+    shape {
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 1
+      }
+      dim {
+        dim_value: 1
+      }
+    }
+  }
+}
+
+## Initializers
+idx30: dtype=float16 shape=(30,) value=[0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4.0, 4.25, 4.5, 4.75, 5.0, 5.25, 5.5, 5.75, 6.0, 6.25, 6.5, 6.75, 7.0, 7.25]
+four_f: dtype=float16 shape=() value=4.0
+zero_u8_4: dtype=uint8 shape=(1, 1, 1, 1) value=[[[[0]]]]
+out_shape4_const: dtype=int64 shape=(4,) value=[1, 10, 30, 30]
+gather_idx4: dtype=int32 shape=(1, 1, 4, 4) value=[[[[12, 0, 2, 6], [0, 1, 3, 7], [2, 4, 5, 8], [6, 9, 10, 11]]]]
+pads_reflect_hw: dtype=int64 shape=(4,) value=[3, 3, 0, 0]
+axes_hw: dtype=int64 shape=(2,) value=[2, 3]
+
+## Nodes
+00 Shape ['out_shape4_const'] -> ['out_shape4_len'] attrs={}
+01 CenterCropPad ['out_shape4_const', 'out_shape4_len'] -> ['out_shape4'] attrs={}
+02 CenterCropPad ['input', 'out_shape4'] -> ['input_hid'] attrs={}
+03 CastLike ['input_hid', 'four_f'] -> ['input_f16'] attrs={}
+04 Einsum ['input_f16', 'input_f16', 'idx30', 'idx30'] -> ['rsum'] attrs={'equation': 'nchw,ncij,h,i->c'}
+05 Einsum ['input_f16', 'input_f16', 'idx30', 'idx30'] -> ['csum'] attrs={'equation': 'nchw,ncij,w,j->c'}
+06 Einsum ['input_f16', 'idx30', 'idx30', 'four_f'] -> ['r2sum'] attrs={'equation': 'nchw,h,h,->c'}
+07 Einsum ['input_f16', 'idx30', 'idx30', 'four_f'] -> ['c2sum'] attrs={'equation': 'nchw,w,w,->c'}
+08 ArgMax ['r2sum'] -> ['bg_i64'] attrs={'axis': 0, 'keepdims': 1}
+09 Sub ['r2sum', 'rsum'] -> ['vr_all'] attrs={}
+10 Cast ['bg_i64'] -> ['bg_u8'] attrs={'to': 2}
+11 Shape ['out_shape4'] -> ['topk_k_dyn'] attrs={}
+12 TopK ['vr_all', 'topk_k_dyn'] -> ['top_vals', 'top_idx'] attrs={'axis': 0, 'largest': 1, 'sorted': 0}
+13 CenterCropPad ['top_vals', 'topk_k_dyn'] -> ['top_vals_hid'] attrs={}
+14 GatherElements ['csum', 'top_idx'] -> ['csum_sel'] attrs={'axis': 0}
+15 GatherElements ['c2sum', 'top_idx'] -> ['c2sum_sel'] attrs={'axis': 0}
+16 Cast ['top_idx'] -> ['color_sel'] attrs={'to': 2}
+17 Sub ['c2sum_sel', 'csum_sel'] -> ['vc_raw'] attrs={}
+18 Sqrt ['top_vals_hid'] -> ['sqrt_vr'] attrs={}
+19 CenterCropPad ['vc_raw', 'topk_k_dyn'] -> ['vc_raw_hid'] attrs={}
+20 Sqrt ['vc_raw_hid'] -> ['sqrt_vc'] attrs={}
+21 CastLike ['sqrt_vr', 'bg_u8'] -> ['sqrt_vr_u8'] attrs={}
+22 CastLike ['sqrt_vc', 'bg_u8'] -> ['sqrt_vc_u8'] attrs={}
+23 Max ['sqrt_vr_u8', 'sqrt_vc_u8'] -> ['sqrt_vmax_u8'] attrs={}
+24 ReduceMax ['sqrt_vmax_u8'] -> ['sqrt_full_u8'] attrs={'keepdims': 1}
+25 Add ['sqrt_full_u8', 'sqrt_full_u8'] -> ['twice_full_u8'] attrs={}
+26 Shrink ['twice_full_u8'] -> ['N_u8'] attrs={'bias': -1.0, 'lambd': 0.0}
+27 Less ['sqrt_vmax_u8', 'sqrt_full_u8'] -> ['lt_full'] attrs={}
+28 CastLike ['sqrt_vc', 'lt_full'] -> ['active_sel'] attrs={}
+29 Where ['active_sel', 'color_sel', 'bg_u8'] -> ['update_ch'] attrs={}
+30 Equal ['sqrt_vr_u8', 'sqrt_full_u8'] -> ['eq_r'] attrs={}
+31 Shrink ['sqrt_full_u8'] -> ['h_minus1'] attrs={'bias': 1.0, 'lambd': 0.0}
+32 Mul ['sqrt_full_u8', 'h_minus1'] -> ['base_slot'] attrs={}
+33 Add ['h_minus1', 'sqrt_vc_u8'] -> ['top_local'] attrs={}
+34 Where ['eq_r', 'top_local', 'sqrt_vr_u8'] -> ['local_nonplus'] attrs={}
+35 Add ['base_slot', 'local_nonplus'] -> ['slot_nonplus'] attrs={}
+36 Where ['lt_full', 'base_slot', 'slot_nonplus'] -> ['slot_u8'] attrs={}
+37 CastLike ['slot_u8', 'gather_idx4'] -> ['slot_i32'] attrs={}
+38 Concat ['bg_u8', 'bg_u8', 'bg_u8', 'bg_u8', 'bg_u8', 'bg_u8', 'bg_u8', 'bg_u8', 'bg_u8', 'bg_u8', 'bg_u8', 'bg_u8', 'bg_u8'] -> ['base_slots'] attrs={'axis': 0}
+39 ScatterElements ['base_slots', 'slot_i32', 'update_ch'] -> ['slots'] attrs={'axis': 0}
+40 Gather ['slots', 'gather_idx4'] -> ['labels4'] attrs={'axis': 0}
+41 Pad ['labels4', 'pads_reflect_hw', '', 'axes_hw'] -> ['labels7'] attrs={'mode': 'reflect'}
+42 Cast ['N_u8'] -> ['N_i64'] attrs={'to': 7}
+43 CenterCropPad ['labels7', 'N_i64'] -> ['labels_crop'] attrs={'axes': [2, 3]}
+44 CenterCropPad ['zero_u8_4', 'out_shape4'] -> ['base_full_u8'] attrs={}
+45 CastLike ['labels_crop', 'gather_idx4'] -> ['chan_indices'] attrs={}
+46 ScatterElements ['base_full_u8', 'chan_indices', 'labels_crop'] -> ['output'] attrs={'axis': 1}

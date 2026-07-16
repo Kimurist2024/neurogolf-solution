@@ -1,0 +1,27 @@
+{
+  "task": 124,
+  "authority_task_sha256": "3703bae38460933f42782ac22c29161fb2073eb72d21644550418d015332f6bf",
+  "authority_official_cost": 265,
+  "original_one_byte_shave_sha256": "2df7617db09373acc416cbf505fff79823fabb22194d7f5c554c56975f43625a",
+  "variants": [
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_expand20j_95/repair124/task124_empty_r3_identity1.onnx",
+      "sha256": "79d399bd735d0d5ca7a2c4cf9baeafe4a0f57c50a5412c645aaf7c078da397a2",
+      "change": "omit unused Split r3 and place one Identity allocator barrier before Split",
+      "validation_command": "dual_ort_fresh.py --tasks 124 --k 2000 --seed 80045124",
+      "exit_code": 139,
+      "signal": "SIGSEGV",
+      "decision": "REJECT_RUNTIME_CRASH"
+    },
+    {
+      "path": "scripts/golf/loop_8004_42_plus20/agent_expand20j_95/repair124/task124_empty_r3_identity2.onnx",
+      "sha256": "bd74b6f7ab71c90ee4263e416641d5e25b32cd77039aa57b7d34c43fa12a8c7e",
+      "change": "omit unused Split r3 and place two Identity allocator barriers before Split",
+      "validation_command": "dual_ort_fresh.py --tasks 124 --k 2000 --seed 80045124",
+      "exit_code": 139,
+      "signal": "SIGSEGV",
+      "decision": "REJECT_RUNTIME_CRASH"
+    }
+  ],
+  "conclusion": "Identity barriers do not remove the ORT allocator/liveness crash. No safe task124 reduction exists in this lane."
+}

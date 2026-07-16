@@ -1,0 +1,104 @@
+{
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "targets": [174, 153, 325, 71, 55, 88, 86],
+  "rejections": [
+    {
+      "task": 153,
+      "probe": "omit QLinearConv zero points",
+      "decision": "REJECT",
+      "reason": "ONNX schema requires QLinearConv x/w/y zero-point inputs; full checker rejects empty inputs"
+    },
+    {
+      "task": 71,
+      "probe": "CastLike(gather_u8,i32zero) to Cast(INT32)",
+      "candidate": "scripts/golf/loop_7999_13/lane_a7/candidates/task071_cast_attribute.onnx",
+      "candidate_sha256": "bc7f2559fafb4813f940a9969ec443f4f377e282976f4716b865d3bbaf64f49a",
+      "known_correct": true,
+      "runtime_errors": 0,
+      "baseline_cost": 235,
+      "candidate_memory": 230,
+      "candidate_params": 56,
+      "candidate_cost": 286,
+      "decision": "REJECT",
+      "reason": "profiler exposes 52 additional bytes; cost regresses by 51"
+    },
+    {
+      "task": 55,
+      "probe": "rank-1/2/3 compression of Acoef l-mode",
+      "best_lower_cost_candidate": "scripts/golf/loop_7999_13/lane_a7/candidates/task055_acoef_rank3.onnx",
+      "candidate_sha256": "8619e30293e0a8717603c22218f9d161243e4e9b858015197e0bba660a432a45",
+      "baseline_cost": 234,
+      "candidate_memory": 52,
+      "candidate_params": 173,
+      "candidate_cost": 225,
+      "known_correct": false,
+      "fresh_10_correct": 0,
+      "runtime_errors": 0,
+      "decision": "REJECT",
+      "reason": "small singular directions are classification-critical"
+    },
+    {
+      "task": 55,
+      "probe": "degree-4 generator-constrained color polynomial refit",
+      "candidate": "scripts/golf/loop_7999_13/lane_a7/candidates/task055_degree4_refit.onnx",
+      "candidate_sha256": "cf1053172e3c34751f9232acdd5423ff7c8b16a115408f20631d51f9c11fbcf4",
+      "baseline_cost": 234,
+      "candidate_memory": 52,
+      "candidate_params": 171,
+      "candidate_cost": 223,
+      "known_correct": false,
+      "fresh_100_correct": 0,
+      "runtime_errors": 0,
+      "decision": "REJECT",
+      "reason": "exact carrier audit found degree 4 infeasible on 435576 known-domain sign constraints"
+    },
+    {
+      "task": 55,
+      "probe": "reuse X as degree-5 basis and sparse-store six Acoef slices",
+      "theoretical_parameter_reduction": 12,
+      "decision": "REJECT",
+      "reason": "full checker cannot infer the sparse Einsum input rank (rank 0 versus three equation indices)"
+    },
+    {
+      "task": 88,
+      "probe": "replace two nonnegative ReduceL1 nodes with axis-free Einsum",
+      "candidate": "scripts/golf/loop_7999_13/lane_a7/candidates/task088_einsum_row_col.onnx",
+      "candidate_sha256": "2ebd9b4b16809924f89aedc98f910b3dd83f9e10e63e7b4fd258c32a7f40be3f",
+      "known_correct": true,
+      "fresh_10_correct": 10,
+      "runtime_errors": 0,
+      "baseline_cost": 230,
+      "candidate_memory": 325,
+      "candidate_params": 17,
+      "candidate_cost": 342,
+      "decision": "REJECT",
+      "reason": "Einsum profiling exposes actual row/column extents; cost regresses by 112"
+    },
+    {
+      "task": 88,
+      "probe": "GroupNormalization to InstanceNormalization plus opset-17 axes attributes",
+      "decision": "REJECT",
+      "reason": "full checker exposes C=10 and conflicts with incumbent value-info C=1; changing metadata would add full-channel memory"
+    },
+    {
+      "task": 174,
+      "probe": "share identical Slice/Unsqueeze axes values",
+      "theoretical_parameter_reduction": 3,
+      "decision": "REJECT",
+      "reason": "Slice requires starts, ends, and axes to share one integer dtype; int64 axes conflict with int32 starts/ends"
+    },
+    {
+      "task": 325,
+      "probe": "compress MaxUnpool index pattern or direct-size carriers",
+      "decision": "REJECT",
+      "reason": "all standard alternatives add a scored index/output carrier; prior direct-size substitution exposes true CenterCropPad extents"
+    },
+    {
+      "task": 86,
+      "probe": "replace CastLike/reduction anchors or shrink shift carriers",
+      "decision": "REJECT",
+      "reason": "all anchors are live; replacements expose full runtime extents or break the verified CenterCropPad allocation schedule"
+    }
+  ]
+}

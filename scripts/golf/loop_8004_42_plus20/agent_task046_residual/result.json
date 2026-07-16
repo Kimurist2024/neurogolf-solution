@@ -1,0 +1,154 @@
+{
+  "task": 46,
+  "authority": {
+    "archive": "submission_base_8009.46.zip",
+    "archive_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "member": "task046.onnx",
+    "member_sha256": "fb649383229d5cdcb562b8c1ce52256ff344193810888b795c20ac0aa0660d77",
+    "serialized_bytes": 9493,
+    "memory": 397,
+    "params": 230,
+    "cost": 627,
+    "correct": true
+  },
+  "generator": {
+    "module": "task_234bbc79",
+    "height": 3,
+    "segment_count": [3, 4],
+    "segment_width": [2, 4],
+    "extra_input_column": [0, 1],
+    "colors": "ARC colors excluding gray=5"
+  },
+  "lineage": {
+    "previous_archive": "submission_base_8005.16.zip",
+    "previous_member_sha256": "71aae814386331a1d44b8adef121eb5956d64e68226a4efe8f613c2220023a7c",
+    "previous_cost": 631,
+    "current_cost": 627,
+    "memory_delta": -4,
+    "params_delta": 0,
+    "changes": [
+      "removed d1_gray_l_row = BitwiseAnd(d1_gray_l, three_u8)",
+      "removed d2_gray_l_row = BitwiseAnd(d2_gray_l, three_u8)",
+      "removed d3_gray_l_row = BitwiseAnd(d3_gray_l, three_u8)",
+      "replaced and2_sm0 = BitwiseAnd(sm0, two_u8) with a broadcastable two_u8 initializer"
+    ],
+    "known_raw_output_equal_previous": "267/267 in a direct disable-all comparison",
+    "note": "This support-dependent four-byte shave is already the current LB-white authority; it is not treated as a license for another empirical-only rewrite."
+  },
+  "structural_audit": {
+    "checker_full": true,
+    "strict_shape_inference_data_prop": true,
+    "truthful_static_positive_shapes": true,
+    "standard_domains": true,
+    "lookup_ops": [],
+    "nested_graph_count": 0,
+    "functions_count": 0,
+    "sparse_initializer_count": 0,
+    "finite_initializers": true,
+    "conv_bias_ub0": true,
+    "node_count": 172,
+    "initializer_count": 13,
+    "value_info_count": 0,
+    "unused_initializers": [],
+    "dead_node_outputs": [],
+    "duplicate_initializers": [],
+    "duplicate_node_groups": [],
+    "unconditional_identity_sites": []
+  },
+  "runtime_audit": {
+    "known_cases": 267,
+    "fresh_cases": 512,
+    "configs": [
+      "disable_all_threads1",
+      "disable_all_threads4",
+      "default_threads1",
+      "default_threads4"
+    ],
+    "known_all_configs": {
+      "right_each": 267,
+      "wrong_each": 0,
+      "runtime_errors_each": 0,
+      "output_nonfinite_each": 0,
+      "raw_output_digest_each": "0119a4d354f83652d739bd2ccbcdefe7aa20b09ab5cc06007c9a75b469c89532",
+      "intermediate_nonfinite": {
+        "tensor": "c4_log",
+        "classification": "negative infinity",
+        "cases_each": 140,
+        "values_each": 140,
+        "nan_each": 0,
+        "positive_infinity_each": 0
+      }
+    },
+    "fresh_all_configs": {
+      "right_each": 512,
+      "wrong_each": 0,
+      "runtime_errors_each": 0,
+      "output_nonfinite_each": 0,
+      "raw_output_digest_each": "e29582cefa15abd19e88c14da02e23ad2025f53c1f291ae83c7304d00b47c35b",
+      "intermediate_nonfinite": {
+        "tensor": "c4_log",
+        "classification": "negative infinity",
+        "cases_each": 265,
+        "values_each": 265,
+        "nan_each": 0,
+        "positive_infinity_each": 0
+      }
+    },
+    "nonfinite_explanation": "The fourth segment is optional. For three-segment inputs c4_rep is zero, so the inherited Log emits -Inf; QuantizeLinear maps it to finite uint8 c4=0. No other traced tensor is nonfinite."
+  },
+  "residual_search": {
+    "exact_graph_cleanup": {
+      "dead_or_unused": 0,
+      "duplicate_or_cse": 0,
+      "unconditional_identity": 0,
+      "optimizer_fusion_changes": 0,
+      "inference_default_sites": 0
+    },
+    "factor_and_initializer_cleanup": {
+      "all_initializers_used": true,
+      "duplicate_initializers": 0,
+      "scalar_initializers_already_one_element": true,
+      "dense_weight_shapes_fixed_by_conv_contracts": true,
+      "flat_w_sparse_constant_cost": 760,
+      "flat_w_sparse_constant_strict_lower": false
+    },
+    "type_cleanup": {
+      "memory_by_dtype": {
+        "FLOAT": 108,
+        "UINT8": 259,
+        "BOOL": 14,
+        "INT32": 16
+      },
+      "reason_no_shave": "UINT8/BOOL are already one-byte; INT32 is the minimum GatherElements index type used here; FLOAT is coupled to the float32 graph input and ConvTranspose weights, so narrowing would require a full 9000-element input cast and would not be all-input raw-equivalent."
+    },
+    "support_dependent_sites": {
+      "constant_scalar_node_outputs_on_known_plus_fresh": 0,
+      "remaining_and2_sm_outputs": "Each of and2_sm1 through and2_sm15 observed both 0 and 2; none can be replaced by two_u8 as and2_sm0 was.",
+      "add_to_sum": "invalid for UINT8 under ONNX checker and ORT",
+      "where_gather_trade": "Replacing the compact uint8 Where cascades with GatherElements needs a new INT32 index tensor and is not lower."
+    },
+    "historical_inventory": {
+      "unique_non_authority_task046_shas": 65,
+      "minimum_historical_static_cost": 648,
+      "strictly_lower_than_627": 0,
+      "retained_for_actual_audit_at_cost631": 0,
+      "strong_exact_class": 0
+    },
+    "sources": [
+      "scripts/golf/loop_8004_42_plus20/agent_expand20g_91/inventory.json",
+      "scripts/golf/loop_8004_42_plus20/root_newtarget_exact24/scan_report.json",
+      "scripts/golf/loop_8004_42_plus20/root_add_sum_scan_141/scan.json",
+      "scripts/golf/loop_8004_42_plus20/root_sparse_constant_scan_151/scan.json",
+      "scripts/golf/loop_8004_42_plus20/agent_inference_defaults_165/scan.json",
+      "scripts/golf/loop_8004_42_plus20/root_full_fusion_scan_185/scan.json"
+    ]
+  },
+  "outcome": {
+    "status": "NO_SAFE_STRICT_LOWER",
+    "candidate": null,
+    "candidate_cost": null,
+    "projected_gain": 0.0,
+    "staged": false,
+    "reason": "No strict-lower all-input algebraic/factor/type/initializer cleanup survived the fail-closed requirements. No new empirical-only or nonfinite behavior was introduced."
+  }
+}

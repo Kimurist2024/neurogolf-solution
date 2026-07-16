@@ -1,0 +1,83 @@
+{
+  "lane": "agent_71405_priority_97",
+  "authority": "submission.zip",
+  "authority_sha256": "9085e2f795c0a73d44d27d712ad8fbaad67a3f37b1d8363a0f33305fbafa4118",
+  "candidate_count": 6,
+  "official_strict_lower_count": 6,
+  "fixed_winners": 0,
+  "lb_probe_required": 2,
+  "known_black_exact_sha": 0,
+  "rejected": 4,
+  "decisions": [
+    {
+      "task": 13,
+      "sha256": "f72854de968a62e1d2d91f86df83477976578a0285154ea42f37780167308c4b",
+      "cost": "636->357",
+      "projected_gain": 0.5774627815604831,
+      "local": "267/267 masks in all known configs and fresh 500/500 on two seeds",
+      "failures": "550473 nonfinite output values over known; direct trace has 5 shape mismatches and 2270 nonfinite intermediate values; max Einsum arity 51",
+      "exact_sha_history": [],
+      "related_history": "Current cost636 task013 payload is exact LB-white, but this cost357 SHA is different and has no LB verdict.",
+      "decision": "REJECT_SHAPE_CLOAK_NONFINITE_GIANT"
+    },
+    {
+      "task": 23,
+      "sha256": "e34d3217c3dac4bc7a7fe0f504bfe3fa3cdeee8528011c0a57fc6dcf02d60c12",
+      "cost": "1622->1479",
+      "projected_gain": 0.09229377196455835,
+      "local": "known 266/266 in all four configs; truthful shapes and UB0",
+      "fresh": "1/500 then 0/500 per seed",
+      "exact_sha_history": [],
+      "decision": "REJECT_FRESH_PRIVATE_ZERO_FALSE_ACCEPT"
+    },
+    {
+      "task": 66,
+      "sha256": "bb8cebc8d71d275f4ec3f542d6aefea238b6c36d1cec77c0f2c1d533bf04ab4e",
+      "cost": "677->562",
+      "projected_gain": 0.18616942301858388,
+      "local": "known 266/266 all four; shape mismatches0; fresh minimum94.0%",
+      "risks": "61-input Einsum and one nonfinite intermediate; task-specific history contains three different exact LB-black SHAs and one unprobed cost583 SHA",
+      "exact_sha_history": [],
+      "decision": "LB_PROBE_REQUIRED_HIGH_RISK"
+    },
+    {
+      "task": 69,
+      "sha256": "8a7bdff92bede718fe90be1b6c1fbf9481556b02554f1cfbf0533f217fefd5e1",
+      "cost": "541->524",
+      "projected_gain": 0.03192759452543928,
+      "local": "disable-all 264/264",
+      "failure": "default ORT session fails CenterCropPad shape/axes inference in both thread settings",
+      "exact_sha_history": [],
+      "tail_order_sensitive": true,
+      "decision": "REJECT_DEFAULT_ORT_RUNTIME"
+    },
+    {
+      "task": 44,
+      "sha256": "12b6414193b8716e15c4129f02bf7a8cddf31159f609427824345239de080492",
+      "cost": "1086->1076",
+      "projected_gain": 0.009250759772150997,
+      "local": "known 266/266 all four; fresh 493/500 and 495/500",
+      "failure": "two declared/runtime shape contradictions on 1x10x30x30 tensors",
+      "exact_sha_history": [],
+      "tail_order_sensitive": true,
+      "decision": "REJECT_SHAPE_CLOAK"
+    },
+    {
+      "task": 46,
+      "sha256": "fb649383229d5cdcb562b8c1ce52256ff344193810888b795c20ac0aa0660d77",
+      "cost": "631->627",
+      "projected_gain": 0.0063593219082924216,
+      "local": "known 267/267 all four; shape mismatches0; fresh 6000/6000 across three seeds in both modes",
+      "risk": "one nonfinite intermediate in direct trace; no exact-SHA LB verdict",
+      "exact_sha_history": [],
+      "decision": "LB_PROBE_REQUIRED"
+    }
+  ],
+  "tail_order": {
+    "sensitive_candidates": [44, 69],
+    "both_rejected_before_packaging": true,
+    "order_change_performed": false
+  },
+  "protected_root_artifacts_modified": [],
+  "others_modified": false
+}

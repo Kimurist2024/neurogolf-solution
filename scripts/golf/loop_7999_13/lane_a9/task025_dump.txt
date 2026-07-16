@@ -1,0 +1,49 @@
+# task025.onnx
+
+## Initializers
+one: float64 (1, 1, 1, 1) [[[[1.0]]]]
+odd: float64 (1, 1, 30, 1) [[[[1.0], [3.0], [5.0], [7.0], [9.0], [11.0], [13.0], [15.0], [17.0], [19.0], [21.0], [23.0], [25.0], [27.0], [29.0], [31.0], [33.0], [35.0], [37.0], [39.0], [41.0], [43.0], [45.0], [47.0], [49.0], [51.0], [53.0], [55.0], [57.0], [59.0]]]]
+sigV: float64 (1, 1, 2, 1) [[[[0.0], [1.0]]]]
+mask_line: float64 (1, 1, 1, 2) [[[[0.0, -40.0]]]]
+negsigK: float64 (1, 1, 2, 1) [[[[0.0], [-240.0]]]]
+vsgn: float64 (10,) [5e-154, -1e-151, -1e-151, -1e-151, -1e-151, -1e-151, -1e-151, -1e-151, -1e-151, -1e-151]
+outscale: float64 (1, 1, 1, 1) [[[[-1e+20]]]]
+negp2mask: float64 (1, 1, 1, 30) [[[[-40.0, -160.0, -360.0, -640.0, -1000.0, -1440.0, -1960.0, -2560.0, -3240.0, -4000.0, -4840.0, -5760.0, -6760.0, -7840.0, -9000.0, -10240.0, -11560.0, -12960.0, -14440.0, -16000.0, -17640.0, -19360.0, -21160.0, -23040.0, -25000.0, -27040.0, -29160.0, -31360.0, -33640.0, -36000.0]]]]
+
+## Value info
+xh_2: FLOAT [1, 1, 1, 1]
+
+## Nodes
+00 Shape ['input'] -> ['shape_1'] {'start': 0, 'end': 1}
+01 CenterCropPad ['input', 'shape_1'] -> ['xh_2'] {'axes': [0]}
+02 CastLike ['xh_2', 'one'] -> ['X_3'] {}
+03 Attention ['X_3', 'one', 'one'] -> ['rowXy_6', '', '', 'rowXq_7'] {'qk_matmul_output_mode': 0, 'scale': 1.0}
+04 Attention ['rowXq_7', 'odd', 'odd'] -> ['pos_8'] {'is_causal': 1, 'scale': 0.0}
+05 Attention ['rowXy_6', 'pos_8', 'pos_8'] -> ['posvecy_11', '', '', 'posvecq_12'] {'qk_matmul_output_mode': 0, 'scale': 1.0}
+06 Attention ['pos_8', 'outscale', 'one'] -> ['negposy_15', '', '', 'negposq_16'] {'qk_matmul_output_mode': 0, 'scale': 9.999999682655225e-21}
+07 Attention ['pos_8', 'pos_8', 'rowXy_6', 'negp2mask'] -> ['id1y_17', '', '', 'idscoreq_22'] {'qk_matmul_output_mode': 1, 'scale': 80.0}
+08 Attention ['rowXy_6', 'rowXy_6', 'rowXy_6', 'idscoreq_22'] -> ['identy_23', '', '', 'identq_24'] {'qk_matmul_output_mode': 3, 'scale': 0.0}
+09 Attention ['identq_24', 'X_3', 'rowXy_6'] -> ['Xty_29', '', '', 'Xtq_30'] {'qk_matmul_output_mode': 0, 'scale': 1.0}
+10 Attention ['Xtq_30', 'one', 'one'] -> ['rowXty_69', '', '', 'rowXtq_70'] {'qk_matmul_output_mode': 0, 'scale': 1.0}
+11 Attention ['rowXtq_70', 'sigV', 'negsigK', 'mask_line'] -> ['vcolg'] {'scale': 8.0}
+12 Attention ['rowXy_6', 'rowXtq_70', 'negposq_16'] -> ['vlocy_35'] {'scale': 40.0}
+13 Attention ['rowXq_7', 'vcolg', 'rowXy_6'] -> ['vliney_43', '', '', 'vlineq_44'] {'qk_matmul_output_mode': 0, 'scale': 1.0}
+14 Attention ['X_3', 'posvecq_12', 'one'] -> ['vmomenty_45', '', '', 'vmomentq_46'] {'qk_matmul_output_mode': 0, 'scale': 1.0}
+15 Attention ['rowXq_7', 'vlocy_35', 'one', 'vmomentq_46'] -> ['vsy_49', '', '', 'vsrq_52'] {'qk_matmul_output_mode': 1, 'scale': 1.0}
+16 Attention ['vsrq_52', 'negsigK', 'sigV', 'mask_line'] -> ['vleftq_58'] {'scale': 1.0}
+17 Attention ['rowXy_6', 'negposq_16', 'vcolg', 'idscoreq_22'] -> ['vpright_63'] {'scale': 80.0}
+18 Attention ['rowXy_6', 'pos_8', 'vcolg', 'idscoreq_22'] -> ['vpleft_64'] {'scale': 80.0}
+19 Attention ['vsrq_52', 'vpright_63', 'rowXy_6', 'vlineq_44'] -> ['vMry_65', '', '', 'vMrq_66'] {'qk_matmul_output_mode': 1, 'scale': 0.004999999888241291}
+20 Attention ['vleftq_58', 'vpleft_64', 'rowXy_6', 'vMrq_66'] -> ['vMly_67', '', '', 'vMlq_68'] {'qk_matmul_output_mode': 1, 'scale': 1.0}
+21 Attention ['rowXq_7', 'sigV', 'negsigK', 'mask_line'] -> ['hcolg'] {'scale': 8.0}
+22 Attention ['rowXy_6', 'rowXq_7', 'negposq_16'] -> ['hlocy_75'] {'scale': 40.0}
+23 Attention ['rowXtq_70', 'hcolg', 'rowXy_6'] -> ['hliney_83', '', '', 'hlineq_84'] {'qk_matmul_output_mode': 0, 'scale': 1.0}
+24 Attention ['Xtq_30', 'posvecq_12', 'one'] -> ['hmomenty_85', '', '', 'hmomentq_86'] {'qk_matmul_output_mode': 0, 'scale': 1.0}
+25 Attention ['rowXtq_70', 'hlocy_75', 'one', 'hmomentq_86'] -> ['hsy_89', '', '', 'hsrq_92'] {'qk_matmul_output_mode': 1, 'scale': 1.0}
+26 Attention ['hsrq_92', 'negsigK', 'sigV', 'mask_line'] -> ['hleftq_98'] {'scale': 1.0}
+27 Attention ['rowXy_6', 'negposq_16', 'hcolg', 'idscoreq_22'] -> ['hpright_103'] {'scale': 80.0}
+28 Attention ['rowXy_6', 'pos_8', 'hcolg', 'idscoreq_22'] -> ['hpleft_104'] {'scale': 80.0}
+29 Attention ['hsrq_92', 'hpright_103', 'rowXy_6', 'hlineq_84'] -> ['hMry_105', '', '', 'hMrq_106'] {'qk_matmul_output_mode': 1, 'scale': 0.004999999888241291}
+30 Attention ['hleftq_98', 'hpleft_104', 'rowXy_6', 'hMrq_106'] -> ['hMly_107', '', '', 'hMlq_108'] {'qk_matmul_output_mode': 1, 'scale': 1.0}
+31 Attention ['identq_24', 'hMlq_108', 'rowXy_6', 'vMlq_68'] -> ['Nsumy_111', '', '', 'Nsumq_112'] {'qk_matmul_output_mode': 1, 'scale': 1.0}
+32 Einsum ['Nsumq_112', 'Nsumq_112', 'Nsumq_112', 'Nsumq_112', 'Nsumq_112', 'Nsumq_112', 'Nsumq_112', 'X_3', 'vsgn', 'vsgn', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale', 'outscale'] -> ['output'] {'equation': b'bohw,bohw,bohw,bohw,bohw,bohw,bchw,bdhw,c,o,ijkl,ijkl,ijkl,ijkl,ijkl,ijkl,ijkl,ijkl,ijkl,ijkl,ijkl,ijkl,ijkl,ijkl,ijkl->bohw'}

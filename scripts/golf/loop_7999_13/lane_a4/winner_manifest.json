@@ -1,0 +1,51 @@
+{
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "targets": [19, 34, 237, 250, 308, 324, 377],
+  "accepted": [
+    {
+      "task": 324,
+      "baseline_model": "scripts/golf/loop_7999_13/lane_a4/baseline/task324.onnx",
+      "baseline_sha256": "e33ea69907733e417fb0c42b105b3f187f9ae65f49a29df03f7b75a9aa2f5c62",
+      "baseline_memory": 227,
+      "baseline_params": 215,
+      "baseline_cost": 442,
+      "candidate_model": "scripts/golf/loop_7999_13/lane_a4/candidates/task324_synth_quarter.onnx",
+      "candidate_sha256": "894be3a6ae4d93ce52a5bb0ec8b03fe3443de74b746cff7529dc4989cd73ac08",
+      "candidate_memory": 227,
+      "candidate_params": 212,
+      "candidate_cost": 439,
+      "cost_reduction": 3,
+      "projected_gain": 0.006810469002527242,
+      "known": {
+        "right": 266,
+        "wrong": 0,
+        "errors": 0
+      },
+      "fresh": {
+        "right": 5000,
+        "wrong_or_runtime_error": 0,
+        "rate": 1.0,
+        "margin_min": 3.75
+      },
+      "structural": {
+        "checker_full": true,
+        "strict_shape_inference": true,
+        "functions": 0,
+        "sparse_initializers": 0,
+        "nested_graphs": 0,
+        "banned_ops": 0,
+        "conv_nodes": 0,
+        "value_info_changes": 0,
+        "new_shape_cloaks": 0
+      },
+      "proof": "Removed deg2[3]. Existing base0/onehot contractions synthesize exact scalar 0.25; existing refdiff/onehot/seedsel/Emap contraction synthesizes exact [0,0,1] degree selector inside the same two Einsums. No node output or shape metadata was added or changed."
+    }
+  ],
+  "lane_projected_gain": 0.006810469002527242,
+  "evidence": {
+    "known_and_cost": "scripts/golf/loop_7999_13/lane_a4/external_task324.json",
+    "fresh5000": "scripts/golf/loop_7999_13/lane_a4/fresh5000.json",
+    "structure_and_algebra": "scripts/golf/loop_7999_13/lane_a4/structural_audit.json"
+  }
+}

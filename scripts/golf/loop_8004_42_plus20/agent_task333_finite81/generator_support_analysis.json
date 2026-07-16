@@ -1,0 +1,38 @@
+{
+  "task": 333,
+  "generator_hash": "d43fd935",
+  "grid_size": 10,
+  "box_rows": 6,
+  "box_cols": 6,
+  "box_positions": 36,
+  "random_palette": {
+    "allowed_colours": [1, 2, 4, 5, 6, 7, 8, 9],
+    "one_colour_palettes": 8,
+    "ordered_two_colour_palettes": 56,
+    "total_ordered_palettes": 64,
+    "green_excluded": true
+  },
+  "raw_support": {
+    "off_axis_cells_per_box": 64,
+    "exponential": true,
+    "constructive_valid_two_colour_lower_bound_formula": "36*56*3^63",
+    "constructive_valid_two_colour_lower_bound": "2307435527236568389690074587996832",
+    "explanation": "Fix one off-axis ring-corner witness so draw() accepts. Each of the remaining 63 off-axis cells can finish as black, palette colour 0, or palette colour 1 with nonzero generator probability. This lower bound excludes all ray choices and is therefore conservative.",
+    "full_raw_enumeration_feasible": false
+  },
+  "network_factorization": {
+    "input_occurrences": 3,
+    "form": "output[n,o,i,j] = sum input[n,a,r,p] * input[n,d,u,b] * input[n,c,i,j] * K[a,r,p,d,u,b,c,o,i,j]",
+    "green_filter": "sum_Z HC[Z,d]*GE[Z] = [0,0,0,1,0,0,0,0,0,0]",
+    "green_filter_exact_float32": true,
+    "generator_consequence": "The second input occurrence is supported only on the four green 2x2 box cells, because random colours exclude green.",
+    "arbitrary_noise_consequence": "All arbitrary source-pixel assignments remain inside the first trilinear input occurrence. The sign rewrite was proved termwise for every assignment of that source index, so no enumeration of the exponential source subset is needed for semantic equivalence."
+  },
+  "residual_reduction": {
+    "semantic_generator_residual_states": 0,
+    "reason": "The rewrite equality is quantified over every input tensor and every complete Einsum index assignment, not only generator cases.",
+    "changed_constant_factor_support": 80,
+    "changed_constant_factor_formula": "2*10 + 3*2*10",
+    "platform_execution": "All 80 changed entries are executed in disabled/default ORT with threads 1/4; whole-model known and fresh margin runs separately cover the 35-input contraction plan."
+  }
+}

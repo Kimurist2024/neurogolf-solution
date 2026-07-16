@@ -1,0 +1,58 @@
+{
+  "task": 226,
+  "authority_cost": 372,
+  "finite_generator_domain": {
+    "width_sequences": 17,
+    "height_sequences": 8,
+    "cartesian_cases": 136
+  },
+  "probe_set_cover": {
+    "states": 136,
+    "candidate_grid_queries": 100,
+    "unique_query_signatures": 81,
+    "solver": "scipy.optimize.milp / HiGHS",
+    "optimal_probe_count": 10,
+    "mip_gap": 0.0,
+    "incumbent_probe_count": 10,
+    "conclusion": "No information-preserving probe-count reduction exists."
+  },
+  "column_mux_search": {
+    "valid_truth_rows": 17,
+    "incumbent_where_nodes": 25,
+    "single_helper_best_total": 25,
+    "two_cost1_helpers_best_total": 25,
+    "cost1_plus_cost2_helpers_best_total": 25,
+    "two_cost2_helpers_best_total": 25,
+    "conclusion": "The searched shared-helper truth-table rewrites did not beat 25 scalar Where outputs."
+  },
+  "row_mux_search": {
+    "valid_truth_rows": 8,
+    "independent_tree_mux_nodes": 14,
+    "single_helper_best_total_mux_nodes": 14,
+    "two_cost1_helpers_best_total_mux_nodes": 14,
+    "incumbent_memory_bytes": 28,
+    "greater_rewrite_memory_bytes": 26,
+    "conclusion": "Direct float comparison beats token-only mux synthesis by two bytes."
+  },
+  "rejected_parameter_routes": [
+    {
+      "route": "signed int8 sparse QLinearConv weight with zero weight-zero-point",
+      "arithmetic_nonzero_weights": 8,
+      "decision": "REJECT",
+      "reason": "ONNX full checker/strict inference reports missing tensor type for sparse QLinearConv weight."
+    },
+    {
+      "route": "same-shape initializer ties and alternative tied zero-points",
+      "decision": "REJECT",
+      "reason": "Finite feature labels conflict or the five one-vs-all quantized classes are not simultaneously separable."
+    }
+  ],
+  "winner": {
+    "rewrite": "r3 & !r8 -> Greater(r3_f,r8_f); r6 & !r1 -> Greater(r6_f,r1_f)",
+    "domain": "Gathered background-channel values are exactly in {0.0,1.0}.",
+    "memory": 331,
+    "params": 39,
+    "cost": 370,
+    "score_gain": 0.005390848634876373
+  }
+}

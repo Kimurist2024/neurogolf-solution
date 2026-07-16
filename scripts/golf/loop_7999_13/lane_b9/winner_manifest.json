@@ -1,0 +1,58 @@
+{
+  "lane": "b9",
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_zip_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "tasks": [156, 182, 216, 237, 238, 284, 379],
+  "accepted": [],
+  "strict_gain": 0.0,
+  "rejected_leads": [
+    {
+      "task": 182,
+      "path": "scripts/golf/loop_7999_13/lane_b9/task182_reuse_constants.onnx",
+      "sha256": "d11479be2703a35afb1f5fe5224ee6a258b3d11c4480a15e8e88db50747ccff8",
+      "baseline_cost": 994,
+      "candidate_cost": 990,
+      "nominal_score_gain": 0.004032263527938451,
+      "known_complete": true,
+      "generator_hash": "776ffc46",
+      "generated": 5000,
+      "generation_errors": 0,
+      "disable_all": {
+        "right": 5000,
+        "wrong": 0,
+        "runtime_or_output_failures": 0
+      },
+      "default": {
+        "session_error": "CenterCropPad shape has 1 element for 2 axes"
+      },
+      "checker_full": true,
+      "strict_shape_inference": true,
+      "standard_domain_only": true,
+      "functions": 0,
+      "sparse_initializers": 0,
+      "conv_bias_safe": true,
+      "decision": "REJECT",
+      "reason": "default ORT cannot construct a session because an inherited scalar-shape CenterCropPad cloak is constant-folded"
+    },
+    {
+      "task": 182,
+      "path": "scripts/golf/loop_7999_13/lane_b9/task182_static_shapes.onnx",
+      "baseline_cost": 994,
+      "candidate_cost": 169429,
+      "known_complete": true,
+      "decision": "REJECT",
+      "reason": "honest static decloaking is correct but is not cheaper"
+    }
+  ],
+  "history": {
+    "archive_retained_profiled": 20,
+    "local_static_prefilter_profiled": 72,
+    "strict_actual_cheaper": 0,
+    "best_archive_actual": {
+      "182": 1062,
+      "216": 1525,
+      "284": 521
+    }
+  },
+  "decision": "NO_STRICT_WINNER"
+}

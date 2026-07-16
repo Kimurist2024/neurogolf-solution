@@ -1,0 +1,51 @@
+{
+  "lane": "c14",
+  "baseline": "submission_base_7999.13.zip",
+  "baseline_sha256": "a123cdc6cb04baa179044f8910d90c6b753dbfed22db9e69738a0574f276a2e1",
+  "retained_candidate_count": 41,
+  "exploratory_control_count": 12,
+  "tasks": {
+    "069": {
+      "base_cost": 541,
+      "retained_costs": [541, 541, 548, 550, 554, 556, 584, 575],
+      "decision": "reject_all",
+      "reason": "No retained candidate is strictly cheaper by measured cost. The base and equal-cost leads have 78 false shapes and cannot create a default-ORT session; the prior exact-base fresh screen was 99/100. The cheapest no-mismatch spec rebuild measured 7498."
+    },
+    "071": {
+      "base_cost": 235,
+      "retained_costs": [186, 186, 187, 213, 196, 286],
+      "decision": "reject_all",
+      "reason": "Every cheaper lead is incomplete or errors under one runtime and retains shape-cloak behavior. The only complete retained lead costs 286. A fully truthful spec-derived control costs 7780."
+    },
+    "079": {
+      "base_cost": 210,
+      "retained_costs": [209, 209, 209, 212, 229, 217],
+      "decision": "reject_all",
+      "reason": "The only cheaper known-complete lead is r02 at 209, but it has five false shapes, a Hardmax/17-input-Einsum carrier, 63137 bytes of executed intermediates versus 144 charged bytes, and only 4962/5000 prior fresh correctness."
+    },
+    "091": {
+      "base_cost": 265,
+      "retained_costs": [262, null, 251, null, 266, 267, 270, 290],
+      "decision": "reject_all",
+      "reason": "The measurable cheaper leads are known-wrong. The remaining cheap apparent lead uses the incumbent's 15 false shapes and cannot be assigned a valid measured score; all complete measurable alternatives cost at least 266."
+    },
+    "099": {
+      "base_cost": 398,
+      "retained_costs": [397, 397, 397, 397],
+      "decision": "reject_all",
+      "reason": "All four one-parameter rank reductions fail complete known correctness. Earlier exact carrier deletion/fusion candidates at cost 383 also fail visible gold."
+    },
+    "105": {
+      "base_cost": 199,
+      "retained_costs": [198],
+      "decision": "reject_all",
+      "reason": "The cost-198 executable shave is known-complete but only 4980/5000 under each ORT mode and retains nine giant Einsums, with up to 45 node inputs."
+    },
+    "109": {
+      "base_cost": 406,
+      "retained_costs": [null, 422, 405, 406, 420, 425, 431, 444],
+      "decision": "reject_all",
+      "reason": "The cost-405 model changes only value_info and inherits ten runtime/static shape contradictions, including output 1x10x19x30 versus actual 1x10x30x30. The fully truthful rule rebuild costs 669."
+    }
+  }
+}

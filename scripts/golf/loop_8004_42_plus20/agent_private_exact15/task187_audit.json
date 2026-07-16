@@ -1,0 +1,257 @@
+{
+  "task": 187,
+  "lb_white_lineage": {
+    "archive": "submission_base_8004.50.zip",
+    "archive_sha256": "63cb4c2abf794bb3cc0ceb531db907625c82638656e7d1ab29865d39b42a6cac",
+    "member": "task187.onnx",
+    "member_sha256": "20f103296641dacfbb5ff424b60cf3006c9af42dba6ada7e985576609a2100b0",
+    "member_byte_length": 5950
+  },
+  "rewrite": [
+    {
+      "kind": "identity",
+      "index": 7,
+      "input": "seed_shape",
+      "output": "k4h",
+      "removed_initializers": [],
+      "proof": "Identity(x)=x for every tensor value and dtype; all consumers are rewired from the Identity output to the same input tensor."
+    }
+  ],
+  "base_structure": {
+    "checks": {
+      "checker_full": true,
+      "strict_data_prop": true,
+      "canonical_io": true,
+      "standard_domains": true,
+      "no_functions_sparse_nested": true,
+      "no_banned_ops": true,
+      "no_new_giant_einsum": true,
+      "static_positive": true,
+      "no_external_initializers": true,
+      "finite_initializers": true,
+      "conv_bias_ub0": true
+    },
+    "pass": true,
+    "error": null,
+    "cost": {
+      "memory": 1441,
+      "params": 141,
+      "cost": 1582
+    }
+  },
+  "candidate_structure": {
+    "checks": {
+      "checker_full": true,
+      "strict_data_prop": true,
+      "canonical_io": true,
+      "standard_domains": true,
+      "no_functions_sparse_nested": true,
+      "no_banned_ops": true,
+      "no_new_giant_einsum": true,
+      "static_positive": true,
+      "no_external_initializers": true,
+      "finite_initializers": true,
+      "conv_bias_ub0": true
+    },
+    "pass": true,
+    "error": null,
+    "cost": {
+      "memory": 1433,
+      "params": 141,
+      "cost": 1574
+    }
+  },
+  "candidate_sha256": "b7cde20a47b9b5f34b5f7b9c2a39b93d48c6350426f3ffe5e7cffca3f77ad2fc",
+  "candidate_byte_length": 5911,
+  "incumbent_measured_cost": {
+    "task": 187,
+    "memory": 1673,
+    "params": 141,
+    "cost": 1814
+  },
+  "candidate_measured_cost": null,
+  "candidate_measured_cost_status": "not_run_unless_mandatory_pre_fresh_gates_pass",
+  "known": {
+    "disable_all": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_24) Op (TopK) [ShapeInferenceError] Axis has less than the requested k elements."
+    },
+    "default": {
+      "session_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (safe_name_25) Op (TopK) [ShapeInferenceError] Axis has less than the requested k elements."
+    }
+  },
+  "fresh": {},
+  "fresh_run": false,
+  "verdict": "REJECT",
+  "reasons": [
+    "candidate_runtime_shapes_not_truthful",
+    "known_dual_not_raw_exact_and_100pct_correct"
+  ],
+  "static_cost": {
+    "old": 1582,
+    "new": 1574,
+    "reduction": 8,
+    "projected_gain": 0.00506971935025058
+  },
+  "base_runtime_shapes": {
+    "shape_cloak": true,
+    "mismatch_count": 13,
+    "mismatches": [
+      {
+        "tensor": "ish",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          4
+        ]
+      },
+      {
+        "tensor": "ihid",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "input16",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "rscore",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          30
+        ]
+      },
+      {
+        "tensor": "cscore",
+        "declared": [
+          1
+        ],
+        "runtime": [
+          30
+        ]
+      },
+      {
+        "tensor": "input32",
+        "declared": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          30,
+          30
+        ]
+      },
+      {
+        "tensor": "rhid",
+        "declared": [
+          3,
+          1
+        ],
+        "runtime": [
+          25,
+          1
+        ]
+      },
+      {
+        "tensor": "rectF",
+        "declared": [
+          3,
+          1
+        ],
+        "runtime": [
+          25,
+          1
+        ]
+      },
+      {
+        "tensor": "R4",
+        "declared": [
+          1,
+          1
+        ],
+        "runtime": [
+          4,
+          30
+        ]
+      },
+      {
+        "tensor": "C4",
+        "declared": [
+          1,
+          1
+        ],
+        "runtime": [
+          4,
+          30
+        ]
+      },
+      {
+        "tensor": "R4bh",
+        "declared": [
+          1,
+          1
+        ],
+        "runtime": [
+          4,
+          30
+        ]
+      },
+      {
+        "tensor": "C4bh",
+        "declared": [
+          1,
+          1
+        ],
+        "runtime": [
+          4,
+          30
+        ]
+      },
+      {
+        "tensor": "output",
+        "declared": [
+          1,
+          10,
+          1,
+          1
+        ],
+        "runtime": [
+          1,
+          10,
+          30,
+          30
+        ]
+      }
+    ]
+  },
+  "candidate_runtime_shapes": {
+    "trace_error": "Fail: [ONNXRuntimeError] : 1 : FAIL : Node (ctv) Op (TopK) [ShapeInferenceError] Axis has less than the requested k elements."
+  }
+}

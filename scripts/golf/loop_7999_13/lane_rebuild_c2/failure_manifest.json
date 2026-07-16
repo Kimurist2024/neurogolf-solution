@@ -1,0 +1,141 @@
+{
+  "lane": "rebuild_c2",
+  "baseline_zip": "submission_base_7999.13.zip",
+  "baseline_score": 7999.13,
+  "tasks": [5, 18, 54, 133, 209, 349, 367],
+  "decision": "NO_STRICT_WINNER",
+  "projected_score_gain": 0.0,
+  "pool_scan": {
+    "unique_models": 762,
+    "raw_references": 6617,
+    "status_counts": {
+      "base_identical": 7,
+      "scored": 113,
+      "static_cost_floor_reject": 516,
+      "static_reject": 118,
+      "unscorable": 8
+    },
+    "visible_correct_and_cheaper": 6,
+    "visible_correct_and_cheaper_tasks": [18],
+    "source": "scan_results.json"
+  },
+  "failures": [
+    {
+      "task": 5,
+      "base_cost": 2325,
+      "best_sound_model": "scripts/golf/scratch_codex/task005/cand_v24_fourier_qw_qcoord.onnx",
+      "best_sound_sha256": "c66d2514ebd35e6a912de0a48cb16f510b52b43acc7def7e4adc396378a82527",
+      "best_sound_cost": 2389,
+      "cost_delta": 64,
+      "gate_reached": "strict_cost",
+      "reason": "The generator-safe Fourier selector needs 60 basis parameters; the best sound graph is already 64 cost units above the 7999.13 payload. The pool scan found no cheaper visible-correct alternative."
+    },
+    {
+      "task": 18,
+      "base_cost": 4818,
+      "candidate": "scripts/golf/loop_7999_13/lane_rebuild_c2/candidates/task018.onnx",
+      "candidate_sha256": "fbbe0a843836a2ab531b7e05bb9b370c4b40364507861b77a0aa34a824c9d16d",
+      "candidate_cost": 4733,
+      "cost_delta": -85,
+      "known": {
+        "right": 266,
+        "total": 266,
+        "lib_gold": true,
+        "official_gold": true,
+        "margin_stable": true,
+        "margin_min": 1.0
+      },
+      "static": {
+        "checker_and_shapes": "pass",
+        "conv_bias_ub": []
+      },
+      "fresh": {
+        "right": 2814,
+        "wrong": 186,
+        "total": 3000,
+        "rate": 0.938,
+        "required_rate": 1.0
+      },
+      "generic_random_differential": {
+        "requested": 500,
+        "executable": 500,
+        "raw_equal": 350,
+        "threshold_equal": 352,
+        "mismatches": 148,
+        "skipped_both_failed": 0,
+        "skipped_one_failed": 0,
+        "source": "task018_external_random500.json"
+      },
+      "gate_reached": "fresh_3000_and_generic_differential",
+      "reason": "REJECT: the cheaper stored-corpus fit fails 186 fresh cases. It has zero one-sided execution errors on the generic differential but changes threshold behavior on 148/500 arbitrary grids. The generator rule is non-injective/ambiguous, so a deterministic heuristic cannot be certified at 100% by fitting the visible corpus."
+    },
+    {
+      "task": 54,
+      "base_cost": 2291,
+      "best_spec_rebuild": "scripts/golf/scratch_codex/task054/task054_spec_rebuild_overdraw.onnx",
+      "best_spec_rebuild_cost": 12380,
+      "cost_delta": 10089,
+      "gate_reached": "strict_cost",
+      "reason": "The full generator-rule rebuild is far above baseline. Compact cloak variants have broader fresh/official-error risk, and the 104-model pool scan found no cheaper visible-correct candidate."
+    },
+    {
+      "task": 133,
+      "base_cost": 4403,
+      "best_sound_model": "scripts/golf/scratch_codex/task133/safe_pcolor_colvar.onnx",
+      "best_sound_sha256": "d5b0371da64781cfdfe98add984022cd404aa0277506f6b6a5215e496eefa680",
+      "best_sound_cost": 5416,
+      "cost_delta": 1013,
+      "fresh": {
+        "right": 3000,
+        "wrong": 0,
+        "total": 3000
+      },
+      "gate_reached": "strict_cost",
+      "reason": "The corrected boundary- and column-aware rule is fresh-safe but cannot beat the current shape-cloaked baseline. The 105-model pool scan found no cheaper visible-correct candidate."
+    },
+    {
+      "task": 209,
+      "base_cost": 2218,
+      "gate_reached": "generator_rule",
+      "reason": "The generator mapping is non-injective and the compact incumbent family is not fresh-100%. No deterministic healthy rebuild can satisfy the required exact fresh rule at a lower cost, and the 155-model pool scan found no cheaper visible-correct candidate."
+    },
+    {
+      "task": 349,
+      "base_cost": 3964,
+      "best_sound_model": "scripts/golf/scratch_codex/task349/k6_iter_runs_i8_sparse_v13_scalar_zero.onnx",
+      "best_sound_sha256": "5592daf1b4dcbab55bc5022e14ff8f75c31f96d4b95c2023087f79c05a6f338c",
+      "best_sound_cost": 4861,
+      "cost_delta": 897,
+      "fresh": {
+        "right": 3001,
+        "wrong": 0,
+        "total": 3001
+      },
+      "gate_reached": "strict_cost",
+      "reason": "The complete six-component rule is fresh-safe but 897 cost units above baseline. The 109-model pool scan found no cheaper visible-correct candidate."
+    },
+    {
+      "task": 367,
+      "base_cost": 2229,
+      "base_sha256": "c8c2ebc5b47a6c5f99074dada87ecc879ceafcdd55f8705a3da59f62e46fe1b6",
+      "base_fresh": {
+        "right": 3000,
+        "wrong": 0,
+        "total": 3000
+      },
+      "optimizer_outputs": {
+        "passes_attempted": 46,
+        "generated": 45,
+        "unique_sha256": 4,
+        "cost_equal_outputs": 43,
+        "normalization_cost": 2229,
+        "split_variants": 2,
+        "split_rejection": "io_count",
+        "optimizer_errors": 1
+      },
+      "gate_reached": "strict_cost_or_static_structure",
+      "reason": "Every generated semantics-preserving optimizer output remained exactly cost-equal to baseline; the only graph-changing split outputs violated the one-input/one-output contract. One lexical-lifting pass failed to generate a graph. The 69-model pool scan found no cheaper visible-correct candidate."
+    }
+  ],
+  "root_mutations_by_lane": []
+}
