@@ -1,0 +1,73 @@
+\section{付録: 出力結果}
+
+以下に，実際に実行した際の出力を無加工で添付する．
+
+\subsection{{\tt hashtable\_v1} の出力}
+{\scriptsize\verbatiminput{../results/hashtable_v1_output.txt}}
+
+\subsection{{\tt hashtable} の出力}
+{\scriptsize\verbatiminput{../results/hashtable_output.txt}}
+
+\subsection{{\tt hashtable\_improved} の出力}
+{\scriptsize\verbatiminput{../results/hashtable_improved_output.txt}}
+
+\subsection{{\tt exp\_anagram} の出力}
+{\scriptsize\verbatiminput{../results/exp_anagram_output.txt}}
+
+\subsection{{\tt exp\_collision} の要約出力}
+
+$m=17$ の要約統計:
+{\scriptsize\verbatiminput{../results/exp_collision_m17_summary.txt}}
+
+$m=1031$ の要約統計:
+{\scriptsize\verbatiminput{../results/exp_collision_m1031_summary.txt}}
+
+なお，バケットごとの度数を列挙した CSV（標準出力）は $m=1031$ で 4000 行を超えるため，本付録には $m=17$ の分のみを添付する（$m=1031$ の分布は図 \ref{fig:collision1031} と上記要約統計に反映されている）．
+
+$m=17$ の度数 CSV:
+{\scriptsize\verbatiminput{../experiments/data/collision_m17.csv}}
+
+\subsection{{\tt exp\_loadfactor} の出力（CSV）}
+{\scriptsize\verbatiminput{../experiments/data/loadfactor.csv}}
+
+\subsection{{\tt exp\_timing} の出力（CSV）}
+{\scriptsize\verbatiminput{../experiments/data/timing.csv}}
+
+\subsection{{\tt exp\_memory} の出力（CSV）}
+{\scriptsize\verbatiminput{../experiments/data/memory.csv}}
+
+\subsection{{\tt exp\_tablesize} の出力（CSV）}
+{\scriptsize\verbatiminput{../experiments/data/tablesize.csv}}
+
+\subsection{{\tt exp\_rehash} の統計出力}
+
+挿入ごとのレイテンシ CSV（標準出力）は 2000 行を超えるため添付を省略する（全データは図 \ref{fig:rehash} に反映されている）．以下は標準エラーに出力された統計の全文である．
+
+{\scriptsize\verbatiminput{../results/exp_rehash_stats.txt}}
+
+\subsection{{\tt test\_hashtable} の出力（全文）}
+{\scriptsize\verbatiminput{../results/test_hashtable_output.txt}}
+
+\subsection{{\tt exp\_openaddr} の出力（CSV）}
+{\scriptsize\verbatiminput{../experiments/data/openaddr.csv}}
+
+\subsection{{\tt exp\_keylen} の出力（CSV）}
+{\scriptsize\verbatiminput{../experiments/data/keylen.csv}}
+
+\subsection{{\tt hashtable\_tagged} の出力}
+{\scriptsize\verbatiminput{../results/hashtable_tagged_output.txt}}
+
+\subsection{{\tt exp\_tag} の出力（CSV）}
+
+CSV の末尾 2 列が検索 1 回あたりの文字列比較回数であり（{\tt -1} は計測対象外の {\tt std::unordered\_map}），時間の列は実行環境のばらつきを含む参考値である．
+
+{\scriptsize\verbatiminput{../experiments/data/tag.csv}}
+
+\subsection{{\tt exp\_hashdos} の出力（CSV）}
+{\scriptsize\verbatiminput{../experiments/data/hashdos.csv}}
+
+\section{付録: 参考にした {\tt hash.c}}
+
+本課題の出発点として与えられた C 言語のチェイン法実装を参考として添付する（本文 2 節・3 節・5.8 節で参照）．
+
+{\scriptsize\verbatiminput{../hash.c}}

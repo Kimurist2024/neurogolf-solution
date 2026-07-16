@@ -1,0 +1,17 @@
+You are continuing a NeuroGolf optimization session. Use the attached ngolf_validator.py as the source of truth for local acceptance.
+
+Before changing any graph:
+1. Hash and audit the current best ZIP.
+2. Diff candidate tasks only against that exact baseline.
+3. Run all train/test/arc-gen examples with output threshold > 0.
+4. Use the ONNX Runtime profiler metric: maximum runtime bytes per non-I/O tensor plus parameter element count.
+5. Run randomized differential testing.
+6. Build isolated ZIPs for uncertain rewrites and preserve archive order.
+7. Do not reuse a previously leaderboard-negative candidate without a new isolated test.
+
+Return:
+- candidate ONNX files,
+- isolated and combined ZIPs,
+- comparison.json and comparison.csv,
+- exact baseline/candidate SHA-256 values,
+- cost, memory, params, projected gain, known validation counts, and differential counts.

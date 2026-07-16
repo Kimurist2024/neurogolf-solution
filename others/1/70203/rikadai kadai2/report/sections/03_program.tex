@@ -1,0 +1,175 @@
+\section{プログラムの説明}
+
+本節では，前節のアルゴリズムを C++ の class としてどのように実現したかを，最終的に採用したプログラム {\tt hashtable.cpp}（付録 A.2）に沿って説明する．本プログラムは加点課題であるテンプレート化まで行ったものであり，キーは {\tt std::string} 型，値は任意の型 {\tt T} を収納できる．なお，比較のために作成した非テンプレート版 {\tt hashtable\_v1.cpp}，改良版 {\tt hashtable\_improved.cpp}，発展版 {\tt hashtable\_tagged.cpp} については考察で述べる．
+
+\subsection{クラスの構成とデータ構造}
+
+ハッシュ表はクラス {\tt HashTable} として実現した．クラスの骨格を以下に示す（行番号は付録 A.2 のソースに対応する）．
+
+\begin{verbatim}
+ 5  template <class T>
+ 6  class HashTable {
+ 7  public:
+ 8      static constexpr int HASHSIZE = 17;
+ 9
+10      // チェインのノード
+11      struct Node {
+12          std::string key;
+13          T value;
+14          Node* next;
+15      };
+\end{verbatim}
+
+5 行目の {\tt template <class T>} により，クラス全体が値の型 {\tt T} を型引数とするテンプレートになっている．利用側が {\tt HashTable<int>} や {\tt HashTable<std::string>} のように型を指定すると，コンパイラがその型専用のクラスを生成する．8 行目の {\tt HASHSIZE} はバケット数 $m$ に相当する定数であり，{\tt hash.c} と同じ 17 とした．{\tt constexpr} 指定によりコンパイル時定数であることを保証している．
+
+11〜15 行目の構造体 {\tt Node} は連結リストの節であり，キー {\tt key}，値 {\tt value}，次の節へのポインタ {\tt next} の 3 つのメンバをもつ．{\tt hash.c} の {\tt struct member\_list} では名前が {\tt char name[16]} の固定長配列，値が {\tt int score} 固定であったのに対し，本実装ではキーを {\tt std::string}，値をテンプレート引数 {\tt T} とすることで，長さ 16 バイト以上のキーも任意型の値も扱えるようにした．
+
+表本体は private メンバとして次のように宣言している．
+
+\begin{verbatim}
+117  private:
+118      Node* buckets_[HASHSIZE];
+119      int size_;
+\end{verbatim}
+
+118 行目の {\tt buckets\_} が大きさ 17 のバケット配列（各要素が連結リストの先頭を指すポインタ）であり，{\tt hash.c} のグローバル変数 {\tt hashtable} に相当する．C 版ではハッシュ表がグローバル変数であったため 1 個しか作れなかったが，本実装ではメンバ変数としたことで，ハッシュ表オブジェクトを複数個同時に生成できる．119 行目の {\tt size\_} は現在の格納要素数であり，挿入・削除のたびに増減させる．
+
+\subsection{コンストラクタとデストラクタ}
+
+\begin{verbatim}
+17      // 全バケットを nullptr で初期化
+18      HashTable() : size_(0) {
+19          for (int i = 0; i < HASHSIZE; ++i) {
+20              buckets_[i] = nullptr;
+21          }
+22      }
+\end{verbatim}
+
+コンストラクタ（18〜22 行目）は全バケットを空ポインタ {\tt nullptr} で初期化する．{\tt hash.c} では {\tt main} の先頭で利用者が明示的に初期化ループを書く必要があったが，C++ ではオブジェクト生成時にコンストラクタが自動的に呼ばれるため，初期化忘れが起こらない．
+
+デストラクタ（25〜34 行目）は全バケットについて連結リストを先頭から辿り，各節を {\tt delete} で解放する．次の節へのポインタを退避してから {\tt delete} する点が肝要である．これによりオブジェクトの寿命が尽きるときに全メモリが自動的に解放される．{\tt hash.c} には解放処理が存在せず，確保したメモリはプログラム終了まで解放されなかった．
+
+また 37〜38 行目でコピーコンストラクタとコピー代入演算子を {\tt = delete} 指定により禁止している．本クラスは生のポインタでノードを管理しているため，既定のコピー（ポインタの浅いコピー）を許すと 2 つのオブジェクトが同じ節を指し，二重解放を起こす．コピーを禁止することでこの誤用をコンパイル時に排除した．
+
+\subsection{ハッシュ関数 {\tt hash}}
+
+\begin{verbatim}
+40      // ハッシュ値を計算（文字コードの総和 % HASHSIZE）
+41      static int hash(const std::string& key) {
+42          int hashval = 0;
+43          for (char c : key) {
+44              hashval += static_cast<unsigned char>(c);
+45          }
+46          return hashval % HASHSIZE;
+47      }
+\end{verbatim}
+
+関数 {\tt hash} は，キー文字列を受け取り 0 以上 16 以下のバケット番号を返す．式 (\ref{eq:addhash}) をそのまま実装したものであり，範囲 for 文（43 行目）で各文字の文字コードを {\tt hashval} に加算し，最後に {\tt HASHSIZE} で割った余りを返す．44 行目で {\tt unsigned char} にキャストしているのは，{\tt char} が符号付きの処理系で日本語などの多バイト文字を含むキーを渡された場合に加算値が負になり，剰余が負値となってバケット番号が範囲外になる不具合を防ぐためである．この点は {\tt char} をそのまま加算する {\tt hash.c} からの改良である．
+
+\subsection{挿入 {\tt insert}}
+
+\begin{verbatim}
+49      // 先頭挿入で key-value を登録
+50      bool insert(const std::string& key, const T& value) {
+51          int h = hash(key);
+52          Node* p = new Node{key, value, buckets_[h]};
+53          buckets_[h] = p;
+54          ++size_;
+55          return true;
+56      }
+\end{verbatim}
+
+メンバ関数 {\tt insert} は，キーと値を受け取り図 \ref{fig:flow-insert} の手順で表に登録する．51 行目でハッシュ値 {\tt h} を計算し，52 行目で新しい節を確保する．このとき集成体初期化 {\tt \{key, value, buckets\_[h]\}} により，「次」ポインタへ現在のリスト先頭を設定するところまでを 1 文で行っている．53 行目でリスト先頭を新しい節に付け替えれば先頭挿入が完了する．課題の仕様どおり {\tt table.insert("hoge", x)} の形で呼び出せる．値渡しではなく {\tt const T\&}（const 参照）で受け取ることで，値の型 {\tt T} が大きい場合の無駄なコピーを避けている．
+
+\subsection{検索 {\tt operator()}}
+
+\begin{verbatim}
+58      // key に対応する値へのポインタを返す（見つからなければ nullptr）
+59      const T* operator()(const std::string& key) const {
+60          int h = hash(key);
+61          Node* p = buckets_[h];
+62          while (p != nullptr) {
+63              if (p->key == key) {
+64                  return &(p->value);
+65              }
+66              p = p->next;
+67          }
+68          return nullptr;
+69      }
+\end{verbatim}
+
+検索は関数呼び出し演算子 {\tt operator()} の多重定義として実現した．これにより課題の仕様どおり {\tt table("hoge")} という関数呼び出しの形でオブジェクトを「適用」でき，表をキーから値への写像として扱う直感的な記法になる．処理は図 \ref{fig:flow-search} のとおりで，60 行目でハッシュ値を求め，62〜67 行目の while 文で該当バケットのリストを辿る．63 行目のキー比較には {\tt std::string} の {\tt ==} 演算子を用いた．{\tt hash.c} の {\tt strcmp} と異なり，{\tt ==} は長さ比較を先に行えるため，長さの異なる文字列同士の比較が高速であり，記述も簡潔になる．
+
+戻り値は値そのものではなく値への const ポインタ {\tt const T*} とし，キーが存在しないときは {\tt nullptr} を返す．値そのものを返す設計にすると「存在しない」ことを表す特別な値（番兵）が型 {\tt T} ごとに必要になるが，ポインタを返す設計ならばどんな型 {\tt T} に対しても {\tt nullptr} が一様に「無し」を表せる．これは {\tt hash.c} の {\tt find} が {\tt NULL} または節へのポインタを返す設計を踏襲したものである．末尾の {\tt const} 指定により，検索が表の内容を変更しないことをコンパイラに保証させている．
+
+\subsection{削除 {\tt operator-=}}
+
+\begin{verbatim}
+71      // key を削除する（存在しなければ何もしない）
+72      HashTable& operator-=(const std::string& key) {
+73          int h = hash(key);
+74          Node* p = buckets_[h];
+75          Node* prev = nullptr;
+76          while (p != nullptr) {
+77              if (p->key == key) {
+78                  if (prev == nullptr) {
+79                      buckets_[h] = p->next;
+80                  } else {
+81                      prev->next = p->next;
+82                  }
+83                  delete p;
+84                  --size_;
+85                  return *this;
+86              }
+87              prev = p;
+88              p = p->next;
+89          }
+90          return *this;
+91      }
+\end{verbatim}
+
+削除は複合代入演算子 {\tt operator-=} の多重定義として実現し，課題の仕様どおり {\tt table -= "hoge"} と書ける．処理は図 \ref{fig:flow-delete} のとおりである．検索と同様にリストを辿るが，付け替えのために直前の節を指すポインタ {\tt prev}（75 行目）を併走させる．一致する節が見つかったとき，それがリスト先頭ならばバケットを次の節に付け替え（78〜79 行目），途中ならば直前の節の {\tt next} を付け替える（81 行目）．その後 83 行目で節を解放する．キーが存在しない場合は何もせずに抜ける．戻り値を自オブジェクトへの参照 {\tt HashTable\&} とすることで，組込み型の {\tt -=} と同じく {\tt (table -= "a") -= "b"} のような連鎖も可能な，演算子として自然な意味論になっている．
+
+\subsection{補助メンバ関数 {\tt size} と {\tt dump}}
+
+{\tt size}（94〜96 行目）は現在の格納要素数 {\tt size\_} を返す．挿入・削除が正しく行われたことを要素数の増減で確認するために設けた．{\tt dump}（99〜115 行目）は全バケットについて連結リストの中身を {\tt (キー -> 値)} の形式で表示するデバッグ用関数である．どのキーがどのバケットに入り，衝突がどのバケットで起きているかを直接観察できる．
+
+\subsection{関数 {\tt main}（動作確認）}
+
+関数 {\tt main}（122〜180 行目）は 4 部構成で動作確認を行う．
+(a) では {\tt HashTable<int>} に {\tt hash.c} と同じ 4 名の名前と点数を挿入し，{\tt dump} による格納状況の表示，検索の成功例・失敗例，{\tt -=} による削除と削除後の再検索を行う．
+(b) では {\tt HashTable<double>} に実数値（身長）を格納し，テンプレートが {\tt int} 以外の組込み型でも機能することを確認する．
+(c) では {\tt HashTable<std::string>} に日本語文字列を値として格納し，クラス型の値も収納できることを確認する．
+(d) では存在しないキーの検索と削除後の検索がいずれも {\tt nullptr} を返すことを，境界条件として改めて確認する．
+各操作の結果は条件演算子を用いて，ポインタが {\tt nullptr} のとき {\tt none}，それ以外のとき値を表示する形式で出力する．
+
+\subsection{利用方法と各操作の計算量}
+
+本クラスの利用者から見た使い方を以下にまとめる．値の型を指定してオブジェクトを生成し，3 つの操作を呼び出すだけである．
+
+\begin{verbatim}
+HashTable<int> table;                // 値が int の表を生成
+table.insert("hoge", 42);            // 挿入
+const int* p = table("hoge");        // 検索
+if (p != nullptr) { /* *p が値 */ }
+table -= "hoge";                     // 削除
+\end{verbatim}
+
+各操作の計算量を表 \ref{tab:complexity} に示す．$n$ は格納要素数，$m$ はバケット数（本実装では 17 固定），$\alpha = n/m$ は負荷率である．挿入は先頭挿入のため常に一定時間であり，検索・削除は 2.5 節の解析のとおり平均 $O(1+\alpha)$，最悪（全キーが 1 バケットに衝突した場合）$O(n)$ である．$m$ が固定なので，$n$ に対する漸近的な平均計算量はいずれも $O(n/m) = O(n)$ となる点に注意する．
+
+\begin{table}[htbp]
+\centering
+\caption{各メンバ関数の計算量（$n$: 要素数，$\alpha = n/m$: 負荷率）}
+\label{tab:complexity}
+\begin{tabular}{llll}
+\hline
+操作 & メンバ関数 & 平均 & 最悪 \\
+\hline
+挿入 & {\tt insert}        & $O(1)$          & $O(1)$ \\
+検索 & {\tt operator()}    & $O(1+\alpha)$   & $O(n)$ \\
+削除 & {\tt operator-=}    & $O(1+\alpha)$   & $O(n)$ \\
+生成 & コンストラクタ      & $O(m)$          & $O(m)$ \\
+破棄 & デストラクタ        & $O(n+m)$        & $O(n+m)$ \\
+\hline
+\end{tabular}
+\end{table}

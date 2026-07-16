@@ -1,0 +1,126 @@
+{
+  "task": 132,
+  "status": "no_further_adoptable_cost_reduction_found",
+  "baseline_valid_onnx": "/mnt/data/task132_improved.onnx",
+  "candidates": [
+    {
+      "name": "current_valid",
+      "path": "/mnt/data/task132_improved.onnx",
+      "score_result": {
+        "memory": 0,
+        "params": 640,
+        "cost": 640,
+        "score": 18.53853182364628,
+        "correct": true
+      },
+      "wrong_counts": {
+        "train": 0,
+        "train_first20": [],
+        "test": 0,
+        "test_first20": [],
+        "arc-gen": 0,
+        "arc-gen_first20": []
+      },
+      "margin_stable": true,
+      "margin_min": 0.8669999837875366,
+      "checker": true,
+      "shape_inference": true,
+      "size_bytes": 2915
+    },
+    {
+      "name": "m12_cost528_rejected",
+      "path": "/mnt/data/work132/e12.onnx",
+      "score_result": {
+        "memory": 0,
+        "params": 528,
+        "cost": 528,
+        "score": 18.73090371629374,
+        "correct": false
+      },
+      "wrong_counts": {
+        "train": 0,
+        "train_first20": [],
+        "test": 0,
+        "test_first20": [],
+        "arc-gen": 136,
+        "arc-gen_first20": [
+          0,
+          2,
+          4,
+          7,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          21,
+          22,
+          23,
+          24,
+          25,
+          27,
+          28,
+          29
+        ]
+      },
+      "margin_stable": true,
+      "margin_min": 0.8669999837875366,
+      "checker": true,
+      "shape_inference": true,
+      "size_bytes": 2471
+    },
+    {
+      "name": "m13_cost583_rejected",
+      "path": "/mnt/data/work132/m13_24.onnx",
+      "score_result": {
+        "memory": 0,
+        "params": 583,
+        "cost": 583,
+        "score": 18.631812813649507,
+        "correct": false
+      },
+      "wrong_counts": {
+        "train": 0,
+        "train_first20": [],
+        "test": 0,
+        "test_first20": [],
+        "arc-gen": 24,
+        "arc-gen_first20": [
+          7,
+          11,
+          18,
+          25,
+          31,
+          35,
+          50,
+          63,
+          72,
+          80,
+          90,
+          91,
+          100,
+          110,
+          112,
+          113,
+          143,
+          146,
+          188,
+          216
+        ]
+      },
+      "margin_stable": true,
+      "margin_min": 0.8669999837875366,
+      "checker": true,
+      "shape_inference": true,
+      "size_bytes": 2691
+    }
+  ],
+  "notes": [
+    "m=12 reconstruction reached cost 528 but failed visible arc-gen (136 wrong), so it was not adopted.",
+    "m=13 compressed reconstruction reached cost 583 with local sparse-coordinate search but still failed visible arc-gen (24 wrong), so it was not adopted.",
+    "The previously produced cost-640 model remains the best fully validated candidate available in this run."
+  ]
+}

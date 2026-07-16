@@ -1,0 +1,59 @@
+{
+  "task": "task175",
+  "round": "cost_reduction_after_margin_model",
+  "baseline_cost": 166,
+  "target_requested": "reduce cost by at least 100 / cost <=66 if possible; user expected <=50",
+  "result": "no validated cost-improved ONNX found",
+  "best_validated_exact_model": "/mnt/data/task175_scaled_margin.onnx",
+  "best_validated_exact_cost": 166,
+  "rule_inference": {
+    "generator_formula": "output[r][c]=(((r+2)//(c+2) if r>c else (c+2)//(r+2), with diagonal base=2)+modset)%mod+1",
+    "observed_rule": "output is symmetric; most hidden cells can be filled from transpose; diagonal black cells require q2 diagonal color; fixed train/test include off-diagonal both-black cells requiring q1=q2-1 due validate() ignoring draw() rejection",
+    "python_solver_status": "rule identified; direct ONNX rule graph rejected for low-cost goal because full-grid intermediates dominate memory cost"
+  },
+  "cost_model_constraints": {
+    "full_grid_float_intermediate_memory": 36000,
+    "full_grid_bool_intermediate_memory": 9000,
+    "implication": "cost <=66 practically requires single-node or only tiny intermediates; Transpose/Add/Where style graph is not viable"
+  },
+  "not_adopted_candidates": [
+    {
+      "path": "/mnt/data/work/task175_cp_patch_cells_R2_s0_fixeq.onnx",
+      "cost": 164,
+      "status": "not exact",
+      "reason": "misses both-black fill; local wrong_ex=135, diff=204"
+    },
+    {
+      "path": "/mnt/data/work/task175_cp_patch_cells_R2_s1_fixeq.onnx",
+      "cost": 164,
+      "status": "not exact",
+      "reason": "same failure class as s0"
+    },
+    {
+      "path": "/mnt/data/work/task175_Hfact_Mq_R2.onnx",
+      "cost": 142,
+      "status": "not exact",
+      "reason": "wrong on all official examples in local summary"
+    },
+    {
+      "path": "/mnt/data/work/task175_Hfact_pa_R2.onnx",
+      "cost": 142,
+      "status": "not exact",
+      "reason": "wrong on all official examples in local summary"
+    },
+    {
+      "path": "/mnt/data/best_lowcost_F3_r132_poly_s0_bit25429.onnx",
+      "cost": 84,
+      "status": "not exact",
+      "reason": "low-rank F=3 training remained far from exact"
+    },
+    {
+      "path": "/mnt/data/best_lowcost_F2_r111_poly_s1_bit117306.onnx",
+      "cost": 55,
+      "status": "not exact",
+      "reason": "low-rank <=66 candidate failed many bits"
+    }
+  ],
+  "adoption_decision": "no new ONNX or full submission ZIP emitted as improved, because no candidate satisfied exactness at lower cost",
+  "created_at": "2026-07-03T23:29:11Z"
+}

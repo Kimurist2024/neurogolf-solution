@@ -1,0 +1,141 @@
+{
+ "forumTopic": {
+  "authorId": 31197032,
+  "authorThumbnailName": "default-thumb.png",
+  "authorUserDisplayName": "Gengsr",
+  "authorUserName": "gengsr",
+  "comments": [
+   {
+    "id": 3459868,
+    "postDate": "2026-05-18T11:46:29.857Z",
+    "rawMarkdown": "Public notebooks contain a lot of tasks that fail because e.g. they use lookup tables that work only on train+test+arc-gen. One way to spot them is that they have N similar nodes, where N=number of tests.\nOr they does not meet requirements. \nIf they are valid but still fail hidden test cases, usually generating extra tests helps to find edge cases. Or just making sure that your understanding of the task is the same as what generator produces.",
+    "content": "<p>Public notebooks contain a lot of tasks that fail because e.g. they use lookup tables that work only on train+test+arc-gen. One way to spot them is that they have N similar nodes, where N=number of tests.\nOr they does not meet requirements. \nIf they are valid but still fail hidden test cases, usually generating extra tests helps to find edge cases. Or just making sure that your understanding of the task is the same as what generator produces.</p>",
+    "replies": [
+     {
+      "id": 3459876,
+      "postDate": "2026-05-18T11:56:11.567Z",
+      "rawMarkdown": "Thanks, that makes a lot of sense.\n\nI think I ran into exactly this with some public candidates. They looked great locally, but failed badly online, so they were probably lookup-table-like solutions. I’ll use the repeated-node check mostly to filter suspicious public candidates.\n\nFor my own rule-based attempts, I guess the better path is to validate against extra generated cases before converting to ONNX.\n\nDo you usually use the official generator directly for those extra tests, or do you also create manual edge cases? Also, at higher scores, is the main bottleneck usually finding the correct rule, or making the ONNX implementation small enough?\n",
+      "content": "<p>Thanks, that makes a lot of sense.</p>\n<p>I think I ran into exactly this with some public candidates. They looked great locally, but failed badly online, so they were probably lookup-table-like solutions. I’ll use the repeated-node check mostly to filter suspicious public candidates.</p>\n<p>For my own rule-based attempts, I guess the better path is to validate against extra generated cases before converting to ONNX.</p>\n<p>Do you usually use the official generator directly for those extra tests, or do you also create manual edge cases? Also, at higher scores, is the main bottleneck usually finding the correct rule, or making the ONNX implementation small enough?</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Gengsr",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/gengsr",
+       "tier": "CONTRIBUTOR",
+       "id": 31197032,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 738,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Gengsr",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+        "url": "/gengsr",
+        "userName": "gengsr",
+        "tier": "CONTRIBUTOR",
+        "id": 31197032,
+        "profileUrl": "/gengsr",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 31197032,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "jacekwl",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/977970-kg.png?t=2026-06-03-10-04-48",
+     "url": "/jacekwl",
+     "tier": "CONTRIBUTOR",
+     "id": 977970,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 3,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "jacekwl",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/977970-kg.png?t=2026-06-03-10-04-48",
+      "url": "/jacekwl",
+      "userName": "jacekwl",
+      "tier": "CONTRIBUTOR",
+      "id": 977970,
+      "profileUrl": "/jacekwl",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 977970,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3459848,
+   "postDate": "2026-05-18T11:12:18.927Z",
+   "rawMarkdown": "Hi everyone, I’m currently stuck at around 5800 on NeuroGolf 2026, and I’d like to ask for some advice on the next direction.\n\nMy current baseline submission is about 5800.64. To avoid blindly mixing old high-scoring submissions, I built a per-task validation workflow: I compare different candidate ONNX files with the baseline using local probe results, including base_cost, candidate_cost, base_score, candidate_score, and md5. Then I generate single-task override submissions and test only one task replacement at a time on the leaderboard.\n\nHere are the issues I’ve run into:\n\n1. Some candidates from public high-score sources look extremely good locally. For example, some tasks have very low candidate cost and very high local delta. But after submitting, the public score drops instead, almost as if the task failed on hidden cases and lost the original baseline score.\n\n2. I tried hand-writing simple rule-based tasks, such as task006, which is a left/right binary region operation. The local validation passes, but the improvement is less than 1 point, so the return on effort feels quite low.\n\n3. I filtered high-ROI tasks where the base_score is low and base_cost is high. Some of them theoretically have 3–5 points of improvement potential, but many seem to require connected components, object selection, sorting, largest/smallest object logic, or other object reasoning. These are quite hard to implement efficiently in pure ONNX, and I’m also worried about hidden-case robustness.\n\n4. I’m a bit confused about the right path forward. If I want to go from around 5800 to 6500+, is it basically necessary to manually inspect many ARC tasks and hand-write rules? Or is there a more systematic approach, such as template-based rule solvers, automatic rule extraction from generators, or a stable ONNX graph rewriting/compression pipeline?\n\nWhat I have tried so far:\n\n* Built a candidate matrix for all 400 tasks;\n* Filtered out poison tasks that failed online;\n* Ran fast triage on high-ROI tasks;\n* For tasks that looked writable, tried to write Python oracles first;\n* Only planned to convert to ONNX after the Python oracle passed all train/test/arc-gen examples;\n* Avoided directly mixing old high-score packages at scale.\n\nThe current problem is that many tasks look like fixed templates, color replacement, crop/recolor, or bbox/mask refinement during fast triage, but once I try to write a Python oracle, the rule is often uncertain or does not pass the examples.\n\nSo I’d like to ask:\n\n1. Is the main route to 6500+ mostly manual task analysis and rule writing?\n2. For low-base-score tasks that require object reasoning, are there any relatively general ONNX patterns people use?\n3. Do you have a recommended way to classify tasks quickly, so I can decide which ones are worth hand-writing and which ones should be skipped?\n4. For candidates that are locally valid but drop online, how do you usually detect hidden overfitting?\n5. Besides hand-written rules, are there any stable, general methods for improving the score?\n\nI’m not asking for direct solutions to specific tasks. I mainly want to confirm the right direction and avoid wasting time on low-ROI tasks. Thanks a lot!\n",
+   "content": "<p>Hi everyone, I’m currently stuck at around 5800 on NeuroGolf 2026, and I’d like to ask for some advice on the next direction.</p>\n<p>My current baseline submission is about 5800.64. To avoid blindly mixing old high-scoring submissions, I built a per-task validation workflow: I compare different candidate ONNX files with the baseline using local probe results, including base_cost, candidate_cost, base_score, candidate_score, and md5. Then I generate single-task override submissions and test only one task replacement at a time on the leaderboard.</p>\n<p>Here are the issues I’ve run into:</p>\n<ol>\n<li><p>Some candidates from public high-score sources look extremely good locally. For example, some tasks have very low candidate cost and very high local delta. But after submitting, the public score drops instead, almost as if the task failed on hidden cases and lost the original baseline score.</p></li>\n<li><p>I tried hand-writing simple rule-based tasks, such as task006, which is a left/right binary region operation. The local validation passes, but the improvement is less than 1 point, so the return on effort feels quite low.</p></li>\n<li><p>I filtered high-ROI tasks where the base_score is low and base_cost is high. Some of them theoretically have 3–5 points of improvement potential, but many seem to require connected components, object selection, sorting, largest/smallest object logic, or other object reasoning. These are quite hard to implement efficiently in pure ONNX, and I’m also worried about hidden-case robustness.</p></li>\n<li><p>I’m a bit confused about the right path forward. If I want to go from around 5800 to 6500+, is it basically necessary to manually inspect many ARC tasks and hand-write rules? Or is there a more systematic approach, such as template-based rule solvers, automatic rule extraction from generators, or a stable ONNX graph rewriting/compression pipeline?</p></li>\n</ol>\n<p>What I have tried so far:</p>\n<ul>\n<li>Built a candidate matrix for all 400 tasks;</li>\n<li>Filtered out poison tasks that failed online;</li>\n<li>Ran fast triage on high-ROI tasks;</li>\n<li>For tasks that looked writable, tried to write Python oracles first;</li>\n<li>Only planned to convert to ONNX after the Python oracle passed all train/test/arc-gen examples;</li>\n<li>Avoided directly mixing old high-score packages at scale.</li>\n</ul>\n<p>The current problem is that many tasks look like fixed templates, color replacement, crop/recolor, or bbox/mask refinement during fast triage, but once I try to write a Python oracle, the rule is often uncertain or does not pass the examples.</p>\n<p>So I’d like to ask:</p>\n<ol>\n<li>Is the main route to 6500+ mostly manual task analysis and rule writing?</li>\n<li>For low-base-score tasks that require object reasoning, are there any relatively general ONNX patterns people use?</li>\n<li>Do you have a recommended way to classify tasks quickly, so I can decide which ones are worth hand-writing and which ones should be skipped?</li>\n<li>For candidates that are locally valid but drop online, how do you usually detect hidden overfitting?</li>\n<li>Besides hand-written rules, are there any stable, general methods for improving the score?</li>\n</ol>\n<p>I’m not asking for direct solutions to specific tasks. I mainly want to confirm the right direction and avoid wasting time on low-ROI tasks. Thanks a lot!</p>",
+   "parent": {},
+   "author": {
+    "displayName": "Gengsr",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+    "url": "/gengsr",
+    "tier": "CONTRIBUTOR",
+    "id": 31197032,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "canUpvote": true
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 738,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Gengsr",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/gengsr",
+     "userName": "gengsr",
+     "tier": "CONTRIBUTOR",
+     "id": 31197032,
+     "profileUrl": "/gengsr",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 31197032,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3459848,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 700921,
+  "name": "Stuck around 5800: Is 6500+ mainly about manual rule writing?",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-05-18T11:12:18.927119600Z",
+  "url": "/competitions/neurogolf-2026/discussion/700921",
+  "totalMessages": 2,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}

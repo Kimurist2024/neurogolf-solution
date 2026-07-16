@@ -1,0 +1,24 @@
+{
+  "task": "task313",
+  "baseline_cost": 136,
+  "baseline_model": "single Einsum: nqhw,ndrc,hab,rba,xab,wef,cgi,efgi->nqrc, coord[30,2,2]+coreR[2,2,2,2]",
+  "generator_rule_confirmed": "size 5..20; m=2+size//12; input has top-left pattern colors[(r%2+c)%m] and background b; output is full N x N colors[(r%2+c+1)%m]",
+  "closed_form_checked_in_search": "score = support(r,c) * sum_{h,w} X[q,h,w] * (0.75*parity_match + 0.75*cos(2*pi*((h%2+w-r%2-c-1) mod 3)/3) - 0.25)",
+  "target_cost_requested": "<=86 (baseline-50), ideally <=50",
+  "adopted_improved_model": false,
+  "reason_not_adopted": "No candidate below baseline cost was found that passed exact train/test/arc-gen matching. Low-rank <=86 candidates converged to high cell accuracy but 0 exact examples; fixed-core 120-param variants also failed exact examples.",
+  "attempted_candidate_families": [
+    {"name": "factorized coord[30,2] + core[2,2,2,2]", "estimated_cost": 76, "result": "failed exact match"},
+    {"name": "rowcore[2,2] + colcore[2,2,2,2] over coord[30,2]", "estimated_cost": 80, "result": "failed exact match"},
+    {"name": "CP rank-3 axis-specific transforms over coord[30,2]", "estimated_cost": 84, "result": "failed exact match and cannot fit exact closed-form tensor"},
+    {"name": "shared quadratic rank-3 row/col factors over coord[30,2]", "estimated_cost": 84, "result": "failed exact match"},
+    {"name": "coord[30,2,2] with fixed identity/swap core instead of learned coreR", "estimated_cost": 120, "result": "failed exact match"}
+  ],
+  "verification_status": {
+    "new_candidate_score_and_verify": "not applicable; no improved exact candidate produced",
+    "official_decoder": "not run for a new candidate",
+    "raw_margin": "not run for a new candidate",
+    "fresh_validation": "not run for a new candidate",
+    "onnx_checker_shape_inference": "not run for a new candidate"
+  }
+}

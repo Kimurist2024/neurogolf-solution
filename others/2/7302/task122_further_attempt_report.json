@@ -1,0 +1,47 @@
+{
+  "task": 122,
+  "baseline_from_previous_run": {
+    "onnx": "/mnt/data/task122_improved.onnx",
+    "submission_zip": "/mnt/data/submission_task122_improved.zip",
+    "cost": 153,
+    "memory": 30,
+    "params": 123
+  },
+  "rule_inferred_from_images_and_generator": "A red 3x3 block with green center line is shifted by two cells along the green dotted line; the green line is preserved. Horizontal cases shift right by 2; transposed vertical cases shift down by 2.",
+  "additional_attempts": [
+    {
+      "name": "direct CenterCropPad shift reconstruction",
+      "status": "rejected",
+      "reason": "A cheap spatial shift is possible with CenterCropPad, but preserving green endpoints and converting old red cells back to black requires additive or conditional full-grid intermediates. Those intermediates are counted at full 30x30 memory, so the construction is not cost-effective under the grader."
+    },
+    {
+      "name": "ScatterND from ArgMax/top-left red cell",
+      "status": "rejected",
+      "local_correctness": "train/test/arc-gen exact before scorer adoption",
+      "measured_cost_with_valid_static value_info": 78614,
+      "memory": 78473,
+      "params": 141,
+      "reason": "Although the rule implementation is clean and exact, static shapes required for scorer compatibility make the red/green channel extraction and small reductions count at large memory. Fake shape annotations caused ORT runtime shape-reuse failures, so it is not adoptable."
+    },
+    {
+      "name": "Ch0/Ch1 shared tensor search",
+      "status": "rejected",
+      "reason": "Line interpolation and coarse grid searches found no candidate that passed even the train/test subset when both tensors were replaced by a common tensor."
+    },
+    {
+      "name": "broadcast-dimension reduction for T/Ch0/Ch1/Ch2/V/Q/rsel",
+      "status": "rejected",
+      "reason": "All attempted singleton-broadcast reductions failed the train/test subset or full visible set."
+    },
+    {
+      "name": "rank-1 factorization of T/Ch0/Ch1/Ch2",
+      "status": "rejected",
+      "reason": "Rank-1 replacements saved 2 params per tensor but failed the train/test subset."
+    }
+  ],
+  "best_verified_candidate_after_this_attempt": {
+    "onnx": "/mnt/data/task122_improved.onnx",
+    "cost": 153,
+    "note": "No candidate below cost 153 was verified in this pass. This file remains the best fully verified artifact."
+  }
+}

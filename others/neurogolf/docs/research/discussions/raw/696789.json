@@ -1,0 +1,328 @@
+{
+ "forumTopic": {
+  "authorId": 113660,
+  "authorThumbnailName": "113660-fb.jpg",
+  "authorUserDisplayName": "hengck23",
+  "authorUserName": "hengck23",
+  "comments": [
+   {
+    "id": 3452996,
+    "postDate": "2026-05-04T18:07:53.463Z",
+    "rawMarkdown": "I am trying to new approach here my current results: \n| Task   | Score  |\n|--------|--------|\n| 006    | 9.43   |\n| 016    | 10.95  |\n| 026    | 9.43   |\n| 052    | 8.85   |\n| 053    | 9.73   |\n| 056    | 9.73   |\n| 073    | 9.73   |\n| 078    | 9.43   |\n| 087    | 8.85   |\n",
+    "content": "<p>I am trying to new approach here my current results: </p>\n<table>\n<thead>\n<tr>\n<th>Task</th>\n<th>Score</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>006</td>\n<td>9.43</td>\n</tr>\n<tr>\n<td>016</td>\n<td>10.95</td>\n</tr>\n<tr>\n<td>026</td>\n<td>9.43</td>\n</tr>\n<tr>\n<td>052</td>\n<td>8.85</td>\n</tr>\n<tr>\n<td>053</td>\n<td>9.73</td>\n</tr>\n<tr>\n<td>056</td>\n<td>9.73</td>\n</tr>\n<tr>\n<td>073</td>\n<td>9.73</td>\n</tr>\n<tr>\n<td>078</td>\n<td>9.43</td>\n</tr>\n<tr>\n<td>087</td>\n<td>8.85</td>\n</tr>\n</tbody>\n</table>",
+    "replies": [
+     {
+      "id": 3453647,
+      "postDate": "2026-05-05T18:46:20.413Z",
+      "rawMarkdown": "lets talk abot task006 and task026. I think these can get > 16.0. this is what you can tell your agent or LLM or AI coder.\n\n1) e.g. input is size 7x7 consisting of left side 3x3 and right side 3x3, separated by a pixel vertical line. output  = op(left,right) where op is OR, AND, MAX, etc.   \n2)please read arc-gen task generator py file to find out the operator, and what fixed colors of the input and output used.   \n3) you can tell your LLM  a solution is generally like:  \n- slice the input like this: left =[0,c,:h,:w], right=[0,c,:h,w+2:2*w+1],keep it small\n- cast to uint8\n- make ouput = op(left,righ), e.g. 1xhxw\n- recolor\n- onehot to 10xhxw\n- pad to 10x30x30\n\n\n-----\nautomation:\n\n1) first find some good solutions onnx  \n2)then find the prompts that can generate the good solutions  \n3)then find automated ways to generate these prompts   \n",
+      "content": "<p>lets talk abot task006 and task026. I think these can get &gt; 16.0. this is what you can tell your agent or LLM or AI coder.</p>\n<p>1) e.g. input is size 7x7 consisting of left side 3x3 and right side 3x3, separated by a pixel vertical line. output  = op(left,right) where op is OR, AND, MAX, etc.<br>\n2)please read arc-gen task generator py file to find out the operator, and what fixed colors of the input and output used.<br>\n3) you can tell your LLM  a solution is generally like:  </p>\n<ul>\n<li>slice the input like this: left =[0,c,:h,:w], right=[0,c,:h,w+2:2*w+1],keep it small</li>\n<li>cast to uint8</li>\n<li>make ouput = op(left,righ), e.g. 1xhxw</li>\n<li>recolor</li>\n<li>onehot to 10xhxw</li>\n<li>pad to 10x30x30</li>\n</ul>\n<hr>\n<p>automation:</p>\n<p>1) first find some good solutions onnx<br>\n2)then find the prompts that can generate the good solutions<br>\n3)then find automated ways to generate these prompts   </p>",
+      "replies": [
+       {
+        "id": 3453656,
+        "postDate": "2026-05-05T18:58:23.347Z",
+        "rawMarkdown": "https://github.com/google/ARC-GEN/blob/main/tasks/task_0520fde7.py\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Fa921d6ce1f9f9e10b891a90e4ad8a541%2FSelection_3297.png?generation=1778007536098430&alt=media)\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F5189f72a62269740657a280735accf73%2FSelection_3298.png?generation=1778007549442104&alt=media)\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Fa6d7686ecb21e9e1fcad6b2d3c2b8003%2FSelection_3299.png?generation=1778007597281671&alt=media)",
+        "content": "<p><a href=\"https://github.com/google/ARC-GEN/blob/main/tasks/task_0520fde7.py\" target=\"_blank\">https://github.com/google/ARC-GEN/blob/main/tasks/task_0520fde7.py</a></p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Fa921d6ce1f9f9e10b891a90e4ad8a541%2FSelection_3297.png?generation=1778007536098430&amp;alt=media\" alt=\"\"></p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2F5189f72a62269740657a280735accf73%2FSelection_3298.png?generation=1778007549442104&amp;alt=media\" alt=\"\">\n<img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Fa6d7686ecb21e9e1fcad6b2d3c2b8003%2FSelection_3299.png?generation=1778007597281671&amp;alt=media\" alt=\"\"></p>",
+        "parent": {},
+        "author": {
+         "displayName": "hengck23",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+         "url": "/hengck23",
+         "tier": "GRANDMASTER",
+         "id": 113660,
+         "progressionOptOut": false
+        },
+        "authorType": "TOPIC",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 1468,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "hengck23",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+          "url": "/hengck23",
+          "userName": "hengck23",
+          "tier": "GRANDMASTER",
+          "id": 113660,
+          "profileUrl": "/hengck23",
+          "performanceTier": "GRANDMASTER",
+          "userId": 113660,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3453833,
+        "postDate": "2026-05-06T02:19:25.410Z",
+        "rawMarkdown": "I am trying to solve all problems with new approach using CNN",
+        "content": "<p>I am trying to solve all problems with new approach using CNN</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Rustam Bazarbayev",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5591682-kg.jpg?t=2025-09-12-06-50-17",
+         "url": "/rustambazarbayev",
+         "tier": "CONTRIBUTOR",
+         "id": 5591682,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 633,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Rustam Bazarbayev",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5591682-kg.jpg?t=2025-09-12-06-50-17",
+          "url": "/rustambazarbayev",
+          "userName": "rustambazarbayev",
+          "tier": "CONTRIBUTOR",
+          "id": 5591682,
+          "profileUrl": "/rustambazarbayev",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 5591682,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3453850,
+        "postDate": "2026-05-06T03:56:52.030Z",
+        "rawMarkdown": "Cnn solution would not have high score. In fact top solutions will not be using conv etc at all except for a few isolated cases. This competition is not about finding general solution. It is about synthesising onnx graph for KNOWN solution.",
+        "content": "<p>Cnn solution would not have high score. In fact top solutions will not be using conv etc at all except for a few isolated cases. This competition is not about finding general solution. It is about synthesising onnx graph for KNOWN solution.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "hengck23",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+         "url": "/hengck23",
+         "tier": "GRANDMASTER",
+         "id": 113660,
+         "progressionOptOut": false
+        },
+        "authorType": "TOPIC",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 1468,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "hengck23",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+          "url": "/hengck23",
+          "userName": "hengck23",
+          "tier": "GRANDMASTER",
+          "id": 113660,
+          "profileUrl": "/hengck23",
+          "performanceTier": "GRANDMASTER",
+          "userId": 113660,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3453862,
+        "postDate": "2026-05-06T04:31:59.367Z",
+        "rawMarkdown": "Oh. Thank you for the clarification! I did misunderstand. Currently, I am making a CNN with logic gates to generate the solutions. You know logic gates are better to make operation on integer values",
+        "content": "<p>Oh. Thank you for the clarification! I did misunderstand. Currently, I am making a CNN with logic gates to generate the solutions. You know logic gates are better to make operation on integer values</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Rustam Bazarbayev",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5591682-kg.jpg?t=2025-09-12-06-50-17",
+         "url": "/rustambazarbayev",
+         "tier": "CONTRIBUTOR",
+         "id": 5591682,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 633,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Rustam Bazarbayev",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5591682-kg.jpg?t=2025-09-12-06-50-17",
+          "url": "/rustambazarbayev",
+          "userName": "rustambazarbayev",
+          "tier": "CONTRIBUTOR",
+          "id": 5591682,
+          "profileUrl": "/rustambazarbayev",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 5591682,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "hengck23",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+       "url": "/hengck23",
+       "tier": "GRANDMASTER",
+       "id": 113660,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 1468,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "THANK_YOU",
+        "featuredUserNames": [
+         "rustambazarbayev"
+        ],
+        "userCount": 1
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "hengck23",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+        "url": "/hengck23",
+        "userName": "hengck23",
+        "tier": "GRANDMASTER",
+        "id": 113660,
+        "profileUrl": "/hengck23",
+        "performanceTier": "GRANDMASTER",
+        "userId": 113660,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Rustam Bazarbayev",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5591682-kg.jpg?t=2025-09-12-06-50-17",
+     "url": "/rustambazarbayev",
+     "tier": "CONTRIBUTOR",
+     "id": 5591682,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 633,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Rustam Bazarbayev",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5591682-kg.jpg?t=2025-09-12-06-50-17",
+      "url": "/rustambazarbayev",
+      "userName": "rustambazarbayev",
+      "tier": "CONTRIBUTOR",
+      "id": 5591682,
+      "profileUrl": "/rustambazarbayev",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 5591682,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3452697,
+   "postDate": "2026-05-04T07:12:17.060Z",
+   "rawMarkdown": "I really want a discussion on how to use LLM to give good solutions (and not good coding)   \n \nAttached is \"good-solution.zip\", which contains solutions to 10 tasks of moderate difficulty. No profiler hacks. These are results from human+AI interaction (and a quarrel).\n\nlet's discuss:  \n1) What are your agent scores for these tasks? under what automation?  \n2) Can pure AI comes up high level solution that exploits data structure and hacks (e.g. geometry)  \n3) How to make magic prompt to make high level solution?    \n4) how to automate prompt improvement? (autoresearch for prompt)   \n5) how to make agent learn/clone from human?   \n\n\n| TaskID | Score  | Task (≤6 words)           | Solution (≤15 words)                                      |\n|--------|--------|---------------------------|-----------------------------------------------------------|\n| 102    | 15.415 | structured region mapping | reshape compact grid, apply mask, avoid full expansion     |\n| 106    | 17.670 | flat pattern extraction   | flatten input, argmax decode, rebuild minimal structure    |\n| 107    | 15.178 | directional pattern fill  | detect axis from edges, propagate pattern along direction  |\n| 109    | 16.066 | reflection block pattern  | crop core block, double reflect, crop to target size       |\n| 111    | 18.274 | object crop + classify    | argmax to label, crop bounding box, rebuild output compact |\n| 114    | 17.672 | small block augmentation  | detect region, insert small patch, minimal broadcast       |\n| 115    | 16.477 | region detection grid     | scan top/left edges, infer size, broadcast into grid       |\n| 117    | 14.949 | multi-stage transform     | sequential transforms, reuse tensors, limit intermediate size |\n| 119    | 15.696 | sparse scatter pattern    | compute indices, scatter minimal elements, avoid expansion |\n| 120    | 15.082 | validity masked output    | argmax decode, build validity mask, selective write output |\n|--------|--------|---------------------------|-----------------------------------------------------------|\n| AVG    | 16.248 | —                         | —                                                         |\n\n",
+   "content": "<p>I really want a discussion on how to use LLM to give good solutions (and not good coding)   </p>\n<p>Attached is \"good-solution.zip\", which contains solutions to 10 tasks of moderate difficulty. No profiler hacks. These are results from human+AI interaction (and a quarrel).</p>\n<p>let's discuss:<br>\n1) What are your agent scores for these tasks? under what automation?<br>\n2) Can pure AI comes up high level solution that exploits data structure and hacks (e.g. geometry)<br>\n3) How to make magic prompt to make high level solution?<br>\n4) how to automate prompt improvement? (autoresearch for prompt)<br>\n5) how to make agent learn/clone from human?   </p>\n<table>\n<thead>\n<tr>\n<th>TaskID</th>\n<th>Score</th>\n<th>Task (≤6 words)</th>\n<th>Solution (≤15 words)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>102</td>\n<td>15.415</td>\n<td>structured region mapping</td>\n<td>reshape compact grid, apply mask, avoid full expansion</td>\n</tr>\n<tr>\n<td>106</td>\n<td>17.670</td>\n<td>flat pattern extraction</td>\n<td>flatten input, argmax decode, rebuild minimal structure</td>\n</tr>\n<tr>\n<td>107</td>\n<td>15.178</td>\n<td>directional pattern fill</td>\n<td>detect axis from edges, propagate pattern along direction</td>\n</tr>\n<tr>\n<td>109</td>\n<td>16.066</td>\n<td>reflection block pattern</td>\n<td>crop core block, double reflect, crop to target size</td>\n</tr>\n<tr>\n<td>111</td>\n<td>18.274</td>\n<td>object crop + classify</td>\n<td>argmax to label, crop bounding box, rebuild output compact</td>\n</tr>\n<tr>\n<td>114</td>\n<td>17.672</td>\n<td>small block augmentation</td>\n<td>detect region, insert small patch, minimal broadcast</td>\n</tr>\n<tr>\n<td>115</td>\n<td>16.477</td>\n<td>region detection grid</td>\n<td>scan top/left edges, infer size, broadcast into grid</td>\n</tr>\n<tr>\n<td>117</td>\n<td>14.949</td>\n<td>multi-stage transform</td>\n<td>sequential transforms, reuse tensors, limit intermediate size</td>\n</tr>\n<tr>\n<td>119</td>\n<td>15.696</td>\n<td>sparse scatter pattern</td>\n<td>compute indices, scatter minimal elements, avoid expansion</td>\n</tr>\n<tr>\n<td>120</td>\n<td>15.082</td>\n<td>validity masked output</td>\n<td>argmax decode, build validity mask, selective write output</td>\n</tr>\n<tr>\n<td>--------</td>\n<td>--------</td>\n<td>---------------------------</td>\n<td>-----------------------------------------------------------</td>\n</tr>\n<tr>\n<td>AVG</td>\n<td>16.248</td>\n<td>—</td>\n<td>—</td>\n</tr>\n</tbody>\n</table>",
+   "attachments": [
+    {
+     "fileType": ".zip",
+     "id": 42171,
+     "name": "good-solution.zip",
+     "totalBytes": 74288,
+     "url": "https://storage.googleapis.com/kaggle-forum-message-attachments/3452697/42171/good-solution.zip"
+    }
+   ],
+   "parent": {},
+   "author": {
+    "displayName": "hengck23",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+    "url": "/hengck23",
+    "tier": "GRANDMASTER",
+    "id": 113660,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 2,
+    "canUpvote": true,
+    "totalUpvotes": 4
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 1468,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "LOVE",
+     "featuredUserNames": [
+      "lixin73"
+     ],
+     "userCount": 1
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "userName": "hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "profileUrl": "/hengck23",
+     "performanceTier": "GRANDMASTER",
+     "userId": 113660,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3452697,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 696789,
+  "name": "some good high scoring(?) solutions for training LLM",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-05-04T07:12:17.058483Z",
+  "totalVotes": 2,
+  "url": "/competitions/neurogolf-2026/discussion/696789",
+  "totalMessages": 6,
+  "authorPerformanceTier": "GRANDMASTER",
+  "authorProgressionOptOut": false
+ }
+}

@@ -1,0 +1,489 @@
+{
+ "forumTopic": {
+  "authorId": 4133373,
+  "authorThumbnailName": "4133373-kg.png",
+  "authorUserDisplayName": "leo",
+  "authorUserName": "calibrator",
+  "comments": [
+   {
+    "id": 3446655,
+    "postDate": "2026-04-21T23:06:47.273Z",
+    "rawMarkdown": "We've fixed this by imposing the following check (will work with any version of `onnx-tool`):\n\n```python\n  for key in g.nodemap.keys():\n    if g.nodemap[key].memory < 0:\n      print(f\"Error: Negative memory value detected.\")\n      return None, None, None\n```\n\nPlease let us know if any other issues crop up.  Thank you!",
+    "content": "<p>We've fixed this by imposing the following check (will work with any version of <code>onnx-tool</code>):</p>\n<pre><code>  for key in g.nodemap.keys():\n    if g.nodemap[key].memory &lt; 0:\n      print(f\"Error: Negative memory value detected.\")\n      return None, None, None\n</code></pre>\n<p>Please let us know if any other issues crop up.  Thank you!</p>",
+    "replies": [
+     {
+      "id": 3446673,
+      "postDate": "2026-04-22T00:06:26.797Z",
+      "rawMarkdown": "Cheers for the fix! I'll see if we can flip MACs or Params to negative. 🙃",
+      "content": "<p>Cheers for the fix! I'll see if we can flip MACs or Params to negative. 🙃</p>",
+      "replies": [
+       {
+        "id": 3449804,
+        "postDate": "2026-04-28T21:59:36.193Z",
+        "rawMarkdown": "> I'll see if we can flip MACs or Params to negative.\n\nIt was indeed possible 😉 but we've fixed that too in our [latest update](https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230).",
+        "content": "<blockquote>\n  <p>I'll see if we can flip MACs or Params to negative.</p>\n</blockquote>\n<p>It was indeed possible 😉 but we've fixed that too in our <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230\" target=\"_blank\">latest update</a>.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3449816,
+        "postDate": "2026-04-28T22:21:00.350Z",
+        "rawMarkdown": "Yes, negative MACs is the new trick I found. I believe num of params is safe, but i can’t be certain. Glad to hear this has been addressed!",
+        "content": "<p>Yes, negative MACs is the new trick I found. I believe num of params is safe, but i can’t be certain. Glad to hear this has been addressed!</p>",
+        "parent": {},
+        "author": {
+         "displayName": "leo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4133373-kg.png",
+         "url": "/calibrator",
+         "tier": "MASTER",
+         "id": 4133373,
+         "progressionOptOut": false
+        },
+        "authorType": "TOPIC",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 75,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "reactions": [
+         {
+          "emoji": "THANK_YOU",
+          "featuredUserNames": [
+           "mmoffitt"
+          ],
+          "userCount": 1
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "leo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4133373-kg.png",
+          "url": "/calibrator",
+          "userName": "calibrator",
+          "tier": "MASTER",
+          "id": 4133373,
+          "profileUrl": "/calibrator",
+          "performanceTier": "MASTER",
+          "userId": 4133373,
+          "progressionOptOut": false
+         },
+         "intro": "Claude Max x20 user. Looking forward to joining a team aiming for gold."
+        }
+       },
+       {
+        "id": 3449822,
+        "postDate": "2026-04-28T22:24:19.480Z",
+        "rawMarkdown": "We nearly missed it.  Thank you for thinking through these possibilities!",
+        "content": "<p>We nearly missed it.  Thank you for thinking through these possibilities!</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "reactions": [
+         {
+          "emoji": "LOVE",
+          "featuredUserNames": [
+           "calibrator"
+          ],
+          "userCount": 1
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "leo",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4133373-kg.png",
+       "url": "/calibrator",
+       "tier": "MASTER",
+       "id": 4133373,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "totalVotes": 3,
+       "canUpvote": true,
+       "totalUpvotes": 3
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 75,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "leo",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4133373-kg.png",
+        "url": "/calibrator",
+        "userName": "calibrator",
+        "tier": "MASTER",
+        "id": 4133373,
+        "profileUrl": "/calibrator",
+        "performanceTier": "MASTER",
+        "userId": 4133373,
+        "progressionOptOut": false
+       },
+       "intro": "Claude Max x20 user. Looking forward to joining a team aiming for gold."
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 3,
+     "canUpvote": true,
+     "totalUpvotes": 3
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "LOVE",
+      "featuredUserNames": [
+       "jazivxt"
+      ],
+      "userCount": 1
+     },
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "calibrator"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3445952,
+    "postDate": "2026-04-20T18:27:50.800Z",
+    "rawMarkdown": "Great find!!  We'll have an update soon, stay tuned.",
+    "content": "<p>Great find!!  We'll have an update soon, stay tuned.</p>",
+    "replies": [
+     {
+      "id": 3446043,
+      "postDate": "2026-04-20T21:25:32.850Z",
+      "rawMarkdown": "What is the policy if someone saves a bug like that until the very ending and then makes a last-day submission with a weird bug that gives them a massive score advantage? \n\nI (and I imagine more people with me) are currently hesitant on spending effort in this competition due to the risk of losing to something unpredictable like that.",
+      "content": "<p>What is the policy if someone saves a bug like that until the very ending and then makes a last-day submission with a weird bug that gives them a massive score advantage? </p>\n<p>I (and I imagine more people with me) are currently hesitant on spending effort in this competition due to the risk of losing to something unpredictable like that.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Rafaël Labbé",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/17878884-kg.jpg?t=2025-09-13-01-54-09",
+       "url": "/hashpanda",
+       "tier": "CONTRIBUTOR",
+       "id": 17878884,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 2,
+       "canUpvote": true,
+       "totalUpvotes": 2
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 1619,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Rafaël Labbé",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/17878884-kg.jpg?t=2025-09-13-01-54-09",
+        "url": "/hashpanda",
+        "userName": "hashpanda",
+        "tier": "CONTRIBUTOR",
+        "id": 17878884,
+        "profileUrl": "/hashpanda",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 17878884,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 4,
+     "canUpvote": true,
+     "totalUpvotes": 4
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3446192,
+    "postDate": "2026-04-21T06:26:18.397Z",
+    "rawMarkdown": "Cool high single task score @calibrator ",
+    "content": "<p>Cool high single task score <a href=\"https://www.kaggle.com/calibrator\" target=\"_blank\">@calibrator</a> </p>",
+    "parent": {},
+    "author": {
+     "displayName": "Navneet",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/15692441-kg.jpg?t=2025-05-18-07-58-06",
+     "url": "/navneetbende",
+     "tier": "CONTRIBUTOR",
+     "id": 15692441,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": -2,
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   },
+   {
+    "id": 3446328,
+    "postDate": "2026-04-21T12:26:25.810Z",
+    "rawMarkdown": "I don't know the details of score. But the profiled result of your model looks good to me: \n```python\nName           Type       Forward_MACs    FPercent    Memory    MPercent      Params  PPercent    InShape     OutShape\n-------------  ---------  --------------  ----------  --------  ----------  --------  ----------  ----------  ----------\nGreater_143    Greater    0               0.00%       0         0.00%              0  0.00%       0           0\nMaxPool_36     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_101    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_121    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_106        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_93     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_56     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_38         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_50         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_23         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_129    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_117    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_76     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_32     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_29     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_115        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_132    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_99         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_51         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_98         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_61     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_82         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_27         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_33     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_111        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_128    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_15         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nSub_11         Sub        900             0.37%       3,604     0.71%              1  0.11%       1           1x1x30x30\nMax_70         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_109    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_83         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_123        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_92     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_49     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_81     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_41     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_85     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nSub_12         Sub        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_52     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_133    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_73     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_120    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_108    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_75         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_60     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_125    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_107        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_35         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_110        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nAdd_140        Add        9,000           3.75%       36,000    7.14%              0  0.00%       1x10x30x30  1x10x30x30\nMaxPool_100    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_86         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_94         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_20     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_87         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nReduceMax_142  ReduceMax  10              0.00%       0         0.00%              0  0.00%       1x10x1x1    0\nMul_71         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_34         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_40     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_57     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_24     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_31         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_88     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_69     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_26         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_127        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_130        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_89     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_131        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nReduceSum_10   ReduceSum  9,000           3.75%       3,600     0.71%              0  0.00%       1x10x30x30  1x1x30x30\nMax_118        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_114        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_43         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_124    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_67         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_79         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nWhere_139      Where      0               0.00%       3,680     0.73%             20  2.17%       1x1x30x30   1x1x30x30\nMax_78         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_119        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_63         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_22         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_16     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_59         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_47         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_64     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_53     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_91         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_95         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nSub_13         Sub        900             0.37%       3,600     0.71%              0  0.00%       1           1x1x30x30\nMaxPool_21     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_19         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_25     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_66         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_74         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_58         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_18         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_42         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_113    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_122        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_62         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_28     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_44     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_104    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_14         Max        900             0.37%       7,200     1.43%            900  97.72%      1x1x30x30   1x1x30x30\nMax_126        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_103        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_54         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_39         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_45     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_116    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_102        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_17     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_37     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nWhere_145      Where      0               0.00%       4         0.00%              0  0.00%       0           1\nMul_55         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_134        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_46         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_105    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_137        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_48     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_80     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_96     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_84     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nSub_136        Sub        900             0.37%       3,600     0.71%              0  0.00%       1           1x1x30x30\nMaxPool_97     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_68     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_77     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_72     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_135        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_30         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_112    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_90         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_65     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nTotal          _          240,310         100%        504,088   100%             921  100%        _           _\n```",
+    "content": "<p>I don't know the details of score. But the profiled result of your model looks good to me: </p>\n<pre><code>Name           Type       Forward_MACs    FPercent    Memory    MPercent      Params  PPercent    InShape     OutShape\n-------------  ---------  --------------  ----------  --------  ----------  --------  ----------  ----------  ----------\nGreater_143    Greater    0               0.00%       0         0.00%              0  0.00%       0           0\nMaxPool_36     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_101    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_121    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_106        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_93     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_56     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_38         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_50         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_23         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_129    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_117    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_76     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_32     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_29     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_115        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_132    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_99         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_51         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_98         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_61     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_82         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_27         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_33     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_111        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_128    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_15         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nSub_11         Sub        900             0.37%       3,604     0.71%              1  0.11%       1           1x1x30x30\nMax_70         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_109    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_83         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_123        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_92     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_49     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_81     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_41     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_85     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nSub_12         Sub        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_52     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_133    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_73     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_120    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_108    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_75         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_60     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_125    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_107        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_35         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_110        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nAdd_140        Add        9,000           3.75%       36,000    7.14%              0  0.00%       1x10x30x30  1x10x30x30\nMaxPool_100    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_86         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_94         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_20     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_87         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nReduceMax_142  ReduceMax  10              0.00%       0         0.00%              0  0.00%       1x10x1x1    0\nMul_71         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_34         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_40     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_57     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_24     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_31         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_88     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_69     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_26         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_127        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_130        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_89     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_131        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nReduceSum_10   ReduceSum  9,000           3.75%       3,600     0.71%              0  0.00%       1x10x30x30  1x1x30x30\nMax_118        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_114        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_43         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_124    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_67         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_79         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nWhere_139      Where      0               0.00%       3,680     0.73%             20  2.17%       1x1x30x30   1x1x30x30\nMax_78         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_119        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_63         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_22         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_16     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_59         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_47         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_64     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_53     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_91         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_95         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nSub_13         Sub        900             0.37%       3,600     0.71%              0  0.00%       1           1x1x30x30\nMaxPool_21     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_19         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_25     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_66         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_74         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_58         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_18         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_42         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_113    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_122        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_62         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_28     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_44     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_104    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_14         Max        900             0.37%       7,200     1.43%            900  97.72%      1x1x30x30   1x1x30x30\nMax_126        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_103        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_54         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_39         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_45     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_116    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_102        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_17     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_37     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nWhere_145      Where      0               0.00%       4         0.00%              0  0.00%       0           1\nMul_55         Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_134        Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_46         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_105    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_137        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_48     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_80     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_96     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_84     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nSub_136        Sub        900             0.37%       3,600     0.71%              0  0.00%       1           1x1x30x30\nMaxPool_97     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_68     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_77     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_72     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMul_135        Mul        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_30         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_112    MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMax_90         Max        900             0.37%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nMaxPool_65     MaxPool    2,700           1.12%       3,600     0.71%              0  0.00%       1x1x30x30   1x1x30x30\nTotal          _          240,310         100%        504,088   100%             921  100%        _           _\n</code></pre>",
+    "replies": [
+     {
+      "id": 3446671,
+      "postDate": "2026-04-21T23:52:32.357Z",
+      "rawMarkdown": "Thanks for looking into this issue. \n\nI got the same result with `onnx_tool.model_profile`. The scoring function of this competition uses the following code to calculate memory footprint.\n```python\ndef score_network(m):\n  model = onnx_tool.loadmodel(m, {'verbose': False})\n  g = model.graph\n  g.graph_reorder_nodes()\n  g.shape_infer(None)\n  g.profile()\n  # skipped some validation logics here\n  return int(sum(g.macs)), int(g.memory), int(g.params)\n```\nThe output of this function gives me: MACs: 240310, Memory: -241233, Params: 924, which is different to the output of `model_profile`. However, the results can match if we set `hidden_ops=None` when calling `model_profile`.",
+      "content": "<p>Thanks for looking into this issue. </p>\n<p>I got the same result with <code>onnx_tool.model_profile</code>. The scoring function of this competition uses the following code to calculate memory footprint.</p>\n<pre><code>def score_network(m):\n  model = onnx_tool.loadmodel(m, {'verbose': False})\n  g = model.graph\n  g.graph_reorder_nodes()\n  g.shape_infer(None)\n  g.profile()\n  # skipped some validation logics here\n  return int(sum(g.macs)), int(g.memory), int(g.params)\n</code></pre>\n<p>The output of this function gives me: MACs: 240310, Memory: -241233, Params: 924, which is different to the output of <code>model_profile</code>. However, the results can match if we set <code>hidden_ops=None</code> when calling <code>model_profile</code>.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "leo",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4133373-kg.png",
+       "url": "/calibrator",
+       "tier": "MASTER",
+       "id": 4133373,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 75,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "leo",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4133373-kg.png",
+        "url": "/calibrator",
+        "userName": "calibrator",
+        "tier": "MASTER",
+        "id": 4133373,
+        "profileUrl": "/calibrator",
+        "performanceTier": "MASTER",
+        "userId": 4133373,
+        "progressionOptOut": false
+       },
+       "intro": "Claude Max x20 user. Looking forward to joining a team aiming for gold."
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Yu Luo",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+     "url": "/kevinyuluo",
+     "tier": "CONTRIBUTOR",
+     "id": 4200613,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Yu Luo",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+      "url": "/kevinyuluo",
+      "userName": "kevinyuluo",
+      "tier": "CONTRIBUTOR",
+      "id": 4200613,
+      "profileUrl": "/kevinyuluo",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 4200613,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3445705,
+   "postDate": "2026-04-20T11:29:26.440Z",
+   "rawMarkdown": "## Update: The exploits have been fixed on 21st April.\n---\n\nA combination of several bugs in `onnx_tool` can make every task reach 25. \n\nTo achieve 25, we need cost = MACs + memory + num params = 1 exactly. @kq5yyy and @shinh0 already reported several bugs/exploits in https://www.kaggle.com/competitions/neurogolf-2026/discussion/692827 that can reduce some of them, but still impossible to reduce the total cost to 1. What if we can make one of them to be negative? \n\nBy chaining the issues below, memory can be turned into negative:\n\n- [`PadNode.shape_infer`](https://github.com/ThanatosShinji/onnx-tool/blob/43b5c5e4cdff13038cc23e3655f3a2e6b821b75d/onnx_tool/node.py#L1408-L1445) allows to output negative shapes. \n- [`get_memsize`](https://github.com/ThanatosShinji/onnx-tool/blob/43b5c5e4cdff13038cc23e3655f3a2e6b821b75d/onnx_tool/tensor.py#L455-L456) calculates the mem size of a node by simply taking product of the shape from each dimension. \n- The total mem size of a network is the sum of mem size of all nodes.\n\nAs reported by @kq5yyy , there is a divergence between runtime and static analysis, i.e. shape_infer evaluates value-dependent shapes with zero-filled dummy inputs. Taking advantage of this, we can make Pad's pads tensor be runtime valid (all zeros) but static negative for analysis by onnx_tool. Wiring the Pad node as an orphan (its output isn't consumed by anything else in the graph) keeps the model's real output intact while still letting onnx_tool profile the node and absorb its negative contribution. Then all we need to do is to adjust this negative constant to make the cost = 1. \n\nI publish an example to prove the theory: https://www.kaggle.com/code/calibrator/neurogolf-bug-demo-notebook?scriptVersionId=313065924\n\nI'm not using this in my submissions. Escalating so the host and the onnx_tool maintainer can address this issue soon.\n\n@mmoffitt @kevinyuluo ",
+   "content": "<h2>## Update: The exploits have been fixed on 21st April.</h2>\n<p>A combination of several bugs in <code>onnx_tool</code> can make every task reach 25. </p>\n<p>To achieve 25, we need cost = MACs + memory + num params = 1 exactly. <a href=\"https://www.kaggle.com/kq5yyy\" target=\"_blank\">@kq5yyy</a> and <a href=\"https://www.kaggle.com/shinh0\" target=\"_blank\">@shinh0</a> already reported several bugs/exploits in <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/692827\" target=\"_blank\">https://www.kaggle.com/competitions/neurogolf-2026/discussion/692827</a> that can reduce some of them, but still impossible to reduce the total cost to 1. What if we can make one of them to be negative? </p>\n<p>By chaining the issues below, memory can be turned into negative:</p>\n<ul>\n<li><a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/43b5c5e4cdff13038cc23e3655f3a2e6b821b75d/onnx_tool/node.py#L1408-L1445\" target=\"_blank\"><code>PadNode.shape_infer</code></a> allows to output negative shapes. </li>\n<li><a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/43b5c5e4cdff13038cc23e3655f3a2e6b821b75d/onnx_tool/tensor.py#L455-L456\" target=\"_blank\"><code>get_memsize</code></a> calculates the mem size of a node by simply taking product of the shape from each dimension. </li>\n<li>The total mem size of a network is the sum of mem size of all nodes.</li>\n</ul>\n<p>As reported by <a href=\"https://www.kaggle.com/kq5yyy\" target=\"_blank\">@kq5yyy</a> , there is a divergence between runtime and static analysis, i.e. shape_infer evaluates value-dependent shapes with zero-filled dummy inputs. Taking advantage of this, we can make Pad's pads tensor be runtime valid (all zeros) but static negative for analysis by onnx_tool. Wiring the Pad node as an orphan (its output isn't consumed by anything else in the graph) keeps the model's real output intact while still letting onnx_tool profile the node and absorb its negative contribution. Then all we need to do is to adjust this negative constant to make the cost = 1. </p>\n<p>I publish an example to prove the theory: <a href=\"https://www.kaggle.com/code/calibrator/neurogolf-bug-demo-notebook?scriptVersionId=313065924\" target=\"_blank\">https://www.kaggle.com/code/calibrator/neurogolf-bug-demo-notebook?scriptVersionId=313065924</a></p>\n<p>I'm not using this in my submissions. Escalating so the host and the onnx_tool maintainer can address this issue soon.</p>\n<p><a href=\"https://www.kaggle.com/mmoffitt\" target=\"_blank\">@mmoffitt</a> <a href=\"https://www.kaggle.com/kevinyuluo\" target=\"_blank\">@kevinyuluo</a> </p>",
+   "parent": {},
+   "author": {
+    "displayName": "leo",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4133373-kg.png",
+    "url": "/calibrator",
+    "tier": "MASTER",
+    "id": 4133373,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 30,
+    "canUpvote": true,
+    "totalUpvotes": 30
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 75,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "THANK_YOU",
+     "featuredUserNames": [
+      "jazivxt",
+      "kq5yyy",
+      "mmoffitt"
+     ],
+     "userCount": 3
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "leo",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4133373-kg.png",
+     "url": "/calibrator",
+     "userName": "calibrator",
+     "tier": "MASTER",
+     "id": 4133373,
+     "profileUrl": "/calibrator",
+     "performanceTier": "MASTER",
+     "userId": 4133373,
+     "progressionOptOut": false
+    },
+    "intro": "Claude Max x20 user. Looking forward to joining a team aiming for gold."
+   }
+  },
+  "firstMessageId": 3445705,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 693247,
+  "name": "The highest single task score is 25 (fixed)",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-20T11:29:26.439252500Z",
+  "totalVotes": 30,
+  "url": "/competitions/neurogolf-2026/discussion/693247",
+  "totalMessages": 10,
+  "authorPerformanceTier": "MASTER",
+  "authorProgressionOptOut": false
+ }
+}

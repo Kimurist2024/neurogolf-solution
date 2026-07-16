@@ -1,0 +1,51 @@
+{
+  "task": "task360",
+  "requested_goal": "cost <= 10 with fully correct train/test/arc-gen/fresh and <=60s verification",
+  "status": "not achieved; no adoptable improved ONNX was produced",
+  "baseline": {
+    "cost": 94,
+    "score": 20.4567,
+    "onnx": "/mnt/data/task360_baseline_cost94.onnx"
+  },
+  "confirmed_rule": "For each row, output[:,0:4] is the nonzero overlay of input left columns 0..3 and mirrored right columns 8..5; black is emitted only when both sides are black.",
+  "python_rule_checks": {
+    "provided_train_test_arc_gen": "0 wrong by direct solver in previous audit",
+    "fresh_random_generate_k": 1000,
+    "fresh_random_generate_wrong": 0
+  },
+  "cost10_investigation": [
+    {
+      "family": "ConvTranspose with input tensor used as W/weights and tiny initializer used as X/seed",
+      "positive_findings": [
+        "ORT accepts scalar/length-1 ConvTranspose bias B with W=input; it subtracts from output channel 0 only, which would solve the black-cell AND bias at cost 1.",
+        "NaN seed values create static false masks because 0*NaN propagates NaN in ORT; this can mask columns outside the 4-wide output area without full tensors."
+      ],
+      "blocking_result": "After adding channel0 scalar bias and allowing static NaN masking of columns >=4, all seed-width <=9 arithmetic-shift feature sets tested were infeasible. The exhaustive D=1 shift search over lengths 1..9, steps 1..10, shifts -29..3 found no linearly separable solution; best remaining conflict count was 2. Desired-pair coverage with ConvTranspose dilation/stride/pad and seed_width<=9 only yields D=1 candidates, so larger dilation does not give an exact 8-pair reflection within the cost budget.",
+      "adopted": false
+    },
+    {
+      "family": "Pooling one-node models",
+      "blocking_result": "MaxPool, AveragePool, and LpPool one-node searches over small horizontal kernels/dilations/pads found no exact train+test+arc-gen model. Pooling can OR colors but cannot produce channel0 only when both mirrored cells are black.",
+      "adopted": false
+    },
+    {
+      "family": "ReverseSequence one-node model",
+      "blocking_result": "It can flip the right side into the left area at cost 1, but it loses left-only pixels and cannot overlay with the original input in a single zero-memory node.",
+      "adopted": false
+    },
+    {
+      "family": "Existing Einsum reduction",
+      "blocking_result": "The exact existing model uses a one-node coordinate-polynomial tensor network with 94 initializer elements. Removing the coordinate/channel selector constants breaks the spatial reflection or channel0 rule; replacing them with generated constants would introduce intermediate memory far above cost 10.",
+      "adopted": false
+    }
+  ],
+  "verification_summary": {
+    "adoptable_onnx_saved": false,
+    "scoring_require_correct": "not run for an improved model because no correct cost<=10 candidate was found",
+    "official_decode_wrong0": "not run for an improved model because no correct cost<=10 candidate was found",
+    "raw_margin_check": "not run for an improved model because no correct cost<=10 candidate was found",
+    "fresh_onnx_accuracy": "not run for an improved model because no correct cost<=10 candidate was found",
+    "onnx_structure_check": "not applicable to an improved model; baseline checker/shape inference had passed in previous audit"
+  },
+  "notes": "I did not create a replacement full ZIP because substituting any wrong cost<=10 candidate would produce an invalid submission. The correct rule is simple in Python but, under the official cost definition, the one-node static ONNX structures found here cannot express both spatial reflection and black-channel AND at <=10 params."
+}

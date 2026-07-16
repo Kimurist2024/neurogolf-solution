@@ -1,0 +1,76 @@
+task264 deep rebuild / cost-reduction attempt report
+Date: 2026-07-06
+
+Goal requested by user:
+- Rebuild task264 from scratch if needed.
+- Reduce cost by at least 1000 from current cost=1396, ideally cost <= 50.
+- Adopt only if scorer require_correct=True, official decode, raw boundary, fresh validation, runtime, and ONNX structural checks pass.
+
+Current incumbent:
+- file: /mnt/data/task264_min.onnx
+- cost: 1396
+- memory: 1198
+- params: 198
+- status: fully correct (verified in previous run)
+
+Rule inferred from train/test/arc-gen generator and visual/grid inspection:
+- Input contains nine non-overlapping 3x3 grey sprites in a 14-16 by 14-16 grid.
+- Eight sprite shapes contain a single non-grey color; center sprite is blank grey.
+- Output is a fixed 9x9 atlas arranging the eight colored shapes plus grey background into fixed 3x3 cells.
+- The task is therefore: detect the color associated with each of eight 3x3 shape templates, then render those colors in a fixed output template.
+
+Existing model structure:
+- ConvTranspose 3x3 filters score each possible sprite top-left by shape rank + color.
+- MaxPool 4x4 collapses the known 4x4 sprite lattice.
+- TopK recovers the eight shape/color scores in rank order.
+- Gather + QLinearConv renders the 9x9 atlas.
+
+Cost bottleneck:
+- The [1,1,14,14] float32 ConvTranspose score map alone costs 784 memory units.
+- Public train/test/arc-gen positions cover all top-left rows and columns 0..13 and 195/196 row/col pairs, so simple cropping or restricting scan positions is not compatible with public correctness.
+
+Rebuild/cost-reduction attempts performed:
+1. Direct collapsed detectors from image to small vectors/4x4 bins.
+   - Tried linear/conv reductions that avoid the 14x14 score map.
+   - These were infeasible or failed public train/test/arc-gen exactness because selecting a sprite color by shape requires max/argmax over spatial locations; a static linear collapse cannot express the needed OR/selection while rejecting other shapes.
+
+2. 3x2 / 2x3 and partial-window detectors.
+   - Attempted to reduce the spatial detector footprint and memory.
+   - Failed because the eight shapes are not uniquely identifiable under such partial windows across all generated examples.
+
+3. Integer / int8 TopK score path.
+   - Motivation: keep the same logical detector but cast the pooled scores to int8 before TopK, reducing TopK value/index memory and expected cost from 1396 to about 1364.
+   - Standard int8 candidates validated by local scorer were incorrect.
+   - Bounded LP/MILP variants to keep true scores in safe residues and false scores below threshold were infeasible or incorrect.
+   - Best observed lower-cost family still failed public exactness; e.g. one active half candidate achieved cost=1364 but had train wrong=1 and arc-gen wrong=123 (not adoptable). Other lower-cost candidates had many more public failures.
+   - Root cause: if any false score exceeds a true score before cast, MaxPool discards the true score; if false scores are kept low but negative/wrapped, signed int8 TopK can still select false residues. The needed safe residue constraints conflict with the public/generated false windows.
+
+4. ConvInteger final renderer.
+   - Motivation: reduce one QLinearConv parameter/memory unit.
+   - All cost=1395 candidates failed public correctness.
+   - Reason: with only [c, c^2] features and no compatible bias/zero-point geometry, one-vs-all color separation for all colors cannot be represented correctly by ConvInteger.
+
+5. ONNX micro-optimizations.
+   - Removing TopK indices is not allowed by checker/ORT.
+   - opset10 TopK does not remove the k initializer in a compatible graph with the needed operators.
+   - Flatten/Transpose/Unsqueeze alternatives increase memory.
+   - OneHot/Equal/Pad/Scatter-style renderers introduce larger intermediates.
+   - Runtime-computing slot_map increases memory more than it saves initializer params.
+   - f16 Conv/ConvTranspose from float input is not a valid mixed-type replacement; casting input to f16 would cost far more memory.
+
+Adoption result:
+- No new candidate with cost lower than 1396 passed require_correct=True on train/test/arc-gen.
+- Therefore no lower-cost ONNX was adopted.
+- The current incumbent remains the only validated task264 model available from this attempt.
+
+Adoption criteria for lower-cost candidates:
+1. scripts/lib/scoring require_correct=True: FAILED for every lower-cost candidate tested.
+2. Official neurogolf_utils decoder: not run for failed lower-cost candidates; current incumbent was previously verified.
+3. Raw boundary check: not run for failed lower-cost candidates; current incumbent was previously verified.
+4. Fresh validation: not run for failed lower-cost candidates; current incumbent was previously verified at k=20, 20/20.
+5. Runtime <= 60 sec: local scoring candidates ran quickly; no failed candidate was adoptable.
+
+Conclusion:
+- A cost <= 50 model was not found.
+- The evidence from public coverage and the existing graph cost breakdown suggests the 14x14 spatial scan is the dominant unavoidable piece for this ONNX formulation; reducing it while preserving exactness remains unresolved.
+- No improved ONNX or replacement ZIP is provided as improved, because doing so would violate the adoption requirement.

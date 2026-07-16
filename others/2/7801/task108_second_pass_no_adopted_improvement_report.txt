@@ -1,0 +1,55 @@
+task108 second pass report (2026-07-07)
+
+Outcome:
+- No ONNX candidate satisfying the user's adoption requirements was found.
+- Therefore no improved replacement ZIP was produced.
+- The verified current model remains cost=124, score=20.179718434394964.
+
+Image/rule inference:
+- Input grid is 10x10.
+- Meaningful cells are the odd coordinates (1,1), (1,3), ..., (9,9), i.e. a logical 5x5 grid.
+- Output is 20x20 in the 30x30 tensor canvas.
+- Each logical input cell at (2r+1, 2c+1) is copied to a 4x4 output block rows 4r..4r+3, cols 4c..4c+3.
+- All channels are thresholded independently by the grader as raw > 0.0, so any positive channel0 leak is a hard error.
+
+Second-pass attempts:
+1. Rechecked low-cost Resize / RoiAlign / MaxRoiPool / MaxPool style reconstructions.
+   Rejection reason: they can sample or pool colors, but cannot make channel0 exactly zero at colored cells because even/background pixels leak positive values.
+
+2. Rebuilt from scratch using the dynamic ConvTranspose trick:
+   - initializer pattern is the ConvTranspose input X;
+   - the actual ARC one-hot input tensor is used as the ConvTranspose weight W;
+   - this makes params equal to pattern size (+ optional bias), with a single final node and memory=0.
+   Tested manual cost=26 model: params=26, memory=0, but correct=False. It failed because channel0 edge/background leakage remains.
+
+3. Linear-programming searches for dynamic ConvTranspose patterns:
+   - d=2 with per-channel bias, cost <= 50: no feasible candidate found on the current train/test/arc-gen case constraints.
+   - d=2 without bias, cost <= 50: no feasible candidate found in the tested constraints.
+   - Higher-cost d=2 and mixed-dilation candidates up to around cost 122 were sampled/targeted, including high-product and center-padded patterns. None passed correctness.
+
+4. Invalid candidate discovered but rejected:
+   - /mnt/data/work/dynct_valid_vector_tt_prod112_idx5640.npz produced a ConvTranspose ONNX with params/cost=122.
+   - onnx.checker and shape inference passed.
+   - scripts/lib/scoring with require_correct=False reported cost=122, score=20.195978955266742, correct=False.
+   - require_correct=True rejected it.
+   - Wrong counts using the grader threshold:
+     train right=0 wrong=3
+     test right=0 wrong=1
+     arc-gen right=0 wrong=262
+   - It has unstable/tiny positive false positives and also negative true cells, so it is not salvageable by a small bias shift.
+
+5. Diagonal-Einsum cost-122 direction:
+   - A cost-122 diagonalized Einsum file exists from the exploratory search, but it is not adopted.
+   - It was not able to provide the required fast, correct validation path and is therefore rejected.
+
+Adoption status:
+- No candidate satisfied all required conditions:
+  1) scripts/lib/scoring require_correct=True over train/test/arc-gen,
+  2) official decoder wrong=0,
+  3) raw margin safety,
+  4) fresh k>0 and >=90%,
+  5) full validation <=60s.
+
+Files left unchanged:
+- /mnt/data/task108_current_verified_no_improvement.onnx
+- /mnt/data/task108_full_submission_unmodified_no_improvement.zip

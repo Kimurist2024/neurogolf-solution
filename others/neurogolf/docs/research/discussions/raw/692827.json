@@ -1,0 +1,1452 @@
+{
+ "forumTopic": {
+  "authorId": 1257749,
+  "authorThumbnailName": "1257749-gp.jpg",
+  "authorUserDisplayName": "shinh",
+  "authorUserName": "shinh0",
+  "comments": [
+   {
+    "id": 3446159,
+    "postDate": "2026-04-21T04:58:20.797Z",
+    "rawMarkdown": "Thanks for pointing our this, I've switched to use 1.0.1 for local tests to avoid my model exploiting bugs. Hope the host can update the scoring tools to let everyone get aligned scores.",
+    "content": "<p>Thanks for pointing our this, I've switched to use 1.0.1 for local tests to avoid my model exploiting bugs. Hope the host can update the scoring tools to let everyone get aligned scores.</p>",
+    "replies": [
+     {
+      "id": 3446203,
+      "postDate": "2026-04-21T07:05:29.813Z",
+      "rawMarkdown": "",
+      "parent": {},
+      "author": {
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/"
+      },
+      "authorType": "COMMENT",
+      "votes": {},
+      "canDelete": true,
+      "isUserAuthor": true,
+      "isDeleted": true,
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Yiheng Wang",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/682501-kg.png",
+     "url": "/yiheng",
+     "tier": "MASTER",
+     "id": 682501,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 3,
+     "canUpvote": true,
+     "totalUpvotes": 3
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 2,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Yiheng Wang",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/682501-kg.png",
+      "url": "/yiheng",
+      "userName": "yiheng",
+      "tier": "MASTER",
+      "id": 682501,
+      "profileUrl": "/yiheng",
+      "performanceTier": "MASTER",
+      "userId": 682501,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3448766,
+    "postDate": "2026-04-26T15:06:29.713Z",
+    "rawMarkdown": "Expand should be legal. that is the same as in pytorch. There is no increase in memory becuase it  is repeated values and hence no need to recompute.",
+    "content": "<p>Expand should be legal. that is the same as in pytorch. There is no increase in memory becuase it  is repeated values and hence no need to recompute.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1462,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3445141,
+    "postDate": "2026-04-19T06:20:43.597Z",
+    "rawMarkdown": "Hi @kevinyuluo , I found two `onnx_tool` profiling issues that cause the scorer to report incorrect costs. A self-contained reproduction script that works in v1.0.0 is https://gist.github.com/kq5y/2e8e102d4dd75ecb61d8f9db6328d9ef\n\n### Bug 1: Negative-step `Slice` has an off-by-one in shape inference\n\nWhen `Slice` uses a negative step, `onnx_tool` underestimates the output length by 1 in a full-reversal case. For example, slicing an axis of length 30 with `starts=29`, `ends=-100`, and `steps=-1` should return 30 elements, but `onnx_tool` infers 29.\n\n```python\n# Reverse axis=2 of shape [1, 10, 30, 30]\n# Runtime output: [1, 10, 30, 30]\n# onnx_tool infers: [1, 10, 29, 30]\nhelper.make_node(\"Slice\", [\"input\", \"starts\", \"ends\", \"axes\", \"steps\"], [\"rev\"])\n# starts=[29], ends=[-100], axes=[2], steps=[-1]\n```\n\nThis propagates to downstream profiling. In the attached PoC, an `Add` after the `Slice` is reported as 8,700 MACs instead of the correct 9,000.\n\n### Bug 2: `ConstantOfShape` can collapse to zero-sized outputs when its shape depends on input values\n\n`shape_infer(None)` evaluates value-dependent shape subgraphs using zero-filled dummy inputs. If a `ConstantOfShape` dimension is derived from input data, the inferred shape can collapse to zero even when the runtime value is guaranteed to be nonzero for valid inputs.\n\n```python\n# Probe input[:, :, 0:1, 0:1] -> ReduceSum -> Cast -> * 30\n# Use the result as two dimensions of ConstantOfShape\n# Runtime with valid input: ConstantOfShape produces [1, 10, 30, 30]\n# onnx_tool shape_infer(None): ConstantOfShape produces [1, 10, 0, 0]\n```\n\nThis also propagates to downstream profiling. In the attached PoC, an `Add` after `ConstantOfShape` is reported as 0 MACs under `shape_infer(None)`, but 9,000 MACs when the same model is profiled with the actual runtime input.\n\nBoth models execute correctly at runtime. The issue is in `onnx_tool`'s profiling/inference path, not in ONNX execution.\n\n***It seems the Bug 1 was solved while I was writing this.***",
+    "content": "<p>Hi <a href=\"https://www.kaggle.com/kevinyuluo\" target=\"_blank\">@kevinyuluo</a> , I found two <code>onnx_tool</code> profiling issues that cause the scorer to report incorrect costs. A self-contained reproduction script that works in v1.0.0 is <a href=\"https://gist.github.com/kq5y/2e8e102d4dd75ecb61d8f9db6328d9ef\" target=\"_blank\">https://gist.github.com/kq5y/2e8e102d4dd75ecb61d8f9db6328d9ef</a></p>\n<h3>Bug 1: Negative-step <code>Slice</code> has an off-by-one in shape inference</h3>\n<p>When <code>Slice</code> uses a negative step, <code>onnx_tool</code> underestimates the output length by 1 in a full-reversal case. For example, slicing an axis of length 30 with <code>starts=29</code>, <code>ends=-100</code>, and <code>steps=-1</code> should return 30 elements, but <code>onnx_tool</code> infers 29.</p>\n<pre><code># Reverse axis=2 of shape [1, 10, 30, 30]\n# Runtime output: [1, 10, 30, 30]\n# onnx_tool infers: [1, 10, 29, 30]\nhelper.make_node(\"Slice\", [\"input\", \"starts\", \"ends\", \"axes\", \"steps\"], [\"rev\"])\n# starts=[29], ends=[-100], axes=[2], steps=[-1]\n</code></pre>\n<p>This propagates to downstream profiling. In the attached PoC, an <code>Add</code> after the <code>Slice</code> is reported as 8,700 MACs instead of the correct 9,000.</p>\n<h3>Bug 2: <code>ConstantOfShape</code> can collapse to zero-sized outputs when its shape depends on input values</h3>\n<p><code>shape_infer(None)</code> evaluates value-dependent shape subgraphs using zero-filled dummy inputs. If a <code>ConstantOfShape</code> dimension is derived from input data, the inferred shape can collapse to zero even when the runtime value is guaranteed to be nonzero for valid inputs.</p>\n<pre><code># Probe input[:, :, 0:1, 0:1] -&gt; ReduceSum -&gt; Cast -&gt; * 30\n# Use the result as two dimensions of ConstantOfShape\n# Runtime with valid input: ConstantOfShape produces [1, 10, 30, 30]\n# onnx_tool shape_infer(None): ConstantOfShape produces [1, 10, 0, 0]\n</code></pre>\n<p>This also propagates to downstream profiling. In the attached PoC, an <code>Add</code> after <code>ConstantOfShape</code> is reported as 0 MACs under <code>shape_infer(None)</code>, but 9,000 MACs when the same model is profiled with the actual runtime input.</p>\n<p>Both models execute correctly at runtime. The issue is in <code>onnx_tool</code>'s profiling/inference path, not in ONNX execution.</p>\n<p><strong><em>It seems the Bug 1 was solved while I was writing this.</em></strong></p>",
+    "replies": [
+     {
+      "id": 3445142,
+      "postDate": "2026-04-19T06:28:21.890Z",
+      "rawMarkdown": "Thanks for your reproduction script! I'm working on it.",
+      "content": "<p>Thanks for your reproduction script! I'm working on it.</p>",
+      "replies": [
+       {
+        "id": 3445152,
+        "postDate": "2026-04-19T06:49:17.730Z",
+        "rawMarkdown": "@kevinyuluo Thank you for handling this. But after 585b8449, `_broadcast_shape` rejects `(0, 1)` as incompatible. This breaks `model_profile` for any model whose value-based shape inference produces zero-sized intermediate tensors.\n\nPoC: https://gist.github.com/kq5y/37b0e4139d562822b656e3ed8eb7a94d\n\nProfiling should not fail on zero-sized extents produced during value-based shape inference. For broadcasts like `(0, 1)`, the inferred output extent should be `0`, not an exception.",
+        "content": "<p><a href=\"https://www.kaggle.com/kevinyuluo\" target=\"_blank\">@kevinyuluo</a> Thank you for handling this. But after 585b8449, <code>_broadcast_shape</code> rejects <code>(0, 1)</code> as incompatible. This breaks <code>model_profile</code> for any model whose value-based shape inference produces zero-sized intermediate tensors.</p>\n<p>PoC: <a href=\"https://gist.github.com/kq5y/37b0e4139d562822b656e3ed8eb7a94d\" target=\"_blank\">https://gist.github.com/kq5y/37b0e4139d562822b656e3ed8eb7a94d</a></p>\n<p>Profiling should not fail on zero-sized extents produced during value-based shape inference. For broadcasts like <code>(0, 1)</code>, the inferred output extent should be <code>0</code>, not an exception.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "kq5y",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/24338286-kg.png?t=2025-11-02-14-39-13",
+         "url": "/kq5yyy",
+         "tier": "EXPERT",
+         "id": 24338286,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 136,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "kq5y",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/24338286-kg.png?t=2025-11-02-14-39-13",
+          "url": "/kq5yyy",
+          "userName": "kq5yyy",
+          "tier": "EXPERT",
+          "id": 24338286,
+          "profileUrl": "/kq5yyy",
+          "performanceTier": "EXPERT",
+          "userId": 24338286,
+          "progressionOptOut": false
+         },
+         "intro": "Currently, the scoreboard is not functioning properly due to a bug in the grading environment, so I would like to consider team mergers after that issue is resolved."
+        }
+       },
+       {
+        "id": 3445155,
+        "postDate": "2026-04-19T07:03:38.133Z",
+        "rawMarkdown": "It's basically the same question as Bug 2. The input tensor of your graph will be used to compute the output tensor shape. So, you can't use an arbitrary tensor ( all zeros).",
+        "content": "<p>It's basically the same question as Bug 2. The input tensor of your graph will be used to compute the output tensor shape. So, you can't use an arbitrary tensor ( all zeros).</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3445164,
+        "postDate": "2026-04-19T07:21:32.510Z",
+        "rawMarkdown": "Thanks. To remove the input-dependent-shape part entirely, here is a smaller repro that uses only constants.\n\nIt creates a constant empty tensor of shape [0] and multiplies it by a constant tensor of shape [1]. This is a pure broadcast case with no Range/Slice/input-derived shape involved.\n\nhttps://gist.github.com/kq5y/37b0e4139d562822b656e3ed8eb7a94d#file-new_onnx_tool_broadcast_bug_poc-py\n\nSo I think the remaining issue is specifically that `_broadcast_shape` rejects broadcasting involving zero-sized extents (in this case, [0] with [1]), rather than anything related to zero-filled profiling inputs.",
+        "content": "<p>Thanks. To remove the input-dependent-shape part entirely, here is a smaller repro that uses only constants.</p>\n<p>It creates a constant empty tensor of shape [0] and multiplies it by a constant tensor of shape [1]. This is a pure broadcast case with no Range/Slice/input-derived shape involved.</p>\n<p><a href=\"https://gist.github.com/kq5y/37b0e4139d562822b656e3ed8eb7a94d#file-new_onnx_tool_broadcast_bug_poc-py\" target=\"_blank\">https://gist.github.com/kq5y/37b0e4139d562822b656e3ed8eb7a94d#file-new_onnx_tool_broadcast_bug_poc-py</a></p>\n<p>So I think the remaining issue is specifically that <code>_broadcast_shape</code> rejects broadcasting involving zero-sized extents (in this case, [0] with [1]), rather than anything related to zero-filled profiling inputs.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "kq5y",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/24338286-kg.png?t=2025-11-02-14-39-13",
+         "url": "/kq5yyy",
+         "tier": "EXPERT",
+         "id": 24338286,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 136,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "kq5y",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/24338286-kg.png?t=2025-11-02-14-39-13",
+          "url": "/kq5yyy",
+          "userName": "kq5yyy",
+          "tier": "EXPERT",
+          "id": 24338286,
+          "profileUrl": "/kq5yyy",
+          "performanceTier": "EXPERT",
+          "userId": 24338286,
+          "progressionOptOut": false
+         },
+         "intro": "Currently, the scoreboard is not functioning properly due to a bug in the grading environment, so I would like to consider team mergers after that issue is resolved."
+        }
+       },
+       {
+        "id": 3445179,
+        "postDate": "2026-04-19T07:47:36.637Z",
+        "rawMarkdown": "Neither ONNX nor Numpy defines the behavior when broadcasting a zero-sized tensor. Did you mean a 0-D array? e.g., a = numpy.array(10), it's a scalar array.",
+        "content": "<p>Neither ONNX nor Numpy defines the behavior when broadcasting a zero-sized tensor. Did you mean a 0-D array? e.g., a = numpy.array(10), it's a scalar array.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3445186,
+        "postDate": "2026-04-19T07:57:54.370Z",
+        "rawMarkdown": "No. I mean a 1-D empty array with shape [0], not a 0-D scalar array.\n\nNumPy arrays can have zero-length dimensions: an ndarray shape is a tuple of non-negative integers. NumPy’s broadcasting rules say dimensions are compatible when they are equal or one of them is 1, and ONNX multidirectional broadcasting is defined as NumPy-style broadcasting.\nhttps://numpy.org/doc/stable/user/basics.broadcasting.html\n\nAlso, this is not just theoretical. In a local test:\n- `np.broadcast_shapes((0,), (1,))` returns `(0,)`\n- `np.array([], dtype=np.float32) * np.array([2.0], dtype=np.float32)` produces an array with shape `(0,)`\n- ONNX Runtime executes the attached model and returns output shape `(0,)`\n\nSo even if the docs do not explicitly discuss zero-sized extents, `_broadcast_shape` currently differs from NumPy/ONNX runtime behavior on this case.",
+        "content": "<p>No. I mean a 1-D empty array with shape [0], not a 0-D scalar array.</p>\n<p>NumPy arrays can have zero-length dimensions: an ndarray shape is a tuple of non-negative integers. NumPy’s broadcasting rules say dimensions are compatible when they are equal or one of them is 1, and ONNX multidirectional broadcasting is defined as NumPy-style broadcasting.\n<a href=\"https://numpy.org/doc/stable/user/basics.broadcasting.html\" target=\"_blank\">https://numpy.org/doc/stable/user/basics.broadcasting.html</a></p>\n<p>Also, this is not just theoretical. In a local test:</p>\n<ul>\n<li><code>np.broadcast_shapes((0,), (1,))</code> returns <code>(0,)</code></li>\n<li><code>np.array([], dtype=np.float32) * np.array([2.0], dtype=np.float32)</code> produces an array with shape <code>(0,)</code></li>\n<li>ONNX Runtime executes the attached model and returns output shape <code>(0,)</code></li>\n</ul>\n<p>So even if the docs do not explicitly discuss zero-sized extents, <code>_broadcast_shape</code> currently differs from NumPy/ONNX runtime behavior on this case.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "kq5y",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/24338286-kg.png?t=2025-11-02-14-39-13",
+         "url": "/kq5yyy",
+         "tier": "EXPERT",
+         "id": 24338286,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 136,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "kq5y",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/24338286-kg.png?t=2025-11-02-14-39-13",
+          "url": "/kq5yyy",
+          "userName": "kq5yyy",
+          "tier": "EXPERT",
+          "id": 24338286,
+          "profileUrl": "/kq5yyy",
+          "performanceTier": "EXPERT",
+          "userId": 24338286,
+          "progressionOptOut": false
+         },
+         "intro": "Currently, the scoreboard is not functioning properly due to a bug in the grading environment, so I would like to consider team mergers after that issue is resolved."
+        }
+       },
+       {
+        "id": 3445189,
+        "postDate": "2026-04-19T08:18:24.653Z",
+        "rawMarkdown": "This case has been supported in 6787341597e1fd93b8cc48d0b1636b52734bc673. As it's undefined, the code may fail in other cases.",
+        "content": "<p>This case has been supported in 6787341597e1fd93b8cc48d0b1636b52734bc673. As it's undefined, the code may fail in other cases.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "reactions": [
+         {
+          "emoji": "THANK_YOU",
+          "featuredUserNames": [
+           "kq5yyy",
+           "mmoffitt"
+          ],
+          "userCount": 2
+         },
+         {
+          "emoji": "LOVE",
+          "featuredUserNames": [
+           "kq5yyy",
+           "mmoffitt"
+          ],
+          "userCount": 2
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Yu Luo",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+       "url": "/kevinyuluo",
+       "tier": "CONTRIBUTOR",
+       "id": 4200613,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 2,
+       "canUpvote": true,
+       "totalUpvotes": 2
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "LOVE",
+        "featuredUserNames": [
+         "kq5yyy"
+        ],
+        "userCount": 1
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Yu Luo",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+        "url": "/kevinyuluo",
+        "userName": "kevinyuluo",
+        "tier": "CONTRIBUTOR",
+        "id": 4200613,
+        "profileUrl": "/kevinyuluo",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 4200613,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3445154,
+      "postDate": "2026-04-19T07:00:23.137Z",
+      "rawMarkdown": "It's not a bug for your Bug 2 case. The shape of ConstantOfShape is computed by the input tensor's values. When you pass with all ones, it results in one MAC count of a fixed shape(1x10x30x30). The shape equation is: 1x10x(input[0, 0, 0, 0]*30)x(input[0, 0, 0, 0]*30). If intput[0,0,0,0]=2, you will get a new MAC of the shape(1x10x60x60). So, you can't use the default input tensor as all zeros.",
+      "content": "<p>It's not a bug for your Bug 2 case. The shape of ConstantOfShape is computed by the input tensor's values. When you pass with all ones, it results in one MAC count of a fixed shape(1x10x30x30). The shape equation is: 1x10x(input[0, 0, 0, 0]<em>30)x(input[0, 0, 0, 0]</em>30). If intput[0,0,0,0]=2, you will get a new MAC of the shape(1x10x60x60). So, you can't use the default input tensor as all zeros.</p>",
+      "replies": [
+       {
+        "id": 3445172,
+        "postDate": "2026-04-19T07:32:38.827Z",
+        "rawMarkdown": "Thanks for the clarification. You're right — `ConstantOfShape` is working as designed since the output shape is data-dependent. The issue is on the scorer side: `neurogolf_utils.py` calls `graph.shape_infer(None)`, which evaluates with zero-filled inputs, so any data-derived shape collapses to 0. Passing a representative input (e.g., an actual training example) to `shape_infer()` would give accurate profiling for these cases.",
+        "content": "<p>Thanks for the clarification. You're right — <code>ConstantOfShape</code> is working as designed since the output shape is data-dependent. The issue is on the scorer side: <code>neurogolf_utils.py</code> calls <code>graph.shape_infer(None)</code>, which evaluates with zero-filled inputs, so any data-derived shape collapses to 0. Passing a representative input (e.g., an actual training example) to <code>shape_infer()</code> would give accurate profiling for these cases.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "kq5y",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/24338286-kg.png?t=2025-11-02-14-39-13",
+         "url": "/kq5yyy",
+         "tier": "EXPERT",
+         "id": 24338286,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 136,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "kq5y",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/24338286-kg.png?t=2025-11-02-14-39-13",
+          "url": "/kq5yyy",
+          "userName": "kq5yyy",
+          "tier": "EXPERT",
+          "id": 24338286,
+          "profileUrl": "/kq5yyy",
+          "performanceTier": "EXPERT",
+          "userId": 24338286,
+          "progressionOptOut": false
+         },
+         "intro": "Currently, the scoreboard is not functioning properly due to a bug in the grading environment, so I would like to consider team mergers after that issue is resolved."
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Yu Luo",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+       "url": "/kevinyuluo",
+       "tier": "CONTRIBUTOR",
+       "id": 4200613,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "THANK_YOU",
+        "featuredUserNames": [
+         "kq5yyy"
+        ],
+        "userCount": 1
+       },
+       {
+        "emoji": "LOVE",
+        "featuredUserNames": [
+         "kq5yyy"
+        ],
+        "userCount": 1
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Yu Luo",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+        "url": "/kevinyuluo",
+        "userName": "kevinyuluo",
+        "tier": "CONTRIBUTOR",
+        "id": 4200613,
+        "profileUrl": "/kevinyuluo",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 4200613,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "kq5y",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/24338286-kg.png?t=2025-11-02-14-39-13",
+     "url": "/kq5yyy",
+     "tier": "EXPERT",
+     "id": 24338286,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 3,
+     "canUpvote": true,
+     "totalUpvotes": 3
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 136,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "kq5y",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/24338286-kg.png?t=2025-11-02-14-39-13",
+      "url": "/kq5yyy",
+      "userName": "kq5yyy",
+      "tier": "EXPERT",
+      "id": 24338286,
+      "profileUrl": "/kq5yyy",
+      "performanceTier": "EXPERT",
+      "userId": 24338286,
+      "progressionOptOut": false
+     },
+     "intro": "Currently, the scoreboard is not functioning properly due to a bug in the grading environment, so I would like to consider team mergers after that issue is resolved."
+    }
+   },
+   {
+    "id": 3445818,
+    "postDate": "2026-04-20T15:15:56.617Z",
+    "rawMarkdown": "@kevinyuluo Constant nodes don't seem to get counted toward memory usage: https://gist.github.com/Mukundan314/6463d1895be31de8156eaa13079a8f07\n\nLooks like a bug given the comment at https://github.com/ThanatosShinji/onnx-tool/blob/427849/onnx_tool/graph.py#L1404 implies the bytes should be accounted for elsewhere.",
+    "content": "<p><a href=\"https://www.kaggle.com/kevinyuluo\" target=\"_blank\">@kevinyuluo</a> Constant nodes don't seem to get counted toward memory usage: <a href=\"https://gist.github.com/Mukundan314/6463d1895be31de8156eaa13079a8f07\" target=\"_blank\">https://gist.github.com/Mukundan314/6463d1895be31de8156eaa13079a8f07</a></p>\n<p>Looks like a bug given the comment at <a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/427849/onnx_tool/graph.py#L1404\" target=\"_blank\">https://github.com/ThanatosShinji/onnx-tool/blob/427849/onnx_tool/graph.py#L1404</a> implies the bytes should be accounted for elsewhere.</p>",
+    "replies": [
+     {
+      "id": 3446330,
+      "postDate": "2026-04-21T12:34:28.073Z",
+      "rawMarkdown": "Constant's parameter and memory should be counted in the node where it is actually used. It's the Add node for your case. But onnx-tool failed to do so. I will look into it.",
+      "content": "<p>Constant's parameter and memory should be counted in the node where it is actually used. It's the Add node for your case. But onnx-tool failed to do so. I will look into it.</p>",
+      "replies": [
+       {
+        "id": 3446346,
+        "postDate": "2026-04-21T13:02:59.910Z",
+        "rawMarkdown": "For a quick fix, you can apply this change to your code: `g = onnx_tool.Model(model, mcfg={'constant_folding': True}).graph` @mukundan314 \n```python\n------  ------  --------------  ----------  --------  ----------  --------  ----------  ---------  ----------\nAdd_1   Add     1,024           100.00%     8,192     100.00%     1,024     100.00%     1024       1024\nTotal   _       1,024           100%        8,192     100%        1,024     100%        _          _\n```",
+        "content": "<p>For a quick fix, you can apply this change to your code: <code>g = onnx_tool.Model(model, mcfg={'constant_folding': True}).graph</code> <a href=\"https://www.kaggle.com/mukundan314\" target=\"_blank\">@mukundan314</a> </p>\n<pre><code>------  ------  --------------  ----------  --------  ----------  --------  ----------  ---------  ----------\nAdd_1   Add     1,024           100.00%     8,192     100.00%     1,024     100.00%     1024       1024\nTotal   _       1,024           100%        8,192     100%        1,024     100%        _          _\n</code></pre>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 2,
+         "canUpvote": true,
+         "totalUpvotes": 2
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3446358,
+        "postDate": "2026-04-21T13:23:15.747Z",
+        "rawMarkdown": "Highly recommend enabling 'constant_folding' while loading a model @mmoffitt. As: `model = onnx_tool.loadmodel(m, {'verbose': False, 'constant_folding': True})`\n'constant_folding=True' has been verified by onnx-tool's model tests.",
+        "content": "<p>Highly recommend enabling 'constant_folding' while loading a model <a href=\"https://www.kaggle.com/mmoffitt\" target=\"_blank\">@mmoffitt</a>. As: <code>model = onnx_tool.loadmodel(m, {'verbose': False, 'constant_folding': True})</code>\n'constant_folding=True' has been verified by onnx-tool's model tests.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 2,
+         "canUpvote": true,
+         "totalUpvotes": 2
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "reactions": [
+         {
+          "emoji": "LOVE",
+          "featuredUserNames": [
+           "mmoffitt"
+          ],
+          "userCount": 1
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Yu Luo",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+       "url": "/kevinyuluo",
+       "tier": "CONTRIBUTOR",
+       "id": 4200613,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Yu Luo",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+        "url": "/kevinyuluo",
+        "userName": "kevinyuluo",
+        "tier": "CONTRIBUTOR",
+        "id": 4200613,
+        "profileUrl": "/kevinyuluo",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 4200613,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3449787,
+      "postDate": "2026-04-28T21:33:51.957Z",
+      "rawMarkdown": "This issue should now be fixed (see also: [our metric update from today](https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230)).  In particular, our scoring engine will perform *constant folding* on all networks before scoring.",
+      "content": "<p>This issue should now be fixed (see also: <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230\" target=\"_blank\">our metric update from today</a>).  In particular, our scoring engine will perform <em>constant folding</em> on all networks before scoring.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Mukundan",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1669680-kg.png",
+     "url": "/mukundan314",
+     "tier": "CONTRIBUTOR",
+     "id": 1669680,
+     "progressionOptOut": true
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1098,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Mukundan",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1669680-kg.png",
+      "url": "/mukundan314",
+      "userName": "mukundan314",
+      "tier": "CONTRIBUTOR",
+      "id": 1669680,
+      "profileUrl": "/mukundan314",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 1669680,
+      "progressionOptOut": true
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3444882,
+    "postDate": "2026-04-18T16:02:20.277Z",
+    "rawMarkdown": "Fixed as:\n\nPS C:\\tmp> python -m onnx_tool -m profile -i .\\expand.onnx\n```python\nName      Type    Forward_MACs    FPercent    Memory    MPercent      Params  PPercent    InShape     OutShape\n--------  ------  --------------  ----------  --------  ----------  --------  ----------  ----------  ----------\nExpand_0  Expand  0               0.00%       36,008    50.01%             1  100.00%     1x10x30x30  1x10x30x30\nSqrt_1    Sqrt    216,000         100.00%     36,000    49.99%             0  0.00%       1x10x30x30  1x10x30x30\nTotal     _       216,000         100%        72,008    100%               1  100%        _           _\n```\nPS C:\\tmp> python -m onnx_tool -m profile -i .\\sqrt.onnx\n```python\nName    Type    Forward_MACs    FPercent    Memory    MPercent      Params  PPercent    InShape     OutShape\n------  ------  --------------  ----------  --------  ----------  --------  ----------  ----------  ----------\nSqrt_0  Sqrt    216,000         100.00%     36,000    100.00%            0  0.00%       1x10x30x30  1x10x30x30\nTotal   _       216,000         100%        36,000    100%               0  100%        _           _\n```",
+    "content": "<p>Fixed as:</p>\n<p>PS C:\\tmp&gt; python -m onnx_tool -m profile -i .\\expand.onnx</p>\n<pre><code>Name      Type    Forward_MACs    FPercent    Memory    MPercent      Params  PPercent    InShape     OutShape\n--------  ------  --------------  ----------  --------  ----------  --------  ----------  ----------  ----------\nExpand_0  Expand  0               0.00%       36,008    50.01%             1  100.00%     1x10x30x30  1x10x30x30\nSqrt_1    Sqrt    216,000         100.00%     36,000    49.99%             0  0.00%       1x10x30x30  1x10x30x30\nTotal     _       216,000         100%        72,008    100%               1  100%        _           _\n</code></pre>\n<p>PS C:\\tmp&gt; python -m onnx_tool -m profile -i .\\sqrt.onnx</p>\n<pre><code>Name    Type    Forward_MACs    FPercent    Memory    MPercent      Params  PPercent    InShape     OutShape\n------  ------  --------------  ----------  --------  ----------  --------  ----------  ----------  ----------\nSqrt_0  Sqrt    216,000         100.00%     36,000    100.00%            0  0.00%       1x10x30x30  1x10x30x30\nTotal   _       216,000         100%        36,000    100%               0  100%        _           _\n</code></pre>",
+    "replies": [
+     {
+      "id": 3445502,
+      "postDate": "2026-04-20T00:03:15.893Z",
+      "rawMarkdown": "Thanks! I don't have time to prepare minimal repros right now, but the following parts look potentially exploitable to me.\n\nhttps://github.com/ThanatosShinji/onnx-tool/blob/df70e97b294b080afb3f8d55dc3edada55a77ad4/onnx_tool/node.py#L1076\n```\nEinSum(tensor(shape=(A,B,C,D)), tensor(shape=(1,1,1,1)), equaltion=\"ijkl,ijkl->ijkl\")\n```\n\nIt seems this would produce `tensor(shape=(1,1,1,1))`, while the actual result should broadcast to `(A,B,C,D)`.\n\n\nhttps://github.com/ThanatosShinji/onnx-tool/blob/df70e97b294b080afb3f8d55dc3edada55a77ad4/onnx_tool/node.py#L80-L91\n```\nPow(tensor(shape=(A,1)), tensor(shape=(1,A)))\n```\nThis might be inferred as `tensor(shape=(A,1))`, while the actual broadcasted shape would be `(A,A)`.",
+      "content": "<p>Thanks! I don't have time to prepare minimal repros right now, but the following parts look potentially exploitable to me.</p>\n<p><a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/df70e97b294b080afb3f8d55dc3edada55a77ad4/onnx_tool/node.py#L1076\" target=\"_blank\">https://github.com/ThanatosShinji/onnx-tool/blob/df70e97b294b080afb3f8d55dc3edada55a77ad4/onnx_tool/node.py#L1076</a></p>\n<pre><code>EinSum(tensor(shape=(A,B,C,D)), tensor(shape=(1,1,1,1)), equaltion=\"ijkl,ijkl-&gt;ijkl\")\n</code></pre>\n<p>It seems this would produce <code>tensor(shape=(1,1,1,1))</code>, while the actual result should broadcast to <code>(A,B,C,D)</code>.</p>\n<p><a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/df70e97b294b080afb3f8d55dc3edada55a77ad4/onnx_tool/node.py#L80-L91\" target=\"_blank\">https://github.com/ThanatosShinji/onnx-tool/blob/df70e97b294b080afb3f8d55dc3edada55a77ad4/onnx_tool/node.py#L80-L91</a></p>\n<pre><code>Pow(tensor(shape=(A,1)), tensor(shape=(1,A)))\n</code></pre>\n<p>This might be inferred as <code>tensor(shape=(A,1))</code>, while the actual broadcasted shape would be <code>(A,A)</code>.</p>",
+      "replies": [
+       {
+        "id": 3446334,
+        "postDate": "2026-04-21T12:42:39.007Z",
+        "rawMarkdown": "Here is ONNX's definition for broadcasting relu of EinSum: The equation may contain ellipsis (\"...\") to enable broadcasting. Ellipsis must indicate a fixed number of dimensions. Your EinSum equation 'equaltion=\"ijkl,ijkl->ijkl\"' is not a valid broadcast equation. ",
+        "content": "<p>Here is ONNX's definition for broadcasting relu of EinSum: The equation may contain ellipsis (\"…\") to enable broadcasting. Ellipsis must indicate a fixed number of dimensions. Your EinSum equation 'equaltion=\"ijkl,ijkl-&gt;ijkl\"' is not a valid broadcast equation. </p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3446335,
+        "postDate": "2026-04-21T12:43:10.130Z",
+        "rawMarkdown": "You are right about Pow, it's a broadcasting operator. It will be fixed soon.",
+        "content": "<p>You are right about Pow, it's a broadcasting operator. It will be fixed soon.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3446351,
+        "postDate": "2026-04-21T13:11:05.657Z",
+        "rawMarkdown": "",
+        "parent": {},
+        "author": {
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/"
+        },
+        "authorType": "COMMENT",
+        "votes": {},
+        "canDelete": true,
+        "isUserAuthor": true,
+        "isDeleted": true,
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true
+       },
+       {
+        "id": 3446352,
+        "postDate": "2026-04-21T13:11:18.130Z",
+        "rawMarkdown": "Done 75fa870.",
+        "content": "<p>Done 75fa870.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3446751,
+        "postDate": "2026-04-22T04:05:50.090Z",
+        "rawMarkdown": "I created a repro for EinSum: https://gist.github.com/shinh/a958fff943b98e1b65464048483a9494\n\nPow is just an example, I think all callers of `_max_shape` should use `_broadcast_shape` instead.",
+        "content": "<p>I created a repro for EinSum: <a href=\"https://gist.github.com/shinh/a958fff943b98e1b65464048483a9494\" target=\"_blank\">https://gist.github.com/shinh/a958fff943b98e1b65464048483a9494</a></p>\n<p>Pow is just an example, I think all callers of <code>_max_shape</code> should use <code>_broadcast_shape</code> instead.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "shinh",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1257749-gp.jpg",
+         "url": "/shinh0",
+         "tier": "CONTRIBUTOR",
+         "id": 1257749,
+         "progressionOptOut": false
+        },
+        "authorType": "TOPIC",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 1661,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "shinh",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1257749-gp.jpg",
+          "url": "/shinh0",
+          "userName": "shinh0",
+          "tier": "CONTRIBUTOR",
+          "id": 1257749,
+          "profileUrl": "/shinh0",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 1257749,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3448715,
+        "postDate": "2026-04-26T12:49:49.067Z",
+        "rawMarkdown": "ONNX Runtime's implementation is more permissive than the specification. I added the support of broadcast in Einsum anyway.",
+        "content": "<p>ONNX Runtime's implementation is more permissive than the specification. I added the support of broadcast in Einsum anyway.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "shinh",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1257749-gp.jpg",
+       "url": "/shinh0",
+       "tier": "CONTRIBUTOR",
+       "id": 1257749,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "totalVotes": 2,
+       "canUpvote": true,
+       "totalUpvotes": 2
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 1661,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "shinh",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1257749-gp.jpg",
+        "url": "/shinh0",
+        "userName": "shinh0",
+        "tier": "CONTRIBUTOR",
+        "id": 1257749,
+        "profileUrl": "/shinh0",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 1257749,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Yu Luo",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+     "url": "/kevinyuluo",
+     "tier": "CONTRIBUTOR",
+     "id": 4200613,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "mmoffitt"
+      ],
+      "userCount": 1
+     },
+     {
+      "emoji": "YAY",
+      "featuredUserNames": [
+       "mmoffitt"
+      ],
+      "userCount": 1
+     },
+     {
+      "emoji": "LOVE",
+      "featuredUserNames": [
+       "mmoffitt"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Yu Luo",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+      "url": "/kevinyuluo",
+      "userName": "kevinyuluo",
+      "tier": "CONTRIBUTOR",
+      "id": 4200613,
+      "profileUrl": "/kevinyuluo",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 4200613,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3444881,
+    "postDate": "2026-04-18T15:56:13.967Z",
+    "rawMarkdown": "Expand in onnx-tool missed the process code of the condition of 'the shape.ndim < input.shape.ndim.'.",
+    "content": "<p>Expand in onnx-tool missed the process code of the condition of 'the shape.ndim &lt; input.shape.ndim.'.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Yu Luo",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+     "url": "/kevinyuluo",
+     "tier": "CONTRIBUTOR",
+     "id": 4200613,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Yu Luo",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+      "url": "/kevinyuluo",
+      "userName": "kevinyuluo",
+      "tier": "CONTRIBUTOR",
+      "id": 4200613,
+      "profileUrl": "/kevinyuluo",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 4200613,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3444896,
+    "postDate": "2026-04-18T16:36:32.903Z",
+    "rawMarkdown": "",
+    "replies": [
+     {
+      "id": 3445104,
+      "postDate": "2026-04-19T04:40:50.870Z",
+      "rawMarkdown": "Hi @robga , I'm the author of onnx-tool. Can you provide a reproducer of the profile issue?",
+      "content": "<p>Hi <a href=\"https://www.kaggle.com/robga\" target=\"_blank\">@robga</a> , I'm the author of onnx-tool. Can you provide a reproducer of the profile issue?</p>",
+      "replies": [
+       {
+        "id": 3445193,
+        "postDate": "2026-04-19T08:39:55.513Z",
+        "rawMarkdown": "",
+        "parent": {},
+        "author": {
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/"
+        },
+        "authorType": "COMMENT",
+        "votes": {},
+        "canDelete": true,
+        "isUserAuthor": true,
+        "isDeleted": true,
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false
+       },
+       {
+        "id": 3445198,
+        "postDate": "2026-04-19T08:50:47.200Z",
+        "rawMarkdown": "fixed as:\nONNX inferred shape: [1, 10, 0, 0]\nORT metadata shape: [1, 10, 0, 0]\nORT runtime shape: (1, 10, 0, 0)\nonnx_tool shape: [1, 10, 0, 0]",
+        "content": "<p>fixed as:\nONNX inferred shape: [1, 10, 0, 0]\nORT metadata shape: [1, 10, 0, 0]\nORT runtime shape: (1, 10, 0, 0)\nonnx_tool shape: [1, 10, 0, 0]</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 2,
+         "canUpvote": true,
+         "totalUpvotes": 2
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3446323,
+        "postDate": "2026-04-21T12:13:00.820Z",
+        "rawMarkdown": "",
+        "parent": {},
+        "author": {
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/"
+        },
+        "authorType": "COMMENT",
+        "votes": {},
+        "canDelete": true,
+        "isUserAuthor": true,
+        "isDeleted": true,
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true
+       },
+       {
+        "id": 3446339,
+        "postDate": "2026-04-21T12:54:27.223Z",
+        "rawMarkdown": "Yes, please provide a repro. @robga ",
+        "content": "<p>Yes, please provide a repro. <a href=\"https://www.kaggle.com/robga\" target=\"_blank\">@robga</a> </p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3446500,
+        "postDate": "2026-04-21T17:47:08.097Z",
+        "rawMarkdown": "",
+        "parent": {},
+        "author": {
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/"
+        },
+        "authorType": "COMMENT",
+        "votes": {},
+        "canDelete": true,
+        "isUserAuthor": true,
+        "isDeleted": true,
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true
+       },
+       {
+        "id": 3448652,
+        "postDate": "2026-04-26T09:20:36.643Z",
+        "rawMarkdown": "Bug3 is caused by the change in dynamic shape definition. `onnx-tool` does not support dynamic shape inference, so it should raise an error here. Now this bug has been fixed. You should use `shape_infer` like this: `graph.shape_infer({'input': _build_sample_input()})`.",
+        "content": "<p>Bug3 is caused by the change in dynamic shape definition. <code>onnx-tool</code> does not support dynamic shape inference, so it should raise an error here. Now this bug has been fixed. You should use <code>shape_infer</code> like this: <code>graph.shape_infer({'input': _build_sample_input()})</code>.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 3,
+         "canUpvote": true,
+         "totalUpvotes": 3
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "reactions": [
+         {
+          "emoji": "LOVE",
+          "featuredUserNames": [
+           "mmoffitt"
+          ],
+          "userCount": 1
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3448708,
+        "postDate": "2026-04-26T12:12:00.753Z",
+        "rawMarkdown": "It's the same for Bug2. You should pass the input to shape_infer, which is needed to calculate the output shape. `graph.shape_infer({'input': sample_input})`",
+        "content": "<p>It's the same for Bug2. You should pass the input to shape_infer, which is needed to calculate the output shape. <code>graph.shape_infer({'input': sample_input})</code></p>",
+        "parent": {},
+        "author": {
+         "displayName": "Yu Luo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+         "url": "/kevinyuluo",
+         "tier": "CONTRIBUTOR",
+         "id": 4200613,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 2,
+         "canUpvote": true,
+         "totalUpvotes": 2
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "reactions": [
+         {
+          "emoji": "LOVE",
+          "featuredUserNames": [
+           "mmoffitt"
+          ],
+          "userCount": 1
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Yu Luo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+          "url": "/kevinyuluo",
+          "userName": "kevinyuluo",
+          "tier": "CONTRIBUTOR",
+          "id": 4200613,
+          "profileUrl": "/kevinyuluo",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 4200613,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Yu Luo",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+       "url": "/kevinyuluo",
+       "tier": "CONTRIBUTOR",
+       "id": 4200613,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Yu Luo",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4200613-kg.png",
+        "url": "/kevinyuluo",
+        "userName": "kevinyuluo",
+        "tier": "CONTRIBUTOR",
+        "id": 4200613,
+        "profileUrl": "/kevinyuluo",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 4200613,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/"
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "totalUpvotes": 1
+    },
+    "canDelete": true,
+    "isUserAuthor": true,
+    "isDeleted": true,
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3444614,
+   "postDate": "2026-04-18T04:08:28.583Z",
+   "rawMarkdown": "I think there are several edge cases in onnx-tool that may lead to unintended score reductions. The simplest one I found is https://gist.github.com/shinh/34b3f6af69fa7a2cd115c84b5ad476b8 Its output is:\n\n```\n$ python3 bugs/expand.py\nSqrt == Expand: True\nSqrt score: (216000, 36000, 0)\nExpand score: (720, 248, 1)\n```\n\nThis shows `Sqrt(Expand(input, [30]))` consumes much less MACs/memory than `Sqrt(input)`, even though they are equivalent.\n\nI have noticed a few other similar cases, and at least one of them seems exploitable in the context of this competition.\n\nJust to be clear, I have not used this trick in my submissions.",
+   "content": "<p>I think there are several edge cases in onnx-tool that may lead to unintended score reductions. The simplest one I found is <a href=\"https://gist.github.com/shinh/34b3f6af69fa7a2cd115c84b5ad476b8\" target=\"_blank\">https://gist.github.com/shinh/34b3f6af69fa7a2cd115c84b5ad476b8</a> Its output is:</p>\n<pre><code>$ python3 bugs/expand.py\nSqrt == Expand: True\nSqrt score: (216000, 36000, 0)\nExpand score: (720, 248, 1)\n</code></pre>\n<p>This shows <code>Sqrt(Expand(input, [30]))</code> consumes much less MACs/memory than <code>Sqrt(input)</code>, even though they are equivalent.</p>\n<p>I have noticed a few other similar cases, and at least one of them seems exploitable in the context of this competition.</p>\n<p>Just to be clear, I have not used this trick in my submissions.</p>",
+   "parent": {},
+   "author": {
+    "displayName": "shinh",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1257749-gp.jpg",
+    "url": "/shinh0",
+    "tier": "CONTRIBUTOR",
+    "id": 1257749,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 10,
+    "canUpvote": true,
+    "totalUpvotes": 10
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 1661,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "shinh",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1257749-gp.jpg",
+     "url": "/shinh0",
+     "userName": "shinh0",
+     "tier": "CONTRIBUTOR",
+     "id": 1257749,
+     "profileUrl": "/shinh0",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 1257749,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3444614,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 692827,
+  "name": "Issues in onnx-tool",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-18T04:08:28.584829900Z",
+  "totalVotes": 10,
+  "url": "/competitions/neurogolf-2026/discussion/692827",
+  "totalMessages": 36,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}

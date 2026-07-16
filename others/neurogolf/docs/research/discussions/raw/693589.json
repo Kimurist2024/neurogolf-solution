@@ -1,0 +1,238 @@
+{
+ "forumTopic": {
+  "authorId": 22938014,
+  "authorThumbnailName": "22938014-kg.png?t=2024-10-15-22-21-41",
+  "authorUserDisplayName": "Tony Li",
+  "authorUserName": "tonylica",
+  "comments": [
+   {
+    "id": 3447411,
+    "postDate": "2026-04-23T05:02:12.980Z",
+    "rawMarkdown": "training token is expensive!!!!\n",
+    "content": "<p>training token is expensive!!!!</p>",
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1468,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3447297,
+    "postDate": "2026-04-22T23:09:13.347Z",
+    "rawMarkdown": "Just to confirm: for issue #1, it sounds like you're asking for a change similar to the following:\n\n```python\ndef score_network(m):\n  model = onnx_tool.loadmodel(m, {'verbose': False,\n                                  'constant_folding': True}) # <--- this line is new\n  ...\n)\n```\n\nLet me know if that's consistent with your expectation.",
+    "content": "<p>Just to confirm: for issue #1, it sounds like you're asking for a change similar to the following:</p>\n<pre><code>def score_network(m):\n  model = onnx_tool.loadmodel(m, {'verbose': False,\n                                  'constant_folding': True}) # &lt;--- this line is new\n  ...\n)\n</code></pre>\n<p>Let me know if that's consistent with your expectation.</p>",
+    "replies": [
+     {
+      "id": 3447390,
+      "postDate": "2026-04-23T04:06:22.050Z",
+      "rawMarkdown": "The main issue is still the onnx-tool profiler vs ONNX Runtime mismatch.\n\nThe inflated-score cases reported so far are mostly in that family — e.g. heterogeneous-shape Where, value-dependent ConstantOfShape, and the task179 dynamic-Pad case where ORT returns [1,10,30,30] but the profiler sees a much smaller output. Since scoring uses the profiler path, that undercounts memory and inflates score.\n\nSo for that class of bug, add a direct check after profiling: require each profiled output tensor to match the declared ONNX output shape and minimum required byte size. That should block this whole mismatch family directly.\n\nFor the separate Constant-op param count:  constant_folding=True is not a fix. It does recover the simple used Constant -> Add case, but it still misses unused serialized Constants and constant-only output graphs. In one all-constant graph it also folded so aggressively that the profiled cost effectively dropped to zero.\n\nThe preference would be to keep profiling the original graph, keep constant_folding=False, and add an explicit pass over original-model Constant nodes, along the lines of the code below. That said, this may be more invasive than it looks and could have unintended consequences, and we have not had a chance to test it thoroughly.\n\n```python\nimport onnx\nfrom onnx import numpy_helper as onp\n\ndef _tensor_proto_numel(tensor_proto: onnx.TensorProto) -> int:\n    n = 1\n    for d in tensor_proto.dims:\n        n *= int(d)\n    return int(n)\n\ndef _tensor_proto_payload_bytes(tensor_proto: onnx.TensorProto) -> int:\n    if tensor_proto.raw_data:\n        return len(tensor_proto.raw_data)\n    if tensor_proto.data_type == onnx.TensorProto.STRING:\n        return sum(len(x) for x in tensor_proto.string_data)\n    return int(onp.to_array(tensor_proto).nbytes)\n\ndef extra_constant_param_elems(model: onnx.ModelProto) -> int:\n    extra = 0\n    for node in model.graph.node:\n        if node.op_type != \"Constant\":\n            continue\n        for attr in node.attribute:\n            if attr.name == \"value\" and attr.HasField(\"t\"):\n                extra += _tensor_proto_numel(attr.t)\n            elif attr.name == \"sparse_value\" and attr.HasField(\"sparse_tensor\"):\n                # count stored values, not dense logical size\n                extra += _tensor_proto_numel(attr.sparse_tensor.values)\n    return extra\n\ndef extra_constant_payload_bytes(model: onnx.ModelProto) -> int:\n    extra = 0\n    for node in model.graph.node:\n        if node.op_type != \"Constant\":\n            continue\n        for attr in node.attribute:\n            if attr.name == \"value\" and attr.HasField(\"t\"):\n                extra += _tensor_proto_payload_bytes(attr.t)\n            elif attr.name == \"sparse_value\" and attr.HasField(\"sparse_tensor\"):\n                st = attr.sparse_tensor\n                extra += _tensor_proto_payload_bytes(st.values)\n                extra += _tensor_proto_payload_bytes(st.indices)\n    return extra\n\n```\nThen in scoring:\n\n```python\nmacs, memory_bytes, params = score_network(model_path, model)\n\n# keep current onnx_tool profile, then patch in Constant attrs from original model\nparams += extra_constant_param_elems(model)\n\ncost = max(1, int(macs) + int(memory_bytes) + int(params))\n```\n\n ![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F22938014%2Fc29c55721712d0ad63d6a96f92c40023%2F1.png?generation=1776917353709065&alt=media)\n",
+      "content": "<p>The main issue is still the onnx-tool profiler vs ONNX Runtime mismatch.</p>\n<p>The inflated-score cases reported so far are mostly in that family — e.g. heterogeneous-shape Where, value-dependent ConstantOfShape, and the task179 dynamic-Pad case where ORT returns [1,10,30,30] but the profiler sees a much smaller output. Since scoring uses the profiler path, that undercounts memory and inflates score.</p>\n<p>So for that class of bug, add a direct check after profiling: require each profiled output tensor to match the declared ONNX output shape and minimum required byte size. That should block this whole mismatch family directly.</p>\n<p>For the separate Constant-op param count:  constant_folding=True is not a fix. It does recover the simple used Constant -&gt; Add case, but it still misses unused serialized Constants and constant-only output graphs. In one all-constant graph it also folded so aggressively that the profiled cost effectively dropped to zero.</p>\n<p>The preference would be to keep profiling the original graph, keep constant_folding=False, and add an explicit pass over original-model Constant nodes, along the lines of the code below. That said, this may be more invasive than it looks and could have unintended consequences, and we have not had a chance to test it thoroughly.</p>\n<pre><code>import onnx\nfrom onnx import numpy_helper as onp\n\ndef _tensor_proto_numel(tensor_proto: onnx.TensorProto) -&gt; int:\n    n = 1\n    for d in tensor_proto.dims:\n        n *= int(d)\n    return int(n)\n\ndef _tensor_proto_payload_bytes(tensor_proto: onnx.TensorProto) -&gt; int:\n    if tensor_proto.raw_data:\n        return len(tensor_proto.raw_data)\n    if tensor_proto.data_type == onnx.TensorProto.STRING:\n        return sum(len(x) for x in tensor_proto.string_data)\n    return int(onp.to_array(tensor_proto).nbytes)\n\ndef extra_constant_param_elems(model: onnx.ModelProto) -&gt; int:\n    extra = 0\n    for node in model.graph.node:\n        if node.op_type != \"Constant\":\n            continue\n        for attr in node.attribute:\n            if attr.name == \"value\" and attr.HasField(\"t\"):\n                extra += _tensor_proto_numel(attr.t)\n            elif attr.name == \"sparse_value\" and attr.HasField(\"sparse_tensor\"):\n                # count stored values, not dense logical size\n                extra += _tensor_proto_numel(attr.sparse_tensor.values)\n    return extra\n\ndef extra_constant_payload_bytes(model: onnx.ModelProto) -&gt; int:\n    extra = 0\n    for node in model.graph.node:\n        if node.op_type != \"Constant\":\n            continue\n        for attr in node.attribute:\n            if attr.name == \"value\" and attr.HasField(\"t\"):\n                extra += _tensor_proto_payload_bytes(attr.t)\n            elif attr.name == \"sparse_value\" and attr.HasField(\"sparse_tensor\"):\n                st = attr.sparse_tensor\n                extra += _tensor_proto_payload_bytes(st.values)\n                extra += _tensor_proto_payload_bytes(st.indices)\n    return extra\n</code></pre>\n<p>Then in scoring:</p>\n<pre><code>macs, memory_bytes, params = score_network(model_path, model)\n\n# keep current onnx_tool profile, then patch in Constant attrs from original model\nparams += extra_constant_param_elems(model)\n\ncost = max(1, int(macs) + int(memory_bytes) + int(params))\n</code></pre>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F22938014%2Fc29c55721712d0ad63d6a96f92c40023%2F1.png?generation=1776917353709065&amp;alt=media\" alt=\"\"></p>",
+      "parent": {},
+      "author": {
+       "displayName": "Tony Li",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22938014-kg.png?t=2024-10-15-22-21-41",
+       "url": "/tonylica",
+       "tier": "MASTER",
+       "id": 22938014,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 4,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Tony Li",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22938014-kg.png?t=2024-10-15-22-21-41",
+        "url": "/tonylica",
+        "userName": "tonylica",
+        "tier": "MASTER",
+        "id": 22938014,
+        "profileUrl": "/tonylica",
+        "performanceTier": "MASTER",
+        "userId": 22938014,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3449788,
+    "postDate": "2026-04-28T21:34:53.997Z",
+    "rawMarkdown": "Issue #1 should now be fixed!  See also: [our metric update from today](https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230).",
+    "content": "<p>Issue #1 should now be fixed!  See also: <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230\" target=\"_blank\">our metric update from today</a>.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3446517,
+    "postDate": "2026-04-21T18:09:41.547Z",
+    "rawMarkdown": "",
+    "parent": {},
+    "author": {
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/"
+    },
+    "authorType": "COMMENT",
+    "votes": {},
+    "canDelete": true,
+    "isUserAuthor": true,
+    "isDeleted": true,
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3446452,
+   "postDate": "2026-04-21T16:30:35.747Z",
+   "rawMarkdown": "Update: the host has already shipped an evaluation update\n\nhttps://www.kaggle.com/competitions/neurogolf-2026/discussion/693711\n\n--------------------------------------\nAt this point, we already know there are several bugs, or at least likely bugs, that could be materially distorting scores. Any future data update or evaluation-code change could significantly alter both the current results and the direction of optimization.\n\nMy current score also does not yet include the over-grid tasks, and it may not be affected by known scoring issues listed below, so I am not too concerned about the score at this stage. \n\nWhat concerns me more is that the LLM is now repeatedly pushing further optimization by converting more logic into Constant nodes to gain score. If Constant memory is later counted, some of these newer optimizations may turn out to reduce score rather than improve it.\n\nIf possible, I would also like a full rescoring of the entire submission history. That would at least preserve visibility into earlier strong submissions, even if later optimizations turn out to be worse under corrected evaluation.\n\nRelevant post and point:\n\n1. **Constant nodes do not appear to be counted toward memory usage**\n   It seems that a `Constant` node’s parameters and memory are only counted at the node where the constant is actually consumed.\n\n2. **Other issues in `onnx-tool`**\nhttps://www.kaggle.com/competitions/neurogolf-2026/discussion/692827\n\n3. **The highest single-task score is 25**\nhttps://www.kaggle.com/competitions/neurogolf-2026/discussion/693247\n\n4. **ONNX Runtime compatibility**\nhttps://www.kaggle.com/competitions/neurogolf-2026/discussion/693088\n\n5. **Over-30×30 grid tasks**\nhttps://www.kaggle.com/competitions/neurogolf-2026/discussion/692621\n   There are 6 oversize-grid tasks: `021`, `055`, `080`, `184`, `202`, and `366`.",
+   "content": "<p>Update: the host has already shipped an evaluation update</p>\n<p><a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711\" target=\"_blank\">https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711</a></p>\n<hr>\n<p>At this point, we already know there are several bugs, or at least likely bugs, that could be materially distorting scores. Any future data update or evaluation-code change could significantly alter both the current results and the direction of optimization.</p>\n<p>My current score also does not yet include the over-grid tasks, and it may not be affected by known scoring issues listed below, so I am not too concerned about the score at this stage. </p>\n<p>What concerns me more is that the LLM is now repeatedly pushing further optimization by converting more logic into Constant nodes to gain score. If Constant memory is later counted, some of these newer optimizations may turn out to reduce score rather than improve it.</p>\n<p>If possible, I would also like a full rescoring of the entire submission history. That would at least preserve visibility into earlier strong submissions, even if later optimizations turn out to be worse under corrected evaluation.</p>\n<p>Relevant post and point:</p>\n<ol>\n<li><p><strong>Constant nodes do not appear to be counted toward memory usage</strong>\nIt seems that a <code>Constant</code> node’s parameters and memory are only counted at the node where the constant is actually consumed.</p></li>\n<li><p><strong>Other issues in <code>onnx-tool</code></strong>\n<a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/692827\" target=\"_blank\">https://www.kaggle.com/competitions/neurogolf-2026/discussion/692827</a></p></li>\n<li><p><strong>The highest single-task score is 25</strong>\n<a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/693247\" target=\"_blank\">https://www.kaggle.com/competitions/neurogolf-2026/discussion/693247</a></p></li>\n<li><p><strong>ONNX Runtime compatibility</strong>\n<a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/693088\" target=\"_blank\">https://www.kaggle.com/competitions/neurogolf-2026/discussion/693088</a></p></li>\n<li><p><strong>Over-30×30 grid tasks</strong>\n<a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/692621\" target=\"_blank\">https://www.kaggle.com/competitions/neurogolf-2026/discussion/692621</a>\nThere are 6 oversize-grid tasks: <code>021</code>, <code>055</code>, <code>080</code>, <code>184</code>, <code>202</code>, and <code>366</code>.</p></li>\n</ol>",
+   "parent": {},
+   "author": {
+    "displayName": "Tony Li",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22938014-kg.png?t=2024-10-15-22-21-41",
+    "url": "/tonylica",
+    "tier": "MASTER",
+    "id": 22938014,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 11,
+    "canUpvote": true,
+    "totalUpvotes": 11
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 4,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Tony Li",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22938014-kg.png?t=2024-10-15-22-21-41",
+     "url": "/tonylica",
+     "userName": "tonylica",
+     "tier": "MASTER",
+     "id": 22938014,
+     "profileUrl": "/tonylica",
+     "performanceTier": "MASTER",
+     "userId": 22938014,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3446452,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 693589,
+  "name": "Should we pause further optimization until there is a data/eval update or a full rescoring?",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-21T16:30:35.745644400Z",
+  "totalVotes": 11,
+  "url": "/competitions/neurogolf-2026/discussion/693589",
+  "totalMessages": 5,
+  "authorPerformanceTier": "MASTER",
+  "authorProgressionOptOut": false
+ }
+}

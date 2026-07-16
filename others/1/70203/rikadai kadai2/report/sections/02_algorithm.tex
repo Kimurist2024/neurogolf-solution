@@ -1,0 +1,142 @@
+\section{アルゴリズムの説明}
+
+本節では，課題を解くために採用したハッシュ法（チェイン法）のアルゴリズムを示し，なぜこのアルゴリズムでキーによる検索・挿入・削除が高速に実現できるのかを理論的に解説する．
+
+\subsection{ハッシュ法の原理}
+
+$n$ 個のデータの集まりから，キー $k$ をもつデータを探し出す問題を考える．データを配列に無秩序に格納した場合，検索には先頭から順に比較していく線形探索が必要であり，比較回数は最悪 $n$ 回，平均でも $n/2$ 回程度となる．データをキーの順に整列して二分探索を行えば比較回数は $\log_2 n$ 回程度に減るが，それでもデータ数に依存した回数の比較が必要であり，さらに挿入・削除のたびに整列状態を保つ操作が必要になる．
+
+ハッシュ法は，キーそのものから格納場所を直接計算することで，データ数によらないほぼ一定の手間で検索・挿入・削除を行う手法である．大きさ $m$ の配列（以下，この配列の各要素をバケットと呼び，配列全体をハッシュ表と呼ぶ）を用意し，キー $k$ から $0$ 以上 $m-1$ 以下の整数を計算する関数
+\begin{equation}\label{eq:hashfunc}
+h(k) \in \{0, 1, \ldots, m-1\}
+\end{equation}
+を定める．この $h$ をハッシュ関数，$h(k)$ をキー $k$ のハッシュ値と呼ぶ．データはハッシュ表の $h(k)$ 番目のバケットに格納する．検索時も同じ計算で $h(k)$ を求め，$h(k)$ 番目のバケットだけを調べればよい．つまり，ハッシュ関数の計算がキー長のみに依存する一定時間で済むならば，探索範囲がデータ全体から 1 バケットへと一挙に絞り込まれる．これがハッシュ法の原理である．
+
+\subsection{ハッシュ関数}
+
+式 (\ref{eq:hashfunc}) のハッシュ関数 $h$ に要求される性質は次の 2 点である．
+第一に，同じキーに対しては必ず同じ値を返すこと（決定性）．
+第二に，異なるキーのハッシュ値ができるだけ $0$ から $m-1$ に一様に散らばること（一様性）である．
+
+本課題で参考にする {\tt hash.c} は，キー（文字列）を構成する各文字の文字コードの総和をハッシュ表の大きさ $m$ で割った余りをハッシュ値とする．すなわち，キー $k$ が文字 $c_1, c_2, \ldots, c_L$ からなる長さ $L$ の文字列であるとき，
+\begin{equation}\label{eq:addhash}
+h(k) = \left( \sum_{i=1}^{L} \mathrm{code}(c_i) \right) \bmod m
+\end{equation}
+とする．ここで $\mathrm{code}(c_i)$ は文字 $c_i$ の文字コード（ASCII コード）を表す整数，$m$ はハッシュ表の大きさ（バケット数）であり，本課題では $m = 17$ とする．$\bmod$ は剰余を表す．
+式 (\ref{eq:addhash}) は文字コードの加算と剰余のみで計算でき，決定性を満たす．一様性については，剰余をとる際に $m$ を素数にしておくと，キーの偏り（例えば文字コードがある公約数の倍数に偏る場合）の影響を受けにくいことが知られている．$m=17$ が素数であるのはこのためである．なお，式 (\ref{eq:addhash}) は文字の並び順を区別しないため，同じ文字の組合せからなるキー同士は必ず同じハッシュ値をもつ．この性質がもたらす問題は考察で詳しく扱う．
+
+\subsection{衝突とチェイン法}
+
+キーの種類数はバケット数 $m$ よりはるかに多いので，鳩の巣原理より，異なるキーが同じハッシュ値をもつことは原理的に避けられない．これを衝突と呼ぶ．ハッシュ法のアルゴリズムは，衝突をどう処理するかで大きく 2 系統に分かれる．同じバケットに入るデータを連結リストでつないで保持するチェイン法（連鎖法）と，衝突したら表内の別の空きバケットを探して格納する開放番地法である．
+
+本課題では {\tt hash.c} と同じチェイン法を採用する．チェイン法では，ハッシュ表の各バケットは連結リストの先頭を指すポインタであり，キー $k$ をもつデータはリストの節（キー，値，次の節へのポインタの 3 つ組）として $h(k)$ 番目のリストにつながれる．チェイン法を採用する理由は次の 3 点である．
+第一に，衝突がいくら起きても単にリストが伸びるだけであり，表が満杯になって挿入できなくなることがない．
+第二に，削除がリストからの節の除去として素直に実現でき，開放番地法のように削除跡（墓標）の管理を必要としない．
+第三に，各操作が「ハッシュ値の計算」と「短いリストの走査」に分離されるため，正しさの確認が容易である．
+
+\subsection{各操作のアルゴリズム}
+
+チェイン法による挿入・検索・削除のアルゴリズムを以下に示す．いずれの操作も，まず式 (\ref{eq:addhash}) でハッシュ値 $v = h(k)$ を計算し，$v$ 番目のリストのみを対象とする点が共通である．
+
+\paragraph{挿入}
+キー $k$ と値 $x$ の組を格納する新しい節を作り，$v$ 番目のリストの先頭につなぐ．すなわち，新しい節の「次」ポインタに現在のリスト先頭を代入し，リスト先頭を新しい節に付け替える．リストの末尾まで辿る必要がないため，挿入そのものはリストの長さによらず一定の手数で完了する．挿入の流れを図 \ref{fig:flow-insert} に示す．
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=9mm,
+  startstop/.style={rectangle, rounded corners, draw, minimum width=30mm, minimum height=7mm},
+  process/.style={rectangle, draw, minimum width=52mm, minimum height=7mm},
+  arrow/.style={-{Stealth}}]
+\node (start) [startstop] {開始};
+\node (p1) [process, below=of start] {$v \leftarrow h(k)$ を計算};
+\node (p2) [process, below=of p1] {節（$k$, $x$, 次）を新たに確保};
+\node (p3) [process, below=of p2] {新節の「次」$\leftarrow$ 表 $[v]$};
+\node (p4) [process, below=of p3] {表 $[v]$ $\leftarrow$ 新節};
+\node (end) [startstop, below=of p4] {終了};
+\draw [arrow] (start) -- (p1);
+\draw [arrow] (p1) -- (p2);
+\draw [arrow] (p2) -- (p3);
+\draw [arrow] (p3) -- (p4);
+\draw [arrow] (p4) -- (end);
+\end{tikzpicture}
+\caption{チェイン法による挿入のフローチャート}
+\label{fig:flow-insert}
+\end{figure}
+
+\paragraph{検索}
+$v$ 番目のリストを先頭から順に辿り，節のキーと探索キー $k$ を比較する．一致する節が見つかればその節（の値）を返し，リストの末尾（空ポインタ）に達したら「存在しない」を返す．検索の流れを図 \ref{fig:flow-search} に示す．
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=8mm,
+  startstop/.style={rectangle, rounded corners, draw, minimum width=30mm, minimum height=7mm},
+  process/.style={rectangle, draw, minimum width=48mm, minimum height=7mm},
+  decision/.style={diamond, aspect=2.2, draw, inner sep=1pt},
+  arrow/.style={-{Stealth}}]
+\node (start) [startstop] {開始};
+\node (p1) [process, below=of start] {$v \leftarrow h(k)$ を計算};
+\node (p2) [process, below=of p1] {$p \leftarrow$ 表 $[v]$（リスト先頭）};
+\node (d1) [decision, below=of p2] {$p$ は空か};
+\node (d2) [decision, below=of d1, yshift=-2mm] {$p$ のキー $= k$ か};
+\node (p3) [process, below=of d2, yshift=-2mm] {$p \leftarrow p$ の「次」};
+\node (found) [startstop, right=of d2, xshift=22mm] {$p$ を返す};
+\node (notfound) [startstop, right=of d1, xshift=22mm] {「無し」を返す};
+\draw [arrow] (start) -- (p1);
+\draw [arrow] (p1) -- (p2);
+\draw [arrow] (p2) -- (d1);
+\draw [arrow] (d1) -- node[left] {いいえ} (d2);
+\draw [arrow] (d1) -- node[above] {はい} (notfound);
+\draw [arrow] (d2) -- node[above] {はい} (found);
+\draw [arrow] (d2) -- node[left] {いいえ} (p3);
+\draw [arrow] (p3.west) .. controls +(-18mm,0) and +(-18mm,0) .. (d1.west);
+\end{tikzpicture}
+\caption{チェイン法による検索のフローチャート}
+\label{fig:flow-search}
+\end{figure}
+
+\paragraph{削除}
+$v$ 番目のリストを検索と同様に辿るが，付け替えのために「直前の節」を覚えておく必要がある点が検索と異なる．キーが一致する節 $p$ が見つかったとき，$p$ がリスト先頭ならばリスト先頭を $p$ の「次」に付け替え，そうでなければ直前の節の「次」を $p$ の「次」に付け替える．その後 $p$ の記憶領域を解放する．一致する節がないまま末尾に達した場合は何もしない．削除の流れを図 \ref{fig:flow-delete} に示す．
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=8mm,
+  startstop/.style={rectangle, rounded corners, draw, minimum width=30mm, minimum height=7mm},
+  process/.style={rectangle, draw, minimum width=56mm, minimum height=7mm},
+  decision/.style={diamond, aspect=2.2, draw, inner sep=1pt},
+  arrow/.style={-{Stealth}}]
+\node (start) [startstop] {開始};
+\node (p1) [process, below=of start] {$v \leftarrow h(k)$，$p \leftarrow$ 表 $[v]$，前 $\leftarrow$ 空};
+\node (d1) [decision, below=of p1] {$p$ は空か};
+\node (d2) [decision, below=of d1, yshift=-2mm] {$p$ のキー $= k$ か};
+\node (p2) [process, below=of d2, yshift=-2mm] {前 $\leftarrow p$，$p \leftarrow p$ の「次」};
+\node (p3) [process, right=of d2, xshift=24mm] {リンクを付け替え $p$ を解放};
+\node (end1) [startstop, below=of p3] {終了};
+\node (end2) [startstop, right=of d1, xshift=24mm] {終了（何もしない）};
+\draw [arrow] (start) -- (p1);
+\draw [arrow] (p1) -- (d1);
+\draw [arrow] (d1) -- node[left] {いいえ} (d2);
+\draw [arrow] (d1) -- node[above] {はい} (end2);
+\draw [arrow] (d2) -- node[above] {はい} (p3);
+\draw [arrow] (d2) -- node[left] {いいえ} (p2);
+\draw [arrow] (p3) -- (end1);
+\draw [arrow] (p2.west) .. controls +(-20mm,0) and +(-20mm,0) .. (d1.west);
+\end{tikzpicture}
+\caption{チェイン法による削除のフローチャート}
+\label{fig:flow-delete}
+\end{figure}
+
+\subsection{計算量の理論的解析}
+
+チェイン法の性能は，各バケットのリストの長さで決まる．表に格納されているデータ数を $n$，バケット数を $m$ とし，その比
+\begin{equation}\label{eq:loadfactor}
+\alpha = \frac{n}{m}
+\end{equation}
+を負荷率と呼ぶ．$\alpha$ は 1 バケットあたりの平均データ数に等しい．ここで $n$ は格納済みデータ数，$m$ はバケット数である．
+
+ハッシュ関数が各キーを $m$ 個のバケットへ等確率かつ独立に割り当てる（単純一様ハッシュ）と仮定すると，各操作の平均比較回数は次のように見積もられる．表に存在しないキーの検索（不成功検索）では，$h(k)$ 番目のリストを末尾まで辿るので，比較回数の期待値はリスト長の期待値，すなわち $\alpha$ に等しい．一方，表に存在するキーの検索（成功検索）では平均してリストの半ばで一致が見つかるので，期待比較回数はおよそ
+\begin{equation}\label{eq:expected}
+1 + \frac{\alpha}{2}
+\end{equation}
+となる．挿入はリスト先頭への追加のみなので比較を要せず，ハッシュ値計算を含め一定時間である．削除は検索と同じ走査に付け替えを加えたものなので，期待比較回数は検索と同程度である．
+
+重要なのは，これらの量がデータ数 $n$ 単独ではなく負荷率 $\alpha = n/m$ で決まる点である．$m$ を $n$ に比例させて確保できるならば $\alpha$ は定数に保たれ，検索・挿入・削除はいずれも平均 $O(1)$ 時間で実行できる．本課題の実装は $m = 17$ 固定なので，$n$ が大きくなると $\alpha$ が増大し，平均比較回数は式 (\ref{eq:expected}) に従って $n$ に比例して増える．すなわち $m$ 固定のチェイン法は漸近的には線形探索と同じ $O(n)$ であるが，係数が $1/m$ 倍に抑えられた線形探索とみなせる．また最悪の場合（すべてのキーが同じバケットに衝突する場合）は，$m$ によらず比較回数が $n$ に達する．この最悪ケースが現実に起こり得ることも考察で実験的に確認する．

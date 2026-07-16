@@ -1,0 +1,1018 @@
+{
+ "forumTopic": {
+  "authorId": 25050929,
+  "authorThumbnailName": "25050929-kg.jpeg?t=2025-02-12-12-22-52",
+  "authorUserDisplayName": "Michael D. Moffitt",
+  "authorUserName": "mmoffitt",
+  "comments": [
+   {
+    "id": 3451099,
+    "postDate": "2026-04-30T20:47:15.720Z",
+    "rawMarkdown": "i suggest to add version tag in the file \"neurogolf_utils.py\". This helps kagglers to keep track of changes and also faciliate discussion that follows\n\n```\nNEUROGOLF_FILE_VERSION='28-apr.00'\n```",
+    "content": "<p>i suggest to add version tag in the file \"neurogolf_utils.py\". This helps kagglers to keep track of changes and also faciliate discussion that follows</p>\n<pre><code>NEUROGOLF_FILE_VERSION='28-apr.00'\n</code></pre>",
+    "replies": [
+     {
+      "id": 3451625,
+      "postDate": "2026-05-01T17:32:23.710Z",
+      "rawMarkdown": "Yes, and in addition to that, we can create a section toward the top listing all the changes so far (along with the dates that we made them).\n\nThanks for the suggestion!",
+      "content": "<p>Yes, and in addition to that, we can create a section toward the top listing all the changes so far (along with the dates that we made them).</p>\n<p>Thanks for the suggestion!</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "THANK_YOU",
+        "featuredUserNames": [
+         "mikeheald"
+        ],
+        "userCount": 1
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 5,
+     "canUpvote": true,
+     "totalUpvotes": 5
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1462,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "LOVE",
+      "featuredUserNames": [
+       "mikeheald",
+       "arc144",
+       "hrushikeshpawar",
+       "mmoffitt"
+      ],
+      "userCount": 4
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3450385,
+    "postDate": "2026-04-29T18:38:37.313Z",
+    "rawMarkdown": "A quick update for 4/29:\n- Yesterday's LB batch rescoring process has completed!\n- Many thanks to @pavelsavchenkov + @robga + @cudacoding + @asalhi for discovering & sharing two [new](https://www.kaggle.com/competitions/neurogolf-2026/discussion/694754#3450241) [exploits](https://www.kaggle.com/competitions/neurogolf-2026/discussion/694541#3449839).  These issues affect fewer than four or five teams at present, but do need to be addressed.\n\nThe fixes are seemingly straightforward, so we're sharing them here (to solicit community feedback) before making any changes:\n\n```\n_EXCLUDED_OP_TYPES = [\"LOOP\", \"SCAN\", \"NONZERO\", \"UNIQUE\", \"SCRIPT\", \"FUNCTION\",\n                      \"COMPRESS\"]  # <--- this op is new\n...\n\ndef calculate_memory(filename):\n    ...\n    init_names = {init.name for init in graph.initializer}\n    io_names = {t.name for t in list(graph.input) + list(graph.output)}\n    if io_names.intersection(init_names): return None\n    if model.functions: return None\n    for opset in model.opset_import:\n        if opset.domain not in {\"\", \"ai.onnx\"}: return None\n    for node in graph.node:\n        for attr in node.attribute:\n            if attr.type in [onnx.AttributeProto.GRAPH,\n                             onnx.AttributeProto.GRAPHS]:\n                return None\n```\n\nAlso, since `math.log()` currently fails for the handful of tasks that can be solved at zero cost, we're planning a change that gives full credit (25 points) to such solutions.",
+    "content": "<p>A quick update for 4/29:</p>\n<ul>\n<li>Yesterday's LB batch rescoring process has completed!</li>\n<li>Many thanks to <a href=\"https://www.kaggle.com/pavelsavchenkov\" target=\"_blank\">@pavelsavchenkov</a> + <a href=\"https://www.kaggle.com/robga\" target=\"_blank\">@robga</a> + <a href=\"https://www.kaggle.com/cudacoding\" target=\"_blank\">@cudacoding</a> + <a href=\"https://www.kaggle.com/asalhi\" target=\"_blank\">@asalhi</a> for discovering &amp; sharing two <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/694754#3450241\" target=\"_blank\">new</a> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/694541#3449839\" target=\"_blank\">exploits</a>.  These issues affect fewer than four or five teams at present, but do need to be addressed.</li>\n</ul>\n<p>The fixes are seemingly straightforward, so we're sharing them here (to solicit community feedback) before making any changes:</p>\n<pre><code>_EXCLUDED_OP_TYPES = [\"LOOP\", \"SCAN\", \"NONZERO\", \"UNIQUE\", \"SCRIPT\", \"FUNCTION\",\n                      \"COMPRESS\"]  # &lt;--- this op is new\n...\n\ndef calculate_memory(filename):\n    ...\n    init_names = {init.name for init in graph.initializer}\n    io_names = {t.name for t in list(graph.input) + list(graph.output)}\n    if io_names.intersection(init_names): return None\n    if model.functions: return None\n    for opset in model.opset_import:\n        if opset.domain not in {\"\", \"ai.onnx\"}: return None\n    for node in graph.node:\n        for attr in node.attribute:\n            if attr.type in [onnx.AttributeProto.GRAPH,\n                             onnx.AttributeProto.GRAPHS]:\n                return None\n</code></pre>\n<p>Also, since <code>math.log()</code> currently fails for the handful of tasks that can be solved at zero cost, we're planning a change that gives full credit (25 points) to such solutions.</p>",
+    "replies": [
+     {
+      "id": 3450833,
+      "postDate": "2026-04-30T14:05:05.680Z",
+      "rawMarkdown": "Yes, I think the proposed change fixes 2 linked bugs. Thank you!",
+      "content": "<p>Yes, I think the proposed change fixes 2 linked bugs. Thank you!</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Pavel",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/pavelsavchenkov",
+       "tier": "MASTER",
+       "id": 172360,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 10,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "THANK_YOU",
+        "featuredUserNames": [
+         "mmoffitt"
+        ],
+        "userCount": 1
+       },
+       {
+        "emoji": "LOVE",
+        "featuredUserNames": [
+         "mmoffitt"
+        ],
+        "userCount": 1
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Pavel",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+        "url": "/pavelsavchenkov",
+        "userName": "pavelsavchenkov",
+        "tier": "MASTER",
+        "id": 172360,
+        "profileUrl": "/pavelsavchenkov",
+        "performanceTier": "MASTER",
+        "userId": 172360,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3450927,
+      "postDate": "2026-04-30T16:28:24.257Z",
+      "rawMarkdown": "Even with this fix, I think there is another scorer issue derived from the already familiar `Tensor.get_numpy()` behavior: when runtime values are unknown, `onnx-tool` fabricates zeros.\n\nYou can insert a `Compress` gate at the beginning of the graph so `onnx-tool` infers a zero-volume tensor and then profiles all downstream computation with batch size 0. This can heavily undercount MACs. The gate adds some memory cost, but the MAC undercount can be larger.\n\nTo keep the host static-shape check happy, the model can also include a `value_info` entry for the gated tensor with its real non-zero shape.\n\nAttached are two task-1 submissions. They solve the same task and differ only by this input gate. The gated version scores lower cost / higher points.\n\nCost:\n* baseline: `253982`  \n* bugged: `118818`\n\nThese are not absolute minimum cost for task 1. The intention is to show how to lower the cost of a honest model by exploiting `onnx-tool` and `onnx`.\n\nProfiling MACs for the bugged model:\n\n| item | node count | reported MACs by scorer | true / expected MACs | wrong? | comment |\n| --- | ---: | ---: | ---: | --- | --- |\n| `_gate_reduce_max` | 1 | 9000 | 9000 | no | Gate cost is charged correctly. |\n| `_gate_greater` | 1 | 1 | 1 | no | Gate cost is charged correctly. |\n| `_gate_compress` | 1 | 0 | 0 | no | The issue is not `Compress` MACs; it is the zero-batch shape inferred after it. |\n| downstream `Conv` | 2 | 0 | 180000 | yes | These identity convs execute at runtime, but `onnx-tool` profiles them with batch size 0. |\n| downstream `Mul` | 1 | 0 | 81 | yes | Runtime batch is 1; scorer profiles zero-volume output. |\n| downstream `ReduceMax` | 1 | 0 | 81 | yes | Runtime batch is 1; scorer profiles zero-volume output. |\n| downstream `Sub` | 1 | 0 | 9 | yes | Runtime batch is 1; scorer profiles zero-volume output. |\n| total | 8 | 9001 | 189172 | yes | Reported total only includes the gate; expected total includes gate plus downstream computation. |\n",
+      "content": "<p>Even with this fix, I think there is another scorer issue derived from the already familiar <code>Tensor.get_numpy()</code> behavior: when runtime values are unknown, <code>onnx-tool</code> fabricates zeros.</p>\n<p>You can insert a <code>Compress</code> gate at the beginning of the graph so <code>onnx-tool</code> infers a zero-volume tensor and then profiles all downstream computation with batch size 0. This can heavily undercount MACs. The gate adds some memory cost, but the MAC undercount can be larger.</p>\n<p>To keep the host static-shape check happy, the model can also include a <code>value_info</code> entry for the gated tensor with its real non-zero shape.</p>\n<p>Attached are two task-1 submissions. They solve the same task and differ only by this input gate. The gated version scores lower cost / higher points.</p>\n<p>Cost:</p>\n<ul>\n<li>baseline: <code>253982</code>  </li>\n<li>bugged: <code>118818</code></li>\n</ul>\n<p>These are not absolute minimum cost for task 1. The intention is to show how to lower the cost of a honest model by exploiting <code>onnx-tool</code> and <code>onnx</code>.</p>\n<p>Profiling MACs for the bugged model:</p>\n<table>\n<thead>\n<tr>\n<th>item</th>\n<th>node count</th>\n<th>reported MACs by scorer</th>\n<th>true / expected MACs</th>\n<th>wrong?</th>\n<th>comment</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>_gate_reduce_max</code></td>\n<td>1</td>\n<td>9000</td>\n<td>9000</td>\n<td>no</td>\n<td>Gate cost is charged correctly.</td>\n</tr>\n<tr>\n<td><code>_gate_greater</code></td>\n<td>1</td>\n<td>1</td>\n<td>1</td>\n<td>no</td>\n<td>Gate cost is charged correctly.</td>\n</tr>\n<tr>\n<td><code>_gate_compress</code></td>\n<td>1</td>\n<td>0</td>\n<td>0</td>\n<td>no</td>\n<td>The issue is not <code>Compress</code> MACs; it is the zero-batch shape inferred after it.</td>\n</tr>\n<tr>\n<td>downstream <code>Conv</code></td>\n<td>2</td>\n<td>0</td>\n<td>180000</td>\n<td>yes</td>\n<td>These identity convs execute at runtime, but <code>onnx-tool</code> profiles them with batch size 0.</td>\n</tr>\n<tr>\n<td>downstream <code>Mul</code></td>\n<td>1</td>\n<td>0</td>\n<td>81</td>\n<td>yes</td>\n<td>Runtime batch is 1; scorer profiles zero-volume output.</td>\n</tr>\n<tr>\n<td>downstream <code>ReduceMax</code></td>\n<td>1</td>\n<td>0</td>\n<td>81</td>\n<td>yes</td>\n<td>Runtime batch is 1; scorer profiles zero-volume output.</td>\n</tr>\n<tr>\n<td>downstream <code>Sub</code></td>\n<td>1</td>\n<td>0</td>\n<td>9</td>\n<td>yes</td>\n<td>Runtime batch is 1; scorer profiles zero-volume output.</td>\n</tr>\n<tr>\n<td>total</td>\n<td>8</td>\n<td>9001</td>\n<td>189172</td>\n<td>yes</td>\n<td>Reported total only includes the gate; expected total includes gate plus downstream computation.</td>\n</tr>\n</tbody>\n</table>",
+      "attachments": [
+       {
+        "fileType": ".zip",
+        "id": 42061,
+        "name": "task1_dynamic_gate_bug.zip",
+        "totalBytes": 8749,
+        "url": "https://storage.googleapis.com/kaggle-forum-message-attachments/3450927/42061/task1_dynamic_gate_bug.zip"
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Pavel",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/pavelsavchenkov",
+       "tier": "MASTER",
+       "id": 172360,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 10,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Pavel",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+        "url": "/pavelsavchenkov",
+        "userName": "pavelsavchenkov",
+        "tier": "MASTER",
+        "id": 172360,
+        "profileUrl": "/pavelsavchenkov",
+        "performanceTier": "MASTER",
+        "userId": 172360,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3450933,
+      "postDate": "2026-04-30T16:35:53.860Z",
+      "rawMarkdown": "One more thing about MACs accounting in `onnx-tool`.\n\nIt looks like zero MACs for `ArgMax`, `TopK`, and `OneHot` in `onnx-tool` is not intended.\n\n`onnx-tool` does not use MACs as literal multiply-adds only. Its own profiler comments describe an instruction-style cost model, and it defines `CMP_MACS = 1` for comparisons [[code](https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L9-L22)].\n\nComparable non-multiply-add ops are already charged: `Less` [[code](https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L721-L733)], `Equal` [[code](https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L2231-L2237)], `Greater` [[code](https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L2434-L2441)], `ReduceMax` via `ReduceMinNode.profile()` [[code](https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L1924-L1949)], and `MaxPool` [[code](https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L1394-L1414)].\n\nThe zero cost happens because the default `Node.profile()` returns `[0, 0]` [[code](https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L212-L213)], and these classes implement inference but do not override `profile()`:\n- `ArgMaxNode` computes `np.argmax`, then the next class starts with no profile override [[code](https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L1627-L1640)].\n- `TopKNode` computes top-k selection, then the next class starts with no profile override [[code](https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L1953-L1980)].\n- `OneHotNode` uses helper code based on equality comparison, but also has no profile override [[code](https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L1030-L1070)].\n\nSo under current `onnx-tool` policy, these should have non-zero comparison/selection cost; they end up zero only because their `profile()` methods are missing.\n\nDo you think the scorer should keep this behaviour?",
+      "content": "<p>One more thing about MACs accounting in <code>onnx-tool</code>.</p>\n<p>It looks like zero MACs for <code>ArgMax</code>, <code>TopK</code>, and <code>OneHot</code> in <code>onnx-tool</code> is not intended.</p>\n<p><code>onnx-tool</code> does not use MACs as literal multiply-adds only. Its own profiler comments describe an instruction-style cost model, and it defines <code>CMP_MACS = 1</code> for comparisons [<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L9-L22\" target=\"_blank\">code</a>].</p>\n<p>Comparable non-multiply-add ops are already charged: <code>Less</code> [<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L721-L733\" target=\"_blank\">code</a>], <code>Equal</code> [<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L2231-L2237\" target=\"_blank\">code</a>], <code>Greater</code> [<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L2434-L2441\" target=\"_blank\">code</a>], <code>ReduceMax</code> via <code>ReduceMinNode.profile()</code> [<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L1924-L1949\" target=\"_blank\">code</a>], and <code>MaxPool</code> [<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L1394-L1414\" target=\"_blank\">code</a>].</p>\n<p>The zero cost happens because the default <code>Node.profile()</code> returns <code>[0, 0]</code> [<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L212-L213\" target=\"_blank\">code</a>], and these classes implement inference but do not override <code>profile()</code>:</p>\n<ul>\n<li><code>ArgMaxNode</code> computes <code>np.argmax</code>, then the next class starts with no profile override [<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L1627-L1640\" target=\"_blank\">code</a>].</li>\n<li><code>TopKNode</code> computes top-k selection, then the next class starts with no profile override [<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L1953-L1980\" target=\"_blank\">code</a>].</li>\n<li><code>OneHotNode</code> uses helper code based on equality comparison, but also has no profile override [<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/bf31b6f1e9d31498f4bf40898bd1143aab9ac3db/onnx_tool/node.py#L1030-L1070\" target=\"_blank\">code</a>].</li>\n</ul>\n<p>So under current <code>onnx-tool</code> policy, these should have non-zero comparison/selection cost; they end up zero only because their <code>profile()</code> methods are missing.</p>\n<p>Do you think the scorer should keep this behaviour?</p>",
+      "replies": [
+       {
+        "id": 3451014,
+        "postDate": "2026-04-30T19:02:43.240Z",
+        "rawMarkdown": "+1 to fixing the `Compress` issue (see our latest update above).  It introduces the same sorts of issues as `NonZero` and `Unique`.\n\nAs for the other corner cases: there will definitely be bugs that teams can leverage to bring their MAC counts down (perhaps by a lot).  In the interest of providing a stable metric for the remainder of the contest, we're willing to tolerate these edge cases, and will only take action in the event of a truly catastrophic exploit.",
+        "content": "<p>+1 to fixing the <code>Compress</code> issue (see our latest update above).  It introduces the same sorts of issues as <code>NonZero</code> and <code>Unique</code>.</p>\n<p>As for the other corner cases: there will definitely be bugs that teams can leverage to bring their MAC counts down (perhaps by a lot).  In the interest of providing a stable metric for the remainder of the contest, we're willing to tolerate these edge cases, and will only take action in the event of a truly catastrophic exploit.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3451024,
+        "postDate": "2026-04-30T19:14:04.727Z",
+        "rawMarkdown": "Zero MACs in `onnx-tool` by design: I see, thanks!\n\nDynamic gate issue: it is actually not `Compress` specific.\n\nThe same pattern can be for example reproduced with a standard `Slice` gate at the beginning of the graph: `ReduceMax(input) -> Greater(..., 0) -> Cast(INT64) -> Slice(input, end)`.\n\nCost:\n* baseline: `409489`\n* \"optimized\": `127807`\n\nProfiling MACs for the \"optimized\" model:\n\n| item | node count | reported MACs by scorer | true / expected MACs | wrong? | comment |\n| --- | ---: | ---: | ---: | --- | --- |\n| `_slice_gate_reduce_max` | 1 | 9000 | 9000 | no | Gate cost is charged correctly. |\n| `_slice_gate_greater` | 1 | 1 | 1 | no | Gate cost is charged correctly. |\n| `_slice_gate_cast_end` | 1 | 0 | 0 | no | Cast has no MAC cost under the current policy. |\n| `_slice_gate_slice` | 1 | 0 | 0 | no for MACs, yes for shape | The issue is not `Slice` MACs; it is the zero-batch shape inferred after it. |\n| downstream `Conv` | 2 | 0 | 180000 | yes | These identity convs execute at runtime, but `onnx-tool` profiles them with batch size 0. |\n| downstream `ReduceSum` | 1 | 0 | 81 | yes | Runtime batch is 1; scorer profiles zero-volume output. |\n| downstream `ConvTranspose` | 2 | 0 | 145800 | yes | Runtime batch is 1; scorer profiles zero-volume output. |\n| downstream `Sub` | 1 | 0 | 9 | yes | Runtime batch is 1; scorer profiles zero-volume output. |\n| downstream `Add` | 1 | 0 | 810 | yes | Runtime batch is 1; scorer profiles zero-volume output. |\n| total | 14 | 9001 | 335701 | yes | Reported total only includes the gate; expected total includes gate plus downstream computation. |",
+        "content": "<p>Zero MACs in <code>onnx-tool</code> by design: I see, thanks!</p>\n<p>Dynamic gate issue: it is actually not <code>Compress</code> specific.</p>\n<p>The same pattern can be for example reproduced with a standard <code>Slice</code> gate at the beginning of the graph: <code>ReduceMax(input) -&gt; Greater(..., 0) -&gt; Cast(INT64) -&gt; Slice(input, end)</code>.</p>\n<p>Cost:</p>\n<ul>\n<li>baseline: <code>409489</code></li>\n<li>\"optimized\": <code>127807</code></li>\n</ul>\n<p>Profiling MACs for the \"optimized\" model:</p>\n<table>\n<thead>\n<tr>\n<th>item</th>\n<th>node count</th>\n<th>reported MACs by scorer</th>\n<th>true / expected MACs</th>\n<th>wrong?</th>\n<th>comment</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>_slice_gate_reduce_max</code></td>\n<td>1</td>\n<td>9000</td>\n<td>9000</td>\n<td>no</td>\n<td>Gate cost is charged correctly.</td>\n</tr>\n<tr>\n<td><code>_slice_gate_greater</code></td>\n<td>1</td>\n<td>1</td>\n<td>1</td>\n<td>no</td>\n<td>Gate cost is charged correctly.</td>\n</tr>\n<tr>\n<td><code>_slice_gate_cast_end</code></td>\n<td>1</td>\n<td>0</td>\n<td>0</td>\n<td>no</td>\n<td>Cast has no MAC cost under the current policy.</td>\n</tr>\n<tr>\n<td><code>_slice_gate_slice</code></td>\n<td>1</td>\n<td>0</td>\n<td>0</td>\n<td>no for MACs, yes for shape</td>\n<td>The issue is not <code>Slice</code> MACs; it is the zero-batch shape inferred after it.</td>\n</tr>\n<tr>\n<td>downstream <code>Conv</code></td>\n<td>2</td>\n<td>0</td>\n<td>180000</td>\n<td>yes</td>\n<td>These identity convs execute at runtime, but <code>onnx-tool</code> profiles them with batch size 0.</td>\n</tr>\n<tr>\n<td>downstream <code>ReduceSum</code></td>\n<td>1</td>\n<td>0</td>\n<td>81</td>\n<td>yes</td>\n<td>Runtime batch is 1; scorer profiles zero-volume output.</td>\n</tr>\n<tr>\n<td>downstream <code>ConvTranspose</code></td>\n<td>2</td>\n<td>0</td>\n<td>145800</td>\n<td>yes</td>\n<td>Runtime batch is 1; scorer profiles zero-volume output.</td>\n</tr>\n<tr>\n<td>downstream <code>Sub</code></td>\n<td>1</td>\n<td>0</td>\n<td>9</td>\n<td>yes</td>\n<td>Runtime batch is 1; scorer profiles zero-volume output.</td>\n</tr>\n<tr>\n<td>downstream <code>Add</code></td>\n<td>1</td>\n<td>0</td>\n<td>810</td>\n<td>yes</td>\n<td>Runtime batch is 1; scorer profiles zero-volume output.</td>\n</tr>\n<tr>\n<td>total</td>\n<td>14</td>\n<td>9001</td>\n<td>335701</td>\n<td>yes</td>\n<td>Reported total only includes the gate; expected total includes gate plus downstream computation.</td>\n</tr>\n</tbody>\n</table>",
+        "attachments": [
+         {
+          "fileType": ".zip",
+          "id": 42063,
+          "name": "attachment.zip",
+          "totalBytes": 2214,
+          "url": "https://storage.googleapis.com/kaggle-forum-message-attachments/3451024/42063/attachment.zip"
+         }
+        ],
+        "parent": {},
+        "author": {
+         "displayName": "Pavel",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/pavelsavchenkov",
+         "tier": "MASTER",
+         "id": 172360,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 10,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "reactions": [
+         {
+          "emoji": "THANK_YOU",
+          "featuredUserNames": [
+           "mmoffitt"
+          ],
+          "userCount": 1
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Pavel",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+          "url": "/pavelsavchenkov",
+          "userName": "pavelsavchenkov",
+          "tier": "MASTER",
+          "id": 172360,
+          "profileUrl": "/pavelsavchenkov",
+          "performanceTier": "MASTER",
+          "userId": 172360,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3451342,
+        "postDate": "2026-05-01T08:05:21.733Z",
+        "rawMarkdown": "> As for the other corner cases: there will definitely be bugs that teams can leverage to bring their MAC counts down (perhaps by a lot). In the interest of providing a stable metric for the remainder of the contest, we're willing to tolerate these edge cases, and will only take action in the event of a truly catastrophic exploit.\n\nPeople won't share loopholes anymore if they aren't fixed. They will keep their advantage private. Is that what you want?",
+        "content": "<blockquote>\n  <p>As for the other corner cases: there will definitely be bugs that teams can leverage to bring their MAC counts down (perhaps by a lot). In the interest of providing a stable metric for the remainder of the contest, we're willing to tolerate these edge cases, and will only take action in the event of a truly catastrophic exploit.</p>\n</blockquote>\n<p>People won't share loopholes anymore if they aren't fixed. They will keep their advantage private. Is that what you want?</p>",
+        "parent": {},
+        "author": {
+         "displayName": "CPMP",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/75976-gr.jpg",
+         "url": "/cpmpml",
+         "tier": "GRANDMASTER",
+         "id": 75976,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 8,
+         "canUpvote": true,
+         "totalUpvotes": 8
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "reactions": [
+         {
+          "emoji": "SURPRISE",
+          "featuredUserNames": [
+           "benzydney"
+          ],
+          "userCount": 1
+         },
+         {
+          "emoji": "THANK_YOU",
+          "featuredUserNames": [
+           "mmoffitt"
+          ],
+          "userCount": 1
+         }
+        ]
+       },
+       {
+        "id": 3451358,
+        "postDate": "2026-05-01T09:08:40.227Z",
+        "rawMarkdown": "> As for the other corner cases: there will definitely be bugs that teams can leverage to bring their MAC counts down (perhaps by a lot).  In the interest of providing a stable metric for the remainder of the contest, we're willing to tolerate these edge cases, and will only take action in the event of a truly catastrophic exploit.\n\nDoesn't it defeat the whole purpose of competition? It's becoming more of a bug bounty rather than true optimization and if you consider allowing edge cases, it'll severely discourage many others who are trying to optimize without any bug exploits.",
+        "content": "<blockquote>\n  <p>As for the other corner cases: there will definitely be bugs that teams can leverage to bring their MAC counts down (perhaps by a lot).  In the interest of providing a stable metric for the remainder of the contest, we're willing to tolerate these edge cases, and will only take action in the event of a truly catastrophic exploit.</p>\n</blockquote>\n<p>Doesn't it defeat the whole purpose of competition? It's becoming more of a bug bounty rather than true optimization and if you consider allowing edge cases, it'll severely discourage many others who are trying to optimize without any bug exploits.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "NNMax",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/18148523-kg.jpg?t=2025-10-31-11-21-57",
+         "url": "/ashok205",
+         "tier": "EXPERT",
+         "id": 18148523,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 7,
+         "canUpvote": true,
+         "totalUpvotes": 7
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 144,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "reactions": [
+         {
+          "emoji": "THANK_YOU",
+          "featuredUserNames": [
+           "keymoon",
+           "mmoffitt"
+          ],
+          "userCount": 2
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "fangwenhshan",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22321106-kg.jpg?t=2026-03-16-11-08-51",
+          "url": "/fangwenhshan",
+          "userName": "fangwenhshan",
+          "tier": "CONTRIBUTOR",
+          "id": 22321106,
+          "profileUrl": "/fangwenhshan",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 22321106,
+          "progressionOptOut": true
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3451516,
+        "postDate": "2026-05-01T15:07:08.703Z",
+        "rawMarkdown": "+1 to @cpmpml and @ashok205.  We do indeed want contestants to feel comfortable sharing potential loopholes with us, and to ensure that teams can do this without revealing valuable techniques, we've just set up `neurogolf.2026@gmail.com` to allow direct and private communication with the organizers.  We'll also pin that address to our [welcoming announcement](https://www.kaggle.com/competitions/neurogolf-2026/discussion/691461).\n\nThanks for sharing your feedback — please keep it coming!",
+        "content": "<p>+1 to <a href=\"https://www.kaggle.com/cpmpml\" target=\"_blank\">@cpmpml</a> and <a href=\"https://www.kaggle.com/ashok205\" target=\"_blank\">@ashok205</a>.  We do indeed want contestants to feel comfortable sharing potential loopholes with us, and to ensure that teams can do this without revealing valuable techniques, we've just set up <code>neurogolf.2026@gmail.com</code> to allow direct and private communication with the organizers.  We'll also pin that address to our <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/691461\" target=\"_blank\">welcoming announcement</a>.</p>\n<p>Thanks for sharing your feedback — please keep it coming!</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "totalVotes": 4,
+         "canUpvote": true,
+         "totalUpvotes": 4
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Pavel",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/pavelsavchenkov",
+       "tier": "MASTER",
+       "id": 172360,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 10,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Pavel",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+        "url": "/pavelsavchenkov",
+        "userName": "pavelsavchenkov",
+        "tier": "MASTER",
+        "id": 172360,
+        "profileUrl": "/pavelsavchenkov",
+        "performanceTier": "MASTER",
+        "userId": 172360,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 3,
+     "canUpvote": true,
+     "totalUpvotes": 3
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3451557,
+    "postDate": "2026-05-01T16:09:12.487Z",
+    "rawMarkdown": "Thanks. I really thought it was going end-game like this soon, 10K score.",
+    "content": "<p>Thanks. I really thought it was going end-game like this soon, 10K score.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "theredbluepill",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5812539-kg.png?t=2026-06-05-15-58-11",
+     "url": "/poonszesen",
+     "tier": "EXPERT",
+     "id": 5812539,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 48,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "mmoffitt"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "enabled": true,
+     "teamLeader": {
+      "displayName": "Andrey Yunoshev",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/71556-kg.jpg?t=2026-05-08-11-10-52",
+      "url": "/andreyyunoshev",
+      "userName": "andreyyunoshev",
+      "tier": "CONTRIBUTOR",
+      "id": 71556,
+      "profileUrl": "/andreyyunoshev",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 71556,
+      "progressionOptOut": false
+     },
+     "intro": "Online platform: plug your AI agent (Claude Code, Codex CLI, etc.) — it auto-picks ARC-AGI tasks, golfs ONNXs, submits to Kaggle. Agents share one knowledge base, compound  know-how. Need: Claude/Codex/Etc. Get: team artifacts "
+    }
+   },
+   {
+    "id": 3451555,
+    "postDate": "2026-05-01T16:06:15.803Z",
+    "rawMarkdown": "Thanks for the clarification and transparency also this makes the competition much fairer.",
+    "content": "<p>Thanks for the clarification and transparency also this makes the competition much fairer.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Durga Kumari",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/30256119-kg.jpg?t=2026-04-09-17-12-41",
+     "url": "/durgakumari12",
+     "tier": "CONTRIBUTOR",
+     "id": 30256119,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "mmoffitt"
+      ],
+      "userCount": 1
+     }
+    ]
+   },
+   {
+    "id": 3449841,
+    "postDate": "2026-04-29T00:19:26.257Z",
+    "rawMarkdown": "**Let the new round of reward hacking begin!**\n\nTime to make our LLMs anxious y'all\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F2270821%2F1212960a053511f129bf726fe8136e76%2F03270c4c700148ecb731be926ad62df95a996582-1522x869.webp?generation=1777421952260400&alt=media)",
+    "content": "<p><strong>Let the new round of reward hacking begin!</strong></p>\n<p>Time to make our LLMs anxious y'all\n<img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F2270821%2F1212960a053511f129bf726fe8136e76%2F03270c4c700148ecb731be926ad62df95a996582-1522x869.webp?generation=1777421952260400&amp;alt=media\" alt=\"\"></p>",
+    "parent": {},
+    "author": {
+     "displayName": "Chan Kha Vu",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/2270821-kg.jpg",
+     "url": "/chankhavu",
+     "tier": "MASTER",
+     "id": 2270821,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 12,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Geremie Yeo",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+      "url": "/yeoyunsianggeremie",
+      "userName": "yeoyunsianggeremie",
+      "tier": "GRANDMASTER",
+      "id": 5256933,
+      "profileUrl": "/yeoyunsianggeremie",
+      "performanceTier": "GRANDMASTER",
+      "userId": 5256933,
+      "progressionOptOut": false
+     },
+     "intro": "Must have a Codex/Claude Code team/enterprise plan with higher usage limits"
+    }
+   },
+   {
+    "id": 3450151,
+    "postDate": "2026-04-29T11:57:34.797Z",
+    "rawMarkdown": "Some task has zero sum for mac's memory and parameter count after excluding the input output tensor sizes. Are they handled properly? I got an error.",
+    "content": "<p>Some task has zero sum for mac's memory and parameter count after excluding the input output tensor sizes. Are they handled properly? I got an error.</p>",
+    "replies": [
+     {
+      "id": 3450387,
+      "postDate": "2026-04-29T18:41:38.070Z",
+      "rawMarkdown": "Great question -- yes, there are one or two tasks that can be solved at zero cost, which (ideally) should yield a full score of 25 points.  We'll have an update about this soon.",
+      "content": "<p>Great question -- yes, there are one or two tasks that can be solved at zero cost, which (ideally) should yield a full score of 25 points.  We'll have an update about this soon.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3451520,
+      "postDate": "2026-05-01T15:10:54.260Z",
+      "rawMarkdown": "This issue should be fixed as of yesterday's update.  Specifically: if teams manage to find a legitimate zero-cost solution to a task, it will earn them the full 25 points.",
+      "content": "<p>This issue should be fixed as of yesterday's update.  Specifically: if teams manage to find a legitimate zero-cost solution to a task, it will earn them the full 25 points.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "prvi",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/653364-kg.JPG",
+     "url": "/prokaj",
+     "tier": "MASTER",
+     "id": 653364,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 101,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "mmoffitt"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "prvi",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/653364-kg.JPG",
+      "url": "/prokaj",
+      "userName": "prokaj",
+      "tier": "MASTER",
+      "id": 653364,
+      "profileUrl": "/prokaj",
+      "performanceTier": "MASTER",
+      "userId": 653364,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3449806,
+    "postDate": "2026-04-28T22:08:08.707Z",
+    "rawMarkdown": "how to we use the new profiler in our local PC environment? download the new neurogolf_utils.py, install new version of onnx-tool from github or ????",
+    "content": "<p>how to we use the new profiler in our local PC environment? download the new neurogolf_utils.py, install new version of onnx-tool from github or ????</p>",
+    "replies": [
+     {
+      "id": 3449813,
+      "postDate": "2026-04-28T22:15:04.383Z",
+      "rawMarkdown": "As long as you're using our newest [public dataset](https://www.kaggle.com/competitions/neurogolf-2026/data) (which has the latest `neurogolf_utils.py`), you should be all set.  As for `onnx-tool`, v1.0.1 is OK -- these updates don't require any new versions of that.\n\nPlease feel free to reach out if you need any additional help reproducing these scores locally!",
+      "content": "<p>As long as you're using our newest <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/data\" target=\"_blank\">public dataset</a> (which has the latest <code>neurogolf_utils.py</code>), you should be all set.  As for <code>onnx-tool</code>, v1.0.1 is OK -- these updates don't require any new versions of that.</p>\n<p>Please feel free to reach out if you need any additional help reproducing these scores locally!</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "totalVotes": 3,
+       "canUpvote": true,
+       "totalUpvotes": 3
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1462,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "mmoffitt"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3450201,
+    "postDate": "2026-04-29T13:39:30.003Z",
+    "rawMarkdown": "",
+    "parent": {},
+    "author": {
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/"
+    },
+    "authorType": "COMMENT",
+    "votes": {},
+    "canDelete": true,
+    "isUserAuthor": true,
+    "isDeleted": true,
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   },
+   {
+    "id": 3449798,
+    "postDate": "2026-04-28T21:45:49.413Z",
+    "rawMarkdown": "",
+    "replies": [
+     {
+      "id": 3449800,
+      "postDate": "2026-04-28T21:48:47.490Z",
+      "rawMarkdown": "Thanks for the question -- there are no explicit changes to allowed Ops, as long as they survive the \"shape inference\" pass that is now performed before network scoring.",
+      "content": "<p>Thanks for the question -- there are no explicit changes to allowed Ops, as long as they survive the \"shape inference\" pass that is now performed before network scoring.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "THANK_YOU",
+        "featuredUserNames": [
+         "robga"
+        ],
+        "userCount": 1
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/"
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "totalUpvotes": 1
+    },
+    "canDelete": true,
+    "isUserAuthor": true,
+    "isDeleted": true,
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3449780,
+   "postDate": "2026-04-28T21:12:54.257Z",
+   "rawMarkdown": "Thanks again to all teams for their helpful and detailed feedback.  As [telegraphed](https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711#3448225) last week, we're rolling out a metric update to ensure competition rules are strictly and fairly enforced:\n- We now correctly incorporate parameter contributions from **constant values**, addressing an [issue](https://www.kaggle.com/competitions/neurogolf-2026/discussion/692827#3445818) [reported](https://www.kaggle.com/competitions/neurogolf-2026/discussion/693589) by @mukundan314 and @tonylica.\n- Our [constraint](www.kaggle.com/competitions/neurogolf-2026/overview/constraints) requiring **statically-defined shapes** is now explicitly enforced in response to [discoveries](https://www.kaggle.com/competitions/neurogolf-2026/discussion/693950#3447198) [made](https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711#3446797) by @asalhi and @mukundan314.  In particular, networks that are invalid or contain dynamic shapes—e.g., symbolic dim parameters or missing dimension values after [shape inference](https://onnx.ai/onnx/api/shape_inference.html)—should now yield zero points as originally stated (you can use our [starter notebook](https://www.kaggle.com/code/mmoffitt/the-2026-neurogolf-championship) to perform this same check locally).\n- To insulate contestants against [profiling](https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711#3447354) [idiosyncrasies](https://www.kaggle.com/competitions/neurogolf-2026/discussion/694051#3448342), our **memory footprint calculation** is now just a simple sum over the bytes consumed by all static shapes (excluding input & output layers).\n\nAs always, we'll continue to listen to community feedback and will provide further clarity if needed.  The batch rescoring process should be starting soon!\n\n---\n\n***[Refer to the bottom of our [welcome message](https://www.kaggle.com/competitions/neurogolf-2026/discussion/691461) for a complete list of all contest updates]***",
+   "content": "<p>Thanks again to all teams for their helpful and detailed feedback.  As <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711#3448225\" target=\"_blank\">telegraphed</a> last week, we're rolling out a metric update to ensure competition rules are strictly and fairly enforced:</p>\n<ul>\n<li>We now correctly incorporate parameter contributions from <strong>constant values</strong>, addressing an <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/692827#3445818\" target=\"_blank\">issue</a> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/693589\" target=\"_blank\">reported</a> by <a href=\"https://www.kaggle.com/mukundan314\" target=\"_blank\">@mukundan314</a> and <a href=\"https://www.kaggle.com/tonylica\" target=\"_blank\">@tonylica</a>.</li>\n<li>Our <a href=\"www.kaggle.com/competitions/neurogolf-2026/overview/constraints\" target=\"_blank\">constraint</a> requiring <strong>statically-defined shapes</strong> is now explicitly enforced in response to <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/693950#3447198\" target=\"_blank\">discoveries</a> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711#3446797\" target=\"_blank\">made</a> by <a href=\"https://www.kaggle.com/asalhi\" target=\"_blank\">@asalhi</a> and <a href=\"https://www.kaggle.com/mukundan314\" target=\"_blank\">@mukundan314</a>.  In particular, networks that are invalid or contain dynamic shapes—e.g., symbolic dim parameters or missing dimension values after <a href=\"https://onnx.ai/onnx/api/shape_inference.html\" target=\"_blank\">shape inference</a>—should now yield zero points as originally stated (you can use our <a href=\"https://www.kaggle.com/code/mmoffitt/the-2026-neurogolf-championship\" target=\"_blank\">starter notebook</a> to perform this same check locally).</li>\n<li>To insulate contestants against <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711#3447354\" target=\"_blank\">profiling</a> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/694051#3448342\" target=\"_blank\">idiosyncrasies</a>, our <strong>memory footprint calculation</strong> is now just a simple sum over the bytes consumed by all static shapes (excluding input &amp; output layers).</li>\n</ul>\n<p>As always, we'll continue to listen to community feedback and will provide further clarity if needed.  The batch rescoring process should be starting soon!</p>\n<hr>\n<p><strong><em>[Refer to the bottom of our <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/691461\" target=\"_blank\">welcome message</a> for a complete list of all contest updates]</em></strong></p>",
+   "parent": {},
+   "author": {
+    "displayName": "Michael D. Moffitt",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+    "url": "/mmoffitt",
+    "tier": "CONTRIBUTOR",
+    "id": 25050929,
+    "progressionOptOut": false
+   },
+   "authorType": "HOST",
+   "votes": {
+    "totalVotes": 12,
+    "canUpvote": true,
+    "totalUpvotes": 12
+   },
+   "kernelVersion": 0,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "THANK_YOU",
+     "featuredUserNames": [
+      "mikeheald",
+      "robga",
+      "keithtyser",
+      "dziyanavalenta",
+      "indreswarbalaji",
+      "akm009",
+      "russcore"
+     ],
+     "userCount": 7
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "userName": "mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "profileUrl": "/mmoffitt",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 25050929,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3449780,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 695230,
+  "isStickied": true,
+  "name": "NeuroGolf Update for April 28th",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-28T21:12:54.257834Z",
+  "totalVotes": 12,
+  "url": "/competitions/neurogolf-2026/discussion/695230",
+  "totalMessages": 22,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}

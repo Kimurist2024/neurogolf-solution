@@ -1,0 +1,95 @@
+{
+  "task": "task338",
+  "model": "/mnt/data/task338_improved.onnx",
+  "submission_zip": "/mnt/data/task338_submission_full.zip",
+  "model_size_bytes": 3970,
+  "zip_size_bytes": 1506693,
+  "sha256_onnx": "bdd5e8a227354a21fa5473a9ffa42f6584e3061baeae84e63c92c936b189c882",
+  "sha256_zip": "9c5a4bbbc22a8f7fa3836b115077cc34cc863a96f935e02dfd5b3400ccfe8a37",
+  "structure": {
+    "onnx_checker": "pass",
+    "shape_inference": "pass",
+    "opset": [
+      [
+        "",
+        13
+      ]
+    ],
+    "nodes": [
+      [
+        "Einsum",
+        ""
+      ]
+    ],
+    "initializers": [
+      [
+        "B",
+        [
+          30,
+          30
+        ],
+        "FLOAT"
+      ],
+      [
+        "V",
+        [
+          10
+        ],
+        "FLOAT"
+      ],
+      [
+        "C",
+        [
+          10
+        ],
+        "FLOAT"
+      ]
+    ],
+    "sparse_initializer_count": 0,
+    "functions": 0,
+    "banned_ops_present": [],
+    "dynamic_dims": []
+  },
+  "validation": {
+    "scripts_lib_scoring_require_correct_true": {
+      "memory": 0,
+      "params": 920,
+      "cost": 920,
+      "score": 18.175626329956913,
+      "correct": true,
+      "time_sec": 24.2
+    },
+    "official_neurogolf_utils_verify_subset": {
+      "train_test_right": 5,
+      "train_test_wrong": 0,
+      "arc_gen_right": 262,
+      "arc_gen_wrong": 0,
+      "time_sec": 23.62
+    },
+    "raw_float_margin_visible": {
+      "near_open_interval_0_0p25": 0,
+      "min_abs_nonzero": 160.93145751953125,
+      "time_sec_included_in_manual_raw_pass": 23.43
+    },
+    "fresh_generator": {
+      "k": 100,
+      "right": 99,
+      "wrong": 1,
+      "accuracy": 0.99,
+      "time_sec": 9.09
+    },
+    "validation_time_sum_sec_using_scoring_plus_official_plus_fresh": 56.91,
+    "runtime_env": {
+      "onnx": "1.22.0",
+      "onnxruntime": "1.27.0"
+    }
+  },
+  "score_delta_vs_existing_cost_920": {
+    "old_cost": 920,
+    "new_cost": 920,
+    "old_task_score": 18.175626329956913,
+    "new_task_score": 18.175626329956913,
+    "task_score_delta": 0.0
+  },
+  "notes": "Cost score did not improve; the replacement is a faster exact visible/fresh-safe candidate under the stated operator/static-shape constraints."
+}

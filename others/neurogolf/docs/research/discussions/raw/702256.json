@@ -1,0 +1,383 @@
+{
+ "forumTopic": {
+  "authorId": 71556,
+  "authorThumbnailName": "71556-kg.jpg?t=2026-05-08-11-10-52",
+  "authorUserDisplayName": "Andrey Yunoshev",
+  "authorUserName": "andreyyunoshev",
+  "comments": [
+   {
+    "id": 3462034,
+    "postDate": "2026-05-22T01:20:32.403Z",
+    "rawMarkdown": "Maybe this is related to this discussion [here][1]\n\n[1]: https://www.kaggle.com/competitions/neurogolf-2026/discussion/699840",
+    "content": "<p>Maybe this is related to this discussion <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/699840\" target=\"_blank\">here</a></p>",
+    "replies": [
+     {
+      "id": 3462317,
+      "postDate": "2026-05-22T21:02:38.333Z",
+      "rawMarkdown": "+1, I believe that is the root cause (specifically, there is a bug in ONNX Runtime that retains state between consecutive task executions when networks are malformed).\n\n@andreyyunoshev Take a look at that discussion, and see if it might apply to these tasks in your bundle: #272, #294, #317",
+      "content": "<p>+1, I believe that is the root cause (specifically, there is a bug in ONNX Runtime that retains state between consecutive task executions when networks are malformed).</p>\n<p><a href=\"https://www.kaggle.com/andreyyunoshev\" target=\"_blank\">@andreyyunoshev</a> Take a look at that discussion, and see if it might apply to these tasks in your bundle: #272, #294, #317</p>",
+      "replies": [
+       {
+        "id": 3462331,
+        "postDate": "2026-05-22T22:30:29.727Z",
+        "rawMarkdown": "\n I checked all three for the bias_len < out_channels pattern — task272/294 already had bias=10/out_ch=10, task317 had no bias (I added zero bias). Upgraded ir/opset on ir=6 tasks. Check also all other tasks. So bias-OOB hypothesis doesn't appear to be the live bug for my bundle — possibly something else (state retention?). Anyone have additional reproducer patterns?",
+        "content": "<p>I checked all three for the bias_len &lt; out_channels pattern — task272/294 already had bias=10/out_ch=10, task317 had no bias (I added zero bias). Upgraded ir/opset on ir=6 tasks. Check also all other tasks. So bias-OOB hypothesis doesn't appear to be the live bug for my bundle — possibly something else (state retention?). Anyone have additional reproducer patterns?</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Andrey Yunoshev",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/71556-kg.jpg?t=2026-05-08-11-10-52",
+         "url": "/andreyyunoshev",
+         "tier": "CONTRIBUTOR",
+         "id": 71556,
+         "progressionOptOut": false
+        },
+        "authorType": "TOPIC",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 48,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "enabled": true,
+         "teamLeader": {
+          "displayName": "Andrey Yunoshev",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/71556-kg.jpg?t=2026-05-08-11-10-52",
+          "url": "/andreyyunoshev",
+          "userName": "andreyyunoshev",
+          "tier": "CONTRIBUTOR",
+          "id": 71556,
+          "profileUrl": "/andreyyunoshev",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 71556,
+          "progressionOptOut": false
+         },
+         "intro": "Online platform: plug your AI agent (Claude Code, Codex CLI, etc.) — it auto-picks ARC-AGI tasks, golfs ONNXs, submits to Kaggle. Agents share one knowledge base, compound  know-how. Need: Claude/Codex/Etc. Get: team artifacts "
+        }
+       },
+       {
+        "id": 3462333,
+        "postDate": "2026-05-22T22:33:29.083Z",
+        "rawMarkdown": "I'm also having instability issues, and it happened in the range of problems where I didn't have bias_len < out_channels pattern. The funniest part is the score for tasks where I had those bugs are stable.",
+        "content": "<p>I'm also having instability issues, and it happened in the range of problems where I didn't have bias_len &lt; out_channels pattern. The funniest part is the score for tasks where I had those bugs are stable.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Chan Kha Vu",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/2270821-kg.jpg",
+         "url": "/chankhavu",
+         "tier": "MASTER",
+         "id": 2270821,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 12,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Geremie Yeo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+          "url": "/yeoyunsianggeremie",
+          "userName": "yeoyunsianggeremie",
+          "tier": "GRANDMASTER",
+          "id": 5256933,
+          "profileUrl": "/yeoyunsianggeremie",
+          "performanceTier": "GRANDMASTER",
+          "userId": 5256933,
+          "progressionOptOut": false
+         },
+         "intro": "Must have a Codex/Claude Code team/enterprise plan with higher usage limits"
+        }
+       },
+       {
+        "id": 3462521,
+        "postDate": "2026-05-23T17:16:16.480Z",
+        "rawMarkdown": "@mmoffitt I wonder if there is any chance this could be fixed (using something like restarting the environment for each task)? It may make judging much slower though\n\nThe funny thing is, we submitted the exact same zip file twice within a 1 min period. The scores were different 😭",
+        "content": "<p><a href=\"https://www.kaggle.com/mmoffitt\" target=\"_blank\">@mmoffitt</a> I wonder if there is any chance this could be fixed (using something like restarting the environment for each task)? It may make judging much slower though</p>\n<p>The funny thing is, we submitted the exact same zip file twice within a 1 min period. The scores were different 😭</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Geremie Yeo",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+         "url": "/yeoyunsianggeremie",
+         "tier": "GRANDMASTER",
+         "id": 5256933,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 12,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Geremie Yeo",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+          "url": "/yeoyunsianggeremie",
+          "userName": "yeoyunsianggeremie",
+          "tier": "GRANDMASTER",
+          "id": 5256933,
+          "profileUrl": "/yeoyunsianggeremie",
+          "performanceTier": "GRANDMASTER",
+          "userId": 5256933,
+          "progressionOptOut": false
+         },
+         "intro": "Must have a Codex/Claude Code team/enterprise plan with higher usage limits"
+        }
+       },
+       {
+        "id": 3462530,
+        "postDate": "2026-05-23T17:58:39.777Z",
+        "rawMarkdown": "@andreyyunoshev @chankhavu @yeoyunsianggeremie Note there are multiple types of Conv layers: i.e. Conv, ConvInteger, QLinearConv, ConvTranspose, DeformConv. Make sure you check every one of these layers for `bias_len < out_channels`.\n\nIf that doesn't solve the problem, then explain to Codex or Claude the problem w/ `bias_len < out_channels` and have Codex or Claude scan all your onnx for any other graph layer parameters that may cause a similar issue (i.e. other malformed networks).",
+        "content": "<p><a href=\"https://www.kaggle.com/andreyyunoshev\" target=\"_blank\">@andreyyunoshev</a> <a href=\"https://www.kaggle.com/chankhavu\" target=\"_blank\">@chankhavu</a> <a href=\"https://www.kaggle.com/yeoyunsianggeremie\" target=\"_blank\">@yeoyunsianggeremie</a> Note there are multiple types of Conv layers: i.e. Conv, ConvInteger, QLinearConv, ConvTranspose, DeformConv. Make sure you check every one of these layers for <code>bias_len &lt; out_channels</code>.</p>\n<p>If that doesn't solve the problem, then explain to Codex or Claude the problem w/ <code>bias_len &lt; out_channels</code> and have Codex or Claude scan all your onnx for any other graph layer parameters that may cause a similar issue (i.e. other malformed networks).</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Chris Deotte",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+         "url": "/cdeotte",
+         "tier": "GRANDMASTER",
+         "id": 1723677,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 16,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Chris Deotte",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+          "url": "/cdeotte",
+          "userName": "cdeotte",
+          "tier": "GRANDMASTER",
+          "id": 1723677,
+          "profileUrl": "/cdeotte",
+          "performanceTier": "GRANDMASTER",
+          "userId": 1723677,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3462541,
+        "postDate": "2026-05-23T18:59:29.433Z",
+        "rawMarkdown": "I am now investigating a potential issue in ONNX Runtime that appears to (incorrectly) reuse scratchpad memory between sessions without initialization, triggering the contamination of state even if the models themselves are perfectly valid.",
+        "content": "<p>I am now investigating a potential issue in ONNX Runtime that appears to (incorrectly) reuse scratchpad memory between sessions without initialization, triggering the contamination of state even if the models themselves are perfectly valid.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3462580,
+        "postDate": "2026-05-24T01:48:24.517Z",
+        "rawMarkdown": "I've reported this bug to the ONNX Runtime developers here: https://github.com/microsoft/onnxruntime/issues/28654\n\nIf others have additional info that might be relevant, please let me know -- many thanks!",
+        "content": "<p>I've reported this bug to the ONNX Runtime developers here: <a href=\"https://github.com/microsoft/onnxruntime/issues/28654\" target=\"_blank\">https://github.com/microsoft/onnxruntime/issues/28654</a></p>\n<p>If others have additional info that might be relevant, please let me know -- many thanks!</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "totalVotes": 2,
+       "canUpvote": true,
+       "totalUpvotes": 2
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Chris Deotte",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+     "url": "/cdeotte",
+     "tier": "GRANDMASTER",
+     "id": 1723677,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 16,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Chris Deotte",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+      "url": "/cdeotte",
+      "userName": "cdeotte",
+      "tier": "GRANDMASTER",
+      "id": 1723677,
+      "profileUrl": "/cdeotte",
+      "performanceTier": "GRANDMASTER",
+      "userId": 1723677,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3462016,
+   "postDate": "2026-05-21T23:36:46.213Z",
+   "rawMarkdown": "I'm trying to understand the exact scoring mechanism for submissions and noticed what looks like a discrepancy. Could anyone (especially the organizers) clarify?\n\n**Setup — controlled experiment with 3 submissions of the same `task262` ONNX file:**\n\n| Submission | Files in zip | Public LB returned |\n|---|---|---|\n| (1) Only `task262.onnx` (my candidate, ~600 bytes cost) | 1 | **18.60** |\n| (2) 400-task bundle that includes the same `task262.onnx` | 400 | **6404.04** |\n| (3) Same 400 bundle but `task262.onnx` removed | 399 | **6403.62** |\n\n**Implied contribution of `task262` in bundle context** = (2) − (3) = **0.42 LB**\n\nBut the same file scored **18.60 LB** when submitted alone. So the per-task score appears to depend on whether other files are present.\n\nThe expected per-task points formula is `max(1.0, 25.0 - log(memory + params))` from `neurogolf_utils.verify_network`, which gives ~18.6 for my file's cost ≈ 596. This matches the single-file score exactly, but **not** the bundle contribution.\n\nThe competition Overview says the official scorer \"will also employ a private dataset (containing a smaller number of examples per task)\". My local validation passes 100/100 on a holdout of ARC-GEN-style samples I generate myself, but the bundle score behaves as if private examples failed.\n\n**Questions:**\n\n1. Is the private dataset evaluated for **every** submission (single-file or bundled), or only when the bundle contains a network for the corresponding task?\n2. When a network passes all `train` / `test` / `arc-gen` examples but fails on the private dataset, what is the per-task contribution? Is it `0`, the `cost_pts`, or something else (e.g., a fixed penalty)?\n3. Is there a documented spec for what the single-file Public LB number actually represents, given that 399 of the 400 task slots are missing from the zip?\n\nA pointer to documentation would be perfect. Thanks!",
+   "content": "<p>I'm trying to understand the exact scoring mechanism for submissions and noticed what looks like a discrepancy. Could anyone (especially the organizers) clarify?</p>\n<p><strong>Setup — controlled experiment with 3 submissions of the same <code>task262</code> ONNX file:</strong></p>\n<table>\n<thead>\n<tr>\n<th>Submission</th>\n<th>Files in zip</th>\n<th>Public LB returned</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>(1) Only <code>task262.onnx</code> (my candidate, ~600 bytes cost)</td>\n<td>1</td>\n<td><strong>18.60</strong></td>\n</tr>\n<tr>\n<td>(2) 400-task bundle that includes the same <code>task262.onnx</code></td>\n<td>400</td>\n<td><strong>6404.04</strong></td>\n</tr>\n<tr>\n<td>(3) Same 400 bundle but <code>task262.onnx</code> removed</td>\n<td>399</td>\n<td><strong>6403.62</strong></td>\n</tr>\n</tbody>\n</table>\n<p><strong>Implied contribution of <code>task262</code> in bundle context</strong> = (2) − (3) = <strong>0.42 LB</strong></p>\n<p>But the same file scored <strong>18.60 LB</strong> when submitted alone. So the per-task score appears to depend on whether other files are present.</p>\n<p>The expected per-task points formula is <code>max(1.0, 25.0 - log(memory + params))</code> from <code>neurogolf_utils.verify_network</code>, which gives ~18.6 for my file's cost ≈ 596. This matches the single-file score exactly, but <strong>not</strong> the bundle contribution.</p>\n<p>The competition Overview says the official scorer \"will also employ a private dataset (containing a smaller number of examples per task)\". My local validation passes 100/100 on a holdout of ARC-GEN-style samples I generate myself, but the bundle score behaves as if private examples failed.</p>\n<p><strong>Questions:</strong></p>\n<ol>\n<li>Is the private dataset evaluated for <strong>every</strong> submission (single-file or bundled), or only when the bundle contains a network for the corresponding task?</li>\n<li>When a network passes all <code>train</code> / <code>test</code> / <code>arc-gen</code> examples but fails on the private dataset, what is the per-task contribution? Is it <code>0</code>, the <code>cost_pts</code>, or something else (e.g., a fixed penalty)?</li>\n<li>Is there a documented spec for what the single-file Public LB number actually represents, given that 399 of the 400 task slots are missing from the zip?</li>\n</ol>\n<p>A pointer to documentation would be perfect. Thanks!</p>",
+   "parent": {},
+   "author": {
+    "displayName": "Andrey Yunoshev",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/71556-kg.jpg?t=2026-05-08-11-10-52",
+    "url": "/andreyyunoshev",
+    "tier": "CONTRIBUTOR",
+    "id": 71556,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "canUpvote": true
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 48,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "enabled": true,
+    "teamLeader": {
+     "displayName": "Andrey Yunoshev",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/71556-kg.jpg?t=2026-05-08-11-10-52",
+     "url": "/andreyyunoshev",
+     "userName": "andreyyunoshev",
+     "tier": "CONTRIBUTOR",
+     "id": 71556,
+     "profileUrl": "/andreyyunoshev",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 71556,
+     "progressionOptOut": false
+    },
+    "intro": "Online platform: plug your AI agent (Claude Code, Codex CLI, etc.) — it auto-picks ARC-AGI tasks, golfs ONNXs, submits to Kaggle. Agents share one knowledge base, compound  know-how. Need: Claude/Codex/Etc. Get: team artifacts "
+   }
+  },
+  "firstMessageId": 3462016,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 702256,
+  "name": "Question on scoring: per-task score appears to differ between single-file and full-bundle submissions",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-05-21T23:36:46.213681700Z",
+  "url": "/competitions/neurogolf-2026/discussion/702256",
+  "totalMessages": 8,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}
