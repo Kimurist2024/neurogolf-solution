@@ -1,0 +1,159 @@
+{
+ "forumTopic": {
+  "authorId": 71556,
+  "authorThumbnailName": "71556-kg.jpg?t=2026-05-08-11-10-52",
+  "authorUserDisplayName": "Andrey Yunoshev",
+  "authorUserName": "andreyyunoshev",
+  "comments": [
+   {
+    "id": 3465966,
+    "postDate": "2026-06-03T06:15:23.630Z",
+    "rawMarkdown": "analyzer+solver+validator\n\nAND i am the **Observer** 😂 \nNow after 6K+ I have no idea what's going on.",
+    "content": "<p>analyzer+solver+validator</p>\n<p>AND i am the <strong>Observer</strong> 😂 \nNow after 6K+ I have no idea what's going on.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "ADARSH REDDY B",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/adarshreddyb",
+     "tier": "CONTRIBUTOR",
+     "id": 10247677,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 87,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "ADARSH REDDY B",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+      "url": "/adarshreddyb",
+      "userName": "adarshreddyb",
+      "tier": "CONTRIBUTOR",
+      "id": 10247677,
+      "profileUrl": "/adarshreddyb",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 10247677,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3465736,
+    "postDate": "2026-06-02T18:46:01.033Z",
+    "rawMarkdown": "Hi @andreyyunoshev! You are right some tasks are big and consume more tokens, even not enough :). But you can use big tasks into the small parts then verify the solution with all tasks. In that way you can save some tokens.",
+    "content": "<p>Hi <a href=\"https://www.kaggle.com/andreyyunoshev\" target=\"_blank\">@andreyyunoshev</a>! You are right some tasks are big and consume more tokens, even not enough :). But you can use big tasks into the small parts then verify the solution with all tasks. In that way you can save some tokens.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Rustam Bazarbayev",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5591682-kg.jpg?t=2025-09-12-06-50-17",
+     "url": "/rustambazarbayev",
+     "tier": "CONTRIBUTOR",
+     "id": 5591682,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 633,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Rustam Bazarbayev",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5591682-kg.jpg?t=2025-09-12-06-50-17",
+      "url": "/rustambazarbayev",
+      "userName": "rustambazarbayev",
+      "tier": "CONTRIBUTOR",
+      "id": 5591682,
+      "profileUrl": "/rustambazarbayev",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 5591682,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3465742,
+    "postDate": "2026-06-02T18:55:13.760Z",
+    "rawMarkdown": "",
+    "parent": {},
+    "author": {
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/"
+    },
+    "authorType": "COMMENT",
+    "votes": {},
+    "canDelete": true,
+    "isUserAuthor": true,
+    "isDeleted": true,
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3465671,
+   "postDate": "2026-06-02T16:26:22.593Z",
+   "rawMarkdown": "# Sharing my agent sub-harness (~6580) — show me yours? 🤖\n\nHi everyone! At the time of this post my score is ~6580, so maybe my experience will be useful (or just feed this post to your agents — let them build the same thing 😄🤖. But better don't burn tokens for nothing — I myself have no confidence that all of this will get me even to gold, let alone a win 😄).\n\nUp to roughly 5800 I had no special system at all — I just opened fresh Codex or Claude Code sessions and asked them to solve tasks. Sometimes I'd write a small tool here and there, but nothing systematic. At the very beginning I'd literally open Codex, give it the goal \"win gold in this competition\" and leave it overnight. That's how I got, I think, the first 5000 points. Then, seeing the results, I started working a bit more thoughtfully: participating in the process, generating ideas. Around 5800 I mostly switched from solving tasks to building my own harness.\n\nThe base for the agents is a CLI that talks to an online server — it stores the solutions and the whole history, so different agents can interact with each other. What it can do:\n\n- show a task's grids right in the terminal (train/test, diffs, pattern hints)\n- per-node breakdown of the current solution — which nodes eat the most params/memory\n- batch scan of the same across many tasks at once\n- cost of your candidate + delta vs the live baseline\n- dump the exact weights/initializers of a solution\n- run a model on an example and show intermediate tensors as grids (for debugging)\n- verify a candidate against the deployed solution before submitting (same checks the pipeline runs)\n- semantic search: similar tasks/rules/attempts, plus a tool catalog you can search before writing a script\n- a task dossier (current rule, attempt history, why previous attempts failed)\n- claims so two agents don't grab the same task; journals and channels for notes between agents\n- submit pipeline: stage a candidate, watch its state, force one task to Kaggle and wait for the real verdict\n\nSemantic search over our own history helps a LOT. Every task, rule and attempt gets an embedding, so an agent starting a task sees with one command: \"here are 5 similar tasks, here's how they were solved, here's what didn't work\". Same with tools: before writing a script, the agent searches the catalog by description — most \"quick scripts\" already exist, someone just wrote them in an earlier session. Without this, agents kept reinventing the same things over and over.\n\nOn top of that there are roles. I just start a new session, say \"you're a researcher\" (or the agent picks a role itself during onboarding) — and from there it works autonomously:\n\n- **researcher** — solves tasks: takes a task, tries to beat the current solution, validates, submits, writes down conclusions and moves on. Researchers work inside tracks — different directions/approaches (each track has its own hypothesis), so several agents can dig into different ideas in parallel without getting in each other's way;\n- **developer** — doesn't touch tasks at all, only improves the harness itself (CLI, validation pipeline, tooling). Researchers file feedback when something gets in their way, the developer fixes it;\n- **observer** — read-only: watches system health and stats.\n\nThe main track is the simplest one: the task already has a derived rule — we try to implement it more compactly. Can't squeeze it further — we try to come up with a better implementation (or a better rule). The per-task cycle looks like this: take a task, build a candidate, if it comes out smaller than the current solution — stage it, then the submitter picks it up and sends it to Kaggle. While waiting for the verdict, the agent is already working on the next task in parallel.\n\nThis is the most effective track, but you have to understand: it needs at least high, and preferably xhigh reasoning mode. I haven't tried max in Claude at scale — tokens burn fast as it is, because the agent constantly has to look at what the tasks look like. Cost-wise: one night of this track (~8 hours) burns roughly 20% of the weekly limit of a Codex subscription, and about the same for Claude. My impressions: Claude thinks better and often finds nicer solutions, but it deviates from the harness instructions much more often and can generally fall into creative nonsense. Codex is insanely stable — it follows the cycle precisely and is just ready to grind non-stop.\n\nOver the last five days a single agent on this track alone gives roughly +10–15 LB points per day. About 30–40 accepted submissions, ~10 rejected — that's when the agent came up with a solution that passes my pre-submit gates but still gives 0 or worse on the hidden set. \"Day\" here really means my night, i.e. about 8 hours of work, not 24.\n\nThe average accepted win is just +0.36, median +0.21. A third of the wins are microscopic (<0.1), another ~40% are in the 0.1–0.5 range, and only one in ten gives 1+. So progress isn't \"the agent found a brilliant solution\" — it's a stream of small improvements: many tasks are already solved close to optimally.\n\nOne more thing: the agent almost never finds the best solution on the first pass, and I never managed to make it think longer. Even with all the instructions, as soon as the agent finds any meaningful gain, it rushes to close the task and move on. You can fight this mechanically, but it's easier to accept it: let agents take the same task again and again, see the history of previous attempts, and keep tightening. From what I've seen, to squeeze a task to its optimum you need to pass over it up to about five times.\n\nThe second most popular track is a brute-force one: a DAG-chain generator over ONNX ops that searches, by dumb enumeration, for the minimal graph reproducing the current solution's output. It yields quite a lot of micro-gains and burns far fewer tokens — most of the work there isn't \"thinking\" but enumeration; the agent only steers it and verifies candidates.\n\nAnd of course, over the course of this whole story there were another dozen hypotheses: training neural nets, trying to solve tasks automatically in other ways, and so on. I eventually closed all of those tracks as unsuccessful. The dumb semantic strategy — understand the task's rule and try to express it more compactly — is still the most effective option at the current score.\n\nMy expectations: if I pass over all the tasks about five more times, I'll definitely squeeze out another hundred points, maybe two hundred. Being very optimistic — maybe it's possible to push to 7000. But I'm fairly sure this setup by itself will never break 7000.\n\nWhich means new tracks and breakthrough ideas are needed. I tried running a loop like \"give me 10 ideas and let's test them\" — did it twice, and nothing good came out of the AI. So that's where things stand.\n\nThere's still a lot I want to bolt on: a \"slave driver\" that would watch the agents and message them when they're doing something wrong; a proper dashboard; a saner system for exchanging knowledge and messages between agents — and so on and so on. A pretty dashboard.\n\nAnd yes: if you feel like burning at least half of a $200 Codex or Claude subscription (or better, both) — and seeing how this thing works from the inside — I'd be happy to have you on the team. But fair warning: it eats tokens. Be ready 😄\n",
+   "content": "<h1>Sharing my agent sub-harness (~6580) — show me yours? 🤖</h1>\n<p>Hi everyone! At the time of this post my score is ~6580, so maybe my experience will be useful (or just feed this post to your agents — let them build the same thing 😄🤖. But better don't burn tokens for nothing — I myself have no confidence that all of this will get me even to gold, let alone a win 😄).</p>\n<p>Up to roughly 5800 I had no special system at all — I just opened fresh Codex or Claude Code sessions and asked them to solve tasks. Sometimes I'd write a small tool here and there, but nothing systematic. At the very beginning I'd literally open Codex, give it the goal \"win gold in this competition\" and leave it overnight. That's how I got, I think, the first 5000 points. Then, seeing the results, I started working a bit more thoughtfully: participating in the process, generating ideas. Around 5800 I mostly switched from solving tasks to building my own harness.</p>\n<p>The base for the agents is a CLI that talks to an online server — it stores the solutions and the whole history, so different agents can interact with each other. What it can do:</p>\n<ul>\n<li>show a task's grids right in the terminal (train/test, diffs, pattern hints)</li>\n<li>per-node breakdown of the current solution — which nodes eat the most params/memory</li>\n<li>batch scan of the same across many tasks at once</li>\n<li>cost of your candidate + delta vs the live baseline</li>\n<li>dump the exact weights/initializers of a solution</li>\n<li>run a model on an example and show intermediate tensors as grids (for debugging)</li>\n<li>verify a candidate against the deployed solution before submitting (same checks the pipeline runs)</li>\n<li>semantic search: similar tasks/rules/attempts, plus a tool catalog you can search before writing a script</li>\n<li>a task dossier (current rule, attempt history, why previous attempts failed)</li>\n<li>claims so two agents don't grab the same task; journals and channels for notes between agents</li>\n<li>submit pipeline: stage a candidate, watch its state, force one task to Kaggle and wait for the real verdict</li>\n</ul>\n<p>Semantic search over our own history helps a LOT. Every task, rule and attempt gets an embedding, so an agent starting a task sees with one command: \"here are 5 similar tasks, here's how they were solved, here's what didn't work\". Same with tools: before writing a script, the agent searches the catalog by description — most \"quick scripts\" already exist, someone just wrote them in an earlier session. Without this, agents kept reinventing the same things over and over.</p>\n<p>On top of that there are roles. I just start a new session, say \"you're a researcher\" (or the agent picks a role itself during onboarding) — and from there it works autonomously:</p>\n<ul>\n<li><strong>researcher</strong> — solves tasks: takes a task, tries to beat the current solution, validates, submits, writes down conclusions and moves on. Researchers work inside tracks — different directions/approaches (each track has its own hypothesis), so several agents can dig into different ideas in parallel without getting in each other's way;</li>\n<li><strong>developer</strong> — doesn't touch tasks at all, only improves the harness itself (CLI, validation pipeline, tooling). Researchers file feedback when something gets in their way, the developer fixes it;</li>\n<li><strong>observer</strong> — read-only: watches system health and stats.</li>\n</ul>\n<p>The main track is the simplest one: the task already has a derived rule — we try to implement it more compactly. Can't squeeze it further — we try to come up with a better implementation (or a better rule). The per-task cycle looks like this: take a task, build a candidate, if it comes out smaller than the current solution — stage it, then the submitter picks it up and sends it to Kaggle. While waiting for the verdict, the agent is already working on the next task in parallel.</p>\n<p>This is the most effective track, but you have to understand: it needs at least high, and preferably xhigh reasoning mode. I haven't tried max in Claude at scale — tokens burn fast as it is, because the agent constantly has to look at what the tasks look like. Cost-wise: one night of this track (~8 hours) burns roughly 20% of the weekly limit of a Codex subscription, and about the same for Claude. My impressions: Claude thinks better and often finds nicer solutions, but it deviates from the harness instructions much more often and can generally fall into creative nonsense. Codex is insanely stable — it follows the cycle precisely and is just ready to grind non-stop.</p>\n<p>Over the last five days a single agent on this track alone gives roughly +10–15 LB points per day. About 30–40 accepted submissions, ~10 rejected — that's when the agent came up with a solution that passes my pre-submit gates but still gives 0 or worse on the hidden set. \"Day\" here really means my night, i.e. about 8 hours of work, not 24.</p>\n<p>The average accepted win is just +0.36, median +0.21. A third of the wins are microscopic (&lt;0.1), another ~40% are in the 0.1–0.5 range, and only one in ten gives 1+. So progress isn't \"the agent found a brilliant solution\" — it's a stream of small improvements: many tasks are already solved close to optimally.</p>\n<p>One more thing: the agent almost never finds the best solution on the first pass, and I never managed to make it think longer. Even with all the instructions, as soon as the agent finds any meaningful gain, it rushes to close the task and move on. You can fight this mechanically, but it's easier to accept it: let agents take the same task again and again, see the history of previous attempts, and keep tightening. From what I've seen, to squeeze a task to its optimum you need to pass over it up to about five times.</p>\n<p>The second most popular track is a brute-force one: a DAG-chain generator over ONNX ops that searches, by dumb enumeration, for the minimal graph reproducing the current solution's output. It yields quite a lot of micro-gains and burns far fewer tokens — most of the work there isn't \"thinking\" but enumeration; the agent only steers it and verifies candidates.</p>\n<p>And of course, over the course of this whole story there were another dozen hypotheses: training neural nets, trying to solve tasks automatically in other ways, and so on. I eventually closed all of those tracks as unsuccessful. The dumb semantic strategy — understand the task's rule and try to express it more compactly — is still the most effective option at the current score.</p>\n<p>My expectations: if I pass over all the tasks about five more times, I'll definitely squeeze out another hundred points, maybe two hundred. Being very optimistic — maybe it's possible to push to 7000. But I'm fairly sure this setup by itself will never break 7000.</p>\n<p>Which means new tracks and breakthrough ideas are needed. I tried running a loop like \"give me 10 ideas and let's test them\" — did it twice, and nothing good came out of the AI. So that's where things stand.</p>\n<p>There's still a lot I want to bolt on: a \"slave driver\" that would watch the agents and message them when they're doing something wrong; a proper dashboard; a saner system for exchanging knowledge and messages between agents — and so on and so on. A pretty dashboard.</p>\n<p>And yes: if you feel like burning at least half of a $200 Codex or Claude subscription (or better, both) — and seeing how this thing works from the inside — I'd be happy to have you on the team. But fair warning: it eats tokens. Be ready 😄</p>",
+   "parent": {},
+   "author": {
+    "displayName": "Andrey Yunoshev",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/71556-kg.jpg?t=2026-05-08-11-10-52",
+    "url": "/andreyyunoshev",
+    "tier": "CONTRIBUTOR",
+    "id": 71556,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 3,
+    "canUpvote": true,
+    "totalUpvotes": 3
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 48,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "enabled": true,
+    "teamLeader": {
+     "displayName": "Andrey Yunoshev",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/71556-kg.jpg?t=2026-05-08-11-10-52",
+     "url": "/andreyyunoshev",
+     "userName": "andreyyunoshev",
+     "tier": "CONTRIBUTOR",
+     "id": 71556,
+     "profileUrl": "/andreyyunoshev",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 71556,
+     "progressionOptOut": false
+    },
+    "intro": "Online platform: plug your AI agent (Claude Code, Codex CLI, etc.) — it auto-picks ARC-AGI tasks, golfs ONNXs, submits to Kaggle. Agents share one knowledge base, compound  know-how. Need: Claude/Codex/Etc. Get: team artifacts "
+   }
+  },
+  "firstMessageId": 3465671,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 703914,
+  "name": "Some thoughts on my agent workflow + a rough description of my sub-harness — does yours look similar?",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-06-02T16:26:22.592810Z",
+  "totalVotes": 3,
+  "url": "/competitions/neurogolf-2026/discussion/703914",
+  "totalMessages": 3,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "title": "Python で学ぶハッシュ探索法 - チェーン法とオープンアドレス法 -",
+    "author": "情報工学入門チャンネル (fikastudio)",
+    "year": 2023,
+    "url": "https://zenn.dev/fikastudio/articles/efcfe246642553",
+    "verified": true,
+    "summary": "ハッシュ衝突の2大解決策であるチェーン法とオープンアドレス法をPython実装付きで解説した記事。チェーン法は同一ハッシュ値の要素をポインタで鎖状につないだ線形リストで管理し、追加・検索・削除の実装例を示す。オープンアドレス法は空きバケットが見つかるまで再ハッシュを繰り返す方式で、検索と削除の処理が煩雑になるという課題を指摘している。両手法の実装上の違いが具体的なコードで対比されている。",
+    "use_in_report": "チェイン法を採用した本課題の設計判断を正当化する比較軸として使える。特に「オープンアドレス法は削除処理が煩雑（削除マーカーが必要）だがチェイン法はノードを外すだけで済む」という対比を、自作C++実装の削除処理の単純さの考察に引用できる。"
+  },
+  {
+    "title": "【C#データ構造】ハッシュとは？チェイン法と開番地法について解説",
+    "author": "まる (student_blog)",
+    "year": 2024,
+    "url": "https://zenn.dev/student_blog/articles/8398447cf977e3",
+    "verified": true,
+    "summary": "ハッシュ表が平均O(1)で探索・挿入・削除を実現する仕組みを解説し、チェイン法（各バケットを連結リストにして衝突要素を追加）と開番地法（衝突時に空きバケットを順に探す）をC#コードで実装した記事。開番地法では探索の整合性を保つために削除フラグ（IsDeleted、いわゆるトゥームストーン）が必要になる点や、線形走査・二次走査・ダブルハッシュ法といった走査法のバリエーションにも触れている。",
+    "use_in_report": "改良アイデアの根拠として使える。開番地法の走査法（線形・二次・ダブルハッシュ）はメモリ局所性が高くキャッシュ効率で有利になり得る一方、削除フラグの管理コストが増えるというトレードオフを示し、チェイン法実装からの発展案（開番地法への置き換え検討）を考察に書ける。"
+  },
+  {
+    "title": "配列、リスト、木、ハッシュは何を解決し、何を失ったのか",
+    "author": "hideyuki (tamai_hideyuki)",
+    "year": 2026,
+    "url": "https://zenn.dev/tamai_hideyuki/articles/data-structure-history-and-tradeoffs",
+    "verified": true,
+    "summary": "基本データ構造のトレードオフを歴史的に整理した記事で、ハッシュ表については平均O(1)の探索・挿入・削除を実現する代わりに失うものを論じている。要素数が増えると負荷率を適正に保つためのリサイズ（全要素の再ハッシュ、O(n)コスト）が必要になること、衝突解決にチェイン法か開番地法を使っても最悪計算量はO(n)に劣化すること、ハッシュ関数がキーの順序関係を破壊するため範囲検索や順次アクセスができないことを指摘している。",
+    "use_in_report": "負荷率と性能の考察の理論的裏付けに使える。「負荷率が上がると衝突が増え平均O(1)が崩れるため、リサイズ（再ハッシュO(n)）で負荷率を管理する必要がある」という記述を、固定バケット数の自作実装の限界（要素数増加時の性能劣化）と改良案（動的リサイズの導入）の根拠として引用できる。"
+  },
+  {
+    "title": "ハッシュテーブルを実装して理解するぜ",
+    "author": "tachu (Qiita)",
+    "year": 2025,
+    "url": "https://qiita.com/tachu/items/df25bbd3648fd187dc37",
+    "verified": true,
+    "summary": "チェイン法によるハッシュテーブルをPythonでフルスクラッチ実装した記事。Entryクラスにnextポインタを持たせて各スロットを線形リスト化し、衝突時は同じインデックスのリストへ要素を追加する。負荷率が高すぎると衝突が頻発して性能が低下するため、負荷率が2.0を超えた時点でテーブルを2倍に拡張して全要素を再ハッシュする実装を示す。平均O(1)・最悪O(n)の計算量や、チェイン法の利点（実装が単純、削除が容易、要素数の上限が実質ない）も整理している。",
+    "use_in_report": "同じチェイン法実装の比較対象として最も直接的に使える。負荷率2.0を閾値にテーブルを2倍化するという具体的なリサイズ戦略は、自作C++実装への改良アイデア（負荷率監視＋動的リハッシュの追加）としてそのまま考察に展開でき、実験で測った負荷率と探索時間の関係を裏付ける引用にもなる。"
+  },
+  {
+    "title": "Comprehensive C++ Hashmap Benchmarks 2022",
+    "author": "Martin Leitner-Ankerl",
+    "year": 2022,
+    "url": "https://martin.ankerl.com/2022/08/27/hashmap-bench-01/",
+    "verified": true,
+    "summary": "29種類のC++ハッシュマップ実装と6種類のハッシュ関数を組み合わせ、計1914通りの評価を行った大規模ベンチマーク記事。挿入・削除・find・イテレーションなど11カテゴリのベンチマークで、要素数5000万〜1億件規模まで測定している。std::unordered_map（チェイン法・ノードベース）は「全ベンチマークで競合実装より遅い」と結論づけられており、著者自身のankerl::unordered_denseは全データを連続メモリに格納するためイテレーション速度が突出して高速であると報告されている。",
+    "use_in_report": "考察で「本課題で実装したチェイン法（separate chaining）は std::unordered_map と同系統の方式であり、大規模ベンチマークでは open addressing 系より遅いことが知られている」という比較軸に使える。改良アイデアとして、ノードを個別に new するのではなく連続メモリ（配列/vector）に格納してキャッシュ効率を上げる方向性の根拠文献になる。"
+  },
+  {
+    "title": "Inside boost::unordered_flat_map",
+    "author": "Joaquín M López Muñoz",
+    "year": 2022,
+    "url": "http://bannalia.blogspot.com/2022/11/inside-boostunorderedflatmap.html",
+    "verified": true,
+    "summary": "Boost 1.81で導入されたboost::unordered_flat_mapの内部設計を、Boost.Unorderedのメンテナ自身が解説した記事（2022年11月18日公開）。std::unordered_mapが採用するノードベースのclosed addressing（チェイン法）に対し、open addressingでバケットを連続メモリに直接格納し、15バケットずつのグループに1ワードのメタデータを付与してSIMD命令で約16バケット分の縮約ハッシュ値を一括照合する。ポインタ間接参照の除去と局所性の向上によりキャッシュミスが減ることが性能向上の主因と論じている。GoogleのSwiss TablesやMetaのF14と同系統の技法である。",
+    "use_in_report": "チェイン法の理論（期待探索時間O(1+α)）だけでは説明できない実測性能差の原因として「ポインタ追跡によるキャッシュミス」を挙げる際の根拠に使える。考察の改良案として、open addressing化やメタデータ配列＋SIMD照合という発展方向を具体的に示す比較軸になる。"
+  },
+  {
+    "title": "An Extensive Benchmark of C and C++ Hash Tables",
+    "author": "Jackson Allan",
+    "year": 2024,
+    "url": "https://jacksonallan.github.io/c_cpp_hash_tables_benchmark/",
+    "verified": true,
+    "summary": "2024年5月29日公開の、C/C++の15種類以上のハッシュ表実装を比較した拡張可能なベンチマーク記事。std::unordered_mapやuthashなどの「node-based separate chaining（ノードベースのチェイン法）」と、absl::flat_hash_map・ankerl::unordered_denseなどのopen addressing実装を体系的に対比している。テーブルがキャッシュに収まる小規模データでは「バケット走査は安価（キャッシュミスをほとんど起こさない）」だが、大規模データでは「64バイトキャッシュラインのアーキテクチャではバケット1個ごとに1回のキャッシュミス」が発生すると分析しており、データ規模によって方式間の優劣が変わることを示している。",
+    "use_in_report": "本課題の実験で要素数（またはテーブルサイズ）を変えたときの性能変化を考察する際、「テーブルがキャッシュに収まる規模かどうかで支配的コストが変わる」という分析枠組みの根拠に使える。チェイン法が小規模では十分競争力があるという擁護的な考察にも、大規模でキャッシュミスが支配的になるという限界の指摘にも使える。"
+  },
+  {
+    "title": "ankerl::unordered_dense::{map, set} — A fast & densely stored hashmap",
+    "author": "Martin Leitner-Ankerl (martinus)",
+    "year": 2022,
+    "url": "https://github.com/martinus/unordered_dense",
+    "verified": true,
+    "summary": "2022年に初版が公開されたC++17向け高速ハッシュマップ/セットのリポジトリ（最新リリースはv4.8.1、2025年11月）。std::unordered_map/setのほぼドロップイン代替を掲げ、robin-hood backward shift deletionによる衝突解決、全要素のstd::vectorへの連続格納、wyhashベースの高品質ハッシュ（雪崩性重視）を設計の柱とする。連続格納により完全なイテレーション速度と低メモリ使用量を実現し、挿入・検索はabsl::flat_hash_map級だが、削除がやや遅く挿入時のイテレータ・参照安定性がない、というトレードオフを明記している。",
+    "use_in_report": "チェイン法実装の改良案を述べる考察で「要素を連続メモリに密に格納する」「ハッシュ関数の品質（雪崩性）が衝突数とチェイン長に直結する」という2つの具体的な改良軸の実例として引用できる。また、性能と引き換えに参照安定性を失うというトレードオフは、チェイン法の利点（ポインタ安定性・削除の容易さ）を対比的に論じる材料になる。"
+  },
+  {
+    "title": "Breaking CityHash64, MurmurHash2/3, wyhash, and more...",
+    "author": "Orson Peters (orlp)",
+    "year": 2024,
+    "url": "https://orlp.net/blog/breaking-hash-functions/",
+    "verified": true,
+    "summary": "CityHash64・MurmurHash2/3・wyhash などの高速非暗号ハッシュ関数に対して、実際に衝突を意図的に生成する攻撃手法を実装付きで示した2024年11月公開の技術記事である。シード機構を持たない（あるいはシードが弱い）ハッシュ関数では、攻撃者が同一バケットに集中する入力列を作れてしまい、ハッシュテーブルの性能を意図的に劣化させる hash flooding (HashDoS) が成立することを具体的に実証している。その対策として、Python や Rust が採用する SipHash のような秘密鍵付きの暗号学的擬似乱数関数と、ランダムシードによるハッシュテーブルのシード化が不可欠であると結論づけている。ユーザー制御データを扱う場合、ランダム化なしの高速ハッシュ関数では安全性が担保できないことが要点である。",
+    "use_in_report": "考察で「今回実装した固定ハッシュ関数（除算法や単純な文字列ハッシュ）は、入力を選べば全キーを同一バケットに集中させられ、チェイン法の探索が O(n) に退化する」という脆弱性の議論に引用できる。改良案として『実行ごとにランダムなシードを導入したハッシュ関数への置き換え』を提示する際の根拠文献になる。また、平均 O(1) という理論値が『敵対的入力を仮定しない』前提の上に成り立つことを示す比較軸としても使える。"
+  },
+  {
+    "title": "Security considerations: HashDoS and Rust's default SipHash",
+    "author": "Sling Academy",
+    "year": 2025,
+    "url": "https://www.slingacademy.com/article/security-considerations-hashdos-and-rusts-default-siphash/",
+    "verified": true,
+    "summary": "2025年1月公開の記事で、HashDoS 攻撃（攻撃者が大量のハッシュ衝突を起こすデータを送り込み、ハッシュテーブル性能を退化させて CPU 資源を枯渇させる攻撃）の仕組みを解説している。Rust の標準ライブラリ HashMap がデフォルトで SipHash を採用している理由を、「秘密鍵を用いるため攻撃者が衝突入力を事前計算できない」「短い入力に対しても高速」という2点から説明する。BuildHasherDefault<SipHasher> を用いた安全なハッシュマップ構築のコード例も示されている。速度優先の非暗号ハッシュと安全性優先の鍵付きハッシュのトレードオフを整理した実践的な内容である。",
+    "use_in_report": "考察の「実用言語との比較」の軸として使える。今回の C++ 実装（std::unordered_map やチェイン法の自作実装）は決定的なハッシュ関数を使うのに対し、Rust は言語標準で SipHash + ランダムシードを採用しており、この設計差が『速度とDoS耐性のトレードオフ』であることを論じられる。改良アイデアとして、鍵付きハッシュ関数の導入コスト（ハッシュ計算の速度低下）と安全性向上の対比を定量的に議論する足がかりになる。"
+  },
+  {
+    "title": "Python hash() is not deterministic",
+    "author": "Chenna Kautilya",
+    "year": 2023,
+    "url": "https://chenna.me/blog/2023/12/25/python-hash-is-not-deterministic/",
+    "verified": true,
+    "summary": "2023年12月公開のブログ記事で、Python の組み込み hash() が実行のたびに異なる値を返す理由を解説している。Python 3.3 以降、ハッシュ衝突を悪用した DoS 攻撃への防御として「ハッシュランダム化」が導入され、インタプリタ起動ごとに生成されるランダム値で str や bytes のハッシュ値がソルトされることを説明する。環境変数 PYTHONHASHSEED=0 でランダム化を無効化できるがセキュリティ上推奨されないこと、再現性が必要な場合は ubelt や joblib.hashing のような決定的ハッシュを使うべきことも述べている。言語ランタイムが意図的に非決定性を導入した実例を簡潔に示した記事である。",
+    "use_in_report": "考察で「言語ランタイムがシード付きハッシュを使う理由」を説明する具体例として引用できる。自作 C++ ハッシュ表は同じキーに常に同じバケットを割り当てるため衝突パターンが再現可能＝攻撃可能である一方、Python は起動ごとのランダムソルトで衝突列の事前計算を無効化している、という対比が書ける。また『ランダム化はデバッグ・テストの再現性と引き換えである』という設計トレードオフ（PYTHONHASHSEED による制御）も考察の論点として使える。"
+  },
+  {
+    "title": "Defending Hash Tables from Subterfuge with Depth Charge",
+    "author": "Trisha Chakraborty, Jared Saia, Maxwell Young",
+    "year": 2023,
+    "url": "https://arxiv.org/abs/2308.04305",
+    "verified": true,
+    "summary": "2023年8月に arXiv で公開された査読研究論文で、ビザンチン的な攻撃者がハッシュテーブルの性能を退化させる攻撃（hash flooding を含む敵対的挿入）への新しい防御アルゴリズム「Depth Charge」を提案している。ハッシュテーブルへのクエリ・挿入・削除の各操作に、対象オブジェクトがチェイン（リスト）内で存在する深さに応じたリソース消費コスト (resource burning) を課す仕組みである。攻撃が行われている状況では、防御側のコストが攻撃者のコストより漸近的に小さくなるよう設計されており、鍵付きハッシュ関数とは別のアプローチ（経済的コスト賦課）で hash flooding を抑止する。チェイン法の「深さ」を防御指標に使う点が特徴的である。",
+    "use_in_report": "考察の学術的な深みを出す引用として有効。SipHash のような『衝突を作らせない』暗号学的防御と対比して、『衝突しても攻撃者側のコストを大きくする』アルゴリズム的防御という別系統の対策が2023年でも研究され続けていることを示せる。特にチェイン法のリスト深さ（＝今回のレポートで測定する連結リスト長）がそのまま防御コストの指標に使われている点は、自分の実験で測ったチェイン長分布の議論と直接接続でき、考察の発展的話題（改良アイデア）として書きやすい。"
+  },
+  {
+    "title": "How to implement a hash table (in C)",
+    "author": "Ben Hoyt",
+    "year": 2021,
+    "url": "https://benhoyt.com/writings/hash-table-in-c/",
+    "verified": true,
+    "summary": "C言語によるハッシュ表のフルスクラッチ実装解説記事（2021年3月公開）。ハッシュ関数にFNV-1aを採用し、その理由を「実装が単純で高速だから」と説明する。50万語の英単語リストで平均プローブ長1.40を計測し、FNV-1（乗算とXORの順序が逆の版）と比較すると、英単語では1.43とほぼ同等だが「word1」「word2」のような類似キーではFNV-1aが1.38に対しFNV-1は5.02と大きく劣化することを示す。またFNVは非暗号学的ハッシュであり、攻撃者が意図的に衝突を発生させ探索を遅延させ得る点（Pythonが FNV から移行した理由）にも触れている。",
+    "use_in_report": "考察でFNV-1a採用（または比較）の根拠として引用できる。バイトごとの XOR→乗算という演算順序の違いだけで類似キーに対する分布が大きく変わる（プローブ長1.38 vs 5.02）という具体的な実測値は、自作ハッシュ表でハッシュ関数を差し替えてチェイン長分布を比較する実験の先行事例として使える。djb2 や単純加算ハッシュとの比較実験を設計する際の評価指標（平均プローブ長・チェイン長）の妥当性の裏付けにもなる。"
+  },
+  {
+    "title": "rapidhash - Very fast, high quality, platform-independent hashing algorithm (GitHub README)",
+    "author": "Nicolas De Carli (Nicoshev)",
+    "year": 2024,
+    "url": "https://github.com/Nicoshev/rapidhash",
+    "verified": true,
+    "summary": "wyhash の公式後継として2024年に公開された非暗号学的ハッシュ関数 rapidhash の公式リポジトリ（最新は2025年8月のV3）。SMHasher・SMHasher3 の全テストに合格した最速のハッシュ関数であり、15Gi〜62Gi個のキーを用いた大規模衝突実験で理論衝突数との誤差が8.11%以内という理想に近い品質を実証している。Apple M4上で71GB/sのスループット（XXH3は同条件で49GB/s）、4〜16バイトの短いキーでは1.38〜2.35nsの低レイテンシを達成。Chromium、Node.js、Folly など大規模プロジェクトに採用されている。",
+    "use_in_report": "「今回はFNV-1a/djb2を使ったが、現代の最先端はどうか」という改良の方向性を示す材料になる。速度だけでなくSMHasher全テスト合格＋理論値に近い衝突確率という『速度と品質の両立』が現代のハッシュ関数設計の到達点であることを示し、授業課題レベルの単純な乗算型ハッシュとの設計思想の差（64bit乗算のmix、シード対応、短キー特化パス）を考察する軸として使える。"
+  },
+  {
+    "title": "Benchmarking non-cryptographic hash functions in Rust",
+    "author": "Timofey Prodanov",
+    "year": 2023,
+    "url": "https://medium.com/@tprodanov/benchmarking-non-cryptographic-hash-functions-in-rust-2e6091077d11",
+    "verified": true,
+    "summary": "2023年10月4日公開のベンチマーク記事。FNV、fxhash、wyhash、xxHash、aHash、SipHash など18種の非暗号学的ハッシュ関数を、入力サイズ別の速度と出力のランダム性（品質）の両面で比較した。速度面では wyhash2 がほぼ全入力サイズで最速だったが、fxhash と wyhash2 は「入力末尾のバイトをほぼ無視することで高速化している」ため、特定条件で衝突率が9〜94%に達するという品質上の重大な欠陥を発見した。結論として汎用には aHash、大きい入力には wyhash1 や metrohash、16バイト以下の小入力に限り wyhash2 を推奨している。",
+    "use_in_report": "『最速のハッシュ関数が最良とは限らない』という考察の核になる。速度最優先の設計が入力の一部を無視して衝突率を激増させ得るという実例は、自作ハッシュ表で衝突数（チェイン長）と実行時間のトレードオフを論じる際の比較軸としてそのまま使える。ハッシュ関数の評価には速度計測だけでなく衝突分布の検証が必須である、という実験方法の正当化にも引用できる。"
+  },
+  {
+    "title": "rurban/smhasher: Hash function quality and speed tests (GitHub README)",
+    "author": "Reini Urban",
+    "year": 2024,
+    "url": "https://github.com/rurban/smhasher",
+    "verified": true,
+    "summary": "ハッシュ関数の品質・速度テストスイート SMHasher の現行メンテナンス版リポジトリ（2024年のAMD Ryzen/Intel i7等での測定結果を掲載、継続更新中）。アバランシェ・差分・キーセットテスト等の品質検査と、バルク速度（MiB/s）・小キー速度（cycles/hash）の計測を行う。結果表では FNV-1a は約755MiB/sで「bad seed・全品質テスト失敗」、djb2（bernstein）は約1032MiB/sで同じく全テスト失敗、xxHash64 は約11177MiB/sだが軽微な衝突問題あり、wyhash は約22641MiB/s、rapidhash は約22147MiB/sで品質問題なしと評価され、推奨関数として rapidhash・xxh3low・wyhash 等を挙げている。",
+    "use_in_report": "FNV-1a・djb2・xxHash・wyhash・rapidhash を同一基準で並べた定量データ（バルク速度で約20〜30倍差、品質テスト合否）として考察の比較表に直接使える。課題で実装した単純なハッシュ関数（djb2/FNV-1a系）が『教育用・短い文字列キーには十分だが、厳密な統計品質テストには不合格であり、大規模・高速用途では rapidhash 等への置き換えが改良案になる』という結論を裏付ける一次資料になる。"
+  },
+  {
+    "title": "Advancing the state of the art for std::unordered_map implementations",
+    "author": "Joaquín M López Muñoz",
+    "year": 2022,
+    "url": "https://bannalia.blogspot.com/2022/06/advancing-state-of-art-for.html",
+    "verified": true,
+    "summary": "C++ 標準がポインタ安定性・定数時間のイテレータ操作などを通じて std::unordered_map に事実上チェイン法 (closed addressing) を強制していることを整理し、その制約内での高速化として Boost 1.80 の boost::unordered_map 再実装を解説した記事 (2022年6月18日公開)。占有マスク付き「バケットグループ」(バケットあたり約4ビットのオーバーヘッド) で空バケットをスキップし、Lemire らの fastmod (乗算+シフト) で除算によるバケット添字計算を置き換える。メモリオーバーヘッドは 8N+8.5B バイトと libstdc++/libc++ の 16N+8B より小さく、ベンチマークでは主要標準ライブラリ実装をほぼ全域で上回ると報告している。",
+    "use_in_report": "課題と同じチェイン法という土俵での改良例なので、考察との親和性が最も高い。自作実装の「単方向リスト+剰余演算」に対し、(1) 空バケット走査を占有ビットマスクで高速化、(2) 剰余 % を fastmod に置換、(3) ノードのメモリレイアウト工夫、という具体的な改良案の根拠として引用できる。また「標準仕様の制約がチェイン法を要求する」という背景説明にも使える。"
+  },
+  {
+    "title": "Faster Go maps with Swiss Tables",
+    "author": "Michael Pratt (The Go Blog)",
+    "year": 2025,
+    "url": "https://go.dev/blog/swisstable",
+    "verified": true,
+    "summary": "Go 1.24 の組み込み map が Google の Swiss Table 設計へ全面移行したことを解説する2025年2月26日公開の公式ブログ記事。ハッシュ値を H1（上位57ビット、グループ選択用）と H2（下位7ビット、メタデータ格納用）に分割し、8スロットごとの64ビット制御ワードに各スロットの空/削除/使用中状態と H2 を詰める設計を、従来のバケット+オーバーフロー連結（チェイン法的構造）との対比で説明している。制御ワードに対する比較を SIMD 的に1命令で8スロット並列に行えること、これにより高い負荷率（7/8）まで性能劣化なく運用でき、マイクロベンチマークで最大60%の高速化を得たことを報告している。",
+    "use_in_report": "課題レポートの「負荷率と性能の関係」の考察で直接使える。チェイン法は負荷率が上がると連結リストが伸びて線形に劣化するのに対し、Swiss Table は H2 メタデータの並列照合により負荷率 7/8 でも探索コストがほぼ一定である、という定量的な比較軸を提供する。また H1/H2 分割というハッシュ値の使い切り方は、自作実装の改良アイデア（ハッシュ値の一部をタグとして各ノードに保存し文字列比較を減らす）として引用できる。"
+  },
+  {
+    "title": "How Go 1.24's Swiss Tables saved us hundreds of gigabytes",
+    "author": "Nayef Ghattas (Datadog Engineering Blog)",
+    "year": 2025,
+    "url": "https://www.datadoghq.com/blog/engineering/go-swiss-tables/",
+    "verified": true,
+    "summary": "Datadog が本番環境で Go 1.24 の Swiss Table 版 map を導入した効果を実測した2025年7月17日公開のエンジニアリング記事。64ビット制御ワードによるメタデータ管理と SIMD 並列比較の仕組みを踏まえ、オーバーフローバケット廃止と最大負荷率の 13/16→7/8 への引き上げがメモリ効率をどう改善するかを解説している。実測では高トラフィックサービスの単一マップで約500MiBのヒープ削減（GOGC 考慮で約1GiBのRSS削減）を達成した。arm64 では SIMD 版マップ操作が未実装（Go 1.24.2 時点）という移植性の注意点にも触れている。",
+    "use_in_report": "考察の「メモリ使用量」の軸で使える。チェイン法はノードごとに next ポインタ分（8バイト）とアロケータのオーバーヘッドを払うのに対し、メタデータバイト方式は1要素あたり約1バイトの管理コストで済むという対比を、実サービスでのGiB級削減という実測値付きで補強できる。理論比較だけでなく実運用データを引ける点が考察の説得力を高める。"
+  },
+  {
+    "title": "Advancing the State of the Art for std::unordered_map Implementations",
+    "author": "Joaquín M López Muñoz (ACCU Overload, Vol.30, Issue 170)",
+    "year": 2022,
+    "url": "https://accu.org/journals/overload/30/170/munoz/",
+    "verified": true,
+    "summary": "標準準拠のチェイン法（closed addressing）ハッシュ表そのものを高速化した boost::unordered_map の再設計を解説する2022年8月掲載の ACCU Overload 記事。ノードのリンクをバケット内に限定してデータレイアウトを単純化し、非空バケットを32/64ビットの占有マスクと前後ポインタでグループ化して定数時間のイテレーションを実現する手法を述べる。素数剰余を乗算とシフトで置き換える fast modulo により除算命令とテーブルジャンプを排除し、管理オーバーヘッドをページあたり4ビット程度まで削減してキャッシュ局所性を改善したと報告している。",
+    "use_in_report": "「チェイン法は本質的に遅いわけではなく、実装の工夫で大きく改善できる」という考察の核に使える。自作実装と同じチェイン法という土俵での改良アイデア（バケット内リンク限定、占有ビットマスク、剰余演算の乗算化）を具体的に提示でき、SIMD 系オープンアドレッシング（Swiss Tables/F14）へ全面移行する以外の現実的な改善路線として、他の3記事との対比軸を構成できる。"
+  }
+]

@@ -1,0 +1,891 @@
+{
+ "forumTopic": {
+  "authorId": 22938014,
+  "authorThumbnailName": "22938014-kg.png?t=2024-10-15-22-21-41",
+  "authorUserDisplayName": "Tony Li",
+  "authorUserName": "tonylica",
+  "comments": [
+   {
+    "id": 3447198,
+    "postDate": "2026-04-22T20:31:01.233Z",
+    "rawMarkdown": "I shared a notebook that generated 20.13 for task 337 \nYou can find it in the code tab. \n\nAttached is the main part: \n\n```python\nimport onnx\nfrom onnx import helper, TensorProto, numpy_helper\nimport numpy as np\n\n# Input tensor: float32[1, 10, ?, ?]\ninput_tensor = helper.make_tensor_value_info(\n    \"input\",\n    TensorProto.FLOAT,\n    [1, 10, None, None]\n)\n\n# Output tensor: float32[1, 10, ?, ?]\noutput_tensor = helper.make_tensor_value_info(\n    \"output\",\n    TensorProto.FLOAT,\n    [1, 10, None, None]\n)\n\n# Constant indices for Gather\nidx_values = np.array([0, 1, 2, 3, 4, 8, 6, 7, 5, 9], dtype=np.int64)\nidx_initializer = numpy_helper.from_array(idx_values, name=\"idx\")\n\n# Single Gather node\ngather_node = helper.make_node(\n    \"Gather\",\n    inputs=[\"input\", \"idx\"],\n    outputs=[\"output\"],\n    axis=1\n)\n\n# Build graph\ngraph = helper.make_graph(\n    nodes=[gather_node],\n    name=\"t_337\",\n    inputs=[input_tensor],\n    outputs=[output_tensor],\n    initializer=[idx_initializer]\n)\n\n# Build model\nmodel = helper.make_model(\n    graph,\n    opset_imports=[helper.make_operatorsetid(\"\", 13)]\n)\n\n# Match IR version seen in your file\nmodel.ir_version = 13\n\n# Save\nonnx.save(model, \"task337.onnx\")\n\nprint(\"Saved task337.onnx\")\n```",
+    "content": "<p>I shared a notebook that generated 20.13 for task 337 \nYou can find it in the code tab. </p>\n<p>Attached is the main part: </p>\n<pre><code>import onnx\nfrom onnx import helper, TensorProto, numpy_helper\nimport numpy as np\n\n# Input tensor: float32[1, 10, ?, ?]\ninput_tensor = helper.make_tensor_value_info(\n    \"input\",\n    TensorProto.FLOAT,\n    [1, 10, None, None]\n)\n\n# Output tensor: float32[1, 10, ?, ?]\noutput_tensor = helper.make_tensor_value_info(\n    \"output\",\n    TensorProto.FLOAT,\n    [1, 10, None, None]\n)\n\n# Constant indices for Gather\nidx_values = np.array([0, 1, 2, 3, 4, 8, 6, 7, 5, 9], dtype=np.int64)\nidx_initializer = numpy_helper.from_array(idx_values, name=\"idx\")\n\n# Single Gather node\ngather_node = helper.make_node(\n    \"Gather\",\n    inputs=[\"input\", \"idx\"],\n    outputs=[\"output\"],\n    axis=1\n)\n\n# Build graph\ngraph = helper.make_graph(\n    nodes=[gather_node],\n    name=\"t_337\",\n    inputs=[input_tensor],\n    outputs=[output_tensor],\n    initializer=[idx_initializer]\n)\n\n# Build model\nmodel = helper.make_model(\n    graph,\n    opset_imports=[helper.make_operatorsetid(\"\", 13)]\n)\n\n# Match IR version seen in your file\nmodel.ir_version = 13\n\n# Save\nonnx.save(model, \"task337.onnx\")\n\nprint(\"Saved task337.onnx\")\n</code></pre>",
+    "replies": [
+     {
+      "id": 3447202,
+      "postDate": "2026-04-22T20:37:12.470Z",
+      "rawMarkdown": "",
+      "replies": [
+       {
+        "id": 3447205,
+        "postDate": "2026-04-22T20:39:04.620Z",
+        "rawMarkdown": "You can score even 20.50 with dtype=np.int32 \n\nI am not sure if it's allowed, but it scores!\n@mmoffitt ",
+        "content": "<p>You can score even 20.50 with dtype=np.int32 </p>\n<p>I am not sure if it's allowed, but it scores!\n<a href=\"https://www.kaggle.com/mmoffitt\" target=\"_blank\">@mmoffitt</a> </p>",
+        "parent": {},
+        "author": {
+         "displayName": "Ali",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+         "url": "/asalhi",
+         "tier": "MASTER",
+         "id": 6915758,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 102,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "reactions": [
+         {
+          "emoji": "THANK_YOU",
+          "featuredUserNames": [
+           "mmoffitt"
+          ],
+          "userCount": 1
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Ali",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+          "url": "/asalhi",
+          "userName": "asalhi",
+          "tier": "MASTER",
+          "id": 6915758,
+          "profileUrl": "/asalhi",
+          "performanceTier": "MASTER",
+          "userId": 6915758,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/"
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 2,
+       "totalUpvotes": 2
+      },
+      "canDelete": true,
+      "isUserAuthor": true,
+      "isDeleted": true,
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false
+     },
+     {
+      "id": 3447203,
+      "postDate": "2026-04-22T20:38:38.487Z",
+      "rawMarkdown": "I think we're supposed to use the [1,10,30,30] tensor and not dynamic shapes.  From my understanding, your submission isn't allowed under the rules.  I may be wrong. ",
+      "content": "<p>I think we're supposed to use the [1,10,30,30] tensor and not dynamic shapes.  From my understanding, your submission isn't allowed under the rules.  I may be wrong. </p>",
+      "replies": [
+       {
+        "id": 3447206,
+        "postDate": "2026-04-22T20:39:21.783Z",
+        "rawMarkdown": "It's allowed in ONNX, but the \"Overview\" asks us to use [1,10,30,30].   /// EDIT: I'm trying to find where I inferred that dynamic shapes aren't allowed, and I cannot find it right now.  So take what I said with a grain of salt.  I'll change this when I find out for sure. /// FOLLOWUP: In the attached utilities, it **seems** to only properly score if you're using [1,10,30,30].   So take that to mean what you want. ",
+        "content": "<p>It's allowed in ONNX, but the \"Overview\" asks us to use [1,10,30,30].   /// EDIT: I'm trying to find where I inferred that dynamic shapes aren't allowed, and I cannot find it right now.  So take what I said with a grain of salt.  I'll change this when I find out for sure. /// FOLLOWUP: In the attached utilities, it <strong>seems</strong> to only properly score if you're using [1,10,30,30].   So take that to mean what you want. </p>",
+        "parent": {},
+        "author": {
+         "displayName": "Russell Kirk",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/27681700-kg.jpg?t=2026-03-31-11-28-38",
+         "url": "/russcore",
+         "tier": "CONTRIBUTOR",
+         "id": 27681700,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 51,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Damien Mourot",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/453299-kg.png?t=2024-10-31-19-25-25",
+          "url": "/nahman",
+          "userName": "nahman",
+          "tier": "MASTER",
+          "id": 453299,
+          "profileUrl": "/nahman",
+          "performanceTier": "MASTER",
+          "userId": 453299,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3447209,
+        "postDate": "2026-04-22T20:43:27.517Z",
+        "rawMarkdown": "Then the score will become: 14.50 😐 \nThis should be addressed in the metric (because currently it scores)\n",
+        "content": "<p>Then the score will become: 14.50 😐 \nThis should be addressed in the metric (because currently it scores)</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Ali",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+         "url": "/asalhi",
+         "tier": "MASTER",
+         "id": 6915758,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 102,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Ali",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+          "url": "/asalhi",
+          "userName": "asalhi",
+          "tier": "MASTER",
+          "id": 6915758,
+          "profileUrl": "/asalhi",
+          "performanceTier": "MASTER",
+          "userId": 6915758,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3447210,
+        "postDate": "2026-04-22T20:43:32.837Z",
+        "rawMarkdown": "",
+        "parent": {},
+        "author": {
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/"
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "totalUpvotes": 1
+        },
+        "canDelete": true,
+        "isUserAuthor": true,
+        "isDeleted": true,
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true
+       },
+       {
+        "id": 3447227,
+        "postDate": "2026-04-22T21:03:54.977Z",
+        "rawMarkdown": "I'm not a deciding voice. Mukundan already pointed it out to the host.  I believe the host will likely address it.   ",
+        "content": "<p>I'm not a deciding voice. Mukundan already pointed it out to the host.  I believe the host will likely address it.   </p>",
+        "parent": {},
+        "author": {
+         "displayName": "Russell Kirk",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/27681700-kg.jpg?t=2026-03-31-11-28-38",
+         "url": "/russcore",
+         "tier": "CONTRIBUTOR",
+         "id": 27681700,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 2,
+         "canUpvote": true,
+         "totalUpvotes": 2
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 51,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Damien Mourot",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/453299-kg.png?t=2024-10-31-19-25-25",
+          "url": "/nahman",
+          "userName": "nahman",
+          "tier": "MASTER",
+          "id": 453299,
+          "profileUrl": "/nahman",
+          "performanceTier": "MASTER",
+          "userId": 453299,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Russell Kirk",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/27681700-kg.jpg?t=2026-03-31-11-28-38",
+       "url": "/russcore",
+       "tier": "CONTRIBUTOR",
+       "id": 27681700,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 51,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Damien Mourot",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/453299-kg.png?t=2024-10-31-19-25-25",
+        "url": "/nahman",
+        "userName": "nahman",
+        "tier": "MASTER",
+        "id": 453299,
+        "profileUrl": "/nahman",
+        "performanceTier": "MASTER",
+        "userId": 453299,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3449789,
+      "postDate": "2026-04-28T21:36:51.813Z",
+      "rawMarkdown": "As of [today's update](https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230), statically-defined shapes are now strictly enforced!  Thank you @asalhi + @robga + @russcore + @mukundan314 for the detailed feedback.",
+      "content": "<p>As of <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230\" target=\"_blank\">today's update</a>, statically-defined shapes are now strictly enforced!  Thank you <a href=\"https://www.kaggle.com/asalhi\" target=\"_blank\">@asalhi</a> + <a href=\"https://www.kaggle.com/robga\" target=\"_blank\">@robga</a> + <a href=\"https://www.kaggle.com/russcore\" target=\"_blank\">@russcore</a> + <a href=\"https://www.kaggle.com/mukundan314\" target=\"_blank\">@mukundan314</a> for the detailed feedback.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Ali",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+     "url": "/asalhi",
+     "tier": "MASTER",
+     "id": 6915758,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 3,
+     "canUpvote": true,
+     "totalUpvotes": 3
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 102,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "tonylica",
+       "mmoffitt"
+      ],
+      "userCount": 2
+     },
+     {
+      "emoji": "YAY",
+      "featuredUserNames": [
+       "tonylica"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Ali",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+      "url": "/asalhi",
+      "userName": "asalhi",
+      "tier": "MASTER",
+      "id": 6915758,
+      "profileUrl": "/asalhi",
+      "performanceTier": "MASTER",
+      "userId": 6915758,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3447419,
+    "postDate": "2026-04-23T05:14:19.197Z",
+    "rawMarkdown": "a do nothing score is about 14.5 (cost is only memory for 1x10x30x30 float32)\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Fa00e62be24e2f6b9220a528998766ca8%2FSelection_3040.png?generation=1776921215342488&alt=media)\n\nanything more than that is cheating????\n",
+    "content": "<p>a do nothing score is about 14.5 (cost is only memory for 1x10x30x30 float32)</p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Fa00e62be24e2f6b9220a528998766ca8%2FSelection_3040.png?generation=1776921215342488&amp;alt=media\" alt=\"\"></p>\n<p>anything more than that is cheating????</p>",
+    "replies": [
+     {
+      "id": 3447435,
+      "postDate": "2026-04-23T05:47:50.960Z",
+      "rawMarkdown": "Did you try it as a boolean?",
+      "content": "<p>Did you try it as a boolean?</p>",
+      "replies": [
+       {
+        "id": 3447442,
+        "postDate": "2026-04-23T06:12:12.530Z",
+        "rawMarkdown": "I though the rule is float32 as input and output?",
+        "content": "<p>I though the rule is float32 as input and output?</p>",
+        "parent": {},
+        "author": {
+         "displayName": "hengck23",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+         "url": "/hengck23",
+         "tier": "GRANDMASTER",
+         "id": 113660,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 1468,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "hengck23",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+          "url": "/hengck23",
+          "userName": "hengck23",
+          "tier": "GRANDMASTER",
+          "id": 113660,
+          "profileUrl": "/hengck23",
+          "performanceTier": "GRANDMASTER",
+          "userId": 113660,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3447445,
+        "postDate": "2026-04-23T06:17:04.260Z",
+        "rawMarkdown": "Someone can correct me if I'm wrong, I'm still learning, [1,10,30,30] describes the dimensions of the tensor whereas float vs boolean describes the contents. I thought the requirements were calculations regarding shape not contents.  Again, I'm not very sure.  I will wait until everything is declared until I continue further.",
+        "content": "<p>Someone can correct me if I'm wrong, I'm still learning, [1,10,30,30] describes the dimensions of the tensor whereas float vs boolean describes the contents. I thought the requirements were calculations regarding shape not contents.  Again, I'm not very sure.  I will wait until everything is declared until I continue further.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Russell Kirk",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/27681700-kg.jpg?t=2026-03-31-11-28-38",
+         "url": "/russcore",
+         "tier": "CONTRIBUTOR",
+         "id": 27681700,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 51,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Damien Mourot",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/453299-kg.png?t=2024-10-31-19-25-25",
+          "url": "/nahman",
+          "userName": "nahman",
+          "tier": "MASTER",
+          "id": 453299,
+          "profileUrl": "/nahman",
+          "performanceTier": "MASTER",
+          "userId": 453299,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3447454,
+        "postDate": "2026-04-23T06:56:35.407Z",
+        "rawMarkdown": "i think this needs clarification from the host becuase i see from neurogolf_utils.py:\n\n```\n_DATA_TYPE = onnx.TensorProto.FLOAT\n_EXCLUDED_OP_TYPES = [\"LOOP\", \"SCAN\", \"NONZERO\", \"UNIQUE\", \"SCRIPT\", \"FUNCTION\"]\n_FILESIZE_LIMIT_IN_BYTES = 1.44 * 1024 * 1024\n_GRID_SHAPE = [_BATCH_SIZE, _CHANNELS, _HEIGHT, _WIDTH]\n_IR_VERSION, _OPSET_IMPORTS = 10, [onnx.helper.make_opsetid(\"\", 10)]\n```\n\ni though these are  parameters we cannot change:\n- input,ouput shape and size, name\n- opset and ir version",
+        "content": "<p>i think this needs clarification from the host becuase i see from neurogolf_utils.py:</p>\n<pre><code>_DATA_TYPE = onnx.TensorProto.FLOAT\n_EXCLUDED_OP_TYPES = [\"LOOP\", \"SCAN\", \"NONZERO\", \"UNIQUE\", \"SCRIPT\", \"FUNCTION\"]\n_FILESIZE_LIMIT_IN_BYTES = 1.44 * 1024 * 1024\n_GRID_SHAPE = [_BATCH_SIZE, _CHANNELS, _HEIGHT, _WIDTH]\n_IR_VERSION, _OPSET_IMPORTS = 10, [onnx.helper.make_opsetid(\"\", 10)]\n</code></pre>\n<p>i though these are  parameters we cannot change:</p>\n<ul>\n<li>input,ouput shape and size, name</li>\n<li>opset and ir version</li>\n</ul>",
+        "parent": {},
+        "author": {
+         "displayName": "hengck23",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+         "url": "/hengck23",
+         "tier": "GRANDMASTER",
+         "id": 113660,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 2,
+         "canUpvote": true,
+         "totalUpvotes": 2
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 1468,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "hengck23",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+          "url": "/hengck23",
+          "userName": "hengck23",
+          "tier": "GRANDMASTER",
+          "id": 113660,
+          "profileUrl": "/hengck23",
+          "performanceTier": "GRANDMASTER",
+          "userId": 113660,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3447463,
+        "postDate": "2026-04-23T07:16:13.727Z",
+        "rawMarkdown": "",
+        "parent": {},
+        "author": {
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+         "url": "/"
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 3,
+         "totalUpvotes": 3
+        },
+        "canDelete": true,
+        "isUserAuthor": true,
+        "isDeleted": true,
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true
+       },
+       {
+        "id": 3447620,
+        "postDate": "2026-04-23T15:22:37.293Z",
+        "rawMarkdown": "Yes, to clarify further: you're welcome to ignore the specific values of `_IR_VERSION` and `_OPSET_IMPORTS` that we happened to use in `neurogolf_utils.py`.  We found that those settings were sufficient to create our helper function `single_layer_conv2d_network()`, but you may have better luck with more recent versions.",
+        "content": "<p>Yes, to clarify further: you're welcome to ignore the specific values of <code>_IR_VERSION</code> and <code>_OPSET_IMPORTS</code> that we happened to use in <code>neurogolf_utils.py</code>.  We found that those settings were sufficient to create our helper function <code>single_layer_conv2d_network()</code>, but you may have better luck with more recent versions.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "totalVotes": 2,
+         "canUpvote": true,
+         "totalUpvotes": 2
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Russell Kirk",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/27681700-kg.jpg?t=2026-03-31-11-28-38",
+       "url": "/russcore",
+       "tier": "CONTRIBUTOR",
+       "id": 27681700,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 51,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Damien Mourot",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/453299-kg.png?t=2024-10-31-19-25-25",
+        "url": "/nahman",
+        "userName": "nahman",
+        "tier": "MASTER",
+        "id": 453299,
+        "profileUrl": "/nahman",
+        "performanceTier": "MASTER",
+        "userId": 453299,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3447680,
+      "postDate": "2026-04-23T17:45:04.577Z",
+      "rawMarkdown": "> a do nothing score is about 14.5 (cost is only memory for 1x10x30x30 float32)\n> \n> ![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Fa00e62be24e2f6b9220a528998766ca8%2FSelection_3040.png?generation=1776921215342488&alt=media)\n> \n> anything more than that is cheating????\n\nIf the `1×10×30×30` output is enforced correctly, then a single-task score of `15.895020` would likely be near the ceiling. That would put the maximum total score at roughly `6358`, in my view. Under that scenario, the top gold range would probably be around `6300 - 6340`, \n\nEach leaderboard rank could be separated by only about 1 point, or even show the same displayed score despite tiny underlying differences.\n\n",
+      "content": "<blockquote>\n  <p>a do nothing score is about 14.5 (cost is only memory for 1x10x30x30 float32)</p>\n  <p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F113660%2Fa00e62be24e2f6b9220a528998766ca8%2FSelection_3040.png?generation=1776921215342488&amp;alt=media\" alt=\"\"></p>\n  <p>anything more than that is cheating????</p>\n</blockquote>\n<p>If the <code>1×10×30×30</code> output is enforced correctly, then a single-task score of <code>15.895020</code> would likely be near the ceiling. That would put the maximum total score at roughly <code>6358</code>, in my view. Under that scenario, the top gold range would probably be around <code>6300 - 6340</code>, </p>\n<p>Each leaderboard rank could be separated by only about 1 point, or even show the same displayed score despite tiny underlying differences.</p>",
+      "replies": [
+       {
+        "id": 3448370,
+        "postDate": "2026-04-25T09:28:44.457Z",
+        "rawMarkdown": "Can I be teammate with you?if we ensemble our submission,we might be champoin",
+        "content": "<p>Can I be teammate with you?if we ensemble our submission,we might be champoin</p>",
+        "parent": {},
+        "author": {
+         "displayName": "hwe owe",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/28884560-kg.png?t=2026-02-13-13-07-25",
+         "url": "/hweowe",
+         "tier": "CONTRIBUTOR",
+         "id": 28884560,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 200,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "OverfitOracle",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/26014514-kg.jpg?t=2025-11-26-14-39-52",
+          "url": "/alisalmanrana",
+          "userName": "alisalmanrana",
+          "tier": "EXPERT",
+          "id": 26014514,
+          "profileUrl": "/alisalmanrana",
+          "performanceTier": "EXPERT",
+          "userId": 26014514,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Tony Li",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22938014-kg.png?t=2024-10-15-22-21-41",
+       "url": "/tonylica",
+       "tier": "MASTER",
+       "id": 22938014,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 4,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Tony Li",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22938014-kg.png?t=2024-10-15-22-21-41",
+        "url": "/tonylica",
+        "userName": "tonylica",
+        "tier": "MASTER",
+        "id": 22938014,
+        "profileUrl": "/tonylica",
+        "performanceTier": "MASTER",
+        "userId": 22938014,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1468,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3448319,
+    "postDate": "2026-04-25T06:27:02.427Z",
+    "rawMarkdown": "currently 15.827",
+    "content": "<p>currently 15.827</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Geremie Yeo",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+     "url": "/yeoyunsianggeremie",
+     "tier": "GRANDMASTER",
+     "id": 5256933,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 12,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Geremie Yeo",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+      "url": "/yeoyunsianggeremie",
+      "userName": "yeoyunsianggeremie",
+      "tier": "GRANDMASTER",
+      "id": 5256933,
+      "profileUrl": "/yeoyunsianggeremie",
+      "performanceTier": "GRANDMASTER",
+      "userId": 5256933,
+      "progressionOptOut": false
+     },
+     "intro": "Must have a Codex/Claude Code team/enterprise plan with higher usage limits"
+    }
+   },
+   {
+    "id": 3448245,
+    "postDate": "2026-04-25T01:13:58Z",
+    "rawMarkdown": "With host confirmation https://www.kaggle.com/competitions/neurogolf-2026/discussion/694051#3448238 limit is not long 15.9. It is 16 or 17",
+    "content": "<p>With host confirmation <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/694051#3448238\" target=\"_blank\">https://www.kaggle.com/competitions/neurogolf-2026/discussion/694051#3448238</a> limit is not long 15.9. It is 16 or 17</p>",
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1468,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3447199,
+    "postDate": "2026-04-22T20:34:00.350Z",
+    "rawMarkdown": "",
+    "parent": {},
+    "author": {
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/"
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "totalUpvotes": 2
+    },
+    "canDelete": true,
+    "isUserAuthor": true,
+    "isDeleted": true,
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "mmoffitt"
+      ],
+      "userCount": 1
+     }
+    ]
+   },
+   {
+    "id": 3447189,
+    "postDate": "2026-04-22T20:11:29.810Z",
+    "rawMarkdown": "",
+    "parent": {},
+    "author": {
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/"
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "totalUpvotes": 1
+    },
+    "canDelete": true,
+    "isUserAuthor": true,
+    "isDeleted": true,
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3447180,
+   "postDate": "2026-04-22T19:56:18.277Z",
+   "rawMarkdown": "After the 04/21 metric update, Have seen kaggler reports of `20.13`, multiple `20+` tasks, multiple `18.5+` tasks, and even `23.27`.\n\nThat stands out because if a model really pays for a full `1x10x30x30`  output in new metric, the rough floor is already around:\n\n* `9000` cost → score `15.895020`\n\nBy comparison:\n\n* `18.5` → cost ≈ `665`\n* `20.13` → cost ≈ `130`\n* `23.27` → cost ≈ `5.64`\n\nSo `20+` is not just a better `15.9`. It suggests a very different cost/accounting regime.\n\nMy own best-score model is still below that ~`15.9` full-output floor, so before spending time chasing `20+`, I wanted to discuss whether this is intended, or whether another eval/scorer update may still happen.\n\nPossible areas may inflate reported scores for some solutions:\n\n* constants or initializers may not be contributing to memory cost as expected\n* dynamic shapes appear to under-report memory cost\n* the rule requiring statically-defined shapes does not seem to be explicitly enforced in the scorer\n\nCould we get clarify:\n\n* Are these `20+` scores intended under the current metric?\n* Or is another eval/scoring update possible?\n\n**Inflation probe :**\n\nI built a dynamic-pad probe for `task179.onnx` based on the approach described here:\n\n```text\nhttps://www.kaggle.com/competitions/neurogolf-2026/discussion/693711#3446797\n```\n\nThe probe passes the Kaggle scorer for Task 179. It scores **18.139**, with a reported cost of **954** and a file size of **716 bytes**.\n\nRelative to the current score, the net gain is **+2.937 score**.\n\nThis appears to be a genuine score inflation issue in the current scorer. For Task 179, all official local examples are `3x3`, so the crop-to-`3x3` trick is semantically valid for this task. The current scorer seems to enforce only static declared graph input/output shapes, while the actual cost is still derived from `onnx_tool.shape_infer(None) -> profile()`.\n\nIn this probe, ORT returns a shape of `[1,10,30,30]`, but `onnx_tool` profiles the `Pad` output as `[1,10,3,3]`. As a result, memory is significantly undercounted, with the reported profile showing `memory=846`, `macs=91`, and `params=17`.\n\nI also tested @asalhi Ali’s approach (`[1, 10, None, None]`) on task 337, which scored 20.13. In that case, `onnx_tool` profiles the `Pad` output as `[1,10,0,0]`, which causes the memory cost to be severely undercounted.\n\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F22938014%2Faaf3e5e81cba4d5ec4ced9e371f7eef1%2F2222.png?generation=1776893352298328&alt=media)",
+   "content": "<p>After the 04/21 metric update, Have seen kaggler reports of <code>20.13</code>, multiple <code>20+</code> tasks, multiple <code>18.5+</code> tasks, and even <code>23.27</code>.</p>\n<p>That stands out because if a model really pays for a full <code>1x10x30x30</code>  output in new metric, the rough floor is already around:</p>\n<ul>\n<li><code>9000</code> cost → score <code>15.895020</code></li>\n</ul>\n<p>By comparison:</p>\n<ul>\n<li><code>18.5</code> → cost ≈ <code>665</code></li>\n<li><code>20.13</code> → cost ≈ <code>130</code></li>\n<li><code>23.27</code> → cost ≈ <code>5.64</code></li>\n</ul>\n<p>So <code>20+</code> is not just a better <code>15.9</code>. It suggests a very different cost/accounting regime.</p>\n<p>My own best-score model is still below that ~<code>15.9</code> full-output floor, so before spending time chasing <code>20+</code>, I wanted to discuss whether this is intended, or whether another eval/scorer update may still happen.</p>\n<p>Possible areas may inflate reported scores for some solutions:</p>\n<ul>\n<li>constants or initializers may not be contributing to memory cost as expected</li>\n<li>dynamic shapes appear to under-report memory cost</li>\n<li>the rule requiring statically-defined shapes does not seem to be explicitly enforced in the scorer</li>\n</ul>\n<p>Could we get clarify:</p>\n<ul>\n<li>Are these <code>20+</code> scores intended under the current metric?</li>\n<li>Or is another eval/scoring update possible?</li>\n</ul>\n<p><strong>Inflation probe :</strong></p>\n<p>I built a dynamic-pad probe for <code>task179.onnx</code> based on the approach described here:</p>\n<pre><code>https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711#3446797\n</code></pre>\n<p>The probe passes the Kaggle scorer for Task 179. It scores <strong>18.139</strong>, with a reported cost of <strong>954</strong> and a file size of <strong>716 bytes</strong>.</p>\n<p>Relative to the current score, the net gain is <strong>+2.937 score</strong>.</p>\n<p>This appears to be a genuine score inflation issue in the current scorer. For Task 179, all official local examples are <code>3x3</code>, so the crop-to-<code>3x3</code> trick is semantically valid for this task. The current scorer seems to enforce only static declared graph input/output shapes, while the actual cost is still derived from <code>onnx_tool.shape_infer(None) -&gt; profile()</code>.</p>\n<p>In this probe, ORT returns a shape of <code>[1,10,30,30]</code>, but <code>onnx_tool</code> profiles the <code>Pad</code> output as <code>[1,10,3,3]</code>. As a result, memory is significantly undercounted, with the reported profile showing <code>memory=846</code>, <code>macs=91</code>, and <code>params=17</code>.</p>\n<p>I also tested <a href=\"https://www.kaggle.com/asalhi\" target=\"_blank\">@asalhi</a> Ali’s approach (<code>[1, 10, None, None]</code>) on task 337, which scored 20.13. In that case, <code>onnx_tool</code> profiles the <code>Pad</code> output as <code>[1,10,0,0]</code>, which causes the memory cost to be severely undercounted.</p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F22938014%2Faaf3e5e81cba4d5ec4ced9e371f7eef1%2F2222.png?generation=1776893352298328&amp;alt=media\" alt=\"\"></p>",
+   "parent": {},
+   "author": {
+    "displayName": "Tony Li",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22938014-kg.png?t=2024-10-15-22-21-41",
+    "url": "/tonylica",
+    "tier": "MASTER",
+    "id": 22938014,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 10,
+    "canUpvote": true,
+    "totalUpvotes": 10
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 4,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Tony Li",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22938014-kg.png?t=2024-10-15-22-21-41",
+     "url": "/tonylica",
+     "userName": "tonylica",
+     "tier": "MASTER",
+     "id": 22938014,
+     "profileUrl": "/tonylica",
+     "performanceTier": "MASTER",
+     "userId": 22938014,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3447180,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 693950,
+  "name": "20+ single-task scores vs the ~15.9 full-output floor — intended, or still a scoring bug?",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-22T19:56:18.276727500Z",
+  "totalVotes": 10,
+  "url": "/competitions/neurogolf-2026/discussion/693950",
+  "totalMessages": 22,
+  "authorPerformanceTier": "MASTER",
+  "authorProgressionOptOut": false
+ }
+}

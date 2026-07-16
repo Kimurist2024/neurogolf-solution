@@ -1,0 +1,55 @@
+=== 大量挿入前 ===
+bucket_count: 17, size: 0, load_factor: 0
+=== key0000 〜 key0999 を 0 〜 999 とともに挿入 ===
+  拡張: bucket_count 17 -> 37 (size=19, load_factor=0.513514)
+  拡張: bucket_count 37 -> 79 (size=39, load_factor=0.493671)
+  拡張: bucket_count 79 -> 163 (size=81, load_factor=0.496933)
+  拡張: bucket_count 163 -> 331 (size=165, load_factor=0.498489)
+  拡張: bucket_count 331 -> 673 (size=333, load_factor=0.494799)
+  拡張: bucket_count 673 -> 1361 (size=675, load_factor=0.495959)
+=== 挿入後 ===
+bucket_count: 1361, size: 1000, load_factor: 0.734754
+=== 検索テスト ===
+find key0000: 0
+find key0123: 123
+find key0999: 999
+find key1000: none
+=== 全キー検索でのタグ照合効果 ===
+1000 件全キー検索: tag comparisons = 1333, string comparisons = 1000
+  -> タグ不一致により文字列比較を 333 回省略しました
+=== 削除テスト ===
+key0123 を削除しました
+find key0123 after erase: none
+size: 999, load_factor: 0.734019
+=== 先頭 30 バケットの内容（拡張後も整合性確認） ===
+  bucket[0]: (empty)
+  bucket[1]: (key0400 -> 400) -> (key0649 -> 649)
+  bucket[2]: (key0890 -> 890) -> (key0170 -> 170) -> (key0228 -> 228)
+  bucket[3]: (empty)
+  bucket[4]: (empty)
+  bucket[5]: (key0280 -> 280)
+  bucket[6]: (empty)
+  bucket[7]: (key0804 -> 804) -> (key0309 -> 309) -> (key0482 -> 482)
+  bucket[8]: (empty)
+  bucket[9]: (key0202 -> 202)
+  bucket[10]: (empty)
+  bucket[11]: (empty)
+  bucket[12]: (key0369 -> 369)
+  bucket[13]: (key0941 -> 941)
+  bucket[14]: (empty)
+  bucket[15]: (key0347 -> 347)
+  bucket[16]: (empty)
+  bucket[17]: (key0755 -> 755)
+  bucket[18]: (empty)
+  bucket[19]: (empty)
+  bucket[20]: (empty)
+  bucket[21]: (key0119 -> 119) -> (key0241 -> 241)
+  bucket[22]: (empty)
+  bucket[23]: (key0070 -> 70)
+  bucket[24]: (key0660 -> 660) -> (key0062 -> 62)
+  bucket[25]: (key0902 -> 902) -> (key0588 -> 588)
+  bucket[26]: (empty)
+  bucket[27]: (empty)
+  bucket[28]: (empty)
+  bucket[29]: (empty)
+  ... (残り 1331 バケットは省略)

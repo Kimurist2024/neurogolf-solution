@@ -1,0 +1,229 @@
+{
+ "forumTopic": {
+  "authorId": 172360,
+  "authorThumbnailName": "default-thumb.png",
+  "authorUserDisplayName": "Pavel",
+  "authorUserName": "pavelsavchenkov",
+  "comments": [
+   {
+    "id": 3449818,
+    "postDate": "2026-04-28T22:21:36.920Z",
+    "rawMarkdown": "Thank you for the excellent post!\n\n> do you agree with reasoning that 9000 should be the hard cost lower bound for one task\n\nToday's [metric update for April 28th](https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230) simplifies the memory footprint calculation dramatically, and excludes the `input` and `output` layers.\n\n*(Note that it may have been possible to achieve this before using the previous metric, e.g., by cleverly employing the `Pad` operation which allowed the expansion of layers at no extra memory cost).*",
+    "content": "<p>Thank you for the excellent post!</p>\n<blockquote>\n  <p>do you agree with reasoning that 9000 should be the hard cost lower bound for one task</p>\n</blockquote>\n<p>Today's <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230\" target=\"_blank\">metric update for April 28th</a> simplifies the memory footprint calculation dramatically, and excludes the <code>input</code> and <code>output</code> layers.</p>\n<p><em>(Note that it may have been possible to achieve this before using the previous metric, e.g., by cleverly employing the <code>Pad</code> operation which allowed the expansion of layers at no extra memory cost).</em></p>",
+    "replies": [
+     {
+      "id": 3449839,
+      "postDate": "2026-04-28T23:52:36.507Z",
+      "rawMarkdown": "Great job on the update, thanks a lot!\n\nI believe that all the buggy networks I had saved now either failing or scoring some sane values.\n\nHowever, after a quick pass on the new code and I think I found another exploit: one can add an initializer named `input` which makes `onnx-tool` drop `macs` and `params` to zero on the example task 1 solution below.\n\nAttaching an (an unpolished) archive with:\n* task 1 submission without initializer exploit\n* task 1 submission with initializer exploit\n* .md report\n* script which confirms difference in profiling and that the only difference between networks is one initializer (need to adjust `neurogolf_utils` import path)",
+      "content": "<p>Great job on the update, thanks a lot!</p>\n<p>I believe that all the buggy networks I had saved now either failing or scoring some sane values.</p>\n<p>However, after a quick pass on the new code and I think I found another exploit: one can add an initializer named <code>input</code> which makes <code>onnx-tool</code> drop <code>macs</code> and <code>params</code> to zero on the example task 1 solution below.</p>\n<p>Attaching an (an unpolished) archive with:</p>\n<ul>\n<li>task 1 submission without initializer exploit</li>\n<li>task 1 submission with initializer exploit</li>\n<li>.md report</li>\n<li>script which confirms difference in profiling and that the only difference between networks is one initializer (need to adjust <code>neurogolf_utils</code> import path)</li>\n</ul>",
+      "replies": [
+       {
+        "id": 3450344,
+        "postDate": "2026-04-29T17:55:16.503Z",
+        "rawMarkdown": "Yep, this looks like a legitimate issue.  I've added an addendum to [yesterday's update](https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230), calling out this bug and the other one you reported.  Both of them are great catches -- thank you!!",
+        "content": "<p>Yep, this looks like a legitimate issue.  I've added an addendum to <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230\" target=\"_blank\">yesterday's update</a>, calling out this bug and the other one you reported.  Both of them are great catches -- thank you!!</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "attachments": [
+       {
+        "fileType": ".zip",
+        "id": 41960,
+        "name": "bugs_report_28_apr.zip",
+        "totalBytes": 8404,
+        "url": "https://storage.googleapis.com/kaggle-forum-message-attachments/3449839/41960/bugs_report_28_apr.zip"
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "Pavel",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/pavelsavchenkov",
+       "tier": "MASTER",
+       "id": 172360,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "totalVotes": 3,
+       "canUpvote": true,
+       "totalUpvotes": 3
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 10,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "THANK_YOU",
+        "featuredUserNames": [
+         "mmoffitt"
+        ],
+        "userCount": 1
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Pavel",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+        "url": "/pavelsavchenkov",
+        "userName": "pavelsavchenkov",
+        "tier": "MASTER",
+        "id": 172360,
+        "profileUrl": "/pavelsavchenkov",
+        "performanceTier": "MASTER",
+        "userId": 172360,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3449929,
+      "postDate": "2026-04-29T04:27:25.377Z",
+      "rawMarkdown": "",
+      "parent": {},
+      "author": {
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+       "url": "/"
+      },
+      "authorType": "COMMENT",
+      "votes": {},
+      "canDelete": true,
+      "isUserAuthor": true,
+      "isDeleted": true,
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3448391,
+   "postDate": "2026-04-25T10:57:56.113Z",
+   "rawMarkdown": "# Detailed report (written by LLM, reviewed by me)\n\n[https://www.kaggle.com/code/pavelsavchenkov/onnx-tool-exploit-report-apr-25-v2](https://www.kaggle.com/code/pavelsavchenkov/onnx-tool-exploit-report-apr-25-v2)\n\n<img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F172360%2Fe3de0135f0c07fbc397b1f2a747d936c%2FScreenshot%20from%202026-04-25%2010-55-04.png?generation=1777110932823075&alt=media\" width=\"500\">\n\nI believe that cost lower bound for one task should be `9000` (`15.895020143681643` score) (e.g. one cast from float32 to bool).\n\nWhy: we must materialise the output tensor. Its shape must be `1x10x30x30`. So `(1 byte) * 1 * 10 * 30 * 30 = 9000`. Anything smaller than that is miscalculated profiling.\n\n# Summary (written by me, reviewed by LLM):\n\nI believe there is an issue with how onnx-tool is implemented.\n\nLet's start with fundamentals. From onnx-tool perspective, model consists of \n* set of tensors. Each tensor has value, shape and dtype (might be unknown or partially unknown)\n* set of nodes. Each node has an underlying op, attributes, list of input tensors, list of output tensors. All are known.\n\nIn order to profile the model, onnx-tool wants to compute shape and dtype of each tensor. We process nodes in topological order and **try** to set shape and dtype of output tensors based on input tensors and node attributes.\n\nSome operations (nodes) behave such that their output tensors shape depends on some of input tensors **values** (not input tensors shape).\n\nAs one example, let's consider [Compress](https://github.com/onnx/onnx/blob/main/docs/Operators.md#Compress). It takes \"input\" and \"condition\" as inputs, then filters \"input\" according to condition. E.g. \"input\"=`[[1, 2], [3, 4], [5,6]]`, \"condition\"=`[False, True, False]` becomes `[[3, 4]]`.\n\nNow, what happens when we want to calculate shape of `Compress` node tensor output:\n* code calls `shape_infer()` method of `CompressNode`\n* `shape_infer()` is not implemented for `CompressNode`, so it calls `shape_infer()` method of parent class, which calls `value_infer()`\n* `value_infer()` calls `numpy.compress` on `get_numpy()` of input tensors and put the result to the output tensor\n* **[KEY PART] `get_numpy()` of a tensor with unknown value returns `numpy.zeros` !!**\n\n**Then `Compress` tensor output resolves to `numpy.compress([False, False, ..., False], input)` which is tensor of shape `[0, ...]`. It then be counted as having 0 memory footprint, while in fact it can be big.**\n\nThere is another (much more local) issue. `WhereNode` `shape_infer` does not broadcast shapes correctly ([here](https://github.com/ThanatosShinji/onnx-tool/blob/main/onnx_tool/node.py#L779-L785), see more details in the notebook above.)\n\n# Next steps\n\nAbout `get_numpy()` emitting zeros on unknown values:\n\nMy understanding is that this design choice made `onnx-tool` implementation easier, at a cost of making it report incorrect values in many cases.\n\nI believe the ideal proper fix would be to re-implement onnx-tool such that neither `value_infer()` nor `shape_infer()` rely on `get_numpy()` returning dummy zeroes. That is a big refactor though.\n\nAnother fix would be to make a set of targeted changes to problematic ops.\n\n@mmoffitt wondering what you think\n* do you agree with reasoning that `9000` should be the hard cost lower bound for one task, given correct profiler?\n* do you think the bugs above are really bugs and should be fixed? Maybe I am missing something.\n\nI am personally okay with having additional objective to optimize solution against concrete profiling implementation (would prefer not to, though). It would be nice to have clarity about that, to not waste any effort.\n\nThank you!",
+   "content": "<h1>Detailed report (written by LLM, reviewed by me)</h1>\n<p><a href=\"https://www.kaggle.com/code/pavelsavchenkov/onnx-tool-exploit-report-apr-25-v2\" target=\"_blank\">https://www.kaggle.com/code/pavelsavchenkov/onnx-tool-exploit-report-apr-25-v2</a></p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F172360%2Fe3de0135f0c07fbc397b1f2a747d936c%2FScreenshot%20from%202026-04-25%2010-55-04.png?generation=1777110932823075&amp;alt=media\"></p>\n<p>I believe that cost lower bound for one task should be <code>9000</code> (<code>15.895020143681643</code> score) (e.g. one cast from float32 to bool).</p>\n<p>Why: we must materialise the output tensor. Its shape must be <code>1x10x30x30</code>. So <code>(1 byte) * 1 * 10 * 30 * 30 = 9000</code>. Anything smaller than that is miscalculated profiling.</p>\n<h1>Summary (written by me, reviewed by LLM):</h1>\n<p>I believe there is an issue with how onnx-tool is implemented.</p>\n<p>Let's start with fundamentals. From onnx-tool perspective, model consists of </p>\n<ul>\n<li>set of tensors. Each tensor has value, shape and dtype (might be unknown or partially unknown)</li>\n<li>set of nodes. Each node has an underlying op, attributes, list of input tensors, list of output tensors. All are known.</li>\n</ul>\n<p>In order to profile the model, onnx-tool wants to compute shape and dtype of each tensor. We process nodes in topological order and <strong>try</strong> to set shape and dtype of output tensors based on input tensors and node attributes.</p>\n<p>Some operations (nodes) behave such that their output tensors shape depends on some of input tensors <strong>values</strong> (not input tensors shape).</p>\n<p>As one example, let's consider <a href=\"https://github.com/onnx/onnx/blob/main/docs/Operators.md#Compress\" target=\"_blank\">Compress</a>. It takes \"input\" and \"condition\" as inputs, then filters \"input\" according to condition. E.g. \"input\"=<code>[[1, 2], [3, 4], [5,6]]</code>, \"condition\"=<code>[False, True, False]</code> becomes <code>[[3, 4]]</code>.</p>\n<p>Now, what happens when we want to calculate shape of <code>Compress</code> node tensor output:</p>\n<ul>\n<li>code calls <code>shape_infer()</code> method of <code>CompressNode</code></li>\n<li><code>shape_infer()</code> is not implemented for <code>CompressNode</code>, so it calls <code>shape_infer()</code> method of parent class, which calls <code>value_infer()</code></li>\n<li><code>value_infer()</code> calls <code>numpy.compress</code> on <code>get_numpy()</code> of input tensors and put the result to the output tensor</li>\n<li><strong>[KEY PART] <code>get_numpy()</code> of a tensor with unknown value returns <code>numpy.zeros</code> !!</strong></li>\n</ul>\n<p><strong>Then <code>Compress</code> tensor output resolves to <code>numpy.compress([False, False, ..., False], input)</code> which is tensor of shape <code>[0, ...]</code>. It then be counted as having 0 memory footprint, while in fact it can be big.</strong></p>\n<p>There is another (much more local) issue. <code>WhereNode</code> <code>shape_infer</code> does not broadcast shapes correctly (<a href=\"https://github.com/ThanatosShinji/onnx-tool/blob/main/onnx_tool/node.py#L779-L785\" target=\"_blank\">here</a>, see more details in the notebook above.)</p>\n<h1>Next steps</h1>\n<p>About <code>get_numpy()</code> emitting zeros on unknown values:</p>\n<p>My understanding is that this design choice made <code>onnx-tool</code> implementation easier, at a cost of making it report incorrect values in many cases.</p>\n<p>I believe the ideal proper fix would be to re-implement onnx-tool such that neither <code>value_infer()</code> nor <code>shape_infer()</code> rely on <code>get_numpy()</code> returning dummy zeroes. That is a big refactor though.</p>\n<p>Another fix would be to make a set of targeted changes to problematic ops.</p>\n<p><a href=\"https://www.kaggle.com/mmoffitt\" target=\"_blank\">@mmoffitt</a> wondering what you think</p>\n<ul>\n<li>do you agree with reasoning that <code>9000</code> should be the hard cost lower bound for one task, given correct profiler?</li>\n<li>do you think the bugs above are really bugs and should be fixed? Maybe I am missing something.</li>\n</ul>\n<p>I am personally okay with having additional objective to optimize solution against concrete profiling implementation (would prefer not to, though). It would be nice to have clarity about that, to not waste any effort.</p>\n<p>Thank you!</p>",
+   "parent": {},
+   "author": {
+    "displayName": "Pavel",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+    "url": "/pavelsavchenkov",
+    "tier": "MASTER",
+    "id": 172360,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 6,
+    "canUpvote": true,
+    "totalUpvotes": 6
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 10,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "THANK_YOU",
+     "featuredUserNames": [
+      "mmoffitt"
+     ],
+     "userCount": 1
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Pavel",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/pavelsavchenkov",
+     "userName": "pavelsavchenkov",
+     "tier": "MASTER",
+     "id": 172360,
+     "profileUrl": "/pavelsavchenkov",
+     "performanceTier": "MASTER",
+     "userId": 172360,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3448391,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 694541,
+  "name": "More ways to get 20+ on one task",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-25T10:57:56.113394600Z",
+  "totalVotes": 6,
+  "url": "/competitions/neurogolf-2026/discussion/694541",
+  "totalMessages": 4,
+  "authorPerformanceTier": "MASTER",
+  "authorProgressionOptOut": false
+ }
+}

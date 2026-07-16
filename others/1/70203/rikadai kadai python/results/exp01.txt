@@ -1,0 +1,42 @@
+======================================================================
+exp01: サムネイル選択手法の定量比較
+======================================================================
+OpenCV 4.12.0 / NumPy 2.4.4 / matplotlib 3.10.6
+video: /Users/kimura2003/Downloads/rikadai kadai python/dataset/videos/People - 84973.mp4
+size: 1280x720, fps: 25.0, frames(prop): 241
+frames(read): 241
+decode time total: 4.6410 s
+
+--- 各手法の選択フレームと計算時間 ---
+center         中央フレーム法                frame= 120  time=0.000001 s
+hist           平均ヒストグラム法(採用)          frame= 185  time=4.840410 s
+laplacian      鮮明度法                   frame= 208  time=6.056869 s
+colorfulness   カラフルネス法                frame=   8  time=11.725322 s
+(参考) 平均ヒストグラム法 sample_step=1: frame=185
+(参考) sample_step=5 と step=1 の選択差: 0 フレーム
+
+--- 各評価値の基本統計(全フレーム) ---
+hist_l2_dist(step=1)   min=  0.00706432 max=   0.0206925 mean=   0.0130107 std=  0.00334287
+laplacian_var          min=     194.293 max=      230.11 mean=     221.165 std=     5.00327
+colorfulness           min=     27.4794 max=     28.2406 mean=     27.9572 std=    0.232764
+
+--- 各手法の選択フレームにおける他指標の値と百分位 ---
+(百分位はその値以下のフレームが占める割合 [%]。hist_l2 は小さいほど良い / lap_var, colorfulness は大きいほど良い)
+method         frame    hist_l2    pct    lap_var    pct   colorful    pct
+center           120   0.008142    2.5     218.16   14.9      27.79   30.7
+hist             185   0.007064    0.4     221.21   44.8      28.15   78.0
+laplacian        208   0.011012   31.5     230.11  100.0      28.17   89.2
+colorfulness       8   0.018820   92.9     213.01    6.2      28.24  100.0
+
+--- 指標間の相関係数(全フレーム, Pearson / Spearman) ---
+hist_l2_dist vs laplacian_var    Pearson=-0.3843  Spearman=-0.1613
+hist_l2_dist vs colorfulness     Pearson=+0.3321  Spearman=+0.3143
+laplacian_var vs colorfulness    Pearson=-0.0855  Spearman=+0.0533
+
+saved: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp01_traces.csv
+saved: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp01_summary.csv
+saved: /Users/kimura2003/Downloads/rikadai kadai python/experiments/figures/exp01_metric_traces.pdf
+saved: /Users/kimura2003/Downloads/rikadai kadai python/experiments/figures/exp01_normalized.pdf
+saved: /Users/kimura2003/Downloads/rikadai kadai python/experiments/figures/exp01_selected_frames.pdf
+
+exp01 done.

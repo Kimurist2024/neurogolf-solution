@@ -1,0 +1,218 @@
+{
+  "task": "task071",
+  "baseline_exact_model": "/mnt/data/task071_compact.onnx",
+  "baseline_recheck": {
+    "memory": 250,
+    "params": 90,
+    "cost": 340,
+    "score": 19.17105438238979,
+    "correct": true
+  },
+  "counts": {
+    "train": {
+      "right": 2,
+      "wrong": 0
+    },
+    "test": {
+      "right": 1,
+      "wrong": 0
+    },
+    "arc-gen": {
+      "right": 262,
+      "wrong": 0
+    }
+  },
+  "margin_stable": {
+    "stable": true,
+    "min_nonzero_abs": 1.0,
+    "near_boundary_cells": 0,
+    "observed_min_abs": 1.0
+  },
+  "structure": {
+    "checker_full_check": "pass",
+    "shape_inference_strict": "pass",
+    "opset_imports": [
+      [
+        "",
+        18
+      ]
+    ],
+    "ops": [
+      "Einsum",
+      "Einsum",
+      "Div",
+      "Round",
+      "LessOrEqual",
+      "Cast",
+      "Cast",
+      "Mul",
+      "Sub",
+      "Min",
+      "Max",
+      "Max",
+      "Min",
+      "Pad",
+      "Cast",
+      "Gather"
+    ],
+    "banned_ops_present": [],
+    "functions": 0,
+    "sparse_initializers": 0,
+    "initializer_elems": 90,
+    "file_size_bytes": 943
+  },
+  "value_info_memory_items": [
+    {
+      "name": "h",
+      "elem_type": 1,
+      "shape": [
+        1
+      ],
+      "bytes": 4
+    },
+    {
+      "name": "i",
+      "elem_type": 1,
+      "shape": [
+        1
+      ],
+      "bytes": 4
+    },
+    {
+      "name": "j",
+      "elem_type": 1,
+      "shape": [
+        1
+      ],
+      "bytes": 4
+    },
+    {
+      "name": "k",
+      "elem_type": 1,
+      "shape": [
+        1
+      ],
+      "bytes": 4
+    },
+    {
+      "name": "l",
+      "elem_type": 9,
+      "shape": [
+        1
+      ],
+      "bytes": 1
+    },
+    {
+      "name": "m",
+      "elem_type": 3,
+      "shape": [
+        1
+      ],
+      "bytes": 1
+    },
+    {
+      "name": "n",
+      "elem_type": 3,
+      "shape": [
+        1
+      ],
+      "bytes": 1
+    },
+    {
+      "name": "o",
+      "elem_type": 3,
+      "shape": [
+        1
+      ],
+      "bytes": 1
+    },
+    {
+      "name": "p",
+      "elem_type": 3,
+      "shape": [
+        16
+      ],
+      "bytes": 16
+    },
+    {
+      "name": "q",
+      "elem_type": 3,
+      "shape": [
+        16
+      ],
+      "bytes": 16
+    },
+    {
+      "name": "r",
+      "elem_type": 3,
+      "shape": [
+        16
+      ],
+      "bytes": 16
+    },
+    {
+      "name": "s",
+      "elem_type": 3,
+      "shape": [
+        16
+      ],
+      "bytes": 16
+    },
+    {
+      "name": "t",
+      "elem_type": 3,
+      "shape": [
+        16
+      ],
+      "bytes": 16
+    },
+    {
+      "name": "u",
+      "elem_type": 3,
+      "shape": [
+        30
+      ],
+      "bytes": 30
+    },
+    {
+      "name": "v",
+      "elem_type": 6,
+      "shape": [
+        30
+      ],
+      "bytes": 120
+    }
+  ],
+  "cost100_attempt_summary": {
+    "target_cost": 100,
+    "adopted_cost100_model": null,
+    "reason_not_adopted": "No cost<=100 candidate found that satisfied train/test/arc-gen exactness. Gather-based exact construction has an irreducible int32[30] dynamic index tensor (120 bytes) before params/intermediates, so this exact family cannot reach cost<=100.",
+    "checked_families": [
+      {
+        "family": "existing Gather index generator",
+        "result": "exact but cost 340"
+      },
+      {
+        "family": "negative Pad + reflect final op",
+        "result": "0/265 exact examples in brute-force one-Pad search"
+      },
+      {
+        "family": "single final depthwise/grouped Conv with <=100 params",
+        "result": "rejected by duplicate local-feature conflicts on official examples"
+      },
+      {
+        "family": "single final DeformConv with <=100 params and input-as-offset",
+        "result": "rejected by duplicate feature conflicts / non-exact behavior"
+      },
+      {
+        "family": "Slice/Resize/RoiAlign/MaxRoiPool one-final-op variants",
+        "result": "affine/monotone sampling cannot implement the required piecewise fold and zero-outside behavior in the tested constructions"
+      },
+      {
+        "family": "ScatterND/TensorScatter sparse update",
+        "result": "requires dynamic indices/updates exceeding the 100 cost target for 12-20 changed cells and background-channel restoration"
+      }
+    ]
+  },
+  "elapsed_sec": 0.5627460479736328
+}

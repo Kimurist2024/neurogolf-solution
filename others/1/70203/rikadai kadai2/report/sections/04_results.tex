@@ -1,0 +1,110 @@
+\section{実行結果}
+
+本節では，付録 B に添付した実行結果に基づき，作成したプログラムが課題の仕様を満たして動作することを報告する．
+
+\subsection{実行環境}
+
+実行環境を表 \ref{tab:env} に示す．いずれのプログラムも警告なしでコンパイルできた．動作確認プログラムは最適化なし，時間計測を含む実験プログラムは {\tt -O2} を付してコンパイルした．
+
+\begin{table}[htbp]
+\centering
+\caption{実行環境}
+\label{tab:env}
+\begin{tabular}{ll}
+\hline
+項目 & 内容 \\
+\hline
+CPU & Apple M4 Pro（12 コア） \\
+主記憶 & 24 GB \\
+OS & macOS 26.5 \\
+コンパイラ & Apple clang 21.0.0 \\
+コンパイルオプション & {\tt -std=c++17 -Wall -Wextra}（実験は {\tt -O2} 付き） \\
+標準ライブラリ & libc++ \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{提出プログラム（テンプレート版）の動作確認}
+
+テンプレート版 {\tt hashtable.cpp} の実行結果の全文を付録 B.2 に示す．その要点は次のとおりである．
+
+まず {\tt HashTable<int>} に対して {\tt hash.c} と同じ 4 組のデータを {\tt insert} で挿入したところ，要素数は 4 となり，{\tt dump} の出力から
+{\tt matsuzawa} がバケット 3，{\tt takimoto} がバケット 5，{\tt ohmura} がバケット 6，{\tt katsurada} がバケット 8 に格納されたことが確認できた．これは式 (\ref{eq:addhash}) のハッシュ関数による配置と一致する．
+
+検索については，次の出力が得られた（付録 B.2 より抜粋）．
+
+\begin{verbatim}
+find takimoto: 42
+find katsurada: 122
+find nonexistent: none
+\end{verbatim}
+
+登録済みキーの検索 {\tt table("takimoto")} は挿入した値 42 を返し，未登録キーの検索は {\tt nullptr}（表示は {\tt none}）を返した．削除については，{\tt table -= "katsurada"} の実行後に要素数が 4 から 3 に減り，同じキーの再検索が {\tt none} となった．
+
+\begin{verbatim}
+katsurada 削除後の size: 3
+find katsurada after erase: none
+\end{verbatim}
+
+以上より，課題仕様である {\tt table("hoge")}（検索），{\tt table.insert("hoge", x)}（挿入），{\tt table -= "hoge"}（削除）の 3 操作がいずれも正しく動作している．
+
+さらに加点課題のテンプレート化について，{\tt HashTable<double>} では実数値 175.0 の格納と検索，{\tt HashTable<std::string>} では日本語文字列「こんにちは」「情報科学演習」の格納と検索が正しく行えた．また境界条件として，存在しないキーの検索，削除後の再検索，空でない表での未登録キー検索がすべて {\tt none} を返すことを確認した．すなわち，値の型を {\tt int}，{\tt double}，{\tt std::string} と変えても同一のクラス定義がそのまま機能しており，テンプレート化の要件を満たしている．
+
+\subsection{非テンプレート版の動作確認}
+
+比較用の非テンプレート版 {\tt hashtable\_v1.cpp} についても同様の確認を行い，4 件の挿入，成功検索 4 件，不成功検索 1 件，削除 1 件と削除後の再検索がすべて期待どおりの結果となった（付録 B.1）．
+
+\subsection{改良版プログラムの動作確認}
+
+考察用の改良版 {\tt hashtable\_improved.cpp}（FNV-1a ハッシュ＋動的リハッシュ）では，キー {\tt key0000} から {\tt key0999} までの 1000 件を挿入する過程で，バケット数が
+$17 \rightarrow 37 \rightarrow 79 \rightarrow 163 \rightarrow 331 \rightarrow 673 \rightarrow 1361$
+と自動拡張された（付録 B.3）．挿入完了後の要素数は 1000，負荷率は 0.735 であり，負荷率が 1.0 を超えないよう表が成長していることが確認できた．拡張（全要素の再配置）を 6 回経た後も，{\tt key0000}，{\tt key0123}，{\tt key0999} の検索は正しい値を返し，未挿入の {\tt key1000} は {\tt none} を返した．また {\tt key0123} の削除後は再検索が {\tt none} となり要素数が 999 に減った．すなわちリハッシュを挟んでも 3 操作の正しさは保たれている．
+
+\subsection{単体テストによる網羅的な動作確認}
+
+デモによる確認に加えて，境界条件を網羅する単体テストプログラム {\tt test\_hashtable.cpp}（付録 A.13）を作成し実行した．テスト項目は，空の表に対する検索・削除，同一バケットに衝突するキー群（加算ハッシュで同値になるアナグラム）の格納，チェインの先頭・中間・末尾それぞれの削除，存在しないキーの削除，削除後の再挿入，同一キーの重複挿入時の挙動，要素数の増減，1000 件規模の挿入・削除，および {\tt HashTable<std::string>} での同等の確認である．実行の結果，50 項目すべてが成功した（付録 B.11 に全出力を添付）．
+
+\begin{verbatim}
+passed 50 / 50
+\end{verbatim}
+
+特にチェインの中間・末尾の削除は，デモ（4.2 節）では通らない経路（削除処理の 81 行目側の分岐）を通るため，単体テストによって初めて網羅的に確認できた項目である．さらに，メモリ誤り検出器（AddressSanitizer）と未定義動作検出器（UndefinedBehaviorSanitizer）を有効にしたビルドでも，3 本のプログラムと単体テストのすべてが検出ゼロで完走することを確認した．すなわち全ノードの解放漏れ・二重解放・範囲外アクセス・符号あふれは存在しない．
+
+\subsection{実験プログラムの実行}
+
+考察のために 11 本の実験プログラムを作成し実行した．
+(1) {\tt exp\_collision.cpp} は英単語 5000 語をキーとして 4 種類のハッシュ関数の衝突分布を計測するもの，
+(2) {\tt exp\_anagram.cpp} はアナグラム（同じ文字の並べ替え）キー群のハッシュ値を印字するもの，
+(3) {\tt exp\_loadfactor.cpp} は負荷率を変えながら検索時の平均キー比較回数を計測するもの，
+(4) {\tt exp\_timing.cpp} は要素数を $10^3$ から $10^6$ まで変えて挿入・検索時間を 4 種類のデータ構造で計測するもの，
+(5) {\tt exp\_memory.cpp} は挿入前後の最大常駐メモリ量の増分を計測するもの，
+(6) {\tt exp\_tablesize.cpp} はバケット数（2 の冪と素数）を変えて分布統計を計測するもの，
+(7) {\tt exp\_rehash.cpp} は挿入 1 件ごとのレイテンシを記録してリハッシュの償却コストを観測するもの，
+(8) {\tt exp\_openaddr.cpp} は開放番地法（線形走査）とチェイン法の平均プローブ数を負荷率別に計測するもの，
+(9) {\tt exp\_keylen.cpp} はキー長を変えてハッシュ計算・検索時間を計測するもの，
+(10) {\tt exp\_tag.cpp} はタグ付き比較（5.5.6 節で述べる発展版）による文字列比較回数の削減を計測するもの，
+(11) {\tt exp\_hashdos.cpp} は同一バケットに衝突する攻撃キー群による検索コストの劣化（ハッシュ飽和攻撃）を計測するものである．
+キーには macOS 付属の英単語辞書 {\tt /usr/share/dict/words} から機械的に抽出した 5000 語，および固定シードの擬似乱数で生成した英数字文字列を用いた．時間計測を含む実験では，他プロセスの影響を抑えるため反復測定（中央値または最小値）を用いた．いずれのプログラムも正常終了し，出力（付録 B.4〜B.15）が得られた．各実験の目的と結果の掲載先を表 \ref{tab:explist} にまとめる．これらの結果の分析は次節の考察で行う．
+
+\begin{table}[htbp]
+\centering
+\caption{実験プログラムの一覧と結果の掲載先}
+\label{tab:explist}
+\begin{tabular}{llll}
+\hline
+プログラム & 計測対象 & 使用キー & 結果の掲載先 \\
+\hline
+{\tt exp\_collision}  & 衝突分布・$\chi^2$ 値 & 英単語 5000 語 & 図 \ref{fig:collision17}, \ref{fig:collision1031}，表 \ref{tab:collision17}, \ref{tab:collision1031} \\
+{\tt exp\_anagram}    & アナグラムのバケット番号 & 固定アナグラム 16 語 & 表 \ref{tab:anagram} \\
+{\tt exp\_loadfactor} & 平均キー比較回数 & 英単語 5000 語 & 図 \ref{fig:loadfactor} \\
+{\tt exp\_timing}     & 挿入・検索の実時間 & 乱数 12 文字 & 図 \ref{fig:timing-insert}, \ref{fig:timing-lookup}，表 \ref{tab:timing} \\
+{\tt exp\_memory}     & 最大常駐メモリ増分 & 乱数 12 文字 & 図 \ref{fig:memory} \\
+{\tt exp\_tablesize}  & バケット数と分布統計 & 英単語 5000 語 & 表 \ref{tab:tablesize} \\
+{\tt exp\_rehash}     & 挿入レイテンシ時系列 & 乱数 12 文字 & 図 \ref{fig:rehash} \\
+{\tt exp\_openaddr}   & 平均プローブ数 & 乱数 12 文字 & 図 \ref{fig:openaddr} \\
+{\tt exp\_keylen}     & ハッシュ計算・検索時間 & 乱数 8〜256 文字 & 図 \ref{fig:keylen} \\
+{\tt exp\_tag}        & 文字列比較回数 & 乱数 12〜256 文字 & 表 \ref{tab:tag} \\
+{\tt exp\_hashdos}    & 攻撃キーでの検索コスト & アナグラム 2000 語ほか & 表 \ref{tab:hashdos} \\
+\hline
+\end{tabular}
+\end{table}

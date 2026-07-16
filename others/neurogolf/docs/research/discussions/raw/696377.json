@@ -1,0 +1,718 @@
+{
+ "forumTopic": {
+  "authorId": 1723677,
+  "authorThumbnailName": "1723677-kg.jpg",
+  "authorUserDisplayName": "Chris Deotte",
+  "authorUserName": "cdeotte",
+  "comments": [
+   {
+    "id": 3452306,
+    "postDate": "2026-05-03T03:49:18.990Z",
+    "rawMarkdown": "Many thanks to @cdeotte & the other teams who sent in bug reports and fixes!\n\nWe're aiming for one big update + announcement + rescore (ideally Monday?) to keep things as simple as possible for teams.  A few tips so that folks are ready:\n- Make sure that `dim_value > 0` for every dimension of every tensor (ONNX's default model checker does not catch these)\n- To scrub models of \"bogus\" shape data, we'll likely add something like `model.graph.ClearField(\"value_info\")` toward the beginning of `calculate_memory()`.  You can try adding this to your local `neurogolf_utils.py` to see how it behaves.\n\nApologies for the bumpy start — this is the first time (to our knowledge) that a competition has solicited & evaluated networks in this manner, and ONNX's broad feature set unfortunately means a larger attack surface than we'd prefer.",
+    "content": "<p>Many thanks to <a href=\"https://www.kaggle.com/cdeotte\" target=\"_blank\">@cdeotte</a> &amp; the other teams who sent in bug reports and fixes!</p>\n<p>We're aiming for one big update + announcement + rescore (ideally Monday?) to keep things as simple as possible for teams.  A few tips so that folks are ready:</p>\n<ul>\n<li>Make sure that <code>dim_value &gt; 0</code> for every dimension of every tensor (ONNX's default model checker does not catch these)</li>\n<li>To scrub models of \"bogus\" shape data, we'll likely add something like <code>model.graph.ClearField(\"value_info\")</code> toward the beginning of <code>calculate_memory()</code>.  You can try adding this to your local <code>neurogolf_utils.py</code> to see how it behaves.</li>\n</ul>\n<p>Apologies for the bumpy start — this is the first time (to our knowledge) that a competition has solicited &amp; evaluated networks in this manner, and ONNX's broad feature set unfortunately means a larger attack surface than we'd prefer.</p>",
+    "replies": [
+     {
+      "id": 3452314,
+      "postDate": "2026-05-03T04:40:36.557Z",
+      "rawMarkdown": "`model.graph.ClearField(\"value_info\")` may make your memory profiler unable to account for intermediate tensors produced by dynamic slicing.\n\nFor deployment, it is common to replace symbolic dynamic dimensions with concrete `dim_value`s, e.g. with ONNX Runtime’s dynamic-shape-fixing tool:\n\nhttps://onnxruntime.ai/docs/tutorials/mobile/helpers/make-dynamic-shape-fixed.html  \nhttps://www.kaggle.com/competitions/neurogolf-2026/discussion/695972  \n\nSo perhaps the profiler should distinguish between:\n1. invalid/bogus shape metadata, and\n2. intentionally fixed intermediate shapes needed for static analysis/profiling.\n\nSimply clearing ** all `value_info` may remove useful shape information  rather than only removing invalid shape data. **\n\n---\n\nA more robust approach might be:\n- enforcing `dim_value > 0` (as mentioned), and\n- validating consistency between inferred shapes and actual graph operations, (rather than dropping shape metadata altogether.)\n\n---\n\nI think dynamic slicing itself needs to remain supported; otherwise many legitimate ARC-style graph solutions become impossible, because crop sizes, object extents, and selected regions often depend on the input.\n\nThe issue seems to be bogus `value_info`, not dynamic slicing. Ideally the profiler should still support valid dynamic-shape operators, while rejecting inconsistent or fake shape annotations.\n",
+      "content": "<p><code>model.graph.ClearField(\"value_info\")</code> may make your memory profiler unable to account for intermediate tensors produced by dynamic slicing.</p>\n<p>For deployment, it is common to replace symbolic dynamic dimensions with concrete <code>dim_value</code>s, e.g. with ONNX Runtime’s dynamic-shape-fixing tool:</p>\n<p><a href=\"https://onnxruntime.ai/docs/tutorials/mobile/helpers/make-dynamic-shape-fixed.html\" target=\"_blank\">https://onnxruntime.ai/docs/tutorials/mobile/helpers/make-dynamic-shape-fixed.html</a><br>\n<a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695972\" target=\"_blank\">https://www.kaggle.com/competitions/neurogolf-2026/discussion/695972</a>  </p>\n<p>So perhaps the profiler should distinguish between:</p>\n<ol>\n<li>invalid/bogus shape metadata, and</li>\n<li>intentionally fixed intermediate shapes needed for static analysis/profiling.</li>\n</ol>\n<p>Simply clearing ** all <code>value_info</code> may remove useful shape information  rather than only removing invalid shape data. **</p>\n<hr>\n<p>A more robust approach might be:</p>\n<ul>\n<li>enforcing <code>dim_value &gt; 0</code> (as mentioned), and</li>\n<li>validating consistency between inferred shapes and actual graph operations, (rather than dropping shape metadata altogether.)</li>\n</ul>\n<hr>\n<p>I think dynamic slicing itself needs to remain supported; otherwise many legitimate ARC-style graph solutions become impossible, because crop sizes, object extents, and selected regions often depend on the input.</p>\n<p>The issue seems to be bogus <code>value_info</code>, not dynamic slicing. Ideally the profiler should still support valid dynamic-shape operators, while rejecting inconsistent or fake shape annotations.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "hengck23",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+       "url": "/hengck23",
+       "tier": "GRANDMASTER",
+       "id": 113660,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 1462,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "THANK_YOU",
+        "featuredUserNames": [
+         "hrushikeshpawar",
+         "cudacoding",
+         "mmoffitt"
+        ],
+        "userCount": 3
+       }
+      ],
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "hengck23",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+        "url": "/hengck23",
+        "userName": "hengck23",
+        "tier": "GRANDMASTER",
+        "id": 113660,
+        "profileUrl": "/hengck23",
+        "performanceTier": "GRANDMASTER",
+        "userId": 113660,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     },
+     {
+      "id": 3452438,
+      "postDate": "2026-05-03T11:53:45.960Z",
+      "rawMarkdown": "I have not entered the competition hence this may be silly, but I saw the ONNX parameter counter https://github.com/gmalivenko/onnx-opcounter\n\nSharing in case it might be useful.\n",
+      "content": "<p>I have not entered the competition hence this may be silly, but I saw the ONNX parameter counter <a href=\"https://github.com/gmalivenko/onnx-opcounter\" target=\"_blank\">https://github.com/gmalivenko/onnx-opcounter</a></p>\n<p>Sharing in case it might be useful.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "CPMP",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/75976-gr.jpg",
+       "url": "/cpmpml",
+       "tier": "GRANDMASTER",
+       "id": 75976,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 2,
+       "canUpvote": true,
+       "totalUpvotes": 2
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false
+     },
+     {
+      "id": 3452504,
+      "postDate": "2026-05-03T15:20:12.933Z",
+      "rawMarkdown": "Thank you for the continued updates and transparency! Really appreciate the quick turnaround on fixes.\nTwo things I wanted to flag that might help other teams:\n1. I'm seeing several networks score zero after the latest metric changes despite previously being valid. Could you share a definitive list of what causes zero scoring? Specifically:\n\nWhich ONNX op types are explicitly banned (beyond Loop, Scan, NonZero, Unique, Script, Function, Compress)?\nWhich op types are fully allowed and safe to use?\nAre there any ops that are technically not banned but cause issues due to onnx-tool profiling behavior (like ArgMax, TopK, OneHot having zero MACs)?\nAny structural patterns beyond the ones already documented that silently cause zero scores?\n\nA simple allowlist or denylist in the competition rules would save every team significant debugging time and make the competition much fairer for everyone.\n2. Regarding the dim_value > 0 requirement would it be possible for the validator to return a specific error message identifying which tensor and which dimension failed, rather than silently returning zero? Right now it's very hard to know whether a zero score is due to incorrectness, a banned op, a shape issue, or something else entirely.\nThanks again for the transparency and responsiveness  the community feedback loop has been really excellent on this one.",
+      "content": "<p>Thank you for the continued updates and transparency! Really appreciate the quick turnaround on fixes.\nTwo things I wanted to flag that might help other teams:</p>\n<ol>\n<li>I'm seeing several networks score zero after the latest metric changes despite previously being valid. Could you share a definitive list of what causes zero scoring? Specifically:</li>\n</ol>\n<p>Which ONNX op types are explicitly banned (beyond Loop, Scan, NonZero, Unique, Script, Function, Compress)?\nWhich op types are fully allowed and safe to use?\nAre there any ops that are technically not banned but cause issues due to onnx-tool profiling behavior (like ArgMax, TopK, OneHot having zero MACs)?\nAny structural patterns beyond the ones already documented that silently cause zero scores?</p>\n<p>A simple allowlist or denylist in the competition rules would save every team significant debugging time and make the competition much fairer for everyone.</p>\n<ol>\n<li>Regarding the dim_value &gt; 0 requirement would it be possible for the validator to return a specific error message identifying which tensor and which dimension failed, rather than silently returning zero? Right now it's very hard to know whether a zero score is due to incorrectness, a banned op, a shape issue, or something else entirely.\nThanks again for the transparency and responsiveness  the community feedback loop has been really excellent on this one.</li>\n</ol>",
+      "parent": {},
+      "author": {
+       "displayName": "Suman Sharma",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/17092850-kg.png?t=2025-12-26-13-33-06",
+       "url": "/suman2208",
+       "tier": "CONTRIBUTOR",
+       "id": 17092850,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 572,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Diva Bhattacharya",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+        "url": "/divabhattacharya",
+        "userName": "divabhattacharya",
+        "tier": "CONTRIBUTOR",
+        "id": 19971513,
+        "profileUrl": "/divabhattacharya",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 19971513,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "totalVotes": 7,
+     "canUpvote": true,
+     "totalUpvotes": 7
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3451963,
+    "postDate": "2026-05-02T08:48:24.247Z",
+    "rawMarkdown": "kaggle competition becoming a HACKathon ",
+    "content": "<p>kaggle competition becoming a HACKathon </p>",
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 7,
+     "canUpvote": true,
+     "totalUpvotes": 8
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1462,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "FUNNY",
+      "featuredUserNames": [
+       "lihaoweicvch",
+       "jacekwl",
+       "bio4eta",
+       "hrushikeshpawar",
+       "paritoshtripathi5",
+       "beicicc"
+      ],
+      "userCount": 6
+     }
+    ],
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3451908,
+    "postDate": "2026-05-02T06:36:48.750Z",
+    "rawMarkdown": "my agent did it in half an hour lol (reported via email as well)\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F5256933%2Ffe9ec3bb1274dd93067506885a2c1072%2FScreenshot%202026-05-01%20at%2011.31.36PM.png?generation=1777703579831747&alt=media)\n\nupdate: scaled to 10000\n\nedit: segmentation fault is not all you need",
+    "content": "<p>my agent did it in half an hour lol (reported via email as well)</p>\n<p><img src=\"https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F5256933%2Ffe9ec3bb1274dd93067506885a2c1072%2FScreenshot%202026-05-01%20at%2011.31.36PM.png?generation=1777703579831747&amp;alt=media\" alt=\"\"></p>\n<p>update: scaled to 10000</p>\n<p>edit: segmentation fault is not all you need</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Geremie Yeo",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+     "url": "/yeoyunsianggeremie",
+     "tier": "GRANDMASTER",
+     "id": 5256933,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 5,
+     "canUpvote": true,
+     "totalUpvotes": 5
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 12,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Geremie Yeo",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+      "url": "/yeoyunsianggeremie",
+      "userName": "yeoyunsianggeremie",
+      "tier": "GRANDMASTER",
+      "id": 5256933,
+      "profileUrl": "/yeoyunsianggeremie",
+      "performanceTier": "GRANDMASTER",
+      "userId": 5256933,
+      "progressionOptOut": false
+     },
+     "intro": "Must have a Codex/Claude Code team/enterprise plan with higher usage limits"
+    }
+   },
+   {
+    "id": 3451852,
+    "postDate": "2026-05-02T02:23:18.600Z",
+    "rawMarkdown": "😂 your agent is good at reading discussions",
+    "content": "<p>😂 your agent is good at reading discussions</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Jiwei Liu",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/100236-kg.png?t=2024-07-09-01-29-05",
+     "url": "/jiweiliu",
+     "tier": "GRANDMASTER",
+     "id": 100236,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 5,
+     "canUpvote": true,
+     "totalUpvotes": 5
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 22,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Jiwei Liu",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/100236-kg.png?t=2024-07-09-01-29-05",
+      "url": "/jiweiliu",
+      "userName": "jiweiliu",
+      "tier": "GRANDMASTER",
+      "id": 100236,
+      "profileUrl": "/jiweiliu",
+      "performanceTier": "GRANDMASTER",
+      "userId": 100236,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3451934,
+    "postDate": "2026-05-02T07:52:51.790Z",
+    "rawMarkdown": "It seems inevitable to me that the results of the challenge will rest on micro interpretations unique to onnx tool profiling and leaderboard signature evasion rather than the intended objective. These weaknesses are far under the surface vs obvious exploits and mostly hidden even to the human participants. Maybe what it needs is a kaggle provided dsl.",
+    "content": "<p>It seems inevitable to me that the results of the challenge will rest on micro interpretations unique to onnx tool profiling and leaderboard signature evasion rather than the intended objective. These weaknesses are far under the surface vs obvious exploits and mostly hidden even to the human participants. Maybe what it needs is a kaggle provided dsl.</p>",
+    "replies": [
+     {
+      "id": 3451938,
+      "postDate": "2026-05-02T08:00:12.813Z",
+      "rawMarkdown": "I wonder if the winning score will be `10000.0` at the end, surely not...",
+      "content": "<p>I wonder if the winning score will be <code>10000.0</code> at the end, surely not…</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Geremie Yeo",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+       "url": "/yeoyunsianggeremie",
+       "tier": "GRANDMASTER",
+       "id": 5256933,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "totalVotes": 3,
+       "canUpvote": true,
+       "totalUpvotes": 3
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 12,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Geremie Yeo",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/5256933-kg.jpeg?t=2026-01-31-19-53-40",
+        "url": "/yeoyunsianggeremie",
+        "userName": "yeoyunsianggeremie",
+        "tier": "GRANDMASTER",
+        "id": 5256933,
+        "profileUrl": "/yeoyunsianggeremie",
+        "performanceTier": "GRANDMASTER",
+        "userId": 5256933,
+        "progressionOptOut": false
+       },
+       "intro": "Must have a Codex/Claude Code team/enterprise plan with higher usage limits"
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "robga",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1582365-kg.JPG",
+     "url": "/robga",
+     "tier": "MASTER",
+     "id": 1582365,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 4,
+     "canUpvote": true,
+     "totalUpvotes": 4
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 15,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "robga",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1582365-kg.JPG",
+      "url": "/robga",
+      "userName": "robga",
+      "tier": "MASTER",
+      "id": 1582365,
+      "profileUrl": "/robga",
+      "performanceTier": "MASTER",
+      "userId": 1582365,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3452272,
+    "postDate": "2026-05-02T23:49:40.203Z",
+    "rawMarkdown": "Does this happen a lot???  I just joined kaggle 😂",
+    "content": "<p>Does this happen a lot???  I just joined kaggle 😂</p>",
+    "replies": [
+     {
+      "id": 3452273,
+      "postDate": "2026-05-02T23:53:03.287Z",
+      "rawMarkdown": "Yes and no. In competitions that explore new types of metrics like this competition, then there are frequent updates to fix the metric. In competitions that do traditional modeling with traditional metrics, then it happens more rare.",
+      "content": "<p>Yes and no. In competitions that explore new types of metrics like this competition, then there are frequent updates to fix the metric. In competitions that do traditional modeling with traditional metrics, then it happens more rare.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Chris Deotte",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+       "url": "/cdeotte",
+       "tier": "GRANDMASTER",
+       "id": 1723677,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "totalVotes": 6,
+       "canUpvote": true,
+       "totalUpvotes": 6
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 16,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Chris Deotte",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+        "url": "/cdeotte",
+        "userName": "cdeotte",
+        "tier": "GRANDMASTER",
+        "id": 1723677,
+        "profileUrl": "/cdeotte",
+        "performanceTier": "GRANDMASTER",
+        "userId": 1723677,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Boladi",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/33864123-kg.jpg?t=2026-04-28-02-41-17",
+     "url": "/boladi",
+     "tier": "CONTRIBUTOR",
+     "id": 33864123,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 28,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "enabled": true,
+     "teamLeader": {
+      "displayName": "Aditya Raghuvanshi",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/10358247-kg.png?t=2026-05-18-05-08-40",
+      "url": "/adityaraghuvanshi999",
+      "userName": "adityaraghuvanshi999",
+      "tier": "CONTRIBUTOR",
+      "id": 10358247,
+      "profileUrl": "/adityaraghuvanshi999",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 10358247,
+      "progressionOptOut": false
+     },
+     "intro": "Show us what you got : https://github.com/Boladi888/K-NeuroGolf-OnnxlyFans-Auditions\nDiscord : raghuv_aditya\nEmail :     tanalpha.aditya@gmail.com"
+    }
+   },
+   {
+    "id": 3451912,
+    "postDate": "2026-05-02T06:43:05.960Z",
+    "rawMarkdown": "I have two tasks scoring 25, but my agent is promising me that it didn't try something tricky! It never lied to me! 🫠",
+    "content": "<p>I have two tasks scoring 25, but my agent is promising me that it didn't try something tricky! It never lied to me! 🫠</p>",
+    "replies": [
+     {
+      "id": 3451983,
+      "postDate": "2026-05-02T10:03:38.610Z",
+      "rawMarkdown": "Yes, for (at least) two tasks we can legitimately achieve score 25.",
+      "content": "<p>Yes, for (at least) two tasks we can legitimately achieve score 25.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Chris Deotte",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+       "url": "/cdeotte",
+       "tier": "GRANDMASTER",
+       "id": 1723677,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 16,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Chris Deotte",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+        "url": "/cdeotte",
+        "userName": "cdeotte",
+        "tier": "GRANDMASTER",
+        "id": 1723677,
+        "profileUrl": "/cdeotte",
+        "performanceTier": "GRANDMASTER",
+        "userId": 1723677,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Ali",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+     "url": "/asalhi",
+     "tier": "MASTER",
+     "id": 6915758,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 110,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Ali",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6915758-kg.png",
+      "url": "/asalhi",
+      "userName": "asalhi",
+      "tier": "MASTER",
+      "id": 6915758,
+      "profileUrl": "/asalhi",
+      "performanceTier": "MASTER",
+      "userId": 6915758,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3451960,
+    "postDate": "2026-05-02T08:44:15.417Z",
+    "rawMarkdown": "@robga \"Maybe what it needs is a kaggle provided dsl.\"\n\nsince agent can exploit the metric, it can also make a tool.\nWhy don't use agent to make a resaonable  profile tool? I think it would not take too much time. we just need to build a list of op and how to compute memory and macs for each of them.\n",
+    "content": "<p><a href=\"https://www.kaggle.com/robga\" target=\"_blank\">@robga</a> \"Maybe what it needs is a kaggle provided dsl.\"</p>\n<p>since agent can exploit the metric, it can also make a tool.\nWhy don't use agent to make a resaonable  profile tool? I think it would not take too much time. we just need to build a list of op and how to compute memory and macs for each of them.</p>",
+    "parent": {},
+    "author": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1462,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "hengck23",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+      "url": "/hengck23",
+      "userName": "hengck23",
+      "tier": "GRANDMASTER",
+      "id": 113660,
+      "profileUrl": "/hengck23",
+      "performanceTier": "GRANDMASTER",
+      "userId": 113660,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3451961,
+    "postDate": "2026-05-02T08:47:25.717Z",
+    "rawMarkdown": "",
+    "parent": {},
+    "author": {
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/"
+    },
+    "authorType": "COMMENT",
+    "votes": {},
+    "canDelete": true,
+    "isUserAuthor": true,
+    "isDeleted": true,
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   },
+   {
+    "id": 3452694,
+    "postDate": "2026-05-04T07:05:43.690Z",
+    "rawMarkdown": "Thanks for the agent @cdeotte ",
+    "content": "<p>Thanks for the agent <a href=\"https://www.kaggle.com/cdeotte\" target=\"_blank\">@cdeotte</a> </p>",
+    "parent": {},
+    "author": {
+     "displayName": "Navneet",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/15692441-kg.jpg?t=2025-05-18-07-58-06",
+     "url": "/navneetbende",
+     "tier": "CONTRIBUTOR",
+     "id": 15692441,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": true
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3451850,
+   "postDate": "2026-05-02T02:22:03.843Z",
+   "rawMarkdown": "My agent just discovered how to convert any task into score 25 (using the April 30 updated metric). FYI, I just emailed the host at `neurogolf.2026@gmail.com` explaining how to do it and proposing a fix.",
+   "content": "<p>My agent just discovered how to convert any task into score 25 (using the April 30 updated metric). FYI, I just emailed the host at <code>neurogolf.2026@gmail.com</code> explaining how to do it and proposing a fix.</p>",
+   "parent": {},
+   "author": {
+    "displayName": "Chris Deotte",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+    "url": "/cdeotte",
+    "tier": "GRANDMASTER",
+    "id": 1723677,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 42,
+    "canUpvote": true,
+    "totalUpvotes": 42
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 16,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "THANK_YOU",
+     "featuredUserNames": [
+      "jacksu0",
+      "jiweiliu",
+      "jacekwl",
+      "chitreshkr",
+      "ymgpalaqs",
+      "mmoffitt",
+      "arpitsingh2744"
+     ],
+     "userCount": 7
+    },
+    {
+     "emoji": "YAY",
+     "featuredUserNames": [
+      "jiweiliu",
+      "jacekwl",
+      "ymgpalaqs",
+      "mmoffitt"
+     ],
+     "userCount": 4
+    },
+    {
+     "emoji": "LOVE",
+     "featuredUserNames": [
+      "jiweiliu",
+      "jacekwl",
+      "ymgpalaqs",
+      "zebrag",
+      "dziyanavalenta",
+      "mmoffitt",
+      "yanjixiang"
+     ],
+     "userCount": 7
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Chris Deotte",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/1723677-kg.jpg",
+     "url": "/cdeotte",
+     "userName": "cdeotte",
+     "tier": "GRANDMASTER",
+     "id": 1723677,
+     "profileUrl": "/cdeotte",
+     "performanceTier": "GRANDMASTER",
+     "userId": 1723677,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3451850,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 696377,
+  "name": "LB 10000 - Convert any task into score 25 - [fixed]",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-05-02T02:22:03.842874900Z",
+  "totalVotes": 42,
+  "url": "/competitions/neurogolf-2026/discussion/696377",
+  "totalMessages": 16,
+  "authorPerformanceTier": "GRANDMASTER",
+  "authorProgressionOptOut": false
+ }
+}

@@ -1,0 +1,70 @@
+{
+  "task": "task001",
+  "baseline": {
+    "path": "/mnt/data/task001_best_verified_no_score_improvement.onnx",
+    "cost": 102,
+    "score": 20.37502718671573,
+    "file_size_bytes": 934,
+    "structure": "single Einsum; memory=0; params=102 = V[2,30](60)+Q[10](10)+S0..S3(16)+D0,D1(16)"
+  },
+  "image_rule_inferred": "3x3 single-colour nonzero mask. The 9x9 output places the original 3x3 pattern in each 3x3 block whose corresponding input cell is nonzero; equivalently output[r*3+i][c*3+j] is colour iff input[r][c] and input[i][j] are both nonzero, else background inside 9x9 and all-zero outside 9x9.",
+  "target_requested": "cost at least 10 lower than 102, ideally <=92 and preferably <=50",
+  "result": "no candidate below cost 102 passed visible train/test/arc-gen plus fresh/margin requirements",
+  "validated_fallback": {
+    "cost": 102,
+    "verify_fix_k200": {
+      "decision": "ADOPT",
+      "fresh_total": 200,
+      "fresh_fails": 0,
+      "lib_gold": true,
+      "official_gold": true,
+      "margin_min": 0.34817302227020264
+    },
+    "onnx_checker_full_check": true,
+    "shape_inference_strict": true,
+    "banned_ops_present": [],
+    "opsets": [
+      {
+        "domain": "",
+        "version": 12
+      }
+    ],
+    "ops": [
+      "Einsum"
+    ]
+  },
+  "main_attempts": [
+    {
+      "idea": "Remove Q vector to reach cost 92 while keeping current coordinate factors",
+      "why_promising": "Q costs exactly 10 params; removing it would meet the requested -10 cost reduction.",
+      "finding": "Rejected. Without Q/channel sign flip, the model becomes a zero-threshold same-channel linear separator. For k=2 masks, a false case containing source A plus an irrelevant cell conflicts with the true case containing A and B; no bias remains to separate them. Direct training of no-Q cost92 variants stayed far from visible/all-mask correctness."
+    },
+    {
+      "idea": "Use final threshold to linearize AND: sourceA + sourceB + bias instead of bilinear product",
+      "why_promising": "The image rule only needs thresholded signs, so AND can be represented as x_A+x_B-1.5 if a channel-aware bias is available.",
+      "finding": "The bias/channel flip is the hard part in a single zero-memory node. Q supplies that bias from background-vs-colour one-hot values; removing or compressing Q caused color/background conflicts, especially for color 9 and outside-row masking."
+    },
+    {
+      "idea": "Free learned H[2,9,3] coordinate embeddings with q0=-2",
+      "target_cost_if_direct": "not adoptable because full 30-row H would cost 180 params, and 9x9 intermediate padding would cost much more than baseline",
+      "finding": "A free H with rank 2 classified all 501 possible masks with positive margin, confirming the rule/linear-threshold idea. However, compressing that H into cost<=92 ONNX factors failed."
+    },
+    {
+      "idea": "Factor free H into low-cost one-Einsum coordinate decompositions",
+      "architectures_tested": [
+        "R=2,F=2 diagonal cost86",
+        "R=3,F=1 with indefinite C cost91",
+        "pair-product direct 4D factors cost90",
+        "common-factor 3S+1D cost90",
+        "visible-only cost90 training"
+      ],
+      "finding": "All remained far from exact visible/all-mask correctness; best runs still had hundreds of mask-level failures, so they were not taken to official/fresh adoption."
+    },
+    {
+      "idea": "ConvTranspose/Resize/Tile reconstruction from scratch",
+      "finding": "A single small ConvTranspose can produce either block expansion or modulo-pattern expansion, not both. A kernel large enough to read both source positions is at least 11x11 and costs far above the baseline across channels. Two-branch Resize/Tile-style graphs require large 9x9/30x30 intermediates, making memory cost far above 102."
+    }
+  ],
+  "not_adopted_reason": "No sub-102 candidate reached condition 1 (scripts/lib/scoring require_correct=True with visible train/test/arc-gen exact). Therefore no candidate was eligible for official decoder/fresh adoption.",
+  "honesty_note": "The ONNX and full ZIP supplied with this report are the validated fallback, not an improved model."
+}

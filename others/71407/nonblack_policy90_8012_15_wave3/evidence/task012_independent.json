@@ -1,0 +1,2821 @@
+{
+  "task": 12,
+  "lane": "agent_review_task012_h8w8_policy90_273",
+  "decision": "PASS_POLICY90_INDEPENDENT_REVIEW",
+  "accepted": true,
+  "policy_threshold": 0.9,
+  "independence": {
+    "lane272_milp_or_evidence_used_as_audit_input": false,
+    "candidate_binary_only_from_lane272": true,
+    "generator_source": "inputs/arc-gen-repo/tasks/task_0962bcdd.py",
+    "known_source": "inputs/neurogolf-2026/task012.json"
+  },
+  "authority": {
+    "zip": "submission_base_8009.46.zip",
+    "zip_sha256": "4eb324d7ee835d2d325d9fd8acff68ba257413e1b48be3fa55a43a5860c58927",
+    "member": "task012.onnx",
+    "member_sha256": "478a310e10fcf0a3e82df943fd6ab43671c47059f8e6eb675bf0004bef576500",
+    "matches_handcrafted_byte_for_byte": true,
+    "handcrafted_path": "artifacts/handcrafted/task012.onnx",
+    "official": {
+      "memory": 0,
+      "params": 710,
+      "cost": 710,
+      "score": 18.43473502996464,
+      "correct": true
+    }
+  },
+  "candidate": {
+    "path": "scripts/golf/root_task012_h8w8_policy90_272/candidates/task012_h8w8_policy90.onnx",
+    "sha256": "9aea31a6c01f7af21d893f6e5dde16dc947cdb17088686654f3f568845fbb947",
+    "file_bytes": 2859,
+    "official": {
+      "memory": 0,
+      "params": 650,
+      "cost": 650,
+      "score": 18.523027637110317,
+      "correct": false
+    },
+    "cost_reduction_vs_authority": 60
+  },
+  "structure": {
+    "full_check": true,
+    "strict_data_prop": true,
+    "all_declared_and_inferred_shapes_static_positive": true,
+    "shapes": {
+      "input": [
+        1,
+        10,
+        30,
+        30
+      ],
+      "output": [
+        1,
+        10,
+        30,
+        30
+      ]
+    },
+    "element_types": {
+      "input": 1,
+      "output": 1
+    },
+    "canonical_input": true,
+    "canonical_output": true,
+    "node_count": 1,
+    "op_histogram": {
+      "Conv": 1
+    },
+    "output_only_one_conv": true,
+    "opsets": [
+      {
+        "domain": "",
+        "version": 13
+      }
+    ],
+    "nonstandard_domains": [],
+    "standard_ops_only": true,
+    "banned_ops": [],
+    "nested_graphs": 0,
+    "functions": 0,
+    "sparse_initializers": 0,
+    "external_initializers": [],
+    "initializer_audit": {
+      "w": {
+        "dtype": "float32",
+        "shape": [
+          10,
+          1,
+          8,
+          8
+        ],
+        "elements": 640,
+        "nonfinite": 0
+      },
+      "b": {
+        "dtype": "float32",
+        "shape": [
+          10
+        ],
+        "elements": 10,
+        "nonfinite": 0
+      }
+    },
+    "finite_params": true,
+    "initializer_elements": 650,
+    "conv_bias_findings": [],
+    "conv_bias_ub0": true,
+    "file_bytes": 2859,
+    "under_official_file_limit": true,
+    "pass": true
+  },
+  "color_permutation_symmetry": {
+    "conv_group": 10,
+    "weight_shape": [
+      10,
+      1,
+      8,
+      8
+    ],
+    "bias_shape": [
+      10
+    ],
+    "weight_storage": "raw_data",
+    "bias_storage": "raw_data",
+    "weight_channel_sha256": [
+      "afd2dc1e041e7a534123281f2408f125b53db6be089404fab954d67151469865",
+      "2afc9bced52cf2c3ee12959c46bf658bda39466b26a10a1bc700b831d5596d73",
+      "2afc9bced52cf2c3ee12959c46bf658bda39466b26a10a1bc700b831d5596d73",
+      "2afc9bced52cf2c3ee12959c46bf658bda39466b26a10a1bc700b831d5596d73",
+      "2afc9bced52cf2c3ee12959c46bf658bda39466b26a10a1bc700b831d5596d73",
+      "2afc9bced52cf2c3ee12959c46bf658bda39466b26a10a1bc700b831d5596d73",
+      "2afc9bced52cf2c3ee12959c46bf658bda39466b26a10a1bc700b831d5596d73",
+      "2afc9bced52cf2c3ee12959c46bf658bda39466b26a10a1bc700b831d5596d73",
+      "2afc9bced52cf2c3ee12959c46bf658bda39466b26a10a1bc700b831d5596d73",
+      "2afc9bced52cf2c3ee12959c46bf658bda39466b26a10a1bc700b831d5596d73"
+    ],
+    "bias_channel_raw_hex": [
+      "c9eb19c6",
+      "ede40fc2",
+      "ede40fc2",
+      "ede40fc2",
+      "ede40fc2",
+      "ede40fc2",
+      "ede40fc2",
+      "ede40fc2",
+      "ede40fc2",
+      "ede40fc2"
+    ],
+    "channels_1_through_9_weight_raw_identical": true,
+    "channels_1_through_9_bias_raw_identical": true,
+    "depthwise_channelwise_mapping": true,
+    "generator_nonzero_color_domain": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "proof": "group=10 gives one independent input/output channel per color; exact raw-byte identity of both classifier weights and bias for channels 1..9 makes every permutation of nonzero color labels equivariant. Background channel 0 remains fixed.",
+    "proved": true
+  },
+  "no_lookup": {
+    "lookup_ops": [],
+    "constant_nodes": 0,
+    "initializer_names": [
+      "b",
+      "w"
+    ],
+    "all_initializers_are_the_single_conv_weight_and_bias": true,
+    "public_fixture_branching_possible": false,
+    "proof": "The complete graph is one spatial Conv. Its only constants are that Conv's dense weight and bias; there is no index, table, branch, nested graph, or extra output.",
+    "proved_no_lookup_or_fixture_correction": true
+  },
+  "known": {
+    "file_sha256": "d6f468c4a984fa875971a00fed0a714223a224ea2b40b3b5c6bf2390bc07e91a",
+    "split_counts": {
+      "train": 2,
+      "test": 1,
+      "arc-gen": 262
+    },
+    "total": 265,
+    "case_data_sha256": "ae627c1232591162cf2fac68a8a8a1ede54fedc5974a9c6fc9b3546742fa6a1c",
+    "official_converter_crosscheck": {
+      "cases": 265,
+      "mismatches": 0,
+      "first_mismatch": null,
+      "exact": true
+    }
+  },
+  "latent_domain": {
+    "derivation": "7 choices for each of two cols (3..9 inclusive) times 4 gravity values",
+    "colors_representative": [
+      1,
+      2
+    ],
+    "col0_values": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "col1_values": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "gravity_values": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "state_count": 196,
+    "state_order": [
+      [
+        3,
+        3,
+        0
+      ],
+      [
+        3,
+        3,
+        1
+      ],
+      [
+        3,
+        3,
+        2
+      ],
+      [
+        3,
+        3,
+        3
+      ],
+      [
+        3,
+        4,
+        0
+      ],
+      [
+        3,
+        4,
+        1
+      ],
+      [
+        3,
+        4,
+        2
+      ],
+      [
+        3,
+        4,
+        3
+      ],
+      [
+        3,
+        5,
+        0
+      ],
+      [
+        3,
+        5,
+        1
+      ],
+      [
+        3,
+        5,
+        2
+      ],
+      [
+        3,
+        5,
+        3
+      ],
+      [
+        3,
+        6,
+        0
+      ],
+      [
+        3,
+        6,
+        1
+      ],
+      [
+        3,
+        6,
+        2
+      ],
+      [
+        3,
+        6,
+        3
+      ],
+      [
+        3,
+        7,
+        0
+      ],
+      [
+        3,
+        7,
+        1
+      ],
+      [
+        3,
+        7,
+        2
+      ],
+      [
+        3,
+        7,
+        3
+      ],
+      [
+        3,
+        8,
+        0
+      ],
+      [
+        3,
+        8,
+        1
+      ],
+      [
+        3,
+        8,
+        2
+      ],
+      [
+        3,
+        8,
+        3
+      ],
+      [
+        3,
+        9,
+        0
+      ],
+      [
+        3,
+        9,
+        1
+      ],
+      [
+        3,
+        9,
+        2
+      ],
+      [
+        3,
+        9,
+        3
+      ],
+      [
+        4,
+        3,
+        0
+      ],
+      [
+        4,
+        3,
+        1
+      ],
+      [
+        4,
+        3,
+        2
+      ],
+      [
+        4,
+        3,
+        3
+      ],
+      [
+        4,
+        4,
+        0
+      ],
+      [
+        4,
+        4,
+        1
+      ],
+      [
+        4,
+        4,
+        2
+      ],
+      [
+        4,
+        4,
+        3
+      ],
+      [
+        4,
+        5,
+        0
+      ],
+      [
+        4,
+        5,
+        1
+      ],
+      [
+        4,
+        5,
+        2
+      ],
+      [
+        4,
+        5,
+        3
+      ],
+      [
+        4,
+        6,
+        0
+      ],
+      [
+        4,
+        6,
+        1
+      ],
+      [
+        4,
+        6,
+        2
+      ],
+      [
+        4,
+        6,
+        3
+      ],
+      [
+        4,
+        7,
+        0
+      ],
+      [
+        4,
+        7,
+        1
+      ],
+      [
+        4,
+        7,
+        2
+      ],
+      [
+        4,
+        7,
+        3
+      ],
+      [
+        4,
+        8,
+        0
+      ],
+      [
+        4,
+        8,
+        1
+      ],
+      [
+        4,
+        8,
+        2
+      ],
+      [
+        4,
+        8,
+        3
+      ],
+      [
+        4,
+        9,
+        0
+      ],
+      [
+        4,
+        9,
+        1
+      ],
+      [
+        4,
+        9,
+        2
+      ],
+      [
+        4,
+        9,
+        3
+      ],
+      [
+        5,
+        3,
+        0
+      ],
+      [
+        5,
+        3,
+        1
+      ],
+      [
+        5,
+        3,
+        2
+      ],
+      [
+        5,
+        3,
+        3
+      ],
+      [
+        5,
+        4,
+        0
+      ],
+      [
+        5,
+        4,
+        1
+      ],
+      [
+        5,
+        4,
+        2
+      ],
+      [
+        5,
+        4,
+        3
+      ],
+      [
+        5,
+        5,
+        0
+      ],
+      [
+        5,
+        5,
+        1
+      ],
+      [
+        5,
+        5,
+        2
+      ],
+      [
+        5,
+        5,
+        3
+      ],
+      [
+        5,
+        6,
+        0
+      ],
+      [
+        5,
+        6,
+        1
+      ],
+      [
+        5,
+        6,
+        2
+      ],
+      [
+        5,
+        6,
+        3
+      ],
+      [
+        5,
+        7,
+        0
+      ],
+      [
+        5,
+        7,
+        1
+      ],
+      [
+        5,
+        7,
+        2
+      ],
+      [
+        5,
+        7,
+        3
+      ],
+      [
+        5,
+        8,
+        0
+      ],
+      [
+        5,
+        8,
+        1
+      ],
+      [
+        5,
+        8,
+        2
+      ],
+      [
+        5,
+        8,
+        3
+      ],
+      [
+        5,
+        9,
+        0
+      ],
+      [
+        5,
+        9,
+        1
+      ],
+      [
+        5,
+        9,
+        2
+      ],
+      [
+        5,
+        9,
+        3
+      ],
+      [
+        6,
+        3,
+        0
+      ],
+      [
+        6,
+        3,
+        1
+      ],
+      [
+        6,
+        3,
+        2
+      ],
+      [
+        6,
+        3,
+        3
+      ],
+      [
+        6,
+        4,
+        0
+      ],
+      [
+        6,
+        4,
+        1
+      ],
+      [
+        6,
+        4,
+        2
+      ],
+      [
+        6,
+        4,
+        3
+      ],
+      [
+        6,
+        5,
+        0
+      ],
+      [
+        6,
+        5,
+        1
+      ],
+      [
+        6,
+        5,
+        2
+      ],
+      [
+        6,
+        5,
+        3
+      ],
+      [
+        6,
+        6,
+        0
+      ],
+      [
+        6,
+        6,
+        1
+      ],
+      [
+        6,
+        6,
+        2
+      ],
+      [
+        6,
+        6,
+        3
+      ],
+      [
+        6,
+        7,
+        0
+      ],
+      [
+        6,
+        7,
+        1
+      ],
+      [
+        6,
+        7,
+        2
+      ],
+      [
+        6,
+        7,
+        3
+      ],
+      [
+        6,
+        8,
+        0
+      ],
+      [
+        6,
+        8,
+        1
+      ],
+      [
+        6,
+        8,
+        2
+      ],
+      [
+        6,
+        8,
+        3
+      ],
+      [
+        6,
+        9,
+        0
+      ],
+      [
+        6,
+        9,
+        1
+      ],
+      [
+        6,
+        9,
+        2
+      ],
+      [
+        6,
+        9,
+        3
+      ],
+      [
+        7,
+        3,
+        0
+      ],
+      [
+        7,
+        3,
+        1
+      ],
+      [
+        7,
+        3,
+        2
+      ],
+      [
+        7,
+        3,
+        3
+      ],
+      [
+        7,
+        4,
+        0
+      ],
+      [
+        7,
+        4,
+        1
+      ],
+      [
+        7,
+        4,
+        2
+      ],
+      [
+        7,
+        4,
+        3
+      ],
+      [
+        7,
+        5,
+        0
+      ],
+      [
+        7,
+        5,
+        1
+      ],
+      [
+        7,
+        5,
+        2
+      ],
+      [
+        7,
+        5,
+        3
+      ],
+      [
+        7,
+        6,
+        0
+      ],
+      [
+        7,
+        6,
+        1
+      ],
+      [
+        7,
+        6,
+        2
+      ],
+      [
+        7,
+        6,
+        3
+      ],
+      [
+        7,
+        7,
+        0
+      ],
+      [
+        7,
+        7,
+        1
+      ],
+      [
+        7,
+        7,
+        2
+      ],
+      [
+        7,
+        7,
+        3
+      ],
+      [
+        7,
+        8,
+        0
+      ],
+      [
+        7,
+        8,
+        1
+      ],
+      [
+        7,
+        8,
+        2
+      ],
+      [
+        7,
+        8,
+        3
+      ],
+      [
+        7,
+        9,
+        0
+      ],
+      [
+        7,
+        9,
+        1
+      ],
+      [
+        7,
+        9,
+        2
+      ],
+      [
+        7,
+        9,
+        3
+      ],
+      [
+        8,
+        3,
+        0
+      ],
+      [
+        8,
+        3,
+        1
+      ],
+      [
+        8,
+        3,
+        2
+      ],
+      [
+        8,
+        3,
+        3
+      ],
+      [
+        8,
+        4,
+        0
+      ],
+      [
+        8,
+        4,
+        1
+      ],
+      [
+        8,
+        4,
+        2
+      ],
+      [
+        8,
+        4,
+        3
+      ],
+      [
+        8,
+        5,
+        0
+      ],
+      [
+        8,
+        5,
+        1
+      ],
+      [
+        8,
+        5,
+        2
+      ],
+      [
+        8,
+        5,
+        3
+      ],
+      [
+        8,
+        6,
+        0
+      ],
+      [
+        8,
+        6,
+        1
+      ],
+      [
+        8,
+        6,
+        2
+      ],
+      [
+        8,
+        6,
+        3
+      ],
+      [
+        8,
+        7,
+        0
+      ],
+      [
+        8,
+        7,
+        1
+      ],
+      [
+        8,
+        7,
+        2
+      ],
+      [
+        8,
+        7,
+        3
+      ],
+      [
+        8,
+        8,
+        0
+      ],
+      [
+        8,
+        8,
+        1
+      ],
+      [
+        8,
+        8,
+        2
+      ],
+      [
+        8,
+        8,
+        3
+      ],
+      [
+        8,
+        9,
+        0
+      ],
+      [
+        8,
+        9,
+        1
+      ],
+      [
+        8,
+        9,
+        2
+      ],
+      [
+        8,
+        9,
+        3
+      ],
+      [
+        9,
+        3,
+        0
+      ],
+      [
+        9,
+        3,
+        1
+      ],
+      [
+        9,
+        3,
+        2
+      ],
+      [
+        9,
+        3,
+        3
+      ],
+      [
+        9,
+        4,
+        0
+      ],
+      [
+        9,
+        4,
+        1
+      ],
+      [
+        9,
+        4,
+        2
+      ],
+      [
+        9,
+        4,
+        3
+      ],
+      [
+        9,
+        5,
+        0
+      ],
+      [
+        9,
+        5,
+        1
+      ],
+      [
+        9,
+        5,
+        2
+      ],
+      [
+        9,
+        5,
+        3
+      ],
+      [
+        9,
+        6,
+        0
+      ],
+      [
+        9,
+        6,
+        1
+      ],
+      [
+        9,
+        6,
+        2
+      ],
+      [
+        9,
+        6,
+        3
+      ],
+      [
+        9,
+        7,
+        0
+      ],
+      [
+        9,
+        7,
+        1
+      ],
+      [
+        9,
+        7,
+        2
+      ],
+      [
+        9,
+        7,
+        3
+      ],
+      [
+        9,
+        8,
+        0
+      ],
+      [
+        9,
+        8,
+        1
+      ],
+      [
+        9,
+        8,
+        2
+      ],
+      [
+        9,
+        8,
+        3
+      ],
+      [
+        9,
+        9,
+        0
+      ],
+      [
+        9,
+        9,
+        1
+      ],
+      [
+        9,
+        9,
+        2
+      ],
+      [
+        9,
+        9,
+        3
+      ]
+    ],
+    "unique_input_output_pairs": 194,
+    "state_tuple_sha256": "7a81d461d40dc0dba8f05ef6f76fd32ac8ec25c80c8df8686a8f1487a7c4ad2b",
+    "case_data_sha256": "8ca2b5110182c1dfde3d41c6402ee798d8134ffef1f737228b41f8ecad3e5ba0",
+    "wrong_states_disable_threads1": [
+      [
+        3,
+        5,
+        1
+      ],
+      [
+        4,
+        6,
+        1
+      ],
+      [
+        5,
+        3,
+        3
+      ],
+      [
+        5,
+        7,
+        1
+      ],
+      [
+        6,
+        4,
+        3
+      ],
+      [
+        6,
+        8,
+        1
+      ],
+      [
+        7,
+        5,
+        3
+      ],
+      [
+        7,
+        9,
+        1
+      ],
+      [
+        8,
+        6,
+        3
+      ],
+      [
+        9,
+        7,
+        3
+      ]
+    ],
+    "official_converter_crosscheck": {
+      "cases": 196,
+      "mismatches": 0,
+      "first_mismatch": null,
+      "exact": true
+    },
+    "color_permutation_generalization": "The 196 [1,2] representatives cover every cols/gravity latent state. The proved channels1..9 raw identity extends each result to every ordered pair of distinct nonzero generator colors."
+  },
+  "fresh_generation": [
+    {
+      "seed": 273012001,
+      "count": 10000,
+      "unique_input_output_pairs": 7147,
+      "case_data_sha256": "5e28c272eeeba774a7c6c33031d7fe46919a5a47637f93fe0175eae2f98e48e3",
+      "official_converter_crosscheck": {
+        "cases": 10000,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "exact": true
+      }
+    },
+    {
+      "seed": 273112001,
+      "count": 10000,
+      "unique_input_output_pairs": 7102,
+      "case_data_sha256": "5e0cb59e77612c6fed6e7c025d645c9bc340ddd9d5c8564d9f433766af00f59f",
+      "official_converter_crosscheck": {
+        "cases": 10000,
+        "mismatches": 0,
+        "first_mismatch": null,
+        "exact": true
+      }
+    }
+  ],
+  "runtime_configs": [
+    {
+      "name": "disable_threads1",
+      "optimization": "disabled",
+      "threads": 1
+    },
+    {
+      "name": "default_threads1",
+      "optimization": "default",
+      "threads": 1
+    },
+    {
+      "name": "disable_threads4",
+      "optimization": "disabled",
+      "threads": 4
+    },
+    {
+      "name": "default_threads4",
+      "optimization": "default",
+      "threads": 4
+    }
+  ],
+  "runtime": {
+    "disable_threads1": {
+      "known": {
+        "total": 265,
+        "right": 252,
+        "wrong": 13,
+        "wrong_case_indices_first_100": [
+          40,
+          75,
+          79,
+          106,
+          112,
+          116,
+          127,
+          150,
+          151,
+          183,
+          206,
+          218,
+          247
+        ],
+        "wrong_case_indices_truncated": false,
+        "accuracy": 0.9509433962264151,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "1e13169bf55b8000123cdf99e6fa62e51689d045905d2508cd7c8cb723770988",
+        "raw_sha256": "db59387af8e7539db1f5bb0df0b1604d679bb45ac54a81d0e7904adb1f448cd1",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.03567916702013463,
+        "optimization": "disabled",
+        "threads": 1
+      },
+      "latent_domain": {
+        "total": 196,
+        "right": 186,
+        "wrong": 10,
+        "wrong_case_indices_first_100": [
+          9,
+          41,
+          59,
+          73,
+          91,
+          105,
+          123,
+          137,
+          155,
+          187
+        ],
+        "wrong_case_indices_truncated": false,
+        "accuracy": 0.9489795918367347,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "93fc46d3b303c70d72d5748faa98b72c13c4cd04f6241a79053183db8b7a77b2",
+        "raw_sha256": "3fef9bdb40b40838d7f27d2c8eb4a8b07d10a7bfcb526db3d53538faf2a037ca",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.026388542028144002,
+        "optimization": "disabled",
+        "threads": 1
+      },
+      "fresh_seed_273012001": {
+        "total": 10000,
+        "right": 9502,
+        "wrong": 498,
+        "wrong_case_indices_first_100": [
+          39,
+          40,
+          46,
+          80,
+          88,
+          94,
+          106,
+          146,
+          175,
+          176,
+          191,
+          225,
+          249,
+          269,
+          337,
+          347,
+          368,
+          376,
+          386,
+          410,
+          415,
+          416,
+          420,
+          436,
+          481,
+          529,
+          538,
+          589,
+          602,
+          620,
+          676,
+          683,
+          705,
+          707,
+          724,
+          742,
+          756,
+          793,
+          794,
+          800,
+          806,
+          808,
+          824,
+          835,
+          867,
+          903,
+          919,
+          933,
+          1026,
+          1027,
+          1093,
+          1121,
+          1138,
+          1148,
+          1201,
+          1249,
+          1253,
+          1272,
+          1278,
+          1418,
+          1425,
+          1484,
+          1537,
+          1551,
+          1605,
+          1622,
+          1629,
+          1704,
+          1709,
+          1717,
+          1723,
+          1774,
+          1784,
+          1786,
+          1792,
+          1797,
+          1802,
+          1839,
+          1914,
+          1919,
+          1922,
+          1926,
+          1943,
+          1952,
+          1953,
+          1973,
+          2026,
+          2044,
+          2051,
+          2055,
+          2072,
+          2107,
+          2114,
+          2163,
+          2178,
+          2191,
+          2194,
+          2202,
+          2218,
+          2250
+        ],
+        "wrong_case_indices_truncated": true,
+        "accuracy": 0.9502,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "28b232696bb55867bc525cba2a7e29bd4c165c8317872028a96dcaa2a0b77380",
+        "raw_sha256": "f9ada2dacd48d7bb28a1b4b50123ab2ffd5cc334bbdee50c5c420724b91ca405",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 1.3491286670323461,
+        "optimization": "disabled",
+        "threads": 1
+      },
+      "fresh_seed_273112001": {
+        "total": 10000,
+        "right": 9472,
+        "wrong": 528,
+        "wrong_case_indices_first_100": [
+          19,
+          98,
+          119,
+          156,
+          167,
+          172,
+          186,
+          190,
+          210,
+          228,
+          240,
+          271,
+          283,
+          284,
+          293,
+          307,
+          310,
+          317,
+          323,
+          325,
+          353,
+          355,
+          432,
+          444,
+          485,
+          501,
+          540,
+          561,
+          584,
+          609,
+          610,
+          623,
+          666,
+          672,
+          685,
+          688,
+          691,
+          700,
+          733,
+          739,
+          765,
+          776,
+          792,
+          808,
+          810,
+          818,
+          836,
+          851,
+          855,
+          890,
+          1075,
+          1080,
+          1097,
+          1142,
+          1175,
+          1178,
+          1183,
+          1210,
+          1211,
+          1213,
+          1222,
+          1263,
+          1308,
+          1334,
+          1335,
+          1349,
+          1357,
+          1370,
+          1382,
+          1409,
+          1435,
+          1436,
+          1441,
+          1445,
+          1466,
+          1476,
+          1482,
+          1483,
+          1486,
+          1571,
+          1577,
+          1588,
+          1592,
+          1603,
+          1634,
+          1636,
+          1644,
+          1655,
+          1658,
+          1692,
+          1700,
+          1702,
+          1741,
+          1749,
+          1757,
+          1771,
+          1787,
+          1808,
+          1815,
+          1820
+        ],
+        "wrong_case_indices_truncated": true,
+        "accuracy": 0.9472,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "2f80daf5e7a6bf88e1459110db8ccfe9d6ba9455dab13fffc170783afe20b6be",
+        "raw_sha256": "5a754fd714feb5f2121482ca9f623405c2243cd08ee2c4559b6f913ad3717cd3",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 1.469911707972642,
+        "optimization": "disabled",
+        "threads": 1
+      }
+    },
+    "default_threads1": {
+      "known": {
+        "total": 265,
+        "right": 252,
+        "wrong": 13,
+        "wrong_case_indices_first_100": [
+          40,
+          75,
+          79,
+          106,
+          112,
+          116,
+          127,
+          150,
+          151,
+          183,
+          206,
+          218,
+          247
+        ],
+        "wrong_case_indices_truncated": false,
+        "accuracy": 0.9509433962264151,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "1e13169bf55b8000123cdf99e6fa62e51689d045905d2508cd7c8cb723770988",
+        "raw_sha256": "db59387af8e7539db1f5bb0df0b1604d679bb45ac54a81d0e7904adb1f448cd1",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.03738779202103615,
+        "optimization": "default",
+        "threads": 1
+      },
+      "latent_domain": {
+        "total": 196,
+        "right": 186,
+        "wrong": 10,
+        "wrong_case_indices_first_100": [
+          9,
+          41,
+          59,
+          73,
+          91,
+          105,
+          123,
+          137,
+          155,
+          187
+        ],
+        "wrong_case_indices_truncated": false,
+        "accuracy": 0.9489795918367347,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "93fc46d3b303c70d72d5748faa98b72c13c4cd04f6241a79053183db8b7a77b2",
+        "raw_sha256": "3fef9bdb40b40838d7f27d2c8eb4a8b07d10a7bfcb526db3d53538faf2a037ca",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.026783625013194978,
+        "optimization": "default",
+        "threads": 1
+      },
+      "fresh_seed_273012001": {
+        "total": 10000,
+        "right": 9502,
+        "wrong": 498,
+        "wrong_case_indices_first_100": [
+          39,
+          40,
+          46,
+          80,
+          88,
+          94,
+          106,
+          146,
+          175,
+          176,
+          191,
+          225,
+          249,
+          269,
+          337,
+          347,
+          368,
+          376,
+          386,
+          410,
+          415,
+          416,
+          420,
+          436,
+          481,
+          529,
+          538,
+          589,
+          602,
+          620,
+          676,
+          683,
+          705,
+          707,
+          724,
+          742,
+          756,
+          793,
+          794,
+          800,
+          806,
+          808,
+          824,
+          835,
+          867,
+          903,
+          919,
+          933,
+          1026,
+          1027,
+          1093,
+          1121,
+          1138,
+          1148,
+          1201,
+          1249,
+          1253,
+          1272,
+          1278,
+          1418,
+          1425,
+          1484,
+          1537,
+          1551,
+          1605,
+          1622,
+          1629,
+          1704,
+          1709,
+          1717,
+          1723,
+          1774,
+          1784,
+          1786,
+          1792,
+          1797,
+          1802,
+          1839,
+          1914,
+          1919,
+          1922,
+          1926,
+          1943,
+          1952,
+          1953,
+          1973,
+          2026,
+          2044,
+          2051,
+          2055,
+          2072,
+          2107,
+          2114,
+          2163,
+          2178,
+          2191,
+          2194,
+          2202,
+          2218,
+          2250
+        ],
+        "wrong_case_indices_truncated": true,
+        "accuracy": 0.9502,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "28b232696bb55867bc525cba2a7e29bd4c165c8317872028a96dcaa2a0b77380",
+        "raw_sha256": "f9ada2dacd48d7bb28a1b4b50123ab2ffd5cc334bbdee50c5c420724b91ca405",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 1.3956245830049738,
+        "optimization": "default",
+        "threads": 1
+      },
+      "fresh_seed_273112001": {
+        "total": 10000,
+        "right": 9472,
+        "wrong": 528,
+        "wrong_case_indices_first_100": [
+          19,
+          98,
+          119,
+          156,
+          167,
+          172,
+          186,
+          190,
+          210,
+          228,
+          240,
+          271,
+          283,
+          284,
+          293,
+          307,
+          310,
+          317,
+          323,
+          325,
+          353,
+          355,
+          432,
+          444,
+          485,
+          501,
+          540,
+          561,
+          584,
+          609,
+          610,
+          623,
+          666,
+          672,
+          685,
+          688,
+          691,
+          700,
+          733,
+          739,
+          765,
+          776,
+          792,
+          808,
+          810,
+          818,
+          836,
+          851,
+          855,
+          890,
+          1075,
+          1080,
+          1097,
+          1142,
+          1175,
+          1178,
+          1183,
+          1210,
+          1211,
+          1213,
+          1222,
+          1263,
+          1308,
+          1334,
+          1335,
+          1349,
+          1357,
+          1370,
+          1382,
+          1409,
+          1435,
+          1436,
+          1441,
+          1445,
+          1466,
+          1476,
+          1482,
+          1483,
+          1486,
+          1571,
+          1577,
+          1588,
+          1592,
+          1603,
+          1634,
+          1636,
+          1644,
+          1655,
+          1658,
+          1692,
+          1700,
+          1702,
+          1741,
+          1749,
+          1757,
+          1771,
+          1787,
+          1808,
+          1815,
+          1820
+        ],
+        "wrong_case_indices_truncated": true,
+        "accuracy": 0.9472,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "2f80daf5e7a6bf88e1459110db8ccfe9d6ba9455dab13fffc170783afe20b6be",
+        "raw_sha256": "5a754fd714feb5f2121482ca9f623405c2243cd08ee2c4559b6f913ad3717cd3",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 1.3820102080353536,
+        "optimization": "default",
+        "threads": 1
+      }
+    },
+    "disable_threads4": {
+      "known": {
+        "total": 265,
+        "right": 252,
+        "wrong": 13,
+        "wrong_case_indices_first_100": [
+          40,
+          75,
+          79,
+          106,
+          112,
+          116,
+          127,
+          150,
+          151,
+          183,
+          206,
+          218,
+          247
+        ],
+        "wrong_case_indices_truncated": false,
+        "accuracy": 0.9509433962264151,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "1e13169bf55b8000123cdf99e6fa62e51689d045905d2508cd7c8cb723770988",
+        "raw_sha256": "db59387af8e7539db1f5bb0df0b1604d679bb45ac54a81d0e7904adb1f448cd1",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.020573291985783726,
+        "optimization": "disabled",
+        "threads": 4
+      },
+      "latent_domain": {
+        "total": 196,
+        "right": 186,
+        "wrong": 10,
+        "wrong_case_indices_first_100": [
+          9,
+          41,
+          59,
+          73,
+          91,
+          105,
+          123,
+          137,
+          155,
+          187
+        ],
+        "wrong_case_indices_truncated": false,
+        "accuracy": 0.9489795918367347,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "93fc46d3b303c70d72d5748faa98b72c13c4cd04f6241a79053183db8b7a77b2",
+        "raw_sha256": "3fef9bdb40b40838d7f27d2c8eb4a8b07d10a7bfcb526db3d53538faf2a037ca",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.015222167014144361,
+        "optimization": "disabled",
+        "threads": 4
+      },
+      "fresh_seed_273012001": {
+        "total": 10000,
+        "right": 9502,
+        "wrong": 498,
+        "wrong_case_indices_first_100": [
+          39,
+          40,
+          46,
+          80,
+          88,
+          94,
+          106,
+          146,
+          175,
+          176,
+          191,
+          225,
+          249,
+          269,
+          337,
+          347,
+          368,
+          376,
+          386,
+          410,
+          415,
+          416,
+          420,
+          436,
+          481,
+          529,
+          538,
+          589,
+          602,
+          620,
+          676,
+          683,
+          705,
+          707,
+          724,
+          742,
+          756,
+          793,
+          794,
+          800,
+          806,
+          808,
+          824,
+          835,
+          867,
+          903,
+          919,
+          933,
+          1026,
+          1027,
+          1093,
+          1121,
+          1138,
+          1148,
+          1201,
+          1249,
+          1253,
+          1272,
+          1278,
+          1418,
+          1425,
+          1484,
+          1537,
+          1551,
+          1605,
+          1622,
+          1629,
+          1704,
+          1709,
+          1717,
+          1723,
+          1774,
+          1784,
+          1786,
+          1792,
+          1797,
+          1802,
+          1839,
+          1914,
+          1919,
+          1922,
+          1926,
+          1943,
+          1952,
+          1953,
+          1973,
+          2026,
+          2044,
+          2051,
+          2055,
+          2072,
+          2107,
+          2114,
+          2163,
+          2178,
+          2191,
+          2194,
+          2202,
+          2218,
+          2250
+        ],
+        "wrong_case_indices_truncated": true,
+        "accuracy": 0.9502,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "28b232696bb55867bc525cba2a7e29bd4c165c8317872028a96dcaa2a0b77380",
+        "raw_sha256": "f9ada2dacd48d7bb28a1b4b50123ab2ffd5cc334bbdee50c5c420724b91ca405",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.7744010829483159,
+        "optimization": "disabled",
+        "threads": 4
+      },
+      "fresh_seed_273112001": {
+        "total": 10000,
+        "right": 9472,
+        "wrong": 528,
+        "wrong_case_indices_first_100": [
+          19,
+          98,
+          119,
+          156,
+          167,
+          172,
+          186,
+          190,
+          210,
+          228,
+          240,
+          271,
+          283,
+          284,
+          293,
+          307,
+          310,
+          317,
+          323,
+          325,
+          353,
+          355,
+          432,
+          444,
+          485,
+          501,
+          540,
+          561,
+          584,
+          609,
+          610,
+          623,
+          666,
+          672,
+          685,
+          688,
+          691,
+          700,
+          733,
+          739,
+          765,
+          776,
+          792,
+          808,
+          810,
+          818,
+          836,
+          851,
+          855,
+          890,
+          1075,
+          1080,
+          1097,
+          1142,
+          1175,
+          1178,
+          1183,
+          1210,
+          1211,
+          1213,
+          1222,
+          1263,
+          1308,
+          1334,
+          1335,
+          1349,
+          1357,
+          1370,
+          1382,
+          1409,
+          1435,
+          1436,
+          1441,
+          1445,
+          1466,
+          1476,
+          1482,
+          1483,
+          1486,
+          1571,
+          1577,
+          1588,
+          1592,
+          1603,
+          1634,
+          1636,
+          1644,
+          1655,
+          1658,
+          1692,
+          1700,
+          1702,
+          1741,
+          1749,
+          1757,
+          1771,
+          1787,
+          1808,
+          1815,
+          1820
+        ],
+        "wrong_case_indices_truncated": true,
+        "accuracy": 0.9472,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "2f80daf5e7a6bf88e1459110db8ccfe9d6ba9455dab13fffc170783afe20b6be",
+        "raw_sha256": "5a754fd714feb5f2121482ca9f623405c2243cd08ee2c4559b6f913ad3717cd3",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.7859207500005141,
+        "optimization": "disabled",
+        "threads": 4
+      }
+    },
+    "default_threads4": {
+      "known": {
+        "total": 265,
+        "right": 252,
+        "wrong": 13,
+        "wrong_case_indices_first_100": [
+          40,
+          75,
+          79,
+          106,
+          112,
+          116,
+          127,
+          150,
+          151,
+          183,
+          206,
+          218,
+          247
+        ],
+        "wrong_case_indices_truncated": false,
+        "accuracy": 0.9509433962264151,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "1e13169bf55b8000123cdf99e6fa62e51689d045905d2508cd7c8cb723770988",
+        "raw_sha256": "db59387af8e7539db1f5bb0df0b1604d679bb45ac54a81d0e7904adb1f448cd1",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.02087374997790903,
+        "optimization": "default",
+        "threads": 4
+      },
+      "latent_domain": {
+        "total": 196,
+        "right": 186,
+        "wrong": 10,
+        "wrong_case_indices_first_100": [
+          9,
+          41,
+          59,
+          73,
+          91,
+          105,
+          123,
+          137,
+          155,
+          187
+        ],
+        "wrong_case_indices_truncated": false,
+        "accuracy": 0.9489795918367347,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "93fc46d3b303c70d72d5748faa98b72c13c4cd04f6241a79053183db8b7a77b2",
+        "raw_sha256": "3fef9bdb40b40838d7f27d2c8eb4a8b07d10a7bfcb526db3d53538faf2a037ca",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.015459207992535084,
+        "optimization": "default",
+        "threads": 4
+      },
+      "fresh_seed_273012001": {
+        "total": 10000,
+        "right": 9502,
+        "wrong": 498,
+        "wrong_case_indices_first_100": [
+          39,
+          40,
+          46,
+          80,
+          88,
+          94,
+          106,
+          146,
+          175,
+          176,
+          191,
+          225,
+          249,
+          269,
+          337,
+          347,
+          368,
+          376,
+          386,
+          410,
+          415,
+          416,
+          420,
+          436,
+          481,
+          529,
+          538,
+          589,
+          602,
+          620,
+          676,
+          683,
+          705,
+          707,
+          724,
+          742,
+          756,
+          793,
+          794,
+          800,
+          806,
+          808,
+          824,
+          835,
+          867,
+          903,
+          919,
+          933,
+          1026,
+          1027,
+          1093,
+          1121,
+          1138,
+          1148,
+          1201,
+          1249,
+          1253,
+          1272,
+          1278,
+          1418,
+          1425,
+          1484,
+          1537,
+          1551,
+          1605,
+          1622,
+          1629,
+          1704,
+          1709,
+          1717,
+          1723,
+          1774,
+          1784,
+          1786,
+          1792,
+          1797,
+          1802,
+          1839,
+          1914,
+          1919,
+          1922,
+          1926,
+          1943,
+          1952,
+          1953,
+          1973,
+          2026,
+          2044,
+          2051,
+          2055,
+          2072,
+          2107,
+          2114,
+          2163,
+          2178,
+          2191,
+          2194,
+          2202,
+          2218,
+          2250
+        ],
+        "wrong_case_indices_truncated": true,
+        "accuracy": 0.9502,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "28b232696bb55867bc525cba2a7e29bd4c165c8317872028a96dcaa2a0b77380",
+        "raw_sha256": "f9ada2dacd48d7bb28a1b4b50123ab2ffd5cc334bbdee50c5c420724b91ca405",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.7768270829692483,
+        "optimization": "default",
+        "threads": 4
+      },
+      "fresh_seed_273112001": {
+        "total": 10000,
+        "right": 9472,
+        "wrong": 528,
+        "wrong_case_indices_first_100": [
+          19,
+          98,
+          119,
+          156,
+          167,
+          172,
+          186,
+          190,
+          210,
+          228,
+          240,
+          271,
+          283,
+          284,
+          293,
+          307,
+          310,
+          317,
+          323,
+          325,
+          353,
+          355,
+          432,
+          444,
+          485,
+          501,
+          540,
+          561,
+          584,
+          609,
+          610,
+          623,
+          666,
+          672,
+          685,
+          688,
+          691,
+          700,
+          733,
+          739,
+          765,
+          776,
+          792,
+          808,
+          810,
+          818,
+          836,
+          851,
+          855,
+          890,
+          1075,
+          1080,
+          1097,
+          1142,
+          1175,
+          1178,
+          1183,
+          1210,
+          1211,
+          1213,
+          1222,
+          1263,
+          1308,
+          1334,
+          1335,
+          1349,
+          1357,
+          1370,
+          1382,
+          1409,
+          1435,
+          1436,
+          1441,
+          1445,
+          1466,
+          1476,
+          1482,
+          1483,
+          1486,
+          1571,
+          1577,
+          1588,
+          1592,
+          1603,
+          1634,
+          1636,
+          1644,
+          1655,
+          1658,
+          1692,
+          1700,
+          1702,
+          1741,
+          1749,
+          1757,
+          1771,
+          1787,
+          1808,
+          1815,
+          1820
+        ],
+        "wrong_case_indices_truncated": true,
+        "accuracy": 0.9472,
+        "policy90": true,
+        "errors": 0,
+        "first_error": null,
+        "nonfinite_cases": 0,
+        "nonfinite_elements": 0,
+        "output_shape_mismatches": 0,
+        "first_shape_mismatch": null,
+        "observed_output_shapes": [
+          [
+            1,
+            10,
+            30,
+            30
+          ]
+        ],
+        "sign_sha256": "2f80daf5e7a6bf88e1459110db8ccfe9d6ba9455dab13fffc170783afe20b6be",
+        "raw_sha256": "5a754fd714feb5f2121482ca9f623405c2243cd08ee2c4559b6f913ad3717cd3",
+        "prediction_sign_mismatch_cases_vs_disable_threads1": 0,
+        "prediction_sign_mismatch_cells_vs_disable_threads1": 0,
+        "first_sign_mismatch": null,
+        "small_positive_elements_0_to_0_25": 0,
+        "minimum_positive": 0.39035797119140625,
+        "maximum_nonpositive": -0.8662528991699219,
+        "elapsed_seconds": 0.8103566250065342,
+        "optimization": "default",
+        "threads": 4
+      }
+    }
+  },
+  "gates": {
+    "immutable_authority_member": true,
+    "candidate_structure": true,
+    "nonzero_color_permutation_symmetry": true,
+    "no_lookup_or_fixture_correction": true,
+    "official_authority_cost710_correct": true,
+    "official_candidate_cost650": true,
+    "all_196_latent_states_regenerated": true,
+    "known_all265_evaluated": true,
+    "fresh_each10000_evaluated": true,
+    "known_accuracy_at_least_90_all_configs": true,
+    "latent_accuracy_at_least_90_all_configs": true,
+    "fresh_accuracy_at_least_90_each_seed_all_configs": true,
+    "runtime_errors_nonfinite_shape_zero": true,
+    "no_shape_cloak": true,
+    "prediction_sign_stable_across_configs": true,
+    "raw_output_bytes_stable_across_configs": true,
+    "official_converter_crosscheck_exact": true,
+    "margin_no_small_positive": true
+  },
+  "aggregate": {
+    "runtime_dataset_config_evaluations": 16,
+    "runtime_case_executions": 81844,
+    "errors": 0,
+    "nonfinite_cases": 0,
+    "nonfinite_elements": 0,
+    "output_shape_mismatches": 0,
+    "prediction_sign_mismatch_cases": 0,
+    "prediction_sign_mismatch_cells": 0,
+    "small_positive_elements_0_to_0_25": 0,
+    "minimum_positive": 0.39035797119140625,
+    "maximum_nonpositive": -0.8662528991699219,
+    "official_converter_crosscheck_cases": 20461,
+    "elapsed_seconds": 10.799672332999762
+  },
+  "policy": {
+    "fail_closed": true,
+    "root_or_71407_written": false,
+    "candidate_promoted": false,
+    "kimi_used": false
+  }
+}

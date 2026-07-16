@@ -1,0 +1,225 @@
+======================================================================
+exp05: n-gram 構成方式と stop words 設計の定量比較
+======================================================================
+platform : macOS-26.5-arm64-arm-64bit-Mach-O
+python   : 3.13.2
+numpy    : 2.4.4
+text     : /Users/kimura2003/Downloads/rikadai kadai python/dataset/text/text_english.txt
+
+----------------------------------------------------------------------
+[0] コーパスの基本統計
+----------------------------------------------------------------------
+総トークン数(正規表現 [a-z]+): 984
+異なり語数                    : 445
+採用 stop words の語数        : 86 (提出プログラムの STOP_WORDS と同一)
+基本 stop words の語数        : 30
+採用+1文字語の語数            : 108
+
+----------------------------------------------------------------------
+[1] 2-gram 構成方式の比較
+    方式 A: stop words 除去後に 2-gram 構成(採用手法)
+    方式 B: 2-gram 構成後に stop word を含む組を除去
+----------------------------------------------------------------------
+stop words 除去後のトークン数        : 614
+方式 A: 2-gram 総数 613, 異なり数 560
+方式 B: 2-gram 総数 347, 異なり数 300
+方式 A のうち原文に隣接して存在しない 2-gram: 異なり数 260 / 560 (46.4 %), 総数 262 / 613 (42.7 %)
+
+方式 A 上位 10(「(非隣接)」は原文に隣接ペアとして存在しない組):
+   1. natural language                   15  
+   2. e g                                 9  
+   3. language processing                 9  
+   4. machine translation                 5  
+   5. language understanding              3  
+   6. machine learning                    3  
+   7. annotated data                      2  
+   8. artificial intelligence             2  
+   9. g development                       2  (非隣接)
+  10. generation natural                  2  
+
+方式 B 上位 10:
+   1. natural language                   15  
+   2. e g                                 9  
+   3. language processing                 9  
+   4. machine translation                 5  
+   5. language understanding              3  
+   6. machine learning                    3  
+   7. annotated data                      2  
+   8. artificial intelligence             2  
+   9. head hurts                          2  
+  10. language data                       2  
+
+上位 10 の和集合の順位比較(順位 '-' はその方式に出現しないこと):
+  2-gram                             A頻度   A順位   B頻度   B順位  原文に隣接
+  natural language                    15     1    15     1  yes
+  e g                                  9     2     9     2  yes
+  language processing                  9     3     9     3  yes
+  machine translation                  5     4     5     4  yes
+  language understanding               3     5     3     5  yes
+  machine learning                     3     6     3     6  yes
+  annotated data                       2     7     2     7  yes
+  artificial intelligence              2     8     2     8  yes
+  g development                        2     9     0     -  no
+  generation natural                   2    10     1    98  yes
+  head hurts                           2    11     2     9  yes
+  language data                        2    12     2    10  yes
+
+確認: 「generation natural」 方式 A 頻度 2 (順位 10), 方式 B 頻度 1, 原文に隣接ペアとして存在: True
+
+CSV 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp05_methods_top10.csv
+CSV 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp05_methods_union.csv
+図 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/figures/exp05_methods.pdf
+
+----------------------------------------------------------------------
+[2] n-gram の次数 n = 1, 2, 3 の比較(stop words 除去あり/なし)
+----------------------------------------------------------------------
+除去なし 1-gram: 総数 984, 異なり数 445, ハパックス 319 (71.7 %), 上位 10 被覆率 27.1 %
+   1. the                                61  
+   2. of                                 45  
+   3. in                                 27  
+   4. and                                26  
+   5. a                                  23  
+   6. s                                  23  
+   7. language                           21  
+   8. to                                 17  
+   9. natural                            15  
+  10. data                                9  
+
+除去なし 2-gram: 総数 983, 異なり数 858, ハパックス 797 (92.9 %), 上位 10 被覆率 7.5 %
+   1. natural language                   15  
+   2. e g                                 9  
+   3. in the                              9  
+   4. language processing                 9  
+   5. of the                              8  
+   6. the s                               7  
+   7. as a                                5  
+   8. machine translation                 5  
+   9. with the                            4  
+  10. amounts of                          3  
+
+除去なし 3-gram: 総数 982, 異なり数 958, ハパックス 944 (98.5 %), 上位 10 被覆率 3.1 %
+   1. natural language processing         7  
+   2. in the s                            4  
+   3. in natural language                 3  
+   4. natural language understanding      3  
+   5. of natural language                 3  
+   6. as a result                         2  
+   7. e g the                             2  
+   8. g the development                   2  
+   9. language processing systems         2  
+  10. machine translation was             2  
+
+除去あり 1-gram: 総数 614, 異なり数 389, ハパックス 299 (76.9 %), 上位 10 被覆率 16.9 %
+   1. language                           21  
+   2. natural                            15  
+   3. data                                9  
+   4. e                                   9  
+   5. g                                   9  
+   6. nlp                                 9  
+   7. processing                          9  
+   8. machine                             8  
+   9. systems                             8  
+  10. learning                            7  
+
+除去あり 2-gram: 総数 613, 異なり数 560, ハパックス 539 (96.2 %), 上位 10 被覆率 8.5 %
+   1. natural language                   15  
+   2. e g                                 9  
+   3. language processing                 9  
+   4. machine translation                 5  
+   5. language understanding              3  
+   6. machine learning                    3  
+   7. annotated data                      2  
+   8. artificial intelligence             2  
+   9. g development                       2  
+  10. generation natural                  2  
+
+除去あり 3-gram: 総数 612, 異なり数 599, ハパックス 592 (98.8 %), 上位 10 被覆率 3.8 %
+   1. natural language processing         7  
+   2. natural language understanding      3  
+   3. e g development                     2  
+   4. generation natural language         2  
+   5. language processing due             2  
+   6. language processing systems         2  
+   7. non annotated data                  2  
+   8. able take advantage                 1  
+   9. accurate results given              1  
+  10. accurately extract information      1  
+
+CSV 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp05_ngram_top10.csv
+CSV 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp05_ngram_stats.csv
+図 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/figures/exp05_ngram_bars.pdf
+
+----------------------------------------------------------------------
+[3] Zipf 則の検証(頻度-順位分布の log-log 最小二乗フィット)
+----------------------------------------------------------------------
+1gram  fit=all      点数  445  傾き -0.673  切片 1.647  R^2 0.8974
+1gram  fit=freq>=2  点数  126  傾き -0.787  切片 1.866  R^2 0.9711
+2gram  fit=all      点数  858  傾き -0.213  切片 0.562  R^2 0.5690
+2gram  fit=freq>=2  点数   61  傾き -0.504  切片 1.108  R^2 0.8835
+(Zipf 則の理論値: 傾き -1 付近)
+
+CSV 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp05_zipf.csv
+CSV 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp05_zipf_fit.csv
+図 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/figures/exp05_zipf.pdf
+
+----------------------------------------------------------------------
+[4] stop words 設計の感度(2-gram は方式 A で構成)
+----------------------------------------------------------------------
+集合 none(stop words なし): 語数 0, 除去後トークン数 984, 異なり 2-gram 数 858
+  「e g」の頻度 9, 順位 2
+   1. natural language                   15  
+   2. e g                                 9  
+   3. in the                              9  
+   4. language processing                 9  
+   5. of the                              8  
+   6. the s                               7  
+   7. as a                                5  
+   8. machine translation                 5  
+   9. with the                            4  
+  10. amounts of                          3  
+
+集合 basic30(基本 30 語): 語数 30, 除去後トークン数 694, 異なり 2-gram 数 628
+  「e g」の頻度 9, 順位 2
+   1. natural language                   15  
+   2. e g                                 9  
+   3. language processing                 9  
+   4. machine translation                 5  
+   5. language understanding              3  
+   6. machine learning                    3  
+   7. these systems                       3  
+   8. annotated data                      2  
+   9. artificial intelligence             2  
+  10. data has                            2  
+
+集合 adopted(採用集合(提出プログラムと同一)): 語数 86, 除去後トークン数 614, 異なり 2-gram 数 560
+  「e g」の頻度 9, 順位 2
+   1. natural language                   15  
+   2. e g                                 9  
+   3. language processing                 9  
+   4. machine translation                 5  
+   5. language understanding              3  
+   6. machine learning                    3  
+   7. annotated data                      2  
+   8. artificial intelligence             2  
+   9. g development                       2  
+  10. generation natural                  2  
+
+集合 adopted+letters(採用集合 + 1 文字語 26 語): 語数 108, 除去後トークン数 596, 異なり 2-gram 数 551
+  「e g」の頻度 0(消滅)
+   1. natural language                   15  
+   2. language processing                 9  
+   3. machine translation                 5  
+   4. language understanding              3  
+   5. machine learning                    3  
+   6. annotated data                      2  
+   7. artificial intelligence             2  
+   8. generation natural                  2  
+   9. head hurts                          2  
+  10. language data                       2  
+
+CSV 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp05_stopwords_top10.csv
+図 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/figures/exp05_stopwords.pdf
+
+======================================================================
+exp05 完了
+======================================================================

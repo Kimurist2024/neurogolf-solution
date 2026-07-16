@@ -1,0 +1,527 @@
+{
+ "forumTopic": {
+  "authorId": 25050929,
+  "authorThumbnailName": "25050929-kg.jpeg?t=2025-02-12-12-22-52",
+  "authorUserDisplayName": "Michael D. Moffitt",
+  "authorUserName": "mmoffitt",
+  "comments": [
+   {
+    "id": 3452840,
+    "postDate": "2026-05-04T12:21:50.053Z",
+    "rawMarkdown": "Dear Organizers,\n\nI am writing to bring to your immediate attention a set of severe vulnerabilities in the official evaluation pipeline of the 2026 NeuroGolf Championship. The current scoring mechanism, which relies on the onnx-tool library (v1.0.1) to compute network cost (parameters + memory + MACs), contains multiple bugs that allow functionally correct networks to achieve artificially near-zero costs. This completely undermines the competition’s goal of “designing the smallest possible neural networks” and rewards exploit engineering over genuine efficiency.\n\nBelow I summarize the discovered exploits with concrete evidence from the attached notebook (onnx-tool-exploit-report-apr-25-v2.ipynb). All tests were run on task104 (public ARC-AGI task) using the official environment.\n\nSummary of Exploits & Impact\nExploit\tAffected Operator(s)\tIncorrect Behavior\tAchieved Cost (task104)\tCorrect Cost (approx.)\nCompress + Resize\tCompress, Resize (nearest)\tCompress output shape becomes [0,10,30,30] due to fake zero tensors; Resize MACs = 0.\t72\t> 850,000\nCompress + Gather\tCompress, Gather\tSame Compress bug; Gather MACs = 0.\t96\t> 850,000\nCompress + GridSample\tCompress, GridSample\tSame Compress bug; GridSample MACs = 0.\t112\t> 850,000\nTopK\tTopK\tNo MACs counted for ranking operation.\t9,104\t~ same as Gather\nWhere (broadcast)\tWhere\tShape inference fails to broadcast → output shape [1,10,1,30] instead of [1,10,30,30].\t3,600\t> 36,000\nConstantOfShape\tConstantOfShape\tData‑dependent shape evaluated on fake zeros → output shape [0,0,0,0] → zero memory.\t1,286\t> 12,000\nMost striking: A correct network for task104 can be built with Resize + Compress that the evaluator scores as cost = 72 (score ≈ 20.72). In contrast, the example network in the competition overview (single 3×3 conv) costs 850,500 (score ≈ 11.39). This is a ~11,800x reduction achieved by exploiting bugs, not by efficient design.\n\nTechnical Evidence (from the notebook)\n1. Compress bug – output shape vanishes\nThe Compress operator selects elements based on a condition. During shape_infer(None), onnx-tool replaces unknown tensors with all‑zero synthetic tensors. The condition then becomes all false, so the node is profiled with out=[0, 10, 30, 30] and memory = 0:\n\npython\n# From the notebook – Compress output shape\n# Expected: [1, 10, 30, 30] (one full board)\n# Actual from onnx-tool:\n'select_bank': {'out': [0, 10, 30, 30], 'memory': 0}\nRelevant source code locations (annotated in notebook):\n\ngraph.py L1023‑L1035 (fake zero injection)\n\ntensor.py L433‑L438\n\nCompressNode (node.py L1908‑L1915)\n\n2. Where broadcast shape failure\nONNX Where uses broadcasting. Input shapes [1,10,1,30] and [1,10,30,1] should produce [1,10,30,30]. However, onnx-tool calls _max_shape() which cannot generate a broadcasted shape larger than any input. Result:\n\npython\n# Where node profiled as:\n'out': [1, 10, 1, 30]   # only a thin slice, memory 1200 instead of 12000\nCode: node.py L80‑L91 (_max_shape) and L779‑L785 (WhereNode.shape_infer).\n\n3. TopK – zero MACs for sorting\nTopKNode has no custom profile() method, so it falls back to the base implementation that reports macs = 0. The ranking of 4 values (which should cost at least a few operations) is ignored entirely.\n\n4. ConstantOfShape – dynamic shape evaluated on fake zeros\nThe node’s output shape depends on an input tensor (runtime_shape). During shape inference, onnx-tool computes runtime_shape using fake zeros, leading to [0,0,0,0] and zero memory cost.\n\nWhy This Breaks the Competition\nFairness – Participants who discover these bugs can achieve orders‑of‑magnitude lower costs than those who build genuinely small networks.\n\nGoal misalignment – The scoring no longer measures “how much computation these tasks actually require”. Instead, it measures “how well can you trick the profiler”.\n\nReproducibility – The official starter notebook (the-2026-neurogolf-championship.ipynb) uses a different profiling approach (via model_profiler.py) and shows honest costs. This creates a false sense of the scoring mechanism.\n\nIrrelevance of constraints – The 1.44MB ONNX file limit and the banned operator list (Loop, Scan, etc.) do not prevent any of the shown exploits.\n\nRecommended Actions\nTo preserve the integrity of the competition, I strongly suggest one or more of the following:\n\nImmediately patch onnx-tool – Fix shape inference to handle data‑dependent shapes correctly (do not use fake zeros for shape‑determining inputs). Add missing MAC counts for operators like TopK, Gather, Resize (nearest), GridSample.\n\nReplace the profiler – Use a more robust tool (e.g., onnxruntime + custom flop counter, or keras-flops, ptflops-like tools for ONNX) that does not rely on fragile static analysis.\n\nDisable offending operators – Temporarily ban Compress, ConstantOfShape, Where, TopK, Gather, Resize, GridSample until a fix is released. (Though this would limit legitimate solutions.)\n\nRe‑evaluate all submissions – If a patch is deployed after the competition starts, re‑run the scoring on all submitted models to ensure fairness.\n\nI am happy to provide the full notebook, minimal working examples of each exploit, and assist in testing any patches.\n\nThank you for your attention to this critical matter. The NeuroGolf Championship is an exciting and important contest; fixing these issues will ensure it remains a true benchmark for efficient neural computation.\n\nSincerely,\n[Your Name / Team Name]\n[Contact Info – Kaggle username, email]\n\nAttachments (provided):\n\nonnx-tool-exploit-report-apr-25-v2.ipynb (full reproduction of all exploits)\n\n(Optional) Minimal ONNX files for each exploit",
+    "content": "<p>Dear Organizers,</p>\n<p>I am writing to bring to your immediate attention a set of severe vulnerabilities in the official evaluation pipeline of the 2026 NeuroGolf Championship. The current scoring mechanism, which relies on the onnx-tool library (v1.0.1) to compute network cost (parameters + memory + MACs), contains multiple bugs that allow functionally correct networks to achieve artificially near-zero costs. This completely undermines the competition’s goal of “designing the smallest possible neural networks” and rewards exploit engineering over genuine efficiency.</p>\n<p>Below I summarize the discovered exploits with concrete evidence from the attached notebook (onnx-tool-exploit-report-apr-25-v2.ipynb). All tests were run on task104 (public ARC-AGI task) using the official environment.</p>\n<p>Summary of Exploits &amp; Impact\nExploit    Affected Operator(s)    Incorrect Behavior  Achieved Cost (task104) Correct Cost (approx.)\nCompress + Resize    Compress, Resize (nearest)  Compress output shape becomes [0,10,30,30] due to fake zero tensors; Resize MACs = 0.   72  &gt; 850,000\nCompress + Gather    Compress, Gather    Same Compress bug; Gather MACs = 0. 96  &gt; 850,000\nCompress + GridSample    Compress, GridSample    Same Compress bug; GridSample MACs = 0. 112 &gt; 850,000\nTopK    TopK    No MACs counted for ranking operation.  9,104   ~ same as Gather\nWhere (broadcast)    Where   Shape inference fails to broadcast → output shape [1,10,1,30] instead of [1,10,30,30].  3,600   &gt; 36,000\nConstantOfShape    ConstantOfShape Data‑dependent shape evaluated on fake zeros → output shape [0,0,0,0] → zero memory.    1,286   &gt; 12,000\nMost striking: A correct network for task104 can be built with Resize + Compress that the evaluator scores as cost = 72 (score ≈ 20.72). In contrast, the example network in the competition overview (single 3×3 conv) costs 850,500 (score ≈ 11.39). This is a ~11,800x reduction achieved by exploiting bugs, not by efficient design.</p>\n<p>Technical Evidence (from the notebook)</p>\n<ol>\n<li>Compress bug – output shape vanishes\nThe Compress operator selects elements based on a condition. During shape_infer(None), onnx-tool replaces unknown tensors with all‑zero synthetic tensors. The condition then becomes all false, so the node is profiled with out=[0, 10, 30, 30] and memory = 0:</li>\n</ol>\n<p>python</p>\n<h1>From the notebook – Compress output shape</h1>\n<h1>Expected: [1, 10, 30, 30] (one full board)</h1>\n<h1>Actual from onnx-tool:</h1>\n<p>'select_bank': {'out': [0, 10, 30, 30], 'memory': 0}\nRelevant source code locations (annotated in notebook):</p>\n<p>graph.py L1023‑L1035 (fake zero injection)</p>\n<p>tensor.py L433‑L438</p>\n<p>CompressNode (node.py L1908‑L1915)</p>\n<ol>\n<li>Where broadcast shape failure\nONNX Where uses broadcasting. Input shapes [1,10,1,30] and [1,10,30,1] should produce [1,10,30,30]. However, onnx-tool calls _max_shape() which cannot generate a broadcasted shape larger than any input. Result:</li>\n</ol>\n<p>python</p>\n<h1>Where node profiled as:</h1>\n<p>'out': [1, 10, 1, 30]   # only a thin slice, memory 1200 instead of 12000\nCode: node.py L80‑L91 (_max_shape) and L779‑L785 (WhereNode.shape_infer).</p>\n<ol>\n<li><p>TopK – zero MACs for sorting\nTopKNode has no custom profile() method, so it falls back to the base implementation that reports macs = 0. The ranking of 4 values (which should cost at least a few operations) is ignored entirely.</p></li>\n<li><p>ConstantOfShape – dynamic shape evaluated on fake zeros\nThe node’s output shape depends on an input tensor (runtime_shape). During shape inference, onnx-tool computes runtime_shape using fake zeros, leading to [0,0,0,0] and zero memory cost.</p></li>\n</ol>\n<p>Why This Breaks the Competition\nFairness – Participants who discover these bugs can achieve orders‑of‑magnitude lower costs than those who build genuinely small networks.</p>\n<p>Goal misalignment – The scoring no longer measures “how much computation these tasks actually require”. Instead, it measures “how well can you trick the profiler”.</p>\n<p>Reproducibility – The official starter notebook (the-2026-neurogolf-championship.ipynb) uses a different profiling approach (via model_profiler.py) and shows honest costs. This creates a false sense of the scoring mechanism.</p>\n<p>Irrelevance of constraints – The 1.44MB ONNX file limit and the banned operator list (Loop, Scan, etc.) do not prevent any of the shown exploits.</p>\n<p>Recommended Actions\nTo preserve the integrity of the competition, I strongly suggest one or more of the following:</p>\n<p>Immediately patch onnx-tool – Fix shape inference to handle data‑dependent shapes correctly (do not use fake zeros for shape‑determining inputs). Add missing MAC counts for operators like TopK, Gather, Resize (nearest), GridSample.</p>\n<p>Replace the profiler – Use a more robust tool (e.g., onnxruntime + custom flop counter, or keras-flops, ptflops-like tools for ONNX) that does not rely on fragile static analysis.</p>\n<p>Disable offending operators – Temporarily ban Compress, ConstantOfShape, Where, TopK, Gather, Resize, GridSample until a fix is released. (Though this would limit legitimate solutions.)</p>\n<p>Re‑evaluate all submissions – If a patch is deployed after the competition starts, re‑run the scoring on all submitted models to ensure fairness.</p>\n<p>I am happy to provide the full notebook, minimal working examples of each exploit, and assist in testing any patches.</p>\n<p>Thank you for your attention to this critical matter. The NeuroGolf Championship is an exciting and important contest; fixing these issues will ensure it remains a true benchmark for efficient neural computation.</p>\n<p>Sincerely,\n[Your Name / Team Name]\n[Contact Info – Kaggle username, email]</p>\n<p>Attachments (provided):</p>\n<p>onnx-tool-exploit-report-apr-25-v2.ipynb (full reproduction of all exploits)</p>\n<p>(Optional) Minimal ONNX files for each exploit</p>",
+    "replies": [
+     {
+      "id": 3453062,
+      "postDate": "2026-05-04T21:29:57.200Z",
+      "rawMarkdown": "Thank you, Hsyn -- this is an invaluable notebook, and it will go a long way toward identifying areas of improvement in the third-party profiler.\n\nBecause these issues were so pervasive and painful for teams, we've decided to (a) drop MACs from the objective completely, and (b) rely exclusively on the official ONNX Runtime for precise shape analysis (see [today's announcement](https://www.kaggle.com/competitions/neurogolf-2026/discussion/696953)).  Our hope is that this will dramatically reduce the need for teams to rely on bugs & exploits to juice their network scores.",
+      "content": "<p>Thank you, Hsyn -- this is an invaluable notebook, and it will go a long way toward identifying areas of improvement in the third-party profiler.</p>\n<p>Because these issues were so pervasive and painful for teams, we've decided to (a) drop MACs from the objective completely, and (b) rely exclusively on the official ONNX Runtime for precise shape analysis (see <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/696953\" target=\"_blank\">today's announcement</a>).  Our hope is that this will dramatically reduce the need for teams to rely on bugs &amp; exploits to juice their network scores.</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Michael D. Moffitt",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+       "url": "/mmoffitt",
+       "tier": "CONTRIBUTOR",
+       "id": 25050929,
+       "progressionOptOut": false
+      },
+      "authorType": "HOST",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Michael D. Moffitt",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+        "url": "/mmoffitt",
+        "userName": "mmoffitt",
+        "tier": "CONTRIBUTOR",
+        "id": 25050929,
+        "profileUrl": "/mmoffitt",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 25050929,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "attachments": [
+     {
+      "fileType": ".ipynb",
+      "id": 42178,
+      "name": "onnx-tool-exploit-report-apr-25-v2.ipynb",
+      "totalBytes": 73912,
+      "url": "https://storage.googleapis.com/kaggle-forum-message-attachments/3452840/42178/onnx-tool-exploit-report-apr-25-v2.ipynb"
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Hsyn Kskn",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/hsynkskn",
+     "tier": "CONTRIBUTOR",
+     "id": 18736267,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 2,
+     "canUpvote": true,
+     "totalUpvotes": 2
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "mmoffitt"
+      ],
+      "userCount": 1
+     }
+    ]
+   },
+   {
+    "id": 3445187,
+    "postDate": "2026-04-19T07:59:49.477Z",
+    "rawMarkdown": "Hello, thank you for organizing this competition.\n\nI have one eligibility question. I am currently working on ARC Prize 2026 and wanted to ask whether it would be permitted to also participate in The 2026 NeuroGolf Championship at the same time, or whether that would conflict with the rules for ARC Prize 2026 or related competitions.\n\nI would appreciate any clarification before joining or submitting.\n\nBest regards,\nTsitsino Dzotsenidze\n",
+    "content": "<p>Hello, thank you for organizing this competition.</p>\n<p>I have one eligibility question. I am currently working on ARC Prize 2026 and wanted to ask whether it would be permitted to also participate in The 2026 NeuroGolf Championship at the same time, or whether that would conflict with the rules for ARC Prize 2026 or related competitions.</p>\n<p>I would appreciate any clarification before joining or submitting.</p>\n<p>Best regards,\nTsitsino Dzotsenidze</p>",
+    "replies": [
+     {
+      "id": 3446057,
+      "postDate": "2026-04-20T21:59:29.817Z",
+      "rawMarkdown": "Hello Tsitsino Dzotsenidze, there are no problems with competing in both the The 2026 NeuroGolf Championship and the ARC Prize 2026 competition. Thank you for the question and good luck! ",
+      "content": "<p>Hello Tsitsino Dzotsenidze, there are no problems with competing in both the The 2026 NeuroGolf Championship and the ARC Prize 2026 competition. Thank you for the question and good luck! </p>",
+      "parent": {},
+      "author": {
+       "displayName": "Ashley Oldacre",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/8939556-kg.png?t=2025-08-22-16-55-54",
+       "url": "/ashleyoldacre",
+       "tier": "STAFF",
+       "id": 8939556,
+       "progressionOptOut": false
+      },
+      "authorType": "ADMIN",
+      "votes": {
+       "totalVotes": 1,
+       "canUpvote": true,
+       "totalUpvotes": 1
+      },
+      "kernelVersion": 0,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "reactions": [
+       {
+        "emoji": "LOVE",
+        "featuredUserNames": [
+         "mmoffitt"
+        ],
+        "userCount": 1
+       }
+      ]
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Tsitsino Dzotsenidze",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/32396397-gr.jpg",
+     "url": "/tsitsinodzotsenidze",
+     "tier": "CONTRIBUTOR",
+     "id": 32396397,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Tsitsino Dzotsenidze",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/32396397-gr.jpg",
+      "url": "/tsitsinodzotsenidze",
+      "userName": "tsitsinodzotsenidze",
+      "tier": "CONTRIBUTOR",
+      "id": 32396397,
+      "profileUrl": "/tsitsinodzotsenidze",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 32396397,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3443229,
+    "postDate": "2026-04-16T09:03:46.690Z",
+    "rawMarkdown": "Hmm Maximum 100 mulligans a day",
+    "content": "<p>Hmm Maximum 100 mulligans a day</p>",
+    "parent": {},
+    "author": {
+     "displayName": "Warut t",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/7191719-kg.jpg",
+     "url": "/warutt",
+     "tier": "CONTRIBUTOR",
+     "id": 7191719,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false
+   },
+   {
+    "id": 3445553,
+    "postDate": "2026-04-20T04:06:34.480Z",
+    "rawMarkdown": "All the test dataset is provided in the data section?  How do we evaluate the final results?",
+    "content": "<p>All the test dataset is provided in the data section?  How do we evaluate the final results?</p>",
+    "replies": [
+     {
+      "id": 3451153,
+      "postDate": "2026-04-30T22:53:40.780Z",
+      "rawMarkdown": "@mmoffitt Do we have a private LB here?",
+      "content": "<p><a href=\"https://www.kaggle.com/mmoffitt\" target=\"_blank\">@mmoffitt</a> Do we have a private LB here?</p>",
+      "replies": [
+       {
+        "id": 3451154,
+        "postDate": "2026-04-30T23:02:06.313Z",
+        "rawMarkdown": "No private LB, just the public one (so, no risk of a post-contest shakeup).\n\nNote that we've had a couple metric updates so far, each one accompanied by a LB refresh.  Teams have proven to be quite adept at creating networks with unanticipated properties!",
+        "content": "<p>No private LB, just the public one (so, no risk of a post-contest shakeup).</p>\n<p>Note that we've had a couple metric updates so far, each one accompanied by a LB refresh.  Teams have proven to be quite adept at creating networks with unanticipated properties!</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3451156,
+        "postDate": "2026-04-30T23:15:35.577Z",
+        "rawMarkdown": "What is the newest update could u attach a new thread to have all the bugs and updates in one place it would be really helpful ",
+        "content": "<p>What is the newest update could u attach a new thread to have all the bugs and updates in one place it would be really helpful </p>",
+        "parent": {},
+        "author": {
+         "displayName": "Suman Sharma",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/17092850-kg.png?t=2025-12-26-13-33-06",
+         "url": "/suman2208",
+         "tier": "CONTRIBUTOR",
+         "id": 17092850,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 576,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Diva Bhattacharya",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+          "url": "/divabhattacharya",
+          "userName": "divabhattacharya",
+          "tier": "CONTRIBUTOR",
+          "id": 19971513,
+          "profileUrl": "/divabhattacharya",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 19971513,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3451166,
+        "postDate": "2026-04-30T23:36:26.830Z",
+        "rawMarkdown": "@suman2208 Great suggestion -- I've edited the original post up above to include a link to all updates, and will continue to do so for the rest of the contest.",
+        "content": "<p><a href=\"https://www.kaggle.com/suman2208\" target=\"_blank\">@suman2208</a> Great suggestion -- I've edited the original post up above to include a link to all updates, and will continue to do so for the rest of the contest.</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Michael D. Moffitt",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+         "url": "/mmoffitt",
+         "tier": "CONTRIBUTOR",
+         "id": 25050929,
+         "progressionOptOut": false
+        },
+        "authorType": "HOST",
+        "votes": {
+         "canUpvote": true
+        },
+        "kernelVersion": 0,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Michael D. Moffitt",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+          "url": "/mmoffitt",
+          "userName": "mmoffitt",
+          "tier": "CONTRIBUTOR",
+          "id": 25050929,
+          "profileUrl": "/mmoffitt",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 25050929,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       },
+       {
+        "id": 3451169,
+        "postDate": "2026-04-30T23:43:19.300Z",
+        "rawMarkdown": "Thanks a lot for the prompt response really appreciate the effort",
+        "content": "<p>Thanks a lot for the prompt response really appreciate the effort</p>",
+        "parent": {},
+        "author": {
+         "displayName": "Suman Sharma",
+         "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/17092850-kg.png?t=2025-12-26-13-33-06",
+         "url": "/suman2208",
+         "tier": "CONTRIBUTOR",
+         "id": 17092850,
+         "progressionOptOut": false
+        },
+        "authorType": "COMMENT",
+        "votes": {
+         "totalVotes": 1,
+         "canUpvote": true,
+         "totalUpvotes": 1
+        },
+        "kernelVersion": 0,
+        "competitionRanking": 576,
+        "feedbackTrackingData": {},
+        "isThankYou": false,
+        "isCollapsed": true,
+        "reactions": [
+         {
+          "emoji": "LOVE",
+          "featuredUserNames": [
+           "mmoffitt"
+          ],
+          "userCount": 1
+         }
+        ],
+        "teamUpInfo": {
+         "teamLeader": {
+          "displayName": "Diva Bhattacharya",
+          "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+          "url": "/divabhattacharya",
+          "userName": "divabhattacharya",
+          "tier": "CONTRIBUTOR",
+          "id": 19971513,
+          "profileUrl": "/divabhattacharya",
+          "performanceTier": "CONTRIBUTOR",
+          "userId": 19971513,
+          "progressionOptOut": false
+         },
+         "intro": ""
+        }
+       }
+      ],
+      "parent": {},
+      "author": {
+       "displayName": "yuanzhe zhou",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4578277-kg.jpeg",
+       "url": "/yuanzhezhou",
+       "tier": "GRANDMASTER",
+       "id": 4578277,
+       "progressionOptOut": false
+      },
+      "authorType": "COMMENT",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 1242,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "yuanzhe zhou",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4578277-kg.jpeg",
+        "url": "/yuanzhezhou",
+        "userName": "yuanzhezhou",
+        "tier": "GRANDMASTER",
+        "id": 4578277,
+        "profileUrl": "/yuanzhezhou",
+        "performanceTier": "GRANDMASTER",
+        "userId": 4578277,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "yuanzhe zhou",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4578277-kg.jpeg",
+     "url": "/yuanzhezhou",
+     "tier": "GRANDMASTER",
+     "id": 4578277,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1242,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "yuanzhe zhou",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/4578277-kg.jpeg",
+      "url": "/yuanzhezhou",
+      "userName": "yuanzhezhou",
+      "tier": "GRANDMASTER",
+      "id": 4578277,
+      "profileUrl": "/yuanzhezhou",
+      "performanceTier": "GRANDMASTER",
+      "userId": 4578277,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3445305,
+    "postDate": "2026-04-19T14:05:55.927Z",
+    "rawMarkdown": "thank you for this....",
+    "content": "<p>thank you for this….</p>",
+    "parent": {},
+    "author": {
+     "displayName": "vineet kumar",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/26486988-kg.jpeg?t=2026-02-27-18-57-14",
+     "url": "/vineetkumar28022004",
+     "tier": "CONTRIBUTOR",
+     "id": 26486988,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "totalVotes": 1,
+     "canUpvote": true,
+     "totalUpvotes": 1
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": true
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3442011,
+   "postDate": "2026-04-14T20:45:21.663Z",
+   "rawMarkdown": "Hello Kagglers,\n\nWe're thrilled to announce the launch of the **2026 NeuroGolf Championship**!\n\nThis three-month contest—featured in the [IJCAI-ECAI 2026](https://2026.ijcai.org/) Competition Track—adds a new spin to the classic challenge of code golf.  For those new to it, [code golf](https://en.wikipedia.org/wiki/Code_golf) is a programming competition where contestants solve a suite of tasks using the shortest possible source code (*see also: the championship Kaggle hosted [last year](https://www.kaggle.com/competitions/google-code-golf-2025)*).  In this new challenge, you'll instead design [neural networks](https://en.wikipedia.org/wiki/Neural_network_(machine_learning)) that exhibit the simplest possible structure, using any number of optimization techniques (e.g., [conventional ML training algorithms](https://en.wikipedia.org/wiki/Stochastic_gradient_descent), [LLM-powered agentic coding](https://en.wikipedia.org/wiki/AI-assisted_software_development), [neural architecture search](https://en.wikipedia.org/wiki/Neural_architecture_search), etc.) that you choose.\n\nThe tasks for this challenge are all drawn from the [Abstraction and Reasoning Corpus](https://arcprize.org/arc-agi) (ARC-AGI), a dataset first introduced by François Chollet in 2019 and later used in [many](https://www.kaggle.com/competitions/arc-prize-2024) [other](https://www.kaggle.com/competitions/arc-prize-2025) [competitions](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2). Each puzzle requires a unique composition of transformations, so success will ultimately depend on your ability to create clever & efficient solutions.\n\nTo help you get started, we've created a [Kaggle notebook](https://www.kaggle.com/code/mmoffitt/the-2026-neurogolf-championship) where you can load individual ARC tasks and test out your networks.  Need help deciding which puzzles to tackle first? If so, we recommend starting with tasks [#6](https://arcprize.org/tasks/0520fde7), [#95](https://arcprize.org/tasks/4258a5f9), [#127](https://arcprize.org/tasks/54d9e175), [#261](https://arcprize.org/tasks/a79310a0), and [#331](https://arcprize.org/tasks/d364b489).  Finally, refer to the [main contest page](https://www.kaggle.com/competitions/neurogolf-2026) for instructions on how to zip up your networks and submit them for scoring.\n\nHappy golfing! 🏌️\n\n*[------- I'll update the space below with any relevant follow-ups -------]*\n\n- **[April 21st]** [NeuroGolf Update for April 21st](https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711)\n- **[April 24th]** [NeuroGolf Update for April 24th](https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711#3448225)\n- **[April 28th]** [NeuroGolf Update for April 28th](https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230) ... check out our [Metric Migration Manual](https://www.kaggle.com/code/mmoffitt/the-2026-neurogolf-metric-migration-manual)!\n- **[April 29th]** [NeuroGolf Update for April 29th](https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230#3450385)\n- **[April 30th]** [Metric updated](https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230#3450385) to address two issues reported by @pavelsavchenkov and others.  Batch rescoring complete!\n- **[May 1st]** We've set up `neurogolf.2026@gmail.com` so that teams can reach out to the organizers privately with any sensitive questions.\n- **[May 2nd]** [NeuroGolf Update for May 2nd](https://www.kaggle.com/competitions/neurogolf-2026/discussion/696377#3452306)\n- **[May 4th]** [NeuroGolf Update for May 4th](https://www.kaggle.com/competitions/neurogolf-2026/discussion/696953)\n- **[May 5th]** [NeuroGolf Update for May 5th](https://www.kaggle.com/competitions/neurogolf-2026/discussion/696953#3453590)\n- **[May 14th]** [NeuroGolf Update for May 14th](https://www.kaggle.com/competitions/neurogolf-2026/discussion/699562#3457881)",
+   "content": "<p>Hello Kagglers,</p>\n<p>We're thrilled to announce the launch of the <strong>2026 NeuroGolf Championship</strong>!</p>\n<p>This three-month contest—featured in the <a href=\"https://2026.ijcai.org/\" target=\"_blank\">IJCAI-ECAI 2026</a> Competition Track—adds a new spin to the classic challenge of code golf.  For those new to it, <a href=\"https://en.wikipedia.org/wiki/Code_golf\" target=\"_blank\">code golf</a> is a programming competition where contestants solve a suite of tasks using the shortest possible source code (<em>see also: the championship Kaggle hosted <a href=\"https://www.kaggle.com/competitions/google-code-golf-2025\" target=\"_blank\">last year</a></em>).  In this new challenge, you'll instead design <a href=\"https://en.wikipedia.org/wiki/Neural_network_(machine_learning)\" target=\"_blank\">neural networks</a> that exhibit the simplest possible structure, using any number of optimization techniques (e.g., <a href=\"https://en.wikipedia.org/wiki/Stochastic_gradient_descent\" target=\"_blank\">conventional ML training algorithms</a>, <a href=\"https://en.wikipedia.org/wiki/AI-assisted_software_development\" target=\"_blank\">LLM-powered agentic coding</a>, <a href=\"https://en.wikipedia.org/wiki/Neural_architecture_search\" target=\"_blank\">neural architecture search</a>, etc.) that you choose.</p>\n<p>The tasks for this challenge are all drawn from the <a href=\"https://arcprize.org/arc-agi\" target=\"_blank\">Abstraction and Reasoning Corpus</a> (ARC-AGI), a dataset first introduced by François Chollet in 2019 and later used in <a href=\"https://www.kaggle.com/competitions/arc-prize-2024\" target=\"_blank\">many</a> <a href=\"https://www.kaggle.com/competitions/arc-prize-2025\" target=\"_blank\">other</a> <a href=\"https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2\" target=\"_blank\">competitions</a>. Each puzzle requires a unique composition of transformations, so success will ultimately depend on your ability to create clever &amp; efficient solutions.</p>\n<p>To help you get started, we've created a <a href=\"https://www.kaggle.com/code/mmoffitt/the-2026-neurogolf-championship\" target=\"_blank\">Kaggle notebook</a> where you can load individual ARC tasks and test out your networks.  Need help deciding which puzzles to tackle first? If so, we recommend starting with tasks <a href=\"https://arcprize.org/tasks/0520fde7\" target=\"_blank\">#6</a>, <a href=\"https://arcprize.org/tasks/4258a5f9\" target=\"_blank\">#95</a>, <a href=\"https://arcprize.org/tasks/54d9e175\" target=\"_blank\">#127</a>, <a href=\"https://arcprize.org/tasks/a79310a0\" target=\"_blank\">#261</a>, and <a href=\"https://arcprize.org/tasks/d364b489\" target=\"_blank\">#331</a>.  Finally, refer to the <a href=\"https://www.kaggle.com/competitions/neurogolf-2026\" target=\"_blank\">main contest page</a> for instructions on how to zip up your networks and submit them for scoring.</p>\n<p>Happy golfing! 🏌️</p>\n<p><em>[------- I'll update the space below with any relevant follow-ups -------]</em></p>\n<ul>\n<li><strong>[April 21st]</strong> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711\" target=\"_blank\">NeuroGolf Update for April 21st</a></li>\n<li><strong>[April 24th]</strong> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/693711#3448225\" target=\"_blank\">NeuroGolf Update for April 24th</a></li>\n<li><strong>[April 28th]</strong> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230\" target=\"_blank\">NeuroGolf Update for April 28th</a> … check out our <a href=\"https://www.kaggle.com/code/mmoffitt/the-2026-neurogolf-metric-migration-manual\" target=\"_blank\">Metric Migration Manual</a>!</li>\n<li><strong>[April 29th]</strong> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230#3450385\" target=\"_blank\">NeuroGolf Update for April 29th</a></li>\n<li><strong>[April 30th]</strong> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695230#3450385\" target=\"_blank\">Metric updated</a> to address two issues reported by <a href=\"https://www.kaggle.com/pavelsavchenkov\" target=\"_blank\">@pavelsavchenkov</a> and others.  Batch rescoring complete!</li>\n<li><strong>[May 1st]</strong> We've set up <code>neurogolf.2026@gmail.com</code> so that teams can reach out to the organizers privately with any sensitive questions.</li>\n<li><strong>[May 2nd]</strong> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/696377#3452306\" target=\"_blank\">NeuroGolf Update for May 2nd</a></li>\n<li><strong>[May 4th]</strong> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/696953\" target=\"_blank\">NeuroGolf Update for May 4th</a></li>\n<li><strong>[May 5th]</strong> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/696953#3453590\" target=\"_blank\">NeuroGolf Update for May 5th</a></li>\n<li><strong>[May 14th]</strong> <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/699562#3457881\" target=\"_blank\">NeuroGolf Update for May 14th</a></li>\n</ul>",
+   "parent": {},
+   "author": {
+    "displayName": "Michael D. Moffitt",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+    "url": "/mmoffitt",
+    "tier": "CONTRIBUTOR",
+    "id": 25050929,
+    "progressionOptOut": false
+   },
+   "authorType": "HOST",
+   "votes": {
+    "totalVotes": 15,
+    "canUpvote": true,
+    "totalUpvotes": 15
+   },
+   "kernelVersion": 0,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "LOVE",
+     "featuredUserNames": [
+      "ozgurcem",
+      "keymoon",
+      "hrushikeshpawar",
+      "pedromarcoslocatelli",
+      "p0xacc",
+      "vishwambharmulge"
+     ],
+     "userCount": 6
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "userName": "mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "profileUrl": "/mmoffitt",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 25050929,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3442011,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 691461,
+  "isStickied": true,
+  "name": "NeuroGolf — A Network Synthesis Challenge",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-04-14T20:45:21.664270400Z",
+  "totalVotes": 15,
+  "url": "/competitions/neurogolf-2026/discussion/691461",
+  "totalMessages": 12,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}

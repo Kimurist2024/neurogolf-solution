@@ -1,0 +1,100 @@
+\section{プログラムの説明}
+
+プログラムは Python で作成した。使用した主なライブラリは OpenCV ({\tt cv2})、
+numpy、matplotlib、scipy である。プログラム全体は付録 A に示す。
+本節では、前節のアルゴリズムをどのように実装したかを、関数ごとに説明する。
+
+\subsection{パス設定}
+
+課題指定の Colab 上のディレクトリパスを既定値とし、環境変数 {\tt DATASET\_ROOT} が
+設定されている場合のみ、その値をルートとして各ディレクトリパスを組み立てる。
+Colab 上では環境変数を設定しないため指定どおりのパスとなり、手元の計算機では
+環境変数を設定するだけで同じプログラムを動作確認できる。
+
+\subsection{課題 1: {\tt task1\_video\_info}}
+
+入力は動画ファイルのパス、出力は幅・高さ・FPS・総フレーム数である。
+{\tt cv2.VideoCapture} で動画を開き、{\tt get} メソッドに
+{\tt CAP\_PROP\_FRAME\_WIDTH}、{\tt CAP\_PROP\_FRAME\_HEIGHT}、
+{\tt CAP\_PROP\_FPS}、{\tt CAP\_PROP\_FRAME\_COUNT} を渡して各メタデータを取得し、
+表示する。幅・高さ・総フレーム数は本来整数なので {\tt int} に変換して表示する。
+
+\subsection{課題 2: {\tt task2\_thumbnail} と {\tt compute\_gray\_histogram}}
+
+{\tt compute\_gray\_histogram} は、フレームを {\tt cv2.cvtColor} でグレースケール化し、
+{\tt np.histogram} で 64 ビンのヒストグラムを計算して、総和が 1 になるよう正規化して
+返す。{\tt task2\_thumbnail} は動画を先頭から読みながら {\tt sample\_step} フレームに
+1 枚の間隔でヒストグラムを蓄積し、平均ヒストグラムとの L2 距離
+(式 \ref{eq:thumb})を {\tt np.linalg.norm} で計算して、距離最小のフレーム番号を求める。
+その後 {\tt cap.set(cv2.CAP\_PROP\_POS\_FRAMES, best\_index)} で該当フレームへ移動して
+読み直し、{\tt cv2.imwrite} で JPEG として保存する。
+
+\subsection{課題 3: {\tt task3\_parse\_filename}}
+
+入力はファイル名の文字列、出力はタイトルと ID の組である。
+{\tt os.path.splitext} で拡張子を除き、{\tt rsplit(" - ", 1)} で右端の
+区切りから 1 回だけ分割する。分割結果が 2 要素でない場合は想定外の形式として
+{\tt ValueError} を送出する。前後の余分な空白は {\tt strip} で除去する。
+
+\subsection{課題 4: {\tt task4\_reverse\_video}}
+
+入力は動画パス・出力パス・縮小率である。各フレームは numpy 配列
+(dtype は {\tt uint8})として得られるため、色反転は {\tt 255 - frame} という
+配列演算 1 つで式 \ref{eq:invert} を全画素・全チャンネルに適用できる。
+{\tt cv2.bitwise\_not()} は使用していない。縮小後のサイズは
+{\tt (int(width * 0.3), int(height * 0.3))} で計算し、{\tt cv2.resize} で縮小する。
+書き出しは {\tt cv2.VideoWriter} を用い、コーデックには mp4 コンテナ用の
+{\tt mp4v} を指定し、FPS は元動画の値をそのまま渡す。
+
+\subsection{課題 5: {\tt task5\_spectrogram}}
+
+{\tt scipy.io.wavfile.read} で標本化周波数と信号を読み込み、ステレオの場合は
+チャンネル平均でモノラル化する。{\tt scipy.signal.spectrogram} に窓関数
+({\tt window})、窓長({\tt nperseg})、オーバーラップ({\tt noverlap})を渡して
+式 \ref{eq:stft} の $|X(m,k)|^2$ を計算し、式 \ref{eq:db} で dB に変換する。
+表示は {\tt matplotlib} の {\tt pcolormesh} を用い、横軸を時間、縦軸を周波数、
+濃淡をパワーとするグラフとして保存する。窓長などのパラメータは引数として
+調節できるようにしてある。
+
+\subsection{課題 6: {\tt tokenize}、{\tt build\_2grams}、{\tt task6a\_2gram}、{\tt task6b\_2gram\_no\_stopwords}}
+
+{\tt tokenize} はテキストを小文字化し、正規表現 {\tt [a-z]+} に一致する部分列を
+単語として返す。これにより句読点や数字が単語から分離される。
+{\tt build\_2grams} は単語リストの隣接 2 語を空白で連結した文字列のリストを返す。
+頻度集計は {\tt collections.Counter} で行い、{\tt most\_common(10)} で上位
+10 個を取り出して {\tt matplotlib} の棒グラフとして保存する
+({\tt plot\_top\_2grams})。6-b では、あらかじめ設計した stop words 集合
+{\tt STOP\_WORDS}(冠詞・be 動詞・前置詞・接続詞・代名詞・助動詞など 90 語程度)に
+含まれない単語だけを残してから同じ処理を行う。
+
+\subsection{課題 7: {\tt task7\_frame\_differences} ほか}
+
+{\tt task7\_frame\_differences} は動画を先頭から読み、各フレームを
+グレースケール化して {\tt np.int32} に変換する。{\tt uint8} のまま減算すると
+負の値が桁あふれするため、符号付き整数への変換が必要である。前フレームとの
+差の絶対値の総和 {\tt np.abs(gray - prev\_gray).sum()} を変化量
+(式 \ref{eq:sad})として配列に蓄積する。{\tt absdiff()} は使用していない。
+検出関数は 3 つある。{\tt detect\_by\_mean\_std} は式 \ref{eq:thresh} の閾値を
+計算し {\tt np.where} で超過フレームを返す。{\tt detect\_by\_top\_peaks} は
+{\tt np.argsort} の降順上位 $n$ 個を返す。{\tt detect\_by\_moving\_average} は
+{\tt np.convolve} で移動平均を計算し、その $k'$ 倍を超えるフレームを返す。
+{\tt save\_boundary\_frames} は検出フレームとその直前フレームを画像として保存し、
+目視確認に用いる。
+
+\subsection{課題 8: {\tt Video} クラスとフレーム処理関数}
+
+{\tt Video} クラスのコンストラクタは動画パスを受け取り、タイトル・ID・サムネイルを
+{\tt None} で初期化する。{\tt parse\_filename} は課題 3 と同じ処理で
+{\tt self.title} と {\tt self.video\_id} に代入する。{\tt create\_thumbnail} は
+課題 2 の代表フレーム選択を行い {\tt self.thumbnail} に画像(numpy 配列)を代入する。
+{\tt get\_info} は 4 つのインスタンス変数を辞書
+{\tt \{"path", "title", "video\_id", "thumbnail"\}} として返す。
+
+動画処理は {\tt process\_video(frame\_func, out\_path, scale)} に集約した。
+この関数は動画入出力(読み込み・リサイズ・書き出し)だけを担い、フレーム 1 枚の
+変換は引数 {\tt frame\_func} に委ねる。フレーム変換関数として
+{\tt invert\_frame}(式 \ref{eq:invert} の色反転)、{\tt grayscale\_frame}
+(グレースケール化後、動画書き出しのため 3 チャンネルに戻す)、
+{\tt binarize\_frame}(グレースケール化後、閾値 128 で 2 値化し 3 チャンネルに戻す)
+の 3 つを用意した。{\tt create\_inverse\_video} は {\tt process\_video} に
+{\tt invert\_frame} を渡すだけで課題 4 と同じ処理を実現している。

@@ -1,0 +1,118 @@
+{
+  "authority": {
+    "lb": 8011.05,
+    "zip": "submission_base_8011.05.zip",
+    "sha256": "ad96519a07bcae72017bdb92855b361374f7a34c9f40db237cb2e854615bcd56",
+    "md5": "1ee93ba45ebf88848dfad5fec2e52185"
+  },
+  "scope": {
+    "authority_tasks_at_cost_le_100": 169,
+    "existing_score25_tasks": [
+      67,
+      129,
+      179,
+      241
+    ],
+    "eligible_non_score25_tasks": 165,
+    "output_path_note": "The duplicated absolute path in the request was treated as a paste duplication; this bundle is under the existing others/71407 directory."
+  },
+  "acceptance_policy": {
+    "fresh_minimum": 0.95,
+    "known_private_zero_lineage_allowed": true,
+    "runtime_errors_forbidden": true,
+    "undefined_behavior_forbidden": true,
+    "nonfinite_forbidden": true,
+    "shape_cloak_forbidden": true,
+    "small_positive_margin_forbidden": true
+  },
+  "guaranteed_safe_candidates": [],
+  "policy95_candidates": [
+    {
+      "task": 70,
+      "file": "POLICY95_PRIVATE_ZERO_RISK/task070.onnx",
+      "sha256": "a4c8818ae04ee8445e42907383d5d1fd003eb0537ff54d48278534e173297b60",
+      "authority_cost": 66,
+      "candidate_cost": 52,
+      "half_target": false,
+      "score_gain": 0.23841102344499815,
+      "fresh_rates_two_seeds": [
+        0.99,
+        0.9845
+      ],
+      "fresh_threshold": 0.95,
+      "known_gold_rate": 1.0,
+      "ort_configs": 4,
+      "runtime_errors": 0,
+      "nonfinite_cases": 0,
+      "small_positive_elements": 0,
+      "classification": "POLICY95_PRIVATE_ZERO_RISK",
+      "guaranteed_safe": false,
+      "evidence": "evidence/task070_audit.json"
+    },
+    {
+      "task": 202,
+      "file": "POLICY95_PRIVATE_ZERO_RISK/task202.onnx",
+      "sha256": "06a945b16a5682a14458a54463f23634cf6963906ff7f9370e9d64084ff71073",
+      "authority_cost": 48,
+      "candidate_cost": 20,
+      "half_target": true,
+      "score_gain": 0.8754687373538999,
+      "fresh_rates_two_seeds": [
+        0.974,
+        0.9665
+      ],
+      "fresh_threshold": 0.95,
+      "known_gold_rate": 1.0,
+      "ort_configs": 4,
+      "runtime_errors": 0,
+      "nonfinite_cases": 0,
+      "small_positive_elements": 0,
+      "classification": "POLICY95_PRIVATE_ZERO_LINEAGE_NON_GIANT",
+      "guaranteed_safe": false,
+      "evidence": "evidence/task202_audit.json"
+    }
+  ],
+  "search_reports": [
+    "search_reports/cost02_50_REPORT.md",
+    "search_reports/cost51_100_REPORT.md",
+    "search_reports/score25_similarity_REPORT.md",
+    "search_reports/uniform_output_analysis.json"
+  ],
+  "projected": {
+    "score_gain_if_both_receive_credit": 1.113879760798898,
+    "lb_from_8011_05_if_both_receive_credit": 8012.163879760799,
+    "cost_reduction": 42,
+    "warning": "Leaderboard scoring is all-or-nothing per task. These known private-zero lineages are not guaranteed to receive credit despite >=95% fresh accuracy."
+  },
+  "submission_patch": {
+    "file": "submission_POLICY95_NOT_LB_GUARANTEED.zip",
+    "sha256": "47ce53fc27bc95f43f0ed20bae2baff48866355d5e575964a3519cece4b73799",
+    "md5": "c453e291eb52933d7cca9955dde1f3a7",
+    "member_count": 400,
+    "changed_members_only": [
+      "task070.onnx",
+      "task202.onnx"
+    ],
+    "member_order_preserved": true,
+    "root_submission_modified": false
+  },
+  "key_rejections": [
+    {
+      "tasks": [
+        322,
+        372
+      ],
+      "reason": "Lower histories use short ConvTranspose bias / undefined behavior."
+    },
+    {
+      "task": 70,
+      "candidate_cost": 50,
+      "reason": "Fresh small-positive raw outputs in (0, 0.25); cost52 is the stable-margin choice."
+    },
+    {
+      "task": 135,
+      "candidate_cost": 1,
+      "reason": "Finite one-parameter ConvTranspose crop attempt failed gold and fresh; output padding does not mask the unwanted rows."
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+======================================================================
+exp03: 色反転処理の実装方式と実行時間のスケーリング計測
+======================================================================
+platform : macOS-26.5-arm64-arm-64bit-Mach-O
+machine  : arm64
+python   : 3.13.2
+numpy    : 2.4.4
+opencv   : 4.12.0
+video    : /Users/kimura2003/Downloads/rikadai kadai python/dataset/videos/Cat - 66004.mp4
+timeit   : repeat=7, 1 repeat の目標総時間 0.2 s (number は自動決定), 統計量は中央値
+
+先頭フレーム: 1280x720x3 dtype=uint8, 総フレーム数 294, fps 29.97
+
+----------------------------------------------------------------------
+[0] 各実装の同値性確認
+----------------------------------------------------------------------
+(b) in-place  == (a) ベクトル演算 : True
+(c) 3重ループ == (a) ベクトル演算 : True  (160x90 で確認)
+(d) bitwise_not == (a) ベクトル演算 : True
+
+----------------------------------------------------------------------
+[1] 1 フレーム (1280x720x3 uint8) に対する 4 方式の実行時間
+----------------------------------------------------------------------
+方式                                              サイズ      中央値[ms]     最小[ms]     最大[ms]  number               備考
+255 - frame (採用手法)                        1280x720        2.2157     0.6907     2.5249    1880         measured
+np.subtract(out=) in-place                1280x720        0.7896     0.2959     1.4665    1236         measured
+Python 3重ループ (160x90 実測)                   160x90        39.9825    20.9705    87.6172       1         measured
+Python 3重ループ (1280x720 換算値)               1280x720     2558.8826  1342.1120  5607.4986       1 extrapolated x64
+cv2.bitwise_not (参考・提出では使用禁止)             1280x720        1.3317     0.8164     3.2829    1966         measured
+
+倍率: 3重ループ(換算) / ベクトル演算(a)   = 1154.9 倍
+倍率: ベクトル演算(a) / in-place(b)       = 2.81 倍
+倍率: ベクトル演算(a) / bitwise_not(d)    = 1.66 倍
+
+CSV 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp03_methods.csv
+図 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/figures/exp03_methods.pdf
+
+----------------------------------------------------------------------
+[2] 解像度スケーリング ((a) ベクトル演算 と (d) bitwise_not)
+----------------------------------------------------------------------
+         解像度        画素数    (a) 中央値[ms]    (d) 中央値[ms]
+   160x90         14400         0.0210         0.0174
+   320x180        57600         0.0793         0.0852
+   640x360       230400         0.2502         0.4770
+  1280x720       921600         0.6909         1.8703
+  2560x1440     3686400         7.4146         4.0265
+
+log-log 傾き (a) 255 - frame     : 1.002
+log-log 傾き (d) cv2.bitwise_not : 1.009
+
+CSV 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp03_scaling.csv
+図 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/figures/exp03_scaling.pdf
+
+----------------------------------------------------------------------
+[3] 動画全体の処理時間内訳 (読み込み / 反転 / リサイズ / 書き出し)
+----------------------------------------------------------------------
+入力: 1280x720, 294 フレーム, fps 29.97
+出力: 384x216, /Users/kimura2003/Downloads/rikadai kadai python/dataset/videos/output/exp03_invert_0.3x.mp4
+
+区間                                合計[s]        1フレーム平均[ms]     割合[%]
+読み込み (cap.read)                  5.2918             17.999      67.7
+反転 (255 - frame)                 0.4771              1.623       6.1
+リサイズ (cv2.resize)                0.8733              2.971      11.2
+書き出し (writer.write)              1.1724              3.988      15.0
+4区間合計                            7.8146             26.580     100.0
+全体 (perf_counter)                7.9817             27.149
+
+CSV 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/data/exp03_pipeline.csv
+図 保存: /Users/kimura2003/Downloads/rikadai kadai python/experiments/figures/exp03_pipeline.pdf
+
+======================================================================
+exp03 完了
+======================================================================

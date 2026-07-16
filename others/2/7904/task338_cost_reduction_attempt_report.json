@@ -1,0 +1,57 @@
+{
+  "task": "task338",
+  "timestamp_jst": "2026-07-09",
+  "requested_goal": "Further reduce current cost 920 by at least 100, ideally below 50, using reconstruction/image-rule reasoning.",
+  "rule_inferred_from_images_and_generator": "Input contains non-overlapping red hollow rectangles on a black square grid; output is black everywhere except each rectangle interior, which is green. Rectangles have width/height 2..9; grid size is 10/15/20/25; no interior exists when width or height <=2.",
+  "best_verified_candidate": "/mnt/data/task338_improved.onnx",
+  "best_verified_cost": 920,
+  "previous_score": 18.175626329956913,
+  "further_cost_reduction_adopted": false,
+  "reason": "No newly constructed candidate with cost <=820 satisfied all required exact-visible/official/fresh/runtime/structure checks. The best verified safe candidate remains the prior cost-920 model.",
+  "attempts": [
+    {
+      "family": "single local Conv, groups=2, area<=16",
+      "target_cost": "<=810",
+      "outcome": "Rejected. Local patches have identical sampled neighborhoods with different required labels for task338; no exact deterministic local rule under these stencils was confirmed."
+    },
+    {
+      "family": "single local Conv, groups=5, dilated/rectangular area<=40",
+      "target_cost": "<=810",
+      "outcome": "Rejected. Red/black channel separated local linear filters cannot reliably distinguish large-rectangle interiors from background across generated examples; no exact scorer-passing candidate was found."
+    },
+    {
+      "family": "low-rank replacement for dense 30x30 relation",
+      "target_cost": "~740",
+      "outcome": "Rejected. One-node low-rank Einsum was too slow under ORT DISABLE_ALL; multi-node rank-1 form was cost-reduced but too weak and did not match visible/arc-gen exactly."
+    },
+    {
+      "family": "row/column projection / polynomial / moment rule",
+      "target_cost": "<820",
+      "outcome": "Rejected. It creates cross-rectangle false positives and does not exactly model multiple independent rectangles."
+    },
+    {
+      "family": "sparse initializer / generated relation matrix",
+      "target_cost": "<300",
+      "outcome": "Rejected. sparse_initializer is banned by the user and is also not accepted by the strict checker/scorer configuration for the needed Einsum relation."
+    }
+  ],
+  "validated_prior_candidate": {
+    "cost": 920,
+    "train_test_wrong": 0,
+    "arc_gen_wrong": 0,
+    "official_decoder_wrong": 0,
+    "fresh_k": 100,
+    "fresh_right": 99,
+    "fresh_wrong": 1,
+    "raw_boundary_cells_in_0_0p25": 0,
+    "onnx_checker": "pass",
+    "shape_inference": "pass",
+    "file_size_bytes": 3970,
+    "banned_ops": "none",
+    "note": "These are the prior confirmed results for task338_improved.onnx; no lower-cost candidate superseded them."
+  },
+  "artifacts": {
+    "best_available_onnx": "/mnt/data/task338_best_available_after_cost_search.onnx",
+    "best_available_submission_zip": "/mnt/data/task338_best_available_submission_after_cost_search.zip"
+  }
+}

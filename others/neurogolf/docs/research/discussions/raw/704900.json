@@ -1,0 +1,149 @@
+{
+ "forumTopic": {
+  "authorId": 6514372,
+  "authorThumbnailName": "6514372-kg.jpeg",
+  "authorUserDisplayName": "Paolo Antonuccio",
+  "authorUserName": "paoloantonuccio",
+  "comments": [
+   {
+    "id": 3467832,
+    "postDate": "2026-06-07T15:45:32.107Z",
+    "rawMarkdown": " For the dynamic slicing issue (if the shape of slice is constant such as it is  in task 111 where we are doing 3*3 crop)  , this issue can be sorted by Patching dynamic Slice output shape into value_info of the model  . [detailed discussion ](https://www.kaggle.com/competitions/neurogolf-2026/discussion/695972) ",
+    "content": "<p>For the dynamic slicing issue (if the shape of slice is constant such as it is  in task 111 where we are doing 3*3 crop)  , this issue can be sorted by Patching dynamic Slice output shape into value_info of the model  . <a href=\"https://www.kaggle.com/competitions/neurogolf-2026/discussion/695972\" target=\"_blank\">detailed discussion </a> </p>",
+    "replies": [
+     {
+      "id": 3468010,
+      "postDate": "2026-06-08T08:05:28.820Z",
+      "rawMarkdown": "I tried spox, but the result is the same",
+      "content": "<p>I tried spox, but the result is the same</p>",
+      "parent": {},
+      "author": {
+       "displayName": "Paolo Antonuccio",
+       "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6514372-kg.jpeg",
+       "url": "/paoloantonuccio",
+       "tier": "CONTRIBUTOR",
+       "id": 6514372,
+       "progressionOptOut": false
+      },
+      "authorType": "TOPIC",
+      "votes": {
+       "canUpvote": true
+      },
+      "kernelVersion": 0,
+      "competitionRanking": 604,
+      "feedbackTrackingData": {},
+      "isThankYou": false,
+      "teamUpInfo": {
+       "teamLeader": {
+        "displayName": "Paolo Antonuccio",
+        "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6514372-kg.jpeg",
+        "url": "/paoloantonuccio",
+        "userName": "paoloantonuccio",
+        "tier": "CONTRIBUTOR",
+        "id": 6514372,
+        "profileUrl": "/paoloantonuccio",
+        "performanceTier": "CONTRIBUTOR",
+        "userId": 6514372,
+        "progressionOptOut": false
+       },
+       "intro": ""
+      }
+     }
+    ],
+    "parent": {},
+    "author": {
+     "displayName": "Bishnu Ganguly",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+     "url": "/bishnuganguly",
+     "tier": "CONTRIBUTOR",
+     "id": 14897293,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 1459,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "reactions": [
+     {
+      "emoji": "THANK_YOU",
+      "featuredUserNames": [
+       "paoloantonuccio"
+      ],
+      "userCount": 1
+     }
+    ],
+    "teamUpInfo": {
+     "enabled": true,
+     "teamLeader": {
+      "displayName": "Bishnu Ganguly",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png",
+      "url": "/bishnuganguly",
+      "userName": "bishnuganguly",
+      "tier": "CONTRIBUTOR",
+      "id": 14897293,
+      "profileUrl": "/bishnuganguly",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 14897293,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3467733,
+   "postDate": "2026-06-07T08:11:10.543Z",
+   "rawMarkdown": "In some tasks, it is necessary to use dynamic slices and pads, such as in task014, but when I run it, I get an output like this:\n\nResults on ARC-AGI examples: 1 pass, 3 fail\nResults on ARC-GEN examples: 2 pass, 260 fail\n\nError: Your network performance could not be measured\n\nTypeError                                 Traceback (most recent call last)\n/tmp/ipykernel_57/1126276753.py in <cell line: 0>()\n     40 onnx.checker.check_model(model)\n     41 onnx.save(model, onnx_filename)\n---> 42 verify_network(model, task_num, examples)\n\n/kaggle/input/competitions/neurogolf-2026/neurogolf_utils/neurogolf_utils.py in verify_network(network, task_num, examples)\n    505   if memory is None or params is None:\n    506     print(“Error: Your network performance could not be measured”)\n--> 507   if memory < 0 or params < 0:\n    508     print(“Error: Your network performance could not be measured”)\n    509   elif arc_agi_wrong + arc_gen_wrong == 0:\n\nTypeError: ‘<’ not supported between instances of ‘NoneType’ and ‘int’\n\nWhat should I do?",
+   "content": "<p>In some tasks, it is necessary to use dynamic slices and pads, such as in task014, but when I run it, I get an output like this:</p>\n<p>Results on ARC-AGI examples: 1 pass, 3 fail\nResults on ARC-GEN examples: 2 pass, 260 fail</p>\n<p>Error: Your network performance could not be measured</p>\n<p>TypeError                                 Traceback (most recent call last)\n/tmp/ipykernel_57/1126276753.py in ()\n     40 onnx.checker.check_model(model)\n     41 onnx.save(model, onnx_filename)\n---&gt; 42 verify_network(model, task_num, examples)</p>\n<p>/kaggle/input/competitions/neurogolf-2026/neurogolf_utils/neurogolf_utils.py in verify_network(network, task_num, examples)\n    505   if memory is None or params is None:\n    506     print(“Error: Your network performance could not be measured”)\n--&gt; 507   if memory &lt; 0 or params &lt; 0:\n    508     print(“Error: Your network performance could not be measured”)\n    509   elif arc_agi_wrong + arc_gen_wrong == 0:</p>\n<p>TypeError: ‘&lt;’ not supported between instances of ‘NoneType’ and ‘int’</p>\n<p>What should I do?</p>",
+   "parent": {},
+   "author": {
+    "displayName": "Paolo Antonuccio",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6514372-kg.jpeg",
+    "url": "/paoloantonuccio",
+    "tier": "CONTRIBUTOR",
+    "id": 6514372,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "canUpvote": true
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 604,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "Paolo Antonuccio",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/6514372-kg.jpeg",
+     "url": "/paoloantonuccio",
+     "userName": "paoloantonuccio",
+     "tier": "CONTRIBUTOR",
+     "id": 6514372,
+     "profileUrl": "/paoloantonuccio",
+     "performanceTier": "CONTRIBUTOR",
+     "userId": 6514372,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3467733,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 704900,
+  "name": "Dinamic slices and pads",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-06-07T08:11:10.544242300Z",
+  "url": "/competitions/neurogolf-2026/discussion/704900",
+  "totalMessages": 2,
+  "authorPerformanceTier": "CONTRIBUTOR",
+  "authorProgressionOptOut": false
+ }
+}

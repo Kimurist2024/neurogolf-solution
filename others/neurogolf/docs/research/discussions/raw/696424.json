@@ -1,0 +1,148 @@
+{
+ "forumTopic": {
+  "authorId": 113660,
+  "authorThumbnailName": "113660-fb.jpg",
+  "authorUserDisplayName": "hengck23",
+  "authorUserName": "hengck23",
+  "comments": [
+   {
+    "id": 3457362,
+    "postDate": "2026-05-13T16:24:31.060Z",
+    "rawMarkdown": "I had meant to reply to this earlier, but here are my thoughts: yes, treating these ops as \"free\" for the vast majority of cases (e.g., execution or hardware acceleration) makes perfect sense, esp. since they often require neither memory nor compute.\n\nFor this contest, there are a few reasons to keep their costs nonzero:\n - We're trying to emphasize the simplicity of solutions overall, and since these ops are parameter-free, the memory penalty prevents teams from going crazy with them.\n - Given the risk of missing an op here or there (which would potentially require another batch rescore), it's simply easier to treat them all the same.  I'd prefer to avoid reimplementing `onnx_tool` from scratch, so hopefully this decision prevents a lot of complicated corner cases that might otherwise cause headaches for everyone.",
+    "content": "<p>I had meant to reply to this earlier, but here are my thoughts: yes, treating these ops as \"free\" for the vast majority of cases (e.g., execution or hardware acceleration) makes perfect sense, esp. since they often require neither memory nor compute.</p>\n<p>For this contest, there are a few reasons to keep their costs nonzero:</p>\n<ul>\n<li>We're trying to emphasize the simplicity of solutions overall, and since these ops are parameter-free, the memory penalty prevents teams from going crazy with them.</li>\n<li>Given the risk of missing an op here or there (which would potentially require another batch rescore), it's simply easier to treat them all the same.  I'd prefer to avoid reimplementing <code>onnx_tool</code> from scratch, so hopefully this decision prevents a lot of complicated corner cases that might otherwise cause headaches for everyone.</li>\n</ul>",
+    "parent": {},
+    "author": {
+     "displayName": "Michael D. Moffitt",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+     "url": "/mmoffitt",
+     "tier": "CONTRIBUTOR",
+     "id": 25050929,
+     "progressionOptOut": false
+    },
+    "authorType": "HOST",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "Michael D. Moffitt",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/25050929-kg.jpeg?t=2025-02-12-12-22-52",
+      "url": "/mmoffitt",
+      "userName": "mmoffitt",
+      "tier": "CONTRIBUTOR",
+      "id": 25050929,
+      "profileUrl": "/mmoffitt",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 25050929,
+      "progressionOptOut": false
+     },
+     "intro": ""
+    }
+   },
+   {
+    "id": 3451968,
+    "postDate": "2026-05-02T09:01:25.967Z",
+    "rawMarkdown": "I think reshape should be a zero cost op or atleast consume very low memory footprint. Official onnx documentation says that it is similar to numpy.reshape and if you look at what numpy.reshape does, it just changes the way the data is presented instead of changing the underlying data. By that logic, no additional memory should be consumed when using these ops.  \n\n",
+    "content": "<p>I think reshape should be a zero cost op or atleast consume very low memory footprint. Official onnx documentation says that it is similar to numpy.reshape and if you look at what numpy.reshape does, it just changes the way the data is presented instead of changing the underlying data. By that logic, no additional memory should be consumed when using these ops.  </p>",
+    "parent": {},
+    "author": {
+     "displayName": "NNMax",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/18148523-kg.jpg?t=2025-10-31-11-21-57",
+     "url": "/ashok205",
+     "tier": "EXPERT",
+     "id": 18148523,
+     "progressionOptOut": false
+    },
+    "authorType": "COMMENT",
+    "votes": {
+     "canUpvote": true
+    },
+    "kernelVersion": 0,
+    "competitionRanking": 152,
+    "feedbackTrackingData": {},
+    "isThankYou": false,
+    "teamUpInfo": {
+     "teamLeader": {
+      "displayName": "fangwenhshan",
+      "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/22321106-kg.jpg?t=2026-03-16-11-08-51",
+      "url": "/fangwenhshan",
+      "userName": "fangwenhshan",
+      "tier": "CONTRIBUTOR",
+      "id": 22321106,
+      "profileUrl": "/fangwenhshan",
+      "performanceTier": "CONTRIBUTOR",
+      "userId": 22321106,
+      "progressionOptOut": true
+     },
+     "intro": ""
+    }
+   }
+  ],
+  "commentSort": "COMMENT_LIST_SORT_BY_HOT",
+  "firstMessage": {
+   "id": 3451955,
+   "postDate": "2026-05-02T08:38:21.077Z",
+   "rawMarkdown": "some of the ops never create new memory in practice...  examples are \n\nReshape  \nFlatten  \nIdentity  \nSqueeze  \nUnsqueeze   \n\nsome really good hacking algorithms rely heavily on reshape, but are penalized. I wonder if we should consider these as \"zero-memory ops\" in the metric?\n\n",
+   "content": "<p>some of the ops never create new memory in practice…  examples are </p>\n<p>Reshape<br>\nFlatten<br>\nIdentity<br>\nSqueeze<br>\nUnsqueeze   </p>\n<p>some really good hacking algorithms rely heavily on reshape, but are penalized. I wonder if we should consider these as \"zero-memory ops\" in the metric?</p>",
+   "parent": {},
+   "author": {
+    "displayName": "hengck23",
+    "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+    "url": "/hengck23",
+    "tier": "GRANDMASTER",
+    "id": 113660,
+    "progressionOptOut": false
+   },
+   "authorType": "TOPIC",
+   "votes": {
+    "totalVotes": 3,
+    "canUpvote": true,
+    "totalUpvotes": 3
+   },
+   "kernelVersion": 0,
+   "competitionRanking": 1468,
+   "feedbackTrackingData": {},
+   "isThankYou": false,
+   "reactions": [
+    {
+     "emoji": "THANK_YOU",
+     "featuredUserNames": [
+      "mmoffitt"
+     ],
+     "userCount": 1
+    }
+   ],
+   "teamUpInfo": {
+    "teamLeader": {
+     "displayName": "hengck23",
+     "thumbnailUrl": "https://storage.googleapis.com/kaggle-avatars/thumbnails/113660-fb.jpg",
+     "url": "/hengck23",
+     "userName": "hengck23",
+     "tier": "GRANDMASTER",
+     "id": 113660,
+     "profileUrl": "/hengck23",
+     "performanceTier": "GRANDMASTER",
+     "userId": 113660,
+     "progressionOptOut": false
+    },
+    "intro": ""
+   }
+  },
+  "firstMessageId": 3451955,
+  "forumId": 8930897,
+  "forumName": "The 2026 NeuroGolf Championship",
+  "id": 696424,
+  "name": "view ops also consume memory: is it resaonable?",
+  "parentName": "neurogolf-2026",
+  "parentUrl": "/competitions/neurogolf-2026",
+  "postDate": "2026-05-02T08:38:21.075459200Z",
+  "totalVotes": 3,
+  "url": "/competitions/neurogolf-2026/discussion/696424",
+  "totalMessages": 2,
+  "authorPerformanceTier": "GRANDMASTER",
+  "authorProgressionOptOut": false
+ }
+}

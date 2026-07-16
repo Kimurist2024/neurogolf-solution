@@ -1,0 +1,48 @@
+{
+  "task": "task184",
+  "baseline_current": {
+    "path": "/mnt/data/work184/sub/task184.onnx",
+    "cost": 731,
+    "memory": 702,
+    "params": 29,
+    "verify_fix": "ADOPT fresh=0/53 lib=True off=True margin=0.9917135238647461"
+  },
+  "rule_inferred": "Input is a 2x2/2x3/3x2/3x3 array of colored noisy blocks separated by all-zero rows/columns. Output is the color ID of each block. Existing model computes first/last all-zero row/column and GridSamples representative cells.",
+  "attempts": [
+    {
+      "name": "static fixed GridSample 3x3",
+      "cost": 388,
+      "result": "REJECT",
+      "details": "train/test visible partly passed in local require_false but arc-gen 37 pass / 128 fail; fresh 40/53 fail; fixed coordinates cannot follow variable separators."
+    },
+    {
+      "name": "one-axis static coordinate search",
+      "result": "no valid candidate",
+      "details": "searched half/integer coordinates with dynamic other axis across 169 visible+arc-gen <=30 examples; no fixed row or fixed column triple exists."
+    },
+    {
+      "name": "MaxPool static window reconstruction",
+      "result": "no valid candidate",
+      "details": "searched 5,820 MaxPool interval triples per axis (401 unique intervals); no static pooling windows satisfy all cells across 169 checked examples."
+    },
+    {
+      "name": "Pad raw one-hot after GridSample",
+      "cost": 739,
+      "result": "REJECT",
+      "details": "background channel becomes positive when bilinear sample includes zeros; visible 0/4, arc-gen 21/165."
+    },
+    {
+      "name": "C1/cast float32 variant",
+      "cost": 799,
+      "result": "REJECT_WORSE",
+      "details": "correct but cost increases."
+    },
+    {
+      "name": "W float16 / W fp16 conversion",
+      "result": "invalid",
+      "details": "ONNX shape inference fails: Einsum inputs have inconsistent types."
+    }
+  ],
+  "conclusion": "No valid lower-cost ONNX was found. In particular, no candidate achieved cost <=681 (baseline-50) while preserving visible/arc-gen/fresh correctness.",
+  "lower_bound_note": "The current correct construction already pays 360 bytes for the 10-channel 3x3 sampled one-hot tensor plus 240 bytes for row/column score vectors; the remaining grid/coordinate/control tensors and params bring the measured cost to 731."
+}
