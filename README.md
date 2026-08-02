@@ -17,8 +17,6 @@ Kaggle コンペ [The 2026 NeuroGolf Championship](https://www.kaggle.com/compet
 
 [`best_score.json`](best_score.json) の `score: 8025.43` は大会中に確認したスコアであり、`final_score: 8025.82` は最終集計後に確定した公式最終スコアである。そのため、本READMEでは大会の最終成績を **8025.82** と表記する。
 
-Kaggle上の解法記事名は、公開時点の「[11th Place Solution](https://www.kaggle.com/competitions/neurogolf-2026/writeups/11th-place-solution)」のままであるが、現在の公式最終順位表では **10位** である。
-
 ### チーム成果と木村竜輝の担当範囲
 
 本成果はチームによる成果であり、候補実装の作成には生成AI及びチーム内で作成・共有された候補も活用した。
