@@ -493,7 +493,3 @@ ORT は 1 つの処理の中で複数タスクを続けて採点する際、計�
 | [docs/research/discussion-methods-recent.md](docs/research/discussion-methods-recent.md) | 上位陣の手法の分析(方針転換の根拠) |
 | [docs/orchestration.md](docs/orchestration.md) | 提案 → 実装 → レビューの分担 |
 | [proposals/](proposals/) | 各段階の提案書(方針・見込み・危険性・受け入れ基準) |
-
-## ライセンス
-
-コンペ規約に従い、公開時点で OSI ライセンス供与とみなされます(入賞時は Apache 2.0 でのオープンソース化が必要)。
