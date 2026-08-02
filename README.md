@@ -2,6 +2,31 @@
 
 Kaggle コンペ [The 2026 NeuroGolf Championship](https://www.kaggle.com/competitions/neurogolf-2026) の解法一式。
 
+## 公式最終結果
+
+| 項目 | 内容 |
+|---|---|
+| 最終順位 | **2,963チーム中10位** |
+| チーム名 | **Kimura@SeSDA & OverfitOracle** |
+| 最終スコア | **8025.82** |
+| 獲得メダル | **Competition Gold Medal** |
+
+公式記録は、[Kaggle最終順位表](https://www.kaggle.com/competitions/neurogolf-2026/leaderboard)及び[木村竜輝のKaggleプロフィール](https://www.kaggle.com/kimura0415)で確認できる。
+
+### スコア及び順位に関する注記
+
+[`best_score.json`](best_score.json) の `score: 8025.43` は大会中に確認したスコアであり、`final_score: 8025.82` は最終集計後に確定した公式最終スコアである。そのため、本READMEでは大会の最終成績を **8025.82** と表記する。
+
+Kaggle上の解法記事名は、公開時点の「[11th Place Solution](https://www.kaggle.com/competitions/neurogolf-2026/writeups/11th-place-solution)」のままであるが、現在の公式最終順位表では **10位** である。
+
+### チーム成果と木村竜輝の担当範囲
+
+本成果はチームによる成果であり、候補実装の作成には生成AI及びチーム内で作成・共有された候補も活用した。
+
+木村竜輝は、最適化方針の策定、検証ゲートの設計、候補群の同一条件での検証と採否判断、Leaderboardの実測値とローカル投影値の乖離分析、採用候補の安全な統合及び最終提出物の構築を担当した。
+
+したがって、本リポジトリが示す本人の担当は、すべての候補実装を単独で作成したことではなく、複数の候補を設計・検証・選別・統合し、最終結果へ結び付けたことである。生成AIを含む実装体制の詳細は、[`docs/orchestration.md`](docs/orchestration.md) に記載している。
+
 ARC-AGI の各タスク変換を再現する「できるだけ小さい」ニューラルネットを ONNX で作り、
 `score(task) = max(1, 25 - ln(cost))`(cost = パラメータ数 + メモリフットプリント)を最大化する。
 
