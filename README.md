@@ -5,18 +5,18 @@ Kaggle コンペ [The 2026 NeuroGolf Championship](https://www.kaggle.com/compet
 ARC-AGI の各タスク変換を再現する「できるだけ小さい」ニューラルネットを ONNX で作り、
 `score(task) = max(1, 25 - ln(cost))`(cost = パラメータ数 + メモリフットプリント)を最大化する。
 
-## 現ベスト
+## 最終結果
 
-- **公開 LB スコア: 8025.43**
+- **最終スコア: 8025.82**(公開 LB 時点: 8025.43)
 - 提出物: [submission.zip](submission.zip)(各タスク最大1ファイル `task001.onnx`〜`task400.onnx`)
 
 ## リポジトリ構成
 
 | パス | 内容 |
 |---|---|
-| `submission.zip` | 現ベストの提出物(LB 8025.43) |
+| `submission.zip` | 最終提出物(最終スコア 8025.82) |
 | `all_scores.csv` | タスク別 cost / score |
-| `best_score.json` | 現ベストのメタ情報 |
+| `best_score.json` | 最終提出のメタ情報 |
 | `scripts/` | スキャン・マージ・検証・スコアリングのスクリプト群 |
 | `scripts/golf/` | ONNX ゴルフ(コスト削減・リビルド)の実装 |
 | `docs/` | 手法メモ・タスク別ブリーフ・調査ノート |
