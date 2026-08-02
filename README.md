@@ -21,6 +21,10 @@ ARC-AGI の各タスク変換を再現する「できるだけ小さい」ニュ
 
 ## 2. 最終結果
 
+**2963 チーム中 10 位、競技部門 金メダル**(2026 年 7 月 16 日授与)。
+
+![Kaggle 功績証明書 — Ryuhki Kimura、The 2026 NeuroGolf Championship にて 2963 チーム中 10 位、Competition Gold Medalist、2026 年 7 月 16 日授与](docs/assets/kaggle-certificate.png)
+
 | 指標 | ベースライン | 最終 |
 |---|---|---|
 | 合計スコア | 6347.82 | **8025.82** |
@@ -425,9 +429,10 @@ ORT は 1 プロセス内で複数タスクを採点する際にスクラッチ�
 本コンペティションにはチームとして参加した。
 本 README に記した方針の策定・実装・運用は筆者(`@kimura0415`)が担当している。
 
-最終提出後、チームメイトの jazivxt 氏より Kaggle Discussion 上で以下のコメントを受けた。
+最終提出後、チームメイトの jazivxt 氏より Kaggle Discussion 上で
+"The credit for the gold is all yours @kimura0415 great work! You earned it!" とのコメントを受けた。
 
-> The credit for the gold is all yours @kimura0415 great work! You earned it!
+![Kaggle Discussion 上の jazivxt 氏のコメント: The credit for the gold is all yours @kimura0415 great work! You earned it!](docs/assets/teammate-comment.png)
 
 議論と検証環境を共有してくれたチームメイトに感謝する。
 
