@@ -69,14 +69,14 @@ def main() -> int:
         ],
     }
     sound_controls = {
-        13: {"cost": 7884, "path": "scripts/golf/scratch_claude/task013/cand.onnx"},
+        13: {"cost": 7884, "path": "scripts/golf/scratch_agent/task013/cand.onnx"},
         18: {"cost": 10857, "path": "scripts/golf/scratch_codex/task018/tile2x3_k22_allmode_clean.onnx"},
         54: {"cost": 49618, "path": "scripts/golf/scratch_codex/task054/task054_vector.onnx"},
         80: {"cost": 3050, "path": "8005.16 incumbent (spec-derived floor)"},
         89: {"cost": 2620, "sha256": "c97fff30f5fa41cf8345791fbcd78b6ad0c0af4e6b25d9aed38258b952b6a683"},
         96: {"cost": 2000, "path": "agent_policy90_repairs7/candidates/task096_default_safe.onnx"},
         101: {"cost": 7264, "path": "scripts/golf/scratch_codex_7994/task101_sound/sound_7264.onnx"},
-        131: {"cost": 1521, "path": "scripts/golf/scratch_claude/task131/cand_tie.onnx"},
+        131: {"cost": 1521, "path": "scripts/golf/scratch_agent/task131/cand_tie.onnx"},
     }
     rows = []
     for task in (13, 18, 54, 80, 89, 96, 101, 131):

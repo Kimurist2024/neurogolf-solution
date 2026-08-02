@@ -96,7 +96,7 @@ runtime trace を通る既存 true-rule control を実測した。
 | task | control path | SHA-256 | memory + params = cost | baselineとの差 | known両mode | runtime shape |
 |---:|---|---|---:|---:|---:|---|
 | 237 | `lane_c23/candidates/task237_rebuild_542.onnx` | `435d2ba6…868c` | 407 + 135 = **542** | +13 | 266/266 | 一致 |
-| 238 | `scratch_claude/task238/cand.onnx` | `372b3c2a…60bd` | 7209 + 473 = **7682** | +7120 | 266/266 | 一致 |
+| 238 | `scratch_agent/task238/cand.onnx` | `372b3c2a…60bd` | 7209 + 473 = **7682** | +7120 | 266/266 | 一致 |
 | 354 | `scratch/task354/task354.onnx` | `1e4b4314…2c46` | 6298 + 39 = **6337** | +5800 | 266/266 | 一致 |
 | 378 | `lane_c23/candidates/task378_sound_k12_scaled.onnx` | `2fa9656d…cd0` | 1540 + 111 = **1651** | +1126 | 267/267 | 一致 |
 

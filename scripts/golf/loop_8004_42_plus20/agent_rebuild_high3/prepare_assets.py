@@ -50,7 +50,7 @@ ATTEMPTS = {
         ROOT / "scripts/golf/loop_7999_13/lane_archive_all400/task366_r01_static5246.onnx",
         ROOT / "scripts/golf/loop_7999_13/lane_archive_all400/task366_r02_static6242.onnx",
         ROOT / "scripts/golf/loop_7999_13/lane_archive_all400/task366_r03_static6330.onnx",
-        ROOT / "scripts/golf/scratch_claude/task366/cc_floor.onnx",
+        ROOT / "scripts/golf/scratch_agent/task366/cc_floor.onnx",
     ],
 }
 

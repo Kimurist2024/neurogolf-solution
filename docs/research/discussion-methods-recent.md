@@ -141,7 +141,7 @@ end-of-comp team merges to combine per-task bests (Chan Kha Vu SPEC, 701942).
    - candidate cost + delta vs live baseline; staged submit pipeline with per-task Kaggle verdict wait,
    - attempt-history journals so repeated passes (~5/task) see prior failures.
    - Agent role split: researcher (solves tasks) / developer (improves harness) / observer
-     (read-only health). High/xhigh reasoning required; Codex = stable grinder, Claude =
+     (read-only health). High/xhigh reasoning required; Codex = stable grinder, the other agent =
      smarter but disobedient.
 3. **Benchmark notebook with 10 optimized ONNX files + case studies** (task316/task354):
    https://www.kaggle.com/code/jsrdcht/glm-vs-opus-onnx-cost-opt-neurogolf-2026 (703462) —

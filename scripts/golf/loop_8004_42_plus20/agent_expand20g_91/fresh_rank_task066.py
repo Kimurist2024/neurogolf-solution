@@ -33,7 +33,7 @@ KNOWN_LB_BLACK = {
     "d909159d16436ceea64bfe4a97ebd27a058032cda478e9359af12ef8992f0470": {
         "lineage": "others/2/1200/task066_cost368_improved.onnx",
         "evidence": (
-            "Claude transcript 5e3139b8... lines 11210/11221/11249/11357: "
+            "agent transcript 5e3139b8... lines 11210/11221/11249/11357: "
             "1200 A2 deficit identifies task066@cost368; black-set accounting "
             "closes and submission_1200final reverts it"
         ),

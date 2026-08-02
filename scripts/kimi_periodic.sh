@@ -16,7 +16,7 @@ set -u
 REPO="/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf"
 cd "$REPO" || exit 1
 VENV=".venv/bin/python"
-ASK_KIMI="$HOME/.claude/bin/ask-kimi"
+ASK_KIMI="$HOME/.local/bin/ask-kimi"
 LOG="artifacts/kimi_logs/periodic.log"
 mkdir -p artifacts/kimi_logs
 INTERVAL="${KIMI_INTERVAL:-1200}"

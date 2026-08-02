@@ -7,15 +7,15 @@
 # Harvest (LB-judge merge) is done by the MAIN session. Launch from MAIN session
 # only (codex daemon under a codex sandbox dies -- see factory-codex-sandbox-incident).
 #
-# Env: GR_ENGINE (codex|claude|kimi, default codex) GR_SLOTS (worker slots, default 6)
+# Env: GR_ENGINE (codex|llm|kimi, default codex) GR_SLOTS (worker slots, default 6)
 #      GR_TIMEOUT (sec/worker, default 3000) GR_HOURS (budget, default 8)
-#      GR_MODEL (default: codex=gpt-5.5, claude=claude-opus-4-8, kimi=config default)
+#      GR_MODEL (default: codex=gpt-5.5, llm=llm-default, kimi=config default)
 #      GR_GOAL (default 1000)
 #      GR_MODE (rebuild|memshave, default rebuild). memshave = incumbent-preserving
 #        memory-footprint golf (dtype narrowing / fusion / const folding); pair it
 #        with GR_TARGETS_FILE=docs/golf/mem_targets.json. Hints default to
 #        docs/golf/gpt_hints_memshave.md in this mode (override via GR_HINTS).
-# Engines: codex -> GPT-5.5 (codex exec), claude -> Opus (claude -p), kimi -> Kimi (kimi -p).
+# Engines: codex -> GPT-5.5 (codex exec), llm -> Opus (llm -p), kimi -> Kimi (kimi -p).
 #      All three read the generator, rebuild ground-up, promote via try_candidate, and
 #      write scratch to scripts/golf/scratch_<engine>/. Same risk-free harvest path.
 set -u
@@ -24,15 +24,15 @@ V=".venv/bin/python"
 LOGDIR="${GR_LOGDIR:-artifacts/gpt_rebuild_logs}"; mkdir -p "$LOGDIR"
 N="${GR_SLOTS:-6}"; TIMEOUT="${GR_TIMEOUT:-3000}"; HOURS="${GR_HOURS:-8}"
 GOAL="${GR_GOAL:-1000}"
-ENGINE="${GR_ENGINE:-codex}"   # codex | claude | kimi
+ENGINE="${GR_ENGINE:-codex}"   # codex | llm | kimi
 MODE="${GR_MODE:-rebuild}"     # rebuild | memshave
 EFFORT="${GR_EFFORT:-}"        # codex only: none|minimal|low|medium|high|xhigh|ultra (empty -> config.toml default)
 case "$MODE" in rebuild|memshave) ;; *) echo "FATAL bad GR_MODE=$MODE (rebuild|memshave)"; exit 2;; esac
 case "$ENGINE" in
   codex)  MODEL="${GR_MODEL:-gpt-5.5}";;
-  claude) MODEL="${GR_MODEL:-claude-opus-4-8}";;
+  llm) MODEL="${GR_MODEL:-llm-default}";;
   kimi)   MODEL="${GR_MODEL:-}";;   # empty -> kimi config.toml default_model
-  *) echo "FATAL bad GR_ENGINE=$ENGINE (codex|claude|kimi)"; exit 2;;
+  *) echo "FATAL bad GR_ENGINE=$ENGINE (codex|llm|kimi)"; exit 2;;
 esac
 SCRATCH="scripts/golf/scratch_${ENGINE}"
 LOG="$LOGDIR/gpt_rebuild.log"
@@ -109,7 +109,7 @@ launch(){ # $1=task $2=hash $3=cost
   case "$ENGINE" in
     codex)  ( codex exec -m "$MODEL" ${EFFORT:+-c model_reasoning_effort="$EFFORT"} -s workspace-write --skip-git-repo-check -C "$REPO" - < "$pf" > "$lg" 2>&1 & \
               w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
-    claude) ( claude -p --model "$MODEL" --dangerously-skip-permissions --verbose --output-format stream-json < "$pf" > "$lg" 2>&1 & \
+    llm) ( llm -p --model "$MODEL" --dangerously-skip-permissions --verbose --output-format stream-json < "$pf" > "$lg" 2>&1 & \
               w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
     kimi)   ( cd "$REPO" && kimi ${MODEL:+-m "$MODEL"} -p "$(cat "$pf")" > "$lg" 2>&1 & \
               w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;

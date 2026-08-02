@@ -13,7 +13,7 @@
 #      KIMI_HOURS (wall budget, default 4) KIMI_THRESHOLD (auto-submit, default 0.5)
 set -u
 REPO="/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf"; cd "$REPO" || exit 1
-V=".venv/bin/python"; ASK="$HOME/.claude/bin/ask-kimi"
+V=".venv/bin/python"; ASK="$HOME/.local/bin/ask-kimi"
 LOG="artifacts/kimi_logs/campaign.log"; mkdir -p artifacts/kimi_logs artifacts/campaign_stage
 PAR="${KIMI_PAR:-8}"; export KIMI_TIMEOUT="${KIMI_TIMEOUT:-1200}"
 HOURS="${KIMI_HOURS:-4}"; THRESH="${KIMI_THRESHOLD:-0.5}"

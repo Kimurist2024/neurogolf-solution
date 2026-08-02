@@ -14,7 +14,7 @@
 #      KIMI_TIMEOUT (sec, default 1500)
 set -u
 REPO="/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf"; cd "$REPO" || exit 1
-V=".venv/bin/python"; ASK="$HOME/.claude/bin/ask-kimi"
+V=".venv/bin/python"; ASK="$HOME/.local/bin/ask-kimi"
 mkdir -p artifacts/kimi_logs
 N101="${KP_T101:-3}"; N133="${KP_T133:-2}"; export KIMI_TIMEOUT="${KIMI_TIMEOUT:-1500}"
 LOG="artifacts/kimi_logs/pair.log"

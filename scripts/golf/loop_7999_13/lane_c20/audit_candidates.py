@@ -87,7 +87,7 @@ CASES = {
     ),
     "task349_clean_morph": (
         349,
-        ROOT / "scripts/golf/scratch_claude/task349/clean_morph.onnx",
+        ROOT / "scripts/golf/scratch_agent/task349/clean_morph.onnx",
     ),
 }
 

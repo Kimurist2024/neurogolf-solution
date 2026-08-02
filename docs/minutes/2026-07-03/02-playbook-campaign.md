@@ -8,12 +8,12 @@
 - `GR_MODE=rebuild`(既定): ルールを1から再構築して小型ONNX化(高コスト帯・床未確定タスク向け)
 - `GR_MODE=memshave`: incumbent保存でmemory footprintだけ削る(dtypeナローイング/ノード融合/定数畳込)。
   ヒントは `docs/golf/gpt_hints_memshave.md` が自動付与
-- `GR_ENGINE=codex`(GPT-5.5)/ `claude`(Fable)/ `kimi`
+- `GR_ENGINE=codex`(GPT-5.5)/ `llm`(Fable)/ `kimi`
 
 ## 起動(必ずリポジトリ直下から)
 
 ### 前提: PATH
-Bashツールの PATH には `/opt/homebrew/bin`(codex)と `$HOME/.local/bin`(claude)が無い。**起動前に前置**:
+Bashツールの PATH には `/opt/homebrew/bin`(codex)と `$HOME/.local/bin`(llm)が無い。**起動前に前置**:
 ```bash
 export PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH"
 ```
@@ -46,7 +46,7 @@ GR_LOGDIR=artifacts/gpt_rebuild_logs_le150 \
 nohup bash scripts/gpt_rebuild.sh > artifacts/gpt_rebuild_logs_le150_nohup.out 2>&1 &
 
 # Fable memshave
-GR_ENGINE=claude GR_MODEL=claude-fable-5 GR_MODE=memshave GR_SLOTS=4 \
+GR_ENGINE=llm GR_MODEL=llm-fable-5 GR_MODE=memshave GR_SLOTS=4 \
 GR_TARGETS_FILE=docs/golf/mem_targets.json GR_TARGET_GOAL=400 GR_GOAL=400 \
 GR_TIMEOUT=4200 GR_HOURS=8 \
 GR_LOGDIR=artifacts/gpt_rebuild_logs_fable_memshave \
@@ -62,7 +62,7 @@ nohup bash scripts/gpt_rebuild.sh > artifacts/gpt_rebuild_logs_fable_memshave_no
 ```bash
 kill <masterPID>                       # ps -eo pid,etime,command | grep gpt_rebuild
 pgrep -f "codex exec" | xargs kill -KILL 2>/dev/null    # codexワーカー
-pgrep -f "claude -p" | xargs kill -KILL 2>/dev/null     # Fableワーカー
+pgrep -f "llm -p" | xargs kill -KILL 2>/dev/null     # Fableワーカー
 # master kill 後の孤児(launch subshell / scan孤児)も掃除
 ```
 

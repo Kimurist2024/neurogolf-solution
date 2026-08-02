@@ -98,8 +98,8 @@ def discover() -> dict[int, list[Path]]:
     explicit = {
         2: [ROOT / "artifacts/handcrafted/task002.onnx"],
         88: [ROOT / "scripts/golf/scratch/task088/candidate10.onnx"],
-        89: [ROOT / "scripts/golf/scratch_claude/task089/rebuild.onnx"],
-        191: [ROOT / "scripts/golf/scratch_claude/task191/rebuild.onnx"],
+        89: [ROOT / "scripts/golf/scratch_agent/task089/rebuild.onnx"],
+        191: [ROOT / "scripts/golf/scratch_agent/task191/rebuild.onnx"],
     }
     for task, paths in explicit.items():
         found[task].extend(path for path in paths if path.exists())

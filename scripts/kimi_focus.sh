@@ -10,7 +10,7 @@
 #      KIMI_THRESHOLD (auto-submit, default 0.5) KIMI_K (fresh-gate, default 30)
 set -u
 REPO="/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf"; cd "$REPO" || exit 1
-V=".venv/bin/python"; ASK="$HOME/.claude/bin/ask-kimi"
+V=".venv/bin/python"; ASK="$HOME/.local/bin/ask-kimi"
 LOG="artifacts/kimi_logs/focus.log"; mkdir -p artifacts/kimi_logs
 PAR="${KIMI_PAR:-8}"; export KIMI_TIMEOUT="${KIMI_TIMEOUT:-1200}"
 HOURS="${KIMI_HOURS:-4}"; ROUNDS="${KIMI_ROUNDS:-2}"; THRESH="${KIMI_THRESHOLD:-0.5}"; K="${KIMI_K:-30}"

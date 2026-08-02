@@ -29,10 +29,10 @@ EXTRA_HISTORY = {
 }
 RULE_REFERENCES = {
     "task044_rule_autocorr": ROOT / "scripts/golf/scratch_codex/task044/cand_autocorr_groundup.onnx",
-    "task205_known_97p8": ROOT / "scripts/golf/scratch_claude/task205/incumbent_backup.onnx",
+    "task205_known_97p8": ROOT / "scripts/golf/scratch_agent/task205/incumbent_backup.onnx",
     "task205_compact_d16b": ROOT / "scripts/golf/scratch_codex/task205/candidate_groundup_d16b.onnx",
     "task205_exact_border_scan": ROOT / "scripts/golf/scratch_codex/task205/candidate_border_scan_v2.onnx",
-    "task205_exact_single_scan": ROOT / "scripts/golf/scratch_claude/task205/candidate_single_scan.onnx",
+    "task205_exact_single_scan": ROOT / "scripts/golf/scratch_agent/task205/candidate_single_scan.onnx",
 }
 
 

@@ -49,7 +49,7 @@ CASES = {
     ),
     "task366_cc_core_floor_13309": (
         366,
-        ROOT / "scripts/golf/scratch_claude/task366/cc_floor.onnx",
+        ROOT / "scripts/golf/scratch_agent/task366/cc_floor.onnx",
     ),
 }
 

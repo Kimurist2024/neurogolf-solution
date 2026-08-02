@@ -28,7 +28,7 @@ EXPECTED_TASK_SHA256 = {
     330: "06dcb5216cb441f6d760a28fa4a5b4affa678c9001504dbd8f4f80f3bbd2d5af",
 }
 RULE_REFERENCES = {
-    "task182_truthful_rule_r1": ROOT / "scripts/golf/scratch_claude/task182/r1.onnx",
+    "task182_truthful_rule_r1": ROOT / "scripts/golf/scratch_agent/task182/r1.onnx",
     "task182_exact_truthful_shapes": ROOT / "scripts/golf/loop_7999_13/lane_b9/task182_static_shapes.onnx",
     "task330_truthful_component_rect": ROOT / "scripts/golf/scratch_codex/task330/agent_rect.onnx",
 }

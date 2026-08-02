@@ -40,7 +40,7 @@ CANDIDATES = {
         ROOT / "scripts/golf/scratch/task089/cand_u8.onnx",
         ROOT / "scripts/golf/scratch_codex/task089/candidate_rebuild_v11.onnx",
         ROOT / "scripts/golf/scratch_codex/task089/candidate_red_safe3_rebuilt.onnx",
-        ROOT / "scripts/golf/scratch_claude/task089/rebuild.onnx",
+        ROOT / "scripts/golf/scratch_agent/task089/rebuild.onnx",
     ],
     255: [
         HERE / "baseline/task255.onnx",
@@ -48,7 +48,7 @@ CANDIDATES = {
         ROOT / "scripts/golf/loop_7999_13/lane_archive_all400/task255_r02_static814.onnx",
         ROOT / "scripts/golf/loop_7999_13/lane_archive_all400/task255_r03_static814.onnx",
         ROOT / "scripts/golf/loop_7999_13/lane_archive_all400/task255_r04_static878.onnx",
-        ROOT / "scripts/golf/scratch_claude/task255/recon.onnx",
+        ROOT / "scripts/golf/scratch_agent/task255/recon.onnx",
         ROOT / "scripts/golf/scratch_codex/task255/ambiguity_proof.py",
     ],
 }

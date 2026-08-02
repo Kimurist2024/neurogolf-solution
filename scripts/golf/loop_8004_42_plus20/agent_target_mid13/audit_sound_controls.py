@@ -19,7 +19,7 @@ SPEC.loader.exec_module(AUDITOR)
 
 CONTROLS = {
     237: ROOT / "scripts/golf/loop_7999_13/lane_c23/candidates/task237_rebuild_542.onnx",
-    238: ROOT / "scripts/golf/scratch_claude/task238/cand.onnx",
+    238: ROOT / "scripts/golf/scratch_agent/task238/cand.onnx",
     354: ROOT / "scripts/golf/scratch/task354/task354.onnx",
     378: ROOT / "scripts/golf/loop_7999_13/lane_c23/candidates/task378_sound_k12_scaled.onnx",
 }

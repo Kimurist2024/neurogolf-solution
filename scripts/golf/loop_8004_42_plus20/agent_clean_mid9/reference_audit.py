@@ -23,8 +23,8 @@ COUNT = 50
 HASHES = {88: "3de23699", 89: "3e980e27", 191: "7df24a62"}
 SOLVERS = {
     88: ROOT / "scripts/golf/scratch/task088/ref_verify.py",
-    89: ROOT / "scripts/golf/scratch_claude/task089/solver.py",
-    191: ROOT / "scripts/golf/scratch_claude/task191/solver.py",
+    89: ROOT / "scripts/golf/scratch_agent/task089/solver.py",
+    191: ROOT / "scripts/golf/scratch_agent/task191/solver.py",
 }
 
 

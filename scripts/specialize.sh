@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 12-engine specialization campaign (SLOT model): Codex x4 + Kimi x4 + Claude x4.
+# 12-engine specialization campaign (SLOT model): Codex x4 + Kimi x4 + LLM x4.
 # Goal: drive every task's cost STRICTLY BELOW 8000 (score >= 16.01).
 # SLOT model: each engine keeps N workers busy; the instant a worker exits, its
 # slot is refilled with the next cheapest-over-8000 unassigned task (no wave
@@ -7,24 +7,24 @@
 # try_candidate -> artifacts/handcrafted/. Harvest (fresh-gate + submit) is done
 # by the main session. Must be started from the MAIN session.
 #
-# Env: SP_CODEX/SP_KIMI/SP_CLAUDE (slots/engine, default 4 each)
+# Env: SP_CODEX/SP_KIMI/SP_LLM (slots/engine, default 4 each)
 #      SP_TIMEOUT (sec/worker, default 2400) SP_HOURS (budget, default 8)
-#      SP_CODEX_MODEL (default gpt-5.5) SP_CLAUDE_MODEL (default claude-opus-4-8)
+#      SP_CODEX_MODEL (default gpt-5.5) SP_LLM_MODEL (default llm-default)
 set -u
 REPO="/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf"; cd "$REPO" || exit 1
-V=".venv/bin/python"; ASK="$HOME/.claude/bin/ask-kimi"
+V=".venv/bin/python"; ASK="$HOME/.local/bin/ask-kimi"
 LOGDIR="artifacts/specialize_logs"; mkdir -p "$LOGDIR"
 GOAL=8000
-NC="${SP_CODEX:-4}"; NK="${SP_KIMI:-4}"; NL="${SP_CLAUDE:-4}"
+NC="${SP_CODEX:-4}"; NK="${SP_KIMI:-4}"; NL="${SP_LLM:-4}"
 TIMEOUT="${SP_TIMEOUT:-2400}"; export KIMI_TIMEOUT="$TIMEOUT"
 HOURS="${SP_HOURS:-8}"
-CODEX_MODEL="${SP_CODEX_MODEL:-gpt-5.5}"; CLAUDE_MODEL="${SP_CLAUDE_MODEL:-claude-opus-4-8}"
+CODEX_MODEL="${SP_CODEX_MODEL:-gpt-5.5}"; LLM_MODEL="${SP_LLM_MODEL:-llm-default}"
 LOG="$LOGDIR/specialize.log"
 log(){ echo "[$(date -u '+%m-%d %H:%M:%SZ')] $*" >> "$LOG"; }
 killtree(){ local p="$1" c; for c in $(pgrep -P "$p" 2>/dev/null); do killtree "$c"; done; kill -KILL "$p" 2>/dev/null; }
 [ -x "$ASK" ] || { echo "FATAL ask-kimi"; exit 2; }
 command -v codex >/dev/null || { echo "FATAL codex"; exit 2; }
-command -v claude >/dev/null || { echo "FATAL claude"; exit 2; }
+command -v llm >/dev/null || { echo "FATAL llm"; exit 2; }
 [ -f docs/golf/specialize_assigned.json ] || echo '[]' > docs/golf/specialize_assigned.json
 
 build_prompt(){ # $1=task $2=hash $3=cost $4=engine  -> stdout
@@ -79,7 +79,7 @@ launch(){ # $1=task $2=hash $3=cost $4=engine ; sets LAST_PID to the worker wrap
   case "$ENG" in
     codex)  ( codex exec -m "$CODEX_MODEL" -s workspace-write --skip-git-repo-check -C "$REPO" - < "$pf" > "$lg" 2>&1 & w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
     kimi)   ( "$ASK" < "$pf" > "$lg" 2>&1 & w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
-    claude) ( claude -p --model "$CLAUDE_MODEL" --dangerously-skip-permissions < "$pf" > "$lg" 2>&1 & w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
+    llm) ( llm -p --model "$LLM_MODEL" --dangerously-skip-permissions < "$pf" > "$lg" 2>&1 & w=$!; ( sleep "$TIMEOUT"; killtree "$w" ) & k=$!; wait "$w" 2>/dev/null; kill -KILL "$k" 2>/dev/null; rm -f "$pf" ) & ;;
   esac
   LAST_PID=$!
   log "launch ${ENG} task${T3} cost=${COST} pid=${LAST_PID}"
@@ -123,11 +123,11 @@ refill(){ # $1=engine $2=N  ; file-based PID tracking (bash 3.2 safe, no arrays)
 
 END=$(( $(date +%s) + HOURS*3600 ))
 rm -f "$LOGDIR"/.pids_*
-log "==== SPECIALIZE START (SLOT) codex=${NC} kimi=${NK} claude=${NL} timeout=${TIMEOUT}s budget=${HOURS}h goal<${GOAL} ===="
+log "==== SPECIALIZE START (SLOT) codex=${NC} kimi=${NK} llm=${NL} timeout=${TIMEOUT}s budget=${HOURS}h goal<${GOAL} ===="
 while [ "$(date +%s)" -lt "$END" ]; do
   refill codex "$NC"
   refill kimi "$NK"
-  refill claude "$NL"
+  refill llm "$NL"
   sleep 20
 done
 log "==== SPECIALIZE END ===="

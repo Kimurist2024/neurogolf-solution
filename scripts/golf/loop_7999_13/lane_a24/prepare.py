@@ -24,9 +24,9 @@ EXPECTED_TASK_SHA256 = {
 }
 RULE_REFERENCES = {
     "task277_behavioral_1256": ROOT / "others/1/70201/task277_cost1256_improved.onnx",
-    "task277_component_mass": ROOT / "scripts/golf/scratch_claude/task277/mass_q.onnx",
-    "task277_component_width": ROOT / "scripts/golf/scratch_claude/task277/width.onnx",
-    "task198_generator_runtime_basis": ROOT / "scripts/golf/scratch_claude/task198/cand_runtime_basis.onnx",
+    "task277_component_mass": ROOT / "scripts/golf/scratch_agent/task277/mass_q.onnx",
+    "task277_component_width": ROOT / "scripts/golf/scratch_agent/task277/width.onnx",
+    "task198_generator_runtime_basis": ROOT / "scripts/golf/scratch_agent/task198/cand_runtime_basis.onnx",
 }
 
 

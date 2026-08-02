@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Kimi golf wave launcher (Codex 代替). Run from the MAIN session.
 # Each worker: worker_prompt.py <task> <hash> <cost>  (Codex->Kimi 表記置換)
-#   piped to ~/.claude/bin/ask-kimi (= kimi -p, 非対話・ツール実行=ファイル編集まで自動承認),
+#   piped to ~/.local/bin/ask-kimi (= kimi -p, 非対話・ツール実行=ファイル編集まで自動承認),
 #   wrapped in a per-task timeout to cap runaway token burn.
 # Args: one or more  TASK:HASH:COST  triples (3 推奨 = 3 セッション).
 # Env: KIMI_TIMEOUT (seconds, default 900).
@@ -10,7 +10,7 @@ REPO="/Users/kimura2003/Downloads/projects/Kaggle/Neurogolf"
 cd "$REPO" || exit 1
 mkdir -p artifacts/kimi_logs
 TIMEOUT="${KIMI_TIMEOUT:-480}"
-ASK_KIMI="$HOME/.claude/bin/ask-kimi"
+ASK_KIMI="$HOME/.local/bin/ask-kimi"
 
 if [ ! -x "$ASK_KIMI" ]; then
   echo "FATAL: ask-kimi not found/executable at $ASK_KIMI" >&2

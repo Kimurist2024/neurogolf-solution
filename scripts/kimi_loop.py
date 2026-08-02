@@ -29,7 +29,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 import onnx  # noqa: E402
 from lib import scoring  # noqa: E402
 
-ASK_KIMI = Path.home() / ".claude" / "bin" / "ask-kimi"
+ASK_KIMI = Path.home() / ".llm" / "bin" / "ask-kimi"
 SUB12 = REPO / "artifacts" / "sub12_base"
 OPT = REPO / "artifacts" / "optimized"
 HC = REPO / "artifacts" / "handcrafted"
