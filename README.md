@@ -27,6 +27,8 @@ Kaggle コンペ [The 2026 NeuroGolf Championship](https://www.kaggle.com/compet
 
 したがって、本リポジトリが示す本人の担当は、すべての候補実装を単独で作成したことではなく、複数の候補を設計・検証・選別・統合し、最終結果へ結び付けたことである。生成AIを含む実装体制の詳細は、[`docs/orchestration.md`](docs/orchestration.md) に記載している。
 
+担当ごとの証拠ファイル・コミット・確認方法の対応は [`docs/contribution-evidence.md`](docs/contribution-evidence.md)、由来と権利関係の区分は [`THIRD_PARTY.md`](THIRD_PARTY.md) に整理している。
+
 本 README は、合計スコア 6347.82 から 8025.82 に至るまでに採用した方針とその根拠を記述する。
 
 ## 用語
@@ -471,6 +473,8 @@ ORT は 1 つの処理の中で複数タスクを続けて採点する際、計�
 | パス | 内容 |
 |---|---|
 | `README.pdf` | 本 README の印刷用 PDF（図・証明書画像を含む） |
+| `REPRODUCIBILITY.md` | 第三者が検証するための環境構築と再現手順 |
+| `THIRD_PARTY.md` | 本人・チーム・生成AI・第三者の由来区分と権利関係 |
 | `submission.zip` | 最終提出物(最終スコア 8025.82) |
 | `all_scores.csv` | タスク別のコストとスコア |
 | `best_score.json` | 最終提出の情報 |
@@ -484,6 +488,9 @@ ORT は 1 つの処理の中で複数タスクを続けて採点する際、計�
 
 | ファイル | 内容 |
 |---|---|
+| [docs/contribution-evidence.md](docs/contribution-evidence.md) | 担当範囲と証拠ファイル・コミット・学士相当能力の対応表 |
+| [docs/key-case-studies.md](docs/key-case-studies.md) | 代表 3 事例の深掘り（問題認識から一般化した知見まで、失敗例を含む） |
+| [docs/metrics/official-results.md](docs/metrics/official-results.md) | README の数値の出典と再計算コマンド |
 | [docs/golf/ONNX_GOLF_PLAYBOOK.md](docs/golf/ONNX_GOLF_PLAYBOOK.md) | コスト削減の手法集と、どの型がどの演算に使えるかの対応表 |
 | [docs/golf/ERROR_PATTERNS.md](docs/golf/ERROR_PATTERNS.md) | 提出エラー・本番で通用しない事例の全パターンと復旧手順 |
 | [docs/golf/BANNED_STRUCTURES.md](docs/golf/BANNED_STRUCTURES.md) | 使ってはいけない構造・演算の一覧 |
