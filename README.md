@@ -29,6 +29,18 @@ Kaggle コンペ [The 2026 NeuroGolf Championship](https://www.kaggle.com/compet
 
 担当ごとの証拠ファイル・コミット・確認方法の対応は [`docs/contribution-evidence.md`](docs/contribution-evidence.md)、由来と権利関係の区分は [`THIRD_PARTY.md`](THIRD_PARTY.md) に整理している。
 
+## 検証のための資料
+
+本 README の記載を第三者が確認できるよう、目的別に資料を分けている。
+
+| 資料 | 内容 |
+|---|---|
+| [docs/contribution-evidence.md](docs/contribution-evidence.md) | 担当した判断ごとに、証拠ファイル・該当箇所・コミット・確認方法を対応付けた表。スコア推移とその時点の判断、学士相当能力との対応も含む |
+| [docs/metrics/official-results.md](docs/metrics/official-results.md) | 本 README に記載した数値の出典と、手元で再計算するためのコマンド |
+| [REPRODUCIBILITY.md](REPRODUCIBILITY.md) | 環境構築と検証手順。配布データなしで実行できる範囲を明示している |
+| [docs/key-case-studies.md](docs/key-case-studies.md) | 代表 3 事例の詳細。問題の認識から一般化した知見まで、棄却した仮説を含めて記述 |
+| [THIRD_PARTY.md](THIRD_PARTY.md) | 本人・チーム・生成AI・第三者の由来区分と権利関係 |
+
 本 README は、合計スコア 6347.82 から 8025.82 に至るまでに採用した方針とその根拠を記述する。
 
 ## 用語
@@ -75,6 +87,10 @@ Kaggle コンペ [The 2026 NeuroGolf Championship](https://www.kaggle.com/compet
 | コスト平均 | 29,727 | — |
 | 最大コスト | 109,037 | **7,977** |
 | cost ≤ 100 のタスク数 | — | **174 / 400** |
+
+各数値の出典と再計算手順は [docs/metrics/official-results.md](docs/metrics/official-results.md) にまとめている。
+順位と最終スコアは Kaggle 側の公式記録であり本リポジトリからは導けない。
+コストの統計値は [`all_scores.csv`](all_scores.csv) から再計算できる。
 
 提出物: [submission.zip](submission.zip)(各タスク最大 1 ファイル `task001.onnx`〜`task400.onnx`)
 
@@ -134,6 +150,15 @@ Kaggle コンペ [The 2026 NeuroGolf Championship](https://www.kaggle.com/compet
 - どの演算も作らない、宣言だけ残った型情報の削除
 - 何もしない演算（1 を掛ける、0 を足す、同じ形に変形するなど）の除去
 - 減らして得になる配列だけを、より小さい型に変更
+
+提案書と採否の対応は次のとおり。
+
+| 提案書 | 内容 | 採否 |
+|---|---|---|
+| [001](proposals/001-zero-risk-onnx-cost-reduction.md) | 挙動を変えない一括変換（未使用定数の削除ほか） | 採用。ただし利得は限定的 |
+| [002](proposals/002-residual-dtype-and-noop.md) | dtype 縮小と no-op 除去 | 部分採用（正味の利得が正のもののみ） |
+| [003](proposals/003-per-task-golf-factory.md) | タスク別の作り直しの自動化 | 採用。以降の主軸 |
+| [004](proposals/004-overnight-factory.md) | 連続キュー方式への移行 | 採用 |
 
 これらは正しさを保ったまま適用できるが、**得られたのは合計で約 +3 点だった**。
 計算の構造そのものは変えていないので、対数の点数式のもとでは原理的にここが限界になる。
